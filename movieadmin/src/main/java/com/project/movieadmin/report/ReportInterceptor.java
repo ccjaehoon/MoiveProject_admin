@@ -1,4 +1,4 @@
-package com.project.movie.report;
+package com.project.movieadmin.report;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -1,4 +1,4 @@
-package com.project.movie.report;
+package com.project.movieadmin.report;
 
 import java.util.List;
 

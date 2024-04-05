@@ -1,4 +1,4 @@
-package com.project.movie.news;
+package com.project.movieadmin.news;
 
 import java.util.Date;
 
