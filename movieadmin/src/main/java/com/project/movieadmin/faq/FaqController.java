@@ -33,7 +33,62 @@ public class FaqController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home123";
+		return "home";
+	}
+	
+	@RequestMapping(value = "/f_insert.do", method = RequestMethod.GET)
+	public String f_insert() {
+		logger.info("Welcome f_insert!");
+
+		return "faq/insert";
+	}
+	@RequestMapping(value = "/f_insertOK.do", method = RequestMethod.GET)
+	public String f_insertOK(FaqVO vo) {
+		logger.info("Welcome f_insertOK!");
+
+		return "faq/insertOK";
+	}
+	@RequestMapping(value = "/f_selectAll.do", method = RequestMethod.GET)
+	public String f_selectAll(int cpage, int pageBlock, Model model) {
+		logger.info("Welcome f_selectAll!");
+
+		return "faq/selectAll";
+	}
+	@RequestMapping(value = "/f_searchList.do", method = RequestMethod.GET)
+	public String f_searchList(int cpage, int pageBlock, Model model, String searchKey, String searchWord) {
+		logger.info("Welcome f_searchList!");
+
+		return "faq/searchList";
+	}
+	@RequestMapping(value = "/f_selectOne.do", method = RequestMethod.GET)
+	public String f_selectOne(FaqVO vo, Model model) {
+		logger.info("Welcome f_selectOne!");
+
+		return "faq/selectOne";
+	}
+	@RequestMapping(value = "/f_update.do", method = RequestMethod.GET)
+	public String f_update(FaqVO vo, Model model) {
+		logger.info("Welcome f_update!");
+
+		return "faq/update";
+	}
+	@RequestMapping(value = "/f_updateOK.do", method = RequestMethod.GET)
+	public String f_updateOK(FaqVO vo) {
+		logger.info("Welcome f_updateOK!");
+
+		return "faq/updateOK";
+	}
+	@RequestMapping(value = "/f_delete.do", method = RequestMethod.GET)
+	public String f_delete() {
+		logger.info("Welcome f_delete!");
+
+		return "faq/delete";
+	}
+	@RequestMapping(value = "/f_deleteOK.do", method = RequestMethod.GET)
+	public String f_deleteOK(FaqVO vo) {
+		logger.info("Welcome f_deleteOK!");
+
+		return "faq/deleteOK";
 	}
 	
 }

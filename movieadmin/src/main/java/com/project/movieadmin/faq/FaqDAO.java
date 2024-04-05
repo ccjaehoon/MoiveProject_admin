@@ -1,5 +1,21 @@
 package com.project.movieadmin.faq;
 
-public interface FaqDAO {
+import java.util.List;
 
+public interface FaqDAO {
+	//메인 주석 푸시
+	public int insert(FaqVO vo);
+
+	public int update(FaqVO vo);
+
+	public int delete(FaqVO vo);
+
+	public FaqVO selectOne(FaqVO vo);
+
+	public List<FaqVO> selectAll(int cpage,int pageBlock);
+
+	public List<FaqVO> searchList(String searchKey, String searchWord,int cpage,int pageBlock);
+
+	public int getTotalRows();
+	public int getSearchTotalRows(String searchKey, String searchWord);
 }
