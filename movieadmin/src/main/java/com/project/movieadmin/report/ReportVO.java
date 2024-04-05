@@ -13,4 +13,5 @@ public class ReportVO {
 	private int board_num;
 	private int  comments_num;
 	private Date handledate;
+	
 }
