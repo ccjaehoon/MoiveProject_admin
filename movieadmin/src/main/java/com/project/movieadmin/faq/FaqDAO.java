@@ -3,6 +3,7 @@ package com.project.movieadmin.faq;
 import java.util.List;
 
 public interface FaqDAO {
+	//메인 주석 푸시
 	public int insert(FaqVO vo);
 
 	public int update(FaqVO vo);
