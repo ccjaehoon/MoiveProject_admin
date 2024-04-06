@@ -17,5 +17,7 @@ public class UserVO {
 	private String tel;
 	private String favorite;
 	private String email;
+	private Date reg_date;
+	
 
 }

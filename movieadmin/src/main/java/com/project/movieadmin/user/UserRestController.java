@@ -2,8 +2,10 @@ package com.project.movieadmin.user;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -16,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,6 +55,50 @@ public class UserRestController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
+	}
+	
+	@RequestMapping(value = "/json_idCheck.do", method = RequestMethod.GET)
+	public Map<String , String> json_idCheck(UserVO vo) {
+	
+		UserVO vo2 = service.idCheck(vo);
+		
+		Map<String , String> map = new HashMap<String, String>();
+		if(vo2 != null) {
+			map.put("result", "Not OK");
+		}else {
+			map.put("result", "OK");
+		}
+
+		return map;
+	}
+	@RequestMapping(value = "/json_nicknameCheck.do", method = RequestMethod.GET)
+	public Map<String , String> json_nicknameCheck(UserVO vo) {
+		
+		UserVO vo2 = service.idCheck(vo);
+		
+		Map<String , String> map = new HashMap<String, String>();
+		if(vo2 != null) {
+			map.put("result", "Not OK");
+		}else {
+			map.put("result", "OK");
+		}
+
+		return map;
+	}
+	@RequestMapping(value = "/json_emailCheck.do", method = RequestMethod.GET)
+	public Map<String , String> json_emailCheck(UserVO vo) {
+	
+
+		UserVO vo2 = service.idCheck(vo);
+		
+		Map<String , String> map = new HashMap<String, String>();
+		if(vo2 != null) {
+			map.put("result", "Not OK");
+		}else {
+			map.put("result", "OK");
+		}
+
+		return map;
 	}
 	
 	

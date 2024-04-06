@@ -22,5 +22,10 @@ public interface UserDAO {
 	public int u_getTotalRows();
 
 	public int u_getSearchTotalRows(String searchKey, String searchWord);
-
+	
+	public UserVO idCheck(UserVO vo);
+	
+	public UserVO nicknameCheck(UserVO vo);
+	
+	public UserVO emailCheck(UserVO vo);
 }
