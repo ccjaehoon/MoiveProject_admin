@@ -6,11 +6,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.project.movieadmin.faq.FaqServiceimpl;
-
 import lombok.extern.slf4j.Slf4j;
-//11
 
+@Slf4j
 @Service
 public class StoryServiceimpl implements StoryService {
 
@@ -87,6 +85,18 @@ public class StoryServiceimpl implements StoryService {
 		System.out.println("s_removeExpired....");
 		
 		
+		return 0;
+	}
+
+	@Override
+	public int s_increaseGood(StoryVO vo) {
+		System.out.println("s_increaseGood....");
+		return 0;
+	}
+
+	@Override
+	public int s_increaseReport(StoryVO vo) {
+		System.out.println("s_increaseReport....");
 		return 0;
 	}
 

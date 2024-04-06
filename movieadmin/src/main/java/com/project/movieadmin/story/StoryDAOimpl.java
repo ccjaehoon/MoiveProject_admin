@@ -82,5 +82,19 @@ public class StoryDAOimpl implements StoryDAO {
 		return 0;
 	}
 
+	@Override
+	public int s_increaseGood(StoryVO vo) {
+		System.out.println("s_increaseGood....");
+		
+		return 0;
+	}
+
+	@Override
+	public int s_increaseReport(StoryVO vo) {
+		System.out.println("s_increaseReport....");
+		
+		return 0;
+	}
+
 
 }
