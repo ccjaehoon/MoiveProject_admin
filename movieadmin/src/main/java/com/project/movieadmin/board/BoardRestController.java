@@ -19,20 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardRestController {
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		log.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
-	
 	@RequestMapping(value = "/b_increaseGood.do", method = RequestMethod.GET)
 	public String b_increaseGood(BoardVO vo) {
 		log.info("Welcome b_increaseGood!");

@@ -42,20 +42,8 @@ public class AnnouncementController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		log.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
-	@RequestMapping(value = "/uinsert.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/a_insert.do", method = RequestMethod.GET)
 	public String u_insert() {
 		
 
@@ -69,7 +57,7 @@ public class AnnouncementController {
 		int result = service.a_insert(vo);
 	
 		if (result == 1) {
-			return "redirect: a_selectAll.do";// 메인 홈페이지 로 가는
+			return "redirect:a_selectAll.do";// 메인 홈페이지 로 가는
 		} else {
 			return "redirect:a_insert.do";
 		}
@@ -88,9 +76,9 @@ public class AnnouncementController {
 		int result = service.a_update(vo);
 		
 		if (result == 1) {
-			return "redirect: uselectAll.do"; // 마이 페이지
+			return "redirect:u_selectAll.do"; // 마이 페이지
 		} else {
-			return "redirect:uinsert.do";
+			return "redirect:u_insert.do";
 		}
 	}
 	@RequestMapping(value = "/a_delete.do", method = RequestMethod.GET)
