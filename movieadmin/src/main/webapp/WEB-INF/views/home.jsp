@@ -5,8 +5,9 @@
 	<title>Home</title>
 </head>
 <body>
+ <jsp:include page="top_menu.jsp"></jsp:include>
 <h1>
-	Hello world!  
+	영화 정보사이트 입니다
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>

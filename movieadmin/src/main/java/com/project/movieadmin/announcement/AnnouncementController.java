@@ -1,14 +1,8 @@
 package com.project.movieadmin.announcement;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,20 +36,8 @@ public class AnnouncementController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		log.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
-	@RequestMapping(value = "/uinsert.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/a_insert.do", method = RequestMethod.GET)
 	public String u_insert() {
 		
 
@@ -66,13 +48,7 @@ public class AnnouncementController {
 	public String a_insertOK(AnnouncementVO vo) {
 		
 
-		int result = service.a_insert(vo);
-	
-		if (result == 1) {
-			return "redirect: a_selectAll.do";// 메인 홈페이지 로 가는
-		} else {
-			return "redirect:a_insert.do";
-		}
+		return "announcement/insertOK";
 	}
 	
 	@RequestMapping(value = "/a_update.do", method = RequestMethod.GET)
@@ -85,13 +61,7 @@ public class AnnouncementController {
 	public String a_updateOK(AnnouncementVO vo, Model model) {
 		
 
-		int result = service.a_update(vo);
-		
-		if (result == 1) {
-			return "redirect: uselectAll.do"; // 마이 페이지
-		} else {
-			return "redirect:uinsert.do";
-		}
+		return "announcement/updateOK";
 	}
 	@RequestMapping(value = "/a_delete.do", method = RequestMethod.GET)
 	public String a_delete() {
@@ -103,13 +73,7 @@ public class AnnouncementController {
 	public String a_deleteOK(AnnouncementVO vo) {
 		
 
-		int result = service.a_delete(vo);
-		
-		if (result == 1) {
-			return "redirect:a_selectAll.do"; // 메인페이지로
-		} else {
-			return "redirect:a_insert.do";
-		}
+		return "announcement/deleteOK";
 	}
 	
 	@RequestMapping(value = "/a_selectOne.do", method = RequestMethod.GET)

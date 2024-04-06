@@ -14,8 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class BoardController {
-	
-	@RequestMapping(value = "/b_insert.do", method = RequestMethod.GET)
 	public String b_insert() {
 		log.info("Welcome b_insert.do....");
 		

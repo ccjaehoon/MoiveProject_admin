@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class CommentsRestController {
-	
 	@RequestMapping(value = "/c_increaseGood.do", method = RequestMethod.GET)
 	public String c_increaseGood(CommentsVO vo) {
 		log.info("Welcome c_increaseGood!");

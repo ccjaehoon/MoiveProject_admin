@@ -2,6 +2,7 @@ package com.project.movieadmin.news.comments;
 
 import java.util.List;
 
+
 public interface NCommentsService {
 	public int insert(NCommentsVO vo);
 

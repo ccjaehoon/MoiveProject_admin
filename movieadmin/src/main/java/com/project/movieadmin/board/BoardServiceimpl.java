@@ -2,8 +2,17 @@ package com.project.movieadmin.board;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.movieadmin.news.NewsDAO;
+
+@Service
 public class BoardServiceimpl implements BoardService {
 
+	@Autowired
+	private NewsDAO dao;
+	
 	@Override
 	public int b_insert(BoardVO vo) {
 		// TODO Auto-generated method stub
