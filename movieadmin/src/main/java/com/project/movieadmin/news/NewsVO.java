@@ -11,5 +11,6 @@ public class NewsVO {
 	private String nickname;
 	private String content;
 	private Date wdate;
-	private int good;
+	private int view;
+	private String save_name;
 }
