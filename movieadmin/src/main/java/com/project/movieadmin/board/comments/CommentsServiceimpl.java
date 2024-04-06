@@ -7,16 +7,22 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+import com.project.movieadmin.news.NewsDAO;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Repository
+@Service
 public class CommentsServiceimpl implements CommentsService {
 
 	@Autowired
 	private SqlSession sqlSession;
 
+	@Autowired
+	private CommentsDAO dao;
+	
 	@Override
 	public int c_insert(CommentsVO vo) {
 		log.info("c_insert()...");
