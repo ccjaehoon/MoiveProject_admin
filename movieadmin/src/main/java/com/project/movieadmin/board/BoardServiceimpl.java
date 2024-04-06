@@ -58,4 +58,10 @@ public class BoardServiceimpl implements BoardService {
 		return 0;
 	}
 
+	@Override
+	public int b_increaseReport(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

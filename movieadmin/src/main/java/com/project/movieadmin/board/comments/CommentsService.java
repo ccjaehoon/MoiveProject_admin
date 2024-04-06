@@ -13,5 +13,7 @@ public interface CommentsService {
 	public List<CommentsVO> c_selectAll(int cpage, int pageBlock);
 
 	public int c_increaseGood(CommentsVO vo);
+	
+	public int c_increaseReport(CommentsVO vo);
 
 }

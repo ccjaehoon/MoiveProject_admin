@@ -65,4 +65,10 @@ public class CommentsServiceimpl implements CommentsService {
 		return 0;
 	}
 
+	@Override
+	public int c_increaseReport(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
