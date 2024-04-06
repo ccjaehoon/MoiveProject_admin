@@ -18,21 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class CommentsRestController {
 	
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		log.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
-	
 	@RequestMapping(value = "/c_increaseGood.do", method = RequestMethod.GET)
 	public String c_increaseGood(CommentsVO vo) {
 		log.info("Welcome c_increaseGood!");
