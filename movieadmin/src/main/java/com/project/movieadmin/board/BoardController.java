@@ -39,7 +39,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "b_insert", method = RequestMethod.GET)
 	public String b_insert() {
-		logger.info("Welcome b_insert.do...");
+		logger.info("Welcome b_insert.do....");
 		
 		return "board/insert";
 	}
