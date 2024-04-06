@@ -34,4 +34,10 @@ public class NCommentsServiceimpl implements NCommentsService {
 		return 0;
 	}
 
+	@Override
+	public int nc_increaseReport(NCommentsVO vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

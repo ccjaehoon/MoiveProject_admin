@@ -12,5 +12,5 @@ public class NCommentsVO {
 	private Date wdate;
 	private int good;
 	private int news_board_num;
-	private String report;
+	private int report;
 }
