@@ -1,9 +1,5 @@
 package com.project.movieadmin.board.comments;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -23,61 +19,54 @@ public class CommentsController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CommentsController.class);
 
-	@RequestMapping(value = "c_insert", method = RequestMethod.GET)
+	@RequestMapping(value = "/c_insert.do", method = RequestMethod.GET)
 	public String c_insert() {
 		logger.info("Welcome c_insert.do...");
 		
-		return "comments/insert";
+		return "board/comments/insert";
 	}
 
-	@RequestMapping(value = "c_insertOK", method = RequestMethod.GET)
+	@RequestMapping(value = "/c_insertOK.do", method = RequestMethod.GET)
 	public String c_insertOK(CommentsVO vo) {
 		logger.info("Welcome c_insertOK.do...");
 		
-		return "comments/insertOK";
+		return "board/comments/insertOK";
 	}
-	@RequestMapping(value = "c_selectAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/c_selectAll.do", method = RequestMethod.GET)
 	public String c_selectAll(@RequestParam(
 			defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		logger.info("Welcome c_selectAll.do...");
 		
-		return "comments/selectAll";
+		return "board/comments/selectAll";
 	}
 	
-	@RequestMapping(value = "c_update", method = RequestMethod.GET)
+	@RequestMapping(value = "/c_update.do", method = RequestMethod.GET)
 	public String c_update(CommentsVO vo, Model model) {
 		logger.info("Welcome c_update.do...");
 		
-		return "comments/update";
+		return "board/comments/update";
 	}
 	
-	@RequestMapping(value = "c_updateOK", method = RequestMethod.GET)
+	@RequestMapping(value = "/c_updateOK.do", method = RequestMethod.GET)
 	public String c_updateOK(CommentsVO vo) {
 		logger.info("Welcome c_updateOK.do...");
 		
-		return "comments/updateOK";
+		return "board/comments/updateOK";
 	}
 	
-	@RequestMapping(value = "c_delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/c_delete.do", method = RequestMethod.GET)
 	public String c_delete() {
 		logger.info("Welcome c_delete.do...");
 		
-		return "comments/delete";
+		return "board/comments/delete";
 	}
 	
-	@RequestMapping(value = "c_deleteOK", method = RequestMethod.GET)
+	@RequestMapping(value = "/c_deleteOK.do", method = RequestMethod.GET)
 	public String c_deleteOK(CommentsVO vo) {
 		logger.info("Welcome c_deleteOK.do...");
 		
-		return "comments/deleteOK";
-	}
-	
-	@RequestMapping(value = "c_increaseGood", method = RequestMethod.GET)
-	public String c_increaseGood(CommentsVO vo) {
-		logger.info("Welcome c_increaseGood.do...");
-		
-		return "commnets/increaseGood";
+		return "board/comments/deleteOK";
 	}
 	
 }
