@@ -2,6 +2,9 @@ package com.project.movieadmin.faq;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class FaqDAOimpl implements FaqDAO {
 
 	@Override

@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public class StoryDAOimpl implements StoryDAO {
 	@Override
 	public int s_insert(StoryVO vo) {
