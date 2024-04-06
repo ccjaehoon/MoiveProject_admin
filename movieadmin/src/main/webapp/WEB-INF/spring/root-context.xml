@@ -26,9 +26,18 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:jdbc/sqlMapper_member.xml</value>
+				<value>classpath:jdbc/sqlMapper_announcement.xml</value>
+				<value>classpath:jdbc/sqlMapper_board_comments.xml</value>
 				<value>classpath:jdbc/sqlMapper_board.xml</value>
-				<value>classpath:jdbc/sqlMapper_comments.xml</value>
+				<value>classpath:jdbc/sqlMapper_faq.xml</value>
+				<value>classpath:jdbc/sqlMapper_info_review.xml</value>
+				<value>classpath:jdbc/sqlMapper_info.xml</value>
+				<value>classpath:jdbc/sqlMapper_news_comments.xml</value>
+				<value>classpath:jdbc/sqlMapper_news.xml</value>
+				<value>classpath:jdbc/sqlMapper_report.xml</value>
+				<value>classpath:jdbc/sqlMapper_story_comments.xml</value>
+				<value>classpath:jdbc/sqlMapper_story.xml</value>
+				<value>classpath:jdbc/sqlMapper_user.xml</value>
 			</list>
 		</property>
 	</bean>
