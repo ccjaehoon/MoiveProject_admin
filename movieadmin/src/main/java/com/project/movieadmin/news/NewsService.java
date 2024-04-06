@@ -2,6 +2,7 @@ package com.project.movieadmin.news;
 
 import java.util.List;
 
+
 public interface NewsService {
 
 	public List<NewsVO> n_selectAll(int cpage, int pageBlock);

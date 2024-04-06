@@ -3,7 +3,6 @@ package com.project.movieadmin.announcement;
 import java.util.List;
 
 
-
 public interface AnnouncementService {
 	
 	public int a_insert(AnnouncementVO vo);

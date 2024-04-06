@@ -2,8 +2,18 @@ package com.project.movieadmin.faq;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
 public class FaqServiceimpl implements FaqService {
 
+	@Autowired
+	private FaqDAO dao;
+	
 	@Override
 	public int insert(FaqVO vo) {
 		// TODO Auto-generated method stub
