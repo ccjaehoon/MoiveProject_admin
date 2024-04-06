@@ -36,13 +36,10 @@
 				<value>classpath:jdbc/sqlMapper_news.xml</value>
 				<value>classpath:jdbc/sqlMapper_report.xml</value>
 				<value>classpath:jdbc/sqlMapper_story_comments.xml</value>
-<<<<<<< HEAD
 				<value>classpath:jdbc/sqlMapper_user.xml</value>
 				<value>classpath:jdbc/sqlMapper_story.xml</value>
-=======
 				<value>classpath:jdbc/sqlMapper_story.xml</value>
 				<value>classpath:jdbc/sqlMapper_user.xml</value>
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 			</list>
 		</property>
 	</bean>
