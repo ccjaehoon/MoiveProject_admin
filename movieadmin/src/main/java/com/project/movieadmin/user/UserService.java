@@ -3,6 +3,7 @@ package com.project.movieadmin.user;
 import java.util.List;
 
 
+
 public interface UserService {
 	
 	public int u_insert(UserVO vo);
@@ -23,4 +24,9 @@ public interface UserService {
 
 	public int u_getSearchTotalRows(String searchKey, String searchWord);
 
+	public UserVO idCheck(UserVO vo);
+	
+	public UserVO nicknameCheck(UserVO vo);
+	
+	public UserVO emailCheck(UserVO vo);
 }
