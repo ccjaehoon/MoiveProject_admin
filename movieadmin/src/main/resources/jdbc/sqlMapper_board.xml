@@ -5,23 +5,26 @@
 
 <mapper namespace="com.project.moiveadmin.board">
 	<insert id="INSERT" parameterType="com.projcet.moiveadmin.board.BoardVO">
-		
+		insert into
+		board(title, tag, nickname, content, wdate, good, authority, views, commentscount, report)
+		values(#{title},#{tag},#{nickname},#{content},#{wdate},#{good},#{authority},#{views},#{commentscount},#{report})
 	</insert>
 
 	<update id="UPDATE">
-		
+		update board set title=#{title},tag=#{tag},content=#{content},nickname=#{nickname} 
+		where board_num=#{board_num}
 	</update>
 
 	<delete id="DELETE">
-	
+		delete from board where board_num=#{board_num}
 	</delete>
 
 	<select id="SELECT_ONE" resultType="com.projcet.moiveadmin.board.BoardVO">
-		
+		select * from board where board_num=#{board_num}
 	</select>
 
 	<select id="SELECT_ALL" resultType="com.projcet.moiveadmin.board.BoardVO">
-	
+		select * from board order by board_num desc
 	</select>
 
 	<select id="SELECT_ALL_PAGE_BLOCK"

@@ -5,23 +5,26 @@
 
 <mapper namespace="com.project.moiveadmin.board.comments">
 	<insert id="INSERT" parameterType="com.projcet.movie.board.comments.CommentsVO">
-		
+		insert into
+		comments(nickname, content, wdate, good, board_num, report)
+		values(#{nickname},#{content},#{wdate},#{good},#{board_num},#{report})
 	</insert>
 
 	<update id="UPDATE">
-		
+		update comments set nickname=#{nickname},content=#{content}
+		where comments_num=#{comments_num}
 	</update>
 
 	<delete id="DELETE">
-	
+		delete from comments where comments_num=#{comments_num}
 	</delete>
 
 	<select id="SELECT_ONE" resultType="com.projcet.movie.board.comments.CommentsVO">
-		
+		select * from comments where comments_num=#{comments_num}
 	</select>
 
 	<select id="SELECT_ALL" resultType="com.projcet.movie.board.comments.CommentsVO">
-	
+		select * from comments order by comments_num desc
 	</select>
 
 	<select id="SELECT_ALL_PAGE_BLOCK"
