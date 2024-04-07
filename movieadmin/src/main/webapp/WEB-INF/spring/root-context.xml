@@ -36,6 +36,8 @@
 				<value>classpath:jdbc/sqlMapper_news.xml</value>
 				<value>classpath:jdbc/sqlMapper_report.xml</value>
 				<value>classpath:jdbc/sqlMapper_story_comments.xml</value>
+				<value>classpath:jdbc/sqlMapper_user.xml</value>
+				<value>classpath:jdbc/sqlMapper_story.xml</value>
 				<value>classpath:jdbc/sqlMapper_story.xml</value>
 				<value>classpath:jdbc/sqlMapper_user.xml</value>
 			</list>

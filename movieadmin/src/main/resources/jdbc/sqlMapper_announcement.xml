@@ -4,50 +4,50 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.announcement">
-	<insert id="INSERT" parameterType="com.projcet.movieadmin.announcement.AnnouncementVO">
+	<insert id="INSERT" parameterType="com.project.movieadmin.announcement.AnnouncementVO">
 		
 	</insert>
 
-	<update id="UPDATE" parameterType="com.projcet.movieadmin.announcement.AnnouncementVO">
+	<update id="UPDATE" parameterType="com.project.movieadmin.announcement.AnnouncementVO">
 		
 	</update>
 
-	<delete id="DELETE" parameterType="com.projcet.movieadmin.announcement.AnnouncementVO">
+	<delete id="DELETE" parameterType="com.project.movieadmin.announcement.AnnouncementVO">
 	
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.projcet.movieadmin.announcement.AnnouncementVO">
+	<select id="SELECT_ONE" resultType="com.project.movieadmin.announcement.AnnouncementVO">
 		
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.projcet.movieadmin.announcement.AnnouncementVO">
+	<select id="SELECT_ALL" resultType="com.project.movieadmin.announcement.AnnouncementVO">
 	
 	</select>
 
 	<select id="SELECT_ALL_PAGE_BLOCK"
-		resultType="com.projcet.movieadmin.announcement.AnnouncementVO">
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
 		
 	</select>
 
 	
 	<select id="SEARCHLIST_ID"
-		resultType="com.projcet.movieadmin.announcement.AnnouncementVO">
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
 		
 	</select>
 
 	
 	<select id="SEARCHLIST_NAME"
-		resultType="com.projcet.movieadmin.announcement.AnnouncementVO">
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
 		
 	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_ID"
-		resultType="com.projcet.movieadmin.announcement.AnnouncementVO">
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
 		
 	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
-		resultType="com.projcet.movieadmin.announcement.AnnouncementVO">
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
 		
 	</select>
 
@@ -67,7 +67,7 @@
 	</select>
 
 	
-	<select id="LOGIN"	resultType="com.projcet.movieadmin.announcement.AnnouncementVO">
+	<select id="LOGIN"	resultType="com.project.movieadmin.announcement.AnnouncementVO">
 		
 	</select>
 
