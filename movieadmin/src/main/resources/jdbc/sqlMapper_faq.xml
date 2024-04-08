@@ -4,8 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.faq">
-	<insert id="INSERT" parameterType="com.project.movieadmin.faq.FaqVO">
-		
+	<insert id="F_INSERT" parameterType="com.project.movieadmin.faq.FaqVO">
+		insert into
+		faq(title,nickname,content)
+		values(#{title},'admin',#{content})
 	</insert>
 
 	<update id="UPDATE" parameterType="com.project.movieadmin.faq.FaqVO">

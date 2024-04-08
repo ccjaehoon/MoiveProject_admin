@@ -14,10 +14,13 @@ public class FaqServiceimpl implements FaqService {
 	@Autowired
 	private FaqDAO dao;
 	
+	public FaqServiceimpl() {
+		log.info("FaqServiceimpl()");
+	}
+	
 	@Override
 	public int insert(FaqVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(vo);
 	}
 
 	@Override

@@ -13,7 +13,7 @@ public class AnnouncementVO {
 	private String title;
 	private String nickname;
 	private String content;
-	private Date date;
+	private Date wdate;
 	private String authority;
 	private String save_img;
 	private MultipartFile file_img;
