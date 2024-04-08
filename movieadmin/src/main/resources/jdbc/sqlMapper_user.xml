@@ -5,15 +5,18 @@
 
 <mapper namespace="com.project.movieadmin.user">
 	<insert id="INSERT" parameterType="com.project.movieadmin.user.UserVO">
-		
+		insert into
+		user(user_id,password,nickname,gender,birth,tel,email)
+		values(#{user_id},#{password},#{nickname},#{gender},#{birth},#{tel},#{email})
 	</insert>
 
 	<update id="UPDATE">
-		
+		update user set password=#{password},nickname=#{nickname},gender=#{gender},tel=#{tel},email=#{email} 
+		where user_num=#{user_num}
 	</update>
 
 	<delete id="DELETE">
-	
+	delete from user where user_num=#{user_num}
 	</delete>
 
 	<select id="SELECT_ONE" resultType="com.project.movieadmin.user.UserVO">
