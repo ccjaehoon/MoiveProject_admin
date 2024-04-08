@@ -28,33 +28,34 @@ public class InfoController {
 	 */
 
 	
-	@RequestMapping(value = "/Info_selectOne.do", method = RequestMethod.GET)
-	public String Info_selectOne(int cpage, int pageBlock, Model model) {
+	@RequestMapping(value = "/i_selectOne.do", method = RequestMethod.GET)
+	public String i_selectOne(int cpage, int pageBlock, Model model) {
 		
 		
-		return "Info/selectOne";
+		return "info/selectOne";
 	}
 	
-	@RequestMapping(value = "/Info_selectAll.do", method = RequestMethod.GET)
-	public String Info_selectAll(int cpage, int pageBlock, Model model) {
+	@RequestMapping(value = "/i_selectAll.do", method = RequestMethod.GET)
+	public String i_selectAll(@RequestParam(defaultValue = "1") int cpage,
+			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		
 		
-		return "Info/selectAll";
+		return "info/selectAll";
 	}
 	
-	@RequestMapping(value = "/Info_searchList.do", method = RequestMethod.GET)
-	public String Info_searchList(@RequestParam(defaultValue = "1") int cpage,
+	@RequestMapping(value = "/i_searchList.do", method = RequestMethod.GET)
+	public String i_searchList(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
 		
 		
-		return "Info/selectAll";
+		return "info/selectAll";
 	}
 	
-	@RequestMapping(value = "/Info_increaseRecommends.do", method = RequestMethod.GET)
-	public String Info_increaseRecommends(int cpage, int pageBlock, Model model) {
+	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
+	public String i_increaseRecommends(int cpage, int pageBlock, Model model) {
 		
 		
-		return "Info/increaseRecommends";
+		return "info/increaseRecommends";
 	}
 	
 
