@@ -24,12 +24,11 @@ public class NewsController {
 	@Autowired
 	private NewsService service;
 	
-	private static final Logger logger = LoggerFactory.getLogger(NewsController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/news_selectAll.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/n_selectAll.do", method = RequestMethod.GET)
 	public String n_selectAll(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		log.info("news_selectAll.do...");
@@ -45,7 +44,7 @@ public class NewsController {
 
 		return "news/selectOne";
 	}
-	@RequestMapping(value = "/news_searchList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/n_searchList.do", method = RequestMethod.GET)
 	public String n_searchList(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
 		log.info("news_searchList.do");
@@ -53,13 +52,13 @@ public class NewsController {
 
 		return "news/selectAll";
 	}
-	@RequestMapping(value = "/news_insert.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/n_insert.do", method = RequestMethod.GET)
 	public String n_insert() {
 		log.info("news_selectOne.do");
 
 		return "news/insert";
 	}
-	@RequestMapping(value = "/news_insertOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/n_insertOK.do", method = RequestMethod.GET)
 	public String n_insertOK(NewsVO vo) {
 		log.info("Welcome news_insert...");
 		
@@ -70,13 +69,13 @@ public class NewsController {
 			return "redirect:news_insert.do";
 		}
 	}
-	@RequestMapping(value = "/news_delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/n_delete.do", method = RequestMethod.GET)
 	public String n_delete() {
 		log.info("news_delete.do");
 
 		return "news/delete";
 	}
-	@RequestMapping(value = "/news_deleteOK.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/n_deleteOK.do", method = RequestMethod.POST)
 	public String n_deleteOK(NewsVO vo) {
 		log.info("Welcome news_deleteOK...");
 		log.info("vo:{}", vo);
@@ -85,19 +84,19 @@ public class NewsController {
 		log.info("result:{}", result);
 
 		if (result == 1) {
-			return "redirect:news_selectAll.do";
+			return "redirect:n_selectAll.do";
 		} else {
-			return "redirect:news_delete.do?num=" + vo.getNews_num();
+			return "redirect:n_delete.do?num=" + vo.getNews_num();
 		}
 
 	}
-	@RequestMapping(value = "/news_update.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/n_update.do", method = RequestMethod.GET)
 	public String n_update() {
 		log.info("news_update.do");
 
 		return "news/update";
 	}
-	@RequestMapping(value = "/news_updateOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/n_updateOK.do", method = RequestMethod.GET)
 	public String n_updateOK(NewsVO vo, Model model) {
 		log.info("news_selectOne.do");
 		List<NewsVO> vos = service.n_update(vo);
