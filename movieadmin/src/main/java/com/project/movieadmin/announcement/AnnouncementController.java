@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import lombok.extern.slf4j.Slf4j;
 
 
-
-
-
 /**
  * Handles requests for the application home page.
  */
@@ -39,7 +36,6 @@ public class AnnouncementController {
 
 	@RequestMapping(value = "/a_insert.do", method = RequestMethod.GET)
 	public String u_insert() {
-		
 
 		return "announcement/insert";
 	}
@@ -83,7 +79,8 @@ public class AnnouncementController {
 		return "announcement/selectOne";
 	}
 	@RequestMapping(value = "/a_selectAll.do", method = RequestMethod.GET)
-	public String a_selectAll(int cpage, int pageBlock, Model model) {
+	public String a_selectAll(@RequestParam(defaultValue = "1") int cpage,
+			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		
 	
 		return "announcement/selectAll";

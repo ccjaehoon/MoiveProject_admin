@@ -2,9 +2,6 @@ package com.project.movieadmin.announcement;
 
 import java.util.List;
 
-
-
-
 public interface AnnouncementDAO {
 	
 	public int a_insert(AnnouncementVO vo);
