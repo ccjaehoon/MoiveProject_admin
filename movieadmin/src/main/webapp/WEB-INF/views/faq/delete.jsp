@@ -9,7 +9,8 @@
     <title>Document</title>
     <style>
         input[type=text],
-        textarea,
+        input[type=password],
+        input[type=tel],
         select {
             width: 100%;
             padding: 8px 8px;
@@ -32,58 +33,57 @@
         }
 
         input[type=submit]:hover {
-            background-color: #b7e5b9;
+            background-color: #45a049;
         }
 
         div {
             border-radius: 15px;
-            background-color: #f0f0f0;
+            background-color: #bfbfbf;
             padding: 20px;
         }
 
-        #insertTable {
+        #boardTable {
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
 
-        #insertTable td {
+        #boardTable td {
             border: 1px solid #ddd;
             padding: 8px;
         }
 
-        #insertTable tr:nth-child(even) {
+        #boardTable tr:nth-child(even) {
             background-color: #ebebeb;
         }
 
-        #insertTable tr:hover {
+        #boardTable tr:hover {
             background-color: #ffc6c6;
         }
+
     </style>
 </head>
 
 <body>
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
-        <h1>공지사항 작성페이지</h1>
-        <form action="f_insertOK.do" method="post">
-            <table id="insertTable">
-               
-                <tr>
-                    <td><label for="title">제목</label></td>
-                    <td><input type="text" id="title" name="title" value="제목" placeholder="제목을 입력하세요"></td>
-                </tr>
-                <tr>
-                    <td><label for="content">내용</label></td>
-                    <td><textarea name="content" id="content" cols="30" rows="10">공지사항을 적으세요</textarea></td>
-                </tr>
+        <h3>회원삭제폼</h3>
 
+        <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
+        <form action="b_deleteOK.do" method="post">
+            <table id="boardTable">
                 <tr>
-                    <td colspan="2"><input type="submit" value="글쓰기 완료"></td>
+                    <td><label for="num">번호:</label></td>
+                    <td>[${param.num}] 번 글을 정말 삭제하시겠습니까?
+                    	<input type="hidden" id="num" name="num" value="${param.num}" placeholder="번호"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="글삭제"></td>
                 </tr>
             </table>
         </form>
     </div>
+    <jsp:include page="../footer_menu.jsp"></jsp:include>
 </body>
 
 </html>

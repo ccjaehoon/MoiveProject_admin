@@ -81,8 +81,8 @@
                     <td><textarea name="content" id="content" cols="30" rows="10">Hello java</textarea></td>
                 </tr>
                 <tr>
-                    <td><label for="writer">작성자</label></td>
-                    <td>${user_id}<input type="hidden" id="writer" name="writer" value="${user_id}"></td>
+                    <td><label for="nickname">작성자</label></td>
+                    <td>${user_id}<input type="hidden" id="nickname" name="nickname" value="${user_id}"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글쓰기 완료"></td>

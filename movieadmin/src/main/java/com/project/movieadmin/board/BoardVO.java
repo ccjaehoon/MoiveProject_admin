@@ -1,6 +1,9 @@
 package com.project.movieadmin.board;
 
 import java.sql.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -18,5 +21,9 @@ public class BoardVO {
 	private int views;
 	private int commentscount;
 	private String report;
+	private String save_img;
+	private MultipartFile file_img;
+	private String save_video;
+	private MultipartFile file_video;
 
 }

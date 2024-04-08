@@ -1,9 +1,5 @@
 package com.project.movieadmin.user;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -55,7 +51,7 @@ public class UserController {
 		int result = service.u_insert(vo);
 	
 		if (result == 1) {
-			return "redirect: u_selectAll.do";// 메인 홈페이지 로 가는
+			return "redirect: home.do";// 메인 홈페이지 로 가는
 		} else {
 			return "redirect:u_insert.do";
 		}
@@ -74,9 +70,9 @@ public class UserController {
 		int result = service.u_update(vo);
 		
 		if (result == 1) {
-			return "redirect: uselectAll.do"; // 마이 페이지
+			return "redirect: home.do"; // 마이 페이지
 		} else {
-			return "redirect:uinsert.do";
+			return "redirect:u_insert.do";
 		}
 	}
 	@RequestMapping(value = "/u_delete.do", method = RequestMethod.GET)
@@ -92,7 +88,7 @@ public class UserController {
 		int result = service.u_delete(vo);
 		
 		if (result == 1) {
-			return "redirect:u_selectAll.do"; // 메인페이지로
+			return "redirect: home.do"; // 메인페이지로
 		} else {
 			return "redirect:u_insert.do";
 		}

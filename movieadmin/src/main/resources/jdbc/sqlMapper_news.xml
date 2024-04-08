@@ -6,71 +6,76 @@
 <mapper namespace="com.project.movieadmin.news">
 	<insert id="INSERT" parameterType="com.project.movieadmin.news.NewsVO">
 		insert into
-		member(id,pw,name,tel,save_name)
-		values(#{id},#{pw},#{name},#{tel},#{save_name})
+		news(title,nickname,content,save_name)
+		values(#{title},#{nickname},#{content},#{save_name})
 	</insert>
 
 	<update id="UPDATE">
-		
+		update news set title=#{title},name=#{content},save_name=#{save_name} 
+		where news_num=#{news_num}
 	</update>
 
 	<delete id="DELETE">
-	
+		delete from news where news_num=#{news_num}
 	</delete>
 
 	<select id="SELECT_ONE" resultType="com.project.movieadmin.news.NewsVO">
-		
+		select * from news where news_num=#{news_num}
 	</select>
 
 	<select id="SELECT_ALL" resultType="com.project.movieadmin.news.NewsVO">
-	
+		select * from news order by news_num desc
 	</select>
 
 	<select id="SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.news.NewsVO">
-		
+		select * from news order by news_num desc limit #{startRow},#{pageBlock}
 	</select>
 
 	
-	<select id="SEARCHLIST_ID"
+	<select id="SEARCHLIST_TITLE"
 		resultType="com.project.movieadmin.news.NewsVO">
-		
+		select * from news where title like #{searchWord}
 	</select>
 
 	
-	<select id="SEARCHLIST_NAME"
+	<select id="SEARCHLIST_CONTENT"
 		resultType="com.project.movieadmin.news.NewsVO">
-		
+		select * from news where content like #{searchWord}
 	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_ID"
 		resultType="com.project.movieadmin.news.NewsVO">
-		
+		select * from news
+		where id like #{searchWord} 
+		order by news_num desc limit #{startRow},#{pageBlock}
 	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
 		resultType="com.project.movieadmin.news.NewsVO">
-		
+		select * from news
+		where name like #{searchWord} 
+		order by news_num desc limit #{startRow},#{pageBlock}
 	</select>
 
 
 	<select id="TOTAL_ROWS"	resultType="int">
-		
+		select count(*) total_rows from news
 	</select>
 
 	
 	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
+		select count(*) total_rows from news  where id like #{searchWord}
 	</select>
 
 	
 	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
+		select count(*) total_rows from news  where name like #{searchWord}
 	</select>
 
 	
 	<select id="LOGIN"	resultType="com.project.movieadmin.news.NewsVO">
-		
+		select id from news where id=#{id} and pw=#{pw}
 	</select>
 
 

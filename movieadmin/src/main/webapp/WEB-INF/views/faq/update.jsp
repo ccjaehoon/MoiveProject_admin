@@ -65,21 +65,31 @@
 <body>
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
-        <h1>공지사항 작성페이지</h1>
-        <form action="f_insertOK.do" method="post">
+        <h1>게시글 수정페이지</h1>
+        <form action="b_updateOK.do" method="post">
             <table id="insertTable">
-               
+                <tr>
+                    <td><label for="">항목</label></td>
+                    <td>입력</td>
+                </tr>
+                <tr>
+                    <td><label for="num">글번호</label></td>
+                    <td>${param.num}<input type="hidden" id="num" name="num" value="${param.num}"></td>
+                </tr>
                 <tr>
                     <td><label for="title">제목</label></td>
-                    <td><input type="text" id="title" name="title" value="제목" placeholder="제목을 입력하세요"></td>
+                    <td><input type="text" id="title" name="title" value="${vo2.title}" placeholder="제목을 입력하세요"></td>
                 </tr>
                 <tr>
                     <td><label for="content">내용</label></td>
-                    <td><textarea name="content" id="content" cols="30" rows="10">공지사항을 적으세요</textarea></td>
+                    <td><textarea name="content" id="content" cols="30" rows="10">${vo2.content}</textarea></td>
                 </tr>
-
                 <tr>
-                    <td colspan="2"><input type="submit" value="글쓰기 완료"></td>
+                    <td><label for="writer">작성자</label></td>
+                    <td>${vo2.writer}<input type="hidden" id="writer" name="writer" value="${vo2.writer}" placeholder="작성자를 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="글수정 완료"></td>
                 </tr>
             </table>
         </form>

@@ -73,8 +73,8 @@
                     <td>입력</td>
                 </tr>
                 <tr>
-                    <td><label for="num">글번호</label></td>
-                    <td>${param.num}<input type="hidden" id="num" name="num" value="${param.num}"></td>
+                    <td><label for="board_num">글번호</label></td>
+                    <td>${param.board_num}<input type="hidden" id="board_num" name="board_num" value="${param.board_num}"></td>
                 </tr>
                 <tr>
                     <td><label for="title">제목</label></td>
@@ -85,8 +85,8 @@
                     <td><textarea name="content" id="content" cols="30" rows="10">${vo2.content}</textarea></td>
                 </tr>
                 <tr>
-                    <td><label for="writer">작성자</label></td>
-                    <td>${vo2.writer}<input type="hidden" id="writer" name="writer" value="${vo2.writer}" placeholder="작성자를 입력하세요"></td>
+                    <td><label for="nickname">작성자</label></td>
+                    <td>${vo2.nickname}<input type="hidden" id="nickname" name="nickname" value="${vo2.nickname}" placeholder="작성자를 입력하세요"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글수정 완료"></td>

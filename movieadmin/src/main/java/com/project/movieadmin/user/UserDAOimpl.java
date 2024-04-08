@@ -2,29 +2,41 @@ package com.project.movieadmin.user;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Repository
-public class UserDAOimpl implements UserDAO {@Override
+public class UserDAOimpl implements UserDAO {
+	
+	@Autowired
+	private SqlSession sqlSession;
+		
+	@Override
 	public int u_insert(UserVO vo) {
 		
-		return 0;
+	int flag = sqlSession.insert("INSERT", vo);
+
+	return flag;
 	}
 
 	@Override
 	public int u_update(UserVO vo) {
 		
-		return 0;
+		int flag = sqlSession.insert("update", vo);
+
+		return flag;
 	}
 
 	@Override
 	public int u_delete(UserVO vo) {
 		
-		return 0;
+		int flag = sqlSession.insert("update", vo);
+
+		return flag;
 	}
 
 	@Override

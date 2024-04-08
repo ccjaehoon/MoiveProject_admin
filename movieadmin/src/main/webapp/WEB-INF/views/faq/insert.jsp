@@ -65,7 +65,7 @@
 <body>
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
-        <h1>공지사항 작성페이지</h1>
+        <h1>FAQ 작성페이지</h1>
         <form action="f_insertOK.do" method="post">
             <table id="insertTable">
                
