@@ -3,20 +3,20 @@ package com.project.movieadmin.story;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Repository
 public class StoryDAOimpl implements StoryDAO {
 	@Override
 	public int s_insert(StoryVO vo) {
-		System.out.println("insert()....");
-		System.out.println(vo);
-		int flag = 0;
-		
-		
-		return flag;
+		log.info("insert()....");
+		log.info(vo.toString());
+
+		return sqlSession.insert("S_INSERT", vo);
 	}
 
 	@Override

@@ -11,9 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Handles requests for the application home page.
  */
+@Slf4j
 @Controller
 public class StoryController {
 	
@@ -33,8 +36,15 @@ public class StoryController {
 	@RequestMapping(value = "/story_insertOK.do", method = RequestMethod.GET)
 	public String story_insertOK(StoryVO vo) {
 		logger.info("Welcome story_insertOK...");
-
-		return "story/insertOK";
+		log.info("vo:{}", vo);
+		
+		int result = service.story_insert(vo);
+		log.info("result:{}", result);
+		if (result == 1) {
+			return "redirect:story_selectAll.do";
+		} else {
+			return "redirect:story_insert.do";
+		}
 	}
 	
 	@RequestMapping(value = "/story_update.do", method = RequestMethod.GET)

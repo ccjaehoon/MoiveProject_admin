@@ -3,10 +3,12 @@ package com.project.movieadmin.story;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+
+
 
 @Slf4j
 @Service
@@ -15,11 +17,7 @@ public class StoryServiceimpl implements StoryService {
 	@Override
 	public int s_insert(StoryVO vo) {
 		System.out.println("insert()....");
-		System.out.println(vo);
-		int flag = 0;
-		
-		
-		return flag;
+		return dao.s_insert(vo);
 	}
 
 	@Override
