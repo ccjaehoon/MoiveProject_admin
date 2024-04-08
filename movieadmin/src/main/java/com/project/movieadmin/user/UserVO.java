@@ -1,6 +1,8 @@
 package com.project.movieadmin.user;
 
-import java.util.Date;
+
+
+import java.sql.Date;
 
 import lombok.Data;
 

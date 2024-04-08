@@ -64,12 +64,12 @@
         <tbody>
         	<c:forEach var="vo" items="${vos}">
             <tr>
-                <td><a href="u_selectOne.do?user_num=${vo.user_num}">${vo.user_num}</a></td>
+                <td><a href="u_selectOne.do?user_num=${vo.user_num}&user_id=${vo.user_id}">${vo.user_num}</a></td>
                 <td>${vo.user_id}</td>
                 <td>${vo.password}</td>
                 <td>${vo.nickname}</td>
                 <td>${vo.tel}</td>
-                <td><a href="u_delete.do?num=${vo.user_num}">회원삭제</a></td>
+                <td><a href="u_delete.do?user_num=${vo.user_num}">회원삭제</a></td>
             </tr>
         	</c:forEach>
             

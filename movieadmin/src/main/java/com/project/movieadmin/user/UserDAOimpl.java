@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import lombok.extern.slf4j.Slf4j;
 
+
 @Slf4j
 @Repository
 public class UserDAOimpl implements UserDAO {
@@ -43,8 +44,10 @@ public class UserDAOimpl implements UserDAO {
 
 	@Override
 	public UserVO u_selectOne(UserVO vo) {
+		
+		UserVO vo2 = sqlSession.selectOne("U_SELECT_ONE", vo);
 
-		return null;
+		return vo2;
 	}
 
 	@Override
