@@ -1,12 +1,9 @@
 package com.project.movieadmin.info;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.project.movie.info.InfoDAOimpl;
 
 import lombok.extern.slf4j.Slf4j;
 

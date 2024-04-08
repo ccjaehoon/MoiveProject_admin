@@ -75,7 +75,7 @@
                 </tr>
                 <tr>
                     <td><label for="content">내용</label></td>
-                    <td><textarea name="content" id="content" cols="30" rows="10">Hello java</textarea></td>
+                    <td><textarea name="content" id="content" cols="30" rows="10">공지사항을 적으세요</textarea></td>
                 </tr>
 
                 <tr>

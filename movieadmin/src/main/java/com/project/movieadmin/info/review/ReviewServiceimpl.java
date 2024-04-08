@@ -1,10 +1,9 @@
 package com.project.movieadmin.info.review;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.project.movie.user.UserDAOimpl;
 
 import lombok.extern.slf4j.Slf4j;
 
