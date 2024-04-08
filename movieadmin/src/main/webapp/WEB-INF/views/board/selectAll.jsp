@@ -8,22 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #customers {
+        #movies {
           font-family: Arial, Helvetica, sans-serif;
           border-collapse: collapse;
           width: 100%;
         }
         
-        #customers td, #customers th {
+        #movies td, #movies th {
           border: 1px solid #ddd;
           padding: 8px;
         }
         
-        #customers tr:nth-child(even){background-color: #ff6565;}
+        #movies tr:nth-child(even){background-color: #ff6565;}
         
-        #customers tr:hover {background-color: #fca2a2;}
+        #movies tr:hover {background-color: #fca2a2;}
         
-        #customers th {
+        #movies th {
           padding-top: 12px;
           padding-bottom: 12px;
           text-align: left;
@@ -49,7 +49,7 @@
     	<input type="submit" value="search">
     	
     </form>
-    <table id="customers">
+    <table id="movies">
         <thead>
             <tr>
                 <th>번호</th>
@@ -62,11 +62,11 @@
         <tbody>
         	<c:forEach var="vo" items="${vos}">
             <tr>
-                <td><a href="b_selectOne.do?num=${vo.num}">${vo.num}</a></td>
+                <td><a href="b_selectOne.do?board_num=${vo.board_num}">${vo.board_num}</a></td>
                 <td>${vo.title}</td>
-                <td>${vo.writer}</td>
+                <td>${vo.nickname}</td>
                 <td>${vo.wdate}</td>
-                <td><a href="b_delete.do?num=${vo.num}">글삭제</a></td>
+                <td><a href="b_delete.do?num=${vo.board_num}">글삭제</a></td>
             </tr>
         	</c:forEach>
             

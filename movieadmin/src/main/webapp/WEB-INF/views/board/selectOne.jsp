@@ -8,22 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #customers {
+        #movies {
           font-family: Arial, Helvetica, sans-serif;
           border-collapse: collapse;
           width: 100%;
         }
         
-        #customers td, #customers th {
+        #movies td, #movies th {
           border: 1px solid #ddd;
           padding: 8px;
         }
         
-        #customers tr:nth-child(even){background-color: #ff6565;}
+        #movies tr:nth-child(even){background-color: #ff6565;}
         
-        #customers tr:hover {background-color: #fca2a2;}
+        #movies tr:hover {background-color: #fca2a2;}
         
-        #customers th {
+        #movies th {
           padding-top: 12px;
           padding-bottom: 12px;
           text-align: left;
@@ -40,7 +40,7 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
     <h1>글정보</h1>
     <hr>
-    <table id="customers">
+    <table id="movies">
         <thead>
             <tr>
                 <th>번호</th>
@@ -71,7 +71,7 @@
     <hr>
     <h3>댓글작성</h3>
     <form action="c_insertOK.do">
-	    <table id="customers">
+	    <table id="movies">
 	        <thead>
 	            <tr>
 	                <th>댓글 내용 ${param.msg}</th>
@@ -94,7 +94,7 @@
     </form>
     <hr>
     <h3>댓글목록</h3>
-    <table id="customers">
+    <table id="movies">
         <thead>
             <tr>
                 <th>댓글 번호</th>
@@ -107,10 +107,10 @@
         <tbody>
         	<c:forEach var="cvo" items="${cvos}">
         	<tr>
-                <td>${cvo.num}</td>
+                <td>${cvo.board_num}</td>
                 <td>
                 	${cvo.content}
-                	<c:if test="${user_id == cvo.writer }">
+                	<c:if test="${user_id == cvo.nickname}">
 	                	<form action="c_updateOK.do">
 							 <input type="text" name="content" value="${cvo.content}" >
 							 <input type="hidden" name="num" value="${cvo.num}">               	
@@ -119,10 +119,10 @@
 	                	</form>
                 	</c:if>
                 </td>
-                <td>${cvo.writer}</td>
+                <td>${cvo.nickname}</td>
                 <td>${cvo.wdate}</td>
                 <td>
-                	<c:if test="${user_id == cvo.writer }">
+                	<c:if test="${user_id == cvo.nickname }">
                 		<a href="c_deleteOK.do?num=${cvo.num}&bnum=${cvo.bnum}">댓글삭제</a>
                 	</c:if>
                 </td>

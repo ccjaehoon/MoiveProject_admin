@@ -3,51 +3,46 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.project.moiveadmin.faq">
-	<insert id="INSERT" parameterType="com.projcet.moiveadmin.faq.FaqVO">
+<mapper namespace="com.project.movieadmin.faq">
+	<insert id="INSERT" parameterType="com.project.movieadmin.faq.FaqVO">
 		
 	</insert>
 
-	<update id="UPDATE">
+	<update id="UPDATE" parameterType="com.project.movieadmin.faq.FaqVO">
 		
 	</update>
 
-	<delete id="DELETE">
+	<delete id="DELETE" parameterType="com.project.movieadmin.faq.FaqVO">
 	
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.projcet.moiveadmin.faq.FaqVO">
+	<select id="SELECT_ONE" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.projcet.moiveadmin.faq.FaqVO">
+	<select id="SELECT_ALL" resultType="com.project.movieadmin.faq.FaqVO">
 	
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK"
-		resultType="com.projcet.moiveadmin.faq.FaqVO">
-		
-	</select>
-
-	
-	<select id="SEARCHLIST_ID"
-		resultType="com.projcet.moiveadmin.faq.FaqVO">
+	<select id="SELECT_ALL_PAGE_BLOCK" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
 	
-	<select id="SEARCHLIST_NAME"
-		resultType="com.projcet.moiveadmin.faq.FaqVO">
+	<select id="SEARCHLIST_ID" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
-		resultType="com.projcet.moiveadmin.faq.FaqVO">
+	
+	<select id="SEARCHLIST_NAME" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
-		resultType="com.projcet.moiveadmin.faq.FaqVO">
+	<select id="SEARCHLIST_PAGE_BLOCK_ID" resultType="com.project.movieadmin.faq.FaqVO">
+		
+	</select>
+
+	<select id="SEARCHLIST_PAGE_BLOCK_NAME" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
@@ -57,7 +52,7 @@
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
+	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
 	
 	</select>
 
@@ -67,7 +62,7 @@
 	</select>
 
 	
-	<select id="LOGIN"	resultType="com.projcet.moiveadmin.faq.FaqVO">
+	<select id="LOGIN" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
