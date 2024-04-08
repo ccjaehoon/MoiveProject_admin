@@ -76,10 +76,5 @@
 		select content from board where content=#{content} and nickname=#{nickname}
 	</select>
 
-	
-	<select id="B_LOGIN"	resultType="com.project.movieadmin.board.BoardVO">
-		
-	</select>
-
 
 </mapper>
