@@ -69,20 +69,16 @@
         <form action="b_insertOK.do" method="post">
             <table id="insertTable">
                 <tr>
-                    <td><label for="">항목</label></td>
-                    <td>입력</td>
-                </tr>
-                <tr>
                     <td><label for="title">제목</label></td>
-                    <td><input type="text" id="title" name="title" value="Serlvet..." placeholder="제목을 입력하세요"></td>
+                    <td><input type="text" id="title" name="title" value="title" placeholder="제목을 입력하세요"></td>
                 </tr>
                 <tr>
                     <td><label for="content">내용</label></td>
-                    <td><textarea name="content" id="content" cols="30" rows="10">Hello java</textarea></td>
+                    <td><textarea name="content" id="content" cols="30" rows="10">게시글을 작성하세요</textarea></td>
                 </tr>
                 <tr>
                     <td><label for="nickname">작성자</label></td>
-                    <td>${user_id}<input type="hidden" id="nickname" name="nickname" value="${user_id}"></td>
+                    <td>${user_id}<input type="hidden" id="nickname" name="nickname" value="${nickname}"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글쓰기 완료"></td>
