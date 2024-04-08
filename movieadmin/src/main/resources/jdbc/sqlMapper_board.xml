@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.board">
-	<insert id="INSERT" parameterType="com.project.movieadmin.board.BoardVO">
+	<insert id="B_INSERT" parameterType="com.project.movieadmin.board.BoardVO">
 		insert into
 		board(title, tag, nickname, content, wdate, good, authority, views,
 		commentscount, report, save_img, file_img, save_video, file_video)
@@ -12,21 +12,21 @@
 		#{views},#{commentscount},#{report},#{save_img},#{file_img},#{save_video},#{file_video})
 	</insert>
 
-	<update id="UPDATE">
+	<update id="B_UPDATE">
 		update board set title=#{title},tag=#{tag},content=#{content},nickname=#{nickname},
 		save_img=#{save_img},file_img=#{file_img},save_video=#{save_video},file_video=#{file_video} 
 		where board_num=#{board_num}
 	</update>
 
-	<delete id="DELETE">
+	<delete id="B_DELETE">
 		delete from board where board_num=#{board_num}
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.project.movieadmin.board.BoardVO">
+	<select id="B_SELECT_ONE" resultType="com.project.movieadmin.board.BoardVO">
 		select * from board where board_num=#{board_num}
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.project.movieadmin.board.BoardVO">
+	<select id="B_SELECT_ALL" resultType="com.project.movieadmin.board.BoardVO">
 		select * from board order by board_num desc
 	</select>
 
@@ -36,25 +36,25 @@
 	</select>
 
 	
-	<select id="SEARCHLIST_TITLE"
+	<select id="B_SEARCHLIST_TITLE"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board where title like #{searchWord}
 	</select>
 
 	
-	<select id="SEARCHLIST_CONTENT"
+	<select id="B_SEARCHLIST_CONTENT"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board where content like #{searchWord}
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_TITLE"
+	<select id="B_SEARCHLIST_PAGE_BLOCK_TITLE"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board
 		where title like #{searchWord} 
 		order by board_num desc limit #{startRow},#{pageBlock}
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_CONTENT"
+	<select id="B_SEARCHLIST_PAGE_BLOCK_CONTENT"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from news
 		where content like #{searchWord} 
@@ -62,22 +62,22 @@
 	</select>
 
 
-	<select id="TOTAL_ROWS"	resultType="int">
+	<select id="B_TOTAL_ROWS"	resultType="int">
 		select count(*) total_rows from board
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_TITLE"	resultType="int">
+	<select id="B_SEARCH_TOTAL_ROWS_TITLE"	resultType="int">
 		select count(*) total_rows from board where title like #{searchWord}
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_CONTENT"	resultType="int">
-		select id from board where content=#{content} and nickname=#{nickname}
+	<select id="B_SEARCH_TOTAL_ROWS_CONTENT"	resultType="int">
+		select content from board where content=#{content} and nickname=#{nickname}
 	</select>
 
 	
-	<select id="LOGIN"	resultType="com.project.movieadmin.board.BoardVO">
+	<select id="B_LOGIN"	resultType="com.project.movieadmin.board.BoardVO">
 		
 	</select>
 
