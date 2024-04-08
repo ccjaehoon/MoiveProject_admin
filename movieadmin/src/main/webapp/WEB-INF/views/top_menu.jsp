@@ -50,7 +50,7 @@
 <body>
     <header>
         <a href="home.do">홈</a>
-        <a href="info_selectAll.do">영화정보</a>
+        <a href="i_selectAll.do">영화정보</a>
         <a href="b_selectAll.do">커뮤니티</a>
         <a href="story_selectAll.do">스토리</a>
         <a href="a_selectAll.do">공지사항</a>
