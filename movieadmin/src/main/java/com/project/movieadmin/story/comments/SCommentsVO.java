@@ -12,12 +12,9 @@ public class SCommentsVO {
 	private int good;
 	private int story_num;
 	private String report;
-<<<<<<< HEAD
 	
 	public SCommentsVO() {
 		// TODO Auto-generated constructor stub
 	}
-=======
 
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 }
