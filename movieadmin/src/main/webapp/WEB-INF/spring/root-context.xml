@@ -13,8 +13,7 @@
 	<!--1. pom.xml commons-dbcp.jar -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName"
-			value="${mysql.DRIVER_NAME}" />
+		<property name="driverClassName" value="${mysql.DRIVER_NAME}" />
 		<property name="url" value="${mysql.URL}" />
 		<property name="username" value="${mysql.USER}" />
 		<property name="password" value="${mysql.PASSWORD}" />
@@ -36,10 +35,9 @@
 				<value>classpath:jdbc/sqlMapper_news.xml</value>
 				<value>classpath:jdbc/sqlMapper_report.xml</value>
 				<value>classpath:jdbc/sqlMapper_story_comments.xml</value>
-				<value>classpath:jdbc/sqlMapper_user.xml</value>
-				<value>classpath:jdbc/sqlMapper_story.xml</value>
 				<value>classpath:jdbc/sqlMapper_story.xml</value>
 				<value>classpath:jdbc/sqlMapper_user.xml</value>
+
 			</list>
 		</property>
 	</bean>
