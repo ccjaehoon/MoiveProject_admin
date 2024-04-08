@@ -4,13 +4,13 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
 public class StoryVO {
 	
 	private int story_num;
     private String nickname;
+    private String content;
     private String save_img;
     private String save_video;
     private MultipartFile file_img; // List of uploaded image files
