@@ -1,9 +1,5 @@
 package com.project.movieadmin.info.review;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +77,8 @@ public class ReviewController {
 		return "Review/rv_selectOne";
 	}
 	@RequestMapping(value = "/rv_selectAll.do", method = RequestMethod.GET)
-	public String rv_selectAll(int cpage, int pageBlock, Model model) {
+	public String rv_selectAll(@RequestParam(defaultValue = "1") int cpage,
+			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		logger.info("Welcome selectAll!");
 	
 		return "Review/rv_selectAll";
