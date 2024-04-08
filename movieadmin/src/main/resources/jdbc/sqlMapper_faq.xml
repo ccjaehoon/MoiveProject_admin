@@ -19,7 +19,8 @@
 	</delete>
 
 	<select id="F_SELECT_ONE" resultType="com.project.movieadmin.faq.FaqVO">
-		
+		select * from faq where
+		faq_num=#{faq_num}
 	</select>
 
 	<select id="F_SELECT_ALL" resultType="com.project.movieadmin.faq.FaqVO">
@@ -59,7 +60,7 @@
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
+	<select id="F_SEARCH_TOTAL_ROWS_NAME"	resultType="int">
 		
 	</select>
 

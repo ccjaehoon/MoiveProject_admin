@@ -36,15 +36,14 @@ input[type=submit]:hover {
 }
 
 div {
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: #bfbfbf;
-    padding: 20px;
 }
 
 #Table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 80%;
 }
 
 #Table td {
@@ -63,7 +62,7 @@ div {
 </head>
 
 <body>
-<<<<<<< HEAD
+
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div>
 		<h2>FAQ</h2>
@@ -110,33 +109,7 @@ div {
 		<form action="f_insert.do">
 			<input type="submit" value="FAQ 작성">
 		</form>
-=======
-    <jsp:include page="../top_menu.jsp"></jsp:include>
-    <div>
 
-        <h2>FAQ</h2>
-        <form action="f_searchList.do">
-            <select name="searchKey">
-                <option value="title">title</option>
-                <option value="content">content</option>
-            </select> <input type="text" name="searchWord" value="ja"> <input
-                type="submit" value="search">
-        </form>
-        <table id="Table">
-            <tr>
-                <td width=200px>번호</td>
-                <td>제목</td>
-            </tr>
-            <tr>
-                <td>${vo.faq_num}</td>
-                <td>${vo.title}</td>
-            </tr>
-        </table>
-        <form action="f_insert.do">
-            <input
-                type="submit" value="FAQ 작성">
-        </form>
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
     </div>
 </body>

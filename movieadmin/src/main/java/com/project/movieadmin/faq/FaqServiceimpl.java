@@ -37,8 +37,7 @@ public class FaqServiceimpl implements FaqService {
 
 	@Override
 	public FaqVO f_selectOne(FaqVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.f_selectOne(vo);
 	}
 
 	@Override

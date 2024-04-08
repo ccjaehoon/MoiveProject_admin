@@ -8,6 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Repository
 public class FaqDAOimpl implements FaqDAO {
 
@@ -16,7 +19,12 @@ public class FaqDAOimpl implements FaqDAO {
 	
 	@Override
 	public int f_insert(FaqVO vo) {
-		int flag = sqlSession.insert("INSERT", vo);
+		log.info("insert()....");
+		log.info(vo.toString());
+
+		int flag = sqlSession.insert("F_INSERT", vo);
+
+		log.info("flag : {}", flag);
 
 		return flag;
 	}
@@ -37,8 +45,12 @@ public class FaqDAOimpl implements FaqDAO {
 
 	@Override
 	public FaqVO f_selectOne(FaqVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("selectOne()....");
+		log.info(vo.toString());
+
+		FaqVO vo2 = sqlSession.selectOne("F_SELECT_ONE", vo);
+
+		return vo2;
 	}
 
 	@Override

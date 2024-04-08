@@ -87,7 +87,15 @@ public class FaqController {
 	}
 	@RequestMapping(value = "/f_selectOne.do", method = RequestMethod.GET)
 	public String f_selectOne(FaqVO vo, Model model) {
-		log.info("Welcome f_selectOne!");
+		log.info("Welcome f_selectOne.do....");
+
+		log.info("vo : {}", vo);
+
+		FaqVO vo2 = service.f_selectOne(vo);
+		log.info("vo2:" + vo2);
+		log.info("================");
+
+		model.addAttribute("vo2", vo2);
 
 		return "faq/selectOne";
 	}
