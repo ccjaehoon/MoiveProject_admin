@@ -67,13 +67,13 @@
 <body>
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
-        <h3>삭제</h3>
+        
 
         <form action="f_selectOne.do" method="post">
 
             <table id="Table">
                 <tr>
-                    <td><label for="faq_faq_num">번호:</label></td>
+                    <td>faq테이블입니다</td>
                 </tr>
                 <tr>
                   
