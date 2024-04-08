@@ -16,6 +16,10 @@ public class StoryDAOimpl implements StoryDAO {
 	@Autowired
 	private SqlSession sqlSession; //전역변수
 	
+	public StoryDAOimpl() { //생성자
+		log.info("StoryDAOimpl()....");
+	}
+	
 	@Override
 	public int s_insert(StoryVO vo) {
 		log.info("insert()....");
@@ -103,5 +107,5 @@ public class StoryDAOimpl implements StoryDAO {
 		return 0;
 	}
 
-
+	
 }

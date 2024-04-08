@@ -17,7 +17,10 @@ public class StoryServiceimpl implements StoryService {
 	
 	@Autowired
 	private StoryDAO dao;
-
+	
+	public StoryServiceimpl() { //생성자
+		log.info("StoryDAOimpl()....");
+	}
 	@Override
 	public int s_insert(StoryVO vo) {
 		System.out.println("insert()....");

@@ -42,7 +42,7 @@ public class StoryController {
 		logger.info("Welcome story_insertOK...");
 		log.info("vo:{}", vo);
 		
-		int result = service.s_insert(vo);
+		int result = service.s_insert(vo); //service daoimp
 		log.info("result:{}", result);
 		if (result == 1) {
 			return "redirect:story_selectAll.do";
