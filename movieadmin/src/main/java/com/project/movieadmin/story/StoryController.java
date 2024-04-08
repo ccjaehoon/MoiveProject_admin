@@ -27,7 +27,7 @@ public class StoryController {
 	public String story_insert() {
 		logger.info("Welcome story_insert...");
 
-		return "story/comments/insert";
+		return "story/insert";
 	}
 	
 	@RequestMapping(value = "/story_insertOK.do", method = RequestMethod.GET)

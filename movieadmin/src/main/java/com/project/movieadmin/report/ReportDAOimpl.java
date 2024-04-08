@@ -36,7 +36,14 @@ public class ReportDAOimpl implements ReportDAO {
 
 	@Override
 	public int rp_insert(ReportVO vo) {
-		return 0;
+		log.info("insert()....");
+		log.info(vo.toString());
+
+		int flag = sqlSession.insert("INSERT", vo);
+
+		log.info("flag : {}", flag);
+
+		return flag;
 	}
 
 	@Override

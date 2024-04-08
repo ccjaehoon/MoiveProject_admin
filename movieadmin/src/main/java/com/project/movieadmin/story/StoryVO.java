@@ -22,6 +22,5 @@ public class StoryVO {
     private String report;
 
    
-
 	
 }
