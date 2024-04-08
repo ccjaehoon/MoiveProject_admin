@@ -40,10 +40,10 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
     <h1>회원목록</h1>
     <hr>
-    <form action="m_searchList.do">
+    <form action="u_searchList.do">
     	<select name="searchKey">
-    		<option value="id">id</option>
-    		<option value="name">name</option>
+    		<option value="id">user_id</option>
+    		<option value="name">nickname</option>
     	</select>
     	<input type="text" name="searchWord" value="ad">
     	<input type="submit" value="search">
@@ -64,13 +64,12 @@
         <tbody>
         	<c:forEach var="vo" items="${vos}">
             <tr>
-                <td><a href="m_selectOne.do?num=${vo.num}">${vo.num}</a></td>
-                <td><img src="resources/uploadimg/thumb_${vo.save_name}"></td>
-                <td>${vo.id}</td>
-                <td>${vo.pw}</td>
-                <td>${vo.name}</td>
+                <td><a href="u_selectOne.do?user_num=${vo.user_num}">${vo.user_num}</a></td>
+                <td>${vo.user_id}</td>
+                <td>${vo.password}</td>
+                <td>${vo.nickname}</td>
                 <td>${vo.tel}</td>
-                <td><a href="m_delete.do?num=${vo.num}">회원삭제</a></td>
+                <td><a href="u_delete.do?num=${vo.user_num}">회원삭제</a></td>
             </tr>
         	</c:forEach>
             
@@ -80,10 +79,10 @@
                 <td colspan="7">
                 	<c:forEach var="i" begin="1" end="${totalPageCount}">
 	                	<c:if test="${param.searchKey == null }">
-		                	<a href="m_selectAll.do?cpage=${i}">${i} &nbsp;</a>
+		                	<a href="u_selectAll.do?cpage=${i}">${i} &nbsp;</a>
                 		</c:if>
                 		<c:if test="${param.searchKey != null }">
-		                	<a href="m_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
+		                	<a href="u_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
                 		</c:if>
                 	</c:forEach>
                 </td>
