@@ -6,12 +6,15 @@
 <mapper namespace="com.project.movieadmin.board">
 	<insert id="INSERT" parameterType="com.project.movieadmin.board.BoardVO">
 		insert into
-		board(title, tag, nickname, content, wdate, good, authority, views, commentscount, report)
-		values(#{title},#{tag},#{nickname},#{content},#{wdate},#{good},#{authority},#{views},#{commentscount},#{report})
+		board(title, tag, nickname, content, wdate, good, authority, views,
+		commentscount, report, save_img, file_img, save_video, file_video)
+		values(#{title},#{tag},#{nickname},#{content},#{wdate},#{good},#{authority},
+		#{views},#{commentscount},#{report},#{save_img},#{file_img},#{save_video},#{file_video})
 	</insert>
 
 	<update id="UPDATE">
-		update board set title=#{title},tag=#{tag},content=#{content},nickname=#{nickname} 
+		update board set title=#{title},tag=#{tag},content=#{content},nickname=#{nickname},
+		save_img=#{save_img},file_img=#{file_img},save_video=#{save_video},file_video=#{file_video} 
 		where board_num=#{board_num}
 	</update>
 
@@ -29,44 +32,48 @@
 
 	<select id="SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.board.BoardVO">
-		
+		select * from board order by board_num desc limit #{startRow},#{pageBlock}
 	</select>
 
 	
-	<select id="SEARCHLIST_ID"
+	<select id="SEARCHLIST_TITLE"
 		resultType="com.project.movieadmin.board.BoardVO">
-		
+		select * from board where title like #{searchWord}
 	</select>
 
 	
-	<select id="SEARCHLIST_NAME"
+	<select id="SEARCHLIST_CONTENT"
 		resultType="com.project.movieadmin.board.BoardVO">
-		
+		select * from board where content like #{searchWord}
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
+	<select id="SEARCHLIST_PAGE_BLOCK_TITLE"
 		resultType="com.project.movieadmin.board.BoardVO">
-		
+		select * from board
+		where title like #{searchWord} 
+		order by board_num desc limit #{startRow},#{pageBlock}
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
+	<select id="SEARCHLIST_PAGE_BLOCK_CONTENT"
 		resultType="com.project.movieadmin.board.BoardVO">
-		
+		select * from news
+		where content like #{searchWord} 
+		order by board_num desc limit #{startRow},#{pageBlock}
 	</select>
 
 
 	<select id="TOTAL_ROWS"	resultType="int">
-		
+		select count(*) total_rows from board
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
+	<select id="SEARCH_TOTAL_ROWS_TITLE"	resultType="int">
+		select count(*) total_rows from board where title like #{searchWord}
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
+	<select id="SEARCH_TOTAL_ROWS_CONTENT"	resultType="int">
+		select id from board where content=#{content} and nickname=#{nickname}
 	</select>
 
 	
