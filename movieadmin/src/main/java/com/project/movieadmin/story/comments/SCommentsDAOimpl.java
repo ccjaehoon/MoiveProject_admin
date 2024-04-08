@@ -60,7 +60,7 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 
 	@Override
 	public Date s_getLiveStories(SCommentsVO vo) {
-		System.out.println("s_getLiveStories....");
+		System.out.println("s_getLiveStories...");
 		
 		
 		return new Date();
@@ -68,7 +68,7 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 
 	@Override
 	public int s_removeExpiredComments() {
-		System.out.println("s_removeExpiredComments....");
+		System.out.println("s_removeExpiredComments...");
 		
 		
 		return 0;
