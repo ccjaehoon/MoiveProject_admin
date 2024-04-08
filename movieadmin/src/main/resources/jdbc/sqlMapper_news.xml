@@ -5,7 +5,9 @@
 
 <mapper namespace="com.project.movieadmin.news">
 	<insert id="INSERT" parameterType="com.project.movieadmin.news.NewsVO">
-		
+		insert into
+		member(id,pw,name,tel,save_name)
+		values(#{id},#{pw},#{name},#{tel},#{save_name})
 	</insert>
 
 	<update id="UPDATE">

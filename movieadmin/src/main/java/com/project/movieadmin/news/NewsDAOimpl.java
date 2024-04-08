@@ -36,7 +36,14 @@ public class NewsDAOimpl implements NewsDAO {
 
 	@Override
 	public int n_insert(NewsVO vo) {
-		return 0;
+		log.info("insert()....");
+		log.info(vo.toString());
+
+		int flag = sqlSession.insert("INSERT", vo);
+
+		log.info("flag : {}", flag);
+
+		return flag;
 	}
 
 	@Override
