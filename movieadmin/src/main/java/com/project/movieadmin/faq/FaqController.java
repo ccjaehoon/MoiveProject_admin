@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class FaqController {
-	
+	//깃오류 점검 주석
 	@Autowired
 	private FaqService service;
 	

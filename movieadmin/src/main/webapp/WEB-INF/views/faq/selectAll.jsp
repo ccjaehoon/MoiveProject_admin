@@ -64,7 +64,6 @@ div {
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div>
-
 		<h2>FAQ</h2>
 		<form action="f_searchList.do">
 			<select name="searchKey">
