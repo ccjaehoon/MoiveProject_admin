@@ -21,7 +21,9 @@ public class BoardVO {
 	private int views;
 	private int commentscount;
 	private String report;
-	private String save_name;
-	private MultipartFile file;
+	private String save_img;
+	private MultipartFile file_img;
+	private String save_video;
+	private MultipartFile file_video;
 
 }
