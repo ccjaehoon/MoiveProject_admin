@@ -42,22 +42,22 @@
             padding: 20px;
         }
 
-        #boardTable {
+        #faqTable {
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
 
-        #boardTable td {
+        #faqTable td {
             border: 1px solid #ddd;
             padding: 8px;
         }
 
-        #boardTable tr:nth-child(even) {
+        #faqTable tr:nth-child(even) {
             background-color: #ebebeb;
         }
 
-        #boardTable tr:hover {
+        #faqTable tr:hover {
             background-color: #ffc6c6;
         }
 
@@ -70,12 +70,12 @@
         <h3>회원삭제폼</h3>
 
         <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
-        <form action="b_deleteOK.do" method="post">
-            <table id="boardTable">
+        <form action="f_deleteOK.do" method="post">
+            <table id="faqTable">
                 <tr>
-                    <td><label for="num">번호:</label></td>
-                    <td>[${param.num}] 번 글을 정말 삭제하시겠습니까?
-                    	<input type="hidden" id="num" name="num" value="${param.num}" placeholder="번호"></td>
+                    <td><label for="faq_num">번호:</label></td>
+                    <td>[${param.faq_num}] 번 글을 정말 삭제하시겠습니까?
+                    	<input type="hidden" id="faq_num" name="faq_num" value="${param.faq_num}" placeholder="번호"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글삭제"></td>

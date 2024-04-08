@@ -67,7 +67,6 @@
     </header>
 
     <main>
-        <!-- Your main content here -->
     </main>
 </body>
 </html>

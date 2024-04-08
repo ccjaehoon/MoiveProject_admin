@@ -62,11 +62,11 @@
         <tbody>
         	<c:forEach var="vo" items="${vos}">
             <tr>
-                <td><a href="b_selectOne.do?num=${vo.num}">${vo.num}</a></td>
+                <td><a href="story_selectRandomList.do?num=${vo.num}">${vo.num}</a></td>
                 <td>${vo.title}</td>
                 <td>${vo.writer}</td>
                 <td>${vo.wdate}</td>
-                <td><a href="b_delete.do?num=${vo.num}">글삭제</a></td>
+                <td><a href="story_delete.do?num=${vo.num}">글삭제</a></td>
             </tr>
         	</c:forEach>
             
