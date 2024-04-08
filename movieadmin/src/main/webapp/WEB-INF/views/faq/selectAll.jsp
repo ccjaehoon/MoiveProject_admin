@@ -74,7 +74,7 @@ div {
 		</form>
 		<table id="Table">
 			<tr>
-				<td width=200px;>번호</td>
+				<td width=200px>번호</td>
 				<td>제목</td>
 			</tr>
 			<tr>
