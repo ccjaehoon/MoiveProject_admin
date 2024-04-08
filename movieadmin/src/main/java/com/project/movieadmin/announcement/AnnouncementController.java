@@ -1,5 +1,11 @@
 package com.project.movieadmin.announcement;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -41,11 +47,46 @@ public class AnnouncementController {
 	}
 	
 	@RequestMapping(value = "/a_insertOK.do", method = RequestMethod.GET)
-	public String a_insertOK(AnnouncementVO vo) {
+	public String a_insertOK(AnnouncementVO vo) throws IllegalStateException, IOException {
 		
-
-		return "announcement/insertOK";
+	
+	
+		String realPath = sContext.getRealPath("resources/uploadimg");
+		
+		String originName = vo.getFile_img().getOriginalFilename();
+		
+		if (originName.length() == 0) {
+			vo.setSave_img("default.png");
+		} else {
+			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
+	
+			vo.setSave_img(save_name);
+	
+			File uploadFile = new File(realPath, save_name);
+			vo.getFile_img().transferTo(uploadFile);
+	
+			
+			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+	
+			File thumb_file = new File(realPath, "thumb_" + save_name);
+	
+			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
+	
+		}
+	
+		int result = service.a_insert(vo);
+		
+		if (result == 1) {
+			return "redirect:a_selectAll.do";
+		} else {
+			return "redirect:a_insert.do";
+		}
 	}
+	
+	
 	
 	@RequestMapping(value = "/a_update.do", method = RequestMethod.GET)
 	public String a_update(AnnouncementVO vo, Model model) {
@@ -54,10 +95,53 @@ public class AnnouncementController {
 		return "announcement/update";
 	}
 	@RequestMapping(value = "/a_updateOK.do", method = RequestMethod.GET)
-	public String a_updateOK(AnnouncementVO vo, Model model) {
+	public String a_updateOK(AnnouncementVO vo, Model model) throws IllegalStateException, IOException {
 		
-
-		return "announcement/updateOK";
+			
+		String realPath = sContext.getRealPath("resources/uploadimg");
+		
+	
+		String originName = vo.getFile_img().getOriginalFilename();
+	
+		log.info("getOriginalFilename:{}", originName);
+		
+		if (originName.length() == 0) {
+			vo.setSave_img("default.png");
+		} else {
+			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
+	
+			vo.setSave_img(save_name);
+	
+			File uploadFile = new File(realPath, save_name);
+			try {
+				vo.getFile_img().transferTo(uploadFile);
+			} catch (IllegalStateException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+	
+		
+			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+	
+			File thumb_file = new File(realPath, "thumb_" + save_name);
+	
+			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
+	
+		}
+	
+		int result = service.a_update(vo);
+	
+		if (result == 1) {
+			return "redirect:a_selectOne.do?announcement_num=" + vo.getAnnouncement_num();
+		} else {
+			return "redirect:a_update.do?announcement_num=" + vo.getAnnouncement_num();
+		}
 	}
 	@RequestMapping(value = "/a_delete.do", method = RequestMethod.GET)
 	public String a_delete() {
