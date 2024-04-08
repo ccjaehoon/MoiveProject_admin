@@ -23,26 +23,12 @@
 		
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.project.movieadmin.user.UserVO">
 	
+	<select id="U_SELECT_ALL_PAGE_BLOCK"
+		resultType="com.project.movieadmin.user.UserVO">
+		select * from user order by user_num desc limit ${startRow},${pageBlock}
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK"
-		resultType="com.project.movieadmin.user.UserVO">
-		
-	</select>
-
-	
-	<select id="SEARCHLIST_ID"
-		resultType="com.project.movieadmin.user.UserVO">
-		
-	</select>
-
-	
-	<select id="SEARCHLIST_NAME"
-		resultType="com.project.movieadmin.user.UserVO">
-		
-	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_ID"
 		resultType="com.project.movieadmin.user.UserVO">
@@ -55,8 +41,8 @@
 	</select>
 
 
-	<select id="TOTAL_ROWS"	resultType="int">
-		
+	<select id="U_TOTAL_ROWS"	resultType="int">
+		select count(*) total_rows from user
 	</select>
 
 	

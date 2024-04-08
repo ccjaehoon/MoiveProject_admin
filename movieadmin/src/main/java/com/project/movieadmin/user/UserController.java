@@ -1,5 +1,7 @@
 package com.project.movieadmin.user;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -100,9 +102,27 @@ public class UserController {
 		return "user/selectOne";
 	}
 	@RequestMapping(value = "/u_selectAll.do", method = RequestMethod.GET)
-	public String u_selectAll(int cpage, int pageBlock, Model model) {
-		logger.info("Welcome uselectAll!");
+	public String u_selectAll(@RequestParam(defaultValue = "1") int cpage,
+			@RequestParam(defaultValue = "10") int pageBlock, Model model) {
 	
+		List<UserVO> vos = service.u_selectAll(cpage, pageBlock);
+	
+		model.addAttribute("vos", vos);
+
+		
+		int total_rows = service.u_getTotalRows();
+
+		int totalPageCount = 1;
+		if (total_rows / pageBlock == 0) {
+			totalPageCount = 1;
+		} else if (total_rows % pageBlock == 0) {
+			totalPageCount = total_rows / pageBlock;
+		} else {
+			totalPageCount = total_rows / pageBlock + 1;
+		}
+		
+		model.addAttribute("totalPageCount", totalPageCount);
+
 		return "user/selectAll";
 	}
 	@RequestMapping(value = "u_searchList.do", method = RequestMethod.GET)
