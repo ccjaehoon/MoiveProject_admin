@@ -20,7 +20,7 @@ public class UserDAOimpl implements UserDAO {
 	@Override
 	public int u_insert(UserVO vo) {
 
-		int flag = sqlSession.insert("INSERT", vo);
+		int flag = sqlSession.insert("U_INSERT", vo);
 
 		return flag;
 	}
@@ -28,7 +28,7 @@ public class UserDAOimpl implements UserDAO {
 	@Override
 	public int u_update(UserVO vo) {
 
-		int flag = sqlSession.insert("UPDATE", vo);
+		int flag = sqlSession.update("U_UPDATE", vo);
 
 		return flag;
 	}
@@ -36,7 +36,7 @@ public class UserDAOimpl implements UserDAO {
 	@Override
 	public int u_delete(UserVO vo) {
 
-		int flag = sqlSession.insert("DELETE", vo);
+		int flag = sqlSession.delete("U_DELETE", vo);
 
 		return flag;
 	}
