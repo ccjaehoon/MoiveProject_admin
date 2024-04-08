@@ -38,7 +38,7 @@ public class FaqDAOimpl implements FaqDAO {
 
 	@Override
 	public int f_delete(FaqVO vo) {
-		int flag = sqlSession.insert("DELETE", vo);
+		int flag = sqlSession.insert("F_DELETE", vo);
 
 		return flag;
 	}

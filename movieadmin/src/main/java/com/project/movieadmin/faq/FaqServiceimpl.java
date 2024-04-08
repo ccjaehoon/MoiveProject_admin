@@ -31,8 +31,7 @@ public class FaqServiceimpl implements FaqService {
 
 	@Override
 	public int f_delete(FaqVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.f_delete(vo);
 	}
 
 	@Override

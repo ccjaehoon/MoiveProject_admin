@@ -117,11 +117,19 @@ public class FaqController {
 
 		return "faq/delete";
 	}
-	@RequestMapping(value = "/f_deleteOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/f_deleteOK.do", method = RequestMethod.POST)
 	public String f_deleteOK(FaqVO vo) {
-		log.info("Welcome f_deleteOK!");
+		log.info("Welcome b_deleteOK...");
+		log.info("vo:{}", vo);
 
-		return "faq/deleteOK";
+		int result = service.f_delete(vo);
+		log.info("result:{}", result);
+
+		if (result == 1) {
+			return "redirect:f_selectAll.do";
+		} else {
+			return "redirect:f_delete.do?num=" + vo.getFaq_num();
+		}
 	}
 	
 }

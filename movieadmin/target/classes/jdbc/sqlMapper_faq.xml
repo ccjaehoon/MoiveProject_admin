@@ -15,7 +15,7 @@
 	</update>
 
 	<delete id="F_DELETE" parameterType="com.project.movieadmin.faq.FaqVO">
-	
+		delete from faq where faq_num=#{faq_num}
 	</delete>
 
 	<select id="F_SELECT_ONE" resultType="com.project.movieadmin.faq.FaqVO">
