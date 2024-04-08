@@ -2,6 +2,8 @@ package com.project.movieadmin.news;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +11,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Repository
 public class NewsDAOimpl implements NewsDAO {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	public NewsDAOimpl() {
+		log.info("NewsDAOimpl()....");
+	}
 
 	@Override
 	public List<NewsVO> n_selectAll(int cpage, int pageBlock) {

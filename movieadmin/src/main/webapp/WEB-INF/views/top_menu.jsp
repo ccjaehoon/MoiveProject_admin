@@ -57,6 +57,7 @@
         <a href="n_selectAll.do">뉴스</a>
         <a href="f_selectAll.do">FAQ</a>
         <a href="m_insert.do">회원가입</a>
+        <a href="rp_selectAll.do">신고목록</a>
         <c:choose>
             <c:when test="${user_id != null}"><a href="logout.do">로그아웃</a></c:when>
             <c:otherwise><a href="login.do">로그인</a></c:otherwise>
