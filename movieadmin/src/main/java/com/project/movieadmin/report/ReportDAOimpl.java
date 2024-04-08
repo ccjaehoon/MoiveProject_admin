@@ -2,6 +2,9 @@ package com.project.movieadmin.report;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class ReportDAOimpl implements ReportDAO {
 
 	@Override

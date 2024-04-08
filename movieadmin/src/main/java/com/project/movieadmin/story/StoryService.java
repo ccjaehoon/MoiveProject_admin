@@ -19,7 +19,15 @@ public interface StoryService {
 	public List<StoryVO> s_selectAll(int cpage,int pageBlock);
 	
 	public Date s_getLiveStories(StoryVO vo);
+	//만료되지 않은 스토리 조회
 	
 	public int s_removeExpired();
+	// 만료된 스토리 삭제
+	
+	public int s_increaseGood(StoryVO vo); 
+	//스토리 좋아요 수 증가
+	
+	public int s_increaseReport(StoryVO vo); 
+	// 스토리 신고하기
 
 }

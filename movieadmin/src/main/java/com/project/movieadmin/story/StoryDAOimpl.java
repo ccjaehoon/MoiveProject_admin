@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public class StoryDAOimpl implements StoryDAO {
 	@Override
 	public int s_insert(StoryVO vo) {
@@ -78,6 +81,20 @@ public class StoryDAOimpl implements StoryDAO {
 	public int s_removeExpired() {
 		System.out.println("s_removeExpired....");
 		
+		
+		return 0;
+	}
+
+	@Override
+	public int s_increaseGood(StoryVO vo) {
+		System.out.println("s_increaseGood....");
+		
+		return 0;
+	}
+
+	@Override
+	public int s_increaseReport(StoryVO vo) {
+		System.out.println("s_increaseReport....");
 		
 		return 0;
 	}
