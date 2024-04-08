@@ -8,11 +8,11 @@
 		
 	</insert>
 
-	<update id="UPDATE">
+	<update id="UPDATE" parameterType="com.project.movieadmin.faq.FaqVO">
 		
 	</update>
 
-	<delete id="DELETE">
+	<delete id="DELETE" parameterType="com.project.movieadmin.faq.FaqVO">
 	
 	</delete>
 
@@ -24,30 +24,25 @@
 	
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK"
-		resultType="com.project.movieadmin.faq.FaqVO">
+	<select id="SELECT_ALL_PAGE_BLOCK" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
 	
-	<select id="SEARCHLIST_ID"
-		resultType="com.project.movieadmin.faq.FaqVO">
+	<select id="SEARCHLIST_ID" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
 	
-	<select id="SEARCHLIST_NAME"
-		resultType="com.project.movieadmin.faq.FaqVO">
+	<select id="SEARCHLIST_NAME" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
-		resultType="com.project.movieadmin.faq.FaqVO">
+	<select id="SEARCHLIST_PAGE_BLOCK_ID" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
-		resultType="com.project.movieadmin.faq.FaqVO">
+	<select id="SEARCHLIST_PAGE_BLOCK_NAME" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
@@ -57,7 +52,7 @@
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
+	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
 	
 	</select>
 
@@ -67,7 +62,7 @@
 	</select>
 
 	
-	<select id="LOGIN"	resultType="com.project.movieadmin.faq.FaqVO">
+	<select id="LOGIN" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 

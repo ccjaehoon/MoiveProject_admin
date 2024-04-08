@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Handles requests for the application home page.
@@ -36,7 +37,8 @@ public class FaqController {
 		return "faq/insertOK";
 	}
 	@RequestMapping(value = "/f_selectAll.do", method = RequestMethod.GET)
-	public String f_selectAll(int cpage, int pageBlock, Model model) {
+	public String f_selectAll(@RequestParam(defaultValue = "1") int cpage,
+			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		logger.info("Welcome f_selectAll!");
 
 		return "faq/selectAll";
