@@ -14,7 +14,7 @@ public interface NewsDAO {
 
 	public int n_delete(NewsVO vo);
 
-	public List<NewsVO> n_update(NewsVO vo);
+	public int n_update(NewsVO vo);
 
 	public int n_getTotalRows();
 

@@ -70,7 +70,7 @@
         <h3>회원삭제폼</h3>
 
         <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
-        <form action="b_deleteOK.do" method="post">
+        <form action="n_deleteOK.do" method="post">
             <table id="boardTable">
                 <tr>
                     <td><label for="num">번호:</label></td>
