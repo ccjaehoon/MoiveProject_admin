@@ -45,26 +45,33 @@
     <table id="customers">
         <thead>
             <tr>
-                <th>번호</th>
+                <th>유저번호</th>
                 <th>아이디</th>
-                <th>비번</th>
-                <th>이름</th>
-                <th>폰번</th>
-                <th>프로필이미지</th>
+                <th>비밀번호</th>
+                <th>별명</th>
+                <th>이메일</th>
+                <th>전화번호</th>
+                <th>생일</th>
+                <th>권위</th>
+                <th>회원가입날짜</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>${vo2.num}</td>
-                <td>${vo2.id}</td>
-                <td>${vo2.pw}</td>
-                <td>${vo2.name}</td>
+                <td>${vo2.user_num}</td>
+                <td>${vo2.user_id}</td>
+                <td>${vo2.password}</td>
+                <td>${vo2.nickname}</td>
+                <td>${vo2.email}</td>
                 <td>${vo2.tel}</td>
-                <td><img src="resources/uploadimg/${vo2.save_name}" width="200"></td>
+                <td>${vo2.birth}</td>         
+                <td>${vo2.authority}</td>
+                <td>${vo2.reg_date}</td>
+              
             </tr>
         </tbody>
     </table>
-    <a href="m_update.do?num=${param.num}">회원수정</a>
-    <a href="m_delete.do?num=${param.num}">회원삭제</a>
+    <a href="u_update.do?user_num=${param.user_num}&user_id=${param.user_id}">회원수정</a>
+    <a href="u_delete.do?user_num=${param.user_num}">회원삭제</a>
 </body>
 </html>

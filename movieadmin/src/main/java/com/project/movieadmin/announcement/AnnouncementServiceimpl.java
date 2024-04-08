@@ -18,49 +18,49 @@ public class AnnouncementServiceimpl implements AnnouncementService {
 	
 	@Override
 	public int a_insert(AnnouncementVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.a_insert(vo);
 	}
 
 	@Override
 	public int a_update(AnnouncementVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.a_update(vo);
 	}
 
 	@Override
 	public int a_delete(AnnouncementVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.a_delete(vo);
 	}
 
 	@Override
 	public AnnouncementVO a_selectOne(AnnouncementVO vo) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public List<AnnouncementVO> a_selectAll(int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public List<AnnouncementVO> a_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public int a_getTotalRows() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
 	@Override
 	public int a_getSearchTotalRows(String searchKey, String searchWord) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 

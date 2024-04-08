@@ -69,28 +69,43 @@
     <div>
         <h3>회원가입폼</h3>
 
-        <form action="m_insertOK.do" method="post" enctype="multipart/form-data">
+        <form action="u_insertOK.do" method="post" enctype="multipart/form-data">
             <table id="memberTable">
                 <tr>
-                    <td><label for="id">아이디:</label></td>
-                    <td><input type="text" id="id" name="id" value="admin" placeholder="아이디"></td>
+                    <td><label for="user_id">아이디:</label></td>
+                    <td><input type="text" id="user_id" name="user_id" value="" placeholder="아이디"></td>
                 </tr>
                 <tr>
-                    <td><label for="pw">비번:</label></td>
-                    <td><input type="password" id="pw" name="pw" value="hi1234" placeholder="비밀번호"></td>
+                    <td><label for="password">비밀번호:</label></td>
+                    <td><input type="password" id="password" name="password" value="" placeholder="비밀번호"></td>
                 </tr>
                 <tr>
-                    <td><label for="name">이름:</label></td>
-                    <td><input type="text" id="name" name="name" value="kim길동" placeholder="이름"></td>
+                    <td><label for="nickname">별명:</label></td>
+                    <td><input type="text" id="nickname" name="nickname" value="" placeholder="별명"></td>
+                </tr>
+                 <tr>
+                    <td><label for="email">이메일:</label></td>
+                    <td><input type="text" id="email" name="email" value="" placeholder="이메일"></td>
                 </tr>
                 <tr>
                     <td><label for="tel">전화번호:</label></td>
                     <td><input type="tel" id="tel" name="tel" value="010" placeholder="전화번호"></td>
                 </tr>
                 <tr>
-                    <td><label for="file">프로필 이미지:</label></td>
-                    <td><input type="file" id="file" name="file"></td>
+                    <td><label for="birth">생년월일</label></td>
+                    <td><input type="date" id="birth" name="birth" value=""></td>
                 </tr>
+                <tr>
+					<td><label for="gender">성별:</label></td>
+					<td><input type="radio" id="남자" name="gender" value="남자"
+						${vo2.gender == '남자' ? 'checked' : ''}> <label for="남자">남자</label>
+						<input type="radio" id="여자" name="gender" value="여자"
+						${vo2.gender == '여자' ? 'checked' : ''}> <label for="여자">여자</label>
+						<input type="radio" id="비공개" name="gender" value="비공개"
+						${vo2.gender == '비공개' ? 'checked' : ''}> <label for="비공개">비공개</label>
+					</td>
+				</tr>
+                
 
                 <tr>
                     <td colspan="2"><input type="submit" value="회원가입"></td>

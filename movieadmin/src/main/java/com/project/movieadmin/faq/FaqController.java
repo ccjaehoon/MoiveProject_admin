@@ -1,5 +1,10 @@
 package com.project.movieadmin.faq;
 
+import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +20,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class FaqController {
-	
+	//깃오류 점검 주석
 	@Autowired
 	private FaqService service;
 	
-	
+	@Autowired
+	private HttpSession session;
+
+	@Autowired
+	private ServletContext sContext;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -31,13 +40,13 @@ public class FaqController {
 
 		return "faq/insert";
 	}
-	@RequestMapping(value = "/f_insertOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/f_insertOK.do", method = RequestMethod.POST)
 	public String f_insertOK(FaqVO vo) {
 		log.info("Welcome f_insertOK!");
 
 		log.info("vo:{}", vo);
 
-		int result = service.insert(vo);
+		int result = service.f_insert(vo);
 		log.info("result:{}", result);
 
 		if (result == 1) {
@@ -50,8 +59,25 @@ public class FaqController {
 	public String f_selectAll(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		log.info("Welcome f_selectAll!");
+		List<FaqVO> vos = service.f_selectAll(cpage, pageBlock);
 
-		return "faq/selectAll";
+        model.addAttribute("vos", vos);
+
+
+        int total_rows = service.f_getTotalRows();
+
+        int totalPageCount = 1;
+        if (total_rows / pageBlock == 0) {
+            totalPageCount = 1;
+        } else if (total_rows % pageBlock == 0) {
+            totalPageCount = total_rows / pageBlock;
+        } else {
+            totalPageCount = total_rows / pageBlock + 1;
+        }
+
+        model.addAttribute("totalPageCount", totalPageCount);
+
+        return "faq/selectAll";
 	}
 	@RequestMapping(value = "/f_searchList.do", method = RequestMethod.GET)
 	public String f_searchList(int cpage, int pageBlock, Model model, String searchKey, String searchWord) {
@@ -61,7 +87,15 @@ public class FaqController {
 	}
 	@RequestMapping(value = "/f_selectOne.do", method = RequestMethod.GET)
 	public String f_selectOne(FaqVO vo, Model model) {
-		log.info("Welcome f_selectOne!");
+		log.info("Welcome f_selectOne.do....");
+
+		log.info("vo : {}", vo);
+
+		FaqVO vo2 = service.f_selectOne(vo);
+		log.info("vo2:" + vo2);
+		log.info("================");
+
+		model.addAttribute("vo2", vo2);
 
 		return "faq/selectOne";
 	}
@@ -71,11 +105,20 @@ public class FaqController {
 
 		return "faq/update";
 	}
-	@RequestMapping(value = "/f_updateOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/f_updateOK.do", method = RequestMethod.POST)
 	public String f_updateOK(FaqVO vo) {
-		log.info("Welcome f_updateOK!");
+		log.info("Welcome b_updateOK...");
+		log.info("vo:{}", vo);
 
-		return "faq/updateOK";
+		int result = service.f_update(vo);
+		log.info("result:{}", result);
+
+		if (result == 1) {
+			return "redirect:f_selectOne.do?faq_num=" + vo.getFaq_num();
+		} else {
+			return "redirect:f_update.do?faq_num=" + vo.getFaq_num();
+		}
+
 	}
 	@RequestMapping(value = "/f_delete.do", method = RequestMethod.GET)
 	public String f_delete() {
@@ -83,11 +126,19 @@ public class FaqController {
 
 		return "faq/delete";
 	}
-	@RequestMapping(value = "/f_deleteOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/f_deleteOK.do", method = RequestMethod.POST)
 	public String f_deleteOK(FaqVO vo) {
-		log.info("Welcome f_deleteOK!");
+		log.info("Welcome b_deleteOK...");
+		log.info("vo:{}", vo);
 
-		return "faq/deleteOK";
+		int result = service.f_delete(vo);
+		log.info("result:{}", result);
+
+		if (result == 1) {
+			return "redirect:f_selectAll.do";
+		} else {
+			return "redirect:f_delete.do?num=" + vo.getFaq_num();
+		}
 	}
 	
 }

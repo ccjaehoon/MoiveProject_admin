@@ -6,16 +6,23 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Handles requests for the application home page.
  */
+@Slf4j
 @Controller
 public class StoryController {
+	
+	@Autowired
+	private StoryService service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(StoryController.class);
 	
@@ -33,8 +40,15 @@ public class StoryController {
 	@RequestMapping(value = "/story_insertOK.do", method = RequestMethod.GET)
 	public String story_insertOK(StoryVO vo) {
 		logger.info("Welcome story_insertOK...");
-
-		return "story/insertOK";
+		log.info("vo:{}", vo);
+		
+		int result = service.s_insert(vo); //service daoimp
+		log.info("result:{}", result);
+		if (result == 1) {
+			return "redirect:story_selectAll.do";
+		} else {
+			return "redirect:story_insert.do";
+		}
 	}
 	
 	@RequestMapping(value = "/story_update.do", method = RequestMethod.GET)
