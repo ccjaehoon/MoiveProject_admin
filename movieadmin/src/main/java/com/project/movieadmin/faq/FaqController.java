@@ -105,11 +105,20 @@ public class FaqController {
 
 		return "faq/update";
 	}
-	@RequestMapping(value = "/f_updateOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/f_updateOK.do", method = RequestMethod.POST)
 	public String f_updateOK(FaqVO vo) {
-		log.info("Welcome f_updateOK!");
+		log.info("Welcome b_updateOK...");
+		log.info("vo:{}", vo);
 
-		return "faq/updateOK";
+		int result = service.f_update(vo);
+		log.info("result:{}", result);
+
+		if (result == 1) {
+			return "redirect:f_selectOne.do?faq_num=" + vo.getFaq_num();
+		} else {
+			return "redirect:f_update.do?faq_num=" + vo.getFaq_num();
+		}
+
 	}
 	@RequestMapping(value = "/f_delete.do", method = RequestMethod.GET)
 	public String f_delete() {

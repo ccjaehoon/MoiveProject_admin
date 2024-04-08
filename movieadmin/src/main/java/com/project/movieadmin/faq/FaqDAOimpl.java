@@ -31,7 +31,11 @@ public class FaqDAOimpl implements FaqDAO {
 
 	@Override
 	public int f_update(FaqVO vo) {
-		int flag = sqlSession.insert("UPDATE", vo);
+		log.info("update()....");
+		log.info(vo.toString());
+
+		int flag = sqlSession.update("F_UPDATE", vo);
+		log.info("flag : {}", flag);
 
 		return flag;
 	}

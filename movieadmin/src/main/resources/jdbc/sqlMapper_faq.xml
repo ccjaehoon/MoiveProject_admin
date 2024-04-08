@@ -11,7 +11,7 @@
 	</insert>
 
 	<update id="F_UPDATE" parameterType="com.project.movieadmin.faq.FaqVO">
-		
+		update faq set title=#{title},content=#{content}
 	</update>
 
 	<delete id="F_DELETE" parameterType="com.project.movieadmin.faq.FaqVO">

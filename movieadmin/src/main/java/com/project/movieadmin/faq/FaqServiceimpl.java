@@ -25,8 +25,7 @@ public class FaqServiceimpl implements FaqService {
 
 	@Override
 	public int f_update(FaqVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.f_update(vo);
 	}
 
 	@Override
