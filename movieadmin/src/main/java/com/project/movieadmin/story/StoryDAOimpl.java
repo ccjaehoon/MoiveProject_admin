@@ -33,7 +33,6 @@ public class StoryDAOimpl implements StoryDAO {
 		System.out.println(vo);
 		int flag = 0;
 		
-		
 		return flag;
 	}
 	
