@@ -1,5 +1,10 @@
 package com.project.movieadmin.faq;
 
+import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +24,11 @@ public class FaqController {
 	@Autowired
 	private FaqService service;
 	
-	
+	@Autowired
+	private HttpSession session;
+
+	@Autowired
+	private ServletContext sContext;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -37,7 +46,7 @@ public class FaqController {
 
 		log.info("vo:{}", vo);
 
-		int result = service.insert(vo);
+		int result = service.f_insert(vo);
 		log.info("result:{}", result);
 
 		if (result == 1) {
@@ -50,8 +59,25 @@ public class FaqController {
 	public String f_selectAll(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		log.info("Welcome f_selectAll!");
+		List<FaqVO> vos = service.f_selectAll(cpage, pageBlock);
 
-		return "faq/selectAll";
+        model.addAttribute("vos", vos);
+
+
+        int total_rows = service.f_getTotalRows();
+
+        int totalPageCount = 1;
+        if (total_rows / pageBlock == 0) {
+            totalPageCount = 1;
+        } else if (total_rows % pageBlock == 0) {
+            totalPageCount = total_rows / pageBlock;
+        } else {
+            totalPageCount = total_rows / pageBlock + 1;
+        }
+
+        model.addAttribute("totalPageCount", totalPageCount);
+
+        return "faq/selectAll";
 	}
 	@RequestMapping(value = "/f_searchList.do", method = RequestMethod.GET)
 	public String f_searchList(int cpage, int pageBlock, Model model, String searchKey, String searchWord) {

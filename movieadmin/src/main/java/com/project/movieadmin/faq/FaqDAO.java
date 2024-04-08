@@ -3,19 +3,19 @@ package com.project.movieadmin.faq;
 import java.util.List;
 
 public interface FaqDAO {
-	//메인 주석 푸시
-	public int insert(FaqVO vo);
 
-	public int update(FaqVO vo);
+	public int f_insert(FaqVO vo);
 
-	public int delete(FaqVO vo);
+	public int f_update(FaqVO vo);
 
-	public FaqVO selectOne(FaqVO vo);
+	public int f_delete(FaqVO vo);
 
-	public List<FaqVO> selectAll(int cpage,int pageBlock);
+	public FaqVO f_selectOne(FaqVO vo);
 
-	public List<FaqVO> searchList(String searchKey, String searchWord,int cpage,int pageBlock);
+	public List<FaqVO> f_selectAll(int cpage,int pageBlock);
 
-	public int getTotalRows();
-	public int getSearchTotalRows(String searchKey, String searchWord);
+	public List<FaqVO> f_searchList(String searchKey, String searchWord,int cpage,int pageBlock);
+
+	public int f_getTotalRows();
+	public int f_getSearchTotalRows(String searchKey, String searchWord);
 }

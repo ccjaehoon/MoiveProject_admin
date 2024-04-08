@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,16 +74,41 @@ div {
 				type="submit" value="search">
 		</form>
 		<table id="Table">
-			<tr>
-				<td width=200px>번호</td>
-				<td>제목</td>
-			</tr>
-			<tr>
-				<td>${vo.faq_num}</td>
-				<td>${vo.title}</td>
-			</tr>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>내용</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="vo" items="${vos}">
+					<tr>
+						<td width=200px><a href="f_selectOne.do?faq_num=${vo.faq_num}">${vo.faq_num}</a></td>
+						<td>${vo.content}</td>
+						
+					</tr>
+				</c:forEach>
+
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2"><c:forEach var="i" begin="1"
+							end="${totalPageCount}">
+							<c:if test="${param.searchKey == null }">
+								<a href="f_selectAll.do?cpage=${i}">${i} &nbsp;</a>
+							</c:if>
+							<c:if test="${param.searchKey != null }">
+								<a
+									href="f_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i}
+									&nbsp;</a>
+							</c:if>
+						</c:forEach></td>
+				</tr>
+			</tfoot>
 		</table>
-		<button><a href="f_insert.do">글쓰기</a></button>
+		<form action="f_insert.do">
+			<input type="submit" value="FAQ 작성">
+		</form>
 
 	</div>
 </body>

@@ -1,56 +1,72 @@
 package com.project.movieadmin.faq;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class FaqDAOimpl implements FaqDAO {
 
+	@Autowired
+	private SqlSession sqlSession;
+	
 	@Override
-	public int insert(FaqVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int f_insert(FaqVO vo) {
+		int flag = sqlSession.insert("INSERT", vo);
+
+		return flag;
 	}
 
 	@Override
-	public int update(FaqVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int f_update(FaqVO vo) {
+		int flag = sqlSession.insert("UPDATE", vo);
+
+		return flag;
 	}
 
 	@Override
-	public int delete(FaqVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int f_delete(FaqVO vo) {
+		int flag = sqlSession.insert("DELETE", vo);
+
+		return flag;
 	}
 
 	@Override
-	public FaqVO selectOne(FaqVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<FaqVO> selectAll(int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<FaqVO> searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
+	public FaqVO f_selectOne(FaqVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int getTotalRows() {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<FaqVO> f_selectAll(int cpage, int pageBlock) {
+		int startRow = (cpage - 1) * pageBlock + 1;
+
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("startRow", startRow - 1);
+        map.put("pageBlock", pageBlock);
+
+        List<FaqVO> vos = sqlSession.selectList("F_SELECT_ALL_PAGE_BLOCK", map);
+        return vos;
 	}
 
 	@Override
-	public int getSearchTotalRows(String searchKey, String searchWord) {
+	public List<FaqVO> f_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int f_getTotalRows() {
+		int total_rows = sqlSession.selectOne("F_TOTAL_ROWS");
+		return total_rows;
+	}
+
+	@Override
+	public int f_getSearchTotalRows(String searchKey, String searchWord) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

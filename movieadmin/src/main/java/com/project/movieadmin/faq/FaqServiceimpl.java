@@ -19,50 +19,47 @@ public class FaqServiceimpl implements FaqService {
 	}
 	
 	@Override
-	public int insert(FaqVO vo) {
-		return dao.insert(vo);
+	public int f_insert(FaqVO vo) {
+		return dao.f_insert(vo);
 	}
 
 	@Override
-	public int update(FaqVO vo) {
+	public int f_update(FaqVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int delete(FaqVO vo) {
+	public int f_delete(FaqVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public FaqVO selectOne(FaqVO vo) {
+	public FaqVO f_selectOne(FaqVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<FaqVO> selectAll(int cpage, int pageBlock) {
+	public List<FaqVO> f_selectAll(int cpage, int pageBlock) {
+		return dao.f_selectAll(cpage, pageBlock);
+	}
+
+	@Override
+	public List<FaqVO> f_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<FaqVO> searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
-		return null;
+	public int f_getTotalRows() {
+		return dao.f_getTotalRows();
 	}
 
 	@Override
-	public int getTotalRows() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getSearchTotalRows(String searchKey, String searchWord) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int f_getSearchTotalRows(String searchKey, String searchWord) {
+		return dao.f_getSearchTotalRows(searchKey, searchWord);
 	}
 
 }
