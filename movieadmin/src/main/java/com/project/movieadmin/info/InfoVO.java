@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class InfoVO {
 	
+	private int info_num;
 	private String title;
 	private String nickname;
 	private String genre;

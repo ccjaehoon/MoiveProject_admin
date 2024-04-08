@@ -4,60 +4,63 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.faq">
-	<insert id="INSERT" parameterType="com.project.movieadmin.faq.FaqVO">
-		
+	<insert id="F_INSERT" parameterType="com.project.movieadmin.faq.FaqVO">
+		insert into
+		faq(title,nickname,content)
+		values(#{title},'admin',#{content})
 	</insert>
 
-	<update id="UPDATE" parameterType="com.project.movieadmin.faq.FaqVO">
-		
+	<update id="F_UPDATE" parameterType="com.project.movieadmin.faq.FaqVO">
+		update faq set title=#{title},content=#{content}
 	</update>
 
-	<delete id="DELETE" parameterType="com.project.movieadmin.faq.FaqVO">
-	
+	<delete id="F_DELETE" parameterType="com.project.movieadmin.faq.FaqVO">
+		delete from faq where faq_num=#{faq_num}
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.project.movieadmin.faq.FaqVO">
-		
+	<select id="F_SELECT_ONE" resultType="com.project.movieadmin.faq.FaqVO">
+		select * from faq where
+		faq_num=#{faq_num}
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.project.movieadmin.faq.FaqVO">
-	
+	<select id="F_SELECT_ALL" resultType="com.project.movieadmin.faq.FaqVO">
+	select * from faq order by num desc
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK" resultType="com.project.movieadmin.faq.FaqVO">
-		
-	</select>
-
-	
-	<select id="SEARCHLIST_ID" resultType="com.project.movieadmin.faq.FaqVO">
-		
+	<select id="F_SELECT_ALL_PAGE_BLOCK" resultType="com.project.movieadmin.faq.FaqVO">
+		select * from faq order by faq_num desc limit ${startRow}, ${pageBlock}
 	</select>
 
 	
-	<select id="SEARCHLIST_NAME" resultType="com.project.movieadmin.faq.FaqVO">
-		
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_ID" resultType="com.project.movieadmin.faq.FaqVO">
-		
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME" resultType="com.project.movieadmin.faq.FaqVO">
-		
-	</select>
-
-
-	<select id="TOTAL_ROWS"	resultType="int">
+	<select id="F_SEARCHLIST_ID" resultType="com.project.movieadmin.faq.FaqVO">
 		
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
+	<select id="F_SEARCHLIST_NAME" resultType="com.project.movieadmin.faq.FaqVO">
+		
+	</select>
+
+	<select id="F_SEARCHLIST_PAGE_BLOCK_ID" resultType="com.project.movieadmin.faq.FaqVO">
+		
+	</select>
+
+	<select id="F_SEARCHLIST_PAGE_BLOCK_NAME" resultType="com.project.movieadmin.faq.FaqVO">
+		
+	</select>
+
+
+	<select id="F_TOTAL_ROWS"	resultType="int">
+		select count(*) total_rows from faq
+	</select>
+
+	
+	<select id="F_SEARCH_TOTAL_ROWS_ID" resultType="int">
 	
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
+	<select id="F_SEARCH_TOTAL_ROWS_NAME"	resultType="int">
 		
 	</select>
 

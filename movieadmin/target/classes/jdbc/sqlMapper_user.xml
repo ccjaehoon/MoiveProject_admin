@@ -26,7 +26,7 @@
 	
 	<select id="U_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.user.UserVO">
-		select * from user order by user_num desc limit ${startRow},${pageBlock}
+		select * from user order by user_num desc limit #{startRow},#{pageBlock}
 	</select>
 
 
