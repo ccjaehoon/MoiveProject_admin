@@ -11,7 +11,8 @@ public class StoryVO {
 	
 	private int story_num;
     private String nickname;
-    private String storycontent;
+    private List<String> imageSavenames;
+    private List<String> videoSavenames;
     private List<MultipartFile> image_files; // List of uploaded image files
     private List<MultipartFile> video_files; // List of uploaded video files
     private Date wdate;
@@ -24,13 +25,14 @@ public class StoryVO {
         // TODO Auto-generated constructor stub
     }
 
-	public StoryVO(int story_num, String nickname, String storycontent,
+	public StoryVO(int story_num, String nickname, List<String> imageSavenames, List<String> videoSavenames,
 			List<MultipartFile> image_files, List<MultipartFile> video_files, Date wdate, int good, int views,
 			Date duration, String report) {
 		super();
 		this.story_num = story_num;
 		this.nickname = nickname;
-		this.storycontent = storycontent;
+		this.imageSavenames = imageSavenames;
+		this.videoSavenames = videoSavenames;
 		this.image_files = image_files;
 		this.video_files = video_files;
 		this.wdate = wdate;
@@ -39,6 +41,6 @@ public class StoryVO {
 		this.duration = duration;
 		this.report = report;
 	}
-	
 
+	
 }
