@@ -19,7 +19,7 @@ public class StoryVO {
     private int good;
     private int views;
     private Date duration; // 스토리가 표시되는 시간
-    private String report;
+    private int report;
 
    
 	
