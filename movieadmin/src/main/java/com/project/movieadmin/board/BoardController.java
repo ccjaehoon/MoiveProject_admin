@@ -1,5 +1,9 @@
 package com.project.movieadmin.board;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +18,16 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class BoardController {
+	
+	@Autowired
+	private BoardService service;
+	
+	@Autowired
+	private HttpSession session;
+
+	@Autowired
+	private ServletContext sContext;
+	
 	public String b_insert() {
 		log.info("Welcome b_insert.do....");
 		
@@ -24,7 +38,13 @@ public class BoardController {
 	public String b_insertOK(BoardVO vo) {
 		log.info("Welcome b_insertOK.do...");
 		
-		return "board/insertOK";
+		int result = service.b_insert(vo);
+		
+		if (result == 1) {
+			return "redirect:b_selectAll.do";
+		} else {
+			return "redirect:b_insert.do";
+		}
 	}
 	@RequestMapping(value = "/b_selectAll.do", method = RequestMethod.GET)
 	public String b_selectAll(@RequestParam(
@@ -63,7 +83,13 @@ public class BoardController {
 	public String b_updateOK(BoardVO vo) {
 		log.info("Welcome b_updateOK.do...");
 		
-		return "board/updateOK";
+		int result = service.b_update(vo);
+		
+		if (result == 1) {
+			return "redirect:b_selectAll.do";
+		} else {
+			return "redirect:b_insert.do";
+		}
 	}
 	
 	@RequestMapping(value = "/b_delete.do", method = RequestMethod.GET)
