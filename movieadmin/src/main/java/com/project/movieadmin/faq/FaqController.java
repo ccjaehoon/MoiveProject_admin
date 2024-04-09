@@ -80,10 +80,38 @@ public class FaqController {
         return "faq/selectAll";
 	}
 	@RequestMapping(value = "/f_searchList.do", method = RequestMethod.GET)
-	public String f_searchList(int cpage, int pageBlock, Model model, String searchKey, String searchWord) {
-		log.info("Welcome f_searchList!");
+	public String f_searchList(@RequestParam(defaultValue = "1") int cpage,
+			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
+		log.info("Welcome f_searchList.do....");
 
-		return "faq/searchList";
+		log.info("cpage : {}, pageBlock : {}", cpage, pageBlock);
+		log.info("searchKey : {}, searchWord : {}", searchKey, searchWord);
+
+
+		List<FaqVO> vos = service.f_searchList(searchKey, searchWord, cpage, pageBlock);
+		for (FaqVO x : vos) {
+			log.info(x.toString());
+		}
+		System.out.println("================");
+
+		model.addAttribute("vos", vos);
+
+		// 키워드검색 게시글수는 몇개?
+		int total_rows = service.f_getSearchTotalRows(searchKey, searchWord);
+		log.info("total_rows:" + total_rows);
+
+		int totalPageCount = 1;
+		if (total_rows / pageBlock == 0) {
+			totalPageCount = 1;
+		} else if (total_rows % pageBlock == 0) {
+			totalPageCount = total_rows / pageBlock;
+		} else {
+			totalPageCount = total_rows / pageBlock + 1;
+		}
+		// 페이지 링크 몇개?
+		model.addAttribute("totalPageCount", totalPageCount);
+
+		return "faq/selectAll";
 	}
 	@RequestMapping(value = "/f_selectOne.do", method = RequestMethod.GET)
 	public String f_selectOne(FaqVO vo, Model model) {

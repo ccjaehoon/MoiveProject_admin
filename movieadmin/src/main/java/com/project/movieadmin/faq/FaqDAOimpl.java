@@ -71,8 +71,30 @@ public class FaqDAOimpl implements FaqDAO {
 
 	@Override
 	public List<FaqVO> f_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("searchList()....");
+		log.info(searchKey);
+		log.info(searchWord);
+
+		log.info("cpage:" + cpage);
+		log.info("pageBlock:" + pageBlock);
+
+		int startRow = (cpage - 1) * pageBlock + 1;
+		log.info("startRow:{}", startRow);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startRow", startRow-1);
+		map.put("pageBlock", pageBlock);
+		map.put("searchWord", "%" + searchWord + "%");
+
+		List<FaqVO> vos = null;
+
+		if (searchKey.equals("title")) {
+			vos = sqlSession.selectList("F_SEARCHLIST_PAGE_BLOCK_TITLE", map);
+		} else if (searchKey.equals("content")) {
+			vos = sqlSession.selectList("F_SEARCHLIST_PAGE_BLOCK_CONTENT", map);
+		}
+
+		return vos;
 	}
 
 	@Override
@@ -83,8 +105,19 @@ public class FaqDAOimpl implements FaqDAO {
 
 	@Override
 	public int f_getSearchTotalRows(String searchKey, String searchWord) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("f_getSearchTotalRows()....");
+		log.info(searchKey);
+		log.info(searchWord);
+
+		int total_rows = 0;
+
+		if (searchKey.equals("title")) {
+			total_rows = sqlSession.selectOne("F_SEARCH_TOTAL_ROWS_TITLE", "%" + searchWord + "%");
+		} else if (searchKey.equals("content")) {
+			total_rows = sqlSession.selectOne("F_SEARCH_TOTAL_ROWS_CONTENT", "%" + searchWord + "%");
+		}
+
+		return total_rows;
 	}
 
 }
