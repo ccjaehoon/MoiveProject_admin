@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.slf4j.Slf4j;
 
+
 /**
  * Handles requests for the application home page.
  */
@@ -46,14 +47,14 @@ public class UserController {
 		return "user/insert";
 	}
 	
-	@RequestMapping(value = "/u_insertOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/u_insertOK.do", method = RequestMethod.POST)
 	public String u_insertOK(UserVO vo) {
 		
 
 		int result = service.u_insert(vo);
 	
 		if (result == 1) {
-			return "redirect: home.do";// 메인 홈페이지 로 가는
+			return "redirect:home.do";// 메인 홈페이지 로 가는
 		} else {
 			return "redirect:u_insert.do";
 		}
@@ -65,16 +66,16 @@ public class UserController {
 
 		return "user/update";
 	}
-	@RequestMapping(value = "/u_updateOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/u_updateOK.do", method = RequestMethod.POST)
 	public String u_updateOK(UserVO vo, Model model) {
 		
 
 		int result = service.u_update(vo);
 		
 		if (result == 1) {
-			return "redirect: home.do"; // 마이 페이지
+			return "redirect: u_selectAll.do"; // 마이 페이지
 		} else {
-			return "redirect:u_insert.do";
+			return "redirect: u_update.do";
 		}
 	}
 	@RequestMapping(value = "/u_delete.do", method = RequestMethod.GET)
@@ -83,22 +84,27 @@ public class UserController {
 
 		return "user/delete";
 	}
-	@RequestMapping(value = "/u_deleteOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/u_deleteOK.do", method = RequestMethod.POST)
 	public String u_deleteOK(UserVO vo) {
 		
 
 		int result = service.u_delete(vo);
 		
 		if (result == 1) {
-			return "redirect: home.do"; // 메인페이지로
+			return "redirect:u_selectAll.do";
 		} else {
-			return "redirect:u_insert.do";
+			return "redirect:u_delete.do?user_num=" + vo.getUser_num();
 		}
 	}
-	@RequestMapping(value = "/u_selectOne.do", method = RequestMethod.GET)
-	public String u_selectOne(int cpage, int pageBlock, Model model) {
-		
 	
+	@RequestMapping(value = "/u_selectOne.do", method = RequestMethod.GET)
+	public String u_selectOne(UserVO vo, Model model) {
+		UserVO vo2 = service.u_selectOne(vo);
+		
+
+		model.addAttribute("vo2", vo2);
+
+
 		return "user/selectOne";
 	}
 	@RequestMapping(value = "/u_selectAll.do", method = RequestMethod.GET)

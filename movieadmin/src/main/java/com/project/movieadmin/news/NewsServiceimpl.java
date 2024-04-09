@@ -37,7 +37,7 @@ public class NewsServiceimpl implements NewsService {
 	}
 
 	@Override
-	public List<NewsVO> n_update(NewsVO vo) {
+	public int n_update(NewsVO vo) {
 		return dao.n_update(vo);
 	}
 

@@ -23,66 +23,44 @@ public class StoryServiceimpl implements StoryService {
 	}
 	@Override
 	public int s_insert(StoryVO vo) {
-		System.out.println("insert()....");
+		
 		return dao.s_insert(vo);
 	}
 
 	@Override
 	public int s_update(StoryVO vo) {
-		System.out.println("update()....");
-		System.out.println(vo);
 		
-		int flag = 0;
-		
-		
-		return flag;
+		return dao.s_update(vo);
 	}
 
 	@Override
 	public int s_delete(StoryVO vo) {
-		System.out.println("delete()....");
-		System.out.println(vo);
-		int flag = 0;
 		
-		
-		return flag;
+		return dao.s_delete(vo);
 	}
 	
 	@Override
 	public List<StoryVO> s_selectRandomList(StoryVO vo) {
-		System.out.println("s_selectRandomList()....");
-		System.out.println(vo);
-		List<StoryVO> vo2 = new ArrayList<StoryVO>();
 		
-		
-		return vo2;
+		return dao.s_selectRandomList(vo);
 	}
 
 	@Override
 	public List<StoryVO> s_selectAll() {
-		System.out.println("selectAll_Story()...");
-		List<StoryVO> vos = new ArrayList<StoryVO>();
 		
-		
-		return vos;
+		return dao.s_selectAll();
 	}
 
 	@Override
 	public List<StoryVO> s_selectAll(int cpage, int pageBlock) {
-		System.out.println("selectAll_Story(page)....");
-		System.out.println("cpage:" + cpage);
-		System.out.println("pageBlock:" + pageBlock);
-		List<StoryVO> vos = new ArrayList<StoryVO>();
 		
-		return vos;
+		return dao.s_selectAll(cpage, pageBlock);
 	}
 
 	@Override
 	public Date s_getLiveStories(StoryVO vo) {
-		System.out.println("getLiveStories....");
 		
-		
-		return new Date();
+		return dao.s_getLiveStories(vo);
 	}
 
 	@Override
@@ -95,14 +73,14 @@ public class StoryServiceimpl implements StoryService {
 
 	@Override
 	public int s_increaseGood(StoryVO vo) {
-		System.out.println("s_increaseGood....");
-		return 0;
+		
+		return dao.s_increaseGood(vo);
 	}
 
 	@Override
 	public int s_increaseReport(StoryVO vo) {
-		System.out.println("s_increaseReport....");
-		return 0;
+
+		return dao.s_increaseReport(vo);
 	}
 
 

@@ -20,7 +20,7 @@
 	</delete>
 
 	<select id="U_SELECT_ONE" resultType="com.project.movieadmin.user.UserVO">
-		
+		select * from user where user_num=#{user_num}
 	</select>
 
 	

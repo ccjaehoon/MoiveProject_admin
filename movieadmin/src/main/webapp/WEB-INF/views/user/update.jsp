@@ -65,33 +65,51 @@ div {
 	<div>
 		<h3>회원수정폼</h3>
 
-		<form action="m_updateOK.do" method="post"
+		<form action="u_updateOK.do" method="post"
 			enctype="multipart/form-data">
 			<table id="memberTable">
 				<tr>
-					<td><label for="num">번호:</label></td>
-					<td>${param.num}<input type="hidden" id="num" name="num"
-						value="${param.num}" placeholder="번호"></td>
+					<td><label for="user_num">번호:</label></td>
+					<td>${param.user_num}<input type="hidden" id="user_num"
+						name="user_num" value="${param.user_num}" placeholder="번호"></td>
 				</tr>
 				<tr>
-					<td><label for="pw">비번:</label></td>
-					<td><input type="password" id="pw" name="pw" value="${vo2.pw}"
-						placeholder="비밀번호"></td>
+					<td><label for="user_id">아이디:</label></td>
+					<td>${param.user_id}<input type="hidden" id="user_id"
+						name="user_id" value="${param.user_id}" placeholder="아이디"></td>
 				</tr>
 				<tr>
-					<td><label for="name">이름:</label></td>
-					<td><input type="text" id="name" name="name"
-						value="${vo2.name}" placeholder="이름"></td>
+					<td><label for="password">비밀번호:</label></td>
+					<td><input type="password" id="password" name="password"
+						value="${vo2.password}" placeholder="비밀번호"></td>
+				</tr>
+				<tr>
+					<td><label for="nickname">별명:</label></td>
+					<td><input type="text" id="nickname" name="nickname"
+						value="${vo2.nickname}" placeholder="이름"></td>
+				</tr>
+				<tr>
+					<td><label for="email">이메일:</label></td>
+					<td><input type="text" id="email" name="email"
+						value="${vo2.email}" placeholder="이메일"></td>
+				</tr>
+				<tr>
+					<td><label for="gender">성별:</label></td>
+					<td><input type="radio" id="남자" name="gender" value="남자"
+						${vo2.gender == '남자' ? 'checked' : ''}> <label for="남자">남자</label>
+						<input type="radio" id="여자" name="gender" value="여자"
+						${vo2.gender == '여자' ? 'checked' : ''}> <label for="여자">여자</label>
+						<input type="radio" id="비공개" name="gender" value="비공개"
+						${vo2.gender == '비공개' ? 'checked' : ''}> <label for="비공개">비공개</label>
+					</td>
 				</tr>
 				<tr>
 					<td><label for="tel">전화번호:</label></td>
 					<td><input type="tel" id="tel" name="tel" value="${vo2.tel}"
 						placeholder="전화번호"></td>
 				</tr>
-				<tr>
-					<td><label for="file">프로필 이미지:</label></td>
-					<td><input type="file" id="file" name="file"></td>
-				</tr>
+
+
 				<tr>
 					<td colspan="2"><input type="submit" value="회원수정"></td>
 				</tr>

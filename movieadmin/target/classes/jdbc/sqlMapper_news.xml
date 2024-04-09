@@ -4,79 +4,74 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.news">
-	<insert id="INSERT" parameterType="com.project.movieadmin.news.NewsVO">
+	<insert id="N_INSERT" parameterType="com.project.movieadmin.news.NewsVO">
 		insert into
-		news(title,nickname,content,save_name)
-		values(#{title},#{nickname},#{content},#{save_name})
+		news(title,nickname,content,save_img)
+		values(#{title},#{nickname},#{content},#{save_img})
 	</insert>
 
-	<update id="UPDATE">
-		update news set title=#{title},name=#{content},save_name=#{save_name} 
-		where news_num=#{news_num}
+	<update id="N_UPDATE">
+	    update news set title=#{title}, nickname=#{nickname}, content=#{content}, save_img=#{save_img} 
+	    where news_num=#{news_num}
 	</update>
 
-	<delete id="DELETE">
+
+	<delete id="N_DELETE">
 		delete from news where news_num=#{news_num}
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.project.movieadmin.news.NewsVO">
+	<select id="N_SELECT_ONE" resultType="com.project.movieadmin.news.NewsVO">
 		select * from news where news_num=#{news_num}
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.project.movieadmin.news.NewsVO">
+	<select id="N_SELECT_ALL" resultType="com.project.movieadmin.news.NewsVO">
 		select * from news order by news_num desc
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK"
+	<select id="N_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.news.NewsVO">
 		select * from news order by news_num desc limit #{startRow},#{pageBlock}
 	</select>
 
 	
-	<select id="SEARCHLIST_TITLE"
+	<select id="N_SEARCHLIST_TITLE"
 		resultType="com.project.movieadmin.news.NewsVO">
 		select * from news where title like #{searchWord}
 	</select>
 
 	
-	<select id="SEARCHLIST_CONTENT"
+	<select id="N_SEARCHLIST_CONTENT"
 		resultType="com.project.movieadmin.news.NewsVO">
 		select * from news where content like #{searchWord}
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
+	<select id="N_SEARCHLIST_PAGE_BLOCK_TITLE"
 		resultType="com.project.movieadmin.news.NewsVO">
 		select * from news
-		where id like #{searchWord} 
+		where title like #{searchWord} 
 		order by news_num desc limit #{startRow},#{pageBlock}
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
+	<select id="N_SEARCHLIST_PAGE_BLOCK_CONTENT"
 		resultType="com.project.movieadmin.news.NewsVO">
 		select * from news
-		where name like #{searchWord} 
+		where content like #{searchWord} 
 		order by news_num desc limit #{startRow},#{pageBlock}
 	</select>
 
 
-	<select id="TOTAL_ROWS"	resultType="int">
+	<select id="N_TOTAL_ROWS"	resultType="int">
 		select count(*) total_rows from news
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-		select count(*) total_rows from news  where id like #{searchWord}
+	<select id="N_SEARCH_TOTAL_ROWS_TITLE"	resultType="int">
+		select count(*) total_rows from news  where title like #{searchWord}
 	</select>
 
 	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		select count(*) total_rows from news  where name like #{searchWord}
+	<select id="N_SEARCH_TOTAL_ROWS_CONTENT"	resultType="int">
+		select count(*) total_rows from news  where content like #{searchWord}
 	</select>
-
-	
-	<select id="LOGIN"	resultType="com.project.movieadmin.news.NewsVO">
-		select id from news where id=#{id} and pw=#{pw}
-	</select>
-
 
 </mapper>

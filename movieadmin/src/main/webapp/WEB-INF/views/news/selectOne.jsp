@@ -46,28 +46,28 @@
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
+                <th>프로필이미지</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>${vo2.num}</td>
+                <td>${vo2.news_num}</td>
                 <td>${vo2.title}</td>
-                <td>${vo2.writer}</td>
+                <td>${vo2.nickname}</td>
+                <td><img src="resources/uploadimg/${vo2.save_img}" width="200"></td>
             </tr>
             <tr>
                 <td>내용</td>
-                <td colspan="2">${vo2.content}</td>
+                <td colspan="3">${vo2.content}</td>
             </tr>
             <tr>
                 <td>작성일자</td>
-                <td colspan="2">${vo2.wdate}</td>
+                <td colspan="3">${vo2.wdate}</td>
             </tr>
         </tbody>
     </table>
-    <c:if test="${user_id == vo2.writer }">
-	    <a href="b_update.do?num=${vo2.num}">글수정</a>
-	    <a href="b_delete.do?num=${vo2.num}">글삭제</a>
-    </c:if>
+	    <a href="n_update.do?news_num=${param.news_num}">글수정</a>
+	    <a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
     <hr>
     <h3>댓글작성</h3>
     <form action="c_insertOK.do">
@@ -84,7 +84,7 @@
 	        		<td><input type="text" name="content" value="hello" size="50"></td>
 	        		<td>
 	        			${user_id}<input type="hidden" name="writer" value="${user_id}">
-	        			<input type="hidden" name="bnum" value="${vo2.num}">
+	        			<input type="hidden" name="bnum" value="${vo2.news_num}">
 	        		</td>
 	        		<td><input type="submit"  value="댓글작성"></td>
 	        	</tr>

@@ -65,16 +65,16 @@
 <body>
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
-        <h1>게시글 수정페이지</h1>
-        <form action="b_updateOK.do" method="post">
+        <h1>뉴스 수정페이지</h1>
+        <form action="n_updateOK.do" method="post" enctype="multipart/form-data">
             <table id="insertTable">
                 <tr>
                     <td><label for="">항목</label></td>
                     <td>입력</td>
                 </tr>
                 <tr>
-                    <td><label for="num">글번호</label></td>
-                    <td>${param.num}<input type="hidden" id="num" name="num" value="${param.num}"></td>
+                    <td><label for="news_num">글번호</label></td>
+                    <td>${param.news_num}<input type="hidden" id="news_num" name="news_num" value="${param.news_num}"></td>
                 </tr>
                 <tr>
                     <td><label for="title">제목</label></td>
@@ -86,7 +86,11 @@
                 </tr>
                 <tr>
                     <td><label for="writer">작성자</label></td>
-                    <td>${vo2.writer}<input type="hidden" id="writer" name="writer" value="${vo2.writer}" placeholder="작성자를 입력하세요"></td>
+                    <td>${vo2.nickname}<input type="hidden" id="writer" name="writer" value="nickname"></td>
+                </tr>
+                <tr>
+                    <td><label for="file_img">이미지파일</label></td>
+                    <td><input type="file" id="file_img" name="file_img"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글수정 완료"></td>
