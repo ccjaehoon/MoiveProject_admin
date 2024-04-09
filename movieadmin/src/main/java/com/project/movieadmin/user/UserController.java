@@ -193,7 +193,7 @@ public class UserController {
 
 		session.removeAttribute("user_id");
 
-		return "redirect:index.do"; // 메인 홈페이지
+		return "redirect: home.do"; 
 	}
 	
 }

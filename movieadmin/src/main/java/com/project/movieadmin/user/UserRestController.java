@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,11 +37,11 @@ public class UserRestController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	@ResponseBody
+	@RequestMapping(value = "/u_idCheck.do", method = RequestMethod.GET)
+	public Map<String , String> u_idCheck(UserVO vo) {
 	
-	@RequestMapping(value = "/json_idCheck.do", method = RequestMethod.GET)
-	public Map<String , String> json_idCheck(UserVO vo) {
-	
-		UserVO vo2 = service.idCheck(vo);
+		UserVO vo2 = service.u_idCheck(vo);
 		
 		Map<String , String> map = new HashMap<String, String>();
 		if(vo2 != null) {
@@ -51,10 +52,11 @@ public class UserRestController {
 
 		return map;
 	}
-	@RequestMapping(value = "/json_nicknameCheck.do", method = RequestMethod.GET)
-	public Map<String , String> json_nicknameCheck(UserVO vo) {
+	@ResponseBody
+	@RequestMapping(value = "/u_nicknameCheck.do", method = RequestMethod.GET)
+	public Map<String , String> u_nicknameCheck(UserVO vo) {
 		
-		UserVO vo2 = service.idCheck(vo);
+		UserVO vo2 = service.u_nicknameCheck(vo);
 		
 		Map<String , String> map = new HashMap<String, String>();
 		if(vo2 != null) {
@@ -65,11 +67,12 @@ public class UserRestController {
 
 		return map;
 	}
-	@RequestMapping(value = "/json_emailCheck.do", method = RequestMethod.GET)
-	public Map<String , String> json_emailCheck(UserVO vo) {
+	@ResponseBody
+	@RequestMapping(value = "/u_emailCheck.do", method = RequestMethod.GET)
+	public Map<String , String> u_emailCheck(UserVO vo) {
 	
 
-		UserVO vo2 = service.idCheck(vo);
+		UserVO vo2 = service.u_emailCheck(vo);
 		
 		Map<String , String> map = new HashMap<String, String>();
 		if(vo2 != null) {

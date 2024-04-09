@@ -122,21 +122,21 @@ public class UserDAOimpl implements UserDAO {
 	}
 
 	@Override
-	public UserVO idCheck(UserVO vo) {
+	public UserVO u_idCheck(UserVO vo) {
 
-		return null;
+		return sqlSession.selectOne("U_ID_CHECK",vo);
 	}
 
 	@Override
-	public UserVO nicknameCheck(UserVO vo) {
+	public UserVO u_nicknameCheck(UserVO vo) {
 
-		return null;
+		return sqlSession.selectOne("U_NICKNAME_CHECK",vo);
 	}
 
 	@Override
-	public UserVO emailCheck(UserVO vo) {
+	public UserVO u_emailCheck(UserVO vo) {
 
-		return null;
+		return sqlSession.selectOne("U_EMAIL_CHECK",vo);
 	}
 
 }

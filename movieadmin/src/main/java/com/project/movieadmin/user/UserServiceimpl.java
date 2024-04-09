@@ -72,20 +72,20 @@ public class UserServiceimpl implements UserService {
 	}
 
 	@Override
-	public UserVO idCheck(UserVO vo) {
+	public UserVO u_idCheck(UserVO vo) {
 		
-		return dao.idCheck(vo);
+		return dao.u_idCheck(vo);
 	}
 
 	@Override
-	public UserVO nicknameCheck(UserVO vo) {
+	public UserVO u_nicknameCheck(UserVO vo) {
 		
-		return dao.nicknameCheck(vo);
+		return dao.u_nicknameCheck(vo);
 	}
 
 	@Override
-	public UserVO emailCheck(UserVO vo) {
+	public UserVO u_emailCheck(UserVO vo) {
 		
-		return dao.emailCheck(vo);
+		return dao.u_emailCheck(vo);
 	}
 }

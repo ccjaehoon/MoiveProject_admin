@@ -29,11 +29,11 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 		log.info("user_id:{}",session.getAttribute("user_id"));
 		
 		if(sPath.equals("/home.do") 
-				|| sPath.equals("/u_update.do")
-				|| sPath.equals("/u_updateOK.do")
-				|| sPath.equals("/u_delete.do")
-				|| sPath.equals("/u_deleteOK.do")
-				|| sPath.equals("/u_selectOne.do"))
+				|| sPath.equals("")
+				|| sPath.equals("")
+				|| sPath.equals("")
+				|| sPath.equals("")
+				|| sPath.equals(""))
 				 {
 			
 			if(session.getAttribute("user_id")==null) {
