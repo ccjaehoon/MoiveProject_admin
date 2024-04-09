@@ -78,6 +78,7 @@ div {
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -85,7 +86,7 @@ div {
 					<tr>
 						<td width=200px><a href="f_selectOne.do?faq_num=${vo.faq_num}">${vo.faq_num}</a></td>
 						<td>${vo.title}</td>
-						
+						<td><a href="f_delete.do?faq_num=${vo.faq_num}">글삭제</a></td>
 					</tr>
 				</c:forEach>
 
