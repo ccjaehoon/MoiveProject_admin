@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>뉴스 수정 페이지</title>
     <style>
         #customers {
           font-family: Arial, Helvetica, sans-serif;
@@ -38,7 +38,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-    <h1>글정보</h1>
+    <h1>뉴스정보</h1>
     <hr>
     <table id="customers">
         <thead>
@@ -46,7 +46,7 @@
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
-                <th>프로필이미지</th>
+                <th>썸네일</th>
             </tr>
         </thead>
         <tbody>

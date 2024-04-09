@@ -74,7 +74,7 @@
             <table id="boardTable">
                 <tr>
                     <td><label for="news_num">번호:</label></td>
-                    <td>[${param.news_num}] 번 글을 정말 삭제하시겠습니까?
+                    <td>[${param.news_num}] 번 뉴스를 정말 삭제하시겠습니까?
                     	<input type="hidden" id="news_num" name="news_num" value="${param.news_num}" placeholder="번호"></td>
                 </tr>
                 <tr>
