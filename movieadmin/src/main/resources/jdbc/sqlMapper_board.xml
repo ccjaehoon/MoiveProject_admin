@@ -6,10 +6,10 @@
 <mapper namespace="com.project.movieadmin.board">
 	<insert id="B_INSERT" parameterType="com.project.movieadmin.board.BoardVO">
 		insert into
-		board(title, tag, nickname, content, wdate, good, authority, views,
-		commentscount, report, save_img, file_img, save_video, file_video)
-		values(#{title},#{tag},#{nickname},#{content},#{wdate},#{good},#{authority},
-		#{views},#{commentscount},#{report},#{save_img},#{file_img},#{save_video},#{file_video})
+		board(title, tag, nickname, content, authority, views,
+		save_img, file_img, save_video, file_video)
+		values(#{title},#{tag},#{nickname},#{content},#{authority},
+		#{views},#{save_img},#{file_img},#{save_video},#{file_video})
 	</insert>
 
 	<update id="B_UPDATE">
@@ -56,7 +56,7 @@
 
 	<select id="B_SEARCHLIST_PAGE_BLOCK_CONTENT"
 		resultType="com.project.movieadmin.board.BoardVO">
-		select * from news
+		select * from board
 		where content like #{searchWord} 
 		order by board_num desc limit #{startRow},#{pageBlock}
 	</select>

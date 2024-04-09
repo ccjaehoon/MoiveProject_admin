@@ -66,19 +66,23 @@
                 <th>제목</th>
                 <th>작성자</th>
                 <th>작성일자</th>
+                <th>댓글수</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><a href="b_selectOne.do?board_num=${vo.board_num}">${vo.board_num}</a></td>
-                <td>${vo.title}</td>
-                <td>${vo.nickname}</td>
-                <td>${vo.wdate}</td>
-            </tr>
+        	<c:forEach var="vo" items="${vos}">
+	            <tr>
+	                <td><a href="b_selectOne.do?board_num=${vo.board_num}">${vo.board_num}</a></td>
+	                <td>${vo.title}</td>
+	                <td>${vo.nickname}</td>
+	                <td>${vo.wdate}</td>
+	                <td>${vo.commentscount}</td>
+	            </tr>
+            </c:forEach>
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4">
+                <td colspan="5">
                 	<c:forEach var="i" begin="1" end="${totalPageCount}">
 	                	<c:if test="${param.searchKey == null}">
 		                	<a href="b_selectAll.do?cpage=${i}">${i} &nbsp;</a>

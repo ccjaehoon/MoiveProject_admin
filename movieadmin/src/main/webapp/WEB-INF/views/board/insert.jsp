@@ -66,7 +66,7 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
         <h1>게시글 작성페이지</h1>
-        <form action="b_insertOK.do" method="post">
+        <form action="b_insertOK.do" method="post" enctype="multipart/form-data">
             <table id="insertTable">
                 <tr>
                     <td><label for="title">제목</label></td>
@@ -78,7 +78,7 @@
                 </tr>
                 <tr>
                     <td><label for="nickname">작성자</label></td>
-                    <td>${user_id}<input type="hidden" id="nickname" name="nickname" value="${nickname}"></td>
+                    <td>${nickname}<input type="hidden" id="nickname" name="nickname" value="${nickname}"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글쓰기 완료"></td>
