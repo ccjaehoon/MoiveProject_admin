@@ -68,15 +68,15 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
         <h3>로그인폼</h3>
-        <form action="loginOK.do" method="post"><!--?id=admin&pw=hi1234  -->
+        <form action="u_loginOK.do" method="post"><!--?id=admin&pw=hi1234  -->
             <table id="loginTable">
                 <tr>
-                    <td><label for="id">id:</label></td>
-                    <td><input type="text" id="id" name="id" value="admin" placeholder="아이디"></td>
+                    <td><label for="user_id">id:</label></td>
+                    <td><input type="text" id="user_id" name="user_id" value="admin" placeholder="아이디"></td>
                 </tr>
                 <tr>
-                    <td><label for="pw">pw:</label></td>
-                    <td><input type="password" id="pw" name="pw" value="hi1234" placeholder="비밀번호"></td>
+                    <td><label for="password">password:</label></td>
+                    <td><input type="password" id="password" name="password" value="hi1234" placeholder="비밀번호"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="login"></td>

@@ -70,12 +70,12 @@
         <h3>회원삭제폼</h3>
 
         <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
-        <form action="b_deleteOK.do" method="post">
+        <form action="rp_deleteOK.do" method="post">
             <table id="boardTable">
                 <tr>
-                    <td><label for="num">번호:</label></td>
-                    <td>[${param.num}] 번 신고를 정말 삭제하시겠습니까?
-                    	<input type="hidden" id="num" name="num" value="${param.num}" placeholder="번호"></td>
+                    <td><label for="report_num">번호:</label></td>
+                    <td>[${param.report_num}] 번 신고를 정말 삭제하시겠습니까?
+                    	<input type="hidden" id="report_num" name="report_num" value="${param.report_num}" placeholder="번호"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글삭제"></td>

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import lombok.extern.slf4j.Slf4j;
 
 
+
+
 @Slf4j
 @Repository
 public class UserDAOimpl implements UserDAO {
@@ -50,11 +52,7 @@ public class UserDAOimpl implements UserDAO {
 		return vo2;
 	}
 
-	@Override
-	public UserVO u_login(UserVO vo) {
-
-		return null;
-	}
+	
 
 	@Override
 	public List<UserVO> u_selectAll(int cpage, int pageBlock) {
@@ -72,7 +70,26 @@ public class UserDAOimpl implements UserDAO {
 	@Override
 	public List<UserVO> u_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
 
-		return null;
+		log.info("u_searchList");
+		log.info("cpage : " + cpage);
+		log.info("pageBlock : " + pageBlock);
+		
+		int startRow = (cpage - 1) * pageBlock + 1;
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startRow", startRow - 1);
+		map.put("pageBlock", pageBlock);
+		map.put("searchWord",  "%" + searchWord + "%");
+		
+		List<UserVO> vos = null;
+
+		if (searchKey.equals("user_id")) {
+			vos = sqlSession.selectList("U_SEARCHLIST_PAGE_BLOCK_ID", map);
+		} else if (searchKey.equals("nickname")) {
+			vos = sqlSession.selectList("U_SEARCHLIST_PAGE_BLOCK_NICKNAME", map);
+		}
+
+		return vos;
 	}
 
 	@Override
@@ -86,7 +103,22 @@ public class UserDAOimpl implements UserDAO {
 	@Override
 	public int u_getSearchTotalRows(String searchKey, String searchWord) {
 
-		return 0;
+		int total_rows = 0;
+
+		if (searchKey.equals("user_id")) {
+			total_rows = sqlSession.selectOne("U_SEARCH_TOTAL_ROWS_ID", "%" + searchWord + "%");
+		} else if (searchKey.equals("nickname")) {
+			total_rows = sqlSession.selectOne("U_SEARCH_TOTAL_ROWS_NICKNAME", "%" + searchWord + "%");
+		}
+
+		return total_rows;
+	}
+	@Override
+	public UserVO u_login(UserVO vo) {
+
+		UserVO vo2 = sqlSession.selectOne("U_LOGIN", vo);
+
+		return vo2;
 	}
 
 	@Override

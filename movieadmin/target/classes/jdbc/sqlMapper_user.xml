@@ -4,60 +4,73 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.user">
-	<insert id="U_INSERT" parameterType="com.project.movieadmin.user.UserVO">
+	<insert id="U_INSERT"
+		parameterType="com.project.movieadmin.user.UserVO">
 		insert into
 		user(user_id,password,nickname,gender,birth,tel,email)
 		values(#{user_id},#{password},#{nickname},#{gender},#{birth},#{tel},#{email})
 	</insert>
 
 	<update id="U_UPDATE">
-		update user set password=#{password},nickname=#{nickname},gender=#{gender},tel=#{tel},email=#{email} 
+		update user set
+		password=#{password},nickname=#{nickname},gender=#{gender},tel=#{tel},email=#{email}
 		where user_num=#{user_num}
 	</update>
 
 	<delete id="U_DELETE">
-	delete from user where user_num=#{user_num}
+		delete from user where user_num=#{user_num}
 	</delete>
 
-	<select id="U_SELECT_ONE" resultType="com.project.movieadmin.user.UserVO">
+	<select id="U_SELECT_ONE"
+		resultType="com.project.movieadmin.user.UserVO">
 		select * from user where user_num=#{user_num}
 	</select>
 
-	
+
 	<select id="U_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.user.UserVO">
-		select * from user order by user_num desc limit #{startRow},#{pageBlock}
+		select * from user order by user_num desc limit
+		#{startRow},#{pageBlock}
 	</select>
 
 
 	<select id="U_SEARCHLIST_PAGE_BLOCK_ID"
 		resultType="com.project.movieadmin.user.UserVO">
+		select * from user where user_id like #{searchWord} order by
+		user_num limit #{startRow},#{pageBlock}
+		
 		
 	</select>
 
-	<select id="U_SEARCHLIST_PAGE_BLOCK_NAME"
+	<select id="U_SEARCHLIST_PAGE_BLOCK_NICKNAME"
 		resultType="com.project.movieadmin.user.UserVO">
-		
+		select * from user where nickname like #{searchWord} order by
+		nickname limit #{startRow},#{pageBlock}
 	</select>
 
 
-	<select id="U_TOTAL_ROWS"	resultType="int">
-		select count(*) total_rows from user
+	<select id="U_TOTAL_ROWS" resultType="int">
+		select count(*) total_rows
+		from user
 	</select>
 
-	
-	<select id="U_SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
+
+	<select id="U_SEARCH_TOTAL_ROWS_ID" resultType="int">
+		select count(*)
+		total_rows from user where user_id like #{searchWord}
 	</select>
 
-	
-	<select id="U_SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
+
+	<select id="U_SEARCH_TOTAL_ROWS_NICKNAME" resultType="int">
+		select count(*)
+		total_rows from user where nickname like #{searchWord}
 	</select>
 
-	
-	<select id="U_LOGIN"	resultType="com.project.movieadmin.user.UserVO">
-		
+
+	<select id="U_LOGIN"
+		resultType="com.project.movieadmin.user.UserVO">
+		select user_id from user where user_id=#{user_id} and
+		password=#{password}
 	</select>
 
 
