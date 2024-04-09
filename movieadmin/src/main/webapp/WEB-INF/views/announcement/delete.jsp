@@ -42,22 +42,22 @@
             padding: 20px;
         }
 
-        #boardTable {
+        #announcementTable {
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
 
-        #boardTable td {
+        #announcementTable td {
             border: 1px solid #ddd;
             padding: 8px;
         }
 
-        #boardTable tr:nth-child(even) {
+        #announcementTable tr:nth-child(even) {
             background-color: #ebebeb;
         }
 
-        #boardTable tr:hover {
+        #announcementTable tr:hover {
             background-color: #ffc6c6;
         }
 
@@ -70,12 +70,12 @@
         <h3>회원삭제폼</h3>
 
         <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
-        <form action="b_deleteOK.do" method="post">
-            <table id="boardTable">
+        <form action="a_deleteOK.do" method="post">
+            <table id="announcementTable">
                 <tr>
-                    <td><label for="num">번호:</label></td>
-                    <td>[${param.num}] 번 글을 정말 삭제하시겠습니까?
-                    	<input type="hidden" id="num" name="num" value="${param.num}" placeholder="번호"></td>
+                    <td><label for="announcement_num">번호:</label></td>
+                    <td>[${param.announcement_num}] 번 글을 정말 삭제하시겠습니까?
+                    	<input type="hidden" id="announcement_num" name="announcement_num" value="${param.announcement_num}" placeholder="번호"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글삭제"></td>
@@ -83,6 +83,7 @@
             </table>
         </form>
     </div>
+    <jsp:include page="../footer_menu.jsp"></jsp:include>
 </body>
 
 </html>

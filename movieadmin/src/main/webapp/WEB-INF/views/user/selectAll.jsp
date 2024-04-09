@@ -53,11 +53,12 @@
         <thead>
             <tr>
                 <th>번호</th>
-                <th>이미지</th>
                 <th>아이디</th>
-                <th>비번</th>
+                <th>비밀번호</th>
                 <th>이름</th>
-                <th>폰번</th>
+                <th>전화번호</th>
+                <th>직위</th>
+                <th>가입날짜</th>
                 <th></th>
             </tr>
         </thead>
@@ -69,6 +70,8 @@
                 <td>${vo.password}</td>
                 <td>${vo.nickname}</td>
                 <td>${vo.tel}</td>
+                <td>${vo.authority}</td>
+                <td>${vo.reg_date}</td>
                 <td><a href="u_delete.do?user_num=${vo.user_num}">회원삭제</a></td>
             </tr>
         	</c:forEach>
