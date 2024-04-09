@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>뉴스목록</title>
     <style>
         #customers {
           font-family: Arial, Helvetica, sans-serif;
@@ -38,9 +38,9 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-    <h1>글목록</h1>
+    <h1>뉴스목록</h1>
     <hr>
-  	<a href="n_insert.do">뉴스 작성</a>
+  	
     <form action="n_searchList.do">
     	<select name="searchKey">
     		<option value="title">title</option>
@@ -65,17 +65,18 @@
         <tbody>
         	<c:forEach var="vo" items="${vos}">
             <tr>
-                <td><a href="n_selectOne.do?num=${vo.news_num}">${vo.news_num}</a></td>
+                <td><a href="n_selectOne.do?news_num=${vo.news_num}">${vo.news_num}</a></td>
                 <td><img src="resources/uploadimg/thumb_${vo.save_img}"></td>
                 <td>${vo.title}</td>
                 <td>${vo.nickname}</td>
                 <td>${vo.content}</td>
                 <td>${vo.wdate}</td>
-                <td><a href="n_delete.do?num=${vo.news_num}">글삭제</a></td>
+                <td><a href="n_delete.do?news_num=${vo.news_num}">글삭제</a></td>
             </tr>
         	</c:forEach>
             
         </tbody>
+        
         <tfoot>
             <tr>
                 <td colspan="7">
@@ -91,5 +92,6 @@
             </tr>
         </tfoot>
     </table>
+    <a href="n_insert.do">뉴스 작성</a>
 </body>
 </html>

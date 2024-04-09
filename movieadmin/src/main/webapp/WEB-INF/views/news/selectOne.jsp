@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>뉴스 수정 페이지</title>
     <style>
         #customers {
           font-family: Arial, Helvetica, sans-serif;
@@ -38,7 +38,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-    <h1>글정보</h1>
+    <h1>뉴스정보</h1>
     <hr>
     <table id="customers">
         <thead>
@@ -46,7 +46,7 @@
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
-                <th>프로필이미지</th>
+                <th>썸네일</th>
             </tr>
         </thead>
         <tbody>
@@ -66,8 +66,8 @@
             </tr>
         </tbody>
     </table>
-	    <a href="n_update.do?num=${param.num}">글수정</a>
-	    <a href="n_delete.do?num=${param.num}">글삭제</a>
+	    <a href="n_update.do?news_num=${param.news_num}">글수정</a>
+	    <a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
     <hr>
     <h3>댓글작성</h3>
     <form action="c_insertOK.do">
@@ -84,7 +84,7 @@
 	        		<td><input type="text" name="content" value="hello" size="50"></td>
 	        		<td>
 	        			${user_id}<input type="hidden" name="writer" value="${user_id}">
-	        			<input type="hidden" name="bnum" value="${vo2.num}">
+	        			<input type="hidden" name="bnum" value="${vo2.news_num}">
 	        		</td>
 	        		<td><input type="submit"  value="댓글작성"></td>
 	        	</tr>
