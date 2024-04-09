@@ -14,6 +14,7 @@
 	<update id="F_UPDATE"
 		parameterType="com.project.movieadmin.faq.FaqVO">
 		update faq set title=#{title},content=#{content}
+		where faq_num=#{faq_num}
 	</update>
 
 	<delete id="F_DELETE"
