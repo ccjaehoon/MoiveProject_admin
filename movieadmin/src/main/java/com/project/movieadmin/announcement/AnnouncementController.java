@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.movieadmin.faq.FaqVO;
+import com.project.movieadmin.news.comments.NCommentsVO;
 import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -92,6 +93,11 @@ public class AnnouncementController {
 
 	@RequestMapping(value = "/a_update.do", method = RequestMethod.GET)
 	public String a_update(AnnouncementVO vo, Model model) {
+		
+		
+		AnnouncementVO vo2 = service.a_selectOne(vo);
+		
+		model.addAttribute("vo2", vo2);
 
 		return "announcement/update";
 	}
@@ -160,8 +166,9 @@ public class AnnouncementController {
 
 		AnnouncementVO vo2 = service.a_selectOne(vo);
 		
-
-		model.addAttribute("vo2", vo2);
+		
+		
+				model.addAttribute("vo2", vo2);
 
 		return "announcement/selectOne";
 	}
