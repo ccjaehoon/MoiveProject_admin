@@ -54,17 +54,32 @@ public class StoryController {
 	}
 	
 	@RequestMapping(value = "/s_update.do", method = RequestMethod.GET)
-	public String s_update() {
+	public String s_update(StoryVO vo, Model model) {
 		log.info("Welcome story_update...");
-
+		log.info("vo:{}", vo);
+		
+//		StoryVO vo2 = service.s_selectRandomList(vo);
+//		log.info("vo2:{}", vo2);
+//
+//		model.addAttribute("vo2", vo2);
 		return "story/update";
 	}
 	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.GET)
 	public String s_updateOK(StoryVO vo) {
 		log.info("Welcome story_updateOK...");
+		log.info("vo:{}", vo);
 
-		return "story/updateOK";
+		int result = service.s_update(vo);
+		log.info("result:{}", result);
+
+		if (result == 1) {
+			return "redirect:s_selectRandomList.do?num=" + vo.getStory_num();
+		} else {
+		return "redirect:s_selectRandomList.do?num=" + vo.getStory_num();
+		}
+		
 	}
+	
 	@RequestMapping(value = "/s_delete.do", method = RequestMethod.GET)
 	public String s_delete() {
 		log.info("Welcome story_delete...");
@@ -74,8 +89,17 @@ public class StoryController {
 	@RequestMapping(value = "/s_deleteOK.do", method = RequestMethod.GET)
 	public String s_deleteOK(StoryVO vo) {
 		log.info("Welcome story_deleteOK...");
+		log.info("vo:{}", vo);
 
-		return "story/deleteOK";
+		int result = service.s_delete(vo);
+		log.info("result:{}", result);
+
+		if (result == 1) {
+			return "redirect:s_selectAll.do";
+		} else {
+			return "redirect:s_delete.do?num=" + vo.getStory_num();
+		}
+
 	}
 	
 	@RequestMapping(value = "/s_selectRandomList.do", method = RequestMethod.GET)

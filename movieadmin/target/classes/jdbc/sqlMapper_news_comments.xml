@@ -4,72 +4,78 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.news.comments">
-	<insert id="NC_INSERT" parameterType="com.project.movieadmin.news.comments.NCommentsVO">
+	<insert id="NC_INSERT"
+		parameterType="com.project.movieadmin.news.comments.NCommentsVO">
 		insert into ncomments(nickname, content,news_num)
 		values('admin',#{content},#{news_num})
 	</insert>
 
-	<update id="UPDATE">
-		
+	<update id="NC_UPDATE">
+		update ncomments set content=#{content} where
+		news_comments_num=#{news_comments_num}
 	</update>
 
-	<delete id="DELETE">
-	
+	<delete id="NC_DELETE">
+		delete from ncomments where news_comments_num=#{news_comments_num}
 	</delete>
 
-	<select id="NC_SELECT_ONE" resultType="com.project.movieadmin.news.comments.NCommentsVO">
+	<select id="NC_SELECT_ONE"
+		resultType="com.project.movieadmin.news.comments.NCommentsVO">
 	</select>
 
-	<select id="NC_SELECT_ALL" resultType="com.project.movieadmin.news.comments.NCommentsVO">
-			select * from ncomments where news_num=#{news_num} order by news_comments_num desc
-	
+	<select id="NC_SELECT_ALL"
+		resultType="com.project.movieadmin.news.comments.NCommentsVO">
+		select * from ncomments where news_num=#{news_num} order by
+		news_comments_num desc
+
 	</select>
 
 	<select id="SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
+
 	</select>
 
-	
+
 	<select id="SEARCHLIST_ID"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
+
 	</select>
 
-	
+
 	<select id="SEARCHLIST_NAME"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
+
 	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_ID"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
+
 	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
+
 	</select>
 
 
-	<select id="TOTAL_ROWS"	resultType="int">
-		
+	<select id="TOTAL_ROWS" resultType="int">
+
 	</select>
 
-	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
+
+	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
+
 	</select>
 
-	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
+
+	<select id="SEARCH_TOTAL_ROWS_NAME" resultType="int">
+
 	</select>
 
-	
-	<select id="LOGIN"	resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
+
+	<select id="LOGIN"
+		resultType="com.project.movieadmin.news.comments.NCommentsVO">
+
 	</select>
 
 
