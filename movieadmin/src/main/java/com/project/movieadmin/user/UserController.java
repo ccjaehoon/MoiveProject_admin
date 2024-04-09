@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import lombok.extern.slf4j.Slf4j;
 
 
+
+
 /**
  * Handles requests for the application home page.
  */
@@ -133,10 +135,31 @@ public class UserController {
 	}
 	@RequestMapping(value = "u_searchList.do", method = RequestMethod.GET)
 	public String u_searchList(@RequestParam(defaultValue = "1") int cpage,
-			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
+			@RequestParam(defaultValue = "10") int pageBlock, Model model, String searchKey, String searchWord) {
+		log.info("u_searchList");
+		log.info("cpage : " + cpage);
+		log.info("pageBlock : " + pageBlock);
 		
 
+		List<UserVO> vos = service.u_searchList(searchKey, searchWord, cpage, pageBlock);
+	
+		model.addAttribute("vos", vos);
 
+		
+		int total_rows = service.u_getSearchTotalRows(searchKey, searchWord);
+		log.info("total_rows:" + total_rows);
+
+		int totalPageCount = 1;
+		if (total_rows / pageBlock == 0) {
+			totalPageCount = 1;
+		} else if (total_rows % pageBlock == 0) {
+			totalPageCount = total_rows / pageBlock;
+		} else {
+			totalPageCount = total_rows / pageBlock + 1;
+		}
+		// 페이지 링크 몇개?
+		model.addAttribute("totalPageCount", totalPageCount);
+		
 		return "user/selectAll";
 	}
 
@@ -145,6 +168,24 @@ public class UserController {
 		
 
 		return "user/login";
+	}
+	@RequestMapping(value = "u_loginOK.do", method = RequestMethod.POST)
+
+	public String u_loginOK(UserVO vo) {
+		log.info("Welcome loginOK.do....");
+
+		log.info("vo : {}", vo);
+
+		UserVO vo2 = service.u_login(vo);
+		log.info("vo2:" + vo2);
+		log.info("================");
+
+		if (vo2 == null) {
+			return "redirect:login.do";
+		} else {
+			session.setAttribute("user_id", vo.getUser_id());
+			return "redirect: home.do";
+		}
 	}
 	@RequestMapping(value = "u_logout.do", method = RequestMethod.GET)
 	public String u_logout() {
