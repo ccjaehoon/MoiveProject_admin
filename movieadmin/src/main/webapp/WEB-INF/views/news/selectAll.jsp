@@ -71,7 +71,7 @@
                 <td>${vo.nickname}</td>
                 <td>${vo.content}</td>
                 <td>${vo.wdate}</td>
-                <td><a href="n_delete.do?num=${vo.news_num}">글삭제</a></td>
+                <td><a href="n_delete.do?news_num=${vo.news_num}">글삭제</a></td>
             </tr>
         	</c:forEach>
             
