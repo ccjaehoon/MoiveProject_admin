@@ -81,8 +81,8 @@
                     <td><textarea name="content" id="content" cols="30" rows="10">${vo2.content}</textarea></td>
                 </tr>
                 <tr>
-                    <td><label for="writer">작성자</label></td>
-                    <td>${vo2.nickname}<input type="hidden" id="nickname" name="nickname" value="admin" placeholder="작성자를 입력하세요"></td>
+                    <td><label for="nickname">작성자</label></td>
+                    <td>${vo2.nickname}<input type="hidden" id="nickname" name="nickname" value="${user_id}" placeholder="작성자를 입력하세요"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글수정 완료"></td>
