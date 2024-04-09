@@ -28,6 +28,7 @@ public class BoardController {
 	@Autowired
 	private ServletContext sContext;
 	
+	@RequestMapping(value = "/b_insert.do", method = RequestMethod.GET)
 	public String b_insert() {
 		log.info("Welcome b_insert.do....");
 		
