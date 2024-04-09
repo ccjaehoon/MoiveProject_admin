@@ -74,7 +74,7 @@
                 </tr>
                 <tr>
                     <td><label for="news_num">글번호</label></td>
-                    <td>${param.num}<input type="hidden" id="news_num" name="news_num" value="${param.num}"></td>
+                    <td>${param.news_num}<input type="hidden" id="news_num" name="news_num" value="${param.news_num}"></td>
                 </tr>
                 <tr>
                     <td><label for="title">제목</label></td>

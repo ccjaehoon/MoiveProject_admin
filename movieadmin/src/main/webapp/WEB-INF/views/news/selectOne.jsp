@@ -66,8 +66,8 @@
             </tr>
         </tbody>
     </table>
-	    <a href="n_update.do?num=${param.num}">글수정</a>
-	    <a href="n_delete.do?num=${param.num}">글삭제</a>
+	    <a href="n_update.do?news_num=${param.news_num}">글수정</a>
+	    <a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
     <hr>
     <h3>댓글작성</h3>
     <form action="c_insertOK.do">
@@ -84,7 +84,7 @@
 	        		<td><input type="text" name="content" value="hello" size="50"></td>
 	        		<td>
 	        			${user_id}<input type="hidden" name="writer" value="${user_id}">
-	        			<input type="hidden" name="bnum" value="${vo2.num}">
+	        			<input type="hidden" name="bnum" value="${vo2.news_num}">
 	        		</td>
 	        		<td><input type="submit"  value="댓글작성"></td>
 	        	</tr>

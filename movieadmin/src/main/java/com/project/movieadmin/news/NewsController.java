@@ -173,7 +173,7 @@ public class NewsController {
 		if (result == 1) {
 			return "redirect:n_selectAll.do";
 		} else {
-			return "redirect:n_delete.do?num=" + vo.getNews_num();
+			return "redirect:n_delete.do?news_num=" + vo.getNews_num();
 		}
 
 	}
@@ -223,9 +223,9 @@ public class NewsController {
 		System.out.println("================");
 
 		if (result == 1) {
-			return "redirect:n_selectOne.do?num=" + vo.getNews_num();
+			return "redirect:n_selectOne.do?news_num=" + vo.getNews_num();
 		} else {
-			return "redirect:n_update.do?num=" + vo.getNews_num();
+			return "redirect:n_update.do?news_num=" + vo.getNews_num();
 		}
 	}
 	

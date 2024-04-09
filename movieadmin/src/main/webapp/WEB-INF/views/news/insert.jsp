@@ -81,7 +81,7 @@
                 </tr>
                 <tr>
                     <td><label for="writer">작성자</label></td>
-                    <td>${nickname}<input type="hidden" id="writer" name="writer" value="nickname"></td>
+                    <td>${user_id}<input type="hidden" id="writer" name="writer" value="nickname"></td>
                 </tr>
                 <tr>
                     <td><label for="file_img">이미지파일</label></td>
