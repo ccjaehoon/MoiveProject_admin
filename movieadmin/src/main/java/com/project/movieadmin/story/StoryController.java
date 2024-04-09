@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.movieadmin.info.review.ReviewVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -25,8 +27,6 @@ public class StoryController {
 	
 	@Autowired
 	private StoryService service;
-	
-	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -140,6 +140,34 @@ public class StoryController {
 //		
 
 		return "story/selectAll";
+	}
+	
+	@RequestMapping(value = "/s_increaseGood.do", method = RequestMethod.GET)
+	public String rv_increaseGood(StoryVO vo) {
+		
+	
+		return "story_increaseGood";
+	}
+	
+	@RequestMapping(value = "/s_increaseGoodOK.do", method = RequestMethod.GET)
+	public String rv_increaseGoodOK(StoryVO vo) {
+		
+	
+		return "story_increaseGoodOK";
+	}
+	
+	@RequestMapping(value = "/s_increaseReport.do", method = RequestMethod.GET)
+	public String rv_increaseReport(StoryVO vo) {
+		
+	
+		return "story_increaseReport";
+	}
+	
+	@RequestMapping(value = "/s_increaseReportOK.do", method = RequestMethod.GET)
+	public String rv_increaseReportOK(ReviewVO vo) {
+		
+	
+		return "story_increaseReportOK";
 	}
 	
 	
