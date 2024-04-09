@@ -5,7 +5,7 @@
 
 <mapper namespace="com.project.movieadmin.story.comments">
 	<insert id="INSERT" parameterType="com.project.movieadmin.story.comments.SCommentsVO">
-		
+
 	</insert>
 
 	<update id="UPDATE">
