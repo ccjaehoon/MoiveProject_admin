@@ -11,18 +11,13 @@ public class ReportServiceimpl implements ReportService {
 	private ReportDAO dao;
 	
 	@Override
-	public List<ReportVO> rp_selectAll(int cpage, int pageBlock) {
-		return dao.rp_selectAll(cpage, pageBlock);
+	public List<ReportVO> rp_selectAll() {
+		return dao.rp_selectAll();
 	}
 
 	@Override
 	public ReportVO rp_selectOne(ReportVO vo) {
 		return dao.rp_selectOne(vo);
-	}
-
-	@Override
-	public List<ReportVO> rp_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
-		return dao.rp_searchList(searchKey, searchWord, cpage, pageBlock);
 	}
 
 	@Override
@@ -36,7 +31,7 @@ public class ReportServiceimpl implements ReportService {
 	}
 
 	@Override
-	public List<ReportVO> rp_update(ReportVO vo) {
+	public int rp_update(ReportVO vo) {
 		return dao.rp_update(vo);
 	}
 
