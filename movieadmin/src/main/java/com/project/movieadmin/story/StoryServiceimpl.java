@@ -58,9 +58,10 @@ public class StoryServiceimpl implements StoryService {
 	}
 
 	@Override
-	public Date s_getLiveStories(StoryVO vo) {
-		
-		return dao.s_getLiveStories(vo);
+	public List<StoryVO> s_getLiveStories() {
+		// 구현 로직
+	    // 반환 타입이 List<StoryVO>인 객체를 반환
+		 return dao.s_getLiveStories();
 	}
 
 	@Override

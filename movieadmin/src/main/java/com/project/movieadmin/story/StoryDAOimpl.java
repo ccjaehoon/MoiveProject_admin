@@ -1,7 +1,5 @@
 package com.project.movieadmin.story;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,12 +78,12 @@ public class StoryDAOimpl implements StoryDAO {
 	}
 
 	@Override
-	public Date s_getLiveStories(StoryVO vo) {
-		System.out.println("getLiveStories....");
-		
-		
-		return new Date();
+	public List<StoryVO> s_getLiveStories() {
+	    log.info("getLiveStories...."); // 데이터베이스에서 만료되지 않은 스토리를 조회하는 쿼리 실행
+	    
+	    return sqlSession.selectList("S_GETLIVESTORIES");
 	}
+	
 
 	@Override
 	public int s_removeExpired() {
@@ -101,7 +99,7 @@ public class StoryDAOimpl implements StoryDAO {
 	    vo.setGood(currentGoodCount + 1);
 
 	    // 데이터베이스에 업데이트
-	    return sqlSession.update("UPDATE_GOOD_COUNT", vo);
+	    return sqlSession.update("S_UPDATE_GOOD_COUNT", vo);
 	}
 
 	@Override
@@ -111,7 +109,7 @@ public class StoryDAOimpl implements StoryDAO {
 	    vo.setReport(currentReportCount + 1);
 
 	    // 데이터베이스에 업데이트
-	    return sqlSession.update("UPDATE_REPORT_COUNT", vo);
+	    return sqlSession.update("S_UPDATE_REPORT_COUNT", vo);
 	}
 
 	

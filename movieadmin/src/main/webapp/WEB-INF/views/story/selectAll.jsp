@@ -53,7 +53,7 @@
         <thead>
             <tr>
                 <th>번호</th>
-                <th>제목</th>
+                <th>한줄평</th>
                 <th>작성자</th>
                 <th>작성일자</th>
                 <th></th>
