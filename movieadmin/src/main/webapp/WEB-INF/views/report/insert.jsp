@@ -82,7 +82,7 @@
                 </tr>
                 <tr>
                     <td><label for="nickname">작성자</label></td>
-                    <td><input type="hidden" id="nickname" name="nickname" value="admin"></td>
+                    <td><input type="hidden" id="nickname" name="nickname" value="${user_id}"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글쓰기 완료"></td>
