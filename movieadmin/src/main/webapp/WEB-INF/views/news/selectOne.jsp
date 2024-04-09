@@ -70,11 +70,11 @@
 	    <a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
     <hr>
     <h3>댓글작성</h3>
-    <form action="c_insertOK.do">
+    <form action="nc_insertOK.do">
 	    <table id="customers">
 	        <thead>
 	            <tr>
-	                <th>댓글 내용 ${param.msg}</th>
+	                <th>댓글 내용${param.msg}</th>
 	                <th>댓글 작성자</th>
 	                <th></th>
 	            </tr>
@@ -84,7 +84,7 @@
 	        		<td><input type="text" name="content" value="hello" size="50"></td>
 	        		<td>
 	        			${user_id}<input type="hidden" name="writer" value="${user_id}">
-	        			<input type="hidden" name="bnum" value="${vo2.news_num}">
+	        			<input type="hidden" name="news_num" value="${vo2.news_num}">
 	        		</td>
 	        		<td><input type="submit"  value="댓글작성"></td>
 	        	</tr>
@@ -107,23 +107,23 @@
         <tbody>
         	<c:forEach var="cvo" items="${cvos}">
         	<tr>
-                <td>${cvo.num}</td>
+                <td>${cvo.news_comments_num}</td>
                 <td>
                 	${cvo.content}
-                	<c:if test="${user_id == cvo.writer }">
+                	<c:if test="${user_id == cvo.nickname }">
 	                	<form action="c_updateOK.do">
 							 <input type="text" name="content" value="${cvo.content}" >
-							 <input type="hidden" name="num" value="${cvo.num}">               	
-							 <input type="hidden" name="bnum" value="${cvo.bnum}">
+							 <input type="hidden" name="news_comments_num" value="${cvo.news_comments_num}">               	
+							 <input type="hidden" name="news_num" value="${cvo.news_num}">
 							 <input type="submit"  value="댓글수정">               	
 	                	</form>
                 	</c:if>
                 </td>
-                <td>${cvo.writer}</td>
+                <td>${cvo.nickname}</td>
                 <td>${cvo.wdate}</td>
                 <td>
-                	<c:if test="${user_id == cvo.writer }">
-                		<a href="c_deleteOK.do?num=${cvo.num}&bnum=${cvo.bnum}">댓글삭제</a>
+                	<c:if test="${user_id == cvo.nickname }">
+                		<a href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.enws_num}">댓글삭제</a>
                 	</c:if>
                 </td>
             </tr>
