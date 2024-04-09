@@ -21,9 +21,9 @@
 	</delete>
 
 	<select id="S_SELECT_RANDOMLIST" resultType="com.project.movieadmin.story.StoryVO">
-		SELECT story_num, nickname, content
+		SELECT * <!-- story_num, nickname, content -->
 		FROM story
-		ORDER BY RAND();
+		ORDER BY RAND(); LIMIT 1
 	</select>
 
 	<select id="S_SELECT_ALL" resultType="com.project.movieadmin.story.StoryVO">
@@ -32,14 +32,11 @@
 
 	<select id="S_SELECT_ALL_PAGE_BLOCK" resultType="com.project.movieadmin.story.StoryVO">
 		<!-- SELECT * FROM story -->
-	    SELECT story_num, nickname, content
-	    FROM story
-	    ORDER BY story_num DESC
-	    LIMIT #{startRow}, #{rowCount}
+	    SELECT * FROM story ORDER BY story_num DESC LIMIT #{startRow}, #{pageBlock}
 	</select>
 	
 	<select id="S_GETLIVESTORIES" resultType="com.project.movieadmin.story.StoryVO">
-		 SELECT
+		 SELECT *
 		 FROM story
 		 WHERE expire_date > CURDATE()
 	</select>
