@@ -54,7 +54,7 @@ public class UserController {
 		int result = service.u_insert(vo);
 	
 		if (result == 1) {
-			return "redirect: home.do";// 메인 홈페이지 로 가는
+			return "redirect:home.do";// 메인 홈페이지 로 가는
 		} else {
 			return "redirect:u_insert.do";
 		}
