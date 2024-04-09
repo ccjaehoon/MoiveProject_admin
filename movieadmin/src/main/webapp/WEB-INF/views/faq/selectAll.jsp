@@ -93,7 +93,7 @@ div {
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="2"><c:forEach var="i" begin="1"
+					<td colspan="3" align="center"><c:forEach var="i" begin="1"
 							end="${totalPageCount}">
 							<c:if test="${param.searchKey == null }">
 								<a href="f_selectAll.do?cpage=${i}">${i} &nbsp;</a>
