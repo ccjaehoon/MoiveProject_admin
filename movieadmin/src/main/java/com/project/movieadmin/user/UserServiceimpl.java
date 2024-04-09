@@ -40,11 +40,7 @@ public class UserServiceimpl implements UserService {
 		return dao.u_selectOne(vo);
 	}
 
-	@Override
-	public UserVO u_login(UserVO vo) {
-		
-		return dao.u_login(vo);
-	}
+
 
 	@Override
 	public List<UserVO> u_selectAll(int cpage, int pageBlock) {
@@ -68,6 +64,11 @@ public class UserServiceimpl implements UserService {
 	public int u_getSearchTotalRows(String searchKey, String searchWord) {
 		
 		return dao.u_getSearchTotalRows(searchKey, searchWord);
+	}
+	@Override
+	public UserVO u_login(UserVO vo) {
+		
+		return dao.u_login(vo);
 	}
 
 	@Override

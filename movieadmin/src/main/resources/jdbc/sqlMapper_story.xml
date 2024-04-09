@@ -24,9 +24,9 @@
 	
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK"
+	<select id="S_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.story.StoryVO">
-		
+		select * from story
 	</select>
 
 	

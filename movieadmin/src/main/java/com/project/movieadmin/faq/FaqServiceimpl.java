@@ -45,8 +45,7 @@ public class FaqServiceimpl implements FaqService {
 
 	@Override
 	public List<FaqVO> f_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.f_searchList(searchKey, searchWord, cpage, pageBlock);
 	}
 
 	@Override

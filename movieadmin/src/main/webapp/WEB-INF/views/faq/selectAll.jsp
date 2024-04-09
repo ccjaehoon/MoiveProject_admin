@@ -70,22 +70,23 @@ div {
 			<select name="searchKey">
 				<option value="title">title</option>
 				<option value="content">content</option>
-			</select> <input type="text" name="searchWord" value="ja"> <input
+			</select> <input type="text" name="searchWord" value="검색어"> <input
 				type="submit" value="search">
 		</form>
 		<table id="Table">
 			<thead>
 				<tr>
 					<th>번호</th>
-					<th>내용</th>
+					<th>제목</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="vo" items="${vos}">
 					<tr>
 						<td width=200px><a href="f_selectOne.do?faq_num=${vo.faq_num}">${vo.faq_num}</a></td>
-						<td>${vo.content}</td>
-						
+						<td>${vo.title}</td>
+						<td><a href="f_delete.do?faq_num=${vo.faq_num}">글삭제</a></td>
 					</tr>
 				</c:forEach>
 

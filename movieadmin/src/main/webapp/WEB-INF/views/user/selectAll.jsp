@@ -42,8 +42,8 @@
     <hr>
     <form action="u_searchList.do">
     	<select name="searchKey">
-    		<option value="id">user_id</option>
-    		<option value="name">nickname</option>
+    		<option value="user_id">아이디</option>
+    		<option value="nickname">닉네임</option>
     	</select>
     	<input type="text" name="searchWord" value="ad">
     	<input type="submit" value="search">
