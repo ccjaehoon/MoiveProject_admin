@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>뉴스 수정 페이지</title>
     <style>
         input[type=text],
         textarea,
@@ -73,7 +73,7 @@
                     <td>입력</td>
                 </tr>
                 <tr>
-                    <td><label for="news_num">글번호</label></td>
+                    <td><label for="news_num">뉴스번호</label></td>
                     <td>${param.news_num}<input type="hidden" id="news_num" name="news_num" value="${param.news_num}"></td>
                 </tr>
                 <tr>
