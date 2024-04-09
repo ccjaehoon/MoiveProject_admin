@@ -38,22 +38,13 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-    <h1>글목록</h1>
+    <h1>신고목록</h1>
     <hr>
-    <form action="b_searchList.do">
-    	<select name="searchKey">
-    		<option value="title">title</option>
-    		<option value="content">content</option>
-    	</select>
-    	<input type="text" name="searchWord" value="ja">
-    	<input type="submit" value="search">
-    	
-    </form>
+    <a href="rp_insert.do">신고내용작성</a>
     <table id="customers">
         <thead>
             <tr>
                 <th>번호</th>
-                <th>제목</th>
                 <th>작성자</th>
                 <th>작성일자</th>
                 <th></th>
@@ -62,29 +53,13 @@
         <tbody>
         	<c:forEach var="vo" items="${vos}">
             <tr>
-                <td><a href="b_selectOne.do?num=${vo.num}">${vo.num}</a></td>
-                <td>${vo.title}</td>
-                <td>${vo.writer}</td>
+                <td><a href="rp_selectOne.do?report_num=${vo.report_num}">${vo.report_num}</a></td>
+                <td>${vo.nickname}</td>
                 <td>${vo.wdate}</td>
-                <td><a href="b_delete.do?num=${vo.num}">글삭제</a></td>
+                <td><a href="rp_delete.do?report_num=${vo.report_num}">글삭제</a></td>
             </tr>
         	</c:forEach>
-            
         </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="5">
-                	<c:forEach var="i" begin="1" end="${totalPageCount}">
-	                	<c:if test="${param.searchKey == null }">
-		                	<a href="b_selectAll.do?cpage=${i}">${i} &nbsp;</a>
-                		</c:if>
-                		<c:if test="${param.searchKey != null }">
-		                	<a href="b_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
-                		</c:if>
-                	</c:forEach>
-                </td>
-            </tr>
-        </tfoot>
     </table>
 </body>
 </html>

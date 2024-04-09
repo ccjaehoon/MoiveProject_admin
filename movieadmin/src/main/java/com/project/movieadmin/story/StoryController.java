@@ -32,55 +32,55 @@ public class StoryController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 
-	@RequestMapping(value = "/story_insert.do", method = RequestMethod.GET)
-	public String story_insert() {
+	@RequestMapping(value = "/s_insert.do", method = RequestMethod.GET)
+	public String s_insert() {
 		log.info("Welcome story_insert...");
 
 		return "story/insert";
 	}
 	
-	@RequestMapping(value = "/story_insertOK.do", method = RequestMethod.GET)
-	public String story_insertOK(StoryVO vo) {
+	@RequestMapping(value = "/s_insertOK.do", method = RequestMethod.GET)
+	public String s_insertOK(StoryVO vo) {
 		log.info("Welcome story_insertOK...");
 		log.info("vo:{}", vo);
 		
-		int result = service.s_insert(vo); //service daoimp
+		int result = service.s_insert(vo);
 		log.info("result:{}", result);
 		if (result == 1) {
-			return "redirect:story_selectAll.do";
+			return "redirect:s_selectAll.do";
 		} else {
-			return "redirect:story_insert.do";
+			return "redirect:s_insert.do";
 		}
 	}
 	
-	@RequestMapping(value = "/story_update.do", method = RequestMethod.GET)
-	public String story_update() {
+	@RequestMapping(value = "/s_update.do", method = RequestMethod.GET)
+	public String s_update() {
 		log.info("Welcome story_update...");
 
 		return "story/update";
 	}
-	@RequestMapping(value = "/story_updateOK.do", method = RequestMethod.GET)
-	public String story_updateOK(StoryVO vo) {
+	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.GET)
+	public String s_updateOK(StoryVO vo) {
 		log.info("Welcome story_updateOK...");
 
 		return "story/updateOK";
 	}
-	@RequestMapping(value = "/story_delete.do", method = RequestMethod.GET)
-	public String story_delete() {
+	@RequestMapping(value = "/s_delete.do", method = RequestMethod.GET)
+	public String s_delete() {
 		log.info("Welcome story_delete...");
 
 		return "story/delete";
 	}
-	@RequestMapping(value = "/story_deleteOK.do", method = RequestMethod.GET)
-	public String story_deleteOK(StoryVO vo) {
+	@RequestMapping(value = "/s_deleteOK.do", method = RequestMethod.GET)
+	public String s_deleteOK(StoryVO vo) {
 		log.info("Welcome story_deleteOK...");
 
 		return "story/deleteOK";
 	}
 	
-	@RequestMapping(value = "/story_selectRandomList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/s_selectRandomList.do", method = RequestMethod.GET)
 	public String story_selectRandomList(StoryVO vo, Model model) {
-		log.info("Welcome story_selectRandomList...");
+		log.info("Welcome s_selectRandomList...");
 
 		return "story/selectRandomList";
 	}

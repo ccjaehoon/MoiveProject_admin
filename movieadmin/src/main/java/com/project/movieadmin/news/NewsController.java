@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.movieadmin.news.comments.NCommentsService;
+import com.project.movieadmin.news.comments.NCommentsVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -25,16 +28,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class NewsController {
-	
+
 	@Autowired
 	private NewsService service;
 	
+	@Autowired
+	private NCommentsService comService;
+
 	@Autowired
 	private HttpSession session;
 
 	@Autowired
 	private ServletContext sContext;
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -68,9 +74,10 @@ public class NewsController {
 		}
 		// 페이지 링크 몇개?
 		model.addAttribute("totalPageCount", totalPageCount);
-		
+
 		return "news/selectAll";
 	}
+
 	@RequestMapping(value = "/n_selectOne.do", method = RequestMethod.GET)
 	public String n_selectOne(NewsVO vo, Model model) {
 		log.info("n_selectOne.do");
@@ -79,13 +86,22 @@ public class NewsController {
 		log.info("================");
 
 		model.addAttribute("vo2", vo2);
+
+		// 댓글목록 처리로직
+		NCommentsVO cvo = new NCommentsVO();
+		cvo.setNews_num(vo.getNews_num());
+		List<NCommentsVO> cvos = comService.nc_selectAll(cvo);
+
+		model.addAttribute("cvos", cvos);
+
 		return "news/selectOne";
 	}
+
 	@RequestMapping(value = "/n_searchList.do", method = RequestMethod.GET)
 	public String n_searchList(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
 		log.info("n_searchList.do");
-		List<NewsVO> vos = service.n_searchList(searchKey, searchWord,cpage,pageBlock);
+		List<NewsVO> vos = service.n_searchList(searchKey, searchWord, cpage, pageBlock);
 		for (NewsVO x : vos) {
 			log.info(x.toString());
 		}
@@ -109,14 +125,16 @@ public class NewsController {
 		model.addAttribute("totalPageCount", totalPageCount);
 		return "news/selectAll";
 	}
+
 	@RequestMapping(value = "/n_insert.do", method = RequestMethod.GET)
 	public String n_insert() {
 		log.info("n_insert.do");
 
 		return "news/insert";
 	}
+
 	@RequestMapping(value = "/n_insertOK.do", method = RequestMethod.POST)
-	public String n_insertOK(NewsVO vo) throws IllegalStateException, IOException{
+	public String n_insertOK(NewsVO vo) throws IllegalStateException, IOException {
 		log.info("Welcome n_insert...");
 		log.info(vo.toString());
 
@@ -126,7 +144,7 @@ public class NewsController {
 		String originName = vo.getFile_img().getOriginalFilename();
 
 		log.info("getOriginalFilename:{}", originName);
-		
+
 		if (originName.length() == 0) {
 			vo.setSave_img("default.png");// 이미지선택없이 처리할때
 		} else {
@@ -148,7 +166,7 @@ public class NewsController {
 			ImageIO.write(thumb_buffer_img, save_img.substring(save_img.lastIndexOf(".") + 1), thumb_file);
 
 		}
-		
+
 		int result = service.n_insert(vo);
 		if (result == 1) {
 			return "redirect:n_selectAll.do";
@@ -156,12 +174,14 @@ public class NewsController {
 			return "redirect:n_insert.do";
 		}
 	}
+
 	@RequestMapping(value = "/n_delete.do", method = RequestMethod.GET)
 	public String n_delete() {
 		log.info("n_delete.do");
 
 		return "news/delete";
 	}
+
 	@RequestMapping(value = "/n_deleteOK.do", method = RequestMethod.POST)
 	public String n_deleteOK(NewsVO vo) {
 		log.info("Welcome n_deleteOK...");
@@ -177,25 +197,27 @@ public class NewsController {
 		}
 
 	}
+
 	@RequestMapping(value = "/n_update.do", method = RequestMethod.GET)
 	public String n_update() {
 		log.info("n_update.do");
 
 		return "news/update";
 	}
+
 	@RequestMapping(value = "/n_updateOK.do", method = RequestMethod.POST)
-	public String n_updateOK(NewsVO vo, Model model) throws IllegalStateException, IOException  {
+	public String n_updateOK(NewsVO vo, Model model) throws IllegalStateException, IOException {
 		log.info("Welcome n_updateOK.do....");
 
 		log.info("" + vo);
-		
+
 		String realPath = sContext.getRealPath("resources/uploadimg");
 		log.info(realPath);
 
 		String originName = vo.getFile_img().getOriginalFilename();
 
 		log.info("getOriginalFilename:{}", originName);
-		
+
 		if (originName.length() == 0) {
 			vo.setSave_img("default.png");// 이미지선택없이 처리할때
 		} else {
@@ -228,5 +250,5 @@ public class NewsController {
 			return "redirect:n_update.do?news_num=" + vo.getNews_num();
 		}
 	}
-	
+
 }

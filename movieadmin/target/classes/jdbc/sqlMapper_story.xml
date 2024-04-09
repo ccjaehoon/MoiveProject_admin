@@ -4,29 +4,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.story">
-	<insert id="INSERT" parameterType="com.project.movieadmin.story.StoryVO">
-		
+	<insert id="S_INSERT" parameterType="com.project.movieadmin.story.StoryVO">
+		INSERT INTO story (story_num, nickname, content, save_img, save_video, good, report, duration)
+		VALUES (seq_story.nextval, #{nickname}, #{content}, #{save_img}, #{save_video}, 0, 0, #{duration});
 	</insert>
 
-	<update id="UPDATE">
-		
+	<update id="S_UPDATE" parameterType="com.project.movieadmin.story.StoryVO">
+		UPDATE story
+    	SET content = #{content}
+    	WHERE story_num = #{story_num};
 	</update>
 
-	<delete id="DELETE">
-	
+	<delete id="S_DELETE" parameterType="com.project.movieadmin.story.StoryVO">
+		DELETE FROM story
+    	WHERE story_num = #{story_num};
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.project.movieadmin.story.StoryVO">
+	<select id="S_SELECT_RANDOMLIST" resultType="com.project.movieadmin.story.StoryVO">
 		
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.project.movieadmin.story.StoryVO">
-	
+	<select id="S_SELECT_ALL" resultType="com.project.movieadmin.story.StoryVO">
+		SELECT * FROM story ORDER BY story_num DESC
 	</select>
 
-	<select id="S_SELECT_ALL_PAGE_BLOCK"
-		resultType="com.project.movieadmin.story.StoryVO">
-		select * from story
+	<select id="S_SELECT_ALL_PAGE_BLOCK" resultType="com.project.movieadmin.story.StoryVO">
+		SELECT * FROM story
 	</select>
 
 	

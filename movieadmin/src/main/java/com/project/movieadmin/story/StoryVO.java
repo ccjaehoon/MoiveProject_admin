@@ -16,10 +16,10 @@ public class StoryVO {
     private MultipartFile file_img; // List of uploaded image files
     private MultipartFile file_video; // List of uploaded video files
     private Date wdate;
-    private int good;
-    private int views;
+    private int good; //추천수
+    private int views; //게시글 조회된 수
     private Date duration; // 스토리가 표시되는 시간
-    private int report;
+    private int report; //신고 수
 
    
 	

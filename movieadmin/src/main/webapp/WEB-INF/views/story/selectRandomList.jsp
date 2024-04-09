@@ -65,8 +65,8 @@
         </tbody>
     </table>
     <c:if test="${user_id == vo2.writer }">
-	    <a href="b_update.do?num=${vo2.num}">글수정</a>
-	    <a href="b_delete.do?num=${vo2.num}">글삭제</a>
+	    <a href="s_update.do?num=${vo2.num}">글수정</a>
+	    <a href="s_delete.do?num=${vo2.num}">글삭제</a>
     </c:if>
     <hr>
     <h3>댓글작성</h3>
