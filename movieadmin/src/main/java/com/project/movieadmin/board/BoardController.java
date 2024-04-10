@@ -89,7 +89,7 @@ public class BoardController {
 		if (result == 1) {
 			return "redirect:b_selectAll.do";
 		} else {
-			return "redirect:b_insert.do";
+			return "redirect:b_update.do";
 		}
 	}
 	
