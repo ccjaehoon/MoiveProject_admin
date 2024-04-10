@@ -15,6 +15,7 @@ public class InfoDAOimpl implements InfoDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
+<<<<<<< HEAD
 	
 	public InfoDAOimpl() {
 		log.info("InfoDAOimpl()....");
@@ -77,6 +78,25 @@ public class InfoDAOimpl implements InfoDAO {
 		}
 
 		return vos;
+=======
+
+	@Override
+	public InfoDAO i_selectOne(InfoVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<InfoDAO> i_selectAll(int cpage, int pageBlock) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<InfoDAO> i_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
+		// TODO Auto-generated method stub
+		return null;
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 	}
 
 	@Override

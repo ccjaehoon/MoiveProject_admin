@@ -2,8 +2,6 @@ package com.project.movieadmin.announcement;
 
 import java.util.List;
 
-
-
 public interface AnnouncementService {
 	
 	public int a_insert(AnnouncementVO vo);
@@ -21,5 +19,7 @@ public interface AnnouncementService {
 	public int a_getTotalRows();
 
 	public int a_getSearchTotalRows(String searchKey, String searchWord);
+
+	
 
 }

@@ -3,7 +3,9 @@ package com.project.movieadmin.news;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class NewsServiceimpl implements NewsService {
 	
 	@Autowired
@@ -35,7 +37,7 @@ public class NewsServiceimpl implements NewsService {
 	}
 
 	@Override
-	public List<NewsVO> n_update(NewsVO vo) {
+	public int n_update(NewsVO vo) {
 		return dao.n_update(vo);
 	}
 

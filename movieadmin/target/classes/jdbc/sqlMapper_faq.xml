@@ -3,73 +3,90 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.project.moiveadmin.faq">
-	<insert id="INSERT" parameterType="com.projcet.moiveadmin.faq.FaqVO">
-		
+<mapper namespace="com.project.movieadmin.faq">
+	<insert id="F_INSERT"
+		parameterType="com.project.movieadmin.faq.FaqVO">
+		insert into
+		faq(title,nickname,content)
+		values(#{title},'admin',#{content})
 	</insert>
 
-	<update id="UPDATE">
-		
+	<update id="F_UPDATE"
+		parameterType="com.project.movieadmin.faq.FaqVO">
+		update faq set title=#{title},content=#{content}
+		where faq_num=#{faq_num}
 	</update>
 
-	<delete id="DELETE">
-	
+	<delete id="F_DELETE"
+		parameterType="com.project.movieadmin.faq.FaqVO">
+		delete from faq where faq_num=#{faq_num}
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.projcet.moiveadmin.faq.FaqVO">
-		
+	<select id="F_SELECT_ONE"
+		resultType="com.project.movieadmin.faq.FaqVO">
+		select * from faq where
+		faq_num=#{faq_num}
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.projcet.moiveadmin.faq.FaqVO">
-	
+	<select id="F_SELECT_ALL"
+		resultType="com.project.movieadmin.faq.FaqVO">
+		select * from faq order by num desc
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK"
-		resultType="com.projcet.moiveadmin.faq.FaqVO">
-		
-	</select>
-
-	
-	<select id="SEARCHLIST_ID"
-		resultType="com.projcet.moiveadmin.faq.FaqVO">
-		
-	</select>
-
-	
-	<select id="SEARCHLIST_NAME"
-		resultType="com.projcet.moiveadmin.faq.FaqVO">
-		
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
-		resultType="com.projcet.moiveadmin.faq.FaqVO">
-		
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
-		resultType="com.projcet.moiveadmin.faq.FaqVO">
-		
+	<select id="F_SELECT_ALL_PAGE_BLOCK"
+		resultType="com.project.movieadmin.faq.FaqVO">
+		select * from faq order by faq_num desc limit ${startRow},
+		${pageBlock}
 	</select>
 
 
-	<select id="TOTAL_ROWS"	resultType="int">
-		
+	<select id="F_SEARCHLIST_TITLE"
+		resultType="com.project.movieadmin.faq.FaqVO">
+		select * from faq where title like #{searchWord} order by
+		faq_num desc
 	</select>
 
-	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
+
+	<select id="F_SEARCHLIST_CONTENT"
+		resultType="com.project.movieadmin.faq.FaqVO">
+		select * from faq where content like #{searchWord} order by
+		faq_num desc
 	</select>
 
-	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
+	<select id="F_SEARCHLIST_PAGE_BLOCK_TITLE"
+		resultType="com.project.movieadmin.faq.FaqVO">
+		select * from faq
+		where title like #{searchWord} 
+		order by faq_num desc limit #{startRow},#{pageBlock}
 	</select>
 
-	
-	<select id="LOGIN"	resultType="com.projcet.moiveadmin.faq.FaqVO">
-		
+	<select id="F_SEARCHLIST_PAGE_BLOCK_CONTENT"
+		resultType="com.project.movieadmin.faq.FaqVO">
+		select * from faq
+		where content like #{searchWord} 
+		order by faq_num desc limit #{startRow},#{pageBlock}
 	</select>
+
+
+	<select id="F_TOTAL_ROWS" resultType="int">
+		select count(*) total_rows
+		from faq
+	</select>
+
+
+	<select id="F_SEARCH_TOTAL_ROWS_TITLE" resultType="int">
+		select count(*)
+		total_rows from faq where title like #{searchWord}
+	</select>
+
+
+	<select id="F_SEARCH_TOTAL_ROWS_CONTENT" resultType="int">
+		select count(*)
+		total_rows from faq where content like #{searchWord}
+	</select>
+
+
+
 
 
 </mapper>

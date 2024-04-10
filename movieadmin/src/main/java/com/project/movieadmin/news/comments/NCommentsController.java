@@ -1,82 +1,66 @@
 package com.project.movieadmin.news.comments;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.project.movieadmin.faq.FaqVO;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Handles requests for the application home page.
  */
+@Slf4j
 @Controller
 public class NCommentsController {
+	
+	@Autowired
+	private NCommentsService service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(NCommentsController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
-	@RequestMapping(value = "/nc_insert.do", method = RequestMethod.GET)
-	public String nc_insert(FaqVO vo) {
-		logger.info("Welcome nc_insert!");
 
-		return "NComments/insert";
-	}
 	@RequestMapping(value = "/nc_insertOK.do", method = RequestMethod.GET)
-	public String nc_insertOK(FaqVO vo) {
-		logger.info("Welcome nc_insertOK!");
+	public String nc_insertOK(NCommentsVO vo) {
+		log.info("Welcome nc_insertOK...");
+		log.info("vo:{}",vo);
 
-		return "NComments/insertOK";
+		int result = service.nc_insert(vo);
+		log.info("result:{}",result);
+
+		return "redirect:n_selectOne.do?news_num="+vo.getNews_num();
 	}
 	@RequestMapping(value = "/nc_selectAll.do", method = RequestMethod.GET)
-	public String nc_selectAll(FaqVO vo) {
+	public String nc_selectAll(NCommentsVO vo) {
 		logger.info("Welcome nc_selectAll!");
 
 		return "NComments/selectAll";
 	}
-	@RequestMapping(value = "/nc_update.do", method = RequestMethod.GET)
-	public String nc_update(FaqVO vo) {
-		logger.info("Welcome nc_update!");
 
-		return "NComments/update";
-	}
 	@RequestMapping(value = "/nc_updateOK.do", method = RequestMethod.GET)
-	public String nc_updateOK(FaqVO vo) {
-		logger.info("Welcome nc_updateOK!");
-
-		return "NComments/updateOK";
+	public String nc_updateOK(NCommentsVO vo) {
+		log.info("Welcome nc_updateOK...");
+		log.info("vo:{}",vo);
+		
+		int result = service.nc_update(vo);
+		log.info("result:{}",result);
+		
+		return "redirect:n_selectOne.do?news_num="+vo.getNews_num();
 	}
-	@RequestMapping(value = "/nc_delete.do", method = RequestMethod.GET)
-	public String nc_delete(FaqVO vo) {
-		logger.info("Welcome nc_delete!");
 
-		return "NComments/delete";
-	}
 	@RequestMapping(value = "/nc_deleteOK.do", method = RequestMethod.GET)
-	public String nc_deleteOK(FaqVO vo) {
-		logger.info("Welcome nc_deleteOK!");
-
-		return "NComments/deleteOK";
+	public String nc_deleteOK(NCommentsVO vo) {
+		log.info("Welcome nc_deleteOK...");
+		log.info("vo:{}",vo);
+		
+		int result = service.nc_delete(vo);
+		log.info("result:{}",result);
+		
+		return "redirect:n_selectOne.do?news_num="+vo.getNews_num();
 	}
 }

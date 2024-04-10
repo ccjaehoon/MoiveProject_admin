@@ -2,6 +2,7 @@ package com.project.movieadmin.news;
 
 import java.util.List;
 
+
 public interface NewsService {
 
 	public List<NewsVO> n_selectAll(int cpage, int pageBlock);
@@ -14,7 +15,7 @@ public interface NewsService {
 
 	public int n_delete(NewsVO vo);
 
-	public List<NewsVO> n_update(NewsVO vo);
+	public int n_update(NewsVO vo);
 	
 	public int n_getTotalRows();
 	public int n_getSearchTotalRows(String searchKey, String searchWord);

@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.project.movie">
+	<logger name="com.project.movieadmin">
 		<level value="info" />
 	</logger>
 	

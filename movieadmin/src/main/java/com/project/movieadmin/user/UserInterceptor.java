@@ -28,13 +28,13 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 		log.info("sPath:{}",sPath);
 		log.info("user_id:{}",session.getAttribute("user_id"));
 		
-		if(sPath.equals("/m_selectAll.do") 
-				|| sPath.equals("/m_update.do")
-				|| sPath.equals("/m_updateOK.do")
-				|| sPath.equals("/m_delete.do")
-				|| sPath.equals("/m_deleteOK.do")
-				|| sPath.equals("/m_selectOne.do")
-				|| sPath.equals("/m_searchList.do")) {
+		if(sPath.equals("/home.do") 
+				|| sPath.equals("")
+				|| sPath.equals("")
+				|| sPath.equals("")
+				|| sPath.equals("")
+				|| sPath.equals(""))
+				 {
 			
 			if(session.getAttribute("user_id")==null) {
 				response.sendRedirect("login.do");

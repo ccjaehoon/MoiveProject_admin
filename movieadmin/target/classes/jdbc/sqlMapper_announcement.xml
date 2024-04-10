@@ -3,73 +3,74 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.project.moiveadmin.announcement">
-	<insert id="INSERT" parameterType="com.projcet.moiveadmin.announcement.AnnouncementVO">
-		
+<mapper namespace="com.project.movieadmin.announcement">
+	<insert id="A_INSERT"
+		parameterType="com.project.movieadmin.announcement.AnnouncementVO">
+		insert into
+		announcement(title,nickname,content,save_img)
+		values(#{title},'관리자',#{content},#{save_img})
 	</insert>
 
-	<update id="UPDATE">
-		
+	<update id="A_UPDATE"
+		parameterType="com.project.movieadmin.announcement.AnnouncementVO">
+		update announcement set
+		title=#{title},content=#{content},save_img=#{save_img}
+		where announcement_num=#{announcement_num}
 	</update>
 
-	<delete id="DELETE">
-	
+	<delete id="A_DELETE"
+		parameterType="com.project.movieadmin.announcement.AnnouncementVO">
+		delete from announcement where announcement_num= #{announcement_num}
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.projcet.moiveadmin.announcement.AnnouncementVO">
-		
-	</select>
-
-	<select id="SELECT_ALL" resultType="com.projcet.moiveadmin.announcement.AnnouncementVO">
-	
-	</select>
-
-	<select id="SELECT_ALL_PAGE_BLOCK"
-		resultType="com.projcet.moiveadmin.announcement.AnnouncementVO">
-		
-	</select>
-
-	
-	<select id="SEARCHLIST_ID"
-		resultType="com.projcet.moiveadmin.announcement.AnnouncementVO">
-		
-	</select>
-
-	
-	<select id="SEARCHLIST_NAME"
-		resultType="com.projcet.moiveadmin.announcement.AnnouncementVO">
-		
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
-		resultType="com.projcet.moiveadmin.announcement.AnnouncementVO">
-		
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
-		resultType="com.projcet.moiveadmin.announcement.AnnouncementVO">
-		
+	<select id="A_SELECT_ONE"
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
+		select * from announcement where
+		announcement_num= #{announcement_num}
 	</select>
 
 
-	<select id="TOTAL_ROWS"	resultType="int">
-		
+	<select id="A_SELECT_ALL_PAGE_BLOCK"
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
+		select * from announcement order by announcement_num desc
+		limit ${startRow},
+		${pageBlock}
 	</select>
 
-	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
+
+	<select id="A_SEARCHLIST_PAGE_BLOCK_TITLE"
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
+		select * from announcement
+		where title like #{searchWord}
+		order by announcement_num desc limit #{startRow},#{pageBlock}
 	</select>
 
-	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
+	<select id="A_SEARCHLIST_PAGE_BLOCK_CONTENT"
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
+		select * from announcement
+		where content like #{searchWord}
+		order by announcement_num desc limit #{startRow},#{pageBlock}
 	</select>
 
-	
-	<select id="LOGIN"	resultType="com.projcet.moiveadmin.announcement.AnnouncementVO">
-		
+
+	<select id="A_TOTAL_ROWS" resultType="int">
+		select count(*) total_rows
+		from announcement
 	</select>
+
+
+	<select id="A_SEARCH_TOTAL_ROWS_ID" resultType="int">
+		select count(*)
+		total_rows from announcement where title like #{searchWord}
+	</select>
+
+
+	<select id="A_SEARCH_TOTAL_ROWS_NAME" resultType="int">
+		select count(*)
+		total_rows from announcement where content like #{searchWord}
+	</select>
+
+
 
 
 </mapper>

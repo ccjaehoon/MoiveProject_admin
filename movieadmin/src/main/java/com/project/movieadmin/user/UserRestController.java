@@ -1,10 +1,6 @@
 package com.project.movieadmin.user;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -14,11 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,24 +37,11 @@ public class UserRestController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
+	@ResponseBody
+	@RequestMapping(value = "/u_idCheck.do", method = RequestMethod.GET)
+	public Map<String , String> u_idCheck(UserVO vo) {
 	
-	@RequestMapping(value = "/json_idCheck.do", method = RequestMethod.GET)
-	public Map<String , String> json_idCheck(UserVO vo) {
-	
-		UserVO vo2 = service.idCheck(vo);
+		UserVO vo2 = service.u_idCheck(vo);
 		
 		Map<String , String> map = new HashMap<String, String>();
 		if(vo2 != null) {
@@ -71,10 +52,11 @@ public class UserRestController {
 
 		return map;
 	}
-	@RequestMapping(value = "/json_nicknameCheck.do", method = RequestMethod.GET)
-	public Map<String , String> json_nicknameCheck(UserVO vo) {
+	@ResponseBody
+	@RequestMapping(value = "/u_nicknameCheck.do", method = RequestMethod.GET)
+	public Map<String , String> u_nicknameCheck(UserVO vo) {
 		
-		UserVO vo2 = service.idCheck(vo);
+		UserVO vo2 = service.u_nicknameCheck(vo);
 		
 		Map<String , String> map = new HashMap<String, String>();
 		if(vo2 != null) {
@@ -85,11 +67,12 @@ public class UserRestController {
 
 		return map;
 	}
-	@RequestMapping(value = "/json_emailCheck.do", method = RequestMethod.GET)
-	public Map<String , String> json_emailCheck(UserVO vo) {
+	@ResponseBody
+	@RequestMapping(value = "/u_emailCheck.do", method = RequestMethod.GET)
+	public Map<String , String> u_emailCheck(UserVO vo) {
 	
 
-		UserVO vo2 = service.idCheck(vo);
+		UserVO vo2 = service.u_emailCheck(vo);
 		
 		Map<String , String> map = new HashMap<String, String>();
 		if(vo2 != null) {

@@ -2,30 +2,49 @@ package com.project.movieadmin.news.comments;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Repository
 public class NCommentsDAOimpl implements NCommentsDAO {
 
+	@Autowired
+	private SqlSession sqlSession;
+	
 	@Override
-	public int insert(NCommentsVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int nc_insert(NCommentsVO vo) {
+		log.info("newscomments insert()....");
+		log.info(vo.toString());
+
+		return sqlSession.insert("NC_INSERT", vo);
 	}
 
 	@Override
-	public int update(NCommentsVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int nc_update(NCommentsVO vo) {
+		log.info("newscomments update()....");
+		log.info(vo.toString());
+
+		return sqlSession.update("NC_UPDATE", vo);
 	}
 
 	@Override
-	public int delete(NCommentsVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int nc_delete(NCommentsVO vo) {
+		log.info("newscomments delete()....");
+		log.info(vo.toString());
+
+		return sqlSession.delete("NC_DELETE", vo);
 	}
 
 	@Override
-	public List<NCommentsVO> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NCommentsVO> nc_selectAll(NCommentsVO vo) {
+		log.info("newscomments selectAll()....");
+		log.info(vo.toString());
+
+		return sqlSession.selectList("NC_SELECT_ALL", vo);
 	}
 
 	@Override

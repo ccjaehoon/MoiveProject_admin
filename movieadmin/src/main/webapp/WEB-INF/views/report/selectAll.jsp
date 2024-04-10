@@ -1,0 +1,65 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #customers {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        #customers td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        #customers tr:nth-child(even){background-color: #ff6565;}
+        
+        #customers tr:hover {background-color: #fca2a2;}
+        
+        #customers th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #04AA6D;
+          color: white;
+        }
+
+        tfoot td{
+            text-align: center; 
+        }
+        </style>
+</head>
+<body>
+	<jsp:include page="../top_menu.jsp"></jsp:include>
+    <h1>신고목록</h1>
+    <hr>
+    <a href="rp_insert.do">신고내용작성</a>
+    <table id="customers">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>작성자</th>
+                <th>작성일자</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        	<c:forEach var="vo" items="${vos}">
+            <tr>
+                <td><a href="rp_selectOne.do?report_num=${vo.report_num}">${vo.report_num}</a></td>
+                <td>${vo.nickname}</td>
+                <td>${vo.wdate}</td>
+                <td><a href="rp_delete.do?report_num=${vo.report_num}">글삭제</a></td>
+            </tr>
+        	</c:forEach>
+        </tbody>
+    </table>
+</body>
+</html>

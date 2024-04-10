@@ -3,16 +3,14 @@ package com.project.movieadmin.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
-
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
 public class UserServiceimpl implements UserService {
+	
 	
 	
 	@Autowired
@@ -42,11 +40,7 @@ public class UserServiceimpl implements UserService {
 		return dao.u_selectOne(vo);
 	}
 
-	@Override
-	public UserVO u_login(UserVO vo) {
-		
-		return dao.u_login(vo);
-	}
+
 
 	@Override
 	public List<UserVO> u_selectAll(int cpage, int pageBlock) {
@@ -71,22 +65,27 @@ public class UserServiceimpl implements UserService {
 		
 		return dao.u_getSearchTotalRows(searchKey, searchWord);
 	}
-
 	@Override
-	public UserVO idCheck(UserVO vo) {
+	public UserVO u_login(UserVO vo) {
 		
-		return dao.idCheck(vo);
+		return dao.u_login(vo);
 	}
 
 	@Override
-	public UserVO nicknameCheck(UserVO vo) {
+	public UserVO u_idCheck(UserVO vo) {
 		
-		return dao.nicknameCheck(vo);
+		return dao.u_idCheck(vo);
 	}
 
 	@Override
-	public UserVO emailCheck(UserVO vo) {
+	public UserVO u_nicknameCheck(UserVO vo) {
 		
-		return dao.emailCheck(vo);
+		return dao.u_nicknameCheck(vo);
+	}
+
+	@Override
+	public UserVO u_emailCheck(UserVO vo) {
+		
+		return dao.u_emailCheck(vo);
 	}
 }
