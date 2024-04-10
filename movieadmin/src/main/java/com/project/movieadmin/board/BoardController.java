@@ -104,7 +104,13 @@ public class BoardController {
 	public String b_deleteOK(BoardVO vo) {
 		log.info("Welcome b_deleteOK.do...");
 		
-		return "board/deleteOK";
+		int result = service.b_delete(vo);
+		
+		if (result == 1) {
+			return "redirect:b_selectAll.do";
+		} else {
+			return "redirect:b_delete.do";
+		}
 	}
 	
 }
