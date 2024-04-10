@@ -66,27 +66,28 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
         <h1>게시글 수정페이지</h1>
-        <form action="b_updateOK.do" method="post">
+        <form action="a_updateOK.do" method="post">
             <table id="insertTable">
                 <tr>
                     <td><label for="">항목</label></td>
                     <td>입력</td>
                 </tr>
                 <tr>
-                    <td><label for="num">글번호</label></td>
-                    <td>${param.num}<input type="hidden" id="num" name="num" value="${param.num}"></td>
+                    <td><label for="announcement_num">글번호</label></td>
+                    <td>${param.announcement_num}<input type="hidden" id="announcement_num" name="announcement_num" value="${param.announcement_num}"></td>
                 </tr>
                 <tr>
                     <td><label for="title">제목</label></td>
-                    <td><input type="text" id="title" name="title" value="${vo2.title}" placeholder="제목을 입력하세요"></td>
+                    <td>${param.title}<input type="text" id="title" name="title" value="${vo2.title}" ></td>
                 </tr>
                 <tr>
                     <td><label for="content">내용</label></td>
-                    <td><textarea name="content" id="content" cols="30" rows="10">${vo2.content}</textarea></td>
+                    <td>${param.content}<textarea name="content" id="content" cols="30" rows="10">${vo2.content}</textarea></td>
                 </tr>
-                <tr>
-                    <td><label for="writer">작성자</label></td>
-                    <td>${vo2.writer}<input type="hidden" id="writer" name="writer" value="${vo2.writer}" placeholder="작성자를 입력하세요"></td>
+              
+               <tr>
+                    <td><label for="file">올릴 이미지:</label></td>
+                    <td><input type="file" id="file" name="file"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글수정 완료"></td>

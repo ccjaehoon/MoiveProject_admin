@@ -85,8 +85,8 @@
                     <td><textarea name="content" id="content" cols="30" rows="10">${vo2.content}</textarea></td>
                 </tr>
                 <tr>
-                    <td><label for="writer">작성자</label></td>
-                    <td>${vo2.nickname}<input type="hidden" id="writer" name="writer" value="nickname"></td>
+                    <td><label for="nickname">작성자</label></td>
+                    <td>${vo2.nickname}<input type="hidden" id="nickname" name="nickname" value="${user_id}"></td>
                 </tr>
                 <tr>
                     <td><label for="file_img">이미지파일</label></td>

@@ -78,6 +78,8 @@ div {
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
+					<th>작성자</th>
+					
 					<th></th>
 				</tr>
 			</thead>
@@ -86,6 +88,8 @@ div {
 					<tr>
 						<td width=200px><a href="f_selectOne.do?faq_num=${vo.faq_num}">${vo.faq_num}</a></td>
 						<td>${vo.title}</td>
+						<td>${vo.nickname}</td>
+						
 						<td><a href="f_delete.do?faq_num=${vo.faq_num}">글삭제</a></td>
 					</tr>
 				</c:forEach>
@@ -93,7 +97,7 @@ div {
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="2"><c:forEach var="i" begin="1"
+					<td colspan="3" align="center"><c:forEach var="i" begin="1"
 							end="${totalPageCount}">
 							<c:if test="${param.searchKey == null }">
 								<a href="f_selectAll.do?cpage=${i}">${i} &nbsp;</a>

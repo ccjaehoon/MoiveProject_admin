@@ -127,8 +127,10 @@ public class NewsController {
 	}
 
 	@RequestMapping(value = "/n_insert.do", method = RequestMethod.GET)
-	public String n_insert() {
+	public String n_insert(Model model) {
 		log.info("n_insert.do");
+		String nickname = (String)session.getAttribute("user_id");
+		model.addAttribute(nickname);
 
 		return "news/insert";
 	}

@@ -110,21 +110,17 @@
                 <td>${cvo.news_comments_num}</td>
                 <td>
                 	${cvo.content}
-                	<c:if test="${user_id == cvo.nickname }">
-	                	<form action="c_updateOK.do">
+	                	<form action="nc_updateOK.do">
 							 <input type="text" name="content" value="${cvo.content}" >
 							 <input type="hidden" name="news_comments_num" value="${cvo.news_comments_num}">               	
 							 <input type="hidden" name="news_num" value="${cvo.news_num}">
 							 <input type="submit"  value="댓글수정">               	
 	                	</form>
-                	</c:if>
                 </td>
                 <td>${cvo.nickname}</td>
                 <td>${cvo.wdate}</td>
                 <td>
-                	<c:if test="${user_id == cvo.nickname }">
-                		<a href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.enws_num}">댓글삭제</a>
-                	</c:if>
+                		<a href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
                 </td>
             </tr>
         	</c:forEach>

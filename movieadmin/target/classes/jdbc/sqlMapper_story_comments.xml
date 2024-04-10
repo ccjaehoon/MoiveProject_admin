@@ -20,8 +20,8 @@
 		
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.project.movieadmin.story.comments.SCommentsVO">
-	
+	<select id="SC_SELECT_ALL" resultType="com.project.movieadmin.story.comments.SCommentsVO">
+		SELECT * FROM story ORDER BY story_num DESC
 	</select>
 
 	<select id="SELECT_ALL_PAGE_BLOCK"
