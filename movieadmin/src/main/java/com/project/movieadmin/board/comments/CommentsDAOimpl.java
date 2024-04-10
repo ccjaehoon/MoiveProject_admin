@@ -61,14 +61,20 @@ public class CommentsDAOimpl implements CommentsDAO {
 
 	@Override
 	public int c_increaseGood(CommentsVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("c_increaseGood()....");
+
+		int total_rows = sqlSession.update("C_INCREASEGOOD", vo);
+
+		return total_rows;
 	}
 
 	@Override
 	public int c_increaseReport(CommentsVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("c_increaseReport()....");
+
+		int total_rows = sqlSession.update("C_INCREASEREPORT", vo);
+
+		return total_rows;
 	}
 
 }
