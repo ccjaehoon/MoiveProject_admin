@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.board">
-	<insert id="B_INSERT" parameterType="com.project.movieadmin.board.BoardVO">
+	<insert id="B_INSERT"
+		parameterType="com.project.movieadmin.board.BoardVO">
 		insert into
 		board(title, tag, nickname, content, authority, views,
 		save_img, file_img, save_video, file_video)
@@ -13,8 +14,9 @@
 	</insert>
 
 	<update id="B_UPDATE">
-		update board set title=#{title},tag=#{tag},content=#{content},nickname=#{nickname},
-		save_img=#{save_img},file_img=#{file_img},save_video=#{save_video},file_video=#{file_video} 
+		update board set
+		title=#{title},tag=#{tag},content=#{content},nickname=#{nickname},
+		save_img=#{save_img},file_img=#{file_img},save_video=#{save_video},file_video=#{file_video}
 		where board_num=#{board_num}
 	</update>
 
@@ -22,26 +24,27 @@
 		delete from board where board_num=#{board_num}
 	</delete>
 
-	<select id="B_SELECT_ONE" resultType="com.project.movieadmin.board.BoardVO">
+	<select id="B_SELECT_ONE"
+		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board where board_num=#{board_num}
 	</select>
 
-	<select id="B_SELECT_ALL" resultType="com.project.movieadmin.board.BoardVO">
+	<select id="B_SELECT_ALL"
+		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board order by board_num desc
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK"
+	<select id="B_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.board.BoardVO">
-		select * from board order by board_num desc limit #{startRow},#{pageBlock}
+		select * from board order by board_num desc limit
+		#{startRow},#{pageBlock}
 	</select>
 
-	
 	<select id="B_SEARCHLIST_TITLE"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board where title like #{searchWord}
 	</select>
 
-	
 	<select id="B_SEARCHLIST_CONTENT"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board where content like #{searchWord}
@@ -50,30 +53,44 @@
 	<select id="B_SEARCHLIST_PAGE_BLOCK_TITLE"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board
-		where title like #{searchWord} 
-		order by board_num desc limit #{startRow},#{pageBlock}
+		where title like #{searchWord}
+		order by
+		board_num desc limit #{startRow},#{pageBlock}
 	</select>
 
 	<select id="B_SEARCHLIST_PAGE_BLOCK_CONTENT"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board
-		where content like #{searchWord} 
-		order by board_num desc limit #{startRow},#{pageBlock}
+		where content like #{searchWord}
+		order by
+		board_num desc limit #{startRow},#{pageBlock}
 	</select>
 
-
-	<select id="B_TOTAL_ROWS"	resultType="int">
-		select count(*) total_rows from board
+	<select id="B_TOTAL_ROWS" resultType="int">
+		select count(*) total_rows
+		from board
 	</select>
 
-	
-	<select id="B_SEARCH_TOTAL_ROWS_TITLE"	resultType="int">
-		select count(*) total_rows from board where title like #{searchWord}
+	<select id="B_SEARCH_TOTAL_ROWS_TITLE" resultType="int">
+		select
+		count(*) total_rows from board where title like #{searchWord}
 	</select>
 
-	
-	<select id="B_SEARCH_TOTAL_ROWS_CONTENT"	resultType="int">
-		select content from board where content=#{content} and nickname=#{nickname}
+	<select id="B_SEARCH_TOTAL_ROWS_CONTENT" resultType="int">
+		select
+		content from board where content=#{content} and nickname=#{nickname}
+	</select>
+
+	<select id="B_INCREASEGOOD" resultType="int">
+		update board set good =
+		good + 1
+		where board_num = #{board_num}
+	</select>
+
+	<select id="B_INCREASEREPORT" resultType="int">
+		update board set report =
+		report + 1
+		where board_num = #{board_num}
 	</select>
 
 

@@ -59,15 +59,13 @@
 	</select>
 
 
-	<select id="A_SEARCH_TOTAL_ROWS_ID" resultType="int">
-		select count(*)
-		total_rows from announcement where title like #{searchWord}
+	<select id="A_SEARCH_TOTAL_ROWS_TITLE" resultType="int">
+		SELECT COUNT(*) AS total_rows FROM announcement WHERE title LIKE #{searchWord}
 	</select>
 
 
-	<select id="A_SEARCH_TOTAL_ROWS_NAME" resultType="int">
-		select count(*)
-		total_rows from announcement where content like #{searchWord}
+	<select id="A_SEARCH_TOTAL_ROWS_CONTENT" resultType="int">
+		SELECT COUNT(*) AS total_rows FROM announcement WHERE content LIKE #{searchWord}
 	</select>
 
 

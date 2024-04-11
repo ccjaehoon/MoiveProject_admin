@@ -87,6 +87,11 @@
 		select email from user where
 		email=#{email}
 	</select>
+	<select id="U_LOGIN_CHECK"
+		resultType="com.project.movieadmin.user.UserVO">
+		select user_id from user where user_id=#{user_id} and
+		password=#{password}
+	</select>
 
 
 </mapper>

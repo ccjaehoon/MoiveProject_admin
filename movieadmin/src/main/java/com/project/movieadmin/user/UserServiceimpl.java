@@ -88,4 +88,10 @@ public class UserServiceimpl implements UserService {
 		
 		return dao.u_emailCheck(vo);
 	}
+
+	@Override
+	public UserVO u_loginCheck(UserVO vo) {
+		
+		return dao.u_loginCheck(vo);
+	}
 }

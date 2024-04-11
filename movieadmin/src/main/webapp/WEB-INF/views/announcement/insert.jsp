@@ -66,7 +66,7 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
         <h1>공지사항 작성</h1>
-        <form action="a_insertOK.do" method="post">
+        <form action="a_insertOK.do" method="post" enctype="multipart/form-data">
             <table id="insertTable">
                
                 <tr>
@@ -83,8 +83,8 @@
                     <td><textarea name="content" id="content" cols="30" rows="10">공지사항을 적으세요</textarea></td>
                 </tr>
                  <tr>
-                    <td><label for="file">올릴 이미지:</label></td>
-                    <td><input type="file" id="file" name="file"></td>
+                    <td><label for="file_img">올릴 이미지:</label></td>
+                    <td><input type="file" id="file_img" name="file_img"></td>
                 </tr>
 
                 <tr>
