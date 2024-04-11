@@ -7,8 +7,7 @@
 	<insert id="B_INSERT"
 		parameterType="com.project.movieadmin.board.BoardVO">
 		insert into
-		board(title, tag, nickname, content,
-		authority, views,
+		board(title, tag, nickname, content, authority, views,
 		save_img, file_img, save_video, file_video)
 		values(#{title},#{tag},#{nickname},#{content},#{authority},
 		#{views},#{save_img},#{file_img},#{save_video},#{file_video})
@@ -35,7 +34,7 @@
 		select * from board order by board_num desc
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK"
+	<select id="B_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board order by board_num desc limit
 		#{startRow},#{pageBlock}
