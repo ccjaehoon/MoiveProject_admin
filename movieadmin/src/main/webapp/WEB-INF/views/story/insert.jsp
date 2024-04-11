@@ -80,7 +80,7 @@
 
                 <tr>
                     <td><label for="content">한줄평</label></td>
-                    <td><textarea name="content" id="content" cols="30" rows="10" placeholder="제목을 입력하세요"></textarea></td>
+                    <td><textarea name="content" id="content" cols="30" rows="10" placeholder="한줄평을 입력하세요"></textarea></td>
                 </tr>
                 
 				<tr>

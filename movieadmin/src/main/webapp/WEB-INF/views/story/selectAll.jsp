@@ -40,6 +40,7 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
     <h1>글목록</h1>
     <hr>
+    <a href="s_insert.do">스토리 만들기</a>
     <table id="customers">
         <thead>
             <tr>
