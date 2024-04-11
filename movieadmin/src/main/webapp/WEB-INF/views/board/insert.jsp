@@ -66,7 +66,7 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
         <h1>게시글 작성페이지</h1>
-        <form action="b_insertOK.do" method="post" enctype="multipart/form-data">
+        <form action="b_insertOK.do" method="get" enctype="multipart/form-data">
             <table id="insertTable">
                 <tr>
                     <td><label for="title">제목</label></td>
