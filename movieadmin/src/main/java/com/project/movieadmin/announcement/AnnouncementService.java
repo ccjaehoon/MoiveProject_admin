@@ -20,4 +20,6 @@ public interface AnnouncementService {
 
 	public int a_getSearchTotalRows(String searchKey, String searchWord);
 
+	
+
 }

@@ -1,6 +1,5 @@
 package com.project.movieadmin.story;
 
-import java.util.Date;
 import java.util.List;
 
 public interface StoryService {
@@ -18,7 +17,7 @@ public interface StoryService {
 	
 	public List<StoryVO> s_selectAll(int cpage,int pageBlock);
 	
-	public Date s_getLiveStories(StoryVO vo);
+	public List<StoryVO> s_getLiveStories();
 	//만료되지 않은 스토리 조회
 	public int s_removeExpired();
 	//만료된 스토리 삭제

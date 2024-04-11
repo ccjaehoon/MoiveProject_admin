@@ -66,7 +66,7 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
         <h1>게시글 작성페이지</h1>
-        <form action="n_insertOK.do" method="post" enctype="multipart/form-data">
+        <form id = "newsForm" action="n_insertOK.do" method="post" enctype="multipart/form-data">
             <table id="insertTable">
                 <tr>
                     <td><label for="">항목</label></td>
@@ -80,7 +80,7 @@
                     <td><textarea name="content" id="content" cols="30" rows="10">뉴스 내용</textarea></td>
                 </tr>
                 <tr>
-                    <td><label for="writer">작성자</label></td>
+                    <td><label for="nickname">작성자</label></td>
                     <td>${user_id}<input type="hidden" id="nickname" name="nickname" value="${user_id}"></td>
                 </tr>
                 <tr>
@@ -93,6 +93,11 @@
             </table>
         </form>
     </div>
+    <script>
+    	document.getElementById("reportForm").addEventListener("submit", function(event) {
+    		alert("글이 작성되었습니다.");
+    	}
+    </script>
 </body>
 
 </html>

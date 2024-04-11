@@ -72,15 +72,24 @@
                     <td><label for="">항목</label></td>
                     <td>입력</td>
                 </tr>
+                
+                <tr>
+                    <td><label for="writer">작성자</label></td>
+                    <td>${user_id}<input type="hidden" id="writer" name="writer" value="${user_id}"></td>
+                </tr>
 
                 <tr>
                     <td><label for="content">한줄평</label></td>
                     <td><textarea name="content" id="content" cols="30" rows="10" placeholder="제목을 입력하세요"></textarea></td>
                 </tr>
-                <tr>
-                    <td><label for="writer">작성자</label></td>
-                    <td>${user_id}<input type="hidden" id="writer" name="writer" value="${user_id}"></td>
-                </tr>
+                
+				<tr>
+				    <td><input type="file" name="file_img"></td>
+				    <td><input type="file" name="file_video"></td>
+				    <td><input type="submit" value="글수정 완료"></td>
+				</tr> 
+               
+
                 <tr>
                     <td colspan="2"><input type="submit" value="글쓰기 완료"></td>
                 </tr>

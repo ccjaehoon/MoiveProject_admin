@@ -120,14 +120,19 @@ public class BoardDAOimpl implements BoardDAO {
 
 	@Override
 	public int b_increaseGood(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("b_increaseGood()....");
+
+		int total_rows = sqlSession.update("B_INCREASEGOOD", vo);
+
+		return total_rows;
 	}
 
 	@Override
 	public int b_increaseReport(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int total_rows = sqlSession.update("B_INCREASEREPORT", vo);
+
+		return total_rows;
 	}
 
 }

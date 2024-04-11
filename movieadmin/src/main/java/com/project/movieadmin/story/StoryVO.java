@@ -20,7 +20,4 @@ public class StoryVO {
     private int views; //게시글 조회된 수
     private Date duration; // 스토리가 표시되는 시간
     private int report; //신고 수
-
-   
-	
 }
