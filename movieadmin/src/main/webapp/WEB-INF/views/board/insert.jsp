@@ -70,11 +70,11 @@
             <table id="insertTable">
                 <tr>
                     <td><label for="title">제목</label></td>
-                    <td><input type="text" id="title" name="title" value="title" placeholder="제목을 입력하세요"></td>
+                    <td><input type="text" id="title" name="title" value="" placeholder="제목을 입력하세요"></td>
                 </tr>
                 <tr>
                     <td><label for="nickname">작성자</label></td>
-                    <td>${nickname}<input type="hidden" id="nickname" name="nickname" value="${nickname}"></td>
+                    <td>${nickname}<input type="text" id="nickname" name="nickname" value="${nickname}"></td>
                 </tr>
                 <tr>
                     <td><label for="content">내용</label></td>

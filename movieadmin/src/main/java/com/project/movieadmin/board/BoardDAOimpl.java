@@ -25,7 +25,7 @@ public class BoardDAOimpl implements BoardDAO {
 	public int b_insert(BoardVO vo) {
 		log.info("b_insert()....");
 
-		int flag = sqlSession.insert("INSERT", vo);
+		int flag = sqlSession.insert("B_INSERT", vo);
 
 		return flag;
 	}
@@ -34,7 +34,7 @@ public class BoardDAOimpl implements BoardDAO {
 	public int b_update(BoardVO vo) {
 		log.info("b_update()....");
 
-		int flag = sqlSession.update("UPDATE", vo);
+		int flag = sqlSession.update("B_UPDATE", vo);
 
 		return flag;
 	}
@@ -43,7 +43,7 @@ public class BoardDAOimpl implements BoardDAO {
 	public int b_delete(BoardVO vo) {
 		log.info("b_delete()....");
 
-		int flag = sqlSession.delete("DELETE", vo);
+		int flag = sqlSession.delete("B_DELETE", vo);
 
 		return flag;
 	}
@@ -52,7 +52,7 @@ public class BoardDAOimpl implements BoardDAO {
 	public BoardVO b_selectOne(BoardVO vo) {
 		log.info("b_selectOne()....");
 
-		BoardVO vo2 = sqlSession.selectOne("SELECT_ONE", vo);
+		BoardVO vo2 = sqlSession.selectOne("B_SELECT_ONE", vo);
 
 		return vo2;
 	}
@@ -67,7 +67,7 @@ public class BoardDAOimpl implements BoardDAO {
 		map.put("startRow", startRow-1);
 		map.put("pageBlock", pageBlock);
 
-		List<BoardVO> vos = sqlSession.selectList("SELECT_ALL_PAGE_BLOCK", map);
+		List<BoardVO> vos = sqlSession.selectList("B_SELECT_ALL_PAGE_BLOCK", map);
 
 		return vos;
 	}
@@ -86,9 +86,9 @@ public class BoardDAOimpl implements BoardDAO {
 		List<BoardVO> vos = null;
 
 		if (searchKey.equals("title")) {
-			vos = sqlSession.selectList("SEARCHLIST_PAGE_BLOCK_TITLE", map);
+			vos = sqlSession.selectList("B_SEARCHLIST_PAGE_BLOCK_TITLE", map);
 		} else if (searchKey.equals("nickname")) {
-			vos = sqlSession.selectList("SEARCHLIST_PAGE_BLOCK_NICKNAME", map);
+			vos = sqlSession.selectList("B_SEARCHLIST_PAGE_BLOCK_NICKNAME", map);
 		}
 
 		return vos;
@@ -98,7 +98,7 @@ public class BoardDAOimpl implements BoardDAO {
 	public int b_getTotalRows() {
 		log.info("b_getTotalRows()....");
 
-		int total_rows = sqlSession.selectOne("TOTAL_ROWS");
+		int total_rows = sqlSession.selectOne("B_TOTAL_ROWS");
 
 		return total_rows;
 	}
@@ -110,9 +110,9 @@ public class BoardDAOimpl implements BoardDAO {
 		int total_rows = 0;
 
 		if (searchKey.equals("title")) {
-			total_rows = sqlSession.selectOne("SEARCH_TOTAL_ROWS_TITLE", "%" + searchWord + "%");
+			total_rows = sqlSession.selectOne("B_EARCH_TOTAL_ROWS_TITLE", "%" + searchWord + "%");
 		} else if (searchKey.equals("nickname")) {
-			total_rows = sqlSession.selectOne("SEARCH_TOTAL_ROWS_NICKNAME", "%" + searchWord + "%");
+			total_rows = sqlSession.selectOne("B_SEARCH_TOTAL_ROWS_NICKNAME", "%" + searchWord + "%");
 		}
 
 		return total_rows;
