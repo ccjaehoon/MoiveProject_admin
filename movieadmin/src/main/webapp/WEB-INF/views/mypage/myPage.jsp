@@ -78,6 +78,14 @@ div {
 				</tr>
 				<tr>
 					<td>
+						<form action="m_selectOne.do">
+							<input type="submit" value="내 정보">
+
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<form action="m_myPost.do">
 							<input type="submit" value="쓴 글">
 

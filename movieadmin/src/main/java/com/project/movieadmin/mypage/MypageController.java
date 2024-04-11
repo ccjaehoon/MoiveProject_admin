@@ -58,4 +58,10 @@ public class MypageController {
 		return "mypage/myComments";
 	}
 
+	@RequestMapping(value = "/m_selectOne.do", method = RequestMethod.GET)
+	public String m_selectOne() {
+		log.info("Welcome m_selectOne!");
+
+		return "mypage/selectOne";
+	}
 }
