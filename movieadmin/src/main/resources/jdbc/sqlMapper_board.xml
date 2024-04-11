@@ -8,9 +8,9 @@
 		parameterType="com.project.movieadmin.board.BoardVO">
 		insert into
 		board(title, tag, nickname, content, authority, views,
-		save_img, file_img, save_video, file_video)
+		save_img)
 		values(#{title},#{tag},#{nickname},#{content},#{authority},
-		#{views},#{save_img},#{file_img},#{save_video},#{file_video})
+		#{views},#{save_img})
 	</insert>
 
 	<update id="B_UPDATE">
