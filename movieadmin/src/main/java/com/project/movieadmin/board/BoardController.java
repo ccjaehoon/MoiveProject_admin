@@ -35,7 +35,7 @@ public class BoardController {
 		return "board/insert";
 	}
 
-	@RequestMapping(value = "/b_insertOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/b_insertOK.do", method = RequestMethod.POST)
 	public String b_insertOK(BoardVO vo) {
 		log.info("Welcome b_insertOK.do...");
 		
@@ -80,7 +80,7 @@ public class BoardController {
 		return "board/update";
 	}
 	
-	@RequestMapping(value = "/b_updateOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/b_updateOK.do", method = RequestMethod.POST)
 	public String b_updateOK(BoardVO vo) {
 		log.info("Welcome b_updateOK.do...");
 		
@@ -100,7 +100,7 @@ public class BoardController {
 		return "board/delete";
 	}
 	
-	@RequestMapping(value = "/b_deleteOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/b_deleteOK.do", method = RequestMethod.POST)
 	public String b_deleteOK(BoardVO vo) {
 		log.info("Welcome b_deleteOK.do...");
 		
