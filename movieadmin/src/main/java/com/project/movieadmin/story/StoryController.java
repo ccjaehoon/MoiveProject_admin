@@ -38,7 +38,7 @@ public class StoryController {
 		return "story/insert";
 	}
 	
-	@RequestMapping(value = "/s_insertOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/s_insertOK.do", method = RequestMethod.POST)
 	public String s_insertOK(StoryVO vo) {
 		log.info("Welcome story_insertOK...");
 		log.info("vo:{}", vo);
@@ -65,7 +65,7 @@ public class StoryController {
 		 }
 		return "story/update";
 	}
-	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.POST)
 	public String s_updateOK(StoryVO vo) {
 		log.info("Welcome story_updateOK...");
 		log.info("vo:{}", vo);
