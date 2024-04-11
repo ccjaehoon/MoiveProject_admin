@@ -43,5 +43,19 @@ public class MypageController {
 
 		return "mypage/favorite";
 	}
+	
+	@RequestMapping(value = "/m_myPost.do", method = RequestMethod.GET)
+	public String m_myPost() {
+		log.info("Welcome m_myPost!");
+
+		return "mypage/myPost";
+	}
+	
+	@RequestMapping(value = "/m_myComments.do", method = RequestMethod.GET)
+	public String m_myComments() {
+		log.info("Welcome m_myComments!");
+
+		return "mypage/myComments";
+	}
 
 }

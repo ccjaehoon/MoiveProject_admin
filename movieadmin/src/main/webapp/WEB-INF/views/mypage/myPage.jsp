@@ -77,10 +77,20 @@ div {
 					</td>
 				</tr>
 				<tr>
-					<td>쓴 글</td>
+					<td>
+						<form action="m_myPost.do">
+							<input type="submit" value="쓴 글">
+
+						</form>
+					</td>
 				</tr>
 				<tr>
-					<td>쓴 댓글</td>
+					<td>
+						<form action="m_myComments.do">
+							<input type="submit" value="쓴 댓글">
+
+						</form>
+					</td>
 				</tr>
 
 			</tbody>
