@@ -62,11 +62,10 @@
         <tbody>
         	<c:forEach var="vo" items="${vos}">
             <tr>
-                <td><a href="s_selectRandomList.do?num=${vo.num}">${vo.num}</a></td>
-                <td>${vo.title}</td>
-                <td>${vo.writer}</td>
-                <td>${vo.wdate}</td>
-                <td><a href="s_delete.do?num=${vo.num}">글삭제</a></td>
+                <td><a href="s_selectRandomList.do?story_num=${vo.story_num}">${vo.story_num}</a></td>
+                <td>${vo.content}</td>
+                <td>${vo.nickname}</td>
+                <td><a href="s_delete.do?story_num=${vo.story_num}">글삭제</a></td>
             </tr>
         	</c:forEach>
             
@@ -78,6 +77,7 @@
 	                	<c:if test="${param.searchKey == null }">
 		                	<a href="s_selectAll.do?cpage=${i}">${i} &nbsp;</a>
                 		</c:if>
+
                 		<c:if test="${param.searchKey != null }">
 		                	<a href="s_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
                 		</c:if>

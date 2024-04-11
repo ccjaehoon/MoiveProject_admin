@@ -52,8 +52,10 @@
                 <th>이메일</th>
                 <th>전화번호</th>
                 <th>생일</th>
-                <th>권위</th>
+                <th>권위</th>              
                 <th>회원가입날짜</th>
+                <th>즐겨찾기</th>
+               
             </tr>
         </thead>
         <tbody>

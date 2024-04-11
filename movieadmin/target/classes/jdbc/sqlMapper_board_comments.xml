@@ -26,53 +26,18 @@
 	<select id="SELECT_ALL" resultType="com.project.movieadmin.board.comments.CommentsVO">
 		select * from comments order by comments_num desc
 	</select>
-
-	<select id="SELECT_ALL_PAGE_BLOCK"
-		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
-	</select>
-
 	
-	<select id="SEARCHLIST_ID"
-		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
+	<select id="C_INCREASEGOOD" resultType="int">
+		update comments set good =
+		good + 1
+		where comments_num = #{comments_num}
 	</select>
 
+	<select id="C_INCREASEREPORT" resultType="int">
+		update comments set report =
+		report + 1
+		where comments_num = #{comments_num}
+	</select>
 	
-	<select id="SEARCHLIST_NAME"
-		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
-		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
-		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
-	</select>
-
-
-	<select id="TOTAL_ROWS"	resultType="int">
-		
-	</select>
-
-	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
-	</select>
-
-	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
-	</select>
-
-	
-	<select id="LOGIN"	resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
-	</select>
-
 
 </mapper>

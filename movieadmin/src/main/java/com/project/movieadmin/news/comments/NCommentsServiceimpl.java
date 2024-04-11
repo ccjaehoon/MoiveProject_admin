@@ -36,8 +36,12 @@ public class NCommentsServiceimpl implements NCommentsService {
 
 	@Override
 	public int nc_increaseGood(NCommentsVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.nc_increaseGood(vo);
+	}
+	
+	@Override
+	public NCommentsVO nc_selectGood(NCommentsVO vo) {
+		return dao.nc_selectGood(vo);
 	}
 
 	@Override
@@ -45,5 +49,7 @@ public class NCommentsServiceimpl implements NCommentsService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 
 }

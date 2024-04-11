@@ -4,15 +4,16 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.project.movieadmin.info.review.ReviewVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,8 +26,6 @@ public class StoryController {
 	
 	@Autowired
 	private StoryService service;
-	
-	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -58,10 +57,12 @@ public class StoryController {
 		log.info("Welcome story_update...");
 		log.info("vo:{}", vo);
 		
-//		StoryVO vo2 = service.s_selectRandomList(vo);
-//		log.info("vo2:{}", vo2);
-//
-//		model.addAttribute("vo2", vo2);
+		 List<StoryVO> randomStories = service.s_selectRandomList(vo);
+		    if (!randomStories.isEmpty()) {
+		        StoryVO vo2 = randomStories.get(0); // 리스트의 첫 번째 요소를 선택
+		        log.info("vo2:{}", vo2);
+		        model.addAttribute("vo2", vo2);
+		 }
 		return "story/update";
 	}
 	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.GET)
@@ -105,6 +106,17 @@ public class StoryController {
 	@RequestMapping(value = "/s_selectRandomList.do", method = RequestMethod.GET)
 	public String story_selectRandomList(StoryVO vo, Model model) {
 		log.info("Welcome s_selectRandomList...");
+		
+		 // Random 객체 생성
+        Random rand = new Random();
+        // 예를 들어, 무작위로 선택할 스토리의 ID를 생성 (여기서는 1부터 10까지 가정)
+        int storyId = rand.nextInt(10) + 1;
+        
+        // 무작위로 선택된 스토리 목록을 가져오는 서비스 메소드 호출
+        List<StoryVO> randomStories = service.s_selectRandomList(vo);
+        
+        // 모델에 무작위 스토리 목록 추가
+        model.addAttribute("randomStories", randomStories);
 
 		return "story/selectRandomList";
 	}
@@ -140,6 +152,34 @@ public class StoryController {
 //		
 
 		return "story/selectAll";
+	}
+	
+	@RequestMapping(value = "/s_increaseGood.do", method = RequestMethod.GET)
+	public String rv_increaseGood(StoryVO vo) {
+		
+	
+		return "story_increaseGood";
+	}
+	
+	@RequestMapping(value = "/s_increaseGoodOK.do", method = RequestMethod.GET)
+	public String rv_increaseGoodOK(StoryVO vo) {
+		
+	
+		return "story_increaseGoodOK";
+	}
+	
+	@RequestMapping(value = "/s_increaseReport.do", method = RequestMethod.GET)
+	public String rv_increaseReport(StoryVO vo) {
+		
+	
+		return "story_increaseReport";
+	}
+	
+	@RequestMapping(value = "/s_increaseReportOK.do", method = RequestMethod.GET)
+	public String rv_increaseReportOK(ReviewVO vo) {
+		
+	
+		return "story_increaseReportOK";
 	}
 	
 	
