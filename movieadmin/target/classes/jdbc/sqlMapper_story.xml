@@ -28,17 +28,22 @@
 
 	<select id="S_SELECT_ALL" resultType="com.project.movieadmin.story.StoryVO">
 		SELECT * FROM story ORDER BY story_num DESC
+
 	</select>
 
 	<select id="S_SELECT_ALL_PAGE_BLOCK" resultType="com.project.movieadmin.story.StoryVO">
 		<!-- SELECT * FROM story -->
-	    SELECT * FROM story ORDER BY story_num DESC LIMIT #{startRow}, #{pageBlock}
+	    SELECT * FROM story ORDER BY story_num DESC LIMIT 0, 5
 	</select>
 	
 	<select id="S_GETLIVESTORIES" resultType="com.project.movieadmin.story.StoryVO">
 		 SELECT *
 		 FROM story
 		 WHERE expire_date > CURDATE()
+	</select>
+	
+	<select id="S_TOTAL_ROWS" resultType="int">
+	select count(*) total_rows from story 
 	</select>
 	
 	<select id="S_REMOVEEXPIRED" resultType="com.project.movieadmin.story.StoryVO">

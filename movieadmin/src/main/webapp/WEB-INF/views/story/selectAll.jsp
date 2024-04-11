@@ -40,15 +40,6 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
     <h1>글목록</h1>
     <hr>
-    <form action="story_searchList.do">
-    	<select name="searchKey">
-    		<option value="title">title</option>
-    		<option value="content">content</option>
-    	</select>
-    	<input type="text" name="searchWord" value="ja">
-    	<input type="submit" value="search">
-    	
-    </form>
     <table id="customers">
         <thead>
             <tr>
