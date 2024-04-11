@@ -51,36 +51,37 @@ public class AnnouncementController {
 	}
 
 	@RequestMapping(value = "/a_insertOK.do", method = RequestMethod.POST)
-	public String a_insertOK(AnnouncementVO vo) throws IllegalStateException, IOException {
+	public String a_insertOK(AnnouncementVO vo) throws IllegalStateException, IOException  {
 
 		String realPath = sContext.getRealPath("resources/uploadimg");
-
-		String originName = "";
-		MultipartFile file = vo.getFile_img();
-		if (file != null) {
-			originName = file.getOriginalFilename();
-		}
+		log.info(realPath);
+	
+		String originName = vo.getFile_img().getOriginalFilename();
+	
+		log.info("getOriginalFilename:{}", originName);
+		
 		if (originName.length() == 0) {
-			vo.setSave_img("default.png");
+			vo.setSave_img("default.png");// 이미지선택없이 처리할때
 		} else {
-
 			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
-
+	
 			vo.setSave_img(save_name);
-
+	
 			File uploadFile = new File(realPath, save_name);
-			vo.getFile_img().transferTo(uploadFile);
-
+			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
+	
+			//// create thumbnail image/////////
 			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
 			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
 			Graphics2D graphic = thumb_buffer_img.createGraphics();
 			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
-
+	
 			File thumb_file = new File(realPath, "thumb_" + save_name);
-
+	
 			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
-
+	
 		}
+
 
 		int result = service.a_insert(vo);
 
@@ -197,9 +198,27 @@ public class AnnouncementController {
 	}
 
 	@RequestMapping(value = "a_searchList.do", method = RequestMethod.GET)
-	public String a_searchList(@RequestParam(defaultValue = "0") int cpage,
-			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
+	public String a_searchList(@RequestParam(defaultValue = "1") int cpage,
+			@RequestParam(defaultValue = "10") int pageBlock, Model model, String searchKey, String searchWord) {
+	
 
+		List<AnnouncementVO> vos = service.a_searchList(searchKey, searchWord, cpage, pageBlock);
+	
+
+		model.addAttribute("vos", vos);
+
+		int total_rows = service.a_getSearchTotalRows(searchKey, searchWord);
+		
+		int totalPageCount = 1;
+		if (total_rows / pageBlock == 0) {
+			totalPageCount = 1;
+		} else if (total_rows % pageBlock == 0) {
+			totalPageCount = total_rows / pageBlock;
+		} else {
+			totalPageCount = total_rows / pageBlock + 1;
+		}
+
+		model.addAttribute("totalPageCount", totalPageCount);
 		return "announcement/selectAll";
 	}
 

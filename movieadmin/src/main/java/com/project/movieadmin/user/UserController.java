@@ -175,7 +175,7 @@ public class UserController {
 		log.info("================");
 
 		if (vo2 == null) {
-			return "redirect:login.do";
+			return "redirect: u_login.do?message=0";
 		} else {
 			session.setAttribute("user_id", vo.getUser_id());
 			return "redirect: home.do";
