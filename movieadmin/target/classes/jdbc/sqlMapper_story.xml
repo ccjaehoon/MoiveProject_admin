@@ -5,8 +5,8 @@
 
 <mapper namespace="com.project.movieadmin.story">
 	<insert id="S_INSERT" parameterType="com.project.movieadmin.story.StoryVO">
-		INSERT INTO story (story_num, nickname, content, save_img, save_video, good, report, duration)
-		VALUES (seq_story.nextval, #{nickname}, #{content}, #{save_img}, #{save_video}, 0, 0, #{duration});
+		INSERT INTO story (nickname, content, save_img, save_video, good, report, duration)
+		VALUES (#{nickname}, #{content}, #{save_img}, #{save_video}, 0, 0, #{duration});
 	</insert>
 
 	<update id="S_UPDATE" parameterType="com.project.movieadmin.story.StoryVO">
