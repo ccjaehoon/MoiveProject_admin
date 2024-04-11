@@ -76,6 +76,14 @@ public class StoryDAOimpl implements StoryDAO {
 
 		return sqlSession.selectList("S_SELECT_ALL_PAGE_BLOCK", map);
 	}
+	
+	@Override
+	public int s_getTotalRows() {
+		log.info("getTotalRows()....");
+
+		return sqlSession.selectOne("S_TOTAL_ROWS");
+	}
+
 
 	@Override
 	public List<StoryVO> s_getLiveStories() {
@@ -111,6 +119,5 @@ public class StoryDAOimpl implements StoryDAO {
 	    // 데이터베이스에 업데이트
 	    return sqlSession.update("S_UPDATE_REPORT_COUNT", vo);
 	}
-
 	
 }

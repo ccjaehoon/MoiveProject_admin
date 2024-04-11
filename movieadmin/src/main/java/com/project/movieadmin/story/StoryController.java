@@ -135,21 +135,21 @@ public class StoryController {
 
 		model.addAttribute("vos", vos);
 		
-		// 스토리 게시글에 들어있는 게시글
-//		int total_rows = service.getTotalRows();
-//		log.info("total_rows:" + total_rows);
-//
-//		int totalPageCount = 1;
-//		if (total_rows / pageBlock == 0) {
-//			totalPageCount = 1;
-//		} else if (total_rows % pageBlock == 0) {
-//			totalPageCount = total_rows / pageBlock;
-//		} else {
-//			totalPageCount = total_rows / pageBlock + 1;
-//		}
-//		// 페이지 링크 몇개?
-//		model.addAttribute("totalPageCount", totalPageCount);
-//		
+//		 스토리 게시글에 들어있는 게시글
+		int total_rows = service.s_getTotalRows();
+		log.info("total_rows:" + total_rows);
+
+		int totalPageCount = 1;
+		if (total_rows / pageBlock == 0) {
+			totalPageCount = 1;
+		} else if (total_rows % pageBlock == 0) {
+			totalPageCount = total_rows / pageBlock;
+		} else {
+			totalPageCount = total_rows / pageBlock + 1;
+		}
+		// 페이지 링크 몇개?
+		model.addAttribute("totalPageCount", totalPageCount);
+		
 
 		return "story/selectAll";
 	}

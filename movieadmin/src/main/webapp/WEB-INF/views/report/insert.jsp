@@ -66,30 +66,36 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
         <h1>게시글 작성페이지</h1>
-        <form action="rp_insertOK.do" method="post">
-            <table id="insertTable">
-                <tr>
-                    <td><label for="">항목</label></td>
-                    <td>입력</td>
-                </tr>
-                <tr>
-                    <td><label for="board_num">게시판 번호</label></td>
-                    <td><input type="hidden" id="board_num" name="board_num" value=2></td>
-                </tr>
-                <tr>
-                    <td><label for="content">내용</label></td>
-                    <td><textarea name="content" id="content" cols="30" rows="10">Hello java</textarea></td>
-                </tr>
-                <tr>
-                    <td><label for="nickname">작성자</label></td>
-                    <td><input type="hidden" id="nickname" name="nickname" value="${user_id}"></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="submit" value="글쓰기 완료"></td>
-                </tr>
-            </table>
-        </form>
-    </div>
+<form id="reportForm" action="rp_insertOK.do" method="post">
+    <table id="insertTable">
+        <tr>
+            <td><label for="">항목</label></td>
+            <td>입력</td>
+        </tr>
+        <tr>
+            <td><label for="board_num">게시판 번호</label></td>
+            <td><input type="hidden" id="board_num" name="board_num" value="2"></td>
+        </tr>
+        <tr>
+            <td><label for="content">내용</label></td>
+            <td><textarea name="content" id="content" cols="30" rows="10">Hello java</textarea></td>
+        </tr>
+        <tr>
+            <td><label for="nickname">작성자</label></td>
+            <td>${user_id}<input type="hidden" id="nickname" name="nickname" value="${user_id}"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="글쓰기 완료" onclick="showPopup()"></td>
+        </tr>
+    </table>
+</form>
+
+<script>
+function showPopup() {
+    alert("글이 작성되었습니다.");
+}
+</script>
+
 </body>
 
 </html>

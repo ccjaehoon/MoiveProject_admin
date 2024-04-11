@@ -54,6 +54,12 @@ public class StoryServiceimpl implements StoryService {
 		
 		return dao.s_selectAll(cpage, pageBlock);
 	}
+	
+	@Override
+	public int s_getTotalRows() {
+
+		return dao.s_getTotalRows();
+	}
 
 	@Override
 	public List<StoryVO> s_getLiveStories() {

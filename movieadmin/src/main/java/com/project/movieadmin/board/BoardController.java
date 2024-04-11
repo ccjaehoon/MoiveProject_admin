@@ -36,7 +36,7 @@ public class BoardController {
 		log.info("BoardController()....");
 	}
 
-	@RequestMapping(value = "b_insert.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/b_insert.do", method = RequestMethod.GET)
 	public String b_insert() {
 		log.info("Welcome insert.do....");
 
