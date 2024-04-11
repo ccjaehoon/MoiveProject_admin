@@ -63,6 +63,7 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 				|| sPath.equals("/nc_insertOK.do")
 				|| sPath.equals("/c_insertOK.do")
 				|| sPath.equals("/sc_insertOK.do")
+				|| sPath.equals("/rv_insertOK.do")
 				)
 				 {
 			
