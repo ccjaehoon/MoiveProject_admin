@@ -16,7 +16,7 @@
 	<update id="B_UPDATE">
 		update board set
 		title=#{title},tag=#{tag},content=#{content},nickname=#{nickname},
-		save_img=#{save_img},file_img=#{file_img},save_video=#{save_video},file_video=#{file_video}
+		save_img=#{save_img}
 		where board_num=#{board_num}
 	</update>
 
@@ -82,15 +82,11 @@
 	</select>
 
 	<select id="B_INCREASEGOOD" resultType="int">
-		update board set good =
-		good + 1
-		where board_num = #{board_num}
+		update board set good = good + 1 where board_num = #{board_num}
 	</select>
 
 	<select id="B_INCREASEREPORT" resultType="int">
-		update board set report =
-		report + 1
-		where board_num = #{board_num}
+		update board set report = report + 1 where board_num = #{board_num}
 	</select>
 
 
