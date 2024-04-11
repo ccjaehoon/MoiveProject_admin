@@ -73,7 +73,7 @@
                     <td>입력</td>
                 </tr>
                 <tr>
-                    <td><label for="num">글번호</label></td>
+                    <td><label for="story_num">글번호</label></td>
                     <td>${param.story_num}<input type="hidden" id="story_num" name="story_num" value="${param.story_num}"></td>
                 </tr>
                 <%-- 
@@ -84,8 +84,8 @@
                  --%>
                  
                 <tr>
-                    <td><label for="writer">작성자</label></td>
-                    <td>${vo2.writer}<input type="hidden" id="writer" name="writer" value="${vo2.writer}" placeholder="작성자를 입력하세요"></td>
+                    <td><label for="nicname">작성자</label></td>
+                    <td>${vo2.nicname}<input type="hidden" id="nicname" name="nicname" value="${vo2.nicname}" placeholder="작성자를 입력하세요"></td>
                 </tr>
                  
                 <tr>
