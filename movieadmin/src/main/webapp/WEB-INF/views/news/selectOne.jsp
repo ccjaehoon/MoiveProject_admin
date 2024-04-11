@@ -43,49 +43,51 @@ tfoot td {
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		console.log("jquery test");
-		console.log($(".nc_increaseGood"));
-		$(".nc_increaseGood").each(function(index,item){
-// 			console.log(index);
-			
-			
-			$(this).click(function() {
-				
-				console.log("increaseGood Click");
-				console.log($("#news_comments_num"+index).val());
-				console.log($("#good"+index).val());
-				
-				$.ajax({
-					url : "http://localhost:8070/movie/nc_increaseGood.do",
-					type : "get",
-					data : {
-						news_comments_num : $("#news_comments_num"+index).val(),
-						good : $("#good"+index).val()
-					},
-					dataType : "json",
-					success : function(obj) {
-						console.log(obj);
-						let good = obj.good;
-// 						console.log(item);
-						item.value = good;
-					},
-					error : function(xhr, status) {
-						console.log("status...", status);
-					}
-				});
-
-				return false;
-			});
-		});
+$(function() {
+	
+	console.log("jquery test");
+	console.log($(".nc_increaseGood"));
+	$(".nc_increaseGood").each(function(index,item){
+//			console.log(index);
 		
+		$(this).click(function() {
+			
+			console.log("increaseGood Click");
+			console.log($("#news_comments_num"+index).val());
+			console.log($("#good"+index).val());
+			
+			$.ajax({
+				url : "http://localhost:8088/movie/nc_increaseGood.do",
+				type : "get",
+				data : {
+					news_comments_num : $("#news_comments_num"+index).val(),
+					news_num : $("#news_num").val(),
+					nickname : $("#nickname"+index).val(),
+					good : $("#good"+index).val()
+				},
+				dataType : "json",
+				success : function(obj) {
+					console.log(obj);
+					let good = obj.good;
+//						console.log(item);
+					item.value = good;
+				},
+				error : function(xhr, status) {
+					console.log("status...", status);
+				}
+			});
+
+			return false;
+		});
 	});
+	
+});
+
 </script>
 
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-<<<<<<< HEAD
 	<h1>뉴스정보</h1>
 	<hr>
 	<table id="customers">
@@ -155,7 +157,7 @@ tfoot td {
 		</thead>
 		<tbody>
 			<c:forEach var="cvo" items="${cvos}" varStatus="vs">
-			
+				
 				<tr>
 					<td>${cvo.news_comments_num}</td>
 					<td>${cvo.content}
@@ -167,21 +169,27 @@ tfoot td {
 								type="submit" value="수정">
 						</form>
 					</td>
-					<td>${cvo.nickname}</td>
+					<td>${cvo.nickname}<input type="hidden"
+							name="nickname" value="${user_id}"  id="nickname${vs.index}"></td>
+					
 					<td><input type="hidden"
 							name="news_comments_num" value="${cvo.news_comments_num}"  id="news_comments_num${vs.index}">
+							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
 							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
 							<input type="button" value="${cvo.good}" class="nc_increaseGood">
+
 
 						<!-- 						<form action="nc_increaseGood.do"> --> <!-- 							<input type="hidden" name="news_comments_num" -->
 						<%-- 								value="${cvo.news_comments_num}"> <input type="hidden" --%>
 						<%-- 								name="news_num" value="${cvo.news_num}"> <input --%>
 						<%-- 								type="submit" value="${cvo.good}"><span id="good"></span> --%>
 						<!-- 						</form> --></td>
+						
 					<td>${cvo.wdate}</td>
 					<td><a
 						href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
 					</td>
+					
 				</tr>
 			</c:forEach>
 

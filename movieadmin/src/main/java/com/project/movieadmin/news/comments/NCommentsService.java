@@ -17,4 +17,8 @@ public interface NCommentsService {
 	public NCommentsVO nc_selectGood(NCommentsVO vo);
 	
 	public int nc_increaseReport(NCommentsVO vo);
+
+	public int nc_goodCheck(NCommentsVO vo);
+
+	public int nc_goodSave(NCommentsVO vo);
 }
