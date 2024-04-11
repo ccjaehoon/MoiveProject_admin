@@ -84,6 +84,25 @@ public class UserRestController {
 		return map;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/u_loginCheck.do", method = RequestMethod.POST)
+	public Map<String , String> u_loginCheck(UserVO vo) {
+	    UserVO vo2 = service.u_loginCheck(vo);
+	    
+	    Map<String , String> map = new HashMap<String, String>();
+	    if (vo2 != null) {
+	        map.put("result", "OK");
+	    } else {
+	        map.put("result", "NOT OK");
+	    }
+
+	    return map;
+	}
 	
-	
+    
+
 }
+	
+	
+	
+

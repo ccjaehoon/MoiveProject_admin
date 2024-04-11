@@ -139,4 +139,10 @@ public class UserDAOimpl implements UserDAO {
 		return sqlSession.selectOne("U_EMAIL_CHECK",vo);
 	}
 
+	@Override
+	public UserVO u_loginCheck(UserVO vo) {
+		
+		return sqlSession.selectOne("U_LOGIN_CHECK",vo);
+	}
+
 }

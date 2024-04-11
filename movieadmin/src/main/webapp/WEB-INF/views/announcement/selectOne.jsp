@@ -21,7 +21,7 @@
 	padding: 8px;
 }
 
-#announcementR{
+#announcementR {
 	background-color: #ff6565;
 }
 
@@ -47,31 +47,34 @@ tfoot td {
 	<h1>announcement</h1>
 	<hr>
 	<table id="announcement">
-	<tbody>
-		
-			
-				<tr>
-					<td id="announcementR">번호</td>
-					<td>${vo2.announcement_num}</td>
-					<td id="announcementR">작성자</td>
-					<td>${vo2.nickname}</td>
-				</tr>
+		<tbody>
 
-				<tr>
-					<td id="announcementR">제목</td>
-					<td colspan="3">${vo2.title}</td>
 
-				</tr>
-				<tr>
-					<td id="announcementR">내용</td>
-					<td colspan="3">${vo2.content}</td>
+			<tr>
+				<td id="announcementR">번호</td>
+				<td>${vo2.announcement_num}</td>
+				<td id="announcementR">작성자</td>
+				<td>${vo2.nickname}</td>
+			</tr>
 
-				</tr>
-			
-		
+			<tr>
+				<td id="announcementR">제목</td>
+				<td colspan="3">${vo2.title}</td>
+
+			</tr>
+			<tr>
+				<td id="announcementR">내용</td>
+				<td colspan="3"><img src="resources/uploadimg/${vo2.save_img}" width="200">>
+					${vo2.content}</td>
+			</tr>
+
+
 		</tbody>
 	</table>
-	<a href="a_update.do?announcement_num=${param.announcement_num}&nickname=${param.nickname}&title=${param.title}&content=${param.content}">공지사항 수정</a>
-	<a href="a_delete.do?announcement_num=${param.announcement_num}">공지사항 삭제</a>
+	<a
+		href="a_update.do?announcement_num=${param.announcement_num}&nickname=${param.nickname}&title=${param.title}&content=${param.content}">공지사항
+		수정</a>
+	<a href="a_delete.do?announcement_num=${param.announcement_num}">공지사항
+		삭제</a>
 </body>
 </html>

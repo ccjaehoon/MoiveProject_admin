@@ -28,4 +28,8 @@ public interface UserDAO {
 	public UserVO u_nicknameCheck(UserVO vo);
 	
 	public UserVO u_emailCheck(UserVO vo);
+
+	public UserVO u_loginCheck(UserVO vo);
+
+	
 }

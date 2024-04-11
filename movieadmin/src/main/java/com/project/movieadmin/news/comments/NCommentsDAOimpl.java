@@ -49,9 +49,18 @@ public class NCommentsDAOimpl implements NCommentsDAO {
 
 	@Override
 	public int nc_increaseGood(NCommentsVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("nc_increaseGood()....");
+		log.info(vo.toString());
+		return sqlSession.update("NC_INCREASE_GOOD", vo);
 	}
+	
+	@Override
+	public NCommentsVO nc_selectGood(NCommentsVO vo) {
+		log.info("nc_selectGood()....");
+		log.info(vo.toString());
+		return sqlSession.selectOne("NC_SELECT_GOOD", vo);
+	}
+
 
 	@Override
 	public int nc_increaseReport(NCommentsVO vo) {

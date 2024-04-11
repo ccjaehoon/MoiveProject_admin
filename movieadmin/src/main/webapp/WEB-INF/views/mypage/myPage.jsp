@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,63 +36,75 @@ input[type=submit]:hover {
 }
 
 div {
-	border-radius: 15px;
-	background-color: #f0f0f0;
-	padding: 20px;
+	border-radius: 5px;
+	background-color: #bfbfbf;
 }
 
-#loginTable {
+#Table {
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
-	width: 100%;
+	width: 80%;
 }
 
-#loginTable td {
+#Table td {
 	border: 1px solid #ddd;
 	padding: 8px;
 }
 
-#loginTable tr:nth-child(even) {
+#Table tr:nth-child(even) {
 	background-color: #ebebeb;
 }
 
-#loginTable tr:hover {
+#Table tr:hover {
 	background-color: #ffc6c6;
 }
 </style>
-
-
-
 </head>
 
 <body>
+
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div>
-		<h3>로그인폼</h3>
-		<form id="loginForm" action="u_loginOK.do" method="post"
-			enctype="multipart/form-data">
-			<table id="loginTable">
+		<h2>MYPAGE</h2>
+		<table id="Table">
+			<tbody>
 				<tr>
-					<td><label for="user_id">id:</label></td>
-					<td><input type="text" id="user_id" name="user_id"
-						value="admin" placeholder="아이디"></td>
-				</tr>
-				<tr>
-					<td><label for="password">password:</label></td>
-					<td><input type="password" id="password" name="password"
-						value="hi1234" placeholder="비밀번호"></td>
-				</tr>	
-				
-				<tr>
-					<td colspan="2"><input type="submit" value="login">
-					<c:if test="${param.message == 0 }">
-		              		아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.
-                		</c:if>
+					<td>
+						<form action="m_favorite.do">
+							<input type="submit" value="즐겨찾기">
+
+						</form>
 					</td>
 				</tr>
-				
-			</table>
-		</form>
+				<tr>
+					<td>
+						<form action="m_selectOne.do">
+							<input type="submit" value="내 정보">
+
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form action="m_myPost.do">
+							<input type="submit" value="쓴 글">
+
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form action="m_myComments.do">
+							<input type="submit" value="쓴 댓글">
+
+						</form>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+
 	</div>
 </body>
+
 </html>

@@ -28,16 +28,48 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 		log.info("sPath:{}",sPath);
 		log.info("user_id:{}",session.getAttribute("user_id"));
 		
-		if(sPath.equals("/home.do") 
-				|| sPath.equals("")
-				|| sPath.equals("")
-				|| sPath.equals("")
-				|| sPath.equals("")
-				|| sPath.equals(""))
+		if(sPath.equals("") 
+				|| sPath.equals("/a_update.do")	
+				|| sPath.equals("/a_delete.do")		
+				|| sPath.equals("/a_insert.do")
+				|| sPath.equals("/b_update.do")	
+				|| sPath.equals("/b_delete.do")		
+				|| sPath.equals("/b_insert.do")
+				|| sPath.equals("/f_update.do")	
+				|| sPath.equals("/f_delete.do")		
+				|| sPath.equals("/f_insert.do")
+				|| sPath.equals("/i_update.do")	
+				|| sPath.equals("/i_delete.do")		
+				|| sPath.equals("/i_insert.do")
+				|| sPath.equals("/rv_update.do")	
+				|| sPath.equals("/rv_delete.do")		
+				|| sPath.equals("/rv_insert.do")
+				|| sPath.equals("/n_update.do")	
+				|| sPath.equals("/n_delete.do")		
+				|| sPath.equals("/n_insert.do")
+				|| sPath.equals("/nc_update.do")	
+				|| sPath.equals("/nc_delete.do")		
+				|| sPath.equals("/nc_insert.do")
+				|| sPath.equals("/rp_update.do")	
+				|| sPath.equals("/rp_delete.do")		
+				|| sPath.equals("/rp_insert.do")
+				|| sPath.equals("/s_update.do")	
+				|| sPath.equals("/s_delete.do")		
+				|| sPath.equals("/s_insert.do")
+				|| sPath.equals("/sc_update.do")	
+				|| sPath.equals("/sc_delete.do")		
+				|| sPath.equals("/sc_insert.do")
+				|| sPath.equals("/u_selectAll.do")
+				|| sPath.equals("/nc_insertOK.do")
+				|| sPath.equals("/c_insertOK.do")
+				|| sPath.equals("/sc_insertOK.do")
+				|| sPath.equals("/rv_insertOK.do")
+				|| sPath.equals("/m_myPage.do")
+				)
 				 {
 			
 			if(session.getAttribute("user_id")==null) {
-				response.sendRedirect("login.do");
+				response.sendRedirect("u_login.do");
 				return false;
 			}
 			
