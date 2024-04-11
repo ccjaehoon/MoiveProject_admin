@@ -43,7 +43,7 @@ public class BoardController {
 		return "board/insert";
 	}
 
-	@RequestMapping(value = "/b_insertOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/b_insertOK.do", method = RequestMethod.POST)
 	public String b_insertOK(BoardVO vo) throws IllegalStateException, IOException {
 		log.info("Welcome insertOK.do...");
 
@@ -51,9 +51,7 @@ public class BoardController {
 
 		MultipartFile file = vo.getFile_img();
 		String originName = file.getOriginalFilename();
-		if (file != null) {
-			originName = file.getOriginalFilename();
-		}
+		
 		if (originName.length() == 0) {
 			vo.setSave_img("default.png"); // 기본이미지
 		} else {
