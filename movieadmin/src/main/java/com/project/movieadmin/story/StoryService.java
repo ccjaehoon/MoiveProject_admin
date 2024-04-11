@@ -17,6 +17,8 @@ public interface StoryService {
 	
 	public List<StoryVO> s_selectAll(int cpage,int pageBlock);
 	
+	public int s_getTotalRows();
+	
 	public List<StoryVO> s_getLiveStories();
 	//만료되지 않은 스토리 조회
 	public int s_removeExpired();
