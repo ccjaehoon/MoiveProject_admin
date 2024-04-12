@@ -86,7 +86,6 @@
 				<tr>
 				    <td><input type="file" name="file_img"></td>
 				    <td><input type="file" name="file_video"></td>
-				    <td><input type="submit" value="글수정 완료"></td>
 				</tr> 
                
 

@@ -80,7 +80,27 @@ public class StoryController {
 			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
 
 		}
+		    // 동영상 파일 저장 코드 수정
+		 if (vo.getFile_video() != null && !vo.getFile_video().isEmpty()) {
+	        // 동영상 파일의 크기 제한 설정 (20MB)
+	        final long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
+	        
+	        // 파일 크기 검증
+	        if (vo.getFile_video().getSize() > MAX_FILE_SIZE) {
+	            log.error("동영상 파일 크기가 허용된 용량을 초과합니다.");
+	            // 크기 제한 초과 시 적절한 처리 (예: 사용자에게 메시지 반환 또는 예외 발생)
+	            throw new IOException("동영상 파일 크기가 허용된 용량을 초과합니다.");
+	        }
 		
+		
+		    String videoName = vo.getFile_video().getOriginalFilename();
+		    String saveVideoName = "video_" + System.currentTimeMillis() + videoName.substring(videoName.lastIndexOf("."));
+		    vo.setSave_video(saveVideoName); // VO의 save_video 필드에 저장할 동영상 파일 이름을 설정
+		    
+		    // 동영상 파일 저장 경로 설정
+		    File uploadVideoFile = new File(realPath, saveVideoName);
+		    vo.getFile_video().transferTo(uploadVideoFile); // 동영상 파일 저장
+		}
 		
 		int result = service.s_insert(vo);
 		log.info("result:{}", result);
