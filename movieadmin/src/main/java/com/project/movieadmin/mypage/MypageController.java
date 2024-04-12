@@ -57,13 +57,7 @@ public class MypageController {
 	@RequestMapping(value = "/m_favorite.do", method = RequestMethod.GET)
 	public String m_favorite(UserVO vo, Model model, HttpSession session) {
 		log.info("Welcome m_favorite!");
-		String user_id = (String) session.getAttribute("user_id");
-		log.info(user_id);
-	    	  
-	    vo.setUser_id(user_id);
-	    UserVO vo2 = user_service.u_selectOne_id(vo);
-	    model.addAttribute("vo2", vo2); 
-	    log.info("{}", vo2);
+	
 		return "mypage/favorite";
 	}
 	
