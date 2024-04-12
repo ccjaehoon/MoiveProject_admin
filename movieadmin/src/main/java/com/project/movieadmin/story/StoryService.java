@@ -13,7 +13,8 @@ public interface StoryService {
 	public int s_delete(StoryVO vo);
 	
 	//public StoryVO selectOneRandom(StoryVO vo); 둘 중 어떤게 맞나요?
-	public List<StoryVO> s_selectRandomList(StoryVO vo);
+	public StoryVO s_selectRandomList(StoryVO vo);
+  //public List<StoryVO> s_selectRandomList(StoryVO vo);
 	
 	public List<StoryVO> s_selectAll();
 	
