@@ -7,7 +7,7 @@
 	<insert id="NC_INSERT"
 		parameterType="com.project.movieadmin.news.comments.NCommentsVO">
 		insert into ncomments(nickname, content,news_num)
-		values('admin',#{content},#{news_num})
+		values(#{nickname},#{content},#{news_num})
 	</insert>
 
 	<update id="NC_UPDATE">
