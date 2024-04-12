@@ -97,5 +97,12 @@
 		insert into goodcheck(nickname, news_num, news_comments_num)
 		values(#{nickname},#{news_num},#{news_comments_num})
 	</select>
+	
+	<select id="NC_SELECT_ALL_PAGE_BLOCK_NICKNAME"
+		resultType="com.project.movieadmin.news.comments.NCommentsVO">
+	select * from ncomments where nickname=#{vo.nickname} order by news_comments_num desc
+		limit ${startRow},
+		${pageBlock}
+	</select>
 
 </mapper>

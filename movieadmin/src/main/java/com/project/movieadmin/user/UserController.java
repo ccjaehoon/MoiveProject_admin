@@ -182,7 +182,7 @@ public class UserController {
 			session.setAttribute("user_id", vo2.getUser_id());
 			session.setAttribute("user_num", vo2.getUser_num());
 			session.setAttribute("nickname", vo2.getNickname());
-
+			log.info("vo2:"+vo2.getNickname());
 
 			return "redirect:home.do";
 		}
@@ -195,5 +195,7 @@ public class UserController {
 
 		return "redirect: home.do";
 	}
+	
+	
 
 }

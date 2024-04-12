@@ -66,8 +66,42 @@ div {
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div>
 		<h2>쓴 댓글 목록</h2>
-		
-
+		<h3>뉴스</h3>
+		  <table id="customers">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>댓글</th>
+                <th>작성자</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        	<c:forEach var="vo" items="${nComments}">
+            <tr>
+                <td><a href="nc_selectOne.do?news_comments_num=${vo.news_comments_num}">${vo.news_comments_num}</a></td>
+                <td>${vo.content}</td>
+                <td>${vo.nickname}</td>
+            </tr>
+        	</c:forEach>
+            
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <td colspan="7">
+                	<c:forEach var="i" begin="1" end="${totalPageCount}">
+	                	<c:if test="${param.searchKey == null }">
+		                	<a href="n_selectAll.do?cpage=${i}">${i} &nbsp;</a>
+                		</c:if>
+                		<c:if test="${param.searchKey != null }">
+		                	<a href="n_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
+                		</c:if>
+                	</c:forEach>
+                </td>
+            </tr>
+        </tfoot>
+		</table>
     </div>
 </body>
 
