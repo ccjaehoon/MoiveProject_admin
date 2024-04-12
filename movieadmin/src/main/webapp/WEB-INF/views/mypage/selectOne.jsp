@@ -109,21 +109,21 @@ div {
 			</thead>
 
 			<tbody>
-			   <tr>
-                    <td>${vo2.user_num}</td>
-                    <td>${vo2.user_id}</td>
-                    <td>${vo2.password}</td>
-                    <td>${vo2.nickname}</td>
-                    <td>${vo2.email}</td>
-                    <td>${vo2.tel}</td>
-                    <td>${vo2.birth}</td>
-                    <td>${vo2.authority}</td>
-                    <td>${vo2.reg_date}</td>
-                  
-                </tr>
-			</tbody>
+				<tr>
+					<td>${vo2.user_num}</td>
+					<td>${vo2.user_id}</td>
+					<td>${vo2.password}</td>
+					<td>${vo2.nickname}</td>
+					<td>${vo2.email}</td>
+					<td>${vo2.tel}</td>
+					<td>${vo2.birth}</td>
+					<td>${vo2.authority}</td>
+					<td>${vo2.reg_date}</td>
 
-			</div>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 
 </html>

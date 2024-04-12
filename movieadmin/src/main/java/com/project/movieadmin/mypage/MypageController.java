@@ -73,10 +73,9 @@ public class MypageController {
 	    
 	    UserVO userVO = new UserVO();
 	    userVO.setUser_num(vo.getUser_num());
-	    
 	 
 	    UserVO vo2 = user_service.u_selectOne(userVO);
-	    
+
 	    model.addAttribute("vo2", vo2); 
 	    
 	    return "mypage/selectOne";
