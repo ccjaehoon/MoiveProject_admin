@@ -67,50 +67,41 @@ div {
 	<div>
 		<h2>쓴 댓글 목록</h2>
 		<h3>뉴스</h3>
-		<table id="customers">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>내용</th>
-				<th>작성자</th>
-				<th>좋아요</th>
-				<th>작성일자</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="vo" items="${vos}">
-				
-				<tr>
-					<td>${vo.news_comments_num}</td>
-					<td>${vo.content}
-						<form action="nc_updateOK.do">
-							<input type="text" name="content" value="${vo.content}">
-							<input type="hidden" name="news_comments_num"
-								value="${vo.news_comments_num}"> <input type="hidden"
-								name="news_num" value="${vo.news_num}"> <input
-								type="submit" value="수정">
-						</form>
-					</td>
-					<td>${vo.nickname}<input type="hidden"
-							name="nickname" value="${user_id}"  id="nickname"></td>
-					
-					<td><input type="hidden"
-							name="news_comments_num" value="${vo.news_comments_num}"  id="news_comments_num">
-							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
-							<input type="hidden" name="good" value="${vo.good}" id="good">
-							<input type="button" value="${vo.good}" class="nc_increaseGood">
-
-					<td>${vo.wdate}</td>
-					<td><a
-						href="nc_deleteOK.do?news_comments_num=${vo.news_comments_num}&news_num=${vo.news_num}">댓글삭제</a>
-					</td>
-					
-				</tr>
-			</c:forEach>
-
-		</tbody>
-	</table>
+		  <table id="customers">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>댓글</th>
+                <th>작성자</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        	<c:forEach var="vo" items="${nComments}">
+            <tr>
+                <td><a href="nc_selectOne.do?news_comments_num=${vo.news_comments_num}">${vo.news_comments_num}</a></td>
+                <td>${vo.content}</td>
+                <td>${vo.nickname}</td>
+            </tr>
+        	</c:forEach>
+            
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <td colspan="7">
+                	<c:forEach var="i" begin="1" end="${totalPageCount}">
+	                	<c:if test="${param.searchKey == null }">
+		                	<a href="n_selectAll.do?cpage=${i}">${i} &nbsp;</a>
+                		</c:if>
+                		<c:if test="${param.searchKey != null }">
+		                	<a href="n_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
+                		</c:if>
+                	</c:forEach>
+                </td>
+            </tr>
+        </tfoot>
+		</table>
     </div>
 </body>
 
