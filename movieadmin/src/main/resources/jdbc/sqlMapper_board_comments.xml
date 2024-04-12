@@ -4,40 +4,55 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.board.comments">
-	<insert id="INSERT" parameterType="com.project.movieadmin.board.comments.CommentsVO">
+	<insert id="INSERT"
+		parameterType="com.project.movieadmin.board.comments.CommentsVO">
 		insert into
-		comments(nickname, content, wdate, good, board_num, report)
+		comments(nickname, content, wdate, good,
+		board_num, report)
 		values(#{nickname},#{content},#{wdate},#{good},#{board_num},#{report})
 	</insert>
 
 	<update id="UPDATE">
-		update comments set nickname=#{nickname},content=#{content}
-		where comments_num=#{comments_num}
+		update comments set
+		nickname=#{nickname},content=#{content}
+		where
+		comments_num=#{comments_num}
 	</update>
 
 	<delete id="DELETE">
-		delete from comments where comments_num=#{comments_num}
+		delete from comments where
+		comments_num=#{comments_num}
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.project.movieadmin.board.comments.CommentsVO">
+	<select id="SELECT_ONE"
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
 		select * from comments where comments_num=#{comments_num}
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.project.movieadmin.board.comments.CommentsVO">
+	<select id="SELECT_ALL"
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
 		select * from comments order by comments_num desc
 	</select>
-	
+
 	<select id="C_INCREASEGOOD" resultType="int">
-		update comments set good =
+		update comments set good
+		=
 		good + 1
 		where comments_num = #{comments_num}
 	</select>
 
 	<select id="C_INCREASEREPORT" resultType="int">
-		update comments set report =
+		update comments set
+		report =
 		report + 1
 		where comments_num = #{comments_num}
 	</select>
-	
 
+	<select id="C_SELECT_ALL_PAGE_BLOCK_NICKNAME"
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
+		select * from comments where nickname=#{vo.nickname} order by
+		comments_num desc
+		limit ${startRow},
+		${pageBlock}
+	</select>
 </mapper>

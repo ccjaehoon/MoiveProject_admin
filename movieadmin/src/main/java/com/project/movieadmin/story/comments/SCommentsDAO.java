@@ -2,6 +2,9 @@ package com.project.movieadmin.story.comments;
 
 import java.util.List;
 
+import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.user.UserVO;
+
 
 public interface SCommentsDAO {
 	
@@ -20,5 +23,6 @@ public interface SCommentsDAO {
 	
 	public int s_increaseReport(SCommentsVO vo); 
 	// 스토리 댓글 신고하기;
-
+	
+	public List<SCommentsVO> sc_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 }
