@@ -17,7 +17,9 @@ import com.project.movieadmin.announcement.AnnouncementVO;
 import com.project.movieadmin.board.BoardService;
 import com.project.movieadmin.board.BoardVO;
 import com.project.movieadmin.board.comments.CommentsService;
+import com.project.movieadmin.board.comments.CommentsVO;
 import com.project.movieadmin.info.review.ReviewService;
+import com.project.movieadmin.info.review.ReviewVO;
 import com.project.movieadmin.news.NewsService;
 import com.project.movieadmin.news.NewsVO;
 import com.project.movieadmin.news.comments.NCommentsService;
@@ -25,6 +27,7 @@ import com.project.movieadmin.news.comments.NCommentsVO;
 import com.project.movieadmin.story.StoryService;
 import com.project.movieadmin.story.StoryVO;
 import com.project.movieadmin.story.comments.SCommentsService;
+import com.project.movieadmin.story.comments.SCommentsVO;
 import com.project.movieadmin.user.UserService;
 import com.project.movieadmin.user.UserVO;
 
@@ -85,7 +88,13 @@ public class MypageController {
 	@RequestMapping(value = "/m_favorite.do", method = RequestMethod.GET)
 	public String m_favorite(UserVO vo, Model model, HttpSession session) {
 		log.info("Welcome m_favorite!");
-	
+		String user_id = (String) session.getAttribute("user_id");
+		log.info(user_id);
+	    	  
+	    vo.setUser_id(user_id);
+	    UserVO vo2 = user_service.u_selectOne_id(vo);
+	    model.addAttribute("vo2", vo2); 
+	    log.info("{}", vo2);
 		return "mypage/favorite";
 	}
 	
@@ -128,14 +137,14 @@ public class MypageController {
 
 	    	  
 	    vo.setNickname(nickname);	
-//		 List<CommentsVO> comments = comments_service.c_selectAll_nickname(cpage, pageBlock,vo);
-//		 List<SCommentsVO> sComments = SComments_service.sc_selectAll_nickname(cpage, pageBlock,vo);
+		 List<CommentsVO> comments = comments_service.c_selectAll_nickname(cpage, pageBlock,vo);
+		 List<SCommentsVO> sComments = SComments_service.sc_selectAll_nickname(cpage, pageBlock,vo);
 		 List<NCommentsVO> nComments = NComments_service.nc_selectAll_nickname(cpage, pageBlock,vo);
-//		 List<ReviewVO> review = review_service.r_selectAll_nickname(cpage, pageBlock, vo);
-//		 model.addAttribute("comments", comments);
-//		 model.addAttribute("sComments", sComments);
+		 List<ReviewVO> review = review_service.r_selectAll_nickname(cpage, pageBlock, vo);
+		 model.addAttribute("comments", comments);
+		 model.addAttribute("sComments", sComments);
 		 model.addAttribute("nComments", nComments);
-//		 model.addAttribute("review", review);
+		 model.addAttribute("review", review);
 		 
 		return "mypage/myComments";
 	}

@@ -2,6 +2,8 @@ package com.project.movieadmin.story.comments;
 
 import java.util.List;
 
+import com.project.movieadmin.user.UserVO;
+
 public interface SCommentsService {
 		
 	public int sc_insert(SCommentsVO vo);
@@ -19,5 +21,6 @@ public interface SCommentsService {
 		
 	public int sc_increaseReport(SCommentsVO vo); 
 	// 스토리 신고하기;
-
+	
+	public List<SCommentsVO> sc_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 	}
