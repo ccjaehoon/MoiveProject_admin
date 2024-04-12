@@ -1,12 +1,19 @@
 package com.project.movieadmin.mypage;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.user.UserService;
+import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,9 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class MypageController {
-	// 깃오류 점검 주석
-//	@Autowired
-//	private MypageService service;
+	
+	
+	@Autowired
+	private UserService user_service;
 
 	@Autowired
 	private HttpSession session;
@@ -51,17 +59,22 @@ public class MypageController {
 		return "mypage/myPost";
 	}
 	
-	@RequestMapping(value = "/m_myComments.do", method = RequestMethod.GET)
-	public String m_myComments() {
-		log.info("Welcome m_myComments!");
-
-		return "mypage/myComments";
-	}
-
 	@RequestMapping(value = "/m_selectOne.do", method = RequestMethod.GET)
-	public String m_selectOne() {
-		log.info("Welcome m_selectOne!");
+	public String m_selectOne(UserVO vo, Model model, HttpSession session) {
+	   
+		UserVO user_id = (UserVO) session.getAttribute("user_id");
 
-		return "mypage/selectOne";
+	   
+	    if (user_id == null) {
+	        return "redirect:/login";
+	    }
+
+	    
+	  
+	    vo.setUser_num(user_id.getUser_num());
+	    UserVO vo2 = user_service.u_selectOne(vo);
+	    model.addAttribute("vo2", vo2); 
+
+	    return "mypage/selectOne";
 	}
 }

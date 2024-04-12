@@ -94,6 +94,7 @@ public class NewsController {
 		NCommentsVO cvo = new NCommentsVO();
 		cvo.setNews_num(vo.getNews_num());
 		List<NCommentsVO> cvos = comService.nc_selectAll(cvo);
+		log.info(cvos.toString());
 
 		model.addAttribute("cvos", cvos);
 

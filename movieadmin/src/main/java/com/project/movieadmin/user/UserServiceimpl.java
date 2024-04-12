@@ -94,4 +94,6 @@ public class UserServiceimpl implements UserService {
 		
 		return dao.u_loginCheck(vo);
 	}
+
+	
 }

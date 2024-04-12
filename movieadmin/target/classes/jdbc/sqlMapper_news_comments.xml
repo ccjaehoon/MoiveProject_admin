@@ -87,6 +87,15 @@
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
 
 	</select>
-
+	<select id="NC_GOOD_CHECK"
+		resultType="int">
+		select count(*) as like_count from goodcheck where nickname = #{nickname} and news_num = #{news_num} and news_comments_num = #{news_comments_num}
+		
+	</select>
+	<select id="NC_GOOD_SAVE"
+		resultType="int">
+		insert into goodcheck(nickname, news_num, news_comments_num)
+		values(#{nickname},#{news_num},#{news_comments_num})
+	</select>
 
 </mapper>

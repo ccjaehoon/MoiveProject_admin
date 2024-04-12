@@ -38,6 +38,8 @@ public class NCommentsController {
 	@RequestMapping(value = "/nc_selectAll.do", method = RequestMethod.GET)
 	public String nc_selectAll(NCommentsVO vo) {
 		logger.info("Welcome nc_selectAll!");
+		
+		
 
 		return "NComments/selectAll";
 	}
@@ -63,4 +65,5 @@ public class NCommentsController {
 		
 		return "redirect:n_selectOne.do?news_num="+vo.getNews_num();
 	}
+
 }
