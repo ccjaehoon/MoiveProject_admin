@@ -1,12 +1,19 @@
 package com.project.movieadmin.mypage;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.user.UserService;
+import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,9 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class MypageController {
-	// 깃오류 점검 주석
-//	@Autowired
-//	private MypageService service;
+	
+	
+	@Autowired
+	private UserService user_service;
 
 	@Autowired
 	private HttpSession session;
@@ -59,9 +67,18 @@ public class MypageController {
 	}
 
 	@RequestMapping(value = "/m_selectOne.do", method = RequestMethod.GET)
-	public String m_selectOne() {
-		log.info("Welcome m_selectOne!");
-
-		return "mypage/selectOne";
+	public String m_selectOne(UserVO vo, Model model) {
+	    log.info("Welcome m_selectOne!");
+	    
+	    
+	    UserVO userVO = new UserVO();
+	    userVO.setUser_num(vo.getUser_num());
+	    
+	 
+	    UserVO vo2 = user_service.u_selectOne(userVO);
+	    
+	    model.addAttribute("vo2", vo2); 
+	    
+	    return "mypage/selectOne";
 	}
 }
