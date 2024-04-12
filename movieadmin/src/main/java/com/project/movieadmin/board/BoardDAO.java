@@ -2,6 +2,8 @@ package com.project.movieadmin.board;
 
 import java.util.List;
 
+import com.project.movieadmin.user.UserVO;
+
 public interface BoardDAO {
 	
 	public int b_insert(BoardVO vo);
@@ -23,5 +25,7 @@ public interface BoardDAO {
 	public int b_increaseGood(BoardVO vo);
 	
 	public int b_increaseReport(BoardVO vo);
+
+	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo);
 
 }

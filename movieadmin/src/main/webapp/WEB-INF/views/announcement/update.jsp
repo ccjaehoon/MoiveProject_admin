@@ -66,7 +66,7 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
         <h1>게시글 수정페이지</h1>
-        <form action="a_updateOK.do" method="post">
+        <form action="a_updateOK.do" method="post" enctype="multipart/form-data">
             <table id="insertTable">
                 <tr>
                     <td><label for="">항목</label></td>
@@ -86,8 +86,8 @@
                 </tr>
               
                <tr>
-                    <td><label for="file">올릴 이미지:</label></td>
-                    <td><input type="file" id="file" name="file"></td>
+                    <td><label for="file_img">올릴 이미지:</label></td>
+                    <td><input type="file" id="file_img" name="file_img"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글수정 완료"></td>

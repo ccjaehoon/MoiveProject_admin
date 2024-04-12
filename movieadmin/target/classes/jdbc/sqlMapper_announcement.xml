@@ -36,6 +36,12 @@
 		limit ${startRow},
 		${pageBlock}
 	</select>
+	<select id="A_SELECT_ALL_PAGE_BLOCK_NICKNAME"
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
+		select * from announcement where nickname=#{nickname} order by announcement_num desc
+		limit ${startRow},
+		${pageBlock}
+	</select>
 
 
 	<select id="A_SEARCHLIST_PAGE_BLOCK_TITLE"
@@ -59,15 +65,13 @@
 	</select>
 
 
-	<select id="A_SEARCH_TOTAL_ROWS_ID" resultType="int">
-		select count(*)
-		total_rows from announcement where title like #{searchWord}
+	<select id="A_SEARCH_TOTAL_ROWS_TITLE" resultType="int">
+		SELECT COUNT(*) AS total_rows FROM announcement WHERE title LIKE #{searchWord}
 	</select>
 
 
-	<select id="A_SEARCH_TOTAL_ROWS_NAME" resultType="int">
-		select count(*)
-		total_rows from announcement where content like #{searchWord}
+	<select id="A_SEARCH_TOTAL_ROWS_CONTENT" resultType="int">
+		SELECT COUNT(*) AS total_rows FROM announcement WHERE content LIKE #{searchWord}
 	</select>
 
 

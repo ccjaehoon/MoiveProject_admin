@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -62,6 +62,12 @@ public class AnnouncementServiceimpl implements AnnouncementService {
 	public int a_getSearchTotalRows(String searchKey, String searchWord) {
 		
 		return dao.a_getSearchTotalRows(searchKey, searchWord);
+	}
+
+	@Override
+	public List<AnnouncementVO> a_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		
+		return dao.a_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
 }

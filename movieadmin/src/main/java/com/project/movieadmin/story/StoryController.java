@@ -1,10 +1,17 @@
 package com.project.movieadmin.story;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +34,9 @@ public class StoryController {
 	@Autowired
 	private StoryService service;
 	
+	@Autowired
+	private ServletContext sContext;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -38,10 +48,59 @@ public class StoryController {
 		return "story/insert";
 	}
 	
-	@RequestMapping(value = "/s_insertOK.do", method = RequestMethod.GET)
-	public String s_insertOK(StoryVO vo) {
+	@RequestMapping(value = "/s_insertOK.do", method = RequestMethod.POST)
+	public String s_insertOK(StoryVO vo) throws IOException {
 		log.info("Welcome story_insertOK...");
 		log.info("vo:{}", vo);
+		
+		String realPath = sContext.getRealPath("resources/uploadimg");
+		log.info(realPath);
+		
+		String originName = vo.getFile_img().getOriginalFilename();
+
+		log.info("getOriginalFilename:{}", originName);
+		if (originName.length() == 0) {
+			vo.setSave_img("default.png");// 이미지선택없이 처리할때
+		}else {
+			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
+
+			vo.setSave_img(save_name);
+
+			File uploadFile = new File(realPath, save_name);
+			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
+
+			//// create thumbnail image/////////
+			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+
+			File thumb_file = new File(realPath, "thumb_" + save_name);
+
+			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
+
+		}
+		    // 동영상 파일 저장 코드 수정
+		 if (vo.getFile_video() != null && !vo.getFile_video().isEmpty()) {
+	        // 동영상 파일의 크기 제한 설정 (20MB)
+	        final long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
+	        
+	        // 파일 크기 검증
+	        if (vo.getFile_video().getSize() > MAX_FILE_SIZE) {
+	            log.error("동영상 파일 크기가 허용된 용량을 초과합니다.");
+	            // 크기 제한 초과 시 적절한 처리 (예: 사용자에게 메시지 반환 또는 예외 발생)
+	            throw new IOException("동영상 파일 크기가 허용된 용량을 초과합니다.");
+	        }
+		
+		
+		    String videoName = vo.getFile_video().getOriginalFilename();
+		    String saveVideoName = "video_" + System.currentTimeMillis() + videoName.substring(videoName.lastIndexOf("."));
+		    vo.setSave_video(saveVideoName); // VO의 save_video 필드에 저장할 동영상 파일 이름을 설정
+		    
+		    // 동영상 파일 저장 경로 설정
+		    File uploadVideoFile = new File(realPath, saveVideoName);
+		    vo.getFile_video().transferTo(uploadVideoFile); // 동영상 파일 저장
+		}
 		
 		int result = service.s_insert(vo);
 		log.info("result:{}", result);
@@ -65,7 +124,7 @@ public class StoryController {
 		 }
 		return "story/update";
 	}
-	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.POST)
 	public String s_updateOK(StoryVO vo) {
 		log.info("Welcome story_updateOK...");
 		log.info("vo:{}", vo);

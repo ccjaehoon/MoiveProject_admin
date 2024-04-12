@@ -66,7 +66,7 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
         <h1>스토리 만들기</h1>
-        <form action="s_insertOK.do" method="post">
+        <form action="s_insertOK.do" method="post" enctype="multipart/form-data">
             <table id="insertTable">
                 <tr>
                     <td><label for="">항목</label></td>
@@ -74,19 +74,18 @@
                 </tr>
                 
                 <tr>
-                    <td><label for="writer">작성자</label></td>
-                    <td>${user_id}<input type="hidden" id="writer" name="writer" value="${user_id}"></td>
+                    <td><label for="nickname">작성자</label></td>
+                    <td>${nickname}<input type="hidden" id="nickname" name="nickname" value="nickname4">nickname4</td>
                 </tr>
 
                 <tr>
                     <td><label for="content">한줄평</label></td>
-                    <td><textarea name="content" id="content" cols="30" rows="10" placeholder="제목을 입력하세요"></textarea></td>
+                    <td><textarea name="content" id="content" cols="30" rows="10" placeholder="한줄평을 입력하세요"></textarea></td>
                 </tr>
                 
 				<tr>
 				    <td><input type="file" name="file_img"></td>
 				    <td><input type="file" name="file_video"></td>
-				    <td><input type="submit" value="글수정 완료"></td>
 				</tr> 
                
 
