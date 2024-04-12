@@ -42,41 +42,28 @@
     <hr>
     <a href="s_insert.do">스토리 만들기</a>
     <table id="customers">
-        <thead>
-            <tr>
-                <th>번호</th>
-                <th>한줄평</th>
-                <th>작성자</th>
-                <th>작성일자</th>
-                <th></th>
-            </tr>
-        </thead>
         <tbody>
         	<c:forEach var="vo" items="${vos}">
+            
             <tr>
                 <td><a href="s_selectRandomList.do?story_num=${vo.story_num}">${vo.story_num}</a></td>
+            </tr>
+            <tr>
                 <td>${vo.content}</td>
+            </tr>
+            <tr>
                 <td>${vo.nickname}</td>
+            </tr>
+            <tr>
+                <td><img alt="" src="resources/uploadimg/thumb_${vo.save_img}"></td>
+            </tr>
+            <tr>
                 <td><a href="s_delete.do?story_num=${vo.story_num}">글삭제</a></td>
             </tr>
         	</c:forEach>
             
         </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="5">
-                	<c:forEach var="i" begin="1" end="${totalPageCount}">
-	                	<c:if test="${param.searchKey == null }">
-		                	<a href="s_selectAll.do?cpage=${i}">${i} &nbsp;</a>
-                		</c:if>
-
-                		<c:if test="${param.searchKey != null }">
-		                	<a href="s_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
-                		</c:if>
-                	</c:forEach>
-                </td>
-            </tr>
-        </tfoot>
+       
     </table>
 </body>
 </html>

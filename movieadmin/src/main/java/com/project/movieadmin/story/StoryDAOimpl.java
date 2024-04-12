@@ -46,11 +46,11 @@ public class StoryDAOimpl implements StoryDAO {
 	}
 	
 	@Override
-	public List<StoryVO> s_selectRandomList(StoryVO vo) {
+	public StoryVO s_selectRandomList(StoryVO vo) {
 		log.info("s_selectRandomList()....");
 		log.info(vo.toString());
 
-		return sqlSession.selectList("S_SELECT_RANDOMLIST", vo);
+		return sqlSession.selectOne("S_SELECT_RANDOMLIST", vo);
 	}
 
 	@Override

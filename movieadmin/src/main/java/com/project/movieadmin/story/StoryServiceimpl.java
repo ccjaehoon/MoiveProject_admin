@@ -38,7 +38,7 @@ public class StoryServiceimpl implements StoryService {
 	}
 	
 	@Override
-	public List<StoryVO> s_selectRandomList(StoryVO vo) {
+	public StoryVO s_selectRandomList(StoryVO vo) {
 		
 		return dao.s_selectRandomList(vo);
 	}
