@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -164,22 +164,21 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "u_loginOK.do", method = RequestMethod.POST)
-
 	public String u_loginOK(UserVO vo) {
-		log.info("Welcome loginOK.do....");
+	    log.info("Welcome loginOK.do....");
 
-		log.info("vo : {}", vo);
+	    log.info("vo : {}", vo);
 
-		UserVO vo2 = service.u_login(vo);
-		log.info("vo2:" + vo2);
-		log.info("================");
+	    UserVO vo2 = service.u_login(vo);
+	    log.info("vo2:" + vo2);
+	    log.info("================");
 
-		if (vo2 == null) {
-			return "redirect: u_login.do?message=0";
-		} else {
-			session.setAttribute("user_id", vo.getUser_id());
-			return "redirect: home.do";
-		}
+	    if (vo2 == null) {
+	        return "redirect:u_login.do?message=0";
+	    } else {
+	        session.setAttribute("user_id", vo.getUser_id());
+	        return "redirect:home.do";
+	    }
 	}
 
 	@RequestMapping(value = "u_logout.do", method = RequestMethod.GET)

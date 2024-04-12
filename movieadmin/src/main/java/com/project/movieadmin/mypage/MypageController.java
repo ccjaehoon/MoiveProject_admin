@@ -59,25 +59,11 @@ public class MypageController {
 		return "mypage/myPost";
 	}
 	
-	@RequestMapping(value = "/m_myComments.do", method = RequestMethod.GET)
-	public String m_myComments() {
-		log.info("Welcome m_myComments!");
-
-		return "mypage/myComments";
-	}
-
 	@RequestMapping(value = "/m_selectOne.do", method = RequestMethod.GET)
-	public String m_selectOne(UserVO vo, Model model) {
-	    log.info("Welcome m_selectOne!");
-	    
-	    
-	    UserVO userVO = new UserVO();
-	    userVO.setUser_num(vo.getUser_num());
-	 
-	    UserVO vo2 = user_service.u_selectOne(userVO);
+	public String m_selectOne(UserVO vo, Model model, HttpSession session) {
 
-	    model.addAttribute("vo2", vo2); 
-	    
+
+
 	    return "mypage/selectOne";
 	}
 }
