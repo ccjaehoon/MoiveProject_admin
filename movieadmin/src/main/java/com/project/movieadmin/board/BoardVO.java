@@ -23,7 +23,7 @@ public class BoardVO {
 	private String report;
 	private String save_img;
 	private MultipartFile file_img;
-	private String save_video;
-	private MultipartFile file_video;
+//	private String save_video;
+//	private MultipartFile file_video;
 
 }

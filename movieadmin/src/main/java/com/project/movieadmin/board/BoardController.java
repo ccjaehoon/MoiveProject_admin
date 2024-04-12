@@ -51,9 +51,7 @@ public class BoardController {
 
 		MultipartFile file = vo.getFile_img();
 		String originName = file.getOriginalFilename();
-		if (file != null) {
-			originName = file.getOriginalFilename();
-		}
+		
 		if (originName.length() == 0) {
 			vo.setSave_img("default.png"); // 기본이미지
 		} else {

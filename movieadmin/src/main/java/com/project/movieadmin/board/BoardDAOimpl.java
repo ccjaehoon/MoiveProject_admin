@@ -27,8 +27,8 @@ public class BoardDAOimpl implements BoardDAO {
 	public int b_insert(BoardVO vo) {
 		log.info("b_insert()....");
 
+		log.info("{}",vo);
 		int flag = sqlSession.insert("B_INSERT", vo);
-
 		return flag;
 	}
 

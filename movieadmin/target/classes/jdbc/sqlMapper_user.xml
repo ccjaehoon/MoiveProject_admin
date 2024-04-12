@@ -74,7 +74,11 @@
 
 	<select id="U_LOGIN"
 		resultType="com.project.movieadmin.user.UserVO">
+<<<<<<< HEAD
 		select user_id,nickname from user where user_id=#{user_id} and
+=======
+		select * from user where user_id=#{user_id} and
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 		password=#{password}
 	</select>
 	<select id="U_ID_CHECK"
