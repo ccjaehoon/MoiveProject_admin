@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.movieadmin.user.UserVO;
+
 @Service
 public class NewsServiceimpl implements NewsService {
 	
@@ -49,6 +51,12 @@ public class NewsServiceimpl implements NewsService {
 	@Override
 	public int n_getSearchTotalRows(String searchKey, String searchWord) {
 		return dao.n_getSearchTotalRows(searchKey, searchWord);
+	}
+
+	@Override
+	public List<NewsVO> n_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+	
+		return dao.n_selectAll_nickname(cpage, pageBlock,vo);
 	}
 
 }

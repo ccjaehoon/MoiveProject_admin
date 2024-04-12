@@ -38,10 +38,11 @@ public class NCommentsRestController {
 		if(goodCheck == 0) {
 			int increaseGood = service.nc_increaseGood(vo);
 			log.info("increaseGood:{}",increaseGood);
+			
+			int goodSave = service.nc_goodSave(vo);
+			log.info("result:{}",goodSave);
 		}
-		
-		int goodSave = service.nc_goodSave(vo);
-		log.info("result:{}",goodSave);
+
 		int good = service.nc_selectGood(vo).getGood();
 		log.info(service.nc_selectGood(vo).getGood()+"");
 		map.put("good", good);

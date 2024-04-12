@@ -36,6 +36,12 @@
 		limit ${startRow},
 		${pageBlock}
 	</select>
+	<select id="A_SELECT_ALL_PAGE_BLOCK_NICKNAME"
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
+		select * from announcement where nickname=#{vo.nickname} order by announcement_num desc
+		limit ${startRow},
+		${pageBlock}
+	</select>
 
 
 	<select id="A_SEARCHLIST_PAGE_BLOCK_TITLE"

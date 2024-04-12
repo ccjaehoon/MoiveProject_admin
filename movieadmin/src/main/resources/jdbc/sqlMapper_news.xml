@@ -7,7 +7,7 @@
 	<insert id="N_INSERT" parameterType="com.project.movieadmin.news.NewsVO">
 		insert into
 		news(title,nickname,content,save_img)
-		values(#{title},'관리자',#{content},#{save_img})
+		values(#{title},'admin',#{content},#{save_img})
 	</insert>
 
 	<update id="N_UPDATE">
@@ -32,6 +32,9 @@
 		resultType="com.project.movieadmin.news.NewsVO">
 		select * from news order by news_num desc limit #{startRow},#{pageBlock}
 	</select>
+	<select id="N_SELECT_ALL_PAGE_BLOCK_NICKNAME" resultType="com.project.movieadmin.news.NewsVO">
+    select * from news where nickname=#{vo.nickname} order by news_num desc limit #{startRow}, #{pageBlock}
+</select>
 
 	
 	<select id="N_SEARCHLIST_TITLE"

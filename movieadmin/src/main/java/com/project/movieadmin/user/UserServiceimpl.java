@@ -95,5 +95,11 @@ public class UserServiceimpl implements UserService {
 		return dao.u_loginCheck(vo);
 	}
 
+	@Override
+	public UserVO u_selectOne_id(UserVO vo) {
+		
+		return dao.u_selectOne_id(vo);
+	}
+
 	
 }
