@@ -7,7 +7,7 @@
 	<insert id="N_INSERT" parameterType="com.project.movieadmin.news.NewsVO">
 		insert into
 		news(title,nickname,content,save_img)
-		values(#{title},#{nickname},#{content},#{save_img})
+		values(#{title},'관리자',#{content},#{save_img})
 	</insert>
 
 	<update id="N_UPDATE">

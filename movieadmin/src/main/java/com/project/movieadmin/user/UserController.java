@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.slf4j.Slf4j;
 
+
 /**
  * Handles requests for the application home page.
  */
@@ -175,10 +176,11 @@ public class UserController {
 		log.info("================");
 
 		if (vo2 == null) {
-			return "redirect: u_login.do?message=0";
+			return "redirect:login.do?message=0";
 		} else {
 			session.setAttribute("user_id", vo.getUser_id());
-			return "redirect: home.do";
+			session.setAttribute("user_num", vo.getUser_num());
+			return "redirect:home.do";
 		}
 	}
 
