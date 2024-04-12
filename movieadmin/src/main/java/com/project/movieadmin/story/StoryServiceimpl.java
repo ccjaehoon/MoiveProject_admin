@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -86,6 +88,12 @@ public class StoryServiceimpl implements StoryService {
 	public int s_increaseReport(StoryVO vo) {
 
 		return dao.s_increaseReport(vo);
+	}
+	@Override
+	public List<StoryVO> s_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		
+		
+		return dao.s_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
 

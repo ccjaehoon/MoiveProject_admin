@@ -10,9 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.movieadmin.announcement.AnnouncementService;
+import com.project.movieadmin.announcement.AnnouncementVO;
 import com.project.movieadmin.board.BoardService;
 import com.project.movieadmin.board.BoardVO;
+import com.project.movieadmin.news.NewsService;
+import com.project.movieadmin.news.NewsVO;
 import com.project.movieadmin.story.StoryService;
 import com.project.movieadmin.story.StoryVO;
 import com.project.movieadmin.user.UserService;
@@ -36,6 +41,12 @@ public class MypageController {
 	
 	@Autowired
 	private StoryService story_service;
+	
+	@Autowired
+	private NewsService news_service;
+	
+	@Autowired
+	private AnnouncementService announcement_service;
 
 	@Autowired
 	private HttpSession session;
@@ -62,10 +73,21 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/m_myPost.do", method = RequestMethod.GET)
-	public String m_myPost(Model model) {
-		log.info("Welcome m_myPost!");
-
-	
+	public String m_myPost(@RequestParam(defaultValue = "1") int cpage,
+			@RequestParam(defaultValue = "20") int pageBlock,UserVO vo, Model model) {
+		log.info("Welcome m_myPost.do!");
+		String nickname = (String) session.getAttribute("nickname");
+		log.info(nickname);
+	    	  
+	    vo.setNickname(nickname);	
+		 List<BoardVO> boards = board_service.b_selectAll_nickname(cpage, pageBlock,vo);
+		 List<StoryVO> storys = story_service.s_selectAll_nickname(cpage, pageBlock,vo);
+		 List<NewsVO> news = news_service.n_selectAll_nickname(cpage, pageBlock,vo);
+		 List<AnnouncementVO> annoucnements = announcement_service.a_selectAll_nickname(cpage, pageBlock, vo);
+		 model.addAttribute("boards", boards);
+		 model.addAttribute("storys", storys);
+		 model.addAttribute("news", news);
+		 model.addAttribute("annoucnements", annoucnements);
 		 
 		return "mypage/myPost";
 	}
