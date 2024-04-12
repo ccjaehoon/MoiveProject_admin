@@ -107,9 +107,8 @@ tfoot td {
 				</tr>
 			</tfoot>
 		</table>
-		<button>
-			<a href="b_insert.do">글쓰기</a>
-		</button>
+	<a href="b_insert.do">글쓰기</a>
+
 	</div>
 </body>
 </html>

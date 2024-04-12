@@ -75,7 +75,7 @@ tfoot td {
 			</tr>
 		</tbody>
 	</table>
-	<c:if test="${user_id == vo2.writer}">
+	<c:if test="${user_id == vo2.nickname}">
 		<a href="b_update.do?num=${vo2.board_num}">글수정</a>
 		<a href="b_delete.do?num=${vo2.board_num}">글삭제</a>
 	</c:if>
@@ -95,7 +95,7 @@ tfoot td {
 					<td><input type="text" name="content" value="hello" size="50"></td>
 					<td>${user_id}<input type="hidden" name="writer"
 						value="${user_id}"> <input type="hidden" name="bnum"
-						value="${vo2.num}">
+						value="${vo2.board_num}">
 					</td>
 					<td><input type="submit" value="댓글작성"></td>
 				</tr>

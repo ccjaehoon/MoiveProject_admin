@@ -90,7 +90,7 @@ public class NewsController {
 
 		model.addAttribute("vo2", vo2);
 		
-		String nickname = (String) session.getAttribute("user_id");
+		String nickname = (String) session.getAttribute("nickname");
 		
 		log.info("nickname: {}",nickname);
         // user_id를 모델에 추가하여 JSP로 전달

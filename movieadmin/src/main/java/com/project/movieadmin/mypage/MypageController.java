@@ -94,13 +94,22 @@ public class MypageController {
 			@RequestParam(defaultValue = "20") int pageBlock,UserVO vo, Model model) {
 		log.info("Welcome m_myPost.do!");
 		String nickname = (String) session.getAttribute("nickname");
-		log.info(nickname);
+		log.info("nickname :" +nickname);
 	    	  
 	    vo.setNickname(nickname);	
 		 List<BoardVO> boards = board_service.b_selectAll_nickname(cpage, pageBlock,vo);
 		 List<StoryVO> storys = story_service.s_selectAll_nickname(cpage, pageBlock,vo);
 		 List<NewsVO> news = news_service.n_selectAll_nickname(cpage, pageBlock,vo);
 		 List<AnnouncementVO> annoucnements = announcement_service.a_selectAll_nickname(cpage, pageBlock, vo);
+		 
+		 for (NewsVO x : news) {
+				log.info(x.toString());
+			}
+			log.info("================");
+		 
+		 
+		 
+		 
 		 model.addAttribute("boards", boards);
 		 model.addAttribute("storys", storys);
 		 model.addAttribute("news", news);
