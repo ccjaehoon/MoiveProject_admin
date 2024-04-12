@@ -2,6 +2,8 @@ package com.project.movieadmin.story;
 
 import java.util.List;
 
+import com.project.movieadmin.user.UserVO;
+
 
 public interface StoryDAO {
 	
@@ -29,5 +31,7 @@ public interface StoryDAO {
 	
 	public int s_increaseReport(StoryVO vo); 
 	// 스토리 신고하기
+
+	public List<StoryVO> s_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 
 }

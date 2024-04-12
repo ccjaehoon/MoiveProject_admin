@@ -35,6 +35,10 @@
 		<!-- SELECT * FROM story -->
 	    SELECT * FROM story ORDER BY story_num DESC LIMIT 0, 5
 	</select>
+	<select id="S_SELECT_ALL_PAGE_BLOCK_NICKNAME" resultType="com.project.movieadmin.story.StoryVO">
+		<!-- SELECT * FROM story -->
+	    SELECT * FROM story where nickname=#{nickname}  ORDER BY story_num DESC LIMIT 0, 20
+	</select>
 	
 	<select id="S_GETLIVESTORIES" resultType="com.project.movieadmin.story.StoryVO">
 		 SELECT *

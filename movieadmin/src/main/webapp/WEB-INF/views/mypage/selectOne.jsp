@@ -67,15 +67,15 @@ div {
 	<div>
 		<h2>내 정보</h2>
 		<hr>
-		<table id="customers">
+		<table id="Table">
 
 			<tr>
-				<td>유저번호</td>
+				<td width=300px;>유저번호</td>
 				<td>${vo2.user_num}</td>
 			</tr>
 
 			<tr>
-				<td>아이디</td>
+				<td width=300px;>아이디</td>
 				<td>${vo2.user_id}</td>
 			</tr>
 
@@ -114,7 +114,9 @@ div {
 				<td>${vo2.reg_date}</td>
 			</tr>
 
-
+		<tr>
+		 <a href="u_update.do?user_num=${param.user_num}&user_id=${param.user_id}">회원수정</a>
+		</tr>
 
 
 

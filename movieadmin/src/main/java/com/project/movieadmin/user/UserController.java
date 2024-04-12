@@ -178,9 +178,15 @@ public class UserController {
 		if (vo2 == null) {
 			return "redirect:login.do?message=0";
 		} else {
+<<<<<<< HEAD
 			session.setAttribute("user_id", vo2.getUser_id());
 			session.setAttribute("user_num", vo2.getUser_num());
 			session.setAttribute("nickname", vo2.getNickname());
+=======
+			session.setAttribute("user_id", vo.getUser_id());
+			session.setAttribute("user_num", vo.getUser_num());
+			session.setAttribute("nickname", vo.getNickname());
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 			return "redirect:home.do";
 		}
 	}
