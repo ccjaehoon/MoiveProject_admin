@@ -46,7 +46,7 @@ public class UserDAOimpl implements UserDAO {
 
 	@Override
 	public UserVO u_selectOne(UserVO vo) {
-		
+		log.info("{}", vo);
 		UserVO vo2 = sqlSession.selectOne("U_SELECT_ONE", vo);
 
 		return vo2;
@@ -143,6 +143,14 @@ public class UserDAOimpl implements UserDAO {
 	public UserVO u_loginCheck(UserVO vo) {
 		
 		return sqlSession.selectOne("U_LOGIN_CHECK",vo);
+	}
+
+	@Override
+	public UserVO u_selectOne_id(UserVO vo) {
+		log.info("{}", vo);
+		UserVO vo2 = sqlSession.selectOne("U_SELECT_ONE_ID", vo);
+
+		return vo2;
 	}
 
 }
