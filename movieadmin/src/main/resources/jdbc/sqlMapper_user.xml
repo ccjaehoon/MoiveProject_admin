@@ -25,6 +25,11 @@
 		resultType="com.project.movieadmin.user.UserVO">
 		select * from user where user_num=#{user_num}
 	</select>
+	
+	<select id="U_SELECT_ONE_ID"
+		resultType="com.project.movieadmin.user.UserVO">
+		select * from user where user_id=#{user_id}
+	</select>
 
 
 	<select id="U_SELECT_ALL_PAGE_BLOCK"

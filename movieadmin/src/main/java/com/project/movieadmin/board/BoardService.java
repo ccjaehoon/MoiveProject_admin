@@ -24,4 +24,6 @@ public interface BoardService {
 	
 	public int b_increaseReport(BoardVO vo);
 
+	
+
 }

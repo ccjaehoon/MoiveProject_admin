@@ -11,7 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.board.BoardService;
+import com.project.movieadmin.board.BoardVO;
+import com.project.movieadmin.story.StoryService;
+import com.project.movieadmin.story.StoryVO;
 import com.project.movieadmin.user.UserService;
 import com.project.movieadmin.user.UserVO;
 
@@ -27,6 +30,12 @@ public class MypageController {
 	
 	@Autowired
 	private UserService user_service;
+	
+	@Autowired
+	private BoardService board_service;
+	
+	@Autowired
+	private StoryService story_service;
 
 	@Autowired
 	private HttpSession session;
@@ -53,27 +62,24 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/m_myPost.do", method = RequestMethod.GET)
-	public String m_myPost() {
+	public String m_myPost(Model model) {
 		log.info("Welcome m_myPost!");
 
+	
+		 
 		return "mypage/myPost";
 	}
 	
 	@RequestMapping(value = "/m_selectOne.do", method = RequestMethod.GET)
 	public String m_selectOne(UserVO vo, Model model, HttpSession session) {
-	   
-		UserVO user_id = (UserVO) session.getAttribute("user_id");
-
-	   
-	    if (user_id == null) {
-	        return "redirect:/login";
-	    }
-
-	    
-	  
-	    vo.setUser_num(user_id.getUser_num());
-	    UserVO vo2 = user_service.u_selectOne(vo);
+		log.info("Welcome m_selectOne.do!");
+		String user_id = (String) session.getAttribute("user_id");
+		log.info(user_id);
+	    	  
+	    vo.setUser_id(user_id);
+	    UserVO vo2 = user_service.u_selectOne_id(vo);
 	    model.addAttribute("vo2", vo2); 
+	    log.info("{}", vo2);
 
 	    return "mypage/selectOne";
 	}
