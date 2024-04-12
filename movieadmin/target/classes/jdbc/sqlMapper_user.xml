@@ -74,9 +74,8 @@
 
 	<select id="U_LOGIN"
 		resultType="com.project.movieadmin.user.UserVO">
-=
 		select * from user where user_id=#{user_id} and
-
+		password=#{password}
 	</select>
 	<select id="U_ID_CHECK"
 		resultType="com.project.movieadmin.user.UserVO">
