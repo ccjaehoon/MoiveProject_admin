@@ -59,26 +59,22 @@ public class MypageController {
 		return "mypage/myPost";
 	}
 	
-	@RequestMapping(value = "/m_myComments.do", method = RequestMethod.GET)
-	public String m_myComments() {
-		log.info("Welcome m_myComments!");
-
-		return "mypage/myComments";
-	}
-
 	@RequestMapping(value = "/m_selectOne.do", method = RequestMethod.GET)
-	public String m_selectOne(UserVO vo, Model model) {
-	    log.info("Welcome m_selectOne!");
+	public String m_selectOne(UserVO vo, Model model, HttpSession session) {
+	   
+		UserVO user_id = (UserVO) session.getAttribute("user_id");
+
+	   
+	    if (user_id == null) {
+	        return "redirect:/login";
+	    }
+
 	    
-	    
-	    UserVO userVO = new UserVO();
-	    userVO.setUser_num(vo.getUser_num());
-	    
-	 
-	    UserVO vo2 = user_service.u_selectOne(userVO);
-	    
+	  
+	    vo.setUser_num(user_id.getUser_num());
+	    UserVO vo2 = user_service.u_selectOne(vo);
 	    model.addAttribute("vo2", vo2); 
-	    
+
 	    return "mypage/selectOne";
 	}
 }
