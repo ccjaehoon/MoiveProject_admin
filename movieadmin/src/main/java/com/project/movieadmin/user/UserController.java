@@ -180,6 +180,7 @@ public class UserController {
 		} else {
 			session.setAttribute("user_id", vo.getUser_id());
 			session.setAttribute("user_num", vo.getUser_num());
+			session.setAttribute("nickname", vo.getNickname());
 			return "redirect:home.do";
 		}
 	}

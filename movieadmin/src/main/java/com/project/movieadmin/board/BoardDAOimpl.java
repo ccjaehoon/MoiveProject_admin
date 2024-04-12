@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -133,6 +135,22 @@ public class BoardDAOimpl implements BoardDAO {
 		int total_rows = sqlSession.update("B_INCREASEREPORT", vo);
 
 		return total_rows;
+	}
+
+	@Override
+	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo) {
+		log.info("b_selectAll()....");
+
+		int startRow = (cpage - 1) * pageBlock + 1;
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startRow", startRow - 1);
+		map.put("pageBlock", pageBlock);
+		map.put("vo", vo);
+
+		List<BoardVO> vos = sqlSession.selectList("B_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
+
+		return vos;
 	}
 
 }
