@@ -23,7 +23,7 @@
 	<select id="S_SELECT_RANDOMLIST" resultType="com.project.movieadmin.story.StoryVO">
 		SELECT * <!-- story_num, nickname, content -->
 		FROM story
-		ORDER BY RAND(); LIMIT 1
+		ORDER BY RAND() LIMIT 1
 	</select>
 
 	<select id="S_SELECT_ALL" resultType="com.project.movieadmin.story.StoryVO">

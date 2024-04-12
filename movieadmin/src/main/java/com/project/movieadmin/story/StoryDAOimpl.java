@@ -50,7 +50,7 @@ public class StoryDAOimpl implements StoryDAO {
 		log.info("s_selectRandomList()....");
 		log.info(vo.toString());
 
-		return sqlSession.selectList("S_SELECTRANDOMLIST", vo);
+		return sqlSession.selectList("S_SELECT_RANDOMLIST", vo);
 	}
 
 	@Override
