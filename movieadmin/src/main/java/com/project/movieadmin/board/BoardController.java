@@ -43,7 +43,7 @@ public class BoardController {
 		return "board/insert";
 	}
 
-	@RequestMapping(value = "/b_insertOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/b_insertOK.do", method = RequestMethod.POST)
 	public String b_insertOK(BoardVO vo) throws IllegalStateException, IOException {
 		log.info("Welcome insertOK.do...");
 
