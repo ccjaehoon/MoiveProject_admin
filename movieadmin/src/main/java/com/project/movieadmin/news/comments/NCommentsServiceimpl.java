@@ -50,6 +50,16 @@ public class NCommentsServiceimpl implements NCommentsService {
 		return 0;
 	}
 
+	@Override
+	public int nc_goodCheck(NCommentsVO vo) {
+		return dao.nc_goodCheck(vo);
+	}
+
+	@Override
+	public int nc_goodSave(NCommentsVO vo) {
+		return dao.nc_goodSave(vo);
+	}
+
 	
 
 }

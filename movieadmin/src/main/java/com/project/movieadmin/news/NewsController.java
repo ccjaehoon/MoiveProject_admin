@@ -4,7 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.net.URLEncoder;
+import org.springframework.web.util.UriUtils;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
@@ -91,6 +94,7 @@ public class NewsController {
 		NCommentsVO cvo = new NCommentsVO();
 		cvo.setNews_num(vo.getNews_num());
 		List<NCommentsVO> cvos = comService.nc_selectAll(cvo);
+		log.info(cvos.toString());
 
 		model.addAttribute("cvos", cvos);
 
@@ -101,28 +105,36 @@ public class NewsController {
 	public String n_searchList(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
 		log.info("n_searchList.do");
-		List<NewsVO> vos = service.n_searchList(searchKey, searchWord, cpage, pageBlock);
-		for (NewsVO x : vos) {
-			log.info(x.toString());
+		try {
+			searchWord = UriUtils.decode(searchWord, "UTF-8");
+			searchKey = UriUtils.decode(searchKey, "UTF-8");
+			List<NewsVO> vos = service.n_searchList(searchKey, searchWord, cpage, pageBlock);
+			for (NewsVO x : vos) {
+				log.info(x.toString());
+			}
+			System.out.println("================");
+
+			model.addAttribute("vos", vos);
+
+			// 키워드검색 모든회원수는 몇명?
+			int total_rows = service.n_getSearchTotalRows(searchKey, searchWord);
+			log.info("total_rows:" + total_rows);
+
+			int totalPageCount = 1;
+			if (total_rows / pageBlock == 0) {
+				totalPageCount = 1;
+			} else if (total_rows % pageBlock == 0) {
+				totalPageCount = total_rows / pageBlock;
+			} else {
+				totalPageCount = total_rows / pageBlock + 1;
+			}
+			// 페이지 링크 몇개?
+			model.addAttribute("totalPageCount", totalPageCount);
+			
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		System.out.println("================");
-
-		model.addAttribute("vos", vos);
-
-		// 키워드검색 모든회원수는 몇명?
-		int total_rows = service.n_getSearchTotalRows(searchKey, searchWord);
-		log.info("total_rows:" + total_rows);
-
-		int totalPageCount = 1;
-		if (total_rows / pageBlock == 0) {
-			totalPageCount = 1;
-		} else if (total_rows % pageBlock == 0) {
-			totalPageCount = total_rows / pageBlock;
-		} else {
-			totalPageCount = total_rows / pageBlock + 1;
-		}
-		// 페이지 링크 몇개?
-		model.addAttribute("totalPageCount", totalPageCount);
 		return "news/selectAll";
 	}
 

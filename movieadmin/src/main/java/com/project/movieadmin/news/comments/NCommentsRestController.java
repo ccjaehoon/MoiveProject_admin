@@ -34,8 +34,14 @@ public class NCommentsRestController {
 	public Map<String , Object> nc_increaseGood(NCommentsVO vo) {
 		log.info("increaseGood.do...{}", vo);
 		Map<String , Object> map = new HashMap<String, Object>();
-		int increaseGood = service.nc_increaseGood(vo);
-		log.info("increaseGood:{}",increaseGood);
+		int goodCheck = service.nc_goodCheck(vo);
+		if(goodCheck == 0) {
+			int increaseGood = service.nc_increaseGood(vo);
+			log.info("increaseGood:{}",increaseGood);
+		}
+		
+		int goodSave = service.nc_goodSave(vo);
+		log.info("result:{}",goodSave);
 		int good = service.nc_selectGood(vo).getGood();
 		log.info(service.nc_selectGood(vo).getGood()+"");
 		map.put("good", good);

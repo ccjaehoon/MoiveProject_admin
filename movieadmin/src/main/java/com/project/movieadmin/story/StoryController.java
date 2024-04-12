@@ -1,10 +1,17 @@
 package com.project.movieadmin.story;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +34,9 @@ public class StoryController {
 	@Autowired
 	private StoryService service;
 	
+	@Autowired
+	private ServletContext sContext;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -39,9 +49,38 @@ public class StoryController {
 	}
 	
 	@RequestMapping(value = "/s_insertOK.do", method = RequestMethod.POST)
-	public String s_insertOK(StoryVO vo) {
+	public String s_insertOK(StoryVO vo) throws IOException {
 		log.info("Welcome story_insertOK...");
 		log.info("vo:{}", vo);
+		
+		String realPath = sContext.getRealPath("resources/uploadimg");
+		log.info(realPath);
+		
+		String originName = vo.getFile_img().getOriginalFilename();
+
+		log.info("getOriginalFilename:{}", originName);
+		if (originName.length() == 0) {
+			vo.setSave_img("default.png");// 이미지선택없이 처리할때
+		}else {
+			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
+
+			vo.setSave_img(save_name);
+
+			File uploadFile = new File(realPath, save_name);
+			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
+
+			//// create thumbnail image/////////
+			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+
+			File thumb_file = new File(realPath, "thumb_" + save_name);
+
+			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
+
+		}
+		
 		
 		int result = service.s_insert(vo);
 		log.info("result:{}", result);

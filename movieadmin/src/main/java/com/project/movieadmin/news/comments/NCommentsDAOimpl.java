@@ -68,4 +68,14 @@ public class NCommentsDAOimpl implements NCommentsDAO {
 		return 0;
 	}
 
+	@Override
+	public int nc_goodCheck(NCommentsVO vo) {
+		return sqlSession.selectOne("NC_GOOD_CHECK", vo);
+	}
+
+	@Override
+	public int nc_goodSave(NCommentsVO vo) {
+		return sqlSession.insert("NC_GOOD_SAVE", vo);
+	}
+
 }
