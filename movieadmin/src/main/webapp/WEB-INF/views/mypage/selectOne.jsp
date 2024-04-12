@@ -68,62 +68,59 @@ div {
 		<h2>내 정보</h2>
 		<hr>
 		<table id="customers">
-			<thead>
-				<tr>
-					<th>유저번호</th>
-				</tr>
 
-				<tr>
-					<th>아이디</th>
-				</tr>
+			<tr>
+				<td>유저번호</td>
+				<td>${vo2.user_num}</td>
+			</tr>
 
-				<tr>
-					<th>비밀번호</th>
-				</tr>
+			<tr>
+				<td>아이디</td>
+				<td>${vo2.user_id}</td>
+			</tr>
 
-				<tr>
-					<th>별명</th>
-				</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td>${vo2.password}</td>
+			</tr>
 
-				<tr>
-					<th>이메일</th>
-				</tr>
+			<tr>
+				<td>별명</td>
+				<td>${vo2.nickname}</td>
+			</tr>
 
-				<tr>
-					<th>전화번호</th>
-				</tr>
+			<tr>
+				<td>이메일</td>
+				<td>${vo2.email}</td>
+			</tr>
 
-				<tr>
-					<th>생일</th>
-				</tr>
+			<tr>
+				<td>전화번호</td>
+				<td>${vo2.tel}</td>
+			</tr>
 
-				<tr>
-					<th>권위</th>
-				</tr>
+			<tr>
+				<td>생일</td>
+				<td>${vo2.birth}</td>
+			</tr>
 
-				<tr>
-					<th>회원가입날짜</th>
-				</tr>
+			<tr>
+				<td>권위</td>
+				<td>${vo2.authority}</td>
+			</tr>
+
+			<tr>
+				<td>회원가입날짜</td>
+				<td>${vo2.reg_date}</td>
+			</tr>
 
 
-			</thead>
 
-			<tbody>
-			   <tr>
-                    <td>${vo2.user_num}</td>
-                    <td>${vo2.user_id}</td>
-                    <td>${vo2.password}</td>
-                    <td>${vo2.nickname}</td>
-                    <td>${vo2.email}</td>
-                    <td>${vo2.tel}</td>
-                    <td>${vo2.birth}</td>
-                    <td>${vo2.authority}</td>
-                    <td>${vo2.reg_date}</td>
-                  
-                </tr>
-			</tbody>
 
-			</div>
+
+
+		</table>
+	</div>
 </body>
 
 </html>
