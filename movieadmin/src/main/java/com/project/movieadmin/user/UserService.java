@@ -32,5 +32,8 @@ public interface UserService {
 
 	public UserVO u_loginCheck(UserVO vo);
 
+
+	
+
 	
 }
