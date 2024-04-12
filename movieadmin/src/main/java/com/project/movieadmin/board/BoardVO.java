@@ -14,7 +14,6 @@ public class BoardVO {
 	private String title;
 	private String tag;
 	private String nickname;
-	private String user_id;
 	private String content;
 	private Date wdate;
 	private int good;
