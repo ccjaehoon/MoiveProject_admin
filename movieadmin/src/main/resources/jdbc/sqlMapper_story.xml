@@ -9,13 +9,13 @@
 		VALUES (#{nickname}, #{content}, #{save_img}, #{save_video}, 0, 0, #{duration});
 	</insert>
 
-	<update id="S_UPDATE" parameterType="com.project.movieadmin.story.StoryVO">
+	<update id="S_UPDATE">
 		UPDATE story
     	SET content = #{content}
     	WHERE story_num = #{story_num};
 	</update>
 
-	<delete id="S_DELETE" parameterType="com.project.movieadmin.story.StoryVO">
+	<delete id="S_DELETE">
 		DELETE FROM story
     	WHERE story_num = #{story_num};
 	</delete>
