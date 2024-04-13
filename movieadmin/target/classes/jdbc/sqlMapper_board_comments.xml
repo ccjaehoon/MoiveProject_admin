@@ -6,7 +6,7 @@
 <mapper namespace="com.project.movieadmin.board.comments">
 	<insert id="INSERT" parameterType="com.project.movieadmin.board.comments.CommentsVO">
 		insert into
-		comments(nickname, content, wdate, good, board_num, report)
+		comments(nickname, content, wdate, board_num, report)
 		values(#{nickname},#{content},#{wdate},#{good},#{board_num},#{report})
 	</insert>
 
