@@ -15,8 +15,7 @@
 
 	<update id="B_UPDATE">
 		update board set
-		title=#{title},tag=#{tag},content=#{content},nickname=#{nickname},
-		save_img=#{save_img}
+		title=#{title},tag=#{tag},content=#{content},save_img=#{save_img}
 		where board_num=#{board_num}
 	</update>
 
@@ -92,6 +91,21 @@
 
 	<select id="B_INCREASEREPORT" resultType="int">
 		update board set report = report + 1 where board_num = #{board_num}
+	</select>
+
+	<select id="B_SELECT_GOOD" resultType="com.project.movieadmin.board.BoardVO">
+		select good from board where board_num=#{board_num}
+	</select>
+	
+	<select id="B_GOOD_CHECK"
+		resultType="int">
+		select count(*) as like_count from goodcheck where nickname = #{nickname} and board_num = #{board_num}
+	</select>
+	
+	<select id="B_GOOD_SAVE"
+		resultType="int">
+		insert into goodcheck(nickname, board_num)
+		values(#{nickname},#{board_num})
 	</select>
 
 

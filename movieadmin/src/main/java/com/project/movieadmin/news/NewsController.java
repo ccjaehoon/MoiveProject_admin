@@ -6,8 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.net.URLEncoder;
-import org.springframework.web.util.UriUtils;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
@@ -19,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UriUtils;
 
 import com.project.movieadmin.news.comments.NCommentsService;
 import com.project.movieadmin.news.comments.NCommentsVO;

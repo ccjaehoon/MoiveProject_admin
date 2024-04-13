@@ -1,7 +1,6 @@
 package com.project.movieadmin.board;
 
 import java.sql.Date;
-import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -9,7 +8,6 @@ import lombok.Data;
 
 @Data
 public class BoardVO {
-	
 	private int board_num;
 	private String title;
 	private String tag;
