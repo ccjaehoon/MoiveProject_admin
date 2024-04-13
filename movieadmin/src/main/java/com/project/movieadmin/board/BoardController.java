@@ -43,7 +43,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/b_insert.do", method = RequestMethod.GET)
 	public String b_insert(Model model) {
-		log.info("Welcome insert.do....");
+		log.info("Welcome b_insert.do....");
 		String nickname = (String) session.getAttribute("user_id");
 		model.addAttribute(nickname);
 
@@ -195,7 +195,7 @@ public class BoardController {
 		if (result == 1) {
 			return "redirect:b_selectAll.do";
 		} else {
-			return "redirect:b_delete.do?board_num" + vo.getBoard_num();
+			return "redirect:b_delete.do?board_num=" + vo.getBoard_num();
 		}
 	}
 
