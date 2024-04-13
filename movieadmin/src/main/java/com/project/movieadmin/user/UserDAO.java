@@ -33,5 +33,4 @@ public interface UserDAO {
 
 	public UserVO u_selectOne_id(UserVO vo);
 
-	
 }

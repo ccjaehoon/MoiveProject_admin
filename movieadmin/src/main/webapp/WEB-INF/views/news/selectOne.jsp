@@ -57,7 +57,7 @@ $(function() {
 			console.log($("#good"+index).val());
 			
 			$.ajax({
-				url : "http://localhost:8070/movie/nc_increaseGood.do",
+				url : "http://localhost:8088/movie/nc_increaseGood.do",
 				type : "get",
 				data : {
 					news_comments_num : $("#news_comments_num"+index).val(),
@@ -132,8 +132,8 @@ $(function() {
 			<tbody>
 				<tr>
 					<td><input type="text" name="content" value="hello" size="50"></td>
-					<td>${user_id}<input type="hidden" name="writer"
-						value="${user_id}"> <input type="hidden" name="news_num"
+					<td>${nickname}<input type="hidden" name="nickname"
+						value="${nickname}"> <input type="hidden" name="news_num"
 						value="${vo2.news_num}">
 					</td>
 					<td><input type="submit" value="댓글작성"></td>
@@ -177,13 +177,6 @@ $(function() {
 							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
 							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
 							<input type="button" value="${cvo.good}" class="nc_increaseGood">
-
-
-						<!-- 						<form action="nc_increaseGood.do"> --> <!-- 							<input type="hidden" name="news_comments_num" -->
-						<%-- 								value="${cvo.news_comments_num}"> <input type="hidden" --%>
-						<%-- 								name="news_num" value="${cvo.news_num}"> <input --%>
-						<%-- 								type="submit" value="${cvo.good}"><span id="good"></span> --%>
-						<!-- 						</form> --></td>
 						
 					<td>${cvo.wdate}</td>
 					<td><a

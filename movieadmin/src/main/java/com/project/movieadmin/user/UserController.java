@@ -176,11 +176,14 @@ public class UserController {
 		log.info("================");
 
 		if (vo2 == null) {
-			return "redirect:login.do?message=0";
+			return "redirect:u_login.do?message=0";
 		} else {
-			session.setAttribute("user_id", vo.getUser_id());
-			session.setAttribute("user_num", vo.getUser_num());
-			session.setAttribute("nickname", vo.getNickname());
+
+			session.setAttribute("user_id", vo2.getUser_id());
+			session.setAttribute("user_num", vo2.getUser_num());
+			session.setAttribute("nickname", vo2.getNickname());
+			log.info("vo2:"+vo2.getNickname());
+
 			return "redirect:home.do";
 		}
 	}
@@ -192,5 +195,7 @@ public class UserController {
 
 		return "redirect: home.do";
 	}
+	
+	
 
 }

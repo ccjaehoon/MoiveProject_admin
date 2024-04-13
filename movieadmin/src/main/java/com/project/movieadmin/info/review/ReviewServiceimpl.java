@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -66,6 +68,12 @@ public class ReviewServiceimpl implements ReviewService {
 	public ReviewVO rv_increaseReport(ReviewVO vo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<ReviewVO> r_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		// TODO Auto-generated method stub
+		return dao.r_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
 }

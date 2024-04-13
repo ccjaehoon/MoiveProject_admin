@@ -27,6 +27,7 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 		
 		log.info("sPath:{}",sPath);
 		log.info("user_id:{}",session.getAttribute("user_id"));
+		log.info("nickname:{}",session.getAttribute("nickname"));
 		
 		if(sPath.equals("") 
 				|| sPath.equals("/a_update.do")	

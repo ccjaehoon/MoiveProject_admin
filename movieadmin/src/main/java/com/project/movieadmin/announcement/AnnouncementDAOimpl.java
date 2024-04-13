@@ -110,6 +110,7 @@ public class AnnouncementDAOimpl implements AnnouncementDAO {
 
 	@Override
 	public List<AnnouncementVO> a_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		log.info("a_selectAll_nickname");
 		int startRow = (cpage - 1) * pageBlock + 1;
 
 		Map<String, Object> map = new HashMap<String, Object>();

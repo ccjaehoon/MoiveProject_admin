@@ -1,10 +1,15 @@
 package com.project.movieadmin.news.comments;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.project.movieadmin.announcement.AnnouncementVO;
+import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -77,5 +82,18 @@ public class NCommentsDAOimpl implements NCommentsDAO {
 	public int nc_goodSave(NCommentsVO vo) {
 		return sqlSession.insert("NC_GOOD_SAVE", vo);
 	}
+	
+	@Override
+    public List<NCommentsVO> nc_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+        int startRow = (cpage - 1) * pageBlock + 1;
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("startRow", startRow - 1);
+        map.put("pageBlock", pageBlock);
+        map.put("vo", vo);
+
+        List<NCommentsVO> vos = sqlSession.selectList("NC_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
+        return vos;
+    }
 
 }

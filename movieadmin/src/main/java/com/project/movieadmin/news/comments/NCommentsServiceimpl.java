@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.movieadmin.news.NewsDAO;
+import com.project.movieadmin.user.UserVO;
 
 @Service
 public class NCommentsServiceimpl implements NCommentsService {
@@ -20,7 +21,6 @@ public class NCommentsServiceimpl implements NCommentsService {
 
 	@Override
 	public int nc_update(NCommentsVO vo) {
-		// TODO Auto-generated method stub
 		return dao.nc_update(vo);
 	}
 
@@ -46,7 +46,6 @@ public class NCommentsServiceimpl implements NCommentsService {
 
 	@Override
 	public int nc_increaseReport(NCommentsVO vo) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -58,6 +57,11 @@ public class NCommentsServiceimpl implements NCommentsService {
 	@Override
 	public int nc_goodSave(NCommentsVO vo) {
 		return dao.nc_goodSave(vo);
+	}
+
+	@Override
+	public List<NCommentsVO> nc_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		return dao.nc_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
 	

@@ -1,11 +1,16 @@
 package com.project.movieadmin.story.comments;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -80,6 +85,20 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 		
 		
 		return 0;
+	}
+
+
+	@Override
+	public List<SCommentsVO> sc_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		int startRow = (cpage - 1) * pageBlock + 1;
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("startRow", startRow - 1);
+        map.put("pageBlock", pageBlock);
+        map.put("vo", vo);
+
+        List<SCommentsVO> vos = sqlSession.selectList("SC_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
+        return vos;
 	}
 
 }
