@@ -32,5 +32,9 @@ public interface UserService {
 
 	public UserVO u_loginCheck(UserVO vo);
 
+	public UserVO u_selectOne_id(UserVO vo);
+
+	
+
 	
 }

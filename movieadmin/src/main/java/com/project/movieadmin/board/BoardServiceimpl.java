@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -76,6 +78,12 @@ public class BoardServiceimpl implements BoardService {
 	public int b_increaseReport(BoardVO vo) {
 		
 		return dao.b_increaseReport(vo);
+	}
+
+	@Override
+	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo) {
+		
+		return dao.b_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
 }

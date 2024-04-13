@@ -66,7 +66,19 @@ div {
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div>
 		<h2>즐겨찾기 목록</h2>
-		
+		<table id="Table">
+
+			<tr>
+				<td>영화번호</td>
+				<td>${vo2.user_num}</td>
+			</tr>
+
+			<tr>
+				<td>포스터</td>
+				<td>${vo2.user_id}</td>
+			</tr>
+
+		</table>
 
     </div>
 </body>

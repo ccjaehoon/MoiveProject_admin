@@ -4,10 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -80,7 +77,27 @@ public class StoryController {
 			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
 
 		}
+		    // 동영상 파일 저장 코드 수정
+		 if (vo.getFile_video() != null && !vo.getFile_video().isEmpty()) {
+	        // 동영상 파일의 크기 제한 설정 (20MB)
+	        final long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
+	        
+	        // 파일 크기 검증
+	        if (vo.getFile_video().getSize() > MAX_FILE_SIZE) {
+	            log.error("동영상 파일 크기가 허용된 용량을 초과합니다.");
+	            // 크기 제한 초과 시 적절한 처리 (예: 사용자에게 메시지 반환 또는 예외 발생)
+	            throw new IOException("동영상 파일 크기가 허용된 용량을 초과합니다.");
+	        }
 		
+		
+		    String videoName = vo.getFile_video().getOriginalFilename();
+		    String saveVideoName = "video_" + System.currentTimeMillis() + videoName.substring(videoName.lastIndexOf("."));
+		    vo.setSave_video(saveVideoName); // VO의 save_video 필드에 저장할 동영상 파일 이름을 설정
+		    
+		    // 동영상 파일 저장 경로 설정
+		    File uploadVideoFile = new File(realPath, saveVideoName);
+		    vo.getFile_video().transferTo(uploadVideoFile); // 동영상 파일 저장
+		}
 		
 		int result = service.s_insert(vo);
 		log.info("result:{}", result);
@@ -96,12 +113,12 @@ public class StoryController {
 		log.info("Welcome story_update...");
 		log.info("vo:{}", vo);
 		
-		 List<StoryVO> randomStories = service.s_selectRandomList(vo);
-		    if (!randomStories.isEmpty()) {
-		        StoryVO vo2 = randomStories.get(0); // 리스트의 첫 번째 요소를 선택
-		        log.info("vo2:{}", vo2);
-		        model.addAttribute("vo2", vo2);
-		 }
+//		 List<StoryVO> randomStories = service.s_selectRandomList(vo);
+//		    if (!randomStories.isEmpty()) {
+//		        StoryVO vo2 = randomStories.get(0); // 리스트의 첫 번째 요소를 선택
+//		        log.info("vo2:{}", vo2);
+//		        model.addAttribute("vo2", vo2);
+//		 }
 		return "story/update";
 	}
 	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.POST)
@@ -126,7 +143,7 @@ public class StoryController {
 
 		return "story/delete";
 	}
-	@RequestMapping(value = "/s_deleteOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/s_deleteOK.do", method = RequestMethod.POST)
 	public String s_deleteOK(StoryVO vo) {
 		log.info("Welcome story_deleteOK...");
 		log.info("vo:{}", vo);
@@ -152,10 +169,11 @@ public class StoryController {
         int storyId = rand.nextInt(10) + 1;
         
         // 무작위로 선택된 스토리 목록을 가져오는 서비스 메소드 호출
-        List<StoryVO> randomStories = service.s_selectRandomList(vo);
-        
+      //List<StoryVO> randomStories = service.s_selectRandomList(vo);
+        StoryVO vo2 = service.s_selectRandomList(vo);
+        log.info("vo2:{}",vo2);
         // 모델에 무작위 스토리 목록 추가
-        model.addAttribute("randomStories", randomStories);
+        model.addAttribute("vo2", vo2);
 
 		return "story/selectRandomList";
 	}

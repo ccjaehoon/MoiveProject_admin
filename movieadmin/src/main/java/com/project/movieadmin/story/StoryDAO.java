@@ -2,6 +2,8 @@ package com.project.movieadmin.story;
 
 import java.util.List;
 
+import com.project.movieadmin.user.UserVO;
+
 
 public interface StoryDAO {
 	
@@ -12,7 +14,8 @@ public interface StoryDAO {
 	public int s_delete(StoryVO vo);
 	
 	//public StoryVO selectOneRandom(StoryVO vo); 둘 중 어떤게 맞나요?
-	public List<StoryVO> s_selectRandomList(StoryVO vo);
+	public StoryVO s_selectRandomList(StoryVO vo);
+	//public List<StoryVO> s_selectRandomList(StoryVO vo);
 	
 	public List<StoryVO> s_selectAll();
 	
@@ -29,5 +32,7 @@ public interface StoryDAO {
 	
 	public int s_increaseReport(StoryVO vo); 
 	// 스토리 신고하기
+
+	public List<StoryVO> s_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 
 }

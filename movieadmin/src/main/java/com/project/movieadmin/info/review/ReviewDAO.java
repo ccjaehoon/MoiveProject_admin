@@ -2,6 +2,9 @@ package com.project.movieadmin.info.review;
 
 import java.util.List;
 
+import com.project.movieadmin.story.StoryVO;
+import com.project.movieadmin.user.UserVO;
+
 public interface ReviewDAO {
 	
 	public int rv_insert(ReviewVO vo);
@@ -21,5 +24,7 @@ public interface ReviewDAO {
 	public ReviewVO rv_increaseGood(ReviewVO vo);
 	
 	public ReviewVO rv_increaseReport(ReviewVO vo);
+	
+	public List<ReviewVO> r_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 	
 }

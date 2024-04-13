@@ -8,6 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -75,6 +78,19 @@ public class CommentsDAOimpl implements CommentsDAO {
 		int total_rows = sqlSession.update("C_INCREASEREPORT", vo);
 
 		return total_rows;
+	}
+
+	@Override
+	public List<CommentsVO> c_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		 int startRow = (cpage - 1) * pageBlock + 1;
+
+	        Map<String, Object> map = new HashMap<String, Object>();
+	        map.put("startRow", startRow - 1);
+	        map.put("pageBlock", pageBlock);
+	        map.put("vo", vo);
+
+	        List<CommentsVO> vos = sqlSession.selectList("C_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
+	        return vos;
 	}
 
 }

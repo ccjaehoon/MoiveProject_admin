@@ -27,6 +27,7 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 		
 		log.info("sPath:{}",sPath);
 		log.info("user_id:{}",session.getAttribute("user_id"));
+		log.info("nickname:{}",session.getAttribute("nickname"));
 		
 		if(sPath.equals("") 
 				|| sPath.equals("/a_update.do")	
@@ -66,6 +67,9 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 				|| sPath.equals("/rv_insertOK.do")
 				|| sPath.equals("/m_myPage.do")
 				|| sPath.equals("/nc_increaseGood.do")
+				|| sPath.equals("/nc_deleteOK.do")
+				|| sPath.equals("/nc_updateOK.do")
+
 				)
 				 {
 			

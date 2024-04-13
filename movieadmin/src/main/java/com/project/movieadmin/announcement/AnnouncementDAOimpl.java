@@ -108,4 +108,18 @@ public class AnnouncementDAOimpl implements AnnouncementDAO {
 		return total_rows;
 	}
 
+	@Override
+	public List<AnnouncementVO> a_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		log.info("a_selectAll_nickname");
+		int startRow = (cpage - 1) * pageBlock + 1;
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startRow", startRow - 1);
+		map.put("pageBlock", pageBlock);
+		map.put("vo", vo);
+
+		List<AnnouncementVO> vos = sqlSession.selectList("A_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
+		return vos;
+	}
+
 }

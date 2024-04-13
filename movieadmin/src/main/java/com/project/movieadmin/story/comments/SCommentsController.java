@@ -1,7 +1,9 @@
 package com.project.movieadmin.story.comments;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -59,5 +62,23 @@ public class SCommentsController {
 		
 		return null;
 //		return "redirect:SComments_selectAll.do?num="+vo.getBnum();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "api/selectCommentList.do", method = RequestMethod.GET)
+	public List<SCommentsVO> selectCommentList(SCommentsVO vo) {
+		log.info("Welcome api/selectCommentList.do...");
+		log.info("vo:{}",vo);
+		
+		List<SCommentsVO> vos = new ArrayList<SCommentsVO>();
+		SCommentsVO vo2 = new SCommentsVO();
+		vo2.setStory_comments_num(3);
+		vo2.setStory_num(3);
+		vo2.setContent("1등댓글2");
+		vo2.setNickname("nickname4");
+		vo2.setWdate(new Date());
+		vos.add(vo2);
+		
+		return vos;
 	}
 }

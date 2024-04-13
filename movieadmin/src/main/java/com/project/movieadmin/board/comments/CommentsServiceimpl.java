@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -52,6 +54,12 @@ public class CommentsServiceimpl implements CommentsService {
 	public int c_increaseReport(CommentsVO vo) {
 		// TODO Auto-generated method stub
 		return dao.c_increaseReport(vo);
+	}
+
+	@Override
+	public List<CommentsVO> c_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		
+		return dao.c_selectAll_nickname(cpage, pageBlock, vo);
 	}
 	
 	

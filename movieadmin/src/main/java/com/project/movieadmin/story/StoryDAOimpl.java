@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -46,11 +48,11 @@ public class StoryDAOimpl implements StoryDAO {
 	}
 	
 	@Override
-	public List<StoryVO> s_selectRandomList(StoryVO vo) {
+	public StoryVO s_selectRandomList(StoryVO vo) {
 		log.info("s_selectRandomList()....");
 		log.info(vo.toString());
 
-		return sqlSession.selectList("S_SELECTRANDOMLIST", vo);
+		return sqlSession.selectOne("S_SELECT_RANDOMLIST", vo);
 	}
 
 	@Override
@@ -118,6 +120,24 @@ public class StoryDAOimpl implements StoryDAO {
 
 	    // 데이터베이스에 업데이트
 	    return sqlSession.update("S_UPDATE_REPORT_COUNT", vo);
+	}
+
+	@Override
+	public List<StoryVO> s_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		log.info("s_selectAll()....");
+		log.info("cpage:" + cpage);
+		log.info("pageBlock:" + pageBlock);
+
+		int startRow = (cpage - 1) * pageBlock + 1;
+		int endRow = startRow + pageBlock - 1;
+		log.info(startRow + "," + endRow);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startRow", startRow - 1);
+		map.put("pageBlock", pageBlock);
+		map.put("vo", vo);
+
+		return sqlSession.selectList("S_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
 	}
 	
 }
