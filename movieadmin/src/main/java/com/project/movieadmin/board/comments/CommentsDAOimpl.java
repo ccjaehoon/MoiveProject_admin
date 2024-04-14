@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.project.movieadmin.news.comments.NCommentsVO;
 import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -48,21 +47,6 @@ public class CommentsDAOimpl implements CommentsDAO {
 	}
 
 	@Override
-	public List<CommentsVO> c_selectAll(int cpage, int pageBlock) {
-		log.info("c_selectAll()....");
-
-		int startRow = (cpage - 1) * pageBlock + 1;
-
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startRow", startRow - 1);
-		map.put("pageBlock", pageBlock);
-
-		List<CommentsVO> vos = sqlSession.selectList("SELECT_ALL_PAGE_BLOCK", map);
-
-		return vos;
-	}
-
-	@Override
 	public int c_increaseGood(CommentsVO vo) {
 		log.info("c_increaseGood()....");
 
@@ -94,12 +78,28 @@ public class CommentsDAOimpl implements CommentsDAO {
 	}
 
 	@Override
-	public int c_getTotalRows() {
-		log.info("c_getTotalRows()....");
+	public List<CommentsVO> c_selectAll(CommentsVO vo) {
+		log.info("comments selectAll()....");
 
-		int total_rows = sqlSession.selectOne("C_TOTAL_ROWS");
-
-		return total_rows;
+		return sqlSession.selectList("C_SELECT_ALL", vo);
 	}
 
+	@Override
+	public CommentsVO c_selectGood(CommentsVO vo) {
+		log.info("c_selectGood()....");
+		
+		return sqlSession.selectOne("C_SELECT_GOOD", vo);
+	}
+
+	@Override
+	public int c_goodCheck(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("C_GOOD_CHECK", vo);
+	}
+
+	@Override
+	public int c_goodSave(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("C_GOOD_SAVE", vo);
+	}
 }

@@ -9,16 +9,11 @@ import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service
 public class CommentsServiceimpl implements CommentsService {
 
 	@Autowired
 	private CommentsDAO dao;
-	
-	public CommentsServiceimpl() {
-		log.info("CommentsServiceimpl()...");
-	}
 
 	@Override
 	public int c_insert(CommentsVO vo) {
@@ -39,12 +34,6 @@ public class CommentsServiceimpl implements CommentsService {
 	}
 
 	@Override
-	public List<CommentsVO> c_selectAll(int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
-		return dao.c_selectAll(cpage, pageBlock);
-	}
-
-	@Override
 	public int c_increaseGood(CommentsVO vo) {
 		// TODO Auto-generated method stub
 		return dao.c_increaseGood(vo);
@@ -61,11 +50,29 @@ public class CommentsServiceimpl implements CommentsService {
 		
 		return dao.c_selectAll_nickname(cpage, pageBlock, vo);
 	}
-	
+
 	@Override
-	public int c_getTotalRows() {
-		
-		return dao.c_getTotalRows();
+	public List<CommentsVO> c_selectAll(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return dao.c_selectAll(vo);
+	}
+
+	@Override
+	public CommentsVO c_selectGood(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return dao.c_selectGood(vo);
+	}
+
+	@Override
+	public int c_goodCheck(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return dao.c_goodCheck(vo);
+	}
+
+	@Override
+	public int c_goodSave(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return dao.c_goodSave(vo);
 	}
 
 }
