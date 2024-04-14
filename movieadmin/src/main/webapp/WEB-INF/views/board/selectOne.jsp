@@ -182,7 +182,7 @@ $(function() {
 						
 					<td>${cvo.wdate}</td>
 					<td><a
-						href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">댓글삭제</a>
+						href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">삭제</a>
 					</td>
 					
 				</tr>

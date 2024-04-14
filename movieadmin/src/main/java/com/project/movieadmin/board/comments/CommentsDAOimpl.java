@@ -24,7 +24,7 @@ public class CommentsDAOimpl implements CommentsDAO {
 		log.info("c_insert()...");
 		
 		log.info("{}",vo);
-		int flag = sqlSession.insert("INSERT", vo);
+		int flag = sqlSession.insert("C_INSERT", vo);
 		return flag;
 	}
 
@@ -32,7 +32,7 @@ public class CommentsDAOimpl implements CommentsDAO {
 	public int c_update(CommentsVO vo) {
 		log.info("c_update()...");
 
-		int flag = sqlSession.update("UPDATE", vo);
+		int flag = sqlSession.update("C_UPDATE", vo);
 
 		return flag;
 	}
@@ -41,7 +41,7 @@ public class CommentsDAOimpl implements CommentsDAO {
 	public int c_delete(CommentsVO vo) {
 		log.info("c_delete()....");
 
-		int flag = sqlSession.delete("DELETE", vo);
+		int flag = sqlSession.delete("C_DELETE", vo);
 
 		return flag;
 	}
