@@ -68,7 +68,7 @@
 	</select>
 	
 	<select id="C_SELECT_ALL_PAGE_BLOCK_NICKNAME"
-		resultType="com.project.movieadmin.baord.comments.CommentsVO">
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
 		select * from comments where nickname=#{vo.nickname} order by
 		comments_num desc
 		limit ${startRow},

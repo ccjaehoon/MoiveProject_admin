@@ -56,7 +56,7 @@ $(function() {
 			console.log($("#good"+index).val());
 			
 			$.ajax({
-				url : "http://localhost:8070/movie/c_increaseGood.do",
+				url : "http://localhost:8088/movie/c_increaseGood.do",
 				type : "get",
 				data : {
 					comments_num : $("#comments_num"+index).val(),
