@@ -29,9 +29,11 @@ public class CommentsController {
 	private ServletContext sContext;
 
 	@RequestMapping(value = "/c_insert.do", method = RequestMethod.GET)
-	public String c_insert() {
+	public String c_insert(Model model) {
 		log.info("Welcome c_insert.do...");
-
+		String nickname = (String) session.getAttribute("user_id");
+		model.addAttribute(nickname);
+		
 		return "board/comments/insert";
 	}
 

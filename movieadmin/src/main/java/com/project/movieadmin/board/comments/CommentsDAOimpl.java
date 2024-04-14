@@ -23,9 +23,9 @@ public class CommentsDAOimpl implements CommentsDAO {
 	@Override
 	public int c_insert(CommentsVO vo) {
 		log.info("c_insert()...");
-
+		
+		log.info("{}",vo);
 		int flag = sqlSession.insert("INSERT", vo);
-
 		return flag;
 	}
 

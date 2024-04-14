@@ -7,8 +7,12 @@
 	<insert id="INSERT"
 		parameterType="com.project.movieadmin.board.comments.CommentsVO">
 		insert into
+<<<<<<< HEAD
+		comments(nickname, content, wdate, board_num, report)
+=======
 		comments(nickname, content, wdate, good,
 		board_num, report)
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin
 		values(#{nickname},#{content},#{wdate},#{good},#{board_num},#{report})
 	</insert>
 
