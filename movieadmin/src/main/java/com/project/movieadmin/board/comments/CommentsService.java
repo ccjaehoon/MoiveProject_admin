@@ -13,6 +13,8 @@ public interface CommentsService {
 	public int c_delete(CommentsVO vo);
 
 	public List<CommentsVO> c_selectAll(int cpage, int pageBlock);
+	
+	public int c_getTotalRows();
 
 	public int c_increaseGood(CommentsVO vo);
 	

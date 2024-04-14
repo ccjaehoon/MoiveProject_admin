@@ -93,4 +93,13 @@ public class CommentsDAOimpl implements CommentsDAO {
 	        return vos;
 	}
 
+	@Override
+	public int c_getTotalRows() {
+		log.info("c_getTotalRows()....");
+
+		int total_rows = sqlSession.selectOne("C_TOTAL_ROWS");
+
+		return total_rows;
+	}
+
 }

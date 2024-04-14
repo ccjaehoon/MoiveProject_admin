@@ -62,6 +62,10 @@ public class CommentsServiceimpl implements CommentsService {
 		return dao.c_selectAll_nickname(cpage, pageBlock, vo);
 	}
 	
-	
+	@Override
+	public int c_getTotalRows() {
+		
+		return dao.c_getTotalRows();
+	}
 
 }
