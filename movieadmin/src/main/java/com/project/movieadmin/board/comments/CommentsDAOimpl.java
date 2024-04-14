@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.project.movieadmin.news.comments.NCommentsVO;
 import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +24,7 @@ public class CommentsDAOimpl implements CommentsDAO {
 		log.info("c_insert()...");
 		
 		log.info("{}",vo);
-		int flag = sqlSession.insert("INSERT", vo);
+		int flag = sqlSession.insert("C_INSERT", vo);
 		return flag;
 	}
 
@@ -33,7 +32,7 @@ public class CommentsDAOimpl implements CommentsDAO {
 	public int c_update(CommentsVO vo) {
 		log.info("c_update()...");
 
-		int flag = sqlSession.update("UPDATE", vo);
+		int flag = sqlSession.update("C_UPDATE", vo);
 
 		return flag;
 	}
@@ -42,24 +41,9 @@ public class CommentsDAOimpl implements CommentsDAO {
 	public int c_delete(CommentsVO vo) {
 		log.info("c_delete()....");
 
-		int flag = sqlSession.delete("DELETE", vo);
+		int flag = sqlSession.delete("C_DELETE", vo);
 
 		return flag;
-	}
-
-	@Override
-	public List<CommentsVO> c_selectAll(int cpage, int pageBlock) {
-		log.info("c_selectAll()....");
-
-		int startRow = (cpage - 1) * pageBlock + 1;
-
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startRow", startRow - 1);
-		map.put("pageBlock", pageBlock);
-
-		List<CommentsVO> vos = sqlSession.selectList("SELECT_ALL_PAGE_BLOCK", map);
-
-		return vos;
 	}
 
 	@Override
@@ -93,4 +77,29 @@ public class CommentsDAOimpl implements CommentsDAO {
 	        return vos;
 	}
 
+	@Override
+	public List<CommentsVO> c_selectAll(CommentsVO vo) {
+		log.info("comments selectAll()....");
+
+		return sqlSession.selectList("C_SELECT_ALL", vo);
+	}
+
+	@Override
+	public CommentsVO c_selectGood(CommentsVO vo) {
+		log.info("c_selectGood()....");
+		
+		return sqlSession.selectOne("C_SELECT_GOOD", vo);
+	}
+
+	@Override
+	public int c_goodCheck(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("C_GOOD_CHECK", vo);
+	}
+
+	@Override
+	public int c_goodSave(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("C_GOOD_SAVE", vo);
+	}
 }
