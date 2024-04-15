@@ -43,16 +43,16 @@
     <table id="customers">
         <thead>
             <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
+                <th>번호: ${vo2.story_num}</th>
+                <th>작성자: ${vo2.nickname}</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+           <%--  <tr>
                 <td>${vo2.story_num}</td>
                 <td>${vo2.nickname}</td>
-            </tr>
+            </tr> --%>
             <tr>
                 <td>내용</td>
                 <td colspan="2">${vo2.content}</td>
@@ -64,6 +64,15 @@
             <tr>
                 <td>작성일자</td>
                 <td colspan="2">${vo2.wdate}</td>
+            </tr>
+        </tbody>
+        
+        <tbody>
+        
+       		 <tr>
+       		 	<td><a href="s_increaseGoodOK.do?story_num=${vo.good}">추천</a></td>
+       		 	<td><a href="s_increaseReportOK.do?story_num=${vo.report}">신고하기</a></td>
+       		 	<td><a href="s_delete.do?story_num=${vo.story_num}">글삭제</a></td>
             </tr>
         </tbody>
     </table>

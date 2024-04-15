@@ -70,7 +70,7 @@ div {
 		  <table id="Table">
         <thead>
             <tr>
-                <th>뉴스 번호</th>
+                <th>게시판</th>
                 <th>댓글</th>
                 <th>작성자</th>
                 <th></th>
@@ -106,7 +106,7 @@ div {
 		  <table id="Table">
         <thead>
             <tr>
-                <th>뉴스 번호</th>
+                <th>뉴스</th>
                 <th>댓글</th>
                 <th>작성자</th>
                 <th></th>

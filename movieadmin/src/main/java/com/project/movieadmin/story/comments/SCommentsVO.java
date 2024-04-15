@@ -11,10 +11,6 @@ public class SCommentsVO {
 	private Date wdate;
 	private int good;
 	private int story_num;
-	private String report;
-	
-	public SCommentsVO() {
-		// TODO Auto-generated constructor stub
-	}
+	private int report;
 
 }

@@ -4,16 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.story.comments">
-	<insert id="INSERT" parameterType="com.project.movieadmin.story.comments.SCommentsVO">
-
+	<insert id="SC_INSERT" parameterType="com.project.movieadmin.story.comments.SCommentsVO">
+		insert into scomments(nickname, content,story_num)
+		values(#{nickname},#{content},#{story_num})
 	</insert>
 
-	<update id="UPDATE">
-		
+	<update id="SC_UPDATE">
+		UPDATE scomments
+    	SET content = #{content}
+    	WHERE story_comments_num = #{story_comments_num};
 	</update>
 
-	<delete id="DELETE">
-	
+	<delete id="SC_DELETE">
+		DELETE FROM scomments
+    	WHERE story_comments_num = #{story_comments_num};
 	</delete>
 
 	<select id="SELECT_ONE" resultType="com.project.movieadmin.story.comments.SCommentsVO">
@@ -21,7 +25,7 @@
 	</select>
 
 	<select id="SC_SELECT_ALL" resultType="com.project.movieadmin.story.comments.SCommentsVO">
-		SELECT * FROM story ORDER BY story_num DESC
+		SELECT * FROM scomments ORDER BY story_comments_num DESC
 	</select>
 
 	<select id="SELECT_ALL_PAGE_BLOCK"

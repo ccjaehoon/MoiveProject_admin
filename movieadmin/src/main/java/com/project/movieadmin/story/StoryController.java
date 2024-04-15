@@ -4,10 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -146,7 +143,7 @@ public class StoryController {
 
 		return "story/delete";
 	}
-	@RequestMapping(value = "/s_deleteOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/s_deleteOK.do", method = RequestMethod.POST)
 	public String s_deleteOK(StoryVO vo) {
 		log.info("Welcome story_deleteOK...");
 		log.info("vo:{}", vo);
