@@ -82,11 +82,9 @@ public class SCommentsController {
 //		vo2.setContent(rs.getString("content"));
 //		vo2.setNickname(rs.getString("nickname"));
 //		vo2.setWdate(rs.getDate("wdate"));
-<<<<<<< HEAD
-//		vos.add(vo2); //객체를 추가하는 작업
-=======
+
 		vos.add(vo2); //객체를 추가하는 작업
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
+
 		 // 리소스 정리
 			/*
 			 * rs.close(); pstmt.close(); conn.close(); } catch (SQLException e) {
