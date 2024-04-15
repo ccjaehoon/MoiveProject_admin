@@ -47,7 +47,7 @@ tfoot td {
 	font-size: 30px;
 }
 
-#text_report{
+#text_report {
 	width: 500px;
 	height: 500px;
 }
@@ -275,26 +275,53 @@ function showDialogReport(news_comments_num){
 	</table>
 
 	<div id="report">
-		<form action="rp_insertOK.do" method="post">
-			<table id="rp" border=2>
-				<tr>
-					<td id="font" width=100>신고 내용<input type="text" id="nickname"
-						name="nickname" value="${param.nickname}" disabled> <input
-						type="text" id="news_comments_num" name="news_comments_num"
-						value="${cvo.news_comments_num}" disabled></td>
-				</tr>
-				<tr>
-					<td width=500><textarea id="text_report" name="content" placeholder="신고내용을 적으세요">test report</textarea>
-					</td>
-				</tr>
+    <form id="reportForm" action="rp_insertOK.do" method="post">
+        <table id="rp" border="2">
+            <tr>
+                <td id="font" width="100">신고 내용<input type="text" id="nickname"
+                        name="nickname" value="${param.nickname}" readonly> <input
+                        type="text" id="news_comments_num" name="news_comments_num"
+                        value="${cvo.news_comments_num}" readonly></td>
+            </tr>
+            <tr>
+                <td width="500"><textarea id="text_report" name="content" placeholder="신고내용을 적으세요">test report</textarea>
+                </td>
+            </tr>
 
-				<tr>
-					<td colspan="2"><input type="submit" value="신고접수"
-						class="report"></td>
-				</tr>
-			</table>
-		</form>
-	</div>
+            <tr>
+                <td colspan="2"><input type="submit" value="신고접수" class="report"></td>
+            </tr>
+        </table>
+    </form>
+</div>
 
-</body>
+<script>
+    
+    function submitReportFormAndGoBack() {
+        
+        window.history.back();
+    }
+
+    
+    $("#reportForm").submit(function(event) {
+      
+        event.preventDefault();
+        
+        
+        $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            data: $(this).serialize(), 
+            success: function(response) {
+                
+                console.log(response);
+                submitReportFormAndGoBack(); 
+            },
+            error: function(xhr, status, error) {
+                
+                console.error(status, error);
+            }
+        });
+    });
+</script>
 </html>
