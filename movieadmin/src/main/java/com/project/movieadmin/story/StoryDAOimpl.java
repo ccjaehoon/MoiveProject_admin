@@ -104,6 +104,7 @@ public class StoryDAOimpl implements StoryDAO {
 
 	@Override
 	public int s_increaseGood(StoryVO vo) {
+		log.info("s_increaseGood()....");
 		// 해당 게시물의 추천수를 가져와 1 증가시킴
 	    int currentGoodCount = vo.getGood();
 	    vo.setGood(currentGoodCount + 1);
@@ -114,6 +115,7 @@ public class StoryDAOimpl implements StoryDAO {
 
 	@Override
 	public int s_increaseReport(StoryVO vo) {
+		log.info("s_increaseReport()....");
 		// 해당 게시물의 신고수를 가져와 1 증가시킴
 	    int currentReportCount = vo.getReport();
 	    vo.setReport(currentReportCount + 1);
@@ -124,7 +126,7 @@ public class StoryDAOimpl implements StoryDAO {
 
 	@Override
 	public List<StoryVO> s_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
-		log.info("s_selectAll()....");
+		log.info("s_selectAll_nick()....");
 		log.info("cpage:" + cpage);
 		log.info("pageBlock:" + pageBlock);
 

@@ -43,7 +43,43 @@ tfoot td {
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
 	$(function() {
+=======
+$(function() {
+	
+	console.log("jquery test");
+	console.log($(".nc_increaseGood"));
+	$(".nc_increaseGood").each(function(index,item){
+//			console.log(index);
+		
+		$(this).click(function() {
+			
+			console.log("increaseGood Click");
+			console.log($("#news_comments_num"+index).val());
+			console.log($("#good"+index).val());
+			
+			$.ajax({
+				url : "http://localhost:8070/movie/nc_increaseGood.do",
+				type : "get",
+				data : {
+					news_comments_num : $("#news_comments_num"+index).val(),
+					news_num : $("#news_num").val(),
+					nickname : $("#nickname"+index).val(),
+					good : $("#good"+index).val()
+				},
+				dataType : "json",
+				success : function(obj) {
+					console.log(obj);
+					let good = obj.good;
+//						console.log(item);
+					item.value = good;
+				},
+				error : function(xhr, status) {
+					console.log("status...", status);
+				}
+			});
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
 		console.log("jquery test");
 		console.log($(".nc_increaseGood"));
@@ -142,7 +178,7 @@ tfoot td {
 			</tr>
 		</tbody>
 	</table>
-	<a href="n_update.do?news_num=${param.news_num}">글수정</a>
+	<a href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
 	<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
 	<hr>
 	<h3>댓글작성</h3>
@@ -200,6 +236,7 @@ tfoot td {
 
 						</form>
 					</td>
+<<<<<<< HEAD
 					<td>${cvo.nickname}<input type="hidden" name="nickname"
 						value="${user_id}" id="nickname${vs.index}"></td>
 
@@ -209,6 +246,17 @@ tfoot td {
 						id="news_num"> <input type="hidden" name="good"
 						value="${cvo.good}" id="good${vs.index}"> <input
 						type="button" value="${cvo.good}" class="nc_increaseGood"></td>
+=======
+					<td>${cvo.nickname}<input type="hidden"
+							name="nickname" value="${user_id}"  id="nickname${vs.index}"></td>
+					
+					<td><input type="hidden"
+							name="news_comments_num" value="${cvo.news_comments_num}"  id="news_comments_num${vs.index}">
+							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
+							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
+							<input type="button" value="${cvo.good}" class="nc_increaseGood"></td>
+						
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 					<td>${cvo.wdate}</td>
 					<td><input type="button" id="nc_report${vs.index}"
 						name="nc_report${vs.index}" class="nc_report" value="신고" /></td>
