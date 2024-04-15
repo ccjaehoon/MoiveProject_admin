@@ -113,8 +113,6 @@ tfoot td {
 											});
 						});
 
-		
-
 	});
 </script>
 <script>
@@ -128,15 +126,18 @@ tfoot td {
 
 							$(this)
 									.click(
+
 											function() {
-	
+
 												console.log("report Click");
+												$("#report").dialog("open");
 												console.log($(
 														"#news_comments_num"
 																+ index).val());
 
-												$.ajax({
-															url : "http://localhost:8070/movie/rp_insertOK",
+												$
+														.ajax({
+														
 															type : "post",
 															data : {
 																news_comments_num : $(
@@ -166,9 +167,14 @@ tfoot td {
 												return false;
 											});
 						});
-	});
-	
 
+		$(function() {
+			$("#report").dialog({
+				autoOpen : false
+			});
+		});
+
+	});
 </script>
 
 </head>
@@ -269,9 +275,7 @@ tfoot td {
 						value="${cvo.news_comments_num}" id="news_comments_num${vs.index}">
 						<input type="hidden" name="news_num" value="${vo2.news_num}"
 						id="news_num"> <input type="hidden" name="good"
-						value="${cvo.good}" id="good${vs.index}">
-						
-						 <input
+						value="${cvo.good}" id="good${vs.index}"> <input
 						type="button" value="${cvo.good}" class="nc_increaseGood"></td>
 
 
