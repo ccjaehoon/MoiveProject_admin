@@ -65,7 +65,7 @@
         <tbody>
         	<c:forEach var="vo" items="${vos}">
             <tr>
-                <td><a href="n_selectOne.do?news_num=${vo.news_num}">${vo.news_num}</a></td>
+                <td><a href="n_selectOne.do?news_num=${vo.news_num}&nickname=${vo.nickname}">${vo.news_num}</a></td>
                 <td><img src="resources/uploadimg/thumb_${vo.save_img}"></td>
                 <td>${vo.title}</td>
                 <td>${vo.nickname}</td>
