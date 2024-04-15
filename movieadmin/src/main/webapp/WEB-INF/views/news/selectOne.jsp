@@ -269,7 +269,9 @@ tfoot td {
 						value="${cvo.news_comments_num}" id="news_comments_num${vs.index}">
 						<input type="hidden" name="news_num" value="${vo2.news_num}"
 						id="news_num"> <input type="hidden" name="good"
-						value="${cvo.good}" id="good${vs.index}"> <input
+						value="${cvo.good}" id="good${vs.index}">
+						
+						 <input
 						type="button" value="${cvo.good}" class="nc_increaseGood"></td>
 
 
