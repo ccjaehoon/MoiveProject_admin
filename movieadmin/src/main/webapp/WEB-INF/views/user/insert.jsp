@@ -168,7 +168,8 @@ div {
 					<td><label for="user_id">아이디:</label></td>
 					<td><input type="text" id="user_id" name="user_id" value=""
 						placeholder="아이디"> <a href="#" id="u_idCheck">아이디중복체크</a>
-						<span id="result"></span></td>
+						<span id="result"></span>
+						<span id="result2"></span></td>
 				</tr>
 				<tr>
 					<td><label for="password">비밀번호:</label></td>
@@ -229,12 +230,12 @@ div {
         var userInputLength = userIdInput.value.length;
         if (userInputLength < minLength || userInputLength > maxLength) {
          
-            document.getElementById("result").innerHTML = "아이디는 6글자 이상 12글자 이하로 입력해주세요.";
+            document.getElementById("result2").innerHTML = "아이디는 6글자 이상 12글자 이하로 입력해주세요.";
           
             userIdInput.style.borderColor = "red";
             userIdInput.focus();
         } else {        
-            document.getElementById("result").innerHTML = "";      
+            document.getElementById("result2").innerHTML = "";      
             userIdInput.style.borderColor = "";
         }
     });
