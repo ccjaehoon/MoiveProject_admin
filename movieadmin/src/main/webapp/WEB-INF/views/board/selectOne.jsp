@@ -117,7 +117,7 @@ $(function() {
 			</tr>
 		</tbody>
 	</table>
-	<c:if test="${user_id == vo2.nickname}">
+	<c:if test="${param.nickname == vo2.nickname}">
 		<a href="b_update.do?num=${vo2.board_num}&nickname=${param.nickname}&title=${param.title}&content=${param.content}">글수정</a>
 		<a href="b_delete.do?num=${vo2.board_num}">글삭제</a>
 	</c:if>
