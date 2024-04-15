@@ -43,6 +43,9 @@ tfoot td {
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
+	$(function() {
+=======
 $(function() {
 	
 	console.log("jquery test");
@@ -57,7 +60,7 @@ $(function() {
 			console.log($("#good"+index).val());
 			
 			$.ajax({
-				url : "http://localhost:8088/movie/nc_increaseGood.do",
+				url : "http://localhost:8070/movie/nc_increaseGood.do",
 				type : "get",
 				data : {
 					news_comments_num : $("#news_comments_num"+index).val(),
@@ -76,14 +79,73 @@ $(function() {
 					console.log("status...", status);
 				}
 			});
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
-			return false;
-		});
+		console.log("jquery test");
+		console.log($(".nc_increaseGood"));
+		$(".nc_increaseGood")
+				.each(
+						function(index, item) {
+							//			console.log(index);
+
+							$(this)
+									.click(
+											function() {
+
+												console
+														.log("increaseGood Click");
+												console.log($(
+														"#news_comments_num"
+																+ index).val());
+												console.log($("#good" + index)
+														.val());
+
+												$
+														.ajax({
+															url : "http://localhost:8070/movie/nc_increaseGood.do",
+															type : "get",
+															data : {
+																news_comments_num : $(
+																		"#news_comments_num"
+																				+ index)
+																		.val(),
+																news_num : $(
+																		"#news_num")
+																		.val(),
+																nickname : $(
+																		"#nickname"
+																				+ index)
+																		.val(),
+																good : $(
+																		"#good"
+																				+ index)
+																		.val()
+															},
+															dataType : "json",
+															success : function(
+																	obj) {
+																console
+																		.log(obj);
+																let good = obj.good;
+																//						console.log(item);
+																item.value = good;
+															},
+															error : function(
+																	xhr, status) {
+																console
+																		.log(
+																				"status...",
+																				status);
+															}
+														});
+
+												return false;
+											});
+						});
+
 	});
-	
-});
-
 </script>
+
 
 </head>
 <body>
@@ -152,23 +214,39 @@ $(function() {
 				<th>작성자</th>
 				<th>좋아요</th>
 				<th>작성일자</th>
-				<th></th>
+				<th>신고</th>
+				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="cvo" items="${cvos}" varStatus="vs">
-				
+
 				<tr>
 					<td>${cvo.news_comments_num}</td>
 					<td>${cvo.content}
 						<form action="nc_updateOK.do">
-							<input type="text" name="content" value="${cvo.content}">
-							<input type="hidden" name="news_comments_num"
-								value="${cvo.news_comments_num}"> <input type="hidden"
-								name="news_num" value="${cvo.news_num}"> <input
-								type="submit" value="수정">
+							<c:if test="${param.nickname == cvo.nickname}">
+								<input type="text" name="content" value="${cvo.content}">
+
+								<input type="hidden" name="news_comments_num"
+									value="${cvo.news_comments_num}">
+								<input type="hidden" name="news_num" value="${cvo.news_num}">
+								<input type="submit" value="수정">
+							</c:if>
+
 						</form>
 					</td>
+<<<<<<< HEAD
+					<td>${cvo.nickname}<input type="hidden" name="nickname"
+						value="${user_id}" id="nickname${vs.index}"></td>
+
+					<td><input type="hidden" name="news_comments_num"
+						value="${cvo.news_comments_num}" id="news_comments_num${vs.index}">
+						<input type="hidden" name="news_num" value="${vo2.news_num}"
+						id="news_num"> <input type="hidden" name="good"
+						value="${cvo.good}" id="good${vs.index}"> <input
+						type="button" value="${cvo.good}" class="nc_increaseGood"></td>
+=======
 					<td>${cvo.nickname}<input type="hidden"
 							name="nickname" value="${user_id}"  id="nickname${vs.index}"></td>
 					
@@ -176,13 +254,18 @@ $(function() {
 							name="news_comments_num" value="${cvo.news_comments_num}"  id="news_comments_num${vs.index}">
 							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
 							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
-							<input type="button" value="${cvo.good}" class="nc_increaseGood">
+							<input type="button" value="${cvo.good}" class="nc_increaseGood"></td>
 						
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 					<td>${cvo.wdate}</td>
-					<td><a
-						href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
+					<td><input type="button" id="nc_report${vs.index}"
+						name="nc_report${vs.index}" class="nc_report" value="신고" /></td>
+					<td>
+					<c:if test="${param.nickname == cvo.nickname}">
+					<a href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
+					</c:if>
 					</td>
-					
+
 				</tr>
 			</c:forEach>
 
