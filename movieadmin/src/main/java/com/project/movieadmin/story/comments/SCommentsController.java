@@ -36,7 +36,9 @@ public class SCommentsController {
 		int result = service.sc_insert(vo);
 		log.info("result:{}", result);
 		if (result == 1) {
-			return "redirect:sc_selectAll.do";
+			 int storyNum = vo.getStory_num();
+	//storyNum이라는 새로운 변수명을 만드는 이유는 SCommentsVO 객체에서 story_num 값을 가져와 사용하기 위해
+			return "redirect:s_selectOne.do?story_num=" + storyNum;
 		} else {
 			return "redirect:sc_insert.do";
 		}
