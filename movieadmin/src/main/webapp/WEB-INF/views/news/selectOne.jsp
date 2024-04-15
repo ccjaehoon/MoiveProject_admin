@@ -57,7 +57,7 @@ $(function() {
 			console.log($("#good"+index).val());
 			
 			$.ajax({
-				url : "http://localhost:8088/movie/nc_increaseGood.do",
+				url : "http://localhost:8070/movie/nc_increaseGood.do",
 				type : "get",
 				data : {
 					news_comments_num : $("#news_comments_num"+index).val(),
@@ -116,7 +116,7 @@ $(function() {
 			</tr>
 		</tbody>
 	</table>
-	<a href="n_update.do?news_num=${param.news_num}">글수정</a>
+	<a href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
 	<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
 	<hr>
 	<h3>댓글작성</h3>
@@ -176,7 +176,7 @@ $(function() {
 							name="news_comments_num" value="${cvo.news_comments_num}"  id="news_comments_num${vs.index}">
 							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
 							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
-							<input type="button" value="${cvo.good}" class="nc_increaseGood">
+							<input type="button" value="${cvo.good}" class="nc_increaseGood"></td>
 						
 					<td>${cvo.wdate}</td>
 					<td><a

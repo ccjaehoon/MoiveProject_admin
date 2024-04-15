@@ -7,23 +7,24 @@
 	<insert id="B_INSERT"
 		parameterType="com.project.movieadmin.board.BoardVO">
 		insert into
-		board(title, tag, nickname, content, authority, views,
+		board(title, tag, nickname, content,
+		authority, views,
 		save_img)
 		values(#{title},#{tag},#{nickname},#{content},#{authority},
 		#{views},#{save_img})
 	</insert>
 
-	<update id="B_UPDATE">
+	<update id="B_UPDATE"
+		parameterType="com.project.movieadmin.board.BoardVO">
 		update board set
-		title=#{title},tag=#{tag},content=#{content},nickname=#{nickname},
-		save_img=#{save_img}
+		title=#{title},tag=#{tag},content=#{content},save_img=#{save_img}
 		where board_num=#{board_num}
 	</update>
 
-	<delete id="B_DELETE">
+	<delete id="B_DELETE"
+		parameterType="com.project.movieadmin.board.BoardVO">
 		delete from board where board_num=#{board_num}
 	</delete>
-	
 
 	<select id="B_SELECT_ONE"
 		resultType="com.project.movieadmin.board.BoardVO">
@@ -34,7 +35,7 @@
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board order by board_num desc
 	</select>
-	
+
 	<select id="B_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board order by board_num desc limit
@@ -42,17 +43,10 @@
 	</select>
 	<select id="B_SELECT_ALL_PAGE_BLOCK_NICKNAME"
 		resultType="com.project.movieadmin.board.BoardVO">
-		select * from board where nickname=#{vo.nickname} order by board_num desc limit
-		#{startRow},#{pageBlock}
+		select * from board where nickname=#{nickname} order by
+		board_num desc
+		limit #{startRow},#{pageBlock}
 	</select>
-	
-	
-	
-	
-	
-	
-	
-	
 
 	<select id="B_SEARCHLIST_TITLE"
 		resultType="com.project.movieadmin.board.BoardVO">
@@ -96,11 +90,30 @@
 	</select>
 
 	<select id="B_INCREASEGOOD" resultType="int">
-		update board set good = good + 1 where board_num = #{board_num}
+		update board set good =
+		good + 1 where board_num = #{board_num}
 	</select>
 
 	<select id="B_INCREASEREPORT" resultType="int">
-		update board set report = report + 1 where board_num = #{board_num}
+		update board set report
+		= report + 1 where board_num = #{board_num}
+	</select>
+
+	<select id="B_SELECT_GOOD"
+		resultType="com.project.movieadmin.board.BoardVO">
+		select good from board where board_num=#{board_num}
+	</select>
+
+	<select id="B_GOOD_CHECK" resultType="int">
+		select count(*) as
+		like_count from goodcheck where nickname = #{nickname} and board_num =
+		#{board_num}
+	</select>
+
+	<select id="B_GOOD_SAVE" resultType="int">
+		insert into
+		goodcheck(nickname, board_num)
+		values(#{nickname},#{board_num})
 	</select>
 
 

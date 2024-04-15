@@ -8,14 +8,19 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.project.movieadmin.board.comments.CommentsService;
+import com.project.movieadmin.board.comments.CommentsVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,13 +37,21 @@ public class BoardController {
 	@Autowired
 	private ServletContext sContext;
 
+	@Autowired
+	private HttpSession session;
+	
+	@Autowired
+	private CommentsService comService;
+
 	public BoardController() {
 		log.info("BoardController()....");
 	}
 
 	@RequestMapping(value = "/b_insert.do", method = RequestMethod.GET)
-	public String b_insert() {
-		log.info("Welcome insert.do....");
+	public String b_insert(Model model) {
+		log.info("Welcome b_insert.do....");
+		String nickname = (String) session.getAttribute("user_id");
+		model.addAttribute(nickname);
 
 		return "board/insert";
 	}
@@ -46,31 +59,34 @@ public class BoardController {
 	@RequestMapping(value = "/b_insertOK.do", method = RequestMethod.POST)
 	public String b_insertOK(BoardVO vo) throws IllegalStateException, IOException {
 		log.info("Welcome insertOK.do...");
+		log.info(vo.toString());
 
 		String realPath = sContext.getRealPath("resources/uploadimg");
+		log.info(realPath);
 
-		MultipartFile file = vo.getFile_img();
-		String originName = file.getOriginalFilename();
-		
+		String originName = vo.getFile_img().getOriginalFilename();
+
+		log.info("getOriginalFilename:{}", originName);
+
 		if (originName.length() == 0) {
-			vo.setSave_img("default.png"); // 기본이미지
+			vo.setSave_img("default.png");// 이미지선택없이 처리할때
 		} else {
-			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
+			String save_img = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
 
-			vo.setSave_img(save_name);
+			vo.setSave_img(save_img);
 
-			File uploadFile = new File(realPath, save_name);
-			vo.getFile_img().transferTo(uploadFile); // 원본 이미지 저장
+			File uploadFile = new File(realPath, save_img);
+			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
 
-			// 썸네일 이미지
+			//// create thumbnail image/////////
 			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
 			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
 			Graphics2D graphic = thumb_buffer_img.createGraphics();
 			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
 
-			File thumb_file = new File(realPath, "thumb_" + save_name);
+			File thumb_file = new File(realPath, "thumb_" + save_img);
 
-			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
+			ImageIO.write(thumb_buffer_img, save_img.substring(save_img.lastIndexOf(".") + 1), thumb_file);
 
 		}
 
@@ -87,7 +103,7 @@ public class BoardController {
 	public String b_selectAll(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		log.info("Welcome b_selectAll.do...");
-		
+
 		List<BoardVO> vos = service.b_selectAll(cpage, pageBlock);
 
 		model.addAttribute("vos", vos);
@@ -112,7 +128,7 @@ public class BoardController {
 	public String b_searchList(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
 		log.info("Welcome b_searchList.do...");
-		
+
 		List<BoardVO> vos = service.b_searchList(searchKey, searchWord, cpage, pageBlock);
 
 		model.addAttribute("vos", vos);
@@ -128,7 +144,7 @@ public class BoardController {
 		} else {
 			totalPageCount = total_rows / pageBlock + 1;
 		}
-		
+
 		model.addAttribute("totalPageCount", totalPageCount);
 
 		return "board/searchList";
@@ -136,11 +152,18 @@ public class BoardController {
 
 	@RequestMapping(value = "/b_selectOne.do", method = RequestMethod.GET)
 	public String b_selectOne(BoardVO vo, Model model) {
-		log.info("Welcome b_insert.do...");
+		log.info("Welcome b_selectOne.do...");
 		BoardVO vo2 = service.b_selectOne(vo);
 
 		model.addAttribute("vo2", vo2);
-
+		log.info("vo2:{}", vo2);
+		
+		CommentsVO cvo = new CommentsVO();
+		cvo.setBoard_num(vo.getBoard_num());
+		List<CommentsVO> cvos = comService.c_selectAll(cvo);
+		
+		model.addAttribute("cvos", cvos);
+		
 		return "board/selectOne";
 	}
 
@@ -154,16 +177,16 @@ public class BoardController {
 		return "board/update";
 	}
 
-	@RequestMapping(value = "/b_updateOK.do", method = RequestMethod.GET)
-	public String b_updateOK(BoardVO vo) {
+	@RequestMapping(value = "/b_updateOK.do", method = RequestMethod.POST)
+	public String b_updateOK(BoardVO vo) throws BindException {
 		log.info("Welcome b_updateOK.do...");
 
 		int result = service.b_update(vo);
 
 		if (result == 1) {
-			return "redirect:b_selectAll.do";
+			return "redirect:b_selectOne.do?board_num=" + vo.getBoard_num();
 		} else {
-			return "redirect:b_update.do";
+			return "redirect:b_update.do?board_num=" + vo.getBoard_num();
 		}
 	}
 
@@ -174,16 +197,18 @@ public class BoardController {
 		return "board/delete";
 	}
 
-	@RequestMapping(value = "/b_deleteOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/b_deleteOK.do", method = RequestMethod.POST)
 	public String b_deleteOK(BoardVO vo) {
 		log.info("Welcome b_deleteOK.do...");
+		log.info("vo:{}", vo);
 
 		int result = service.b_delete(vo);
+		log.info("result:", result);
 
 		if (result == 1) {
 			return "redirect:b_selectAll.do";
 		} else {
-			return "redirect:b_delete.do";
+			return "redirect:b_delete.do?board_num=" + vo.getBoard_num();
 		}
 	}
 

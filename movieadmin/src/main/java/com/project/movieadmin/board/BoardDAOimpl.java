@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.news.comments.NCommentsVO;
 import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +38,7 @@ public class BoardDAOimpl implements BoardDAO {
 		log.info("b_update()....");
 
 		int flag = sqlSession.update("B_UPDATE", vo);
-
+		log.info("flag : {}", flag);
 		return flag;
 	}
 
@@ -45,8 +46,8 @@ public class BoardDAOimpl implements BoardDAO {
 	public int b_delete(BoardVO vo) {
 		log.info("b_delete()....");
 
-		int flag = sqlSession.delete("B_DELETE", vo);
-
+		int flag = sqlSession.insert("B_DELETE", vo);
+		
 		return flag;
 	}
 
@@ -151,6 +152,23 @@ public class BoardDAOimpl implements BoardDAO {
 		List<BoardVO> vos = sqlSession.selectList("B_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
 
 		return vos;
+	}
+
+	@Override
+	public NCommentsVO b_selectGood(BoardVO vo) {
+		log.info("b_selectGood()....");
+		log.info(vo.toString());
+		return sqlSession.selectOne("B_SELECT_GOOD", vo);
+	}
+
+	@Override
+	public int b_goodCheck(BoardVO vo) {
+		return sqlSession.selectOne("B_GOOD_CHECK", vo);
+	}
+
+	@Override
+	public int b_goodSave(BoardVO vo) {
+		return sqlSession.insert("B_GOOD_SAVE", vo);
 	}
 
 }

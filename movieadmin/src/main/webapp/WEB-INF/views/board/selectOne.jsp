@@ -39,6 +39,48 @@ tfoot td {
 	text-align: center;
 }
 </style>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	console.log("jquery test");
+	console.log($(".c_increaseGood"));
+	$(".c_increaseGood").each(function(index,item){
+//			console.log(index);
+		
+		$(this).click(function() {
+			
+			console.log("increaseGood Click");
+			console.log($("#comments_num"+index).val());
+			console.log($("#good"+index).val());
+			
+			$.ajax({
+				url : "http://localhost:8070/movie/c_increaseGood.do",
+				type : "get",
+				data : {
+					comments_num : $("#comments_num"+index).val(),
+					board_num : $("#board_num").val(),
+					nickname : $("#nickname"+index).val(),
+					good : $("#good"+index).val()
+				},
+				dataType : "json",
+				success : function(obj) {
+					console.log(obj);
+					let good = obj.good;
+//						console.log(item);
+					item.value = good;
+				},
+				error : function(xhr, status) {
+					console.log("status...", status);
+				}
+			});
+			return false;
+		});
+	});
+});
+</script>
+
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -76,8 +118,8 @@ tfoot td {
 		</tbody>
 	</table>
 	<c:if test="${user_id == vo2.nickname}">
-		<a href="b_update.do?num=${vo2.board_num}">글수정</a>
-		<a href="b_delete.do?num=${vo2.board_num}">글삭제</a>
+		<a href="b_update.do?board_num=${vo2.board_num}">글수정</a>
+		<a href="b_delete.do?board_num=${vo2.board_num}">글삭제</a>
 	</c:if>
 	<hr>
 	<h3>댓글작성</h3>
@@ -85,7 +127,7 @@ tfoot td {
 		<table id="movies">
 			<thead>
 				<tr>
-					<th>댓글 내용 ${param.msg}</th>
+					<th>댓글 내용</th>
 					<th>댓글 작성자</th>
 					<th></th>
 				</tr>
@@ -93,9 +135,8 @@ tfoot td {
 			<tbody>
 				<tr>
 					<td><input type="text" name="content" value="hello" size="50"></td>
-					<td>${user_id}<input type="hidden" name="writer"
-						value="${user_id}"> <input type="hidden" name="bnum"
-						value="${vo2.board_num}">
+					<td>${nickname}<input type="hidden" name="nickname"
+						value="${nickname}"> <input type="hidden" name="board_num" value="${vo2.board_num}">
 					</td>
 					<td><input type="submit" value="댓글작성"></td>
 				</tr>
@@ -108,31 +149,43 @@ tfoot td {
 	<table id="movies">
 		<thead>
 			<tr>
-				<th>댓글 번호</th>
-				<th>댓글 내용</th>
-				<th>댓글 작성자</th>
-				<th>댓글 작성일자</th>
+				<th>번호</th>
+				<th>내용</th>
+				<th>작성자</th>
+				<th>좋아요</th>
+				<th>작성일자</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="cvo" items="${cvos}">
+				
 				<tr>
-					<td>${cvo.board_num}</td>
-					<td>${cvo.content} <c:if test="${user_id == cvo.nickname}">
-							<form action="c_updateOK.do">
-								<input type="text" name="content" value="${cvo.content}">
-								<input type="hidden" name="num" value="${cvo.num}"> <input
-									type="hidden" name="bnum" value="${cvo.bnum}"> <input
-									type="submit" value="댓글수정">
-							</form>
-						</c:if>
+					<td>${cvo.comments_num}</td>
+					<td>${cvo.content}
+						<form action="c_updateOK.do">
+							<input type="text" name="content" value="${cvo.content}">
+							<input type="hidden" name="comments_num"
+								value="${cvo.comments_num}">
+							<input type="hidden"
+								name="board_num" value="${cvo.board_num}"> <input
+								type="submit" value="수정">
+						</form>
 					</td>
-					<td>${cvo.nickname}</td>
+					<td>${cvo.nickname}<input type="hidden"
+							name="nickname" value="${user_id}"  id="nickname${vs.index}"></td>
+					
+					<td><input type="hidden"
+							name="comments_num" value="${cvo.comments_num}"  id="comments_num${vs.index}">
+							<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
+							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
+							<input type="button" value="${cvo.good}" class="c_increaseGood">
+						
 					<td>${cvo.wdate}</td>
-					<td><c:if test="${user_id == cvo.nickname }">
-							<a href="c_deleteOK.do?num=${cvo.num}&bnum=${cvo.bnum}">댓글삭제</a>
-						</c:if></td>
+					<td><a
+						href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">삭제</a>
+					</td>
+					
 				</tr>
 			</c:forEach>
 
