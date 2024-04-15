@@ -153,6 +153,7 @@ div {
 		});
 	});
 </script>
+
 </head>
 
 <body>
@@ -214,5 +215,28 @@ div {
 		</form>
 	</div>
 </body>
+<script>
+  
+    var minLength = 6;
+    var maxLength = 12;
 
+  
+    var userIdInput = document.getElementById("user_id");
+
+
+    userIdInput.addEventListener("blur", function() {
+    
+        var userInputLength = userIdInput.value.length;
+        if (userInputLength < minLength || userInputLength > maxLength) {
+         
+            document.getElementById("result").innerHTML = "아이디는 6글자 이상 12글자 이하로 입력해주세요.";
+          
+            userIdInput.style.borderColor = "red";
+            userIdInput.focus();
+        } else {        
+            document.getElementById("result").innerHTML = "";      
+            userIdInput.style.borderColor = "";
+        }
+    });
+</script>
 </html>
