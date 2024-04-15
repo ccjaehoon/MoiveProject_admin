@@ -50,11 +50,5 @@ public class NCommentsRestController {
 	}
 
 
-	@RequestMapping(value = "/nc_increaseReport.do", method = RequestMethod.GET)
-	public String nc_increaseReport(NCommentsVO vo) {
-		logger.info("Welcome nc_increaseReport!");
-
-		return "news/comments/increaseReport";
-	}
 
 }

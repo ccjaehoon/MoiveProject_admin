@@ -1,14 +1,12 @@
 package com.project.movieadmin.story.comments;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -66,14 +64,31 @@ public class SCommentsController {
 		return "redirect:SComments_selectAll.do?num="+vo.getStory_comments_num();
 	}
 	
+
 	@ResponseBody
 	@RequestMapping(value = "api/selectCommentList.do", method = RequestMethod.GET)
 	public List<SCommentsVO> selectCommentList(SCommentsVO vo) {
 		log.info("Welcome api/selectCommentList.do...");
 		log.info("vo:{}",vo);
 		
-		List<SCommentsVO> sc_vos = service.sc_selectAll(vo);
+		List<SCommentsVO> vos = new ArrayList<SCommentsVO>();
+		SCommentsVO vo2 = new SCommentsVO();
+//		vo2.setStory_comments_num(rs.getInt("story_comments_num"));
+//		vo2.setStory_num(rs.getInt("story_num"));
+//		vo2.setContent(rs.getString("content"));
+//		vo2.setNickname(rs.getString("nickname"));
+//		vo2.setWdate(rs.getDate("wdate"));
+//		vos.add(vo2); //객체를 추가하는 작업
+		vos.add(vo2); //객체를 추가하는 작업
+		 // 리소스 정리
+			/*
+			 * rs.close(); pstmt.close(); conn.close(); } catch (SQLException e) {
+			 * e.printStackTrace(); }
+			 */
 			
-		return sc_vos;
+		return vos;
 	}
 }
+
+
+

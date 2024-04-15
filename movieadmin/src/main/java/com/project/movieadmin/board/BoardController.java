@@ -162,7 +162,11 @@ public class BoardController {
 		cvo.setBoard_num(vo.getBoard_num());
 		List<CommentsVO> cvos = comService.c_selectAll(cvo);
 		
+		
 		model.addAttribute("cvos", cvos);
+		
+		String nickname = (String) session.getAttribute("nickname");
+		model.addAttribute("nickname", nickname);
 		
 		return "board/selectOne";
 	}
