@@ -274,7 +274,7 @@ function showDialogReport(news_comments_num){
 		</tbody>
 	</table>
 
-	<div id="report">
+<div id="report">
     <form id="reportForm" action="rp_insertOK.do" method="post">
         <table id="rp" border="2">
             <tr>
@@ -297,14 +297,19 @@ function showDialogReport(news_comments_num){
 
 <script>
     
-    function submitReportFormAndGoBack() {
+    function submitReportFormAndCloseDialog() {
         
-        window.history.back();
+        // 신고 폼을 제출
+        $("#reportForm").submit();
+        
+        // 팝업 창 닫기
+        $("#report").dialog("close");
     }
 
-    
+    // 폼 제출을 처리할 때 실행할 함수
     $("#reportForm").submit(function(event) {
       
+        // 제출을 막기 위해 기본 이벤트를 중지
         event.preventDefault();
         
         
@@ -315,7 +320,8 @@ function showDialogReport(news_comments_num){
             success: function(response) {
                 
                 console.log(response);
-                submitReportFormAndGoBack(); 
+                // 신고 폼을 제출한 후에 팝업 창 닫기
+                 submitReportFormAndCloseDialog(); 
             },
             error: function(xhr, status, error) {
                 
