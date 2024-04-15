@@ -47,7 +47,7 @@ tfoot td {
 	font-size: 30px;
 }
 
-#Report {
+#text_report {
 	width: 500px;
 	height: 500px;
 }
@@ -275,6 +275,7 @@ function showDialogReport(news_comments_num){
 	</table>
 
 	<div id="report">
+<<<<<<< HEAD
 		<form action="rp_insertOK.do" method="post">
 			<table id="rp" border=2>
 				<tr>
@@ -287,6 +288,20 @@ function showDialogReport(news_comments_num){
 					<td width=500><textarea id="text_report" name="content" placeholder="신고내용을 적으세요">test report</textarea>
 					</td>
 				</tr>
+=======
+    <form id="reportForm" action="rp_insertOK.do" method="post">
+        <table id="rp" border="2">
+            <tr>
+                <td id="font" width="100">신고 내용<input type="text" id="nickname"
+                        name="nickname" value="${param.nickname}" readonly> <input
+                        type="text" id="news_comments_num" name="news_comments_num"
+                        value="${cvo.news_comments_num}" readonly></td>
+            </tr>
+            <tr>
+                <td width="500"><textarea id="text_report" name="content" placeholder="신고내용을 적으세요">test report</textarea>
+                </td>
+            </tr>
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"  window.history.back();

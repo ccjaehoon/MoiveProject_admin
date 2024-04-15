@@ -218,7 +218,7 @@ public class NewsController {
 	}
 
 	@RequestMapping(value = "/n_update.do", method = RequestMethod.GET)
-	public String n_update() {
+	public String n_update(Model model) {
 		log.info("n_update.do");
 
 		return "news/update";
