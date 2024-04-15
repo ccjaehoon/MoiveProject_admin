@@ -117,13 +117,8 @@ $(function() {
 			</tr>
 		</tbody>
 	</table>
-<<<<<<< HEAD
 	<c:if test="${param.nickname == vo2.nickname}">
 		<a href="b_update.do?board_num=${vo2.board_num}&nickname=${param.nickname}&title=${param.title}&content=${param.content}">글수정</a>
-=======
-	<c:if test="${user_id == vo2.nickname}">
-		<a href="b_update.do?board_num=${vo2.board_num}">글수정</a>
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin
 		<a href="b_delete.do?board_num=${vo2.board_num}">글삭제</a>
 	</c:if>
 	<hr>
