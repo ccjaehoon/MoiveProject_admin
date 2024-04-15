@@ -57,7 +57,7 @@
 		limit ${startRow},
 		${pageBlock}
 	</select>
-	
+	<!-- story” 테이블에서 특정 닉네임의 사용자의 이야기를 최신순으로 가져오는 것 -->
 	
 	
 	<select id="SEARCHLIST_ID"
