@@ -48,6 +48,14 @@ public class StoryDAOimpl implements StoryDAO {
 	}
 	
 	@Override
+	public StoryVO s_selectOne(StoryVO vo) {
+		log.info("s_selectOne()....");
+		log.info(vo.toString());
+
+		return sqlSession.selectOne("S_SELECT_ONE", vo);
+	}
+	
+	@Override
 	public StoryVO s_selectRandomList(StoryVO vo) {
 		log.info("s_selectRandomList()....");
 		log.info(vo.toString());

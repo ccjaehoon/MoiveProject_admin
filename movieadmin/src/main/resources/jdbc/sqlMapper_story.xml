@@ -19,6 +19,12 @@
 		DELETE FROM story
     	WHERE story_num = #{story_num};
 	</delete>
+	
+	<select id="S_SELECT_ONE" resultType="com.project.movieadmin.story.StoryVO">
+		SELECT * <!-- story_num, nickname, content -->
+		FROM story
+		where story_num=#{story_num}
+	</select>
 
 	<select id="S_SELECT_RANDOMLIST" resultType="com.project.movieadmin.story.StoryVO">
 		SELECT * <!-- story_num, nickname, content -->

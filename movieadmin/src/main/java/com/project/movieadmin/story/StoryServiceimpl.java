@@ -40,6 +40,12 @@ public class StoryServiceimpl implements StoryService {
 	}
 	
 	@Override
+	public StoryVO s_selectOne(StoryVO vo) {
+		
+		return dao.s_selectOne(vo);
+	}
+	
+	@Override
 	public StoryVO s_selectRandomList(StoryVO vo) {
 		
 		return dao.s_selectRandomList(vo);
@@ -50,6 +56,7 @@ public class StoryServiceimpl implements StoryService {
 		
 		return dao.s_selectAll();
 	}
+	
 
 	@Override
 	public List<StoryVO> s_selectAll(int cpage, int pageBlock) {
