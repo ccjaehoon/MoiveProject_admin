@@ -113,19 +113,69 @@ tfoot td {
 											});
 						});
 
+	});
+</script>
+<script>
+	$(function() {
+		console.log("jquery test");
+		console.log($(".report"));
+		$(".report")
+				.each(
+						function(index, item) {
+							//			console.log(index);
+
+							$(this)
+									.click(
+
+											function() {
+
+												console.log("report Click");
+												$("#report").dialog("open");
+												console.log($(
+														"#news_comments_num"
+																+ index).val());
+
+												$
+														.ajax({
+														
+															type : "post",
+															data : {
+																news_comments_num : $(
+																		"#news_comments_num"
+																				+ index)
+																		.val(),
+																nickname : $(
+																		"#nickname"
+																				+ index)
+																		.val()
+															},
+															dataType : "json",
+															success : function(
+																	obj) {
+																console
+																		.log(obj);
+															},
+															error : function(
+																	xhr, status) {
+																console
+																		.log(
+																				"status...",
+																				status);
+															}
+														});
+
+												return false;
+											});
+						});
+
 		$(function() {
 			$("#report").dialog({
 				autoOpen : false
 			});
 		});
 
-		$("#reportBtn").on("click", function() {
-			$("#report").dialog("open");
-		});
-
 	});
 </script>
-
 
 </head>
 <body>
@@ -230,8 +280,14 @@ tfoot td {
 
 
 					<td>${cvo.wdate}</td>
-					<td><input type="button" id="reportBtn"
-						name="report${vs.index}" class="report" value="신고" /></td>
+
+
+
+					<td><input type="button" id="reportBtn" class="report"
+						value="신고" /></td>
+
+
+
 					<td><c:if test="${param.nickname == cvo.nickname}">
 							<a
 								href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
@@ -245,8 +301,12 @@ tfoot td {
 
 	<div id="report" title="신고 내용">
 		<form action="rp_insertOK.do" method="post">
+			<input type="hidden" id="nickname" name="nickname"
+				value="${param.nickname}"> <input type="hidden"
+				id="news_comments_num" name="news_comments_num"
+				value="${cvo.news_comments_num}">
 			<textarea id="Report"></textarea>
-			<input type="button" value="신고접수" class="report">
+			<input type="submit" value="신고접수" class="report">
 		</form>
 	</div>
 
