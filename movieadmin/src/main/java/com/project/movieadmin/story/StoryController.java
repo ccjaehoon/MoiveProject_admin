@@ -9,6 +9,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.movieadmin.info.review.ReviewVO;
+import com.project.movieadmin.news.comments.NCommentsService;
+import com.project.movieadmin.story.comments.SCommentsService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,6 +36,13 @@ public class StoryController {
 	
 	@Autowired
 	private ServletContext sContext;
+	
+	@Autowired
+	private SCommentsService comservice;
+	
+	@Autowired
+	private HttpSession session;
+//이 객체는 웹 애플리케이션 전체에서 공유할 수 있는 정보를 유지하는 데 사용됩니다. 이를 통해 서블릿 간에 데이터를 공유하거나, 애플리케이션 수준의 설정 정보를 관리
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
