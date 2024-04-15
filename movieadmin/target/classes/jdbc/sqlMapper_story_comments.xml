@@ -37,7 +37,7 @@
 		
 	</select>
 	
-	<select id="SC_UPDATE_GOOD_COUNT" resultType="com.project.movieadmin.story.comments.SCommentsVOO">
+	<select id="SC_UPDATE_GOOD_COUNT" resultType="com.project.movieadmin.story.comments.SCommentsVO">
 		
 	</select>
 	
