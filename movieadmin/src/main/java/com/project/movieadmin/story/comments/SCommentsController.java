@@ -71,6 +71,10 @@ public class SCommentsController {
 		log.info("vo:{}",vo);
 		
 
+		
+
+
+
 //		List<SCommentsVO> vos = new ArrayList<SCommentsVO>();
 //		SCommentsVO vo2 = new SCommentsVO();
 //		vo2.setStory_comments_num(rs.getInt("story_comments_num"));
@@ -78,14 +82,17 @@ public class SCommentsController {
 //		vo2.setContent(rs.getString("content"));
 //		vo2.setNickname(rs.getString("nickname"));
 //		vo2.setWdate(rs.getDate("wdate"));
+
 //		vos.add(vo2); //객체를 추가하는 작업
-
-		 // 리소스 정리
-			/*
-			 * rs.close(); pstmt.close(); conn.close(); } catch (SQLException e) {
-			 * e.printStackTrace(); }
-			 */
-
+//
+//		 // 리소스 정리
+//			/*
+//			 * rs.close(); pstmt.close(); conn.close(); } catch (SQLException e) {
+//			 * e.printStackTrace(); }
+//			 */
+//
+//			
 		return null;
+
 	}
 }
