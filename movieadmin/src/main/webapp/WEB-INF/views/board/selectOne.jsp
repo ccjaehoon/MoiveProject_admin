@@ -158,7 +158,7 @@ $(function() {
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="cvo" items="${cvos}">
+			<c:forEach var="cvo" items="${cvos}" varStatus="vs">
 				
 				<tr>
 					<td>${cvo.comments_num}</td>
@@ -166,8 +166,7 @@ $(function() {
 						<form action="c_updateOK.do">
 							<input type="text" name="content" value="${cvo.content}">
 							<input type="hidden" name="comments_num"
-								value="${cvo.comments_num}">
-							<input type="hidden"
+								value="${cvo.comments_num}"> <input type="hidden"
 								name="board_num" value="${cvo.board_num}"> <input
 								type="submit" value="수정">
 						</form>
