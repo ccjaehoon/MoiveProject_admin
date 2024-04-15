@@ -35,4 +35,6 @@ public interface BoardDAO {
 
 	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo);
 
+	public int b_increaseCommentsCount(BoardVO vo);
+
 }
