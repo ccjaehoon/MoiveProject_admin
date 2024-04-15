@@ -39,12 +39,6 @@ public class ReportController {
 		return "report/selectOne";
 	}
 
-	@RequestMapping(value = "/rp_insert.do", method = RequestMethod.GET)
-	public String rp_insert() {
-		log.info("rp_selectOne.do");
-
-		return "report/insert";
-	}
 	@RequestMapping(value = "/rp_insertOK.do", method = RequestMethod.POST)
 	public String rp_insertOK(ReportVO vo) {
 		log.info("rp_insert...");

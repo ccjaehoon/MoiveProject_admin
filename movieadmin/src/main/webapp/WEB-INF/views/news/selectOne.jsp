@@ -38,49 +38,19 @@
 tfoot td {
 	text-align: center;
 }
+
+#Report {
+	width: 500px;
+	height: 500px;
+}
 </style>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
-<<<<<<< HEAD
 	$(function() {
-=======
-$(function() {
-	
-	console.log("jquery test");
-	console.log($(".nc_increaseGood"));
-	$(".nc_increaseGood").each(function(index,item){
-//			console.log(index);
-		
-		$(this).click(function() {
-			
-			console.log("increaseGood Click");
-			console.log($("#news_comments_num"+index).val());
-			console.log($("#good"+index).val());
-			
-			$.ajax({
-				url : "http://localhost:8070/movie/nc_increaseGood.do",
-				type : "get",
-				data : {
-					news_comments_num : $("#news_comments_num"+index).val(),
-					news_num : $("#news_num").val(),
-					nickname : $("#nickname"+index).val(),
-					good : $("#good"+index).val()
-				},
-				dataType : "json",
-				success : function(obj) {
-					console.log(obj);
-					let good = obj.good;
-//						console.log(item);
-					item.value = good;
-				},
-				error : function(xhr, status) {
-					console.log("status...", status);
-				}
-			});
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
-
 		console.log("jquery test");
 		console.log($(".nc_increaseGood"));
 		$(".nc_increaseGood")
@@ -143,6 +113,16 @@ $(function() {
 											});
 						});
 
+		$(function() {
+			$("#report").dialog({
+				autoOpen : false
+			});
+		});
+
+		$("#reportBtn").on("click", function() {
+			$("#report").dialog("open");
+		});
+
 	});
 </script>
 
@@ -178,7 +158,8 @@ $(function() {
 			</tr>
 		</tbody>
 	</table>
-	<a href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
+	<a
+		href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
 	<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
 	<hr>
 	<h3>댓글작성</h3>
@@ -236,7 +217,7 @@ $(function() {
 
 						</form>
 					</td>
-<<<<<<< HEAD
+
 					<td>${cvo.nickname}<input type="hidden" name="nickname"
 						value="${user_id}" id="nickname${vs.index}"></td>
 
@@ -246,25 +227,15 @@ $(function() {
 						id="news_num"> <input type="hidden" name="good"
 						value="${cvo.good}" id="good${vs.index}"> <input
 						type="button" value="${cvo.good}" class="nc_increaseGood"></td>
-=======
-					<td>${cvo.nickname}<input type="hidden"
-							name="nickname" value="${user_id}"  id="nickname${vs.index}"></td>
-					
-					<td><input type="hidden"
-							name="news_comments_num" value="${cvo.news_comments_num}"  id="news_comments_num${vs.index}">
-							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
-							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
-							<input type="button" value="${cvo.good}" class="nc_increaseGood"></td>
-						
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
+
+
 					<td>${cvo.wdate}</td>
-					<td><input type="button" id="nc_report${vs.index}"
-						name="nc_report${vs.index}" class="nc_report" value="신고" /></td>
-					<td>
-					<c:if test="${param.nickname == cvo.nickname}">
-					<a href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
-					</c:if>
-					</td>
+					<td><input type="button" id="reportBtn"
+						name="report${vs.index}" class="report" value="신고" /></td>
+					<td><c:if test="${param.nickname == cvo.nickname}">
+							<a
+								href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
+						</c:if></td>
 
 				</tr>
 			</c:forEach>
@@ -272,7 +243,12 @@ $(function() {
 		</tbody>
 	</table>
 
-
+	<div id="report" title="신고 내용">
+		<form action="rp_insertOK.do" method="post">
+			<textarea id="Report"></textarea>
+			<input type="button" value="신고접수" class="report">
+		</form>
+	</div>
 
 </body>
 </html>
