@@ -47,7 +47,7 @@ tfoot td {
 	font-size: 30px;
 }
 
-#Report {
+#text_report{
 	width: 500px;
 	height: 500px;
 }
@@ -279,9 +279,9 @@ function showDialogReport(news_comments_num){
 			<table id="rp" border=2>
 				<tr>
 					<td id="font" width=100>신고 내용<input type="text" id="nickname"
-						name="nickname" value="${param.nickname}"> <input
+						name="nickname" value="${param.nickname}" disabled> <input
 						type="text" id="news_comments_num" name="news_comments_num"
-						value="${cvo.news_comments_num}"></td>
+						value="${cvo.news_comments_num}" disabled></td>
 				</tr>
 				<tr>
 					<td width=500><textarea id="text_report" name="content" placeholder="신고내용을 적으세요">test report</textarea>
