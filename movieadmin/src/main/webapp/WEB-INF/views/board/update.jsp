@@ -70,7 +70,7 @@
             <table id="insertTable">
                 <tr>
                     <td><label for="">항목</label></td>
-                    <td>입력</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><label for="board_num">글번호</label></td>
@@ -86,7 +86,7 @@
                 </tr>
                 <tr>
                     <td><label for="nickname">작성자</label></td>
-                    <td>${vo2.nickname}<input type="hidden" id="nickname" name="nickname" value="${vo2.nickname}" placeholder="작성자를 입력하세요"></td>
+                   <td>${user_id}<input type="hidden" id="nickname" name="nickname" value="${user_id}"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글수정 완료"></td>
