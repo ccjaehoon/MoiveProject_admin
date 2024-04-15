@@ -67,7 +67,7 @@ tfoot td {
 				});
 				
 				$('#sc_comm_list'+story_num).html(data);
-			},error:function(){
+			},error:function(){ // 서버로부터 데이터를 받아오는 과정에서 오류가 발생했을 때 실행되는 콜백 함수
 				
 			}
 		});
@@ -84,7 +84,8 @@ tfoot td {
 			<c:forEach var="vo" items="${vos}">
 
 				<tr>
-					<td><a href="s_selectRandomList.do?story_num=${vo.story_num}">${vo.story_num}</a></td>
+				<%-- 	<td><a href="s_selectRandomList.do?story_num=${vo.story_num}">${vo.story_num}</a></td> --%>
+					<td><a href="s_selectOne.do?story_num=${vo.story_num}">${vo.story_num}</a></td>
 				</tr>
 				<tr>
 					<td>${vo.content}</td>
