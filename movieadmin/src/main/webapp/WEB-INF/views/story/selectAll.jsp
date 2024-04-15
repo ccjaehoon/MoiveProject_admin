@@ -87,6 +87,12 @@ tfoot td {
 						<table>
 							<tbody>
 								<tr>
+									<td>${vo2.story_num}</td>
+									<td>${vo2.nickname}</td>
+									<td>${vo2.story_comments_num}</td>
+									<td>${vo2.wdate}</td>
+								</tr>
+<!-- 								<tr>
 									<td>1</td>
 									<td>nickname4</td>
 									<td>1등댓글2</td>
@@ -97,13 +103,7 @@ tfoot td {
 									<td>nickname4</td>
 									<td>1등댓글2</td>
 									<td>2024-04-12</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>nickname4</td>
-									<td>1등댓글2</td>
-									<td>2024-04-12</td>
-								</tr>
+								</tr> -->
 							</tbody>
 						</table>
 					</td>

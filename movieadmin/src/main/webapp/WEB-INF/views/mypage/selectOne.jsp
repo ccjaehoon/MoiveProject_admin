@@ -115,7 +115,7 @@ div {
 			</tr>
 
 		<tr>
-		 <a href="u_update.do?user_num=${param.user_num}&user_id=${param.user_id}">회원수정</a>
+		 <a href="u_update.do?user_num=${vo2.user_num}&user_id=${vo2.user_id}">회원수정</a>
 		</tr>
 
 

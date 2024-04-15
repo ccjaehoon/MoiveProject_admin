@@ -1,6 +1,5 @@
 package com.project.movieadmin.story.comments;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,16 +71,19 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 //	}
 
 	@Override
-	public int s_increaseGood(SCommentsVO vo) {
-		System.out.println("s_increaseGood....");
-		
-		
-		return 0;
+	public int sc_increaseGood(SCommentsVO vo) {
+		log.info("sc_selectAll()....");
+		// 해당 댓글의 추천수를 가져와 1 증가시킴
+	    int currentGoodCount = vo.getGood();
+	    vo.setGood(currentGoodCount + 1);
+
+	    // 데이터베이스에 업데이트
+	    return sqlSession.update("SC_UPDATE_GOOD_COUNT", vo);
 	}
 
 	@Override
-	public int s_increaseReport(SCommentsVO vo) {
-		System.out.println("s_increaseReport.");
+	public int sc_increaseReport(SCommentsVO vo) {
+		log.info("sc_increaseReport()....");
 		
 		
 		return 0;
@@ -90,6 +92,7 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 
 	@Override
 	public List<SCommentsVO> sc_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		log.info("sc_selectAll_nick()....");
 		int startRow = (cpage - 1) * pageBlock + 1;
 
         Map<String, Object> map = new HashMap<String, Object>();

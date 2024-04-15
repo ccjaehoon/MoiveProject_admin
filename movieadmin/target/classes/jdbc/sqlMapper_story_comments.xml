@@ -32,7 +32,33 @@
 		resultType="com.project.movieadmin.story.comments.SCommentsVO">
 		
 	</select>
+	
+	<select id="SC_REMOVEEXPIRED" resultType="com.project.movieadmin.story.comments.SCommentsVO">
+		
+	</select>
+	
+	<select id="SC_UPDATE_GOOD_COUNT" resultType="com.project.movieadmin.story.comments.SCommentsVO">
+		
+	</select>
+	
+	<select id="SC_UPDATE_REPORT_COUNT" resultType="com.project.movieadmin.story.comments.SCommentsVO">
+		
+	</select>
 
+	
+	<select id="LOGIN"	resultType="com.project.movieadmin.story.comments.SCommentsVO">
+		
+	</select>
+	
+	<select id="SC_SELECT_ALL_PAGE_BLOCK_NICKNAME"
+		resultType="com.project.movieadmin.story.comments.SCommentsVO">
+		select * from scomments where nickname=#{vo.nickname} order by
+		story_comments_num desc
+		limit ${startRow},
+		${pageBlock}
+	</select>
+	<!-- story” 테이블에서 특정 닉네임의 사용자의 이야기를 최신순으로 가져오는 것 -->
+	
 	
 	<select id="SEARCHLIST_ID"
 		resultType="com.project.movieadmin.story.comments.SCommentsVO">
@@ -68,19 +94,6 @@
 	
 	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
 		
-	</select>
-
-	
-	<select id="LOGIN"	resultType="com.project.movieadmin.story.comments.SCommentsVO">
-		
-	</select>
-	
-	<select id="SC_SELECT_ALL_PAGE_BLOCK_NICKNAME"
-		resultType="com.project.movieadmin.story.comments.SCommentsVO">
-		select * from scomments where nickname=#{vo.nickname} order by
-		story_comments_num desc
-		limit ${startRow},
-		${pageBlock}
 	</select>
 
 </mapper>
