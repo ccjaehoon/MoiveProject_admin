@@ -2,6 +2,7 @@ package com.project.movieadmin.board;
 
 import java.util.List;
 
+import com.project.movieadmin.news.comments.NCommentsVO;
 import com.project.movieadmin.user.UserVO;
 
 public interface BoardService {
@@ -23,8 +24,14 @@ public interface BoardService {
 	public int b_getSearchTotalRows(String searchKey, String searchWord);
 	
 	public int b_increaseGood(BoardVO vo);
+
+	public NCommentsVO b_selectGood(BoardVO vo);
 	
 	public int b_increaseReport(BoardVO vo);
+	
+	public int b_goodCheck(BoardVO vo);
+
+	public int b_goodSave(BoardVO vo);
 
 	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo);
 
