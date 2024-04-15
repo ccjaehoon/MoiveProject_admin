@@ -73,4 +73,7 @@ public class NCommentsController {
 		return "redirect:n_selectOne.do?news_num="+vo.getNews_num();
 	}
 
+	
+
+
 }

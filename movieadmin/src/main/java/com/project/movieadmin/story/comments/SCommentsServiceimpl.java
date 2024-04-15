@@ -41,16 +41,13 @@ public class SCommentsServiceimpl implements SCommentsService {
 	@Override
 	public int sc_increaseGood(SCommentsVO vo) {
 		// TODO Auto-generated method stub
-		
-		return 0;
-//		return dao.sc_increaseGood(vo);
+		return dao.sc_increaseGood(vo);
 	}
 
 	@Override
 	public int sc_increaseReport(SCommentsVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
-//		return dao.sc_increaseReport(vo);
+		return dao.sc_increaseReport(vo);
 	}
 
 	@Override

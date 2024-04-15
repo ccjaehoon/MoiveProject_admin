@@ -70,7 +70,7 @@
             <table id="insertTable">
                 <tr>
                     <td><label for="">항목</label></td>
-                    <td>입력</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><label for="board_num">글번호</label></td>
