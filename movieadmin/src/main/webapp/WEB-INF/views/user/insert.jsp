@@ -112,7 +112,7 @@ div {
 						result = "중복된 닉네임입니다"
 					}
 
-					$("#result2").html(result); // 변경된 부분
+					$("#result2").html(result); 
 				},
 				error : function(xhr, status) {
 					console.log("status...", status);
@@ -142,7 +142,7 @@ div {
 						result = "중복된 이메일입니다"
 					}
 
-					$("#result3").html(result); // 변경된 부분
+					$("#result3").html(result); 
 				},
 				error : function(xhr, status) {
 					console.log("status...", status);
@@ -167,42 +167,39 @@ div {
 				<tr>
 					<td><label for="user_id">아이디:</label></td>
 					<td><input type="text" id="user_id" name="user_id" value=""
-						placeholder="아이디" maxlength="12"> 
+						placeholder="아이디" maxlength="12"> <a href="#" id="u_idCheck">아이디중복체크</a>
 						<span id="result"></span>
-						<span id="result4"></span></td>
-						<td width=150><a href="#" id="u_idCheck">아이디중복체크</a></td>
+						<span id="result2"></span></td>
 				</tr>
 				<tr>
 					<td><label for="password">비밀번호:</label></td>
-					<td colspan="2"><input type="password" id="password" name="password"
+					<td><input type="password" id="password" name="password"
 						value="" placeholder="비밀번호"></td>
 				</tr>
 				<tr>
 					<td><label for="nickname">별명:</label></td>
 					<td><input type="text" id="nickname" name="nickname" value=""
-						placeholder="별명"> 
+						placeholder="별명"> <a href="#" id="u_nicknameCheck">닉네임중복체크</a>
 						<span id="result2"></span></td>
-						<td width=150><a href="#" id="u_nicknameCheck">닉네임중복체크</a></td>
 				</tr>
 				<tr>
 					<td><label for="email">이메일:</label></td>
 					<td><input type="text" id="email" name="email" value=""
-						placeholder="이메일">
+						placeholder="이메일"> <a href="#" id="u_emailCheck">이메일중복체크</a>
 						<span id="result3"></span></td>
-						<td width=150><a href="#" id="u_emailCheck">이메일중복체크</a></td>
 				</tr>
 				<tr>
 					<td><label for="tel">전화번호:</label></td>
-					<td colspan="2"><input type="tel" id="tel" name="tel" value="010"
+					<td><input type="tel" id="tel" name="tel" value="010"
 						placeholder="전화번호"></td>
 				</tr>
 				<tr>
 					<td><label for="birth">생년월일</label></td>
-					<td colspan="2"><input type="date" id="birth" name="birth" value=""></td>
+					<td><input type="date" id="birth" name="birth" value=""></td>
 				</tr>
 				<tr>
 					<td><label for="gender">성별:</label></td>
-					<td colspan="2"><input type="radio" id="남자" name="gender" value="남자"
+					<td><input type="radio" id="남자" name="gender" value="남자"
 						${vo2.gender == '남자' ? 'checked' : ''}> <label for="남자">남자</label>
 						<input type="radio" id="여자" name="gender" value="여자"
 						${vo2.gender == '여자' ? 'checked' : ''}> <label for="여자">여자</label>
@@ -213,7 +210,7 @@ div {
 
 
 				<tr>
-					<td colspan="3"><input type="submit" value="회원가입"></td>
+					<td colspan="2"><input type="submit" value="회원가입"></td>
 				</tr>
 			</table>
 		</form>
@@ -233,12 +230,12 @@ div {
         var userInputLength = userIdInput.value.length;
         if (userInputLength < minLength || userInputLength > maxLength) {
          
-            document.getElementById("result4").innerHTML = "아이디는 6글자 이상 12글자 이하로 입력해주세요.";
+            document.getElementById("result2").innerHTML = "아이디는 6글자 이상 12글자 이하로 입력해주세요.";
           
             userIdInput.style.borderColor = "red";
             userIdInput.focus();
         } else {        
-            document.getElementById("result4").innerHTML = "";      
+            document.getElementById("result2").innerHTML = "";      
             userIdInput.style.borderColor = "";
         }
     });
