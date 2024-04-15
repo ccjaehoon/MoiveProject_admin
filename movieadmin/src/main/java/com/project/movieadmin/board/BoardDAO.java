@@ -25,7 +25,7 @@ public interface BoardDAO {
 	
 	public int b_increaseGood(BoardVO vo);
 	
-	public NCommentsVO b_selectGood(BoardVO vo);
+	public BoardVO b_selectGood(BoardVO vo);
 	
 	public int b_increaseReport(BoardVO vo);
 	
