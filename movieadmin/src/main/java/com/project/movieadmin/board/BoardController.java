@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.movieadmin.board.comments.CommentsService;
+import com.project.movieadmin.board.comments.CommentsVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -36,6 +39,9 @@ public class BoardController {
 
 	@Autowired
 	private HttpSession session;
+	
+	@Autowired
+	private CommentsService comService;
 
 	public BoardController() {
 		log.info("BoardController()....");
@@ -146,11 +152,18 @@ public class BoardController {
 
 	@RequestMapping(value = "/b_selectOne.do", method = RequestMethod.GET)
 	public String b_selectOne(BoardVO vo, Model model) {
-		log.info("Welcome b_insert.do...");
+		log.info("Welcome b_selectOne.do...");
 		BoardVO vo2 = service.b_selectOne(vo);
 
 		model.addAttribute("vo2", vo2);
-
+		log.info("vo2:{}", vo2);
+		
+		CommentsVO cvo = new CommentsVO();
+		cvo.setBoard_num(vo.getBoard_num());
+		List<CommentsVO> cvos = comService.c_selectAll(cvo);
+		
+		model.addAttribute("cvos", cvos);
+		
 		return "board/selectOne";
 	}
 

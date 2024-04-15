@@ -176,7 +176,7 @@ $(function() {
 							name="news_comments_num" value="${cvo.news_comments_num}"  id="news_comments_num${vs.index}">
 							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
 							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
-							<input type="button" value="${cvo.good}" class="nc_increaseGood">
+							<input type="button" value="${cvo.good}" class="nc_increaseGood"></td>
 						
 					<td>${cvo.wdate}</td>
 					<td><a
