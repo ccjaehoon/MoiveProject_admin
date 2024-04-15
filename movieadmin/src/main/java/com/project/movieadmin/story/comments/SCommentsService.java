@@ -13,6 +13,7 @@ public interface SCommentsService {
 	public int sc_delete(SCommentsVO vo);
 		
 	public List<SCommentsVO> sc_selectAll();
+	public List<SCommentsVO> sc_selectAll(SCommentsVO vo);
 		
 //	public List<SCommentsVO> sc_selectAll(int cpage,int pageBlock);
 		

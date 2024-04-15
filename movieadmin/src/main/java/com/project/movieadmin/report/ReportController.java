@@ -39,17 +39,7 @@ public class ReportController {
 		return "report/selectOne";
 	}
 
-	@RequestMapping(value = "/rp_insertOK.do", method = RequestMethod.POST)
-	public String rp_insertOK(ReportVO vo) {
-		log.info("rp_insert...");
-		
-		int result = service.rp_insert(vo);
-		if (result == 1) {
-			return "redirect:rp_selectAll.do";
-		} else {
-			return "redirect:rp_insert.do";
-		}
-	}
+
 	@RequestMapping(value = "/rp_delete.do", method = RequestMethod.GET)
 	public String rp_delete() {
 		log.info("rp_delete.do");

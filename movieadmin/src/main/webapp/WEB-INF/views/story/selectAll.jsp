@@ -45,12 +45,28 @@ tfoot td {
 		console.log("selectCommentList()...",story_num);
 		
 		$.ajax({
-			url:"http://localhost:8090/movie/api/selectCommentList.do",
+			url:"http://localhost:8070/movie/api/selectCommentList.do",
 			type:"get",
 			data:{story_num:story_num},
 			dataType:"json",
 			success:function(arr){
 				console.log(arr);
+				let data = '';
+				arr.forEach(function(item){
+					console.log(item);
+					
+					data += `<tr>
+						<td>\${item.story_comments_num}</td>
+						<td>\${item.nickname}</td>
+						<td>\${item.content}</td>
+						<td>\${item.good}</td>
+						<td>\${item.report}</td>
+						<td>\${item.wdate}</td>
+					</tr>`;
+					
+				});
+				
+				$('#sc_comm_list'+story_num).html(data);
 			},error:function(){
 				
 			}
@@ -85,25 +101,7 @@ tfoot td {
 				<tr>
 					<td>
 						<table>
-							<tbody>
-								<tr>
-									<td>${vo2.story_num}</td>
-									<td>${vo2.nickname}</td>
-									<td>${vo2.story_comments_num}</td>
-									<td>${vo2.wdate}</td>
-								</tr>
-<!-- 								<tr>
-									<td>1</td>
-									<td>nickname4</td>
-									<td>1등댓글2</td>
-									<td>2024-04-12</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>nickname4</td>
-									<td>1등댓글2</td>
-									<td>2024-04-12</td>
-								</tr> -->
+							<tbody id="sc_comm_list${vo.story_num}">
 							</tbody>
 						</table>
 					</td>

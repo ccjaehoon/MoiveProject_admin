@@ -56,4 +56,10 @@ public class SCommentsServiceimpl implements SCommentsService {
 		return dao.sc_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
+	@Override
+	public List<SCommentsVO> sc_selectAll(SCommentsVO vo) {
+		// TODO Auto-generated method stub
+		return dao.sc_selectAll(vo);
+	}
+
 }

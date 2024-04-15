@@ -1,19 +1,12 @@
 package com.project.movieadmin.story.comments;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,8 +22,10 @@ public class SCommentsController {
 	
 	@Autowired
 	private SCommentsService service;
+	
+	@Autowired
 	private HttpSession session;
-//	private JdbcTemplate jdbcTemplate;
+
 	
 	
 	@RequestMapping(value = "SComments_insertOK.do", method = RequestMethod.GET)
@@ -69,6 +64,7 @@ public class SCommentsController {
 		return "redirect:SComments_selectAll.do?num="+vo.getStory_comments_num();
 	}
 	
+<<<<<<< HEAD
 	@ResponseBody
 	@RequestMapping(value = "api/selectCommentList.do", method = RequestMethod.GET)
 	public List<SCommentsVO> selectCommentList(SCommentsVO vo) {
@@ -92,4 +88,8 @@ public class SCommentsController {
 			
 		return vos;
 	}
+=======
+
+
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 }
