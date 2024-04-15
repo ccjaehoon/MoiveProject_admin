@@ -12,11 +12,17 @@ public interface CommentsDAO {
 
 	public int c_delete(CommentsVO vo);
 
-	public List<CommentsVO> c_selectAll(int cpage, int pageBlock);
+	public List<CommentsVO> c_selectAll(CommentsVO vo);
 
 	public int c_increaseGood(CommentsVO vo);
 	
+	public CommentsVO c_selectGood(CommentsVO vo);
+	
 	public int c_increaseReport(CommentsVO vo);
 
+	public int c_goodCheck(CommentsVO vo);
+
+	public int c_goodSave(CommentsVO vo);
+	
 	public List<CommentsVO> c_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 }

@@ -25,7 +25,6 @@
 		parameterType="com.project.movieadmin.board.BoardVO">
 		delete from board where board_num=#{board_num}
 	</delete>
-	
 
 	<select id="B_SELECT_ONE"
 		resultType="com.project.movieadmin.board.BoardVO">
@@ -46,15 +45,11 @@
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board where nickname=#{nickname} order by
 		board_num desc limit
+<<<<<<< HEAD
+=======
+		#{startRow},#{pageBlock}
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 	</select>
-	
-	
-	
-	
-	
-	
-	
-	
 
 	<select id="B_SEARCHLIST_TITLE"
 		resultType="com.project.movieadmin.board.BoardVO">
