@@ -1,10 +1,6 @@
 package com.project.movieadmin.story.comments;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -28,8 +24,10 @@ public class SCommentsController {
 	
 	@Autowired
 	private SCommentsService service;
-//	private HttpSession session;
-//	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private HttpSession session;
+
 	
 	
 	@RequestMapping(value = "SComments_insertOK.do", method = RequestMethod.GET)
