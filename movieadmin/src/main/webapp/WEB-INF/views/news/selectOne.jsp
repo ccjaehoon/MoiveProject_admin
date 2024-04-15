@@ -274,60 +274,27 @@ function showDialogReport(news_comments_num){
 		</tbody>
 	</table>
 
-<div id="report">
-    <form id="reportForm" action="rp_insertOK.do" method="post">
-        <table id="rp" border="2">
-            <tr>
-                <td id="font" width="100">신고 내용<input type="text" id="nickname"
-                        name="nickname" value="${param.nickname}"> <input
-                        type="text" id="news_comments_num" name="news_comments_num"
-                        value="${cvo.news_comments_num}"></td>
-            </tr>
-            <tr>
-                <td width="500"><textarea id="text_report" name="content" placeholder="신고내용을 적으세요">test report</textarea>
-                </td>
-            </tr>
+	<div id="report">
+		<form action="rp_insertOK.do" method="post">
+			<table id="rp" border=2>
+				<tr>
+					<td id="font" width=100>신고 내용<input type="text" id="nickname"
+						name="nickname" value="${param.nickname}"> <input
+						type="text" id="news_comments_num" name="news_comments_num"
+						value="${cvo.news_comments_num}"></td>
+				</tr>
+				<tr>
+					<td width=500><textarea id="text_report" name="content" placeholder="신고내용을 적으세요">test report</textarea>
+					</td>
+				</tr>
 
-            <tr>
-                <td colspan="2"><input type="submit" value="신고접수" class="report"></td>
-            </tr>
-        </table>
-    </form>
-</div>
+				<tr>
+					<td colspan="2"><input type="submit" value="신고접수"  window.history.back();
+						class="report"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 
-<script>
-    
-    function submitReportFormAndCloseDialog() {
-        
-        // 신고 폼을 제출
-        $("#reportForm").submit();
-        
-        // 팝업 창 닫기
-        $("#report").dialog("close");
-    }
-
-    // 폼 제출을 처리할 때 실행할 함수
-    $("#reportForm").submit(function(event) {
-      
-        // 제출을 막기 위해 기본 이벤트를 중지
-        event.preventDefault();
-        
-        
-        $.ajax({
-            type: "POST",
-            url: $(this).attr("action"),
-            data: $(this).serialize(), 
-            success: function(response) {
-                
-                console.log(response);
-                // 신고 폼을 제출한 후에 팝업 창 닫기
-                 submitReportFormAndCloseDialog(); 
-            },
-            error: function(xhr, status, error) {
-                
-                console.error(status, error);
-            }
-        });
-    });
-</script>
+</body>
 </html>
