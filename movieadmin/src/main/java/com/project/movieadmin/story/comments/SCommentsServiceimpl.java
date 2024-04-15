@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.movieadmin.user.UserVO;
+
 @Service
 public class SCommentsServiceimpl implements SCommentsService {
 	
@@ -49,6 +51,12 @@ public class SCommentsServiceimpl implements SCommentsService {
 		// TODO Auto-generated method stub
 		return 0;
 //		return dao.sc_increaseReport(vo);
+	}
+
+	@Override
+	public List<SCommentsVO> sc_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		// TODO Auto-generated method stub
+		return dao.sc_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
 }

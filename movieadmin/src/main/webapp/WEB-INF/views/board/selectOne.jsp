@@ -76,8 +76,8 @@ tfoot td {
 		</tbody>
 	</table>
 	<c:if test="${user_id == vo2.nickname}">
-		<a href="b_update.do?num=${vo2.board_num}">글수정</a>
-		<a href="b_delete.do?num=${vo2.board_num}">글삭제</a>
+		<a href="b_update.do?board_num=${vo2.board_num}">글수정</a>
+		<a href="b_delete.do?board_num=${vo2.board_num}">글삭제</a>
 	</c:if>
 	<hr>
 	<h3>댓글작성</h3>

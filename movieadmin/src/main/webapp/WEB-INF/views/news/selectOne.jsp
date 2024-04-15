@@ -177,13 +177,6 @@ $(function() {
 							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
 							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
 							<input type="button" value="${cvo.good}" class="nc_increaseGood">
-
-
-						<!-- 						<form action="nc_increaseGood.do"> --> <!-- 							<input type="hidden" name="news_comments_num" -->
-						<%-- 								value="${cvo.news_comments_num}"> <input type="hidden" --%>
-						<%-- 								name="news_num" value="${cvo.news_num}"> <input --%>
-						<%-- 								type="submit" value="${cvo.good}"><span id="good"></span> --%>
-						<!-- 						</form> --></td>
 						
 					<td>${cvo.wdate}</td>
 					<td><a

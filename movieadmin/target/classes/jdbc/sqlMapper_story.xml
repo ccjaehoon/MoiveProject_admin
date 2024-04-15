@@ -9,13 +9,13 @@
 		VALUES (#{nickname}, #{content}, #{save_img}, #{save_video}, 0, 0, #{duration});
 	</insert>
 
-	<update id="S_UPDATE" parameterType="com.project.movieadmin.story.StoryVO">
+	<update id="S_UPDATE">
 		UPDATE story
     	SET content = #{content}
     	WHERE story_num = #{story_num};
 	</update>
 
-	<delete id="S_DELETE" parameterType="com.project.movieadmin.story.StoryVO">
+	<delete id="S_DELETE">
 		DELETE FROM story
     	WHERE story_num = #{story_num};
 	</delete>
@@ -23,7 +23,12 @@
 	<select id="S_SELECT_RANDOMLIST" resultType="com.project.movieadmin.story.StoryVO">
 		SELECT * <!-- story_num, nickname, content -->
 		FROM story
+		where story_num=#{story_num}
+		<!-- 
+		SELECT * story_num, nickname, content
+		FROM story
 		ORDER BY RAND(); LIMIT 1
+		 -->
 	</select>
 
 	<select id="S_SELECT_ALL" resultType="com.project.movieadmin.story.StoryVO">
@@ -37,7 +42,7 @@
 	</select>
 	<select id="S_SELECT_ALL_PAGE_BLOCK_NICKNAME" resultType="com.project.movieadmin.story.StoryVO">
 		<!-- SELECT * FROM story -->
-	    SELECT * FROM story where nickname=#{nickname}  ORDER BY story_num DESC LIMIT 0, 20
+	    SELECT * FROM story where nickname=#{vo.nickname}  ORDER BY story_num DESC LIMIT #{startRow},#{pageBlock}
 	</select>
 	
 	<select id="S_GETLIVESTORIES" resultType="com.project.movieadmin.story.StoryVO">

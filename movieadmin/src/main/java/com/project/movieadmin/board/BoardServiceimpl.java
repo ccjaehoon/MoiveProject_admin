@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.movieadmin.news.comments.NCommentsVO;
 import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -84,6 +85,21 @@ public class BoardServiceimpl implements BoardService {
 	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo) {
 		
 		return dao.b_selectAll_nickname(cpage, pageBlock, vo);
+	}
+
+	@Override
+	public NCommentsVO b_selectGood(BoardVO vo) {
+		return dao.b_selectGood(vo);
+	}
+
+	@Override
+	public int b_goodCheck(BoardVO vo) {
+		return dao.b_goodCheck(vo);
+	}
+
+	@Override
+	public int b_goodSave(BoardVO vo) {
+		return dao.b_goodSave(vo);
 	}
 
 }

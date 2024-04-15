@@ -4,10 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -116,12 +113,12 @@ public class StoryController {
 		log.info("Welcome story_update...");
 		log.info("vo:{}", vo);
 		
-		 List<StoryVO> randomStories = service.s_selectRandomList(vo);
-		    if (!randomStories.isEmpty()) {
-		        StoryVO vo2 = randomStories.get(0); // 리스트의 첫 번째 요소를 선택
-		        log.info("vo2:{}", vo2);
-		        model.addAttribute("vo2", vo2);
-		 }
+//		 List<StoryVO> randomStories = service.s_selectRandomList(vo);
+//		    if (!randomStories.isEmpty()) {
+//		        StoryVO vo2 = randomStories.get(0); // 리스트의 첫 번째 요소를 선택
+//		        log.info("vo2:{}", vo2);
+//		        model.addAttribute("vo2", vo2);
+//		 }
 		return "story/update";
 	}
 	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.POST)
@@ -146,7 +143,7 @@ public class StoryController {
 
 		return "story/delete";
 	}
-	@RequestMapping(value = "/s_deleteOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/s_deleteOK.do", method = RequestMethod.POST)
 	public String s_deleteOK(StoryVO vo) {
 		log.info("Welcome story_deleteOK...");
 		log.info("vo:{}", vo);
@@ -172,10 +169,11 @@ public class StoryController {
         int storyId = rand.nextInt(10) + 1;
         
         // 무작위로 선택된 스토리 목록을 가져오는 서비스 메소드 호출
-        List<StoryVO> randomStories = service.s_selectRandomList(vo);
-        
+      //List<StoryVO> randomStories = service.s_selectRandomList(vo);
+        StoryVO vo2 = service.s_selectRandomList(vo);
+        log.info("vo2:{}",vo2);
         // 모델에 무작위 스토리 목록 추가
-        model.addAttribute("randomStories", randomStories);
+        model.addAttribute("vo2", vo2);
 
 		return "story/selectRandomList";
 	}
