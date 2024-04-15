@@ -244,51 +244,66 @@ div {
   
 </script>
 <script>
-    // 폼 제출 이벤트 리스너 추가
+    
     document.querySelector("form").addEventListener("submit", function(event) {
-    	console.log("sumbit");
-    	
-    	
-    	 var userIdInput = document.getElementById("user_id");
-    	 var passwordIdInput = document.getElementById("password");
-    	 var nicknameInput = document.getElementById("nickname");
-    	 var emailInput = document.getElementById("email");
-    	 var telInput = document.getElementById("tel");
-    	 var birthInput = document.getElementById("birth");
-    	 var gender_male = document.getElementById("gender_male");
-    	 var gender_female = document.getElementById("gender_female");
-    	 var gender_no = document.getElementById("gender_no");
-    	 var allFieldsFilled = true;
-    	 
-		 var userInputLength = userIdInput.value.trim().length;
-		 var passwordInputLength = passwordIdInput.value.trim().length;
-		 var nicknameInputLength = nicknameInput.value.trim().length;
-		 var emailInputLength = emailInput.value.trim().length;
-		 var telInputLength = telInput.value.trim().length;
-		 var birthInputLength = birthInput.value.trim().length;
-		 var gender_male_checked = gender_male.checked;
-		 var gender_female_checked = gender_female.checked;
- 		 var gender_no_checked = gender_no.checked;
-		 console.log("gender_male_checked",gender_male_checked);
-		 
-	     if (userInputLength == 0 || passwordInputLength == 0 || nicknameInputLength == 0 ||
-	    		 emailInputLength == 0 || telInputLength == 0 || birthInputLength == 0 
-	    		 || gender_male_checked || gender_female_checked || gender_no_checked ) {
-	    	 allFieldsFilled = false;
-	    	 console.log("userInputLength == 0");  	 
-	     }
-	
-    	
-	     event.preventDefault(); // 폼 제출 방지
+        console.log("sumbit");
 
+        var userIdInput = document.getElementById("user_id");
+        var passwordIdInput = document.getElementById("password");
+        var nicknameInput = document.getElementById("nickname");
+        var emailInput = document.getElementById("email");
+        var telInput = document.getElementById("tel");
+        var birthInput = document.getElementById("birth");
+        var gender_male = document.getElementById("gender_male");
+        var gender_female = document.getElementById("gender_female");
+        var gender_no = document.getElementById("gender_no");
 
-        // 필수 입력 필드가 모두 채워져 있지 않은 경우
+       
+        var userInput = userIdInput.value.trim();
+        var passwordInput = passwordIdInput.value.trim();
+        var nickname = nicknameInput.value.trim();
+        var email = emailInput.value.trim();
+        var tel = telInput.value.trim();
+        var birth = birthInput.value.trim();
+        var gender_male_checked = gender_male.checked;
+        var gender_female_checked = gender_female.checked;
+        var gender_no_checked = gender_no.checked;
+
+       
+        var allFieldsFilled = true;
+        if (userInput === "") {
+            allFieldsFilled = false;
+            userIdInput.style.borderColor = "red"; 
+        }
+        if (passwordInput === "") {
+            allFieldsFilled = false;
+            passwordIdInput.style.borderColor = "red";
+        }
+        if (nickname === "") {
+            allFieldsFilled = false;
+            nicknameInput.style.borderColor = "red";
+        }
+        if (email === "") {
+            allFieldsFilled = false;
+            emailInput.style.borderColor = "red";
+        }
+        if (tel === "") {
+            allFieldsFilled = false;
+            telInput.style.borderColor = "red";
+        }
+        if (birth === "") {
+            allFieldsFilled = false;
+            birthInput.style.borderColor = "red";
+        }
+        if (!gender_male_checked && !gender_female_checked && !gender_no_checked) {
+            allFieldsFilled = false;
+        }
+
+       
         if (!allFieldsFilled) {
             alert("모든 필수 항목을 작성해주세요."); // 사용자에게 알림
-            event.preventDefault(); // 폼 제출 방지
-
+            event.preventDefault(); 
         }
-       
     });
 </script>
 </html>
