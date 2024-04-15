@@ -208,12 +208,8 @@ tfoot td {
 			</tr>
 		</tbody>
 	</table>
-<<<<<<< HEAD
-	<a href="n_update.do?news_num=${param.news_num}">글수정</a>
-=======
 	<a
 		href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 	<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
 	<hr>
 	<h3>댓글작성</h3>

@@ -166,7 +166,7 @@ public class BoardController {
 		model.addAttribute("cvos", cvos);
 		
 		String nickname = (String) session.getAttribute("nickname");
-		model.addAttribute(nickname);
+		model.addAttribute("nickname", nickname);
 		
 		return "board/selectOne";
 	}
