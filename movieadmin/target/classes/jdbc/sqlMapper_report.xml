@@ -7,7 +7,7 @@
 	<insert id="RP_INSERT" parameterType="com.project.movieadmin.report.ReportVO">
 		insert into
 		report(nickname,content,board_num,story_num,comments_num,story_comments_num,news_comments_num,review_num)
-		values('관리자',#{content},#{board_num},#{story_num},#{comments_num},#{story_comments_num},#{news_comments_num},#{review_num})
+		values(#{nickname},#{content},#{board_num},#{story_num},#{comments_num},#{story_comments_num},#{news_comments_num},#{review_num})
 	</insert>
 
 	<update id="RP_UPDATE">

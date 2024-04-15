@@ -70,11 +70,11 @@
             <table id="insertTable">
                 <tr>
                     <td><label for="">항목</label></td>
-                    <td>입력</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><label for="board_num">글번호</label></td>
-                    <td>${param.board_num}<input type="hidden" id="board_num" name="board_num" value="${param.board_num}"></td>
+                    <td>${board_num}<input type="hidden" id="board_num" name="board_num" value="${param.board_num}"></td>
                 </tr>
                 <tr>
                     <td><label for="title">제목</label></td>
@@ -86,7 +86,7 @@
                 </tr>
                <tr>
 					<td><label for="nickname">작성자</label></td>
-					<td>${param.nickname}<input type="hidden" id="nickname" name="nickname"
+					<td>${nickname}<input type="hidden" id="nickname" name="nickname"
 						value="${vo2.nickname}" placeholder="작성자"></td>
 				</tr>
                 <tr>

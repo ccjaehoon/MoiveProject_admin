@@ -77,7 +77,7 @@ public class CommentsController {
 //		return "board/comments/update";
 //	}
 
-	@RequestMapping(value = "/c_updateOK.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/c_updateOK.do", method = RequestMethod.GET)
 	public String c_updateOK(CommentsVO vo) {
 		log.info("Welcome c_updateOK.do...");
 
@@ -87,10 +87,10 @@ public class CommentsController {
 		return "redirect:b_selectOne.do?board_num=" + vo.getBoard_num();
 	}
 
-	@RequestMapping(value = "/c_deleteOK.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/c_deleteOK.do", method = RequestMethod.GET)
 	public String c_deleteOK(CommentsVO vo) {
 		log.info("Welcome c_deleteOK.do...");
-
+		log.info("vo :{}", vo.toString());
 		int result = service.c_delete(vo);
 		log.info("result:{}", result);
 

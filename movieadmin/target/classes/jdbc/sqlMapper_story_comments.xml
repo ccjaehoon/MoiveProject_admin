@@ -25,7 +25,7 @@
 	</select>
 
 	<select id="SC_SELECT_ALL" resultType="com.project.movieadmin.story.comments.SCommentsVO">
-		SELECT * FROM scomments ORDER BY story_comments_num DESC
+		SELECT * FROM scomments  where story_num=#{story_num} ORDER BY story_comments_num DESC 
 	</select>
 
 	<select id="SELECT_ALL_PAGE_BLOCK"
@@ -37,7 +37,7 @@
 		
 	</select>
 	
-	<select id="SC_UPDATE_GOOD_COUNT" resultType="com.project.movieadmin.story.comments.SCommentsVOO">
+	<select id="SC_UPDATE_GOOD_COUNT" resultType="com.project.movieadmin.story.comments.SCommentsVO">
 		
 	</select>
 	
@@ -57,7 +57,7 @@
 		limit ${startRow},
 		${pageBlock}
 	</select>
-	
+	<!-- story” 테이블에서 특정 닉네임의 사용자의 이야기를 최신순으로 가져오는 것 -->
 	
 	
 	<select id="SEARCHLIST_ID"

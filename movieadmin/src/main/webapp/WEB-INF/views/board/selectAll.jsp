@@ -77,7 +77,7 @@ tfoot td {
 			<tbody>
 				<c:forEach var="vo" items="${vos}">
 					<tr>
-						<td><a href="b_selectOne.do?board_num=${vo.board_num}&nickname=${vo.nickname}&title=${vo.title}&content=${vo.content}">${vo.board_num}</a></td>
+						<td><a href="b_selectOne.do?board_num=${vo.board_num}">${vo.board_num}</a></td>
 						<td>${vo.title}</td>
 						<td>${vo.nickname}</td>
 						<td>${vo.wdate}</td>

@@ -1,6 +1,5 @@
 package com.project.movieadmin.story.comments;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +58,15 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 //		log.info(vo.toString());
 
 		return sqlSession.selectList("SC_SELECT_ALL");
+	}
+	
+	@Override
+	public List<SCommentsVO> sc_selectAll(SCommentsVO vo) {
+		log.info("sc_selectAll()....{}",vo);
+
+
+        List<SCommentsVO> vos = sqlSession.selectList("SC_SELECT_ALL", vo);
+        return vos;
 	}
 
 //	@Override
