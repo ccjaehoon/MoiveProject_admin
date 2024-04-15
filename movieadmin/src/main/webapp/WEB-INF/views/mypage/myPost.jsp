@@ -156,7 +156,6 @@ div {
         <thead>
             <tr>
                 <th>번호</th>            
-                <th>제목</th>
                 <th>작성자</th>
                 <th>작성내용</th>
                 <th>작성일자</th>
@@ -166,8 +165,7 @@ div {
         <tbody>
         	<c:forEach var="vo" items="${storys}">
             <tr>
-                <td><a href="s_selectOne.do?board_num=${vo.story_num}">${vo.story_num}</a></td>       
-                <td>${vo.title}</td>
+                <td><a href="s_selectOne.do?board_num=${vo.story_num}">${vo.story_num}</a></td>                 
                 <td>${vo.nickname}</td>
                 <td>${vo.content}</td>
                 <td>${vo.wdate}</td>
