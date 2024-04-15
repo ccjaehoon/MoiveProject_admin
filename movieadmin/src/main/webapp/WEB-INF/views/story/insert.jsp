@@ -69,13 +69,13 @@
         <form action="s_insertOK.do" method="post" enctype="multipart/form-data">
             <table id="insertTable">
                 <tr>
-                    <td><label for="">항목</label></td>
-                    <td>입력</td>
+                    <td><label for="title">제목</label></td>
+                    <td><input type = "text" id = "title" name ="title" ></td>
                 </tr>
                 
                 <tr>
                     <td><label for="nickname">작성자</label></td>
-                    <td>${nickname}<input type="hidden" id="nickname" name="nickname" value="nickname4">nickname4</td>
+                    <td>${nickname}<input type="hidden" id="nickname" name="nickname"></td>
                 </tr>
 
                 <tr>

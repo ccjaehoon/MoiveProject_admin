@@ -41,6 +41,7 @@ public class CommentsController {
 		log.info("Welcome c_insertOK.do...");
 
 		int result = service.c_insert(vo);
+		log.info("result:{}", result);
 
 		return "redirect:b_selectOne.do?board_num=" + vo.getBoard_num();
 	}
@@ -81,6 +82,7 @@ public class CommentsController {
 		log.info("Welcome c_updateOK.do...");
 
 		int result = service.c_update(vo);
+		log.info("result:{}", result);
 
 		return "redirect:b_selectOne.do?board_num=" + vo.getBoard_num();
 	}
@@ -90,6 +92,7 @@ public class CommentsController {
 		log.info("Welcome c_deleteOK.do...");
 
 		int result = service.c_delete(vo);
+		log.info("result:{}", result);
 
 		return "redirect:b_selectOne.do?board_num=" + vo.getBoard_num();
 	}

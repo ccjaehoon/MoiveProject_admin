@@ -44,8 +44,8 @@
 	<select id="B_SELECT_ALL_PAGE_BLOCK_NICKNAME"
 		resultType="com.project.movieadmin.board.BoardVO">
 		select * from board where nickname=#{nickname} order by
-		board_num desc limit
-		#{startRow},#{pageBlock}
+		board_num desc
+		limit #{startRow},#{pageBlock}
 	</select>
 
 	<select id="B_SEARCHLIST_TITLE"
