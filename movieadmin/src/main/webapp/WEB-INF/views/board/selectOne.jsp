@@ -117,8 +117,8 @@ $(function() {
 			</tr>
 		</tbody>
 	</table>
-	<c:if test="${user_id == vo2.nickname}">
-		<a href="b_update.do?board_num=${vo2.board_num}">글수정</a>
+	<c:if test="${param.nickname == vo2.nickname}">
+		<a href="b_update.do?board_num=${vo2.board_num}&nickname=${param.nickname}&title=${param.title}&content=${param.content}">글수정</a>
 		<a href="b_delete.do?board_num=${vo2.board_num}">글삭제</a>
 	</c:if>
 	<hr>
@@ -165,25 +165,21 @@ $(function() {
 					<td>${cvo.content}
 						<form action="c_updateOK.do">
 							<input type="text" name="content" value="${cvo.content}">
-							<input type="hidden" name="comments_num"
-								value="${cvo.comments_num}">
-							<input type="hidden"
-								name="board_num" value="${cvo.board_num}"> <input
-								type="submit" value="수정">
+							<input type="hidden" name="comments_num" value="${cvo.comments_num}">
+							<input type="hidden" name="board_num" value="${cvo.board_num}">
+							<input type="submit" value="수정">
 						</form>
 					</td>
-					<td>${cvo.nickname}<input type="hidden"
-							name="nickname" value="${user_id}"  id="nickname${vs.index}"></td>
-					
-					<td><input type="hidden"
-							name="comments_num" value="${cvo.comments_num}"  id="comments_num${vs.index}">
+					<td>${cvo.nickname}<input type="hidden" name="nickname"
+						value="${user_id}" id="nickname${vs.index}"></td>
+					<td><input type="hidden" name="comments_num"
+						value="${cvo.comments_num}"  id="comments_num${vs.index}">
 							<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
 							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
 							<input type="button" value="${cvo.good}" class="c_increaseGood">
-						
 					<td>${cvo.wdate}</td>
-					<td><a
-						href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">삭제</a>
+					<td>
+						<a href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">삭제</a>
 					</td>
 					
 				</tr>
