@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,11 +28,7 @@ public class SCommentsController {
 	
 	@Autowired
 	private SCommentsService service;
-<<<<<<< HEAD
 //	private HttpSession session;
-=======
-	private HttpSession session;
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 //	private JdbcTemplate jdbcTemplate;
 	
 	
@@ -79,27 +74,7 @@ public class SCommentsController {
 		log.info("Welcome api/selectCommentList.do...");
 		log.info("vo:{}",vo);
 		
-<<<<<<< HEAD
 		List<SCommentsVO> sc_vos = service.sc_selectAll(vo);
-=======
-		List<SCommentsVO> vos = new ArrayList<SCommentsVO>();
-		SCommentsVO vo2 = new SCommentsVO();
-//		vo2.setStory_comments_num(rs.getInt("story_comments_num"));
-//		vo2.setStory_num(rs.getInt("story_num"));
-//		vo2.setContent(rs.getString("content"));
-//		vo2.setNickname(rs.getString("nickname"));
-//		vo2.setWdate(rs.getDate("wdate"));
-<<<<<<< HEAD
-//		vos.add(vo2); //객체를 추가하는 작업
-=======
-		vos.add(vo2); //객체를 추가하는 작업
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
-		 // 리소스 정리
-			/*
-			 * rs.close(); pstmt.close(); conn.close(); } catch (SQLException e) {
-			 * e.printStackTrace(); }
-			 */
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 			
 		return sc_vos;
 	}
