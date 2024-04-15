@@ -167,7 +167,7 @@ div {
 				<tr>
 					<td><label for="user_id">아이디:</label></td>
 					<td><input type="text" id="user_id" name="user_id" value=""
-						placeholder="아이디"> <a href="#" id="u_idCheck">아이디중복체크</a>
+						placeholder="아이디" maxlength="12"> <a href="#" id="u_idCheck">아이디중복체크</a>
 						<span id="result"></span>
 						<span id="result2"></span></td>
 				</tr>
