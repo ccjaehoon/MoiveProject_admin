@@ -90,7 +90,7 @@ public class CommentsController {
 	@RequestMapping(value = "/c_deleteOK.do", method = RequestMethod.GET)
 	public String c_deleteOK(CommentsVO vo) {
 		log.info("Welcome c_deleteOK.do...");
-
+		log.info("vo :{}", vo.toString());
 		int result = service.c_delete(vo);
 		log.info("result:{}", result);
 

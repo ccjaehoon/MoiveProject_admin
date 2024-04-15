@@ -59,6 +59,15 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 
 		return sqlSession.selectList("SC_SELECT_ALL");
 	}
+	
+	@Override
+	public List<SCommentsVO> sc_selectAll(SCommentsVO vo) {
+		log.info("sc_selectAll()....{}",vo);
+
+
+        List<SCommentsVO> vos = sqlSession.selectList("SC_SELECT_ALL", vo);
+        return vos;
+	}
 
 //	@Override
 //	public List<SCommentsVO> sc_selectAll(int cpage, int pageBlock) {

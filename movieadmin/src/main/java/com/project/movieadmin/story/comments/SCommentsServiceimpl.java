@@ -36,6 +36,12 @@ public class SCommentsServiceimpl implements SCommentsService {
 		// TODO Auto-generated method stub
 		return dao.sc_selectAll();
 	}
+	
+	@Override
+	public List<SCommentsVO> sc_selectAll(SCommentsVO vo) {
+		// TODO Auto-generated method stub
+		return dao.sc_selectAll(vo);
+	}
 
 
 	@Override

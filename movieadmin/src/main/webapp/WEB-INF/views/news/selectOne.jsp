@@ -39,7 +39,15 @@ tfoot td {
 	text-align: center;
 }
 
-#Report {
+#rp {
+	background-color: white;
+}
+
+#font {
+	font-size: 30px;
+}
+
+#text_report {
 	width: 500px;
 	height: 500px;
 }
@@ -113,19 +121,36 @@ tfoot td {
 											});
 						});
 
+	});
+</script>
+<script>
+// 	$(function() {
+// 		console.log("jquery test");
+// 		console.log($(".report"));
+// 		$(".report").each(function(index, item) {
+// 			//			console.log(index);
+
+// 			$(this).click(function() {
+// 				console.log("report Click");
+// 				$("#report").dialog("open");
+
+// 			});
+// 		});
+
 		$(function() {
 			$("#report").dialog({
 				autoOpen : false
 			});
 		});
 
-		$("#reportBtn").on("click", function() {
-			$("#report").dialog("open");
-		});
+// 	});
 
-	});
+function showDialogReport(news_comments_num){
+	console.log(news_comments_num);
+	$('#news_comments_num').val(news_comments_num);
+	$("#report").dialog("open");
+}
 </script>
-
 
 </head>
 <body>
@@ -230,8 +255,14 @@ tfoot td {
 
 
 					<td>${cvo.wdate}</td>
-					<td><input type="button" id="reportBtn"
-						name="report${vs.index}" class="report" value="신고" /></td>
+
+
+
+					<td><input type="button" id="reportBtn" class="report" onClick="showDialogReport(${cvo.news_comments_num})"
+						value="신고" /></td>
+
+
+
 					<td><c:if test="${param.nickname == cvo.nickname}">
 							<a
 								href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
@@ -243,10 +274,40 @@ tfoot td {
 		</tbody>
 	</table>
 
-	<div id="report" title="신고 내용">
+	<div id="report">
+<<<<<<< HEAD
 		<form action="rp_insertOK.do" method="post">
-			<textarea id="Report"></textarea>
-			<input type="button" value="신고접수" class="report">
+			<table id="rp" border=2>
+				<tr>
+					<td id="font" width=100>신고 내용<input type="text" id="nickname"
+						name="nickname" value="${param.nickname}"> <input
+						type="text" id="news_comments_num" name="news_comments_num"
+						value="${cvo.news_comments_num}"></td>
+				</tr>
+				<tr>
+					<td width=500><textarea id="text_report" name="content" placeholder="신고내용을 적으세요">test report</textarea>
+					</td>
+				</tr>
+=======
+    <form id="reportForm" action="rp_insertOK.do" method="post">
+        <table id="rp" border="2">
+            <tr>
+                <td id="font" width="100">신고 내용<input type="text" id="nickname"
+                        name="nickname" value="${param.nickname}" readonly> <input
+                        type="text" id="news_comments_num" name="news_comments_num"
+                        value="${cvo.news_comments_num}" readonly></td>
+            </tr>
+            <tr>
+                <td width="500"><textarea id="text_report" name="content" placeholder="신고내용을 적으세요">test report</textarea>
+                </td>
+            </tr>
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
+
+				<tr>
+					<td colspan="2"><input type="submit" value="신고접수"  window.history.back();
+						class="report"></td>
+				</tr>
+			</table>
 		</form>
 	</div>
 

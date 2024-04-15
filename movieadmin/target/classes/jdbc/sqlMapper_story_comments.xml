@@ -25,7 +25,7 @@
 	</select>
 
 	<select id="SC_SELECT_ALL" resultType="com.project.movieadmin.story.comments.SCommentsVO">
-		SELECT * FROM scomments ORDER BY story_comments_num DESC
+		SELECT * FROM scomments  where story_num=#{story_num} ORDER BY story_comments_num DESC 
 	</select>
 
 	<select id="SELECT_ALL_PAGE_BLOCK"
