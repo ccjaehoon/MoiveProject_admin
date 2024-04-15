@@ -7,14 +7,8 @@
 	<insert id="C_INSERT"
 		parameterType="com.project.movieadmin.board.comments.CommentsVO">
 		insert into
-<<<<<<< HEAD
-		comments(nickname, content, wdate, good, 
-		board_num, report)
-		values(#{nickname},#{content},#{wdate},#{good},#{board_num},#{report})
-=======
 		comments(nickname, content, board_num)
 		values(#{nickname},#{content},#{board_num})
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 	</insert>
 
 	<update id="C_UPDATE">
