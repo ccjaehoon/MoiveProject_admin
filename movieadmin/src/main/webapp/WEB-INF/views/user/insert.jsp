@@ -66,29 +66,51 @@ div {
 			console.log("click...");
 			console.log("user_id:", $("#user_id").val());
 
-			$.ajax({
-				url : "http://localhost:8070/movie/u_idCheck.do",
-				type : "get",
-				data : {
-					user_id : $("#user_id").val()
-				},
-				dataType : "json",
-				success : function(obj) {
-					console.log(obj);
-					let result = '';
-					if (obj.result == "OK") {
-						result = "사용 가능합니다"
-					} else {
-						result = "중복된 아이디입니다"
-					}
+			  var minLength = 6;
+			    var maxLength = 12;
 
-					$("#result").html(result);
-				},
-				error : function(xhr, status) {
-					console.log("status...", status);
-				}
-			});
+			  
+			    var userIdInput = document.getElementById("user_id");
+				let result = '';
 
+			    var userInputLength = userIdInput.value.length;
+		        if (userInputLength < minLength || userInputLength > maxLength) {
+		         
+		            document.getElementById("result4").innerHTML = "아이디는 6글자 이상 12글자 이하로 입력해주세요.";
+		          
+		            userIdInput.style.borderColor = "red";
+		            userIdInput.focus();
+		                       
+		            
+		        } else {        
+		            document.getElementById("result4").innerHTML = "";      
+		            userIdInput.style.borderColor = "";
+		            $.ajax({
+						url : "http://localhost:8070/movie/u_idCheck.do",
+						type : "get",
+						data : {
+							user_id : $("#user_id").val()
+						},
+						dataType : "json",
+						
+						success : function(obj) {
+							console.log(obj);
+					
+							if (obj.result == "OK") {
+								result = "사용 가능합니다"
+							} else {
+								result = "중복된 아이디입니다"
+							}
+
+							$("#result").html(result);
+						},
+						error : function(xhr, status) {
+							console.log("status...", status);
+						}
+					});  
+		        }
+			
+			
 			return false;
 		});
 
@@ -167,48 +189,46 @@ div {
 				<tr>
 					<td><label for="user_id">아이디:</label></td>
 					<td><input type="text" id="user_id" name="user_id" value=""
-						placeholder="아이디" maxlength="12"> 
-						<span id="result"></span>
+						placeholder="아이디" maxlength="12"> <span id="result"></span>
 						<span id="result4"></span></td>
-						<td width=150><a href="#" id="u_idCheck">아이디중복체크</a></td>
+					<td width=150><a href="#" id="u_idCheck">아이디중복체크</a></td>
 				</tr>
 				<tr>
 					<td><label for="password">비밀번호:</label></td>
-					<td colspan="2"><input type="password" id="password" name="password"
-						value="" placeholder="비밀번호"></td>
+					<td colspan="2"><input type="password" id="password"
+						name="password" value="" placeholder="비밀번호"></td>
 				</tr>
 				<tr>
 					<td><label for="nickname">별명:</label></td>
 					<td><input type="text" id="nickname" name="nickname" value=""
-						placeholder="별명"> 
-						<span id="result2"></span></td>
-						<td width=150><a href="#" id="u_nicknameCheck">닉네임중복체크</a></td>
+						placeholder="별명"> <span id="result2"></span></td>
+					<td width=150><a href="#" id="u_nicknameCheck">닉네임중복체크</a></td>
 				</tr>
 				<tr>
 					<td><label for="email">이메일:</label></td>
 					<td><input type="text" id="email" name="email" value=""
-						placeholder="이메일">
-						<span id="result3"></span></td>
-						<td width=150><a href="#" id="u_emailCheck">이메일중복체크</a></td>
+						placeholder="이메일"> <span id="result3"></span></td>
+					<td width=150><a href="#" id="u_emailCheck">이메일중복체크</a></td>
 				</tr>
 				<tr>
 					<td><label for="tel">전화번호:</label></td>
-					<td colspan="2"><input type="tel" id="tel" name="tel" value="010"
-						placeholder="전화번호"></td>
+					<td colspan="2"><input type="tel" id="tel" name="tel"
+						value="010" placeholder="전화번호"></td>
 				</tr>
 				<tr>
 					<td><label for="birth">생년월일</label></td>
-					<td colspan="2"><input type="date" id="birth" name="birth" value=""></td>
+					<td colspan="2"><input type="date" id="birth" name="birth"
+						value=""></td>
 				</tr>
 				<tr>
 					<td><label for="gender">성별:</label></td>
-					<td colspan="2"><input type="radio" id="남자" name="gender" value="남자"
-						${vo2.gender == '남자' ? 'checked' : ''}> <label for="남자">남자</label>
-						<input type="radio" id="여자" name="gender" value="여자"
-						${vo2.gender == '여자' ? 'checked' : ''}> <label for="여자">여자</label>
-						<input type="radio" id="비공개" name="gender" value="비공개"
-						${vo2.gender == '비공개' ? 'checked' : ''}> <label for="비공개">비공개</label>
-					</td>
+					<td colspan="2"><input type="radio" id="gender_male" name="gender"
+						value="남자" ${vo2.gender == '남자' ? 'checked' : ''}> <label
+						for="남자">남자</label> <input type="radio" id="gender_female" name="gender"
+						value="여자" ${vo2.gender == '여자' ? 'checked' : ''}> <label
+						for="여자">여자</label> <input type="radio" id="gender_no" name="gender"
+						value="비공개" ${vo2.gender == '비공개' ? 'checked' : ''}> <label
+						for="비공개">비공개</label></td>
 				</tr>
 
 
@@ -221,26 +241,54 @@ div {
 </body>
 <script>
   
-    var minLength = 6;
-    var maxLength = 12;
-
   
-    var userIdInput = document.getElementById("user_id");
+</script>
+<script>
+    // 폼 제출 이벤트 리스너 추가
+    document.querySelector("form").addEventListener("submit", function(event) {
+    	console.log("sumbit");
+    	
+    	
+    	 var userIdInput = document.getElementById("user_id");
+    	 var passwordIdInput = document.getElementById("password");
+    	 var nicknameInput = document.getElementById("nickname");
+    	 var emailInput = document.getElementById("email");
+    	 var telInput = document.getElementById("tel");
+    	 var birthInput = document.getElementById("birth");
+    	 var gender_male = document.getElementById("gender_male");
+    	 var gender_female = document.getElementById("gender_female");
+    	 var gender_no = document.getElementById("gender_no");
+    	 var allFieldsFilled = true;
+    	 
+		 var userInputLength = userIdInput.value.trim().length;
+		 var passwordInputLength = passwordIdInput.value.trim().length;
+		 var nicknameInputLength = nicknameInput.value.trim().length;
+		 var emailInputLength = emailInput.value.trim().length;
+		 var telInputLength = telInput.value.trim().length;
+		 var birthInputLength = birthInput.value.trim().length;
+		 var gender_male_checked = gender_male.checked;
+		 var gender_female_checked = gender_female.checked;
+ 		 var gender_no_checked = gender_no.checked;
+		 console.log("gender_male_checked",gender_male_checked);
+		 
+	     if (userInputLength == 0 || passwordInputLength == 0 || nicknameInputLength == 0 ||
+	    		 emailInputLength == 0 || telInputLength == 0 || birthInputLength == 0 
+	    		 || gender_male_checked || gender_female_checked || gender_no_checked ) {
+	    	 allFieldsFilled = false;
+	    	 console.log("userInputLength == 0");  	 
+	     }
+	
+    	
+	     event.preventDefault(); // 폼 제출 방지
 
 
-    userIdInput.addEventListener("blur", function() {
-    
-        var userInputLength = userIdInput.value.length;
-        if (userInputLength < minLength || userInputLength > maxLength) {
-         
-            document.getElementById("result4").innerHTML = "아이디는 6글자 이상 12글자 이하로 입력해주세요.";
-          
-            userIdInput.style.borderColor = "red";
-            userIdInput.focus();
-        } else {        
-            document.getElementById("result4").innerHTML = "";      
-            userIdInput.style.borderColor = "";
+        // 필수 입력 필드가 모두 채워져 있지 않은 경우
+        if (!allFieldsFilled) {
+            alert("모든 필수 항목을 작성해주세요."); // 사용자에게 알림
+            event.preventDefault(); // 폼 제출 방지
+
         }
+       
     });
 </script>
 </html>
