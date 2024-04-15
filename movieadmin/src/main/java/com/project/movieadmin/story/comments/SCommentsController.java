@@ -28,8 +28,8 @@ public class SCommentsController {
 	
 	@Autowired
 	private SCommentsService service;
-	private HttpSession session;
-	private JdbcTemplate jdbcTemplate;
+//	private HttpSession session;
+//	private JdbcTemplate jdbcTemplate;
 	
 	
 	@RequestMapping(value = "SComments_insertOK.do", method = RequestMethod.GET)
@@ -74,20 +74,8 @@ public class SCommentsController {
 		log.info("Welcome api/selectCommentList.do...");
 		log.info("vo:{}",vo);
 		
-		List<SCommentsVO> vos = new ArrayList<SCommentsVO>();
-		SCommentsVO vo2 = new SCommentsVO();
-		vo2.setStory_comments_num(rs.getInt("story_comments_num"));
-		vo2.setStory_num(rs.getInt("story_num"));
-		vo2.setContent(rs.getString("content"));
-		vo2.setNickname(rs.getString("nickname"));
-		vo2.setWdate(rs.getDate("wdate"));
-		vos.add(vo2); //객체를 추가하는 작업
-		 // 리소스 정리
-			/*
-			 * rs.close(); pstmt.close(); conn.close(); } catch (SQLException e) {
-			 * e.printStackTrace(); }
-			 */
+		List<SCommentsVO> sc_vos = service.sc_selectAll(vo);
 			
-		return vos;
+		return sc_vos;
 	}
 }
