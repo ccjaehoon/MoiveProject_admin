@@ -19,7 +19,7 @@ public class InfoVO {
 	private Date releaseDate;
 	private String content;
 	private String save_img;
-	private MultipartFile file_img;
+	privated MultipartFile file_img;
 	private int views;
 	private int recommends;
 	private int watchGrade;

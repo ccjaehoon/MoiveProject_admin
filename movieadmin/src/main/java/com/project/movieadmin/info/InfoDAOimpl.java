@@ -69,16 +69,21 @@ public class InfoDAOimpl implements InfoDAO {
 		map.put("pageBlock", pageBlock);
 		map.put("searchWord", "%" + searchWord + "%");
 
-		List<NewsVO> vos = null;
+		List<InfoVO> vos = null;
 
-		if (searchKey.equals(" ")) {
+		if (searchKey.equals("TITLE")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_TITLE", map);
-		} else if (searchKey.equals(" ")) {
-			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_CONTENT", map);
+		} else if (searchKey.equals("GENRE")) {
+			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_GENRE", map);
+		} else if (searchKey.equals("DIRECTORS")) {
+			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_DIRECTORS", map);
+		} else if (searchKey.equals("GENRE")) {
+			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_ACTOR", map);
 		}
+	
 
 		return vos;
-=======
+
 
 	@Override
 	public InfoDAO i_selectOne(InfoVO vo) {
