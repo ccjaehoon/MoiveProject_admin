@@ -90,7 +90,6 @@ public class NewsController {
 		model.addAttribute("vo2", vo2);
 		
 		String nickname = (String) session.getAttribute("nickname");
-		
 		log.info("nickname: {}",nickname);
         // user_id를 모델에 추가하여 JSP로 전달
         model.addAttribute("nickname", nickname);
@@ -98,6 +97,7 @@ public class NewsController {
 		// 댓글목록 처리로직
 		NCommentsVO cvo = new NCommentsVO();
 		cvo.setNews_num(vo.getNews_num());
+		cvo.setNickname(nickname);
 		List<NCommentsVO> cvos = comService.nc_selectAll(cvo);
 		log.info(cvos.toString());
 
