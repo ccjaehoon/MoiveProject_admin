@@ -122,7 +122,6 @@ tfoot td {
 						});
 
 	});
-
 </script>
 <script>
 // 	$(function() {
@@ -289,6 +288,7 @@ function showDialogReport(news_comments_num){
 					<td width="500"><textarea id="text_report" name="content"
 							placeholder="신고내용을 적으세요">test report</textarea></td>
 				</tr>
+<<<<<<< HEAD
 
 
 				<script>
@@ -297,14 +297,31 @@ function showDialogReport(news_comments_num){
         
     	location.reload();
     }
+=======
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
+
 						class="report"></td>
 				</tr>
 			</table>
 		</form>
 	</div>
+<<<<<<< HEAD
    
+=======
+
+
+	<script>
+    
+    function submitReportForm() {
+        
+    	location.reload();
+    }
+				
+
+    
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
     $("#reportForm").submit(function(event) {
       
         event.preventDefault();
@@ -326,5 +343,13 @@ function showDialogReport(news_comments_num){
         });
     });
 </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 </body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 </html>
