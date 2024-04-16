@@ -252,7 +252,7 @@ public class StoryController {
 	}
 	
 	@RequestMapping(value = "/s_increaseGood.do", method = RequestMethod.GET)
-	public String rv_increaseGood(StoryVO vo) {
+	public String rv_increaseGood(StoryVO vo, HttpSession session) {
 		
 	
 		return "story_increaseGood";

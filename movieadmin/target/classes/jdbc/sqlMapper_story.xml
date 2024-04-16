@@ -58,7 +58,7 @@
 	</select>
 	
 	<select id="S_TOTAL_ROWS" resultType="int">
-	select count(*) total_rows from story 
+		 select count(*) total_rows from story 
 	</select>
 	
 	<select id="S_REMOVEEXPIRED" resultType="com.project.movieadmin.story.StoryVO">
@@ -66,7 +66,9 @@
 	</select>
 	
 	<select id="S_UPDATE_GOOD_COUNT" resultType="com.project.movieadmin.story.StoryVO">
-		
+		update story set
+	    good=good+1 where
+	    story=#{story_num}
 	</select>
 	
 	<select id="S_UPDATE_REPORT_COUNT" resultType="com.project.movieadmin.story.StoryVO">

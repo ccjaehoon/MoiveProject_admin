@@ -25,7 +25,7 @@ public interface BoardService {
 	
 	public int b_increaseGood(BoardVO vo);
 
-	public NCommentsVO b_selectGood(BoardVO vo);
+	public BoardVO b_selectGood(BoardVO vo);
 	
 	public int b_increaseReport(BoardVO vo);
 	
@@ -35,6 +35,5 @@ public interface BoardService {
 
 	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo);
 
-	
-
+	public int b_increaseCommentsCount(BoardVO vo);
 }

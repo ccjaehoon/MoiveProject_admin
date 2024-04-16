@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.project.movieadmin.news.comments.NCommentsVO;
 import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -155,7 +154,7 @@ public class BoardDAOimpl implements BoardDAO {
 	}
 
 	@Override
-	public NCommentsVO b_selectGood(BoardVO vo) {
+	public BoardVO b_selectGood(BoardVO vo) {
 		log.info("b_selectGood()....");
 		log.info(vo.toString());
 		return sqlSession.selectOne("B_SELECT_GOOD", vo);
@@ -169,6 +168,14 @@ public class BoardDAOimpl implements BoardDAO {
 	@Override
 	public int b_goodSave(BoardVO vo) {
 		return sqlSession.insert("B_GOOD_SAVE", vo);
+	}
+
+	@Override
+	public int b_increaseCommentsCount(BoardVO vo) {
+		
+		int total_rows = sqlSession.update("B_INCREASECOMMENTSCOUNT", vo);
+		
+		return total_rows;
 	}
 
 }

@@ -138,7 +138,12 @@ $(function() {
 					<td>${nickname}<input type="hidden" name="nickname"
 						value="${nickname}"> <input type="hidden" name="board_num" value="${vo2.board_num}">
 					</td>
-					<td><input type="submit" value="댓글작성"></td>
+					<td>
+						<form action="b_increaseCommentsCount.do" method="post">
+						    <input type="hidden" name="board_num" value="${vo2.board_num}">
+						    <input type="submit" value="댓글작성">
+						</form>
+					</td>
 				</tr>
 			</tbody>
 		</table>
