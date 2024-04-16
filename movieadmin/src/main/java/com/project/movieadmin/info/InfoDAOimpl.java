@@ -158,6 +158,7 @@ public class InfoDAOimpl implements InfoDAO {
 	@Override
 	public int i_increaseRecommends(InfoVO vo) {
 		log.info("i_increaseGood()....");
+<<<<<<< HEAD
 
 		int total_rows = sqlSession.update("I_INCREASEGOOD", vo);
 
@@ -166,5 +167,14 @@ public class InfoDAOimpl implements InfoDAO {
 	
 	
 	//conflict2
+=======
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
+		int total_rows = sqlSession.update("I_INCREASEGOOD", vo);
+
+		return total_rows;
+	}
+	
+	
+	//conflict 
 }
