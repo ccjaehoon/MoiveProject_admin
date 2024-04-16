@@ -36,7 +36,9 @@ public class SCommentsController {
 		int result = service.sc_insert(vo);
 		log.info("result:{}", result);
 		if (result == 1) {
-			return "redirect:sc_selectAll.do";
+			 int storyNum = vo.getStory_num();
+	//storyNum이라는 새로운 변수명을 만드는 이유는 SCommentsVO 객체에서 story_num 값을 가져와 사용하기 위해
+			return "redirect:s_selectOne.do?story_num=" + storyNum;
 		} else {
 			return "redirect:sc_insert.do";
 		}
@@ -65,5 +67,30 @@ public class SCommentsController {
 	}
 	
 
-
+	@ResponseBody
+	@RequestMapping(value = "api/selectCommentList.do", method = RequestMethod.GET)
+	public List<SCommentsVO> selectCommentList(SCommentsVO vo) {
+		log.info("Welcome api/selectCommentList.do...");
+		log.info("vo:{}",vo);
+		
+		List<SCommentsVO> vos = new ArrayList<SCommentsVO>();
+		SCommentsVO vo2 = new SCommentsVO();
+//		vo2.setStory_comments_num(rs.getInt("story_comments_num"));
+//		vo2.setStory_num(rs.getInt("story_num"));
+//		vo2.setContent(rs.getString("content"));
+//		vo2.setNickname(rs.getString("nickname"));
+//		vo2.setWdate(rs.getDate("wdate"));
+//		vos.add(vo2); //객체를 추가하는 작업
+		vos.add(vo2); //객체를 추가하는 작업
+		 // 리소스 정리
+			/*
+			 * rs.close(); pstmt.close(); conn.close(); } catch (SQLException e) {
+			 * e.printStackTrace(); }
+			 */
+			
+		return vos;
+	}
 }
+
+
+

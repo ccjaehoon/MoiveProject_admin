@@ -275,6 +275,7 @@ function showDialogReport(news_comments_num){
 	</table>
 
 	<div id="report">
+
     <form id="reportForm" action="rp_insertOK.do" method="post">
         <table id="rp" border="2">
             <tr>
@@ -288,20 +289,25 @@ function showDialogReport(news_comments_num){
                 </td>
             </tr>
 
-            <tr>
-                <td colspan="2"><input type="submit" value="신고접수" class="report"></td>
-            </tr>
-        </table>
-    </form>
-</div>
 
+<<<<<<< HEAD
 <script>
     
     function submitReportForm() {
         
     	location.reload();
     }
+=======
+				<tr>
+					<td colspan="2"><input type="submit" value="신고접수"  window.history.back();
+						class="report"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
+<<<<<<< HEAD
     
     $("#reportForm").submit(function(event) {
       
@@ -324,4 +330,7 @@ function showDialogReport(news_comments_num){
         });
     });
 </script>
+=======
+</body>
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 </html>
