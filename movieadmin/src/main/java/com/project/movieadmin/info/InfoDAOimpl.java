@@ -16,6 +16,9 @@ public class InfoDAOimpl implements InfoDAO {
 	@Autowired
 	private SqlSession sqlSession;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> refs/heads/main
 	
 	public InfoDAOimpl() {
 		log.info("InfoDAOimpl()....");
@@ -26,13 +29,18 @@ public class InfoDAOimpl implements InfoDAO {
 		log.info("selectOne()....");
 		log.info(vo.toString());
 
+<<<<<<< HEAD
 		NewsVO vo2 = sqlSession.selectOne("I_SELECT_ONE", vo);
+=======
+		NewsVO vo2 = sqlSession.selectOne("N_SELECT_ONE", vo);
+>>>>>>> refs/heads/main
 
 		return vo2;
 	}
 
 	@Override
 	public List<InfoDAO> i_selectAll(int cpage, int pageBlock) {
+<<<<<<< HEAD
 		log.info("i_selectAll()....");
 		int startRow = (cpage - 1) * pageBlock + 1;
 
@@ -41,12 +49,28 @@ public class InfoDAOimpl implements InfoDAO {
 		map.put("pageBlock", pageBlock);
 
 		List<InfoVO> vos = sqlSession.selectList("I_SELECT_ALL_PAGE_BLOCK", map);
+=======
+		log.info("selectAll()....");
+		log.info("cpage:" + cpage);
+		log.info("pageBlock:" + pageBlock);
+
+		int startRow = (cpage - 1) * pageBlock + 1;
+		
+		log.info("startRow:{}",startRow);
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startRow", startRow-1);
+		map.put("pageBlock", pageBlock);
+
+		List<InfoVO> vos = sqlSession.selectList("N_SELECT_ALL_PAGE_BLOCK", map);
+>>>>>>> refs/heads/main
 
 		return vos;
 	}
 
 	@Override
 	public List<InfoDAO> i_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
+<<<<<<< HEAD
 		log.info("i_searchList()....");
 		log.info(searchKey);
 		log.info(searchWord);
@@ -73,6 +97,33 @@ public class InfoDAOimpl implements InfoDAO {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_ACTOR", map);
 		}
 	
+=======
+		log.info("searchList()....");
+		log.info(searchKey);
+		log.info(searchWord);
+
+		log.info("cpage:" + cpage);
+		log.info("pageBlock:" + pageBlock);
+
+		int startRow = (cpage - 1) * pageBlock + 1;
+		log.info("startRow:{}",startRow);
+
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startRow", startRow-1);
+
+		map.put("pageBlock", pageBlock);
+		map.put("searchWord", "%" + searchWord + "%");
+
+		List<NewsVO> vos = null;
+
+		if (searchKey.equals(" ")) {
+			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_TITLE", map);
+		} else if (searchKey.equals(" ")) {
+			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_CONTENT", map);
+		}
+
+>>>>>>> refs/heads/main
 		return vos;
 	}
 
@@ -112,5 +163,8 @@ public class InfoDAOimpl implements InfoDAO {
 
 		return total_rows;
 	}
+	
+	
+	//conflict
 
 }
