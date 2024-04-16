@@ -8,7 +8,7 @@
 		parameterType="com.project.movieadmin.faq.FaqVO">
 		insert into
 		faq(title,nickname,content)
-		values(#{title},'admin',#{content})
+		values(#{title},#{nickname},#{content})
 	</insert>
 
 	<update id="F_UPDATE"
@@ -86,9 +86,7 @@
 	</select>
 
 
-	<select id="LOGIN" resultType="com.project.movieadmin.faq.FaqVO">
 
-	</select>
 
 
 </mapper>

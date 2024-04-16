@@ -70,24 +70,25 @@
             <table id="insertTable">
                 <tr>
                     <td><label for="">항목</label></td>
-                    <td>입력</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><label for="board_num">글번호</label></td>
-                    <td>${param.board_num}<input type="hidden" id="board_num" name="board_num" value="${param.board_num}"></td>
+                    <td>${board_num}<input type="hidden" id="board_num" name="board_num" value="${param.board_num}"></td>
                 </tr>
                 <tr>
                     <td><label for="title">제목</label></td>
-                    <td><input type="text" id="title" name="title" value="${vo2.title}" placeholder="제목을 입력하세요"></td>
+                    <td><input type="text" id="title" name="title" value="${param.title}" ></td>
                 </tr>
                 <tr>
                     <td><label for="content">내용</label></td>
-                    <td><textarea name="content" id="content" cols="30" rows="10">${vo2.content}</textarea></td>
+                    <td><textarea name="content" id="content" cols="30" rows="10">${param.content}</textarea></td>
                 </tr>
-                <tr>
-                    <td><label for="nickname">작성자</label></td>
-                    <td>${vo2.nickname}<input type="hidden" id="nickname" name="nickname" value="${vo2.nickname}" placeholder="작성자를 입력하세요"></td>
-                </tr>
+               <tr>
+					<td><label for="nickname">작성자</label></td>
+					<td>${nickname}<input type="hidden" id="nickname" name="nickname"
+						value="${vo2.nickname}" placeholder="작성자"></td>
+				</tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글수정 완료"></td>
                 </tr>

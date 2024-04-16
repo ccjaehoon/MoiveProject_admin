@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -20,9 +22,9 @@ public class CommentsDAOimpl implements CommentsDAO {
 	@Override
 	public int c_insert(CommentsVO vo) {
 		log.info("c_insert()...");
-
-		int flag = sqlSession.insert("INSERT", vo);
-
+		
+		log.info("{}",vo);
+		int flag = sqlSession.insert("C_INSERT", vo);
 		return flag;
 	}
 
@@ -30,7 +32,7 @@ public class CommentsDAOimpl implements CommentsDAO {
 	public int c_update(CommentsVO vo) {
 		log.info("c_update()...");
 
-		int flag = sqlSession.update("UPDATE", vo);
+		int flag = sqlSession.update("C_UPDATE", vo);
 
 		return flag;
 	}
@@ -39,36 +41,65 @@ public class CommentsDAOimpl implements CommentsDAO {
 	public int c_delete(CommentsVO vo) {
 		log.info("c_delete()....");
 
-		int flag = sqlSession.delete("DELETE", vo);
+		int flag = sqlSession.delete("C_DELETE", vo);
 
 		return flag;
 	}
 
 	@Override
-	public List<CommentsVO> c_selectAll(int cpage, int pageBlock) {
-		log.info("c_selectAll()....");
-
-		int startRow = (cpage - 1) * pageBlock + 1;
-
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startRow", startRow - 1);
-		map.put("pageBlock", pageBlock);
-
-		List<CommentsVO> vos = sqlSession.selectList("SELECT_ALL_PAGE_BLOCK", map);
-
-		return vos;
-	}
-
-	@Override
 	public int c_increaseGood(CommentsVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("c_increaseGood()....");
+
+		int total_rows = sqlSession.update("C_INCREASEGOOD", vo);
+
+		return total_rows;
 	}
 
 	@Override
 	public int c_increaseReport(CommentsVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("c_increaseReport()....");
+
+		int total_rows = sqlSession.update("C_INCREASEREPORT", vo);
+
+		return total_rows;
 	}
 
+	@Override
+	public List<CommentsVO> c_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		 int startRow = (cpage - 1) * pageBlock + 1;
+
+	        Map<String, Object> map = new HashMap<String, Object>();
+	        map.put("startRow", startRow - 1);
+	        map.put("pageBlock", pageBlock);
+	        map.put("vo", vo);
+
+	        List<CommentsVO> vos = sqlSession.selectList("C_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
+	        return vos;
+	}
+
+	@Override
+	public List<CommentsVO> c_selectAll(CommentsVO vo) {
+		log.info("comments selectAll()....");
+
+		return sqlSession.selectList("C_SELECT_ALL", vo);
+	}
+
+	@Override
+	public CommentsVO c_selectGood(CommentsVO vo) {
+		log.info("c_selectGood()....");
+		
+		return sqlSession.selectOne("C_SELECT_GOOD", vo);
+	}
+
+	@Override
+	public int c_goodCheck(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("C_GOOD_CHECK", vo);
+	}
+
+	@Override
+	public int c_goodSave(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("C_GOOD_SAVE", vo);
+	}
 }

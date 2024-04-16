@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UriUtils;
 
 import com.project.movieadmin.news.comments.NCommentsService;
 import com.project.movieadmin.news.comments.NCommentsVO;
@@ -86,11 +88,18 @@ public class NewsController {
 		log.info("================");
 
 		model.addAttribute("vo2", vo2);
+		
+		String nickname = (String) session.getAttribute("nickname");
+		log.info("nickname: {}",nickname);
+        // user_id를 모델에 추가하여 JSP로 전달
+        model.addAttribute("nickname", nickname);
 
 		// 댓글목록 처리로직
 		NCommentsVO cvo = new NCommentsVO();
 		cvo.setNews_num(vo.getNews_num());
+		cvo.setNickname(nickname);
 		List<NCommentsVO> cvos = comService.nc_selectAll(cvo);
+		log.info(cvos.toString());
 
 		model.addAttribute("cvos", cvos);
 
@@ -101,34 +110,44 @@ public class NewsController {
 	public String n_searchList(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
 		log.info("n_searchList.do");
-		List<NewsVO> vos = service.n_searchList(searchKey, searchWord, cpage, pageBlock);
-		for (NewsVO x : vos) {
-			log.info(x.toString());
+		try {
+			searchWord = UriUtils.decode(searchWord, "UTF-8");
+			searchKey = UriUtils.decode(searchKey, "UTF-8");
+			List<NewsVO> vos = service.n_searchList(searchKey, searchWord, cpage, pageBlock);
+			for (NewsVO x : vos) {
+				log.info(x.toString());
+			}
+			System.out.println("================");
+
+			model.addAttribute("vos", vos);
+
+			// 키워드검색 모든회원수는 몇명?
+			int total_rows = service.n_getSearchTotalRows(searchKey, searchWord);
+			log.info("total_rows:" + total_rows);
+
+			int totalPageCount = 1;
+			if (total_rows / pageBlock == 0) {
+				totalPageCount = 1;
+			} else if (total_rows % pageBlock == 0) {
+				totalPageCount = total_rows / pageBlock;
+			} else {
+				totalPageCount = total_rows / pageBlock + 1;
+			}
+			// 페이지 링크 몇개?
+			model.addAttribute("totalPageCount", totalPageCount);
+			
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		System.out.println("================");
-
-		model.addAttribute("vos", vos);
-
-		// 키워드검색 모든회원수는 몇명?
-		int total_rows = service.n_getSearchTotalRows(searchKey, searchWord);
-		log.info("total_rows:" + total_rows);
-
-		int totalPageCount = 1;
-		if (total_rows / pageBlock == 0) {
-			totalPageCount = 1;
-		} else if (total_rows % pageBlock == 0) {
-			totalPageCount = total_rows / pageBlock;
-		} else {
-			totalPageCount = total_rows / pageBlock + 1;
-		}
-		// 페이지 링크 몇개?
-		model.addAttribute("totalPageCount", totalPageCount);
 		return "news/selectAll";
 	}
 
 	@RequestMapping(value = "/n_insert.do", method = RequestMethod.GET)
-	public String n_insert() {
+	public String n_insert(Model model) {
 		log.info("n_insert.do");
+		String nickname = (String)session.getAttribute("user_id");
+		model.addAttribute(nickname);
 
 		return "news/insert";
 	}
@@ -199,7 +218,7 @@ public class NewsController {
 	}
 
 	@RequestMapping(value = "/n_update.do", method = RequestMethod.GET)
-	public String n_update() {
+	public String n_update(Model model) {
 		log.info("n_update.do");
 
 		return "news/update";

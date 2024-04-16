@@ -84,10 +84,11 @@
                     <td><label for="content">내용</label></td>
                     <td><textarea name="content" id="content" cols="30" rows="10">${vo2.content}</textarea></td>
                 </tr>
-                <tr>
-                    <td><label for="writer">작성자</label></td>
-                    <td>${vo2.nickname}<input type="hidden" id="writer" name="writer" value="nickname"></td>
-                </tr>
+              	<tr>
+					<td><label for="nickname">작성자:</label></td>
+					<td>${param.nickname}<input type="hidden" id="nickname" name="nickname"
+						value="${vo2.nickname}" placeholder="작성자"></td>
+				</tr>
                 <tr>
                     <td><label for="file_img">이미지파일</label></td>
                     <td><input type="file" id="file_img" name="file_img"></td>

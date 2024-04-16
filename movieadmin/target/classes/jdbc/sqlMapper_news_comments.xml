@@ -4,73 +4,105 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.news.comments">
-	<insert id="NC_INSERT" parameterType="com.project.movieadmin.news.comments.NCommentsVO">
+	<insert id="NC_INSERT"
+		parameterType="com.project.movieadmin.news.comments.NCommentsVO">
 		insert into ncomments(nickname, content,news_num)
-		values('admin',#{content},#{news_num})
+		values(#{nickname},#{content},#{news_num})
 	</insert>
 
-	<update id="UPDATE">
-		
+	<update id="NC_UPDATE">
+		update ncomments set content=#{content} where
+		news_comments_num=#{news_comments_num}
 	</update>
 
-	<delete id="DELETE">
-	
+	<delete id="NC_DELETE">
+		delete from ncomments where
+		news_comments_num=#{news_comments_num}
 	</delete>
 
-	<select id="NC_SELECT_ONE" resultType="com.project.movieadmin.news.comments.NCommentsVO">
+	<select id="NC_SELECT_ONE"
+		resultType="com.project.movieadmin.news.comments.NCommentsVO">
 	</select>
 
-	<select id="NC_SELECT_ALL" resultType="com.project.movieadmin.news.comments.NCommentsVO">
-			select * from ncomments where news_num=#{news_num} order by news_comments_num desc
-	
+	<select id="NC_SELECT_ALL"
+		resultType="com.project.movieadmin.news.comments.NCommentsVO">
+		select * from ncomments where news_num=#{news_num} order by
+		news_comments_num desc
+
 	</select>
 
 	<select id="SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
+
 	</select>
 
-	
+
 	<select id="SEARCHLIST_ID"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
+
 	</select>
 
-	
+
 	<select id="SEARCHLIST_NAME"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
+
 	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_ID"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
+
 	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
+
+	</select>
+
+
+	<select id="TOTAL_ROWS" resultType="int">
+
+	</select>
+
+
+	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
+
+	</select>
+
+
+	<select id="SEARCH_TOTAL_ROWS_NAME" resultType="int">
+
+	</select>
+
+	<select id="NC_INCREASE_GOOD" resultType="com.project.movieadmin.news.comments.NCommentsVO">
+		update ncomments set
+		good=good+1 where
+		news_comments_num=#{news_comments_num}
+	</select>
+
+	<select id="NC_SELECT_GOOD" resultType="com.project.movieadmin.news.comments.NCommentsVO">
+		select good from ncomments where news_comments_num=#{news_comments_num}
+	</select>
+
+	<select id="LOGIN"
+		resultType="com.project.movieadmin.news.comments.NCommentsVO">
+
+	</select>
+	<select id="NC_GOOD_CHECK"
+		resultType="int">
+		select count(*) as like_count from goodcheck where nickname = #{nickname} and news_num = #{news_num} and news_comments_num = #{news_comments_num}
 		
 	</select>
-
-
-	<select id="TOTAL_ROWS"	resultType="int">
-		
+	<select id="NC_GOOD_SAVE"
+		resultType="int">
+		insert into goodcheck(nickname, news_num, news_comments_num)
+		values(#{nickname},#{news_num},#{news_comments_num})
 	</select>
-
 	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
+	<select id="NC_SELECT_ALL_PAGE_BLOCK_NICKNAME"
+		resultType="com.project.movieadmin.news.comments.NCommentsVO">
+	select * from ncomments where nickname=#{vo.nickname} order by news_comments_num desc
+		limit ${startRow},
+		${pageBlock}
 	</select>
-
-	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
-	</select>
-
-	
-	<select id="LOGIN"	resultType="com.project.movieadmin.news.comments.NCommentsVO">
-		
-	</select>
-
 
 </mapper>

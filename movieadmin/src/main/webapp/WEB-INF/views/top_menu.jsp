@@ -55,9 +55,10 @@
         <a href="s_selectAll.do">스토리</a>
         <a href="a_selectAll.do">공지사항</a>
         <a href="n_selectAll.do">뉴스</a>
-        <a href="f_selectAll.do">FAQ</a>
+        <a href="f_selectAll.do?nickname">FAQ</a>
         <a href="u_insert.do">회원가입</a>
         <a href="u_selectAll.do">회원목록</a>
+        <a href="m_myPage.do">마이페이지</a>
         <a href="rp_selectAll.do">신고목록</a>
         <c:choose>
             <c:when test="${user_id != null}"><a href="u_logout.do">로그아웃</a></c:when>

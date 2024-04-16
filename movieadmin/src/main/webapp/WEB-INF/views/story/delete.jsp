@@ -71,11 +71,11 @@
 
         <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
         <form action="s_deleteOK.do" method="post">
-            <table id="boardTable">
+            <table id="storyTable">
                 <tr>
-                    <td><label for="num">번호:</label></td>
-                    <td>[${param.num}] 번 글을 정말 삭제하시겠습니까?
-                    	<input type="hidden" id="num" name="num" value="${param.num}" placeholder="번호"></td>
+                    <td><label for="story_num">번호:</label></td>
+                    <td>[${param.story_num}] 번 글을 정말 삭제하시겠습니까?
+                    	<input type="hidden" id="story_num" name="story_num" value="${param.story_num}" placeholder="번호"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="글삭제"></td>

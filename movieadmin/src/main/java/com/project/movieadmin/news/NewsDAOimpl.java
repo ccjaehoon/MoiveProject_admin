@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -139,4 +141,23 @@ public class NewsDAOimpl implements NewsDAO {
 		return total_rows;
 	}
 
+	@Override
+	public List<NewsVO> n_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		log.info("selectAll()....");
+		log.info("cpage:" + cpage);
+		log.info("pageBlock:" + pageBlock);
+
+		int startRow = (cpage - 1) * pageBlock + 1;
+		
+		log.info("startRow:{}",startRow);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startRow", startRow - 1);
+		map.put("pageBlock", pageBlock);
+		map.put("vo", vo);
+
+		List<NewsVO> vos = sqlSession.selectList("N_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
+
+		return vos;
+	}
 }

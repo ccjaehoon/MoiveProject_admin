@@ -1,11 +1,11 @@
 package com.project.movieadmin.story;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import org.apache.ibatis.session.SqlSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,7 +40,13 @@ public class StoryServiceimpl implements StoryService {
 	}
 	
 	@Override
-	public List<StoryVO> s_selectRandomList(StoryVO vo) {
+	public StoryVO s_selectOne(StoryVO vo) {
+		
+		return dao.s_selectOne(vo);
+	}
+	
+	@Override
+	public StoryVO s_selectRandomList(StoryVO vo) {
 		
 		return dao.s_selectRandomList(vo);
 	}
@@ -50,17 +56,25 @@ public class StoryServiceimpl implements StoryService {
 		
 		return dao.s_selectAll();
 	}
+	
 
 	@Override
 	public List<StoryVO> s_selectAll(int cpage, int pageBlock) {
 		
 		return dao.s_selectAll(cpage, pageBlock);
 	}
+	
+	@Override
+	public int s_getTotalRows() {
+
+		return dao.s_getTotalRows();
+	}
 
 	@Override
-	public Date s_getLiveStories(StoryVO vo) {
-		
-		return dao.s_getLiveStories(vo);
+	public List<StoryVO> s_getLiveStories() {
+		// 구현 로직
+	    // 반환 타입이 List<StoryVO>인 객체를 반환
+		 return dao.s_getLiveStories();
 	}
 
 	@Override
@@ -76,11 +90,22 @@ public class StoryServiceimpl implements StoryService {
 		
 		return dao.s_increaseGood(vo);
 	}
+	
+	@Override
+	public void s_increaseGoodCount(StoryVO vo) {
+		
+	}
 
 	@Override
 	public int s_increaseReport(StoryVO vo) {
 
 		return dao.s_increaseReport(vo);
+	}
+	@Override
+	public List<StoryVO> s_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		
+		
+		return dao.s_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
 

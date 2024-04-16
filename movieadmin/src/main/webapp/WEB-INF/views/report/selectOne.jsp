@@ -64,12 +64,10 @@
             </tr>
         </tbody>
     </table>
-    <a href="rp_update.do?report_num=${vo2.report_num}">글수정</a>
-	<a href="rp_delete.do?report_num=${vo2.report_num}">글삭제</a>
-    <c:if test="${user_id == vo2.nickname }">
+
 	    <a href="rp_update.do?report_num=${vo2.report_num}">글수정</a>
 	    <a href="rp_delete.do?report_num=${vo2.report_num}">글삭제</a>
-    </c:if>
+
     <hr>
     
 </body>

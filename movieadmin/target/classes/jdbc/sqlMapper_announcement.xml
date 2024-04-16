@@ -4,75 +4,77 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.announcement">
-	<insert id="INSERT" parameterType="com.project.movieadmin.announcement.AnnouncementVO">
+	<insert id="A_INSERT"
+		parameterType="com.project.movieadmin.announcement.AnnouncementVO">
 		insert into
-		user(title,nickname,content,wdate,authority,save_img)
-		values(#{title},#{nickname},#{content},#{wdate},#{authority},#{save_img})
+		announcement(title,nickname,content,save_img)
+		values(#{title},'관리자',#{content},#{save_img})
 	</insert>
 
-	<update id="UPDATE" parameterType="com.project.movieadmin.announcement.AnnouncementVO">
-		update user set title=#{title},content=#{content},save_img=#{save_img} 
-		where user_num=#{announcement_num}
+	<update id="A_UPDATE"
+		parameterType="com.project.movieadmin.announcement.AnnouncementVO">
+		update announcement set
+		title=#{title},content=#{content},save_img=#{save_img}
+		where announcement_num=#{announcement_num}
 	</update>
 
-	<delete id="DELETE" parameterType="com.project.movieadmin.announcement.AnnouncementVO">
-	delete from user where annoucnement_num=#{annoucnement_num}
+	<delete id="A_DELETE"
+		parameterType="com.project.movieadmin.announcement.AnnouncementVO">
+		delete from announcement where announcement_num= #{announcement_num}
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.project.movieadmin.announcement.AnnouncementVO">
-		
-	</select>
-
-	<select id="SELECT_ALL" resultType="com.project.movieadmin.announcement.AnnouncementVO">
-	
-	</select>
-
-	<select id="SELECT_ALL_PAGE_BLOCK"
+	<select id="A_SELECT_ONE"
 		resultType="com.project.movieadmin.announcement.AnnouncementVO">
-		
+		select * from announcement where
+		announcement_num= #{announcement_num}
 	</select>
 
-	
-	<select id="SEARCHLIST_ID"
+
+	<select id="A_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.announcement.AnnouncementVO">
-		
+		select * from announcement order by announcement_num desc
+		limit ${startRow},
+		${pageBlock}
 	</select>
-
-	
-	<select id="SEARCHLIST_NAME"
+	<select id="A_SELECT_ALL_PAGE_BLOCK_NICKNAME"
 		resultType="com.project.movieadmin.announcement.AnnouncementVO">
-		
+		select * from announcement where nickname=#{vo.nickname} order by announcement_num desc
+		limit ${startRow},
+		${pageBlock}
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
+
+	<select id="A_SEARCHLIST_PAGE_BLOCK_TITLE"
 		resultType="com.project.movieadmin.announcement.AnnouncementVO">
-		
+		select * from announcement
+		where title like #{searchWord}
+		order by announcement_num desc limit #{startRow},#{pageBlock}
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
+	<select id="A_SEARCHLIST_PAGE_BLOCK_CONTENT"
 		resultType="com.project.movieadmin.announcement.AnnouncementVO">
-		
+		select * from announcement
+		where content like #{searchWord}
+		order by announcement_num desc limit #{startRow},#{pageBlock}
 	</select>
 
 
-	<select id="TOTAL_ROWS"	resultType="int">
-		
+	<select id="A_TOTAL_ROWS" resultType="int">
+		select count(*) total_rows
+		from announcement
 	</select>
 
-	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
+
+	<select id="A_SEARCH_TOTAL_ROWS_TITLE" resultType="int">
+		SELECT COUNT(*) AS total_rows FROM announcement WHERE title LIKE #{searchWord}
 	</select>
 
-	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
+
+	<select id="A_SEARCH_TOTAL_ROWS_CONTENT" resultType="int">
+		SELECT COUNT(*) AS total_rows FROM announcement WHERE content LIKE #{searchWord}
 	</select>
 
-	
-	<select id="LOGIN"	resultType="com.project.movieadmin.announcement.AnnouncementVO">
-		
-	</select>
+
 
 
 </mapper>

@@ -25,6 +25,11 @@
 		resultType="com.project.movieadmin.user.UserVO">
 		select * from user where user_num=#{user_num}
 	</select>
+	
+	<select id="U_SELECT_ONE_ID"
+		resultType="com.project.movieadmin.user.UserVO">
+		select * from user where user_id=#{user_id}
+	</select>
 
 
 	<select id="U_SELECT_ALL_PAGE_BLOCK"
@@ -69,8 +74,10 @@
 
 	<select id="U_LOGIN"
 		resultType="com.project.movieadmin.user.UserVO">
-		select user_id from user where user_id=#{user_id} and
+
+		select * from user where user_id=#{user_id} and
 		password=#{password}
+
 	</select>
 	<select id="U_ID_CHECK"
 		resultType="com.project.movieadmin.user.UserVO">
@@ -87,6 +94,10 @@
 		select email from user where
 		email=#{email}
 	</select>
-
+	<select id="U_LOGIN_CHECK"
+		resultType="com.project.movieadmin.user.UserVO">
+		select user_id from user where user_id=#{user_id} and
+		password=#{password}
+	</select>
 
 </mapper>

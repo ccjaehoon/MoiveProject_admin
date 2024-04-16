@@ -1,7 +1,5 @@
 package com.project.movieadmin.story;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +7,8 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -48,11 +48,19 @@ public class StoryDAOimpl implements StoryDAO {
 	}
 	
 	@Override
-	public List<StoryVO> s_selectRandomList(StoryVO vo) {
+	public StoryVO s_selectOne(StoryVO vo) {
+		log.info("s_selectOne()....");
+		log.info(vo.toString());
+
+		return sqlSession.selectOne("S_SELECT_ONE", vo);
+	}
+	
+	@Override
+	public StoryVO s_selectRandomList(StoryVO vo) {
 		log.info("s_selectRandomList()....");
 		log.info(vo.toString());
 
-		return sqlSession.selectList("S_SELECTRANDOMLIST", vo);
+		return sqlSession.selectOne("S_SELECT_RANDOMLIST", vo);
 	}
 
 	@Override
@@ -78,41 +86,81 @@ public class StoryDAOimpl implements StoryDAO {
 
 		return sqlSession.selectList("S_SELECT_ALL_PAGE_BLOCK", map);
 	}
+	
+	@Override
+	public int s_getTotalRows() {
+		log.info("getTotalRows()....");
+
+		return sqlSession.selectOne("S_TOTAL_ROWS");
+	}
+
 
 	@Override
-	public Date s_getLiveStories(StoryVO vo) {
-		System.out.println("getLiveStories....");
-		
-		
-		return new Date();
+	public List<StoryVO> s_getLiveStories() {
+	    log.info("getLiveStories...."); // 데이터베이스에서 만료되지 않은 스토리를 조회하는 쿼리 실행
+	    
+	    return sqlSession.selectList("S_GETLIVESTORIES");
 	}
+	
 
 	@Override
 	public int s_removeExpired() {
-		log.info("s_removeExpired()...");
+		log.info("s_removeExpired()..."); //만료된 스토리 삭제
 
 		return sqlSession.delete("S_REMOVEEXPIRED");
 	}
 
 	@Override
 	public int s_increaseGood(StoryVO vo) {
+		log.info("s_increaseGood()....");
 		// 해당 게시물의 추천수를 가져와 1 증가시킴
-	    int currentGoodCount = vo.getGood();
-	    vo.setGood(currentGoodCount + 1);
+//	    int currentGoodCount = vo.getGood();
+//	    vo.setGood(currentGoodCount + 1);
 
 	    // 데이터베이스에 업데이트
-	    return sqlSession.update("UPDATE_GOOD_COUNT", vo);
+	    return sqlSession.update("S_UPDATE_GOOD_COUNT", vo);
+	}
+	
+	@Override
+	public void s_increaseGoodCount(StoryVO vo) {
+		log.info("s_increaseGoodCount()....");
+		 // 사용자의 추천 기록을 확인하는 로직 구현
+	    int userGoodCount = sqlSession.selectOne("S_CHECK_USER_GOOD_COUNT", vo);
+	    
+	    // 추천 기록이 없는 경우에만 추천 수를 증가시키는 로직 구현
+	    if (userGoodCount == 0) {
+	        // 추천 수 업데이트 쿼리 실행
+	        sqlSession.update("S_UPDATE_GOOD_COUNT", vo);
+	    }
 	}
 
 	@Override
 	public int s_increaseReport(StoryVO vo) {
+		log.info("s_increaseReport()....");
 		// 해당 게시물의 신고수를 가져와 1 증가시킴
 	    int currentReportCount = vo.getReport();
 	    vo.setReport(currentReportCount + 1);
 
 	    // 데이터베이스에 업데이트
-	    return sqlSession.update("UPDATE_REPORT_COUNT", vo);
+	    return sqlSession.update("S_UPDATE_REPORT_COUNT", vo);
 	}
 
+	@Override
+	public List<StoryVO> s_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		log.info("s_selectAll_nick()....");
+		log.info("cpage:" + cpage);
+		log.info("pageBlock:" + pageBlock);
+
+		int startRow = (cpage - 1) * pageBlock + 1;
+		int endRow = startRow + pageBlock - 1;
+		log.info(startRow + "," + endRow);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startRow", startRow - 1);
+		map.put("pageBlock", pageBlock);
+		map.put("vo", vo);
+
+		return sqlSession.selectList("S_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
+	}
 	
 }

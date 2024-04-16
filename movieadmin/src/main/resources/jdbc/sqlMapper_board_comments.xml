@@ -4,74 +4,74 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.board.comments">
-	<insert id="INSERT" parameterType="com.project.movieadmin.board.comments.CommentsVO">
+	<insert id="C_INSERT"
+		parameterType="com.project.movieadmin.board.comments.CommentsVO">
 		insert into
-		comments(nickname, content, wdate, good, board_num, report)
-		values(#{nickname},#{content},#{wdate},#{good},#{board_num},#{report})
+		comments(nickname, content, board_num)
+		values(#{nickname},#{content},#{board_num})
 	</insert>
 
-	<update id="UPDATE">
-		update comments set nickname=#{nickname},content=#{content}
-		where comments_num=#{comments_num}
+	<update id="C_UPDATE">
+		update comments set content=#{content}
+		where
+		comments_num=#{comments_num}
 	</update>
 
-	<delete id="DELETE">
-		delete from comments where comments_num=#{comments_num}
+	<delete id="C_DELETE">
+		delete from comments where
+		comments_num=#{comments_num}
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.project.movieadmin.board.comments.CommentsVO">
+	<select id="C_SELECT_ONE"
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
 		select * from comments where comments_num=#{comments_num}
 	</select>
 
-	<select id="SELECT_ALL" resultType="com.project.movieadmin.board.comments.CommentsVO">
-		select * from comments order by comments_num desc
-	</select>
-
-	<select id="SELECT_ALL_PAGE_BLOCK"
+	<select id="C_SELECT_ALL"
 		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
+		select * from comments where board_num=#{board_num} order by comments_num desc
 	</select>
 
-	
-	<select id="SEARCHLIST_ID"
+	<select id="C_INCREASEGOOD" resultType="int">
+		update comments set good
+		=
+		good + 1
+		where comments_num = #{comments_num}
+	</select>
+
+	<select id="C_INCREASEREPORT" resultType="int">
+		update comments set
+		report =
+		report + 1
+		where comments_num = #{comments_num}
+	</select>
+
+	<select id="C_SELECT_GOOD"
 		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
+		select good from comments where
+		comments_num=#{comments_num}
 	</select>
 
+	<select id="C_GOOD_CHECK" resultType="int">
+		select count(*) as
+		like_count from goodcheck where
+		nickname = #{nickname} and
+		board_num = #{board_num} and
+		comments_num = #{comments_num}
+	</select>
+
+	<select id="C_GOOD_SAVE" resultType="int">
+		insert into
+		goodcheck(nickname, board_num, comments_num)
+		values(#{nickname},#{board_num},#{comments_num})
+	</select>
 	
-	<select id="SEARCHLIST_NAME"
+	<select id="C_SELECT_ALL_PAGE_BLOCK_NICKNAME"
 		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
-		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
-		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
-	</select>
-
-
-	<select id="TOTAL_ROWS"	resultType="int">
-		
-	</select>
-
-	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
-	</select>
-
-	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
-	</select>
-
-	
-	<select id="LOGIN"	resultType="com.project.movieadmin.board.comments.CommentsVO">
-		
+		select * from comments where nickname=#{vo.nickname} order by
+		comments_num desc
+		limit ${startRow},
+		${pageBlock}
 	</select>
 
 
