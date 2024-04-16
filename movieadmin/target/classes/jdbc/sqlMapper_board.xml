@@ -112,9 +112,14 @@
 
 	<select id="B_GOOD_SAVE" resultType="int">
 		insert into
-		goodcheck(nickname, board_num)
-		values(#{nickname},#{board_num})
+		goodcheck(nickname, board_num) values(#{nickname},#{board_num})
 	</select>
+	
+	<update id="B_INCREASECOMMENTSCOUNT" parameterType="int">
+        UPDATE board
+        SET comments_count = comments_count + 1
+        WHERE board_num = #{boardNum}
+    </update>
 
 
 </mapper>

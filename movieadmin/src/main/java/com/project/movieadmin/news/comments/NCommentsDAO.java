@@ -16,8 +16,6 @@ public interface NCommentsDAO {
 	public int nc_increaseGood(NCommentsVO vo);
 	
 	public NCommentsVO nc_selectGood(NCommentsVO vo);
-	
-	public int nc_increaseReport(NCommentsVO vo);
 
 	public int nc_goodCheck(NCommentsVO vo);
 
