@@ -45,11 +45,6 @@ public class NCommentsServiceimpl implements NCommentsService {
 	}
 
 	@Override
-	public int nc_increaseReport(NCommentsVO vo) {
-		return 0;
-	}
-
-	@Override
 	public int nc_goodCheck(NCommentsVO vo) {
 		return dao.nc_goodCheck(vo);
 	}

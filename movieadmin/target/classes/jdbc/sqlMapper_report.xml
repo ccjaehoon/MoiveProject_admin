@@ -20,7 +20,7 @@
 	</delete>
 
 	<select id="RP_SELECT_ONE" resultType="com.project.movieadmin.report.ReportVO">
-		select * from report where	report_num=#{report_num}
+		select * from report where report_num=#{report_num}
 	</select>
 
 	<select id="RP_SELECT_ALL" resultType="com.project.movieadmin.report.ReportVO">
