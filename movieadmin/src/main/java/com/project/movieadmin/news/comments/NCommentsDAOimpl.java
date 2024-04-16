@@ -66,13 +66,6 @@ public class NCommentsDAOimpl implements NCommentsDAO {
 		return sqlSession.selectOne("NC_SELECT_GOOD", vo);
 	}
 
-
-	@Override
-	public int nc_increaseReport(NCommentsVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	@Override
 	public int nc_goodCheck(NCommentsVO vo) {
 		return sqlSession.selectOne("NC_GOOD_CHECK", vo);
