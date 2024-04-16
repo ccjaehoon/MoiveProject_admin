@@ -291,6 +291,14 @@ function showDialogReport(news_comments_num){
             </tr>
 
 
+<<<<<<< HEAD
+<script>
+    
+    function submitReportForm() {
+        
+    	location.reload();
+    }
+=======
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
 						class="report"></td>
@@ -298,6 +306,32 @@ function showDialogReport(news_comments_num){
 			</table>
 		</form>
 	</div>
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
+<<<<<<< HEAD
+    
+    $("#reportForm").submit(function(event) {
+      
+        event.preventDefault();
+        
+        
+        $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            data: $(this).serialize(), 
+            success: function(response) {
+                
+                console.log(response);
+                submitReportForm(); 
+            },
+            error: function(xhr, status, error) {
+                
+                console.error(status, error);
+            }
+        });
+    });
+</script>
+=======
 </body>
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 </html>
