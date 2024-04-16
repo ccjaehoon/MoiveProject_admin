@@ -26,7 +26,7 @@
 	String movieCd = request.getParameter("movieCd")==null?"20126674":request.getParameter("movieCd");						//영화코드
 	
 	// 발급키
-	String key = "430156241533f1d058c603178cc3ca0e";	
+	String key = "f1c8cf77dd2d86fde938f2770265ac97";	
 	
 	// KOBIS 오픈 API SOAP Client를 통해 호출
 	MovieInfoResult movieInfoResult = new MovieAPIServiceImplService().getMovieAPIServiceImplPort().searchMovieInfo(key, movieCd);

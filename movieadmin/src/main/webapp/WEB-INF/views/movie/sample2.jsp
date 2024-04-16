@@ -41,7 +41,7 @@
 <script type="text/javascript" src="../../js/KobisOpenAPIRestService.js"></script>
 <script type="text/javascript">
 $(function(){
-	var kobisService = new KobisOpenAPIRestService("430156241533f1d058c603178cc3ca0e");
+	var kobisService = new KobisOpenAPIRestService("f1c8cf77dd2d86fde938f2770265ac97");
 	var resJson = null;
 	try{
 		resJson = kobisService.getMovieList(true,{curPage:"<%=curPage%>",itemPerPage:"<%=itemPerPage%>",movieNm:"<%=movieNm%>",directorNm:"<%=directorNm%>",openStartDt:"<%=openStartDt%>",openEndDt:"<%=openEndDt%>",prdtStartYear:"<%=prdtStartYear%>",prdtEndYear:"<%=prdtEndYear%>",repNationCd:"<%=repNationCd%>",movieTypeCdArr:"<%=movieTypeCdArr%>"});
