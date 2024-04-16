@@ -26,38 +26,30 @@ public class InfoDAOimpl implements InfoDAO {
 		log.info("selectOne()....");
 		log.info(vo.toString());
 
-		NewsVO vo2 = sqlSession.selectOne("N_SELECT_ONE", vo);
+		NewsVO vo2 = sqlSession.selectOne("I_SELECT_ONE", vo);
 
 		return vo2;
 	}
 
 	@Override
 	public List<InfoDAO> i_selectAll(int cpage, int pageBlock) {
-		log.info("selectAll()....");
-		log.info("cpage:" + cpage);
-		log.info("pageBlock:" + pageBlock);
-
+		log.info("i_selectAll()....");
 		int startRow = (cpage - 1) * pageBlock + 1;
-		
-		log.info("startRow:{}",startRow);
 
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startRow", startRow-1);
 		map.put("pageBlock", pageBlock);
 
-		List<InfoVO> vos = sqlSession.selectList("N_SELECT_ALL_PAGE_BLOCK", map);
+		List<InfoVO> vos = sqlSession.selectList("I_SELECT_ALL_PAGE_BLOCK", map);
 
 		return vos;
 	}
 
 	@Override
 	public List<InfoDAO> i_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
-		log.info("searchList()....");
+		log.info("i_searchList()....");
 		log.info(searchKey);
 		log.info(searchWord);
-
-		log.info("cpage:" + cpage);
-		log.info("pageBlock:" + pageBlock);
 
 		int startRow = (cpage - 1) * pageBlock + 1;
 		log.info("startRow:{}",startRow);
@@ -77,49 +69,48 @@ public class InfoDAOimpl implements InfoDAO {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_GENRE", map);
 		} else if (searchKey.equals("DIRECTORS")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_DIRECTORS", map);
-		} else if (searchKey.equals("GENRE")) {
+		} else if (searchKey.equals("ACTOR")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_ACTOR", map);
 		}
 	
-
 		return vos;
-
-
-	@Override
-	public InfoDAO i_selectOne(InfoVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<InfoDAO> i_selectAll(int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<InfoDAO> i_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
-		return null;
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 	}
 
 	@Override
 	public int i_getTotalRows() {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("i_getTotalRows()....");
+
+		int total_rows = sqlSession.selectOne("I_TOTAL_ROWS");
+
+		return total_rows;
 	}
 
 	@Override
 	public int i_getSearchTotalRows(String searchKey, String searchWord) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("i_getSearchTotalRows()....");
+
+		int total_rows = 0;
+
+		if (searchKey.equals("title")) {
+			total_rows = sqlSession.selectOne("I_EARCH_TOTAL_ROWS_TITLE", "%" + searchWord + "%");
+		} else if (searchKey.equals("genre")) {
+			total_rows = sqlSession.selectOne("I_SEARCH_TOTAL_ROWS_GENRE", "%" + searchWord + "%");
+		} else if (searchKey.equals("directors")) {
+			total_rows = sqlSession.selectOne("I_SEARCH_TOTAL_ROWS_DIRECTORS", "%" + searchWord + "%");
+		} else if (searchKey.equals("actor")) {
+			total_rows = sqlSession.selectOne("I_SEARCH_TOTAL_ROWS_ACTOR", "%" + searchWord + "%");
+		}
+
+		return total_rows;
 	}
 
 	@Override
 	public int i_increaseRecommends(InfoVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("i_increaseGood()....");
+
+		int total_rows = sqlSession.update("I_INCREASEGOOD", vo);
+
+		return total_rows;
 	}
 
 }
