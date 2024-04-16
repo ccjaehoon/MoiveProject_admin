@@ -81,6 +81,7 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 				response.sendRedirect("u_login.do");
 				return false;
 			}
+		
 			
 		}
 		return true;
