@@ -73,20 +73,10 @@ public class SCommentsController {
 		log.info("Welcome api/selectCommentList.do...");
 		log.info("vo:{}",vo);
 		
-		List<SCommentsVO> vos = new ArrayList<SCommentsVO>();
-		SCommentsVO vo2 = new SCommentsVO();
-//		vo2.setStory_comments_num(rs.getInt("story_comments_num"));
-//		vo2.setStory_num(rs.getInt("story_num"));
-//		vo2.setContent(rs.getString("content"));
-//		vo2.setNickname(rs.getString("nickname"));
-//		vo2.setWdate(rs.getDate("wdate"));
-//		vos.add(vo2); //객체를 추가하는 작업
-		vos.add(vo2); //객체를 추가하는 작업
-		 // 리소스 정리
-			/*
-			 * rs.close(); pstmt.close(); conn.close(); } catch (SQLException e) {
-			 * e.printStackTrace(); }
-			 */
+		List<SCommentsVO> vos = service.sc_selectAll(vo);
+/*service 객체의 sc_selectAll 메서드를 호출하여 댓글 목록을 가져옵니다.
+		vo는 댓글 조회에 필요한 매개변수(예: 게시물 번호)를 담고 있는 객체입니다.
+		결과는 List<SCommentsVO> 형태로 반환*/
 			
 		return vos;
 	}
