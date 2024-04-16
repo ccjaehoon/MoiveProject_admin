@@ -145,9 +145,11 @@ tfoot td {
 
 // 	});
 
-function showDialogReport(news_comments_num){
+function showDialogReport(news_comments_num, nickname){
 	console.log(news_comments_num);
+	console.log(nickname);
 	$('#news_comments_num').val(news_comments_num);
+	$('#nickname').val(nickname);
 	$("#report").dialog("open");
 }
 </script>
@@ -259,7 +261,7 @@ function showDialogReport(news_comments_num){
 
 
 					<td><input type="button" id="reportBtn" class="report"
-						onClick="showDialogReport(${cvo.news_comments_num})" value="신고" /></td>
+						onClick="showDialogReport('${cvo.news_comments_num}','${cvo.nickname}')" value="신고" /></td>
 
 
 
@@ -280,8 +282,13 @@ function showDialogReport(news_comments_num){
 			<table id="rp" border="2">
 				<tr>
 					<td id="font" width="100">신고 내용<input type="text"
+<<<<<<< HEAD
 						id="nickname" name="nickname" value="${vo2.nickname}" readonly>
 						<input type="hidden" id="news_comments_num" name="news_comments_num"
+=======
+						id="nickname" name="nickname" value="${cvo.nickname}" readonly>
+						<input type="text" id="news_comments_num" name="news_comments_num"
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 						value="${cvo.news_comments_num}" readonly></td>
 				</tr>
 				<tr>
