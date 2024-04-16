@@ -122,6 +122,7 @@ tfoot td {
 						});
 
 	});
+
 </script>
 <script>
 // 	$(function() {
@@ -291,7 +292,7 @@ function showDialogReport(news_comments_num){
 
 
 				<tr>
-					<td colspan="2"><input type="submit" value="신고접수"  window.history.back();
+					<td colspan="2"><input type="submit" value="신고접수"
 						class="report"></td>
 				</tr>
 			</table>
