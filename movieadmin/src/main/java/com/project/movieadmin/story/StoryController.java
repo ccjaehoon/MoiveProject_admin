@@ -253,8 +253,13 @@ public class StoryController {
 	
 	@RequestMapping(value = "/s_increaseGood.do", method = RequestMethod.GET)
 	public String rv_increaseGood(StoryVO vo, HttpSession session) {
-		
-	
+		// 사용자 정보 및 추천 정보를 확인하고, 필요한 경우 DAO 레이어로 전달
+	    // 예: 사용자가 이미 추천한 경우에는 추천 수를 증가시키지 않도록 로직 추가
+	    // 이 예제에서는 간단히 컨트롤러에서 DAO 레이어로 전달만 보여줍니다.
+	    
+	    // DAO 레이어에서 추천 수 업데이트 로직 호출
+	    //storyService.increaseGoodCount(vo);
+	    
 		return "story_increaseGood";
 	}
 	
