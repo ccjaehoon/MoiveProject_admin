@@ -145,9 +145,11 @@ tfoot td {
 
 // 	});
 
-function showDialogReport(news_comments_num){
+function showDialogReport(news_comments_num, nickname){
 	console.log(news_comments_num);
+	console.log(nickname);
 	$('#news_comments_num').val(news_comments_num);
+	$('#nickname').val(nickname);
 	$("#report").dialog("open");
 }
 </script>
@@ -258,8 +260,8 @@ function showDialogReport(news_comments_num){
 
 
 
-					<td><input type="button" id="reportBtn" class="report" onClick="showDialogReport(${cvo.news_comments_num})"
-						value="신고" /></td>
+					<td><input type="button" id="reportBtn" class="report"
+						onClick="showDialogReport('${cvo.news_comments_num}','${cvo.nickname}')" value="신고" /></td>
 
 
 
@@ -276,27 +278,59 @@ function showDialogReport(news_comments_num){
 
 	<div id="report">
 
-    <form id="reportForm" action="rp_insertOK.do" method="post">
-        <table id="rp" border="2">
-            <tr>
-                <td id="font" width="100">신고 내용<input type="text" id="nickname"
-                        name="nickname" value="${param.nickname}" readonly> <input
-                        type="text" id="news_comments_num" name="news_comments_num"
-                        value="${cvo.news_comments_num}" readonly></td>
-            </tr>
-            <tr>
-                <td width="500"><textarea id="text_report" name="content" placeholder="신고내용을 적으세요">test report</textarea>
-                </td>
-            </tr>
-
-
+		<form id="reportForm" action="rp_insertOK.do" method="post">
+			<table id="rp" border="2">
 				<tr>
-					<td colspan="2"><input type="submit" value="신고접수"  window.history.back();
+					<td id="font" width="100">신고 내용<input type="text"
+						id="nickname" name="nickname" value="${cvo.nickname}" readonly>
+						<input type="text" id="news_comments_num" name="news_comments_num"
+						value="${cvo.news_comments_num}" readonly></td>
+				</tr>
+				<tr>
+					<td width="500"><textarea id="text_report" name="content"
+							placeholder="신고내용을 적으세요">test report</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="신고접수"
+
 						class="report"></td>
 				</tr>
 			</table>
 		</form>
 	</div>
 
+
+	<script>
+    
+    function submitReportForm() {
+        
+    	location.reload();
+    }
+				
+
+    
+    $("#reportForm").submit(function(event) {
+      
+        event.preventDefault();
+        
+        
+        $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            data: $(this).serialize(), 
+            success: function(response) {
+                
+                console.log(response);
+                submitReportForm(); 
+            },
+            error: function(xhr, status, error) {
+                
+                console.error(status, error);
+            }
+        });
+    });
+</script>
+
 </body>
+
 </html>

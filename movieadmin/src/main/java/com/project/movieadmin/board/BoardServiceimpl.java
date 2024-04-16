@@ -16,14 +16,14 @@ public class BoardServiceimpl implements BoardService {
 
 	@Autowired
 	private BoardDAO dao;
-	
+
 	public BoardServiceimpl() {
 		log.info("BoardServiceimpl()...");
 	}
-	
+
 	@Override
 	public int b_insert(BoardVO vo) {
-		
+
 		return dao.b_insert(vo);
 	}
 
@@ -53,42 +53,42 @@ public class BoardServiceimpl implements BoardService {
 
 	@Override
 	public List<BoardVO> b_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
-		
+
 		return dao.b_searchList(searchKey, searchWord, cpage, pageBlock);
 	}
 
 	@Override
 	public int b_getTotalRows() {
-		
+
 		return dao.b_getTotalRows();
 	}
 
 	@Override
 	public int b_getSearchTotalRows(String searchKey, String searchWord) {
-		
+
 		return dao.b_getSearchTotalRows(searchKey, searchWord);
 	}
 
 	@Override
 	public int b_increaseGood(BoardVO vo) {
-		
+
 		return dao.b_increaseGood(vo);
 	}
 
 	@Override
 	public int b_increaseReport(BoardVO vo) {
-		
+
 		return dao.b_increaseReport(vo);
 	}
 
 	@Override
-	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo) {
-		
+	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+
 		return dao.b_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
 	@Override
-	public NCommentsVO b_selectGood(BoardVO vo) {
+	public BoardVO b_selectGood(BoardVO vo) {
 		return dao.b_selectGood(vo);
 	}
 
@@ -100,6 +100,11 @@ public class BoardServiceimpl implements BoardService {
 	@Override
 	public int b_goodSave(BoardVO vo) {
 		return dao.b_goodSave(vo);
+	}
+
+	@Override
+	public int b_increaseCommentsCount(BoardVO vo) {
+		return dao.b_increaseCommentsCount(vo);
 	}
 
 }
