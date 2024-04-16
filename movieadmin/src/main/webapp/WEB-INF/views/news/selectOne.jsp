@@ -297,9 +297,9 @@ function showDialogReport(news_comments_num){
 
 <script>
     
-    function submitReportFormAndGoBack() {
+    function submitReportForm() {
         
-        window.history.back();
+    	location.reload();
     }
 
     
@@ -315,7 +315,7 @@ function showDialogReport(news_comments_num){
             success: function(response) {
                 
                 console.log(response);
-                submitReportFormAndGoBack(); 
+                submitReportForm(); 
             },
             error: function(xhr, status, error) {
                 
