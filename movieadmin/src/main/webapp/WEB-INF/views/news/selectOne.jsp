@@ -282,13 +282,8 @@ function showDialogReport(news_comments_num, nickname){
 			<table id="rp" border="2">
 				<tr>
 					<td id="font" width="100">신고 내용<input type="text"
-<<<<<<< HEAD
-						id="nickname" name="nickname" value="${vo2.nickname}" readonly>
-						<input type="hidden" id="news_comments_num" name="news_comments_num"
-=======
 						id="nickname" name="nickname" value="${cvo.nickname}" readonly>
 						<input type="text" id="news_comments_num" name="news_comments_num"
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 						value="${cvo.news_comments_num}" readonly></td>
 				</tr>
 				<tr>
