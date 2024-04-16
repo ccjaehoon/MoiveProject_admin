@@ -45,24 +45,24 @@ public class InfoRestController {
 		
 		//{"today":"+formattedDate+"}
 		
-		 // 파라메터 설정
-		String curPage = request.getParameter("curPage")==null?"1":request.getParameter("curPage");					//현재페이지
-		String itemPerPage = request.getParameter("itemPerPage")==null?"10":request.getParameter("itemPerPage");		//결과row수
-		String movieNm = request.getParameter("movieNm")==null?"":request.getParameter("movieNm");						//영화명
-		String directorNm = request.getParameter("directorNm")==null?"":request.getParameter("directorNm");				//감독명
-		String openStartDt = request.getParameter("openStartDt")==null?"":request.getParameter("openStartDt");			//개봉연도 시작조건 ( YYYY )
-		String openEndDt = request.getParameter("openEndDt")==null?"":request.getParameter("openEndDt");				//개봉연도 끝조건 ( YYYY )	
-		String prdtStartYear = request.getParameter("prdtStartYear")==null?"":request.getParameter("prdtStartYear");	//제작연도 시작조건 ( YYYY )
-		String prdtEndYear = request.getParameter("prdtEndYear")==null?"":request.getParameter("prdtEndYear");			//제작연도 끝조건    ( YYYY )
-		String repNationCd = request.getParameter("repNationCd")==null?"":request.getParameter("repNationCd");			//대표국적코드 (공통코드서비스에서 '2204'로 조회된 국가코드)
-		String[] movieTypeCdArr = request.getParameterValues("movieTypeCdArr")==null? null:request.getParameterValues("movieTypeCdArr");	//영화형태코드 배열 (공통코드서비스에서 '2201'로 조회된 영화형태코드)
 		
-		// 발급키
+		String curPage = request.getParameter("curPage")==null?"1":request.getParameter("curPage");					//�쁽�옱�럹�씠吏�
+		String itemPerPage = request.getParameter("itemPerPage")==null?"10":request.getParameter("itemPerPage");		//寃곌낵row�닔
+		String movieNm = request.getParameter("movieNm")==null?"":request.getParameter("movieNm");						//�쁺�솕紐�
+		String directorNm = request.getParameter("directorNm")==null?"":request.getParameter("directorNm");				//媛먮룆紐�
+		String openStartDt = request.getParameter("openStartDt")==null?"":request.getParameter("openStartDt");			//媛쒕큺�뿰�룄 �떆�옉議곌굔 ( YYYY )
+		String openEndDt = request.getParameter("openEndDt")==null?"":request.getParameter("openEndDt");				//媛쒕큺�뿰�룄 �걹議곌굔 ( YYYY )	
+		String prdtStartYear = request.getParameter("prdtStartYear")==null?"":request.getParameter("prdtStartYear");	//�젣�옉�뿰�룄 �떆�옉議곌굔 ( YYYY )
+		String prdtEndYear = request.getParameter("prdtEndYear")==null?"":request.getParameter("prdtEndYear");			//�젣�옉�뿰�룄 �걹議곌굔    ( YYYY )
+		String repNationCd = request.getParameter("repNationCd")==null?"":request.getParameter("repNationCd");			//���몴援��쟻肄붾뱶 (怨듯넻肄붾뱶�꽌鍮꾩뒪�뿉�꽌 '2204'濡� 議고쉶�맂 援�媛�肄붾뱶)
+		String[] movieTypeCdArr = request.getParameterValues("movieTypeCdArr")==null? null:request.getParameterValues("movieTypeCdArr");	//�쁺�솕�삎�깭肄붾뱶 諛곗뿴 (怨듯넻肄붾뱶�꽌鍮꾩뒪�뿉�꽌 '2201'濡� 議고쉶�맂 �쁺�솕�삎�깭肄붾뱶)
+		
+		// 諛쒓툒�궎
 		String key = "f1c8cf77dd2d86fde938f2770265ac97";
-		// KOBIS 오픈 API Rest Client를 통해 호출
+		
 	    KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
 
-		// 영화코드조회 서비스 호출 (boolean isJson, String curPage, String itemPerPage,String directorNm, String movieCd, String movieNm, String openStartDt,String openEndDt, String ordering, String prdtEndYear, String prdtStartYear, String repNationCd, String[] movieTypeCdArr)
+		// �쁺�솕肄붾뱶議고쉶 �꽌鍮꾩뒪 �샇異� (boolean isJson, String curPage, String itemPerPage,String directorNm, String movieCd, String movieNm, String openStartDt,String openEndDt, String ordering, String prdtEndYear, String prdtStartYear, String repNationCd, String[] movieTypeCdArr)
 	    String movieCdResponse = service.getMovieList(true, curPage, itemPerPage, movieNm, directorNm, openStartDt, openEndDt, prdtStartYear, prdtEndYear, repNationCd, movieTypeCdArr);
 		
 	    logger.info("movieCdResponse:{}",movieCdResponse);
