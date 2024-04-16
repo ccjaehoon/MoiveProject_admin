@@ -280,25 +280,14 @@ function showDialogReport(news_comments_num){
 			<table id="rp" border="2">
 				<tr>
 					<td id="font" width="100">신고 내용<input type="text"
-						id="nickname" name="nickname" value="${param.nickname}" readonly>
-						<input type="text" id="news_comments_num" name="news_comments_num"
+						id="nickname" name="nickname" value="${vo2.nickname}" readonly>
+						<input type="hidden" id="news_comments_num" name="news_comments_num"
 						value="${cvo.news_comments_num}" readonly></td>
 				</tr>
 				<tr>
 					<td width="500"><textarea id="text_report" name="content"
 							placeholder="신고내용을 적으세요">test report</textarea></td>
 				</tr>
-<<<<<<< HEAD
-
-
-				<script>
-    
-    function submitReportForm() {
-        
-    	location.reload();
-    }
-=======
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
 
@@ -307,9 +296,6 @@ function showDialogReport(news_comments_num){
 			</table>
 		</form>
 	</div>
-<<<<<<< HEAD
-   
-=======
 
 
 	<script>
@@ -321,7 +307,6 @@ function showDialogReport(news_comments_num){
 				
 
     
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
     $("#reportForm").submit(function(event) {
       
         event.preventDefault();
@@ -343,13 +328,7 @@ function showDialogReport(news_comments_num){
         });
     });
 </script>
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 </body>
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 </html>
