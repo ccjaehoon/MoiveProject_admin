@@ -151,7 +151,7 @@ public class InfoController {
 		return "info/i_increaseRecommends";
 	}
 	
-
+//test
 	
 	
 }
