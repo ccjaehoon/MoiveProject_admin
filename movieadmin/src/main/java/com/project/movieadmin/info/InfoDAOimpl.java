@@ -165,6 +165,5 @@ public class InfoDAOimpl implements InfoDAO {
 	}
 	
 	
-	//conflict2
-
+	//conflict 
 }
