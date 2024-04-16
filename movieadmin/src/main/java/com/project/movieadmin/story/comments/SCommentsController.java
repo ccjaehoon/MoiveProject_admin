@@ -74,6 +74,9 @@ public class SCommentsController {
 		log.info("vo:{}",vo);
 		
 		List<SCommentsVO> vos = service.sc_selectAll(vo);
+/*service 객체의 sc_selectAll 메서드를 호출하여 댓글 목록을 가져옵니다.
+		vo는 댓글 조회에 필요한 매개변수(예: 게시물 번호)를 담고 있는 객체입니다.
+		결과는 List<SCommentsVO> 형태로 반환*/
 			
 		return vos;
 	}
