@@ -29,6 +29,10 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 		log.info("user_id:{}",session.getAttribute("user_id"));
 		log.info("nickname:{}",session.getAttribute("nickname"));
 		
+		String authority = (String) session.getAttribute("authority");
+		
+
+		
 		if(sPath.equals("") 
 				|| sPath.equals("/a_update.do")	
 				|| sPath.equals("/a_delete.do")		
@@ -80,7 +84,10 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 			
 		}
 		return true;
+		
+		
 	}
+	
 	
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
