@@ -290,7 +290,7 @@ function showDialogReport(news_comments_num){
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
-						window.history.back();
+
 						class="report"></td>
 				</tr>
 			</table>
