@@ -21,6 +21,16 @@ public class InfoDAOimpl implements InfoDAO {
 	public InfoDAOimpl() {
 		log.info("InfoDAOimpl()....");
 	}
+	
+	
+	@Override
+	public InfoVO i_insert(InfoVO vo) {
+		log.info("insert()....");
+		log.info(vo.toString());
+		
+		return vo2;
+	}
+	
 
 	@Override
 	public InfoVO i_selectOne(InfoVO vo) {

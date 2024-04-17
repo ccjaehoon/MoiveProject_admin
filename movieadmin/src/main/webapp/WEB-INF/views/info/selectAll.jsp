@@ -52,11 +52,11 @@
     <table id="customers">
         <thead>
             <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일자</th>
-                <th></th>
+                <th>영화제목</th>
+                <th>포스터</th>
+                <th>줄거리</th>
+                <th>감독</th>
+                <th>출연진</th>
             </tr>
         </thead>
         <tbody id="vos">
