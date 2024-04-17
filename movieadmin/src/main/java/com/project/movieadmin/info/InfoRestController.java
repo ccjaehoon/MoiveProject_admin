@@ -1,5 +1,9 @@
 package com.project.movieadmin.info;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -7,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,29 +28,21 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class InfoRestController {
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	private static final Logger logger = LoggerFactory.getLogger(InfoRestController.class);
-	private Gson gson = new GsonBuilder().create();// json텍스트를 한줄로 출력
-	@ResponseBody
-	@RequestMapping(value = "/json_selectAll.do", method = RequestMethod.GET, produces = "text/json; charset=UTF-8")
-	public String json_test(Locale locale, Model model, HttpServletRequest request) throws OpenAPIFault, Exception {
-		logger.info("Welcome json_selectAll....");
-		 // 발급키
-	    String key = "f1c8cf77dd2d86fde938f2770265ac97";
 
-	    // KOBIS 오픈 API Rest Client를 통해 호출
-	    KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
+    @Autowired
+    InfoService service;
+    
+    private static final Logger logger = LoggerFactory.getLogger(InfoRestController.class);
+    private Gson gson = new GsonBuilder().create();// json텍스트를 한줄로 출력
+    @ResponseBody
+    @RequestMapping(value = "/json_selectAll.do", method = RequestMethod.GET, produces = "text/json; charset=UTF-8")
+    public String json_test(Locale locale, Model model, HttpServletRequest request) throws OpenAPIFault, Exception {
+        logger.info("Welcome json_selectAll....");
+         // 발급키
+        String key = "f1c8cf77dd2d86fde938f2770265ac97";
 
 	    // 영화 목록 조회 서비스 호출
-	    String movieListResponse = service.getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
+	    String movieListResponse = ((KobisOpenAPIRestService) service).getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
 	    logger.info("Movie list response: {}", movieListResponse);
 	    logger.info(movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1));
 	    
@@ -53,11 +50,59 @@ public class InfoRestController {
 	    MovieVO[] vo_gson = gson.fromJson(txt_json, MovieVO[].class);
 		logger.info(Arrays.asList(vo_gson).toString());
 		for (MovieVO movieVO : Arrays.asList(vo_gson)) {
-			//service.u_insert(movieVO);
+		//	service.i_insert(movieVO);
 		}
 		
+
+        // KOBIS 오픈 API Rest Client를 통해 호출
+        KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
 
 				
 		return movieListResponse;
 	}
+	
+	
+	
+	
+	
+	
+	
+		@ResponseBody
+		@RequestMapping(value = "/json_selectAll.do", method = RequestMethod.GET, produces = "text/json; charset=UTF-8")
+		public String json_selectAll(Locale locale, Model model) throws OpenAPIFault, Exception {
+			logger.info("Welcome json_selectAll....");
+			
+			HttpRequest request = HttpRequest.newBuilder()
+				    .uri(URI.create("https://api.themoviedb.org/3/movie/movie_id?language=en-US"))
+				    .header("accept", "application/json")
+				    .method("GET", HttpRequest.BodyPublishers.noBody())
+				    .build();
+				HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+				System.out.println(response.body());
+
+					
+			return response.body();
+		}
+	
+	
+	
+	
+
+//        // 영화 목록 조회 서비스 호출
+//        String movieListResponse = service.getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
+//        logger.info("Movie list response: {}", movieListResponse);
+//        logger.info(movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1));
+//
+//        String txt_json = movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1);
+//        MovieVO[] vo_gson = gson.fromJson(txt_json, MovieVO[].class);
+//        logger.info(Arrays.asList(vo_gson).toString());
+//        for (MovieVO movieVO : Arrays.asList(vo_gson)) {
+//            service.insert(movieVO);
+//        }
+
+
+
+       
+    
+
 }

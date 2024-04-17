@@ -58,100 +58,69 @@ tfoot td {
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
-	$(function() {
-		console.log("jquery test");
-		console.log($(".nc_increaseGood"));
-		$(".nc_increaseGood")
-				.each(
-						function(index, item) {
-							//			console.log(index);
-
-							$(this)
-									.click(
-											function() {
-
-												console
-														.log("increaseGood Click");
-												console.log($(
-														"#news_comments_num"
-																+ index).val());
-												console.log($("#good" + index)
-														.val());
-
-												$
-														.ajax({
-															url : "http://localhost:8070/movie/nc_increaseGood.do",
-															type : "get",
-															data : {
-																news_comments_num : $(
-																		"#news_comments_num"
-																				+ index)
-																		.val(),
-																news_num : $(
-																		"#news_num")
-																		.val(),
-																nickname : $(
-																		"#nickname"
-																				+ index)
-																		.val(),
-																good : $(
-																		"#good"
-																				+ index)
-																		.val()
-															},
-															dataType : "json",
-															success : function(
-																	obj) {
-																console
-																		.log(obj);
-																let good = obj.good;
-																//						console.log(item);
-																item.value = good;
-															},
-															error : function(
-																	xhr, status) {
-																console
-																		.log(
-																				"status...",
-																				status);
-															}
-														});
-
-												return false;
-											});
-						});
-
+$(function() {
+	console.log("jquery test");
+	console.log($(".nc_increaseGood"));
+	$(".nc_increaseGood").each(function(index, item) {//console.log(index);
+		$(this).click(function() {
+			console.log("increaseGood Click");
+			console.log($("#news_comments_num" + index).val());
+			console.log($("#good" + index).val());
+			
+			$.ajax({
+				url : "http://localhost:8070/movie/nc_increaseGood.do",
+				type : "get",
+				data : {
+					news_comments_num : $("#news_comments_num" + index).val(),
+					news_num : $("#news_num").val(),
+					nickname : $("#nickname" + index).val(),
+					good : $("#good" + index).val()
+				},
+				dataType : "json",
+				success : function(obj) {
+					console.log(obj);
+					let good = obj.good;
+					//console.log(item);
+					item.value = good;
+				},
+				error : function(xhr, status) {
+					console.log("status...", status);
+				}
+			});
+			return false;
+		});
 	});
+});
 </script>
 <script>
-// 	$(function() {
-// 		console.log("jquery test");
-// 		console.log($(".report"));
-// 		$(".report").each(function(index, item) {
-// 			//			console.log(index);
+	// 	$(function() {
+	// 		console.log("jquery test");
+	// 		console.log($(".report"));
+	// 		$(".report").each(function(index, item) {
+	// 			//			console.log(index);
 
-// 			$(this).click(function() {
-// 				console.log("report Click");
-// 				$("#report").dialog("open");
+	// 			$(this).click(function() {
+	// 				console.log("report Click");
+	// 				$("#report").dialog("open");
 
-// 			});
-// 		});
+	// 			});
+	// 		});
 
-		$(function() {
-			$("#report").dialog({
-				autoOpen : false
-			});
+	$(function() {
+		$("#report").dialog({
+			autoOpen : false
 		});
+	});
 
-// 	});
+	// 	});
 
-function showDialogReport(news_comments_num, nickname){
-	console.log(news_comments_num);
-	console.log(nickname);
-	$('#news_comments_num').val(news_comments_num);
-	$('#nickname').val(nickname);
-	$("#report").dialog("open");
-}
+	function showDialogReport(news_comments_num, nickname) {
+		console.log(news_comments_num);
+		console.log(nickname);
+		$('#news_comments_num').val(news_comments_num);
+		$('#nickname').val(nickname);
+		$("#report").dialog("open");
+	}
 </script>
 
 </head>
@@ -261,7 +230,8 @@ function showDialogReport(news_comments_num, nickname){
 
 
 					<td><input type="button" id="reportBtn" class="report"
-						onClick="showDialogReport('${cvo.news_comments_num}','${cvo.nickname}')" value="신고" /></td>
+						onClick="showDialogReport('${cvo.news_comments_num}','${cvo.nickname}')"
+						value="신고" /></td>
 
 
 
@@ -292,7 +262,6 @@ function showDialogReport(news_comments_num, nickname){
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
-
 						class="report"></td>
 				</tr>
 			</table>
@@ -300,35 +269,25 @@ function showDialogReport(news_comments_num, nickname){
 	</div>
 
 
-	<script>
-    
-    function submitReportForm() {
-        
-    	location.reload();
-    }
-				
-
-    
-    $("#reportForm").submit(function(event) {
-      
-        event.preventDefault();
-        
-        
-        $.ajax({
-            type: "POST",
-            url: $(this).attr("action"),
-            data: $(this).serialize(), 
-            success: function(response) {
-                
-                console.log(response);
-                submitReportForm(); 
-            },
-            error: function(xhr, status, error) {
-                
-                console.error(status, error);
-            }
-        });
-    });
+<script>
+	function submitReportForm() {
+		location.reload();
+	}
+	$("#reportForm").submit(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type : "POST",
+			url : $(this).attr("action"),
+			data : $(this).serialize(),
+			success : function(response) {
+				console.log(response);
+				submitReportForm();
+			},
+			error : function(xhr, status, error) {
+				console.error(status, error);
+			}
+		});
+	});
 </script>
 
 </body>

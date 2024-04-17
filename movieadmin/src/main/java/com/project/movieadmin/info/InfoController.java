@@ -1,12 +1,20 @@
 package com.project.movieadmin.info;
 
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UriUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,7 +46,7 @@ public class InfoController {
 
 	
 	@RequestMapping(value = "/i_selectOne.do", method = RequestMethod.GET)
-	public String i_selectOne(int cpage, int pageBlock, Model model) {
+	public String i_selectOne(InfoVO vo, int cpage, int pageBlock, Model model) {
 		
 		log.info("i_selectOne.do");
 		InfoVO vo2=service.i_selectOne(vo);
@@ -49,14 +57,15 @@ public class InfoController {
 		
 		String nickname = (String) session.getAttribute("nickname");
 		log.info("nickname: {}",nickname);
-        
-        model.addAttribute("nickname", nickname);
-		InfoVO cvo = new InfoVO();
-		cvo.setInfo_num(vo.getInfo_num());
-		List<InfoVO> cvos = comService.i_selectAll(cvo);
-		log.info(cvos.toString());
-
-		model.addAttribute("cvos", cvos);
+    
+//		//댓글처리부분
+//        model.addAttribute("nickname", nickname);
+//		InfoVO cvo = new InfoVO();
+//		cvo.setInfo_num(vo.getInfo_num());
+//		List<InfoVO> cvos = comService.i_selectAll(cvo);
+//		log.info(cvos.toString());
+//
+//		model.addAttribute("cvos", cvos);
 		
 		
 		
@@ -74,7 +83,7 @@ public class InfoController {
 
 		log.info("cpage : {}, pageBlock : {}", cpage, pageBlock);
 
-		List<InfoVO> vos = service.n_selectAll(cpage, pageBlock);
+		List<InfoVO> vos = service.i_selectAll(cpage, pageBlock);
 		for (InfoVO x : vos) {
 			log.info(x.toString());
 		}
@@ -83,7 +92,7 @@ public class InfoController {
 		model.addAttribute("vos", vos);
 
 		
-		int total_rows = service.n_getTotalRows();
+		int total_rows = service.i_getTotalRows();
 		log.info("total_rows:" + total_rows);
 
 		int totalPageCount = 1;
@@ -119,7 +128,7 @@ public class InfoController {
 			model.addAttribute("vos", vos);
 
 			
-			int total_rows = service.n_getSearchTotalRows(searchKey, searchWord);
+			int total_rows = service.i_getSearchTotalRows(searchKey, searchWord);
 			log.info("total_rows:" + total_rows);
 
 			int totalPageCount = 1;
@@ -143,7 +152,9 @@ public class InfoController {
 	}
 	
 	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
-	public String i_increaseRecommends(int cpage, int pageBlock, Model model) {
+	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
+		
+		
 		
 		log.info("Welcome i_increaseRecommends...");
 		log.info(vo.toString());

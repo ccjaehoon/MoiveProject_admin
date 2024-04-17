@@ -1,5 +1,8 @@
 package com.project.movieadmin.info.review;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.project.movieadmin.info.review.ReviewService;
-import com.project.movieadmin.info.review.ReviewVO;
+import com.project.movieadmin.info.InfoService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -58,7 +59,7 @@ public class ReviewController {
 		int result = service.rv_insert(vo);
 		log.info("result:{}", result);
 
-		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
+		return "redirect:rv_selectOne.do?review_num=";
 	}
 	
 	
@@ -81,8 +82,7 @@ public class ReviewController {
 		int result = service.rv_update(vo);
 		log.info("result:{}", result);
 
-		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
-	
+		
 		return "rv_updateOK";
 	}
 	
@@ -91,7 +91,7 @@ public class ReviewController {
 		
 		log.info("Welcome rv_delete.do....");
 		String nickname = (String) session.getAttribute("user_id");
-		model.removeAttribute(nickname);	
+		
 	
 		return "rv_delete";
 	}
@@ -105,7 +105,6 @@ public class ReviewController {
 		int result = service.rv_delete(vo);
 		log.info("result:{}", result);
 
-		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
 	
 		return "rv_deleteOK";
 	}
@@ -122,11 +121,9 @@ public class ReviewController {
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		logger.info("Welcome selectAll!");
 		
-		model.addAttribute("totalPageCount", totalPageCount);
+		model.addAttribute("totalPageCount");
 
-		return "board/comments/selectAll";
-		
-		
+			
 	
 		return "Review/rv_selectAll";
 	}

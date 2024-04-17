@@ -35,6 +35,9 @@
             text-align: center; 
         }
         </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+</script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -151,15 +154,20 @@
 
 
 
-					<td><input type="button" id="reportBtn" class="report"
-						value="신고" /></td>
+					<td>
+						<input type="button" id="reportBtn" class="report" value="신고" />
+						
+					</td>
 
 
 
-					<td><c:if test="${param.nickname == cvo.nickname}">
-							<a
-								href="SComments_deleteOK.do?story_comments_num=${cvo.story_comments_num}&story_num=${cvo.story_num}">댓글삭제</a>
-						</c:if></td>
+ 				
+					<td>
+						<input type="button" id="deleteBtn" class="delete" value="삭제" onclick="deleteComment(${cvo.story_comments_num})">
+						<c:if test="${param.nickname == cvo.nickname}">
+<a href="SComments_deleteOK.do?story_comments_num=${cvo.story_comments_num}&story_num=${cvo.story_num}">댓글삭제</a>
+						</c:if>
+					</td>
 
 				</tr>
 			</c:forEach>

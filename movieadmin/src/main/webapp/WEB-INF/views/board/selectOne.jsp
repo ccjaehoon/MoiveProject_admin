@@ -47,8 +47,7 @@ $(function() {
 	console.log("jquery test");
 	console.log($(".c_increaseGood"));
 	$(".c_increaseGood").each(function(index,item){
-//			console.log(index);
-		
+//		console.log(index);
 		$(this).click(function() {
 			
 			console.log("increaseGood Click");
@@ -79,6 +78,36 @@ $(function() {
 		});
 	});
 });
+</script>
+<script>
+	// 	$(function() {
+	// 		console.log("jquery test");
+	// 		console.log($(".report"));
+	// 		$(".report").each(function(index, item) {
+	// 			//			console.log(index);
+
+	// 			$(this).click(function() {
+	// 				console.log("report Click");
+	// 				$("#report").dialog("open");
+
+	// 			});
+	// 		});
+
+	$(function() {
+		$("#report").dialog({
+			autoOpen : false
+		});
+	});
+
+	// 	});
+
+	function showDialogReport(news_comments_num, nickname) {
+		console.log(news_comments_num);
+		console.log(nickname);
+		$('#news_comments_num').val(news_comments_num);
+		$('#nickname').val(nickname);
+		$("#report").dialog("open");
+	}
 </script>
 
 </head>
@@ -192,7 +221,27 @@ $(function() {
 
 		</tbody>
 	</table>
-
+	
+	<script>
+		function submitReportForm() {
+			location.reload();
+		}
+		$("#reportForm").submit(function(event) {
+			event.preventDefault();
+			$.ajax({
+				type : "POST",
+				url : $(this).attr("action"),
+				data : $(this).serialize(),
+				success : function(response) {
+					console.log(response);
+					submitReportForm();
+				},
+				error : function(xhr, status, error) {
+					console.error(status, error);
+				}
+			});
+		});
+	</script>
 
 </body>
 </html>
