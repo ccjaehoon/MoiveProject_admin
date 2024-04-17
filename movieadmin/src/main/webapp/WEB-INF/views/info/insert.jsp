@@ -64,7 +64,7 @@ div {
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div>
 		<h1>영화 작성페이지</h1>
-		<form action="i_insertOK.do" method="post">
+		<form action="i_insertOK.do" method="post" enctype="multipart/form-data">
 			<table id="insertTable">
 				<tr>
 					<td><label for="title">제목</label></td>
@@ -81,6 +81,11 @@ div {
 				<tr>
 					<td><label for="actor">배우</label></td>
 					<td><input type="text" id="actor" name="actor"></td>
+				</tr>
+				<tr>
+					<td><label for="releaseDate">개봉일</label></td>
+					<td colspan="2"><input type="date" id="releaseDate" name="releaseDate"
+						value=""></td>
 				</tr>
 				<tr>
 					<td><label for="showTime">상영시간(분)</label></td>
