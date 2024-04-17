@@ -24,11 +24,15 @@ public class InfoDAOimpl implements InfoDAO {
 	
 	
 	@Override
-	public InfoVO i_insert(InfoVO vo) {
+	public int i_insert(InfoVO vo) {
 		log.info("insert()....");
 		log.info(vo.toString());
 		
-		return vo2;
+		int flag = sqlSession.insert("I_INSERT", vo);
+
+		log.info("flag : {}", flag);
+
+		return flag;
 	}
 	
 

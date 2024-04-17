@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface InfoDAO {
 	
-	public InfoVO i_insert(InfoVO vo);
+	public int i_insert(InfoVO vo);
 	
 	public InfoVO i_selectOne(InfoVO vo);
 	
