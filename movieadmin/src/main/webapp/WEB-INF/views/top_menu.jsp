@@ -60,7 +60,6 @@
         <a href="u_selectAll.do">회원목록</a>
         <a href="m_myPage.do">마이페이지</a>
         <a href="rp_selectAll.do">신고목록</a>
-        <a href="i_test.do">테스트</a>
         <c:choose>
             <c:when test="${user_id != null}"><a href="u_logout.do">로그아웃</a></c:when>
             <c:otherwise><a href="u_login.do">로그인</a></c:otherwise>

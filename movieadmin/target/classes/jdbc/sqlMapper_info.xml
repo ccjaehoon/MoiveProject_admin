@@ -4,71 +4,81 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.info">
-	<insert id="INSERT" parameterType="com.project.movieadmin.info.InfoVO">
-		
+	<insert id="I_INSERT"
+		parameterType="com.project.movieadmin.info.InfoVO">
+		insert into
+		info(title,nickname,genre,directors,actor,showtime,releaseDate,content,save_img,views,recommends,watchGrade,companys)
+		values(#{title},'admin',#{genre},#{directors},#{actor},#{showtime},#{releaseDate},#{content},#{save_img},#{views},#{recommends},#{watchGrade},#{companys})
 	</insert>
 
 	<update id="UPDATE">
-		
+
 	</update>
 
 	<delete id="DELETE">
-	
+
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.project.movieadmin.info.InfoVO">
-		
-	</select>
-
-	<select id="SELECT_ALL" resultType="com.project.movieadmin.info.InfoVO">
-	
-	</select>
-
-	<select id="SELECT_ALL_PAGE_BLOCK"
+	<select id="I_SELECT_ONE"
 		resultType="com.project.movieadmin.info.InfoVO">
-		
+		select * from info where
+		info_num=#{info_num}
 	</select>
 
-	
+	<select id="SELECT_ALL"
+		resultType="com.project.movieadmin.info.InfoVO">
+
+	</select>
+
+	<select id="I_SELECT_ALL_PAGE_BLOCK"
+		resultType="com.project.movieadmin.info.InfoVO">
+		select * from info order by info_num desc limit
+		${startRow},
+		${pageBlock}
+	</select>
+
+
 	<select id="SEARCHLIST_ID"
 		resultType="com.project.movieadmin.info.InfoVO">
-		
+
 	</select>
 
-	
+
 	<select id="SEARCHLIST_NAME"
 		resultType="com.project.movieadmin.info.InfoVO">
-		
+
 	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_ID"
 		resultType="com.project.movieadmin.info.InfoVO">
-		
+
 	</select>
 
 	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
 		resultType="com.project.movieadmin.info.InfoVO">
-		
+
 	</select>
 
 
-	<select id="TOTAL_ROWS"	resultType="int">
-		
+	<select id="I_TOTAL_ROWS" resultType="int">
+		select count(*) total_rows
+		from info
 	</select>
 
-	
-	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
-	
+
+	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
+
 	</select>
 
-	
-	<select id="SEARCH_TOTAL_ROWS_NAME"	resultType="int">
-		
+
+	<select id="SEARCH_TOTAL_ROWS_NAME" resultType="int">
+
 	</select>
 
-	
-	<select id="LOGIN"	resultType="com.project.movieadmin.info.InfoVO">
-		
+
+	<select id="LOGIN"
+		resultType="com.project.movieadmin.info.InfoVO">
+
 	</select>
 
 

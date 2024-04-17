@@ -63,7 +63,7 @@ public class SCommentsController {
 		int result = service.sc_delete(vo);
 		log.info("result:{}",result);
 		
-		return "redirect:SComments_selectAll.do?num="+vo.getStory_comments_num();
+		return "redirect:s_selectOne.do?story_num="+vo.getStory_num();
 	}
 	
 

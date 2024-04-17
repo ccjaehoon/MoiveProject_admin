@@ -131,7 +131,7 @@ public class ReviewController {
 	public String rv_searchList(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
 		
-
+		//test
 
 		return "Review/rv_selectAll";
 	}

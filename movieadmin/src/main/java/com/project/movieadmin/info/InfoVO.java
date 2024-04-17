@@ -1,6 +1,6 @@
 package com.project.movieadmin.info;
 
-import java.util.Date;
+import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,16 +15,14 @@ public class InfoVO {
 	private String genre;
 	private String directors;
 	private String actor;
-	private int showTime;
+	private int showtime;
 	private Date releaseDate;
-	private String content;
-	private String save_img;
-	private MultipartFile file_img;
+	private String content;	
 	private int views;
 	private int recommends;
 	private int watchGrade;
 	private String companys;
-	
-	//test
+	private String save_img;
+	private MultipartFile file_img;
 	
 }
