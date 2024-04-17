@@ -67,6 +67,17 @@
             </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
+        	<c:forEach var="vo" items="${vos}">
+					<tr>
+						<td width=200px><a
+							href="i_selectOne.do?info_num=${vo.info_num}&title=${vo.title}">${vo.info_num}</a></td>
+						<td>${vo.title}</td>
+						<td>${vo.save_img}</td>
+
+					</tr>
+				</c:forEach>
+=======
             <c:forEach var="vo" items="${vos}">
                     <tr>
                         <td width=200px><a
@@ -75,6 +86,7 @@
                         <td>${vo.save_img}</td>
                                          </tr>
                 </c:forEach>
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
         </tbody>
         <tfoot>
             <tr>
