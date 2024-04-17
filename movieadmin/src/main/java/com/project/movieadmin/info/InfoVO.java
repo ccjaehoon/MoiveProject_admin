@@ -25,6 +25,4 @@ public class InfoVO {
 	private int watchGrade;
 	private String companys;
 	
-	//test
-	
 }

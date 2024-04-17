@@ -51,11 +51,19 @@
     <table id="customers">
         <thead>
             <tr>
+<<<<<<< HEAD
+                <th>영화제목</th>
+                <th>포스터</th>
+                <th>줄거리</th>
+                <th>감독</th>
+                <th>출연진</th>
+=======
                 <th>번호</th>
                 <th>제목</th>
                 <th>포스터</th>
 
                 <th></th>
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
             </tr>
         </thead>
         <tbody>
