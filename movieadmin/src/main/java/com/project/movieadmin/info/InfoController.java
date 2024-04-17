@@ -142,7 +142,7 @@ public class InfoController {
 			model.addAttribute("totalPageCount", totalPageCount);
 			
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
