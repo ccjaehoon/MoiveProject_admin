@@ -1,5 +1,9 @@
 package com.project.movieadmin.info;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -55,11 +59,40 @@ public class InfoRestController {
 	    MovieVO[] vo_gson = gson.fromJson(txt_json, MovieVO[].class);
 		logger.info(Arrays.asList(vo_gson).toString());
 		for (MovieVO movieVO : Arrays.asList(vo_gson)) {
-			service.i_insert(movieVO);
+		//	service.i_insert(movieVO);
 		}
 		
 
 				
 		return movieListResponse;
 	}
+	
+	
+	
+	
+	
+	
+	
+		@ResponseBody
+		@RequestMapping(value = "/json_selectAll.do", method = RequestMethod.GET, produces = "text/json; charset=UTF-8")
+		public String json_selectAll(Locale locale, Model model) throws OpenAPIFault, Exception {
+			logger.info("Welcome json_selectAll....");
+			
+			HttpRequest request = HttpRequest.newBuilder()
+				    .uri(URI.create("https://api.themoviedb.org/3/movie/movie_id?language=en-US"))
+				    .header("accept", "application/json")
+				    .method("GET", HttpRequest.BodyPublishers.noBody())
+				    .build();
+				HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+				System.out.println(response.body());
+
+					
+			return response.body();
+		}
+	
+	
+	
+	
+	
+	
 }
