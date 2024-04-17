@@ -40,7 +40,7 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
     <h1>글목록</h1>
     <hr>
-    <form action="b_searchList.do">
+    <form action="i_searchList.do">
     	<select name="searchKey">
     		<option value="title">title</option>
     		<option value="content">content</option>
@@ -59,16 +59,10 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
-        	<c:forEach var="vo" items="${vos}">
-            <tr>
-                <td><a href="b_selectOne.do?num=${vo.num}">${vo.num}</a></td>
-                <td>${vo.title}</td>
-                <td>${vo.writer}</td>
-                <td>${vo.wdate}</td>
-                <td><a href="b_delete.do?num=${vo.num}">글삭제</a></td>
-            </tr>
-        	</c:forEach>
+        <tbody id="vos">
+        	
+           
+        	
             
         </tbody>
         <tfoot>
@@ -87,4 +81,29 @@
         </tfoot>
     </table>
 </body>
+<script>
+        // API에서 데이터 가져 오기
+//         fetch('http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=f1c8cf77dd2d86fde938f2770265ac97')
+        fetch('http://localhost:8070/movie/json_selectAll.do')
+            .then(response => response.json())
+            .then(data => {
+                // 여기에서 데이터를 처리합니다. 예를 들어:
+                console.log(data); // 데이터의 구조를 확인하기 위해 데이터를 로깅합니다.
+                //console.log(data.movieListResult.movieList[0].movieNm); // 데이터의 구조를 확인하기 위해 데이터를 로깅합니다.
+                
+                let vos = '';
+                data.movieListResult.movieList.forEach(function(vo){
+                	 console.log(vo.movieNm);
+                	 vos += ` <tr>
+		                         <td>\${vo.movieCd}</td>
+		                         <td>\${vo.movieNm}</td>
+		                     </tr>`;
+		              
+                });
+				document.getElementById("vos").innerHTML = vos;                
+            })
+            .catch(error => {
+                console.error('데이터 가져오기 오류:', error);
+            });
+    </script>
 </html>
