@@ -60,10 +60,8 @@ tfoot td {
 				<th>줄거리</th>
 				<th>감독</th>
 				<th>출연진</th> 
-				<th>번호</th>
-				<th>제목</th>
-				<th>포스터</th>
 
+				
 				<th></th> 
 
 			</tr>
