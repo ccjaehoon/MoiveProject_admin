@@ -87,7 +87,7 @@ tfoot td {
 	<table id="customers">
 		<thead>
 			<tr>
-				<th colspan="4">포스터가 올 자리입니다</th>
+				<th colspan="4"><img src="resources/uploadimg/${vo2.save_img}" width="200"></th>
 				<th colspan="3"><iframe id="trailerFrame" width="420" height="315"
 						frameborder="0" allowfullscreen></iframe></th>
 			</tr>
