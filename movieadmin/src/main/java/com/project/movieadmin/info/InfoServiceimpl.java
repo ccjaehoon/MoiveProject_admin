@@ -16,7 +16,7 @@ public class InfoServiceimpl implements InfoService {
 	private InfoDAO dao;
 	
 	@Override
-	public InfoVO i_insert(InfoVO vo) {
+	public int i_insert(InfoVO vo) {
 		
 		return dao.i_insert(vo);
 	}

@@ -15,7 +15,7 @@ public class InfoVO {
 	private String genre;
 	private String directors;
 	private String actor;
-	private int showTime;
+	private int showtime;
 	private Date releaseDate;
 	private String content;
 	private String save_img;

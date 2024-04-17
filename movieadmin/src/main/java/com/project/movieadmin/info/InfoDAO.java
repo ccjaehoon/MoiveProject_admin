@@ -5,6 +5,9 @@ import java.util.List;
 
 public interface InfoDAO {
 	
+
+	public int i_insert(InfoVO vo);
+
 	public InfoVO i_selectOne(InfoVO vo);
 	
 	public List<InfoVO> i_selectAll(int cpage, int pageBlock);

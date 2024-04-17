@@ -1,8 +1,13 @@
 package com.project.movieadmin.info;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -48,13 +53,13 @@ public class InfoController {
 		String nickname = (String) session.getAttribute("user_id");
 		model.addAttribute(nickname);
 
-		return "info/i_insert";
+		return "info/insert";
 	}
 	
 	
 	
 	@RequestMapping(value = "/i_insertOK.do", method = RequestMethod.GET)
-	public String i_insert(Model model) {
+	public String i_insertOK(InfoVO vo) throws IllegalStateException, IOException {
 		log.info("Welcome i_insertOK.do...");
 		log.info(vo.toString());
 
@@ -89,9 +94,9 @@ public class InfoController {
 		int result = service.i_insert(vo);
 
 		if (result == 1) {
-			return "redirect:i_selectAll.do";
+			return "redirect:selectAll.do";
 		} else {
-			return "redirect:i_insert.do";
+			return "redirect:insert.do";
 		}
 	}
 	
@@ -200,30 +205,30 @@ public class InfoController {
 		}
 		
 		
-		return "info/i_selectAll";
+		return "info/selectAll";
 	}
 	
-	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
-	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
-		
-		
-		
-		log.info("Welcome i_increaseRecommends...");
-		log.info(vo.toString());
-		
-		return "info/i_increaseRecommends";
-	}
+//	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
+//	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
+//		
+//		
+//		
+//		log.info("Welcome i_increaseRecommends...");
+//		log.info(vo.toString());
+//		
+//		return "info/i_increaseRecommends";
+//	}
+//	
+//	@RequestMapping(value = "/i_increaseRecommendsOK.do", method = RequestMethod.GET)
+//	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
+//		
+//		log.info("Welcome i_increaseRecommends...");
+//		log.info(vo.toString());
+//		
+//		return "info/i_increaseRecommends";
+//	}
 	
-	@RequestMapping(value = "/i_increaseRecommendsOK.do", method = RequestMethod.GET)
-	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
-		
-		log.info("Welcome i_increaseRecommends...");
-		log.info(vo.toString());
-		
-		return "info/i_increaseRecommends";
-	}
-	
-//test
+
 	
 	
 }
