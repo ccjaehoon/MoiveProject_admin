@@ -34,9 +34,6 @@ public class InfoController {
 	
 	@Autowired
 	private InfoService service;
-	
-	@Autowired
-	private InfoService comService;
 
 	@Autowired
 	private HttpSession session;
@@ -61,7 +58,7 @@ public class InfoController {
         model.addAttribute("nickname", nickname);
 		InfoVO cvo = new InfoVO();
 		cvo.setInfo_num(vo.getInfo_num());
-		List<InfoVO> cvos = comService.i_selectAll(cvo);
+		List<InfoVO> cvos = service.i_selectAll(cvo);
 		log.info(cvos.toString());
 
 		model.addAttribute("cvos", cvos);
