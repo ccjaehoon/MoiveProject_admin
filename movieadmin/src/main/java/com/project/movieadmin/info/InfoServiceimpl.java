@@ -14,6 +14,12 @@ public class InfoServiceimpl implements InfoService {
 	
 	@Autowired
 	private InfoDAO dao;
+	
+	@Override
+	public InfoVO i_insert(InfoVO vo) {
+		
+		return dao.i_insert(vo);
+	}
 
 	@Override
 	public InfoVO i_selectOne(InfoVO vo) {

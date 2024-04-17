@@ -40,6 +40,61 @@ public class InfoController {
 
 	@Autowired
 	private ServletContext sContext;
+	
+	
+	@RequestMapping(value = "/i_insert.do", method = RequestMethod.GET)
+	public String i_insert(Model model) {
+		log.info("Welcome i_insert.do....");
+		String nickname = (String) session.getAttribute("user_id");
+		model.addAttribute(nickname);
+
+		return "info/i_insert";
+	}
+	
+	
+	
+	@RequestMapping(value = "/i_insertOK.do", method = RequestMethod.GET)
+	public String i_insert(Model model) {
+		log.info("Welcome i_insertOK.do...");
+		log.info(vo.toString());
+
+		String realPath = sContext.getRealPath("resources/uploadimg");
+		log.info(realPath);
+
+		String originName = vo.getFile_img().getOriginalFilename();
+
+		log.info("getOriginalFilename:{}", originName);
+
+		if (originName.length() == 0) {
+			vo.setSave_img("default.png");
+		} else {
+			String save_img = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
+
+			vo.setSave_img(save_img);
+
+			File uploadFile = new File(realPath, save_img);
+			vo.getFile_img().transferTo(uploadFile);
+
+			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+
+			File thumb_file = new File(realPath, "thumb_" + save_img);
+
+			ImageIO.write(thumb_buffer_img, save_img.substring(save_img.lastIndexOf(".") + 1), thumb_file);
+
+		}
+
+		int result = service.i_insert(vo);
+
+		if (result == 1) {
+			return "redirect:i_selectAll.do";
+		} else {
+			return "redirect:i_insert.do";
+		}
+	}
+	
 
 	
 	@RequestMapping(value = "/i_selectOne.do", method = RequestMethod.GET)
@@ -51,12 +106,11 @@ public class InfoController {
 		model.addAttribute("vo2", vo2);
 		
 		
-		
 		String nickname = (String) session.getAttribute("nickname");
 		log.info("nickname: {}",nickname);
 
     
-//		//댓글처리부분
+//		
 //        model.addAttribute("nickname", nickname);
 //		InfoVO cvo = new InfoVO();
 //		cvo.setInfo_num(vo.getInfo_num());
@@ -141,7 +195,7 @@ public class InfoController {
 			model.addAttribute("totalPageCount", totalPageCount);
 			
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -153,6 +207,15 @@ public class InfoController {
 	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
 		
 		
+		
+		log.info("Welcome i_increaseRecommends...");
+		log.info(vo.toString());
+		
+		return "info/i_increaseRecommends";
+	}
+	
+	@RequestMapping(value = "/i_increaseRecommendsOK.do", method = RequestMethod.GET)
+	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
 		
 		log.info("Welcome i_increaseRecommends...");
 		log.info(vo.toString());
