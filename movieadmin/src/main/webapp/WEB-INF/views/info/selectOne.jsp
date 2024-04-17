@@ -19,7 +19,6 @@ function init() {
     });
 }
 
-// YouTube 검색 및 예고편 가져오기
 function searchForTrailer() {
     var request = gapi.client.youtube.search.list({
         part: 'snippet',
@@ -30,8 +29,8 @@ function searchForTrailer() {
 
     request.execute(function(response) {
         var videoId = response.result.items[0].id.videoId;
-        var trailerUrl = 'https://www.youtube.com/watch?v=' + videoId;
-        console.log('파묘 예고편 URL:', trailerUrl);
+        var trailerUrl = 'https://www.youtube.com/embed/' + videoId;
+        document.getElementById('trailerFrame').src = trailerUrl;
     });
 }
 
