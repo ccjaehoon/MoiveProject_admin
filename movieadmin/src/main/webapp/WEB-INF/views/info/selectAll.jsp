@@ -54,26 +54,31 @@
             <tr>
                 <th>번호</th>
                 <th>제목</th>
-                <th>작성자</th>
-                <th>작성일자</th>
+                <th>포스터</th>
+     
                 <th></th>
             </tr>
         </thead>
-        <tbody id="vos">
-        	
-           
-        	
-            
+        <tbody>
+        	<c:forEach var="vo" items="${vos}">
+					<tr>
+						<td width=200px><a
+							href="i_selectOne.do?info_num=${vo.info_num}">${vo.info_num}</a></td>
+						<td>${vo.title}</td>
+						<td>${vo.save_img}</td>
+
+					</tr>
+				</c:forEach>
         </tbody>
         <tfoot>
             <tr>
                 <td colspan="5">
                 	<c:forEach var="i" begin="1" end="${totalPageCount}">
 	                	<c:if test="${param.searchKey == null }">
-		                	<a href="b_selectAll.do?cpage=${i}">${i} &nbsp;</a>
+		                	<a href="i_selectAll.do?cpage=${i}">${i} &nbsp;</a>
                 		</c:if>
                 		<c:if test="${param.searchKey != null }">
-		                	<a href="b_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
+		                	<a href="i_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
                 		</c:if>
                 	</c:forEach>
                 </td>
@@ -81,29 +86,5 @@
         </tfoot>
     </table>
 </body>
-<script>
-        // API에서 데이터 가져 오기
-//         fetch('http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=f1c8cf77dd2d86fde938f2770265ac97')
-        fetch('http://localhost:8070/movie/json_selectAll.do')
-            .then(response => response.json())
-            .then(data => {
-                // 여기에서 데이터를 처리합니다. 예를 들어:
-                console.log(data); // 데이터의 구조를 확인하기 위해 데이터를 로깅합니다.
-                //console.log(data.movieListResult.movieList[0].movieNm); // 데이터의 구조를 확인하기 위해 데이터를 로깅합니다.
-                
-                let vos = '';
-                data.movieListResult.movieList.forEach(function(vo){
-                	 console.log(vo.movieNm);
-                	 vos += ` <tr>
-		                         <td>\${vo.movieCd}</td>
-		                         <td>\${vo.movieNm}</td>
-		                     </tr>`;
-		              
-                });
-				document.getElementById("vos").innerHTML = vos;                
-            })
-            .catch(error => {
-                console.error('데이터 가져오기 오류:', error);
-            });
-    </script>
+
 </html>

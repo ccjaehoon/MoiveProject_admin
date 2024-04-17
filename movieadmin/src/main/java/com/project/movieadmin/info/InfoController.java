@@ -43,7 +43,7 @@ public class InfoController {
 
 	
 	@RequestMapping(value = "/i_selectOne.do", method = RequestMethod.GET)
-	public String i_selectOne(InfoVO vo, int cpage, int pageBlock, Model model) {
+	public String i_selectOne(InfoVO vo, Model model) {
 		
 		log.info("i_selectOne.do");
 		InfoVO vo2=service.i_selectOne(vo);
@@ -68,17 +68,16 @@ public class InfoController {
 		
 		
 		
-		return "info/i_selectOne";
+		return "info/selectOne";
 	}
 	
 	@RequestMapping(value = "/i_selectAll.do", method = RequestMethod.GET)
 	public String i_selectAll(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
-		
-		
-		
-		
+
 		log.info("Welcome i_selectAll.do....");
+		
+		
 
 		log.info("cpage : {}, pageBlock : {}", cpage, pageBlock);
 
@@ -107,7 +106,7 @@ public class InfoController {
 		
 		
 		
-		return "info/i_selectAll";
+		return "info/selectAll";
 	}
 	
 	@RequestMapping(value = "/i_searchList.do", method = RequestMethod.GET)

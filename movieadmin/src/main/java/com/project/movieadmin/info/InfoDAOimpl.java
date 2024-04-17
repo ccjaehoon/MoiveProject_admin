@@ -38,7 +38,7 @@ public class InfoDAOimpl implements InfoDAO {
 	public List<InfoVO> i_selectAll(int cpage, int pageBlock) {
 		log.info("i_selectAll()....");
 		Map<String, Integer> map = new HashMap<String, Integer>();
-		List<InfoVO> vos = sqlSession.selectList("I_SELECT_ALL_PAGE_BLOCK", map);
+	
 		log.info("cpage:" + cpage);
 		log.info("pageBlock:" + pageBlock);
 
@@ -49,7 +49,7 @@ public class InfoDAOimpl implements InfoDAO {
 		
 		map.put("startRow", startRow-1);
 		map.put("pageBlock", pageBlock);
-
+		List<InfoVO> vos = sqlSession.selectList("I_SELECT_ALL_PAGE_BLOCK", map);
 	
 		return vos;
 	}

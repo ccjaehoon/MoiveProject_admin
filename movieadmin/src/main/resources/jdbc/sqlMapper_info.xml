@@ -16,17 +16,19 @@
 	
 	</delete>
 
-	<select id="SELECT_ONE" resultType="com.project.movieadmin.info.InfoVO">
-		
+	<select id="I_SELECT_ONE" resultType="com.project.movieadmin.info.InfoVO">
+		select * from info where
+		info_num=#{info_num}
 	</select>
 
 	<select id="SELECT_ALL" resultType="com.project.movieadmin.info.InfoVO">
 	
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK"
+	<select id="I_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.info.InfoVO">
-		
+		select * from info order by info_num desc limit ${startRow},
+		${pageBlock}
 	</select>
 
 	
@@ -52,8 +54,9 @@
 	</select>
 
 
-	<select id="TOTAL_ROWS"	resultType="int">
-		
+	<select id="I_TOTAL_ROWS"	resultType="int">
+		select count(*) total_rows
+		from info
 	</select>
 
 	
