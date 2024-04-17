@@ -49,7 +49,7 @@ public class InfoRestController {
         MovieVO[] vo_gson = gson.fromJson(txt_json, MovieVO[].class);
         logger.info(Arrays.asList(vo_gson).toString());
         for (MovieVO movieVO : Arrays.asList(vo_gson)) {
-            service.i_insert(movieVO);
+            service.insert(movieVO);
         }
 
 
