@@ -60,9 +60,7 @@
             </tr>
         </thead>
         <tbody id="vos">
-        	
-           
-        	
+        	      	
             
         </tbody>
         <tfoot>
@@ -81,29 +79,5 @@
         </tfoot>
     </table>
 </body>
-<script>
-        // API에서 데이터 가져 오기
-//         fetch('http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=f1c8cf77dd2d86fde938f2770265ac97')
-        fetch('http://localhost:8070/movie/json_selectAll.do')
-            .then(response => response.json())
-            .then(data => {
-                // 여기에서 데이터를 처리합니다. 예를 들어:
-                console.log(data); // 데이터의 구조를 확인하기 위해 데이터를 로깅합니다.
-                //console.log(data.movieListResult.movieList[0].movieNm); // 데이터의 구조를 확인하기 위해 데이터를 로깅합니다.
-                
-                let vos = '';
-                data.movieListResult.movieList.forEach(function(vo){
-                	 console.log(vo.movieNm);
-                	 vos += ` <tr>
-		                         <td>\${vo.movieCd}</td>
-		                         <td>\${vo.movieNm}</td>
-		                     </tr>`;
-		              
-                });
-				document.getElementById("vos").innerHTML = vos;                
-            })
-            .catch(error => {
-                console.error('데이터 가져오기 오류:', error);
-            });
-    </script>
+
 </html>
