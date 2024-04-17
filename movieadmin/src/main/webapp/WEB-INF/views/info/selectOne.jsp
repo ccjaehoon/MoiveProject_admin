@@ -21,7 +21,7 @@
 				});
 	}
 
-<<<<<<< HEAD
+
 	function searchForTrailer() {
 		var request = gapi.client.youtube.search.list({
 			part : 'snippet',
@@ -30,31 +30,14 @@
 			maxResults : 1
 		// 검색 결과 수
 		});
-=======
-function searchForTrailer() {
-    var request = gapi.client.youtube.search.list({
-        part: 'snippet',
-        q: '파묘', // 검색어 설정 (예: 파묘)
-        type: 'video',
-        maxResults: 1 // 검색 결과 수
-    });
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
-<<<<<<< HEAD
-		request.execute(function(response) {
-			var videoId = response.result.items[0].id.videoId;
-			var trailerUrl = 'https://www.youtube.com/embed/' + videoId;
-			document.getElementById('trailerFrame').src = trailerUrl;
-		});
-	}
-=======
     request.execute(function(response) {
         var videoId = response.result.items[0].id.videoId;
         var trailerUrl = 'https://www.youtube.com/embed/' + videoId;
         document.getElementById('trailerFrame').src = trailerUrl;
     });
 }
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
+
 
 	// API 로드
 	gapi.load('client', init);
@@ -126,7 +109,7 @@ tfoot td {
 				<td>${vo2.genre}</td>
 				<td>${vo2.directors}</td>
 				<td>${vo2.actor}</td>
-				<td>${vo2.showTime}</td>
+				<td>${vo2.showtime}</td>
 				<td>${vo2.releaseDate}</td>
 				<td>${vo2.companys}</td>
 			</tr>
