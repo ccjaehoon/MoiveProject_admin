@@ -109,7 +109,7 @@ tfoot td {
 				<td>${vo2.genre}</td>
 				<td>${vo2.directors}</td>
 				<td>${vo2.actor}</td>
-				<td>${vo2.showTime}</td>
+				<td>${vo2.showtime}</td>
 				<td>${vo2.releaseDate}</td>
 				<td>${vo2.companys}</td>
 			</tr>

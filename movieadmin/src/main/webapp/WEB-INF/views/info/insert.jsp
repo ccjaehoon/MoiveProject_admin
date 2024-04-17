@@ -67,10 +67,6 @@ div {
 		<form action="i_insertOK.do" method="post">
 			<table id="insertTable">
 				<tr>
-					<td><label for="">항목</label></td>
-					<td>입력</td>
-				</tr>
-				<tr>
 					<td><label for="title">제목</label></td>
 					<td><input type="text" id="title" name="title"></td>
 				</tr>
