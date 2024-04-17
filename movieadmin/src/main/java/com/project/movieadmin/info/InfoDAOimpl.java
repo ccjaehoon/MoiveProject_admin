@@ -15,10 +15,7 @@ public class InfoDAOimpl implements InfoDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refs/heads/main
+
 	
 	public InfoDAOimpl() {
 		log.info("InfoDAOimpl()....");
@@ -29,11 +26,9 @@ public class InfoDAOimpl implements InfoDAO {
 		log.info("selectOne()....");
 		log.info(vo.toString());
 
-<<<<<<< HEAD
-		NewsVO vo2 = sqlSession.selectOne("I_SELECT_ONE", vo);
-=======
-		NewsVO vo2 = sqlSession.selectOne("N_SELECT_ONE", vo);
->>>>>>> refs/heads/main
+
+		InfoVO vo2 = sqlSession.selectOne("I_SELECT_ONE", vo);
+
 
 		return vo2;
 	}

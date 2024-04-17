@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,8 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class InfoRestController {
 	
-	
+	@Autowired
+	InfoService service;
 	
 	
 	
@@ -53,7 +55,7 @@ public class InfoRestController {
 	    MovieVO[] vo_gson = gson.fromJson(txt_json, MovieVO[].class);
 		logger.info(Arrays.asList(vo_gson).toString());
 		for (MovieVO movieVO : Arrays.asList(vo_gson)) {
-			//service.u_insert(movieVO);
+			service.i_insert(movieVO);
 		}
 		
 
