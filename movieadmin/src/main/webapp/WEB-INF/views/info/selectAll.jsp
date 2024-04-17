@@ -73,7 +73,7 @@ tfoot td {
 					<td width=200px><a
 						href="i_selectOne.do?info_num=${vo.info_num}&title=${vo.title}">${vo.info_num}</a></td>
 					<td>${vo.title}</td>
-					<td>${vo.save_img}</td>
+					<td><img src="resources/uploadimg/${vo.save_img}" width="200"></td>
 
 				</tr>
 			</c:forEach>
@@ -94,6 +94,7 @@ tfoot td {
 					</c:forEach></td>
 			</tr>
 		</tfoot>
+		<a href="i_insert.do">글쓰기</a>
 	</table>
 </body>
 

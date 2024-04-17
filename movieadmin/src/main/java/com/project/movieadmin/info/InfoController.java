@@ -11,8 +11,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +29,6 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class InfoController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(InfoController.class);
 	
 	/**
 	 * 
@@ -58,47 +56,49 @@ public class InfoController {
 	
 	
 	
-	@RequestMapping(value = "/i_insertOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/i_insertOK.do", method = RequestMethod.POST)
 	public String i_insertOK(InfoVO vo) throws IllegalStateException, IOException {
-		log.info("Welcome i_insertOK.do...");
-		log.info(vo.toString());
+	    log.info("Welcome i_insertOK.do...");
+	    log.info(vo.toString());
 
-		String realPath = sContext.getRealPath("resources/uploadimg");
+	    String realPath = sContext.getRealPath("resources/uploadimg");
 		log.info(realPath);
 
 		String originName = vo.getFile_img().getOriginalFilename();
 
 		log.info("getOriginalFilename:{}", originName);
-
+		
 		if (originName.length() == 0) {
-			vo.setSave_img("default.png");
+			vo.setSave_img("default.png");// 이미지선택없이 처리할때
 		} else {
-			String save_img = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
+			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
 
-			vo.setSave_img(save_img);
+			vo.setSave_img(save_name);
 
-			File uploadFile = new File(realPath, save_img);
-			vo.getFile_img().transferTo(uploadFile);
+			File uploadFile = new File(realPath, save_name);
+			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
 
+			//// create thumbnail image/////////
 			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
 			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
 			Graphics2D graphic = thumb_buffer_img.createGraphics();
 			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
 
-			File thumb_file = new File(realPath, "thumb_" + save_img);
+			File thumb_file = new File(realPath, "thumb_" + save_name);
 
-			ImageIO.write(thumb_buffer_img, save_img.substring(save_img.lastIndexOf(".") + 1), thumb_file);
+			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
 
 		}
 
-		int result = service.i_insert(vo);
+	    int result = service.i_insert(vo);
 
-		if (result == 1) {
-			return "redirect:selectAll.do";
-		} else {
-			return "redirect:insert.do";
-		}
+	    if (result == 1) {
+	        return "redirect:i_selectAll.do";
+	    } else {
+	        return "redirect:i_insert.do";
+	    }
 	}
+
 	
 
 	
