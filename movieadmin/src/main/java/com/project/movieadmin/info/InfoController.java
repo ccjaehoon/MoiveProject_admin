@@ -91,7 +91,7 @@ public class InfoController {
 		model.addAttribute("vos", vos);
 
 		
-		int total_rows = service.n_getTotalRows();
+		int total_rows = service.i_getTotalRows();
 		log.info("total_rows:" + total_rows);
 
 		int totalPageCount = 1;
@@ -127,7 +127,7 @@ public class InfoController {
 			model.addAttribute("vos", vos);
 
 			
-			int total_rows = service.n_getSearchTotalRows(searchKey, searchWord);
+			int total_rows = service.i_getSearchTotalRows(searchKey, searchWord);
 			log.info("total_rows:" + total_rows);
 
 			int totalPageCount = 1;

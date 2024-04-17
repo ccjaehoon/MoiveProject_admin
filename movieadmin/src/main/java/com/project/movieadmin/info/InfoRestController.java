@@ -28,28 +28,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class InfoRestController {
-	
-	@Autowired
-	InfoService service;
-	
-	
-	
-	
-	
-	
-	
-	private static final Logger logger = LoggerFactory.getLogger(InfoRestController.class);
-	private Gson gson = new GsonBuilder().create();// json텍스트를 한줄로 출력
-	@ResponseBody
-	@RequestMapping(value = "/json_selectAll.do", method = RequestMethod.GET, produces = "text/json; charset=UTF-8")
-	public String json_test(Locale locale, Model model, HttpServletRequest request) throws OpenAPIFault, Exception {
-		logger.info("Welcome json_selectAll....");
-		 // 발급키
-	    String key = "f1c8cf77dd2d86fde938f2770265ac97";
 
-	    // KOBIS 오픈 API Rest Client를 통해 호출
-	    KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
+    @Autowired
+    InfoService service;
+    
+    private static final Logger logger = LoggerFactory.getLogger(InfoRestController.class);
+    private Gson gson = new GsonBuilder().create();// json텍스트를 한줄로 출력
+    @ResponseBody
+    @RequestMapping(value = "/json_selectAll.do", method = RequestMethod.GET, produces = "text/json; charset=UTF-8")
+    public String json_test(Locale locale, Model model, HttpServletRequest request) throws OpenAPIFault, Exception {
+        logger.info("Welcome json_selectAll....");
+         // 발급키
+        String key = "f1c8cf77dd2d86fde938f2770265ac97";
 
+<<<<<<< HEAD
 	    // 영화 목록 조회 서비스 호출
 	    String movieListResponse = service.getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
 	    logger.info("Movie list response: {}", movieListResponse);
@@ -62,7 +54,12 @@ public class InfoRestController {
 		//	service.i_insert(movieVO);
 		}
 		
+=======
+        // KOBIS 오픈 API Rest Client를 통해 호출
+        KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
+<<<<<<< HEAD
 				
 		return movieListResponse;
 	}
@@ -95,4 +92,22 @@ public class InfoRestController {
 	
 	
 	
+=======
+        // 영화 목록 조회 서비스 호출
+        String movieListResponse = service.getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
+        logger.info("Movie list response: {}", movieListResponse);
+        logger.info(movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1));
+
+        String txt_json = movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1);
+        MovieVO[] vo_gson = gson.fromJson(txt_json, MovieVO[].class);
+        logger.info(Arrays.asList(vo_gson).toString());
+        for (MovieVO movieVO : Arrays.asList(vo_gson)) {
+            service.insert(movieVO);
+        }
+
+
+
+        return movieListResponse;
+    }
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 }

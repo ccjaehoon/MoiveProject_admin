@@ -16,19 +16,19 @@ public class InfoServiceimpl implements InfoService {
 	private InfoDAO dao;
 
 	@Override
-	public InfoDAO i_selectOne(InfoVO vo) {
+	public InfoVO i_selectOne(InfoVO vo) {
 		
 		return dao.i_selectOne(vo);
 	}
 
 	@Override
-	public List<InfoDAO> i_selectAll(int cpage, int pageBlock) {
+	public List<InfoVO> i_selectAll(int cpage, int pageBlock) {
 		
 		return dao.i_selectAll(cpage, pageBlock);
 	}
 
 	@Override
-	public List<InfoDAO> i_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
+	public List<InfoVO> i_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
 		return dao.i_searchList(searchKey, searchWord, cpage, pageBlock);
 	}
 
