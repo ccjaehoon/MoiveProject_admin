@@ -88,8 +88,8 @@ div {
 						value=""></td>
 				</tr>
 				<tr>
-					<td><label for="showTime">상영시간(분)</label></td>
-					<td><input type="text" id="showTime" name="showTime"></td>
+					<td><label for="showtime">상영시간(분)</label></td>
+					<td><input type="text" id="showtime" name="showtime"></td>
 				</tr>
 				<tr>
 					<td><label for="content">내용</label></td>
