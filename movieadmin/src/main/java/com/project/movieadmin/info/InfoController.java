@@ -75,40 +75,39 @@ public class InfoController {
 	@RequestMapping(value = "/i_selectAll.do", method = RequestMethod.GET)
 	public String i_selectAll(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
-		
-		
-		
-		
+
 		log.info("Welcome i_selectAll.do....");
-
-		log.info("cpage : {}, pageBlock : {}", cpage, pageBlock);
-
-		List<InfoVO> vos = service.i_selectAll(cpage, pageBlock);
-		for (InfoVO x : vos) {
-			log.info(x.toString());
-		}
-		log.info("================");
-
-		model.addAttribute("vos", vos);
-
-		
-		int total_rows = service.i_getTotalRows();
-		log.info("total_rows:" + total_rows);
-
-		int totalPageCount = 1;
-		if (total_rows / pageBlock == 0) {
-			totalPageCount = 1;
-		} else if (total_rows % pageBlock == 0) {
-			totalPageCount = total_rows / pageBlock;
-		} else {
-			totalPageCount = total_rows / pageBlock + 1;
-		}
-
-		model.addAttribute("totalPageCount", totalPageCount);
 		
 		
+//
+//		log.info("cpage : {}, pageBlock : {}", cpage, pageBlock);
+//
+//		List<InfoVO> vos = service.i_selectAll(cpage, pageBlock);
+//		for (InfoVO x : vos) {
+//			log.info(x.toString());
+//		}
+//		log.info("================");
+//
+//		model.addAttribute("vos", vos);
+//
+//		
+//		int total_rows = service.i_getTotalRows();
+//		log.info("total_rows:" + total_rows);
+//
+//		int totalPageCount = 1;
+//		if (total_rows / pageBlock == 0) {
+//			totalPageCount = 1;
+//		} else if (total_rows % pageBlock == 0) {
+//			totalPageCount = total_rows / pageBlock;
+//		} else {
+//			totalPageCount = total_rows / pageBlock + 1;
+//		}
+//
+//		model.addAttribute("totalPageCount", totalPageCount);
+//		
+//		
 		
-		return "info/i_selectAll";
+		return "info/selectAll";
 	}
 	
 	@RequestMapping(value = "/i_searchList.do", method = RequestMethod.GET)

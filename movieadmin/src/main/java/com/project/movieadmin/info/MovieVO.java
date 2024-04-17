@@ -1,14 +1,13 @@
 package com.project.movieadmin.info;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
 public class MovieVO {
 	
-	String movieCd;
-	String movieNm;
-	String prdtYear;
-	
+	List<MovieVO2> results;
 	
 	
 }
