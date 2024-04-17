@@ -34,9 +34,6 @@ public class InfoController {
 	
 	@Autowired
 	private InfoService service;
-	
-	@Autowired
-	private InfoService comService;
 
 	@Autowired
 	private HttpSession session;
@@ -46,7 +43,7 @@ public class InfoController {
 
 	
 	@RequestMapping(value = "/i_selectOne.do", method = RequestMethod.GET)
-	public String i_selectOne(InfoVO vo, int cpage, int pageBlock, Model model) {
+	public String i_selectOne(InfoVO vo, Model model) {
 		
 		log.info("i_selectOne.do");
 		InfoVO vo2=service.i_selectOne(vo);
@@ -57,6 +54,7 @@ public class InfoController {
 		
 		String nickname = (String) session.getAttribute("nickname");
 		log.info("nickname: {}",nickname);
+
     
 //		//댓글처리부분
 //        model.addAttribute("nickname", nickname);
@@ -66,10 +64,11 @@ public class InfoController {
 //		log.info(cvos.toString());
 //
 //		model.addAttribute("cvos", cvos);
+
 		
 		
 		
-		return "info/i_selectOne";
+		return "info/selectOne";
 	}
 	
 	@RequestMapping(value = "/i_selectAll.do", method = RequestMethod.GET)
@@ -79,33 +78,33 @@ public class InfoController {
 		log.info("Welcome i_selectAll.do....");
 		
 		
-//
-//		log.info("cpage : {}, pageBlock : {}", cpage, pageBlock);
-//
-//		List<InfoVO> vos = service.i_selectAll(cpage, pageBlock);
-//		for (InfoVO x : vos) {
-//			log.info(x.toString());
-//		}
-//		log.info("================");
-//
-//		model.addAttribute("vos", vos);
-//
-//		
-//		int total_rows = service.i_getTotalRows();
-//		log.info("total_rows:" + total_rows);
-//
-//		int totalPageCount = 1;
-//		if (total_rows / pageBlock == 0) {
-//			totalPageCount = 1;
-//		} else if (total_rows % pageBlock == 0) {
-//			totalPageCount = total_rows / pageBlock;
-//		} else {
-//			totalPageCount = total_rows / pageBlock + 1;
-//		}
-//
-//		model.addAttribute("totalPageCount", totalPageCount);
-//		
-//		
+
+		log.info("cpage : {}, pageBlock : {}", cpage, pageBlock);
+
+		List<InfoVO> vos = service.i_selectAll(cpage, pageBlock);
+		for (InfoVO x : vos) {
+			log.info(x.toString());
+		}
+		log.info("================");
+
+		model.addAttribute("vos", vos);
+
+		
+		int total_rows = service.i_getTotalRows();
+		log.info("total_rows:" + total_rows);
+
+		int totalPageCount = 1;
+		if (total_rows / pageBlock == 0) {
+			totalPageCount = 1;
+		} else if (total_rows % pageBlock == 0) {
+			totalPageCount = total_rows / pageBlock;
+		} else {
+			totalPageCount = total_rows / pageBlock + 1;
+		}
+
+		model.addAttribute("totalPageCount", totalPageCount);
+		
+		
 		
 		return "info/selectAll";
 	}

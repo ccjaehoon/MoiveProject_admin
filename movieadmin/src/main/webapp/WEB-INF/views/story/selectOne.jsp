@@ -160,9 +160,9 @@
 					</td>
 
 
-
  				
 					<td>
+					
 						<input type="button" id="deleteBtn" class="delete" value="삭제" onclick="deleteComment(${cvo.story_comments_num})">
 						<c:if test="${param.nickname == cvo.nickname}">
 <a href="SComments_deleteOK.do?story_comments_num=${cvo.story_comments_num}&story_num=${cvo.story_num}">댓글삭제</a>
