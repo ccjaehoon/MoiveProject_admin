@@ -1,5 +1,8 @@
 package com.project.movieadmin.info.review;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.project.movieadmin.info.review.ReviewService;
-import com.project.movieadmin.info.review.ReviewVO;
+import com.project.movieadmin.info.InfoService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -41,9 +42,9 @@ public class ReviewController {
 	 */
 	
 	@RequestMapping(value = "/rv_insert.do", method = RequestMethod.GET)
-	public String rv_insert(ReviewVO vo) {
+	public String rv_insert(Model model) {
 		
-		log.info("Welcome i_insert.do....");
+		log.info("Welcome rv_insert.do....");
 		String nickname = (String) session.getAttribute("user_id");
 		model.addAttribute(nickname);	
 		return "rv_insert";
@@ -55,63 +56,43 @@ public class ReviewController {
 		log.info("Welcome rv_insertOK.do...");
 		log.info(vo.toString());
 
-		String realPath = sContext.getRealPath("resources/uploadimg");
-		log.info(realPath);
-
-		String originName = vo.getFile_img().getOriginalFilename();
-
-		log.info("getOriginalFilename:{}", originName);
-		
-		if (originName.length() == 0) {
-			vo.setSave_img("default.png");
-		} else {
-			String save_img = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
-
-			vo.setSave_img(save_img);
-
-			File uploadFile = new File(realPath, save_img);
-			vo.getFile_img().transferTo(uploadFile);
-
-			//// create thumbnail image/////////
-			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
-			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
-			Graphics2D graphic = thumb_buffer_img.createGraphics();
-			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
-
-			File thumb_file = new File(realPath, "thumb_" + save_img);
-
-			ImageIO.write(thumb_buffer_img, save_img.substring(save_img.lastIndexOf(".") + 1), thumb_file);
-
-		}
-
 		int result = service.rv_insert(vo);
+		log.info("result:{}", result);
 
-		if (result == 1) {
-			return "redirect:rv_selectAll.do";
-		} else {
-			return "redirect:rv_insert.do";
-		}
+		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
 	}
 	
 	
 	
 	@RequestMapping(value = "/rv_update.do", method = RequestMethod.GET)
-	public String rv_update(ReviewVO vo) {
+	public String rv_update(Model model) {
 		
-	
+		log.info("Welcome rv_update.do....");
+		String nickname = (String) session.getAttribute("user_id");
+		model.addAttribute(nickname);	
 		return "rv_update";
 	}
 	
 	@RequestMapping(value = "/rv_updateOK.do", method = RequestMethod.GET)
 	public String rv_updateOK(ReviewVO vo) {
 		
+		log.info("Welcome rv_updateOK.do...");
+		log.info(vo.toString());
+
+		int result = service.rv_update(vo);
+		log.info("result:{}", result);
+
+		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
 	
 		return "rv_updateOK";
 	}
 	
 	@RequestMapping(value = "/rv_delete.do", method = RequestMethod.GET)
-	public String rv_delete(ReviewVO vo) {
+	public String rv_delete(Model model) {
 		
+		log.info("Welcome rv_delete.do....");
+		String nickname = (String) session.getAttribute("user_id");
+		model.removeAttribute(nickname);	
 	
 		return "rv_delete";
 	}
@@ -119,6 +100,13 @@ public class ReviewController {
 	@RequestMapping(value = "/rv_deleteOK.do", method = RequestMethod.GET)
 	public String rv_deleteOK(ReviewVO vo) {
 		
+		log.info("Welcome rv_deleteOK.do...");
+		log.info(vo.toString());
+
+		int result = service.rv_delete(vo);
+		log.info("result:{}", result);
+
+		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
 	
 		return "rv_deleteOK";
 	}
@@ -134,6 +122,12 @@ public class ReviewController {
 	public String rv_selectAll(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		logger.info("Welcome selectAll!");
+		
+		model.addAttribute("totalPageCount", totalPageCount);
+
+		return "board/comments/selectAll";
+		
+		
 	
 		return "Review/rv_selectAll";
 	}
