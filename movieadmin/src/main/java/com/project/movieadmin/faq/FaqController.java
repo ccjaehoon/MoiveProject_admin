@@ -124,7 +124,7 @@ public class FaqController {
 		FaqVO vo2 = service.f_selectOne(vo);
 		log.info("vo2:" + vo2);
 		log.info("================");
-
+		session.setAttribute("nickname", vo2.getNickname());
 		model.addAttribute("vo2", vo2);
 
 		return "faq/selectOne";
