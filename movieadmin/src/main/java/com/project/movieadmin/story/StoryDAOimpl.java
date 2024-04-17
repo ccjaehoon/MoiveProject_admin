@@ -120,6 +120,19 @@ public class StoryDAOimpl implements StoryDAO {
 	    // 데이터베이스에 업데이트
 	    return sqlSession.update("S_UPDATE_GOOD_COUNT", vo);
 	}
+	
+	@Override
+	public void s_increaseGoodCount(StoryVO vo) {
+		log.info("s_increaseGoodCount()....");
+		 // 사용자의 추천 기록을 확인하는 로직 구현
+	    int userGoodCount = sqlSession.selectOne("S_CHECK_USER_GOOD_COUNT", vo);
+	    
+	    // 추천 기록이 없는 경우에만 추천 수를 증가시키는 로직 구현
+	    if (userGoodCount == 0) {
+	        // 추천 수 업데이트 쿼리 실행
+	        sqlSession.update("S_UPDATE_GOOD_COUNT", vo);
+	    }
+	}
 
 	@Override
 	public int s_increaseReport(StoryVO vo) {

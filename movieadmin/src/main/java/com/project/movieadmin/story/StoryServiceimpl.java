@@ -90,6 +90,11 @@ public class StoryServiceimpl implements StoryService {
 		
 		return dao.s_increaseGood(vo);
 	}
+	
+	@Override
+	public void s_increaseGoodCount(StoryVO vo) {
+		
+	}
 
 	@Override
 	public int s_increaseReport(StoryVO vo) {

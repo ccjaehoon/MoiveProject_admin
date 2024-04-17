@@ -1,5 +1,8 @@
 package com.project.movieadmin.info.review;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.project.movieadmin.info.InfoService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +25,15 @@ public class ReviewController {
 	
 	@Autowired
 	ReviewService service;
+	
+	@Autowired
+	private ServletContext sContext;
+
+	@Autowired
+	private HttpSession session;
+	
+	@Autowired
+	private InfoService comService;
 
 	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	
@@ -28,36 +42,57 @@ public class ReviewController {
 	 */
 	
 	@RequestMapping(value = "/rv_insert.do", method = RequestMethod.GET)
-	public String rv_insert(ReviewVO vo) {
+	public String rv_insert(Model model) {
 		
-	
+		log.info("Welcome rv_insert.do....");
+		String nickname = (String) session.getAttribute("user_id");
+		model.addAttribute(nickname);	
 		return "rv_insert";
 	}
 	
 	@RequestMapping(value = "/rv_insertOK.do", method = RequestMethod.GET)
 	public String rv_insertOK(ReviewVO vo) {
 		
-	
-		return "rv_insertOK";
+		log.info("Welcome rv_insertOK.do...");
+		log.info(vo.toString());
+
+		int result = service.rv_insert(vo);
+		log.info("result:{}", result);
+
+		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
 	}
 	
-	@RequestMapping(value = "/rv_update.do", method = RequestMethod.GET)
-	public String rv_update(ReviewVO vo) {
-		
 	
+	
+	@RequestMapping(value = "/rv_update.do", method = RequestMethod.GET)
+	public String rv_update(Model model) {
+		
+		log.info("Welcome rv_update.do....");
+		String nickname = (String) session.getAttribute("user_id");
+		model.addAttribute(nickname);	
 		return "rv_update";
 	}
 	
 	@RequestMapping(value = "/rv_updateOK.do", method = RequestMethod.GET)
 	public String rv_updateOK(ReviewVO vo) {
 		
+		log.info("Welcome rv_updateOK.do...");
+		log.info(vo.toString());
+
+		int result = service.rv_update(vo);
+		log.info("result:{}", result);
+
+		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
 	
 		return "rv_updateOK";
 	}
 	
 	@RequestMapping(value = "/rv_delete.do", method = RequestMethod.GET)
-	public String rv_delete(ReviewVO vo) {
+	public String rv_delete(Model model) {
 		
+		log.info("Welcome rv_delete.do....");
+		String nickname = (String) session.getAttribute("user_id");
+		model.removeAttribute(nickname);	
 	
 		return "rv_delete";
 	}
@@ -65,6 +100,13 @@ public class ReviewController {
 	@RequestMapping(value = "/rv_deleteOK.do", method = RequestMethod.GET)
 	public String rv_deleteOK(ReviewVO vo) {
 		
+		log.info("Welcome rv_deleteOK.do...");
+		log.info(vo.toString());
+
+		int result = service.rv_delete(vo);
+		log.info("result:{}", result);
+
+		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
 	
 		return "rv_deleteOK";
 	}
@@ -80,6 +122,12 @@ public class ReviewController {
 	public String rv_selectAll(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		logger.info("Welcome selectAll!");
+		
+		model.addAttribute("totalPageCount", totalPageCount);
+
+		return "board/comments/selectAll";
+		
+		
 	
 		return "Review/rv_selectAll";
 	}
