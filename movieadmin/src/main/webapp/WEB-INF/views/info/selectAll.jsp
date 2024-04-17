@@ -52,28 +52,49 @@
     <table id="customers">
         <thead>
             <tr>
+<<<<<<< HEAD
                 <th>영화제목</th>
                 <th>포스터</th>
                 <th>줄거리</th>
                 <th>감독</th>
                 <th>출연진</th>
+=======
+                <th>번호</th>
+                <th>제목</th>
+                <th>포스터</th>
+     
+                <th></th>
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
             </tr>
         </thead>
+<<<<<<< HEAD
         <tbody id="vos">
         	
            
         	
             
+=======
+        <tbody>
+        	<c:forEach var="vo" items="${vos}">
+					<tr>
+						<td width=200px><a
+							href="i_selectOne.do?info_num=${vo.info_num}">${vo.info_num}</a></td>
+						<td>${vo.title}</td>
+						<td>${vo.save_img}</td>
+
+					</tr>
+				</c:forEach>
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
         </tbody>
         <tfoot>
             <tr>
                 <td colspan="5">
                 	<c:forEach var="i" begin="1" end="${totalPageCount}">
 	                	<c:if test="${param.searchKey == null }">
-		                	<a href="b_selectAll.do?cpage=${i}">${i} &nbsp;</a>
+		                	<a href="i_selectAll.do?cpage=${i}">${i} &nbsp;</a>
                 		</c:if>
                 		<c:if test="${param.searchKey != null }">
-		                	<a href="b_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
+		                	<a href="i_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i} &nbsp;</a>
                 		</c:if>
                 	</c:forEach>
                 </td>
@@ -92,11 +113,12 @@
                 //console.log(data.movieListResult.movieList[0].movieNm); // 데이터의 구조를 확인하기 위해 데이터를 로깅합니다.
                 
                 let vos = '';
-                data.movieListResult.movieList.forEach(function(vo){
-                	 console.log(vo.movieNm);
+                data.forEach(function(vo){
+                	 console.log(vo.backdrop_path);
                 	 vos += ` <tr>
-		                         <td>\${vo.movieCd}</td>
-		                         <td>\${vo.movieNm}</td>
+		                         <td>\${vo.title}</td>                                                
+		                         <td><img src="http://image.tmdb.org/t/p/w185/\${vo.backdrop_path}"></td>
+		                         <td>\${vo.overview}</td>
 		                     </tr>`;
 		              
                 });
