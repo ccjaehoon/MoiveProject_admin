@@ -67,7 +67,7 @@ tfoot td {
 					<td colspan="3">${vo2.content}</td>
 
 				</tr>
-			
+
 		
 		</tbody>
 	</table>

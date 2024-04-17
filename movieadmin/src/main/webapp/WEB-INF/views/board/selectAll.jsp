@@ -49,6 +49,7 @@ tfoot td {
 	text-align: center;
 }
 </style>
+
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -67,6 +68,7 @@ tfoot td {
 			<thead>
 				<tr>
 					<th>번호</th>
+					<th>썸네일</th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일자</th>
@@ -78,6 +80,7 @@ tfoot td {
 				<c:forEach var="vo" items="${vos}">
 					<tr>
 						<td><a href="b_selectOne.do?board_num=${vo.board_num}">${vo.board_num}</a></td>
+						<td>${vo.save_img}</td>
 						<td>${vo.title}</td>
 						<td>${vo.nickname}</td>
 						<td>${vo.wdate}</td>
@@ -93,7 +96,7 @@ tfoot td {
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="6"><c:forEach var="i" begin="1"
+					<td colspan="7"><c:forEach var="i" begin="1"
 							end="${totalPageCount}">
 							<c:if test="${param.searchKey == null}">
 								<a href="b_selectAll.do?cpage=${i}">${i} &nbsp;</a>

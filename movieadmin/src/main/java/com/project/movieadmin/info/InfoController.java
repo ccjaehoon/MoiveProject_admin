@@ -1,13 +1,17 @@
 package com.project.movieadmin.info;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +29,6 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class InfoController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(InfoController.class);
 	
 	/**
 	 * 
@@ -40,6 +43,63 @@ public class InfoController {
 
 	@Autowired
 	private ServletContext sContext;
+	
+	
+	@RequestMapping(value = "/i_insert.do", method = RequestMethod.GET)
+	public String i_insert(Model model) {
+		log.info("Welcome i_insert.do....");
+		String nickname = (String) session.getAttribute("user_id");
+		model.addAttribute(nickname);
+
+		return "info/insert";
+	}
+	
+	
+	
+	@RequestMapping(value = "/i_insertOK.do", method = RequestMethod.POST)
+	public String i_insertOK(InfoVO vo) throws IllegalStateException, IOException {
+	    log.info("Welcome i_insertOK.do...");
+	    log.info(vo.toString());
+
+	    String realPath = sContext.getRealPath("resources/uploadimg");
+		log.info(realPath);
+
+		String originName = vo.getFile_img().getOriginalFilename();
+
+		log.info("getOriginalFilename:{}", originName);
+		
+		if (originName.length() == 0) {
+			vo.setSave_img("default.png");// 이미지선택없이 처리할때
+		} else {
+			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
+
+			vo.setSave_img(save_name);
+
+			File uploadFile = new File(realPath, save_name);
+			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
+
+			//// create thumbnail image/////////
+			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+
+			File thumb_file = new File(realPath, "thumb_" + save_name);
+
+			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
+
+		}
+
+	    int result = service.i_insert(vo);
+
+	    if (result == 1) {
+	        return "redirect:i_selectAll.do";
+	    } else {
+	        return "redirect:i_insert.do";
+	    }
+	}
+
+	
 
 	
 	@RequestMapping(value = "/i_selectOne.do", method = RequestMethod.GET)
@@ -51,12 +111,11 @@ public class InfoController {
 		model.addAttribute("vo2", vo2);
 		
 		
-		
 		String nickname = (String) session.getAttribute("nickname");
 		log.info("nickname: {}",nickname);
 
     
-//		//댓글처리부분
+//		
 //        model.addAttribute("nickname", nickname);
 //		InfoVO cvo = new InfoVO();
 //		cvo.setInfo_num(vo.getInfo_num());
@@ -146,21 +205,30 @@ public class InfoController {
 		}
 		
 		
-		return "info/i_selectAll";
+		return "info/selectAll";
 	}
 	
-	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
-	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
-		
-		
-		
-		log.info("Welcome i_increaseRecommends...");
-		log.info(vo.toString());
-		
-		return "info/i_increaseRecommends";
-	}
+//	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
+//	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
+//		
+//		
+//		
+//		log.info("Welcome i_increaseRecommends...");
+//		log.info(vo.toString());
+//		
+//		return "info/i_increaseRecommends";
+//	}
+//	
+//	@RequestMapping(value = "/i_increaseRecommendsOK.do", method = RequestMethod.GET)
+//	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
+//		
+//		log.info("Welcome i_increaseRecommends...");
+//		log.info(vo.toString());
+//		
+//		return "info/i_increaseRecommends";
+//	}
 	
-//test
+
 	
 	
 }
