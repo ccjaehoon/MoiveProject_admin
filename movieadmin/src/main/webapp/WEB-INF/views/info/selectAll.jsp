@@ -58,11 +58,6 @@ tfoot td {
 				<th>영화제목</th>
 				<th>포스터</th>
 				<th>줄거리</th>
-				<th>감독</th>
-				<th>출연진</th> 
-
-				
-				<th></th> 
 
 			</tr>
 		</thead>
@@ -71,13 +66,12 @@ tfoot td {
 			<c:forEach var="vo" items="${vos}">
 				<tr>
 					<td width=200px><a
-						href="i_selectOne.do?info_num=${vo.info_num}&title=${vo.title}">${vo.info_num}</a></td>
-					<td>${vo.title}</td>
+						href="i_selectOne.do?info_num=${vo.info_num}&title=${vo.title}">${vo.title}</a></td>
 					<td><img src="resources/uploadimg/${vo.save_img}" width="200"></td>
-
+					<td>${vo.content}</td>
 				</tr>
 			</c:forEach>
-		
+
 		</tbody>
 		<tfoot>
 			<tr>
