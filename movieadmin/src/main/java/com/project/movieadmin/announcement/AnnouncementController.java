@@ -169,7 +169,7 @@ public class AnnouncementController {
 		
 		
 		
-				model.addAttribute("vo2", vo2);
+		model.addAttribute("vo2", vo2);
 
 		return "announcement/selectOne";
 	}
