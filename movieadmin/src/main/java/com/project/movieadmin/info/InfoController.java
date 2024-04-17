@@ -43,7 +43,7 @@ public class InfoController {
 
 	
 	@RequestMapping(value = "/i_selectOne.do", method = RequestMethod.GET)
-	public String i_selectOne(int cpage, int pageBlock, Model model) {
+	public String i_selectOne(InfoVO vo, int cpage, int pageBlock, Model model) {
 		
 		log.info("i_selectOne.do");
 		InfoVO vo2=service.i_selectOne(vo);
@@ -54,14 +54,17 @@ public class InfoController {
 		
 		String nickname = (String) session.getAttribute("nickname");
 		log.info("nickname: {}",nickname);
-        
-        model.addAttribute("nickname", nickname);
-		InfoVO cvo = new InfoVO();
-		cvo.setInfo_num(vo.getInfo_num());
-		List<InfoVO> cvos = service.i_selectAll(cvo);
-		log.info(cvos.toString());
 
-		model.addAttribute("cvos", cvos);
+    
+//		//댓글처리부분
+//        model.addAttribute("nickname", nickname);
+//		InfoVO cvo = new InfoVO();
+//		cvo.setInfo_num(vo.getInfo_num());
+//		List<InfoVO> cvos = comService.i_selectAll(cvo);
+//		log.info(cvos.toString());
+//
+//		model.addAttribute("cvos", cvos);
+
 		
 		
 		
@@ -148,7 +151,9 @@ public class InfoController {
 	}
 	
 	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
-	public String i_increaseRecommends(int cpage, int pageBlock, Model model) {
+	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
+		
+		
 		
 		log.info("Welcome i_increaseRecommends...");
 		log.info(vo.toString());
