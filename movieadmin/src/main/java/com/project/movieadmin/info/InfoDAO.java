@@ -1,10 +1,9 @@
 package com.project.movieadmin.info;
 
+import java.util.Date;
 import java.util.List;
 
 public interface InfoDAO {
-	
-	public InfoVO i_insert(InfoVO vo);
 	
 	public InfoVO i_selectOne(InfoVO vo);
 	
