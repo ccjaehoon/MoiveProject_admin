@@ -31,8 +31,8 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class InfoRestController {
 
-//    @Autowired
-//    InfoService service;
+    @Autowired
+    InfoService service;
 
 //	private static final Logger logger = LoggerFactory.getLogger(InfoRestController.class);
 //	private Gson gson = new GsonBuilder().create();// json텍스트를 한줄로 출력
