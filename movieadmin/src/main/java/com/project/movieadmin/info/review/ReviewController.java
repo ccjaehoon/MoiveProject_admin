@@ -59,7 +59,7 @@ public class ReviewController {
 		int result = service.rv_insert(vo);
 		log.info("result:{}", result);
 
-		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
+		return "redirect:rv_selectOne.do?review_num=";
 	}
 	
 	
@@ -82,8 +82,7 @@ public class ReviewController {
 		int result = service.rv_update(vo);
 		log.info("result:{}", result);
 
-		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
-	
+		
 		return "rv_updateOK";
 	}
 	
@@ -92,7 +91,7 @@ public class ReviewController {
 		
 		log.info("Welcome rv_delete.do....");
 		String nickname = (String) session.getAttribute("user_id");
-		model.removeAttribute(nickname);	
+		
 	
 		return "rv_delete";
 	}
@@ -106,7 +105,6 @@ public class ReviewController {
 		int result = service.rv_delete(vo);
 		log.info("result:{}", result);
 
-		return "redirect:rv_selectOne.do?review_num=" + vo.getreview_num();
 	
 		return "rv_deleteOK";
 	}
@@ -123,11 +121,9 @@ public class ReviewController {
 			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
 		logger.info("Welcome selectAll!");
 		
-		model.addAttribute("totalPageCount", totalPageCount);
+		model.addAttribute("totalPageCount");
 
-		return "board/comments/selectAll";
-		
-		
+			
 	
 		return "Review/rv_selectAll";
 	}

@@ -41,9 +41,8 @@ public class InfoRestController {
          // 발급키
         String key = "f1c8cf77dd2d86fde938f2770265ac97";
 
-<<<<<<< HEAD
 	    // 영화 목록 조회 서비스 호출
-	    String movieListResponse = service.getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
+	    String movieListResponse = ((KobisOpenAPIRestService) service).getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
 	    logger.info("Movie list response: {}", movieListResponse);
 	    logger.info(movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1));
 	    
@@ -54,12 +53,10 @@ public class InfoRestController {
 		//	service.i_insert(movieVO);
 		}
 		
-=======
+
         // KOBIS 오픈 API Rest Client를 통해 호출
         KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
-<<<<<<< HEAD
 				
 		return movieListResponse;
 	}
@@ -90,24 +87,22 @@ public class InfoRestController {
 	
 	
 	
-	
-	
-=======
-        // 영화 목록 조회 서비스 호출
-        String movieListResponse = service.getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
-        logger.info("Movie list response: {}", movieListResponse);
-        logger.info(movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1));
 
-        String txt_json = movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1);
-        MovieVO[] vo_gson = gson.fromJson(txt_json, MovieVO[].class);
-        logger.info(Arrays.asList(vo_gson).toString());
-        for (MovieVO movieVO : Arrays.asList(vo_gson)) {
-            service.insert(movieVO);
-        }
+//        // 영화 목록 조회 서비스 호출
+//        String movieListResponse = service.getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
+//        logger.info("Movie list response: {}", movieListResponse);
+//        logger.info(movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1));
+//
+//        String txt_json = movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1);
+//        MovieVO[] vo_gson = gson.fromJson(txt_json, MovieVO[].class);
+//        logger.info(Arrays.asList(vo_gson).toString());
+//        for (MovieVO movieVO : Arrays.asList(vo_gson)) {
+//            service.insert(movieVO);
+//        }
 
 
 
-        return movieListResponse;
-    }
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
+       
+    
+
 }
