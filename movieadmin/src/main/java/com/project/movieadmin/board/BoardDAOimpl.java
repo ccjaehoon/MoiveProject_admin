@@ -121,23 +121,6 @@ public class BoardDAOimpl implements BoardDAO {
 	}
 
 	@Override
-	public int b_increaseGood(BoardVO vo) {
-		log.info("b_increaseGood()....");
-
-		int total_rows = sqlSession.update("B_INCREASEGOOD", vo);
-
-		return total_rows;
-	}
-
-	@Override
-	public int b_increaseReport(BoardVO vo) {
-		
-		int total_rows = sqlSession.update("B_INCREASEREPORT", vo);
-
-		return total_rows;
-	}
-
-	@Override
 	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo) {
 		log.info("b_selectAll()....");
 
@@ -151,23 +134,6 @@ public class BoardDAOimpl implements BoardDAO {
 		List<BoardVO> vos = sqlSession.selectList("B_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
 
 		return vos;
-	}
-
-	@Override
-	public BoardVO b_selectGood(BoardVO vo) {
-		log.info("b_selectGood()....");
-		log.info(vo.toString());
-		return sqlSession.selectOne("B_SELECT_GOOD", vo);
-	}
-
-	@Override
-	public int b_goodCheck(BoardVO vo) {
-		return sqlSession.selectOne("B_GOOD_CHECK", vo);
-	}
-
-	@Override
-	public int b_goodSave(BoardVO vo) {
-		return sqlSession.insert("B_GOOD_SAVE", vo);
 	}
 
 }
