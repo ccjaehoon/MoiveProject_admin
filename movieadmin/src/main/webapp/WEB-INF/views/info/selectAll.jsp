@@ -47,8 +47,9 @@ tfoot td {
 	<form action="i_searchList.do">
 		<select name="searchKey">
 			<option value="title">title</option>
-			<option value="content">content</option>
-		</select> <input type="text" name="searchWord" value="ja"> <input
+			<option value="genre">genre</option>
+			<option value="actor">actor</option>
+		</select> <input type="text" name="searchWord" value=""> <input
 			type="submit" value="search">
 	</form>
 	<table id="customers">

@@ -29,8 +29,11 @@ public interface StoryService {
 	public int s_increaseGood(StoryVO vo); 
 	//스토리 좋아요 수 증가
 	
-	public void s_increaseGoodCount(StoryVO vo);
-	//사용자가 이미 추천한 경우에는 추천 수를 증가시키지 않도록 로직을 구현하는 데 사용
+	public StoryVO s_selectGood(StoryVO vo);
+
+	public int s_goodCheck(StoryVO vo);
+
+	public int s_goodSave(StoryVO vo);
 	
 	public int s_increaseReport(StoryVO vo); 
 	// 스토리 신고하기
