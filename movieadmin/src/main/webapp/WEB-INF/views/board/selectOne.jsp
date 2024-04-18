@@ -81,7 +81,6 @@ $(function() {
 				success : function(obj) {
 					console.log(obj);
 					let good = obj.good;
-//						console.log(item);
 					item.value = good;
 				},
 				error : function(xhr, status) {
@@ -94,26 +93,11 @@ $(function() {
 });
 </script>
 <script>
-	// 	$(function() {
-	// 		console.log("jquery test");
-	// 		console.log($(".report"));
-	// 		$(".report").each(function(index, item) {
-	// 			//			console.log(index);
-
-	// 			$(this).click(function() {
-	// 				console.log("report Click");
-	// 				$("#report").dialog("open");
-
-	// 			});
-	// 		});
-
 	$(function() {
 		$("#report").dialog({
 			autoOpen : false
 		});
 	});
-
-	// 	});
 
 	function showDialogReport(comments_num, nickname) {
 		console.log(comments_num);
@@ -226,9 +210,8 @@ $(function() {
 						onClick="showDialogReport('${cvo.comments_num}','${cvo.nickname}')" value="신고" />
 					</td>
 					<td>
-						<c:if test="${param.nickname == cvo.nickname}">
-							<a href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">댓글 삭제</a>
-						</c:if>
+						<input type="button" id="deleteBtn" class="/c_deleteOK.do"
+						onClick="/c_deleteOK.do('${cvo.comments_num}','${cvo.nickname}')" value="삭제" />
 					</td>
 				</tr>
 			</c:forEach>

@@ -17,55 +17,46 @@ public class CommentsServiceimpl implements CommentsService {
 
 	@Override
 	public int c_insert(CommentsVO vo) {
-		// TODO Auto-generated method stub
 		return dao.c_insert(vo);
 	}
 
 	@Override
 	public int c_update(CommentsVO vo) {
-		// TODO Auto-generated method stub
 		return dao.c_update(vo);
 	}
 
 	@Override
 	public int c_delete(CommentsVO vo) {
-		// TODO Auto-generated method stub
 		return dao.c_delete(vo);
 	}
 
 	@Override
 	public int c_increaseGood(CommentsVO vo) {
-		// TODO Auto-generated method stub
 		return dao.c_increaseGood(vo);
 	}
 
 	@Override
 	public List<CommentsVO> c_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
-		
 		return dao.c_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
 	@Override
 	public List<CommentsVO> c_selectAll(CommentsVO vo) {
-		// TODO Auto-generated method stub
 		return dao.c_selectAll(vo);
 	}
 
 	@Override
 	public CommentsVO c_selectGood(CommentsVO vo) {
-		// TODO Auto-generated method stub
 		return dao.c_selectGood(vo);
 	}
 
 	@Override
 	public int c_goodCheck(CommentsVO vo) {
-		// TODO Auto-generated method stub
 		return dao.c_goodCheck(vo);
 	}
 
 	@Override
 	public int c_goodSave(CommentsVO vo) {
-		// TODO Auto-generated method stub
 		return dao.c_goodSave(vo);
 	}
 
