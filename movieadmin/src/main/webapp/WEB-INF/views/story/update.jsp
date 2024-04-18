@@ -68,10 +68,7 @@
         <h1>게시글 수정페이지</h1>
         <form action="s_updateOK.do" method="post">
             <table id="insertTable">
-                <tr>
-                    <td><label for="">항목</label></td>
-                    <td>입력</td>
-                </tr>
+               
                 <tr>
                     <td><label for="story_num">글번호</label></td>
                     <td>${param.story_num}<input type="hidden" id="story_num" name="story_num" value="${param.story_num}"></td>
@@ -96,7 +93,6 @@
                 <tr>
 				    <td><input type="file" name="file_img"></td>
 				    <td><input type="file" name="file_video"></td>
-				    <td><input type="submit" value="글수정 완료"></td>
 				</tr>
                 
                 <tr>

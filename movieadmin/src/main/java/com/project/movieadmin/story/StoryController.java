@@ -176,7 +176,7 @@ public class StoryController {
 	@RequestMapping(value = "/s_selectOne.do", method = RequestMethod.GET)
 	public String story_selectOne(StoryVO vo, Model model) {
 		log.info("Welcome s_selectOne...");
-		
+//vo는 클라이언트로부터 받은 요청 데이터를 처리하기 위한 객체이며, vo2는 서비스 레이어에서 반환된 결과 데이터를 담음
 		StoryVO vo2 = service.s_selectOne(vo);
 		log.info("vo2:" + vo2);
 		log.info("================");
@@ -189,6 +189,8 @@ public class StoryController {
         // user_id를 모델에 추가하여 JSP로 전달
         model.addAttribute("nickname", nickname);
 
+     
+		
 		// 댓글목록 처리로직
         SCommentsVO cvo = new SCommentsVO();
         cvo.setStory_num(vo.getStory_num());
@@ -253,21 +255,17 @@ public class StoryController {
 	}
 	
 	@RequestMapping(value = "/s_increaseGood.do", method = RequestMethod.GET)
-	public String rv_increaseGood(StoryVO vo, HttpSession session) {
-		// 사용자 정보 및 추천 정보를 확인하고, 필요한 경우 DAO 레이어로 전달
-	    // 예: 사용자가 이미 추천한 경우에는 추천 수를 증가시키지 않도록 로직 추가
-	    // 이 예제에서는 간단히 컨트롤러에서 DAO 레이어로 전달만 보여줍니다.
-	    
-	    // DAO 레이어에서 추천 수 업데이트 로직 호출
-	    //storyService.increaseGoodCount(vo);
-	    
+	public String s_increaseGood(StoryVO vo, HttpSession session) {
+		log.info("s_increaseGood:{}" + vo);
+		
+		
+		
 		return "story_increaseGood";
 	}
 	
 	@RequestMapping(value = "/s_increaseGoodOK.do", method = RequestMethod.GET)
 	public String rv_increaseGoodOK(StoryVO vo) {
 		
-	
 		return "story_increaseGoodOK";
 	}
 	
