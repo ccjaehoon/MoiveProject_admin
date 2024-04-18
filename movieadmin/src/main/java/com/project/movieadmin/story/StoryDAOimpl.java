@@ -114,25 +114,27 @@ public class StoryDAOimpl implements StoryDAO {
 	public int s_increaseGood(StoryVO vo) {
 		log.info("s_increaseGood()....");
 		// 해당 게시물의 추천수를 가져와 1 증가시킴
-//	    int currentGoodCount = vo.getGood();
-//	    vo.setGood(currentGoodCount + 1);
-
 	    // 데이터베이스에 업데이트
-	    return sqlSession.update("S_UPDATE_GOOD_COUNT", vo);
+	    return sqlSession.update("S_INCREASEGOOD", vo);
 	}
 	
 	@Override
-	public void s_increaseGoodCount(StoryVO vo) {
-		log.info("s_increaseGoodCount()....");
-		 // 사용자의 추천 기록을 확인하는 로직 구현
-	    int userGoodCount = sqlSession.selectOne("S_CHECK_USER_GOOD_COUNT", vo);
-	    
-	    // 추천 기록이 없는 경우에만 추천 수를 증가시키는 로직 구현
-	    if (userGoodCount == 0) {
-	        // 추천 수 업데이트 쿼리 실행
-	        sqlSession.update("S_UPDATE_GOOD_COUNT", vo);
-	    }
+	public StoryVO s_selectGood(StoryVO vo) {
+		log.info("nc_selectGood()....");
+		log.info(vo.toString());
+		return sqlSession.selectOne("S_SELECT_GOOD", vo);
 	}
+
+	@Override
+	public int s_goodCheck(StoryVO vo) {
+		return sqlSession.selectOne("S_GOOD_CHECK", vo);
+	}
+
+	@Override
+	public int s_goodSave(StoryVO vo) {
+		return sqlSession.insert("S_GOOD_SAVE", vo);
+	}
+	
 
 	@Override
 	public int s_increaseReport(StoryVO vo) {
@@ -162,5 +164,6 @@ public class StoryDAOimpl implements StoryDAO {
 
 		return sqlSession.selectList("S_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
 	}
-	
+
+
 }
