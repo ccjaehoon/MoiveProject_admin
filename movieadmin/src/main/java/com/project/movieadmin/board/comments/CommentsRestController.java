@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +21,8 @@ public class CommentsRestController {
 	@Autowired
 	private CommentsService service;
 	
+	
+	@ResponseBody
 	@RequestMapping(value = "/c_increaseGood.do", method = RequestMethod.GET)
 	public Map<String, Object> c_increaseGood(CommentsVO vo) {
 		log.info("Welcome c_increaseGood.do{}", vo);
