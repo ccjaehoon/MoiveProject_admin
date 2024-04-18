@@ -49,10 +49,4 @@ public class BoardRestController {
 		return "board/increaseReport";
 	}
 	
-    @ResponseBody
-    @RequestMapping(value = "/b_increaseCommentsCount.do", method = RequestMethod.POST)
-    public int increaseCommentsCount(BoardVO vo) {
-        return service.b_increaseCommentsCount(vo);
-    }
-	
 }

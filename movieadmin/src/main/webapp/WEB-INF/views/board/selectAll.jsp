@@ -49,7 +49,56 @@ tfoot td {
 	text-align: center;
 }
 </style>
+<script type="text/javascript">
+$(function() {
+	console.log("jquery test");
+	console.log($(".b_increaseGood"));
+	$(".b_increaseGood").each(function(index,item){//console.log(index);
+		$(this).click(function() {
+			
+			console.log("increaseGood Click");
+			console.log($("#board_num"+index).val());
+			console.log($("#good"+index).val());
+			
+			$.ajax({
+				url : "http://localhost:8070/movie/b_increaseGood.do",
+				type : "get",
+				data : {
+					board_num : $("#board_num").val(),
+					nickname : $("#nickname"+index).val(),
+					good : $("#good"+index).val()
+				},
+				dataType : "json",
+				success : function(obj) {
+					console.log(obj);
+					let good = obj.good;
+//						console.log(item);
+					item.value = good;
+				},
+				error : function(xhr, status) {
+					console.log("status...", status);
+				}
+			});
+			return false;
+		});
+	});
+});
+</script>
+<script>
+	$(function() {
+		$("#report").dialog({
+			autoOpen : false
+		});
+	});
 
+	function showDialogReport(board_num, nickname) {
+		console.log(board_num);
+		console.log(nickname);
+		$('#board_num').val(board_num);
+		$('#nickname').val(nickname);
+		$("#report").dialog("open");
+	}
+</script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -72,8 +121,8 @@ tfoot td {
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일자</th>
-					<th>댓글수</th>
 					<th>좋아요</th>
+					<th>신고</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -84,19 +133,21 @@ tfoot td {
 						<td>${vo.title}</td>
 						<td>${vo.nickname}</td>
 						<td>${vo.wdate}</td>
-						<td>${vo.commentscount}</td>
 						<td>
-							<form action="b_increaseGood.do" method="post">
-								<input type="hidden" name="board_num" value="${vo.board_num}">
-								<button type="submit">좋아요 ${vo.good}</button>
-							</form>
+							<input type="hidden" name="board_num" value="${cvo.board_num}"  id="board_num${vs.index}">
+							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
+							<input type="button" value="${cvo.good}" class="b_increaseGood">
+						</td>
+						<td>
+						<input type="button" id="reportBtn" class="report"
+						onClick="showDialogReport('${cvo.board_num}','${cvo.nickname}')" value="신고" />
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="7"><c:forEach var="i" begin="1"
+					<td colspan="6"><c:forEach var="i" begin="1"
 							end="${totalPageCount}">
 							<c:if test="${param.searchKey == null}">
 								<a href="b_selectAll.do?cpage=${i}">${i} &nbsp;</a>
@@ -111,7 +162,50 @@ tfoot td {
 			</tfoot>
 		</table>
 	<a href="b_insert.do">글쓰기</a>
-
 	</div>
+	
+	<div id="report">
+
+		<form id="reportForm" action="rp_insertOK.do" method="post">
+			<table id="rp" border="2">
+				<tr>
+					<td id="font" width="100">신고 내용<input type="text"
+						id="nickname" name="nickname" value="${cvo.nickname}" readonly>
+						<input type="text" id="board_num" name="board_num"
+						value="${cvo.board_num}" readonly></td>
+				</tr>
+				<tr>
+					<td width="500"><textarea id="text_report" name="content"
+							placeholder="신고내용을 적으세요">test report</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="신고접수"
+						class="report"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	<script>
+		function submitReportForm() {
+			location.reload();
+		}
+		$("#reportForm").submit(function(event) {
+			event.preventDefault();
+			$.ajax({
+				type : "POST",
+				url : $(this).attr("action"),
+				data : $(this).serialize(),
+				success : function(response) {
+					console.log(response);
+					submitReportForm();
+				},
+				error : function(xhr, status, error) {
+					console.error(status, error);
+				}
+			});
+		});
+	</script>
+	
 </body>
 </html>

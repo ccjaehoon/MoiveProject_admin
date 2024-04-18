@@ -55,6 +55,8 @@ tfoot td {
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
 $(function() {
 	console.log("jquery test");
@@ -169,7 +171,8 @@ $(function() {
 			<tbody>
 				<tr>
 					<td><input type="text" name="content" value="hello" size="50"></td>
-					<td>${nickname}<input type="hidden" name="nickname" value="${nickname}">
+					<td>${nickname}
+						<input type="hidden" name="nickname" value="${nickname}">
 						<input type="hidden" name="board_num" value="${vo2.board_num}">
 					</td>
 					<td>
@@ -187,7 +190,7 @@ $(function() {
 			<tr>
 				<th>번호</th>
 				<th>내용</th>
-				<th>작성자</th>
+				<th>수정</th>
 				<th>좋아요</th>
 				<th>작성일자</th>
 				<th>신고</th>
@@ -196,7 +199,6 @@ $(function() {
 		</thead>
 		<tbody>
 			<c:forEach var="cvo" items="${cvos}" varStatus="vs">
-				
 				<tr>
 					<td>${cvo.comments_num}</td>
 					<td>${cvo.content}
@@ -210,26 +212,24 @@ $(function() {
 						</form>
 					</td>
 					<td>${cvo.nickname}<input type="hidden" name="nickname"
-						value="${nickname}" id="nickname${vs.index}"></td>
-						
+						value="${nickname}" id="nickname${vs.index}">
+					</td>
 					<td>
 						<input type="hidden" name="comments_num" value="${cvo.comments_num}"  id="comments_num${vs.index}">
 						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
 						<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
 						<input type="button" value="${cvo.good}" class="c_increaseGood">
+					</td>
 					<td>${cvo.wdate}</td>
-					
 					<td>
 						<input type="button" id="reportBtn" class="report"
 						onClick="showDialogReport('${cvo.comments_num}','${cvo.nickname}')" value="신고" />
 					</td>
-					
 					<td>
 						<c:if test="${param.nickname == cvo.nickname}">
 							<a href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">댓글 삭제</a>
 						</c:if>
 					</td>
-					
 				</tr>
 			</c:forEach>
 
@@ -241,42 +241,45 @@ $(function() {
 		<form id="reportForm" action="rp_insertOK.do" method="post">
 			<table id="rp" border="2">
 				<tr>
-					<td id="font" width="100">신고 내용<input type="text"
-						id="nickname" name="nickname" value="${cvo.nickname}" readonly>
+					<td id="font" width="100">신고 내용
+						<input type="text" id="nickname" name="nickname" value="${cvo.nickname}" readonly>
 						<input type="text" id="comments_num" name="comments_num"
-						value="${cvo.comments_num}" readonly></td>
+						value="${cvo.comments_num}" readonly>
+					</td>
 				</tr>
 				<tr>
 					<td width="500"><textarea id="text_report" name="content"
-							placeholder="신고내용을 적으세요">test report</textarea></td>
+							placeholder="신고내용을 적으세요"></textarea>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
-						class="report"></td>
+						class="report">
+					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
 	
-	<script>
-		function submitReportForm() {
-			location.reload();
-		}
-		$("#reportForm").submit(function(event) {
-			event.preventDefault();
-			$.ajax({
-				type : "POST",
-				url : $(this).attr("action"),
-				data : $(this).serialize(),
-				success : function(response) {
-					console.log(response);
-					submitReportForm();
-				},
-				error : function(xhr, status, error) {
-					console.error(status, error);
-				}
-			});
+<script>
+	function submitReportForm() {
+		location.reload();
+	}
+	$("#reportForm").submit(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type : "POST",
+			url : $(this).attr("action"),
+			data : $(this).serialize(),
+			success : function(response) {
+				console.log(response);
+				submitReportForm();
+			},
+			error : function(xhr, status, error) {
+				console.error(status, error);
+			}
 		});
-	</script>
+	});
+</script>
 </body>
 </html>

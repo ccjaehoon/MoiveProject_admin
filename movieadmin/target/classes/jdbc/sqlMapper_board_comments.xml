@@ -21,11 +21,51 @@
 		delete from comments where
 		comments_num=#{comments_num}
 	</delete>
+	
+	<select id="NC_SELECT_ONE"
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
+	</select>
 
 	<select id="C_SELECT_ALL"
 		resultType="com.project.movieadmin.board.comments.CommentsVO">
 		select * from comments where board_num=#{board_num} order by
 		comments_num desc
+	</select>
+	
+	<select id="SELECT_ALL_PAGE_BLOCK"
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
+
+	</select>
+	
+	<select id="SEARCHLIST_ID"
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
+
+	</select>
+
+	<select id="SEARCHLIST_NAME"
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
+
+	</select>
+
+	<select id="SEARCHLIST_PAGE_BLOCK_ID"
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
+
+	</select>
+
+	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
+		resultType="com.project.movieadmin.board.comments.CommentsVO">
+
+	</select>
+	
+	<select id="TOTAL_ROWS" resultType="int">
+
+	</select>
+
+	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
+
+	</select>
+
+	<select id="SEARCH_TOTAL_ROWS_NAME" resultType="int">
 
 	</select>
 
