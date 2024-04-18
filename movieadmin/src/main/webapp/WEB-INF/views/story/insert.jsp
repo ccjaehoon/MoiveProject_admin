@@ -75,7 +75,7 @@
                 
                 <tr>
                     <td><label for="nickname">작성자</label></td>
-                    <td>${nickname}<input type="hidden" id="nickname" name="nickname"></td>
+                    <td>${nickname}<input type="hidden" id="nickname" name="nickname" value ="${nickname}"></td>
                 </tr>
 
                 <tr>

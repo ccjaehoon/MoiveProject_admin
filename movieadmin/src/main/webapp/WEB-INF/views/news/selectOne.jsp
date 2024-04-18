@@ -215,7 +215,7 @@ $(function() {
 					</td>
 
 					<td>${cvo.nickname}<input type="hidden" name="nickname"
-						value="${user_id}" id="nickname${vs.index}"></td>
+						value="${nickname}" id="nickname${vs.index}"></td>
 
 					<td><input type="hidden" name="news_comments_num"
 						value="${cvo.news_comments_num}" id="news_comments_num${vs.index}">
