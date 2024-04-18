@@ -91,8 +91,6 @@ public class InfoDAOimpl implements InfoDAO {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_TITLE", map);
 		} else if (searchKey.equals("GENRE")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_GENRE", map);
-		} else if (searchKey.equals("DIRECTORS")) {
-			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_DIRECTORS", map);
 		} else if (searchKey.equals("ACTOR")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_ACTOR", map);
 		}
@@ -120,8 +118,6 @@ public class InfoDAOimpl implements InfoDAO {
 			total_rows = sqlSession.selectOne("I_SEARCH_TOTAL_ROWS_TITLE", "%" + searchWord + "%");
 		} else if (searchKey.equals("genre")) {
 			total_rows = sqlSession.selectOne("I_SEARCH_TOTAL_ROWS_GENRE", "%" + searchWord + "%");
-		} else if (searchKey.equals("directors")) {
-			total_rows = sqlSession.selectOne("I_SEARCH_TOTAL_ROWS_DIRECTORS", "%" + searchWord + "%");
 		} else if (searchKey.equals("actor")) {
 			total_rows = sqlSession.selectOne("I_SEARCH_TOTAL_ROWS_ACTOR", "%" + searchWord + "%");
 		}
