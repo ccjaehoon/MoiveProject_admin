@@ -86,7 +86,7 @@
                 </tr>
                <tr>
 					<td><label for="nickname">작성자</label></td>
-					<td>${nickname}<input type="hidden" id="nickname" name="nickname"
+					<td>${param.nickname}<input type="hidden" id="nickname" name="nickname"
 						value="${vo2.nickname}" placeholder="작성자"></td>
 				</tr>
                 <tr>

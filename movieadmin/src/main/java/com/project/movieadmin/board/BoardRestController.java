@@ -23,7 +23,7 @@ public class BoardRestController {
 	private BoardService service;
 	
 	@ResponseBody
-	@RequestMapping(value = "/b_increaseGood.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/b_increaseGood.do", method = RequestMethod.GET)
 	public Map<String , Object> b_increaseGood(BoardVO vo) {
 		log.info("Welcome b_increaseGood!");
 		Map<String , Object> map = new HashMap<String, Object>();

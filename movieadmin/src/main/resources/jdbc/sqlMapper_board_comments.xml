@@ -22,28 +22,16 @@
 		comments_num=#{comments_num}
 	</delete>
 
-	<select id="C_SELECT_ONE"
-		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		select * from comments where comments_num=#{comments_num}
-	</select>
-
 	<select id="C_SELECT_ALL"
 		resultType="com.project.movieadmin.board.comments.CommentsVO">
-		select * from comments where board_num=#{board_num} order by comments_num desc
+		select * from comments where board_num=#{board_num} order by
+		comments_num desc
+
 	</select>
 
-	<select id="C_INCREASEGOOD" resultType="int">
-		update comments set good
-		=
-		good + 1
-		where comments_num = #{comments_num}
-	</select>
-
-	<select id="C_INCREASEREPORT" resultType="int">
-		update comments set
-		report =
-		report + 1
-		where comments_num = #{comments_num}
+	<select id="C_INCREASEGOOD" resultType="com.project.movieadmin.board.comments.CommentsVO">
+		update comments set good=good+1
+		where comments_num=#{comments_num}
 	</select>
 
 	<select id="C_SELECT_GOOD"
@@ -61,8 +49,7 @@
 	</select>
 
 	<select id="C_GOOD_SAVE" resultType="int">
-		insert into
-		goodcheck(nickname, board_num, comments_num)
+		insert into goodcheck(nickname, board_num, comments_num)
 		values(#{nickname},#{board_num},#{comments_num})
 	</select>
 	

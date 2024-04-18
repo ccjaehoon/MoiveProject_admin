@@ -80,7 +80,7 @@ tfoot td {
 				<c:forEach var="vo" items="${vos}">
 					<tr>
 						<td><a href="b_selectOne.do?board_num=${vo.board_num}">${vo.board_num}</a></td>
-						<td>${vo.save_img}</td>
+						<td><img alt="" src="resources/uploadimg/thumb_${vo.save_img}"></td>
 						<td>${vo.title}</td>
 						<td>${vo.nickname}</td>
 						<td>${vo.wdate}</td>

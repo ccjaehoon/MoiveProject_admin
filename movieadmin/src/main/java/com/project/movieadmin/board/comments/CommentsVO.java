@@ -13,6 +13,6 @@ public class CommentsVO {
 	private Date wdate;
 	private int good;
 	private int board_num;
-	private String report;
+	private int report;
 
 }

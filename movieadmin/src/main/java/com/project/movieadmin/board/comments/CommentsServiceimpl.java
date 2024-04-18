@@ -40,12 +40,6 @@ public class CommentsServiceimpl implements CommentsService {
 	}
 
 	@Override
-	public int c_increaseReport(CommentsVO vo) {
-		// TODO Auto-generated method stub
-		return dao.c_increaseReport(vo);
-	}
-
-	@Override
 	public List<CommentsVO> c_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
 		
 		return dao.c_selectAll_nickname(cpage, pageBlock, vo);

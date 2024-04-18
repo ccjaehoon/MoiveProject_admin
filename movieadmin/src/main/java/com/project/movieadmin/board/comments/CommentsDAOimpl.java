@@ -23,7 +23,6 @@ public class CommentsDAOimpl implements CommentsDAO {
 	public int c_insert(CommentsVO vo) {
 		log.info("c_insert()...");
 		
-		log.info("{}",vo);
 		int flag = sqlSession.insert("C_INSERT", vo);
 		return flag;
 	}
@@ -56,28 +55,6 @@ public class CommentsDAOimpl implements CommentsDAO {
 	}
 
 	@Override
-	public int c_increaseReport(CommentsVO vo) {
-		log.info("c_increaseReport()....");
-
-		int total_rows = sqlSession.update("C_INCREASEREPORT", vo);
-
-		return total_rows;
-	}
-
-	@Override
-	public List<CommentsVO> c_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
-		 int startRow = (cpage - 1) * pageBlock + 1;
-
-	        Map<String, Object> map = new HashMap<String, Object>();
-	        map.put("startRow", startRow - 1);
-	        map.put("pageBlock", pageBlock);
-	        map.put("vo", vo);
-
-	        List<CommentsVO> vos = sqlSession.selectList("C_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
-	        return vos;
-	}
-
-	@Override
 	public List<CommentsVO> c_selectAll(CommentsVO vo) {
 		log.info("comments selectAll()....");
 
@@ -101,5 +78,18 @@ public class CommentsDAOimpl implements CommentsDAO {
 	public int c_goodSave(CommentsVO vo) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("C_GOOD_SAVE", vo);
+	}
+
+	@Override
+	public List<CommentsVO> c_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		 int startRow = (cpage - 1) * pageBlock + 1;
+
+	        Map<String, Object> map = new HashMap<String, Object>();
+	        map.put("startRow", startRow - 1);
+	        map.put("pageBlock", pageBlock);
+	        map.put("vo", vo);
+
+	        List<CommentsVO> vos = sqlSession.selectList("C_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
+	        return vos;
 	}
 }

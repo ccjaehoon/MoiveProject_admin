@@ -18,8 +18,6 @@ public interface CommentsService {
 	
 	public CommentsVO c_selectGood(CommentsVO vo);
 	
-	public int c_increaseReport(CommentsVO vo);
-
 	public int c_goodCheck(CommentsVO vo);
 
 	public int c_goodSave(CommentsVO vo);
