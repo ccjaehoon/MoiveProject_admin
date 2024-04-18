@@ -38,16 +38,30 @@
 tfoot td {
 	text-align: center;
 }
+
+#rp {
+	background-color: white;
+}
+
+#font {
+	font-size: 30px;
+}
+
+#text_report {
+	width: 500px;
+	height: 500px;
+}
 </style>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
 $(function() {
 	console.log("jquery test");
 	console.log($(".c_increaseGood"));
-	$(".c_increaseGood").each(function(index,item){
-//		console.log(index);
+	$(".c_increaseGood").each(function(index,item){//console.log(index);
 		$(this).click(function() {
 			
 			console.log("increaseGood Click");
@@ -101,10 +115,10 @@ $(function() {
 
 	// 	});
 
-	function showDialogReport(news_comments_num, nickname) {
-		console.log(news_comments_num);
+	function showDialogReport(comments_num, nickname) {
+		console.log(comments_num);
 		console.log(nickname);
-		$('#news_comments_num').val(news_comments_num);
+		$('#comments_num').val(comments_num);
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
 	}
@@ -121,7 +135,7 @@ $(function() {
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
-				<th>좋아요</th>
+				<th>썸네일</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -129,12 +143,7 @@ $(function() {
 				<td>${vo2.board_num}</td>
 				<td>${vo2.title}</td>
 				<td>${vo2.nickname}</td>
-				<td>
-					<form action="b_increaseGood.do" method="post">
-						<input type="hidden" name="board_num" value="${vo2.board_num}">
-						<button type="submit">좋아요 ${vo2.good}</button>
-					</form>
-				</td>
+				<td><img src="resources/uploadimg/${vo2.save_img}" width="200"></td>
 			</tr>
 			<tr>
 				<td>내용</td>
@@ -146,17 +155,15 @@ $(function() {
 			</tr>
 		</tbody>
 	</table>
-	<c:if test="${nickname == vo2.nickname}">
-		<a href="b_update.do?board_num=${vo2.board_num}&nickname=${param.nickname}&title=${param.title}&content=${param.content}">글수정</a>
-		<a href="b_delete.do?board_num=${vo2.board_num}">글삭제</a>
-	</c:if>
+		<a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a>
+		<a href="b_delete.do?board_num=${param.board_num}">글삭제</a>
 	<hr>
 	<h3>댓글작성</h3>
 	<form action="c_insertOK.do">
 		<table id="movies">
 			<thead>
 				<tr>
-					<th>댓글 내용</th>
+					<th>댓글 내용${param.msg}</th>
 					<th>댓글 작성자</th>
 					<th></th>
 				</tr>
@@ -164,14 +171,12 @@ $(function() {
 			<tbody>
 				<tr>
 					<td><input type="text" name="content" value="hello" size="50"></td>
-					<td>${nickname}<input type="hidden" name="nickname"
-						value="${nickname}"> <input type="hidden" name="board_num" value="${vo2.board_num}">
+					<td>${nickname}
+						<input type="hidden" name="nickname" value="${nickname}">
+						<input type="hidden" name="board_num" value="${vo2.board_num}">
 					</td>
 					<td>
-						<form action="b_increaseCommentsCount.do" method="post">
-						    <input type="hidden" name="board_num" value="${vo2.board_num}">
-						    <input type="submit" value="댓글작성">
-						</form>
+						<input type="submit" value="댓글작성">
 					</td>
 				</tr>
 			</tbody>
@@ -185,63 +190,96 @@ $(function() {
 			<tr>
 				<th>번호</th>
 				<th>내용</th>
-				<th>작성자</th>
+				<th>수정</th>
 				<th>좋아요</th>
 				<th>작성일자</th>
-				<th></th>
+				<th>신고</th>
+				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="cvo" items="${cvos}" varStatus="vs">
-				
 				<tr>
 					<td>${cvo.comments_num}</td>
 					<td>${cvo.content}
 						<form action="c_updateOK.do">
-							<input type="text" name="content" value="${cvo.content}">
-							<input type="hidden" name="comments_num" value="${cvo.comments_num}">
-							<input type="hidden" name="board_num" value="${cvo.board_num}">
-							<input type="submit" value="수정">
+							<c:if test="${param.nickname == cvo.nickname}">
+								<input type="text" name="content" value="${cvo.content}">
+								<input type="hidden" name="comments_num" value="${cvo.comments_num}">
+								<input type="hidden" name="board_num" value="${cvo.board_num}">
+								<input type="submit" value="수정">
+							</c:if>
 						</form>
 					</td>
 					<td>${cvo.nickname}<input type="hidden" name="nickname"
-						value="${user_id}" id="nickname${vs.index}"></td>
-					<td><input type="hidden" name="comments_num"
-						value="${cvo.comments_num}"  id="comments_num${vs.index}">
-							<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
-							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
-							<input type="button" value="${cvo.good}" class="c_increaseGood">
+						value="${nickname}" id="nickname${vs.index}">
+					</td>
+					<td>
+						<input type="hidden" name="comments_num" value="${cvo.comments_num}"  id="comments_num${vs.index}">
+						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
+						<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
+						<input type="button" value="${cvo.good}" class="c_increaseGood">
+					</td>
 					<td>${cvo.wdate}</td>
 					<td>
-						<a href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">삭제</a>
+						<input type="button" id="reportBtn" class="report"
+						onClick="showDialogReport('${cvo.comments_num}','${cvo.nickname}')" value="신고" />
 					</td>
-					
+					<td>
+						<c:if test="${param.nickname == cvo.nickname}">
+							<a href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">댓글 삭제</a>
+						</c:if>
+					</td>
 				</tr>
 			</c:forEach>
 
 		</tbody>
 	</table>
 	
-	<script>
-		function submitReportForm() {
-			location.reload();
-		}
-		$("#reportForm").submit(function(event) {
-			event.preventDefault();
-			$.ajax({
-				type : "POST",
-				url : $(this).attr("action"),
-				data : $(this).serialize(),
-				success : function(response) {
-					console.log(response);
-					submitReportForm();
-				},
-				error : function(xhr, status, error) {
-					console.error(status, error);
-				}
-			});
-		});
-	</script>
+	<div id="report">
 
+		<form id="reportForm" action="rp_insertOK.do" method="post">
+			<table id="rp" border="2">
+				<tr>
+					<td id="font" width="100">신고 내용
+						<input type="text" id="nickname" name="nickname" value="${cvo.nickname}" readonly>
+						<input type="text" id="comments_num" name="comments_num"
+						value="${cvo.comments_num}" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td width="500"><textarea id="text_report" name="content"
+							placeholder="신고내용을 적으세요"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="신고접수"
+						class="report">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+<script>
+	function submitReportForm() {
+		location.reload();
+	}
+	$("#reportForm").submit(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type : "POST",
+			url : $(this).attr("action"),
+			data : $(this).serialize(),
+			success : function(response) {
+				console.log(response);
+				submitReportForm();
+			},
+			error : function(xhr, status, error) {
+				console.error(status, error);
+			}
+		});
+	});
+</script>
 </body>
 </html>

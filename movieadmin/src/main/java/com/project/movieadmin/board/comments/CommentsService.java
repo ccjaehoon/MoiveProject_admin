@@ -5,7 +5,6 @@ import java.util.List;
 import com.project.movieadmin.user.UserVO;
 
 public interface CommentsService {
-	
 	public int c_insert(CommentsVO vo);
 
 	public int c_update(CommentsVO vo);
@@ -18,8 +17,6 @@ public interface CommentsService {
 	
 	public CommentsVO c_selectGood(CommentsVO vo);
 	
-	public int c_increaseReport(CommentsVO vo);
-
 	public int c_goodCheck(CommentsVO vo);
 
 	public int c_goodSave(CommentsVO vo);

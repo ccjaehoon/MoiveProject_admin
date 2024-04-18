@@ -170,12 +170,4 @@ public class BoardDAOimpl implements BoardDAO {
 		return sqlSession.insert("B_GOOD_SAVE", vo);
 	}
 
-	@Override
-	public int b_increaseCommentsCount(BoardVO vo) {
-		
-		int total_rows = sqlSession.update("B_INCREASECOMMENTSCOUNT", vo);
-		
-		return total_rows;
-	}
-
 }
