@@ -171,9 +171,8 @@ $(function() {
 			<tbody>
 				<tr>
 					<td><input type="text" name="content" value="hello" size="50"></td>
-					<td>${nickname}<input type="hidden" name="nickname"
-						value="${nickname}"> <input type="hidden" name="news_num"
-						value="${vo2.news_num}">
+					<td>${nickname}<input type="hidden" name="nickname" value="${nickname}">
+					<input type="hidden" name="news_num" value="${vo2.news_num}">
 					</td>
 					<td><input type="submit" value="댓글작성"></td>
 				</tr>
@@ -204,9 +203,7 @@ $(function() {
 						<form action="nc_updateOK.do">
 							<c:if test="${param.nickname == cvo.nickname}">
 								<input type="text" name="content" value="${cvo.content}">
-
-								<input type="hidden" name="news_comments_num"
-									value="${cvo.news_comments_num}">
+								<input type="hidden" name="news_comments_num" value="${cvo.news_comments_num}">
 								<input type="hidden" name="news_num" value="${cvo.news_num}">
 								<input type="submit" value="수정">
 							</c:if>
@@ -217,28 +214,21 @@ $(function() {
 					<td>${cvo.nickname}<input type="hidden" name="nickname"
 						value="${nickname}" id="nickname${vs.index}"></td>
 
-					<td><input type="hidden" name="news_comments_num"
-						value="${cvo.news_comments_num}" id="news_comments_num${vs.index}">
-						<input type="hidden" name="news_num" value="${vo2.news_num}"
-						id="news_num"> <input type="hidden" name="good"
-						value="${cvo.good}" id="good${vs.index}"> <input
-						type="button" value="${cvo.good}" class="nc_increaseGood"></td>
-
-
+					<td><input type="hidden" name="news_comments_num" value="${cvo.news_comments_num}" id="news_comments_num${vs.index}">
+						<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
+						<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
+						<input type="button" value="${cvo.good}" class="nc_increaseGood"></td>
 					<td>${cvo.wdate}</td>
-
-
 
 					<td><input type="button" id="reportBtn" class="report"
 						onClick="showDialogReport('${cvo.news_comments_num}','${cvo.nickname}')"
 						value="신고" /></td>
 
-
-
-					<td><c:if test="${param.nickname == cvo.nickname}">
-							<a
-								href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
-						</c:if></td>
+					<td>
+						<c:if test="${param.nickname == cvo.nickname}">
+							<a href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
+						</c:if>
+					</td>
 
 				</tr>
 			</c:forEach>

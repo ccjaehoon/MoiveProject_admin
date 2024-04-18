@@ -102,9 +102,4 @@ public class BoardServiceimpl implements BoardService {
 		return dao.b_goodSave(vo);
 	}
 
-	@Override
-	public int b_increaseCommentsCount(BoardVO vo) {
-		return dao.b_increaseCommentsCount(vo);
-	}
-
 }

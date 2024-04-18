@@ -1,5 +1,9 @@
 package com.project.movieadmin.board.comments;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,18 +16,26 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class CommentsRestController {
+	
+	@Autowired
+	private CommentsService service;
+	
 	@RequestMapping(value = "/c_increaseGood.do", method = RequestMethod.GET)
-	public String c_increaseGood(CommentsVO vo) {
-		log.info("Welcome c_increaseGood!");
+	public Map<String, Object> c_increaseGood(CommentsVO vo) {
+		log.info("Welcome c_increaseGood.do{}", vo);
+		Map<String , Object> map = new HashMap<String, Object>();
+		int goodCheck = service.c_goodCheck(vo);
+		if(goodCheck == 0) {
+			int increaseGood = service.c_increaseGood(vo);
+			log.info("increaseGood:{}",increaseGood);
+			
+			int goodSave = service.c_goodSave(vo);
+			log.info("result:{}",goodSave);
+		}
 
-		return "board/comments/increaseGood";
-	}
-	
-	@RequestMapping(value = "/c_increaseReport.do", method = RequestMethod.GET)
-	public String c_increaseReport(CommentsVO vo) {
-		log.info("Welcome c_increaseReport!");
-
-		return "board/comments/increaseReport";
-	}
-	
+		int good = service.c_selectGood(vo).getGood();
+		log.info(service.c_selectGood(vo).getGood()+"");
+		map.put("good", good);
+		return map;
+	}	
 }
