@@ -52,9 +52,10 @@ public class StoryController {
 	 */
 
 	@RequestMapping(value = "/s_insert.do", method = RequestMethod.GET)
-	public String s_insert() {
+	public String s_insert(Model model) {
 		log.info("Welcome story_insert...");
-
+		String nickname = (String) session.getAttribute("nickname");
+		model.addAttribute(nickname);
 		return "story/insert";
 	}
 	

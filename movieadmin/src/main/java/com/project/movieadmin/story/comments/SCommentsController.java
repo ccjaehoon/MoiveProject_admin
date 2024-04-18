@@ -80,6 +80,18 @@ public class SCommentsController {
 			
 		return vos;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "api/sc_increaseGood.do", method = RequestMethod.GET)
+	public String sc_increaseGood(SCommentsVO vo) {
+		log.info("Welcome api/sc_increaseGood.do...");
+		log.info("vo:{}",vo);
+		
+		int goodCount = service.sc_increaseGood(vo);
+	
+		//{"message":"good"}
+		return "{\"goodCount\":\""+goodCount+"\"}";
+	}
 }
 
 

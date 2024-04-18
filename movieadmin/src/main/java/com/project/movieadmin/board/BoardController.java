@@ -50,7 +50,7 @@ public class BoardController {
 	@RequestMapping(value = "/b_insert.do", method = RequestMethod.GET)
 	public String b_insert(Model model) {
 		log.info("Welcome b_insert.do....");
-		String nickname = (String) session.getAttribute("user_id");
+		String nickname = (String) session.getAttribute("nickname");
 		model.addAttribute(nickname);
 
 		return "board/insert";
