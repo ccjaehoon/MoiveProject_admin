@@ -85,7 +85,7 @@ tfoot td {
 
 				<tr>
 				<%-- 	<td><a href="s_selectRandomList.do?story_num=${vo.story_num}">${vo.story_num}</a></td> --%>
-					<td><a href="s_selectOne.do?story_num=${vo.story_num}">${vo.story_num}</a></td>
+					<td><a href="s_selectOne.do?story_num=${vo.story_num}?nickname=${vo.nickname}">${vo.story_num}</a></td>
 				</tr>
 				<tr>
 					<td>${vo.content}</td>
