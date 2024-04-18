@@ -91,8 +91,6 @@ public class InfoDAOimpl implements InfoDAO {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_TITLE", map);
 		} else if (searchKey.equals("GENRE")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_GENRE", map);
-		} else if (searchKey.equals("DIRECTORS")) {
-			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_DIRECTORS", map);
 		} else if (searchKey.equals("ACTOR")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_ACTOR", map);
 		}
