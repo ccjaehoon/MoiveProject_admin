@@ -171,9 +171,8 @@ $(function() {
 			<tbody>
 				<tr>
 					<td><input type="text" name="content" value="hello" size="50"></td>
-					<td>${nickname}<input type="hidden" name="nickname"
-						value="${nickname}"> <input type="hidden" name="news_num"
-						value="${vo2.news_num}">
+					<td>${nickname}<input type="hidden" name="nickname" value="${nickname}">
+					<input type="hidden" name="news_num" value="${vo2.news_num}">
 					</td>
 					<td><input type="submit" value="댓글작성"></td>
 				</tr>
@@ -225,10 +224,11 @@ $(function() {
 						onClick="showDialogReport('${cvo.news_comments_num}','${cvo.nickname}')"
 						value="신고" /></td>
 
-					<td><c:if test="${param.nickname == cvo.nickname}">
-							<a
-								href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
-						</c:if></td>
+					<td>
+						<c:if test="${param.nickname == cvo.nickname}">
+							<a href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
+						</c:if>
+					</td>
 
 				</tr>
 			</c:forEach>

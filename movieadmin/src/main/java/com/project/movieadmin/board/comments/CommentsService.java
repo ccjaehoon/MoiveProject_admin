@@ -5,7 +5,6 @@ import java.util.List;
 import com.project.movieadmin.user.UserVO;
 
 public interface CommentsService {
-	
 	public int c_insert(CommentsVO vo);
 
 	public int c_update(CommentsVO vo);

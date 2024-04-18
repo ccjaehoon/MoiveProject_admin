@@ -219,9 +219,10 @@ $(function() {
 						<input type="button" value="${cvo.good}" class="c_increaseGood">
 					<td>${cvo.wdate}</td>
 					
-					<td><input type="button" id="reportBtn" class="report"
-						onClick="showDialogReport('${cvo.comments_num}','${cvo.nickname}')"
-						value="신고" /></td>
+					<td>
+						<input type="button" id="reportBtn" class="report"
+						onClick="showDialogReport('${cvo.comments_num}','${cvo.nickname}')" value="신고" />
+					</td>
 					
 					<td>
 						<c:if test="${param.nickname == cvo.nickname}">

@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class CommentsVO {
-	
 	private int comments_num;
 	private String nickname;
 	private String content;
