@@ -21,6 +21,7 @@ public class CommentsRestController {
 	@Autowired
 	private CommentsService service;
 	
+	
 	@ResponseBody
 	@RequestMapping(value = "/c_increaseGood.do", method = RequestMethod.GET)
 	public Map<String, Object> c_increaseGood(CommentsVO vo) {
