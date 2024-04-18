@@ -60,9 +60,7 @@ public class ReviewController {
 		log.info("result:{}", result);
 
 		return "redirect:rv_selectOne.do?review_num=";
-	}
-	
-	
+	}	
 	
 	@RequestMapping(value = "/rv_update.do", method = RequestMethod.GET)
 	public String rv_update(Model model) {

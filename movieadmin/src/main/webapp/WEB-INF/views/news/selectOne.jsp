@@ -225,7 +225,7 @@ $(function() {
 						value="신고" /></td>
 
 					<td>
-						<c:if test="${param.nickname == cvo.nickname}">
+						<c:if test="${nickname == cvo.nickname}">
 							<a href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
 						</c:if>
 					</td>

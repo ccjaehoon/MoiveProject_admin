@@ -32,18 +32,25 @@ import lombok.extern.slf4j.Slf4j;
 public class InfoRestController {
 
     @Autowired
-    InfoService service;
+    private InfoService service;
 
 	private static final Logger logger = LoggerFactory.getLogger(InfoRestController.class);
-	private Gson gson = new GsonBuilder().create();// json텍스트를 한줄로 출력
+	private Gson gson = new GsonBuilder().create();
+	
+	
+	
+	
+	
+	
+	
 //    @ResponseBody
 //    @RequestMapping(value = "/json_selectAll.do", method = RequestMethod.GET, produces = "text/json; charset=UTF-8")
 //    public String json_test(Locale locale, Model model, HttpServletRequest request) throws OpenAPIFault, Exception {
 //        logger.info("Welcome json_selectAll....");
-//         // 발급키
+//         
 //        String key = "f1c8cf77dd2d86fde938f2770265ac97";
 //
-//	    // 영화 목록 조회 서비스 호출
+//	    
 //	    String movieListResponse = service.getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
 //	    logger.info("Movie list response: {}", movieListResponse);
 //	    logger.info(movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1));
@@ -56,7 +63,7 @@ public class InfoRestController {
 //		}
 //		
 //
-//        // KOBIS 오픈 API Rest Client를 통해 호출
+//        
 //        KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
 //
 //				
@@ -102,7 +109,7 @@ public class InfoRestController {
 //		return txt;
 //	}
 
-//        // 영화 목록 조회 서비스 호출
+//        
 //        String movieListResponse = service.getMovieList(true, "1", "100", "", "", "", "", "", "", "", null);
 //        logger.info("Movie list response: {}", movieListResponse);
 //        logger.info(movieListResponse.substring(movieListResponse.indexOf("["),movieListResponse.lastIndexOf("]")+1));
