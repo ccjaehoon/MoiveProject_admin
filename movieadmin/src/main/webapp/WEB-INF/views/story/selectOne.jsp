@@ -37,6 +37,29 @@
         </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
+	
+	function fn_good(story_comments_num){
+		console.log("fn_good");
+		console.log('${nickname}');
+		console.log(story_comments_num);
+		$.ajax({
+			url : "http://localhost:8070/movie/api/sc_increaseGood.do",
+			type : "get",
+			data : {
+				story_comments_num : story_comments_num,
+				nickname : '${nickname}'
+			},
+			dataType : "json",
+			success : function(obj) {
+				console.log(obj);
+				$('#btn_good').val(obj.goodCount);
+			},
+			error : function(xhr, status) {
+				console.log("status...", status);
+			}
+		});
+	}
+
 </script>
 </head>
 <body>
@@ -147,7 +170,7 @@
 						<input type="hidden" name="story_num" value="${vo2.story_num}"
 						id="story_num"> <input type="hidden" name="good"
 						value="${cvo.good}" id="good${vs.index}"> <input
-						type="button" value="${cvo.good}" class="sc_increaseGood"></td>
+						type="button" value="${cvo.good}" id="btn_good" class="sc_increaseGood" onclick="fn_good(${cvo.story_comments_num})"></td>
 
 
 					<td>${cvo.wdate}</td>
@@ -164,7 +187,8 @@
 					<td>
 					
 						<c:if test="${nickname == cvo.nickname}">
-<%-- 						<input type="button" id="deleteBtn" class="delete" value="삭제" onclick="deleteComment(${cvo.story_comments_num})"> --%>
+<%-- 자바스크립트를 쓸 경우						
+<input type="button" id="deleteBtn" class="delete" value="삭제" onclick="deleteComment(${cvo.story_comments_num})"> --%>
 <a href="SComments_deleteOK.do?story_comments_num=${cvo.story_comments_num}&story_num=${cvo.story_num}">댓글삭제</a>
 						</c:if>
 					</td>

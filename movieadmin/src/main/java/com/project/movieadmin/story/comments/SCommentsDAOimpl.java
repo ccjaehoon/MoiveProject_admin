@@ -81,13 +81,22 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 
 	@Override
 	public int sc_increaseGood(SCommentsVO vo) {
-		log.info("sc_selectAll()....");
+		log.info("sc_increaseGood()....{}",vo);
 		// 해당 댓글의 추천수를 가져와 1 증가시킴
-	    int currentGoodCount = vo.getGood();
-	    vo.setGood(currentGoodCount + 1);
+//	    int currentGoodCount = vo.getGood();
+//	    vo.setGood(currentGoodCount + 1);
 
 	    // 데이터베이스에 업데이트
-	    return sqlSession.update("SC_UPDATE_GOOD_COUNT", vo);
+//	    return sqlSession.update("SC_UPDATE_GOOD_COUNT", vo);
+		int count = sqlSession.selectOne("SC_SELECT_GOOD", vo);
+		log.info("count:{}",count);
+		if(count==0) {
+			sqlSession.insert("SC_INSERT_GOOD", vo);
+			sqlSession.update("SC_UPDATE_GOOD_COUNT", vo);
+			return sqlSession.selectOne("SC_SELECT_GOOD_COUNT", vo);
+		}else {
+			return 0;
+		}
 	}
 
 	@Override
