@@ -148,46 +148,11 @@
 tfoot td {
 	text-align: center;
 }
-
-//좋아요 구현
-$(function() {
-	console.log("jquery test");
-	console.log($(".i_increaseGood"));
-		$(".i_increaseGood").click(function() {
-			console.log("increaseGood 실행");
-			$.ajax({
-				url : "http://localhost:8070/movieadmin/i_increaseGood.do",	type : "get",
-				data : {info_num : '${vo2.info_num}', nickname : '${nickname}',good : '${vo2.good}'},
-				dataType : "json", success : function(obj) {
-					let good = obj.good;
-					item.value = good;},
-				error : function(xhr, status) {
-					console.log("status error", status);
-				}
-			});
-			return false;
-		});
-	
-});
-
-
-
-$(function() {
-		$("#report").dialog({ autoOpen : false});
-	});
-	function info_report(info_num, nickname) {
-		$('#info_num').val(info_num);
-		$('#nickname').val(nickname);
-		$("#report").dialog("open");
-	}
-	
-
-
 </style>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>영화정보</h1>
+	<h1>글정보</h1>
 	<hr>
 	<table id="customers">
 		<thead>
@@ -210,12 +175,8 @@ $(function() {
 				<td>상영시간(분)</td>
 				<td>출시일</td>
 				<td>제작사</td>
-<<<<<<< HEAD
-				<td>좋아요</td>
-=======
 				<td>글 조회수</td>
 				<td>즐겨찾기</td>
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 			</tr>
 			<tr>
 				<td>${vo2.genre}</td>
@@ -224,55 +185,15 @@ $(function() {
 				<td>${vo2.showtime}</td>
 				<td>${vo2.releaseDate}</td>
 				<td>${vo2.companys}</td>
-<<<<<<< HEAD
-				
-=======
 				<td>${vo2.views}</td>
 				<td><input type="hidden" name="info_num"
 					value="${vo2.info_num}" id="info_num"> <input type="hidden"
 					name="nickname" value="${nickname}" id="nickname"> <input
 					type="button" value="즐겨찾기" class="i_favorite"></td>
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 			</tr>
 
 		</tbody>
 	</table>
-<<<<<<< HEAD
-	
-	
-	
-	
-	
-	
-	
-	<%--     <c:if test="${nickname == vo2.nickname }"> --%>
-	<%-- 	    <a href="i_update.do?num=${vo2.num}">글수정</a> --%>
-	<%-- 	    <a href="i_delete.do?num=${vo2.num}">글삭제</a> --%>
-	<%--     </c:if> --%>
-	<!--     <hr> -->
-	<!--     <h3>댓글작성</h3> -->
-	<!--     <form action="c_insertOK.do"> -->
-	<!-- 	    <table id="customers"> -->
-	<!-- 	        <thead> -->
-	<!-- 	            <tr> -->
-	<%-- 	                <th>댓글 내용 ${param.msg}</th> --%>
-	<!-- 	                <th>댓글 작성자</th> -->
-	<!-- 	                <th></th> -->
-	<!-- 	            </tr> -->
-	<!-- 	        </thead> -->
-	<!-- 	        <tbody> -->
-	<!-- 	        	<tr> -->
-	<!-- 	        		<td><input type="text" name="content" value="hello" size="50"></td> -->
-	<!-- 	        		<td> -->
-	<%-- 	        			${user_id}<input type="hidden" name="writer" value="${user_id}"> --%>
-	<%-- 	        			<input type="hidden" name="bnum" value="${vo2.num}"> --%>
-	<!-- 	        		</td> -->
-	<!-- 	        		<td><input type="submit"  value="댓글작성"></td> -->
-	<!-- 	        	</tr> -->
-	<!-- 	        </tbody> -->
-	<!-- 	    </table> -->
-=======
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
 	<h3>리뷰작성</h3>
 	<form action="rv_insertOK.do">
