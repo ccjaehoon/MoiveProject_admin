@@ -162,7 +162,7 @@ tfoot td {
 			<tr>
 				<th colspan="3"><img src="resources/uploadimg/${vo2.save_img}"
 					width="200"></th>
-				<th colspan="3"><iframe id="trailerFrame" width="420"
+				<th colspan="4"><iframe id="trailerFrame" width="420"
 						height="315" frameborder="0" allowfullscreen></iframe></th>
 			</tr>
 		</thead>
