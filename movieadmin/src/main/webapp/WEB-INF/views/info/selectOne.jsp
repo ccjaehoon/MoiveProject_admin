@@ -8,39 +8,39 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
-$(function() {
-	console.log("jquery test");
-	console.log($(".rv_increaseGood"));
-	$(".rv_increaseGood").each(function(index, item) {//console.log(index);
-		$(this).click(function() {
-			console.log("increaseGood Click");
-			console.log($("#review_num" + index).val());
-			console.log($("#good" + index).val());
-			
-			$.ajax({
-				url : "http://localhost:8070/movie/rv_increaseGood.do",
-				type : "get",
-				data : {
-					review_num : $("#review_num" + index).val(),
-					info_num : $("#info_num").val(),
-					nickname : $("#nickname" + index).val(),
-					good : $("#good" + index).val()
-				},
-				dataType : "json",
-				success : function(obj) {
-					console.log(obj);
-					let good = obj.good;
-					//console.log(item);
-					item.value = good;
-				},
-				error : function(xhr, status) {
-					console.log("status...", status);
-				}
+	$(function() {
+		console.log("jquery test");
+		console.log($(".rv_increaseGood"));
+		$(".rv_increaseGood").each(function(index, item) {//console.log(index);
+			$(this).click(function() {
+				console.log("increaseGood Click");
+				console.log($("#review_num" + index).val());
+				console.log($("#good" + index).val());
+
+				$.ajax({
+					url : "http://localhost:8070/movie/rv_increaseGood.do",
+					type : "get",
+					data : {
+						review_num : $("#review_num" + index).val(),
+						info_num : $("#info_num").val(),
+						nickname : $("#nickname" + index).val(),
+						good : $("#good" + index).val()
+					},
+					dataType : "json",
+					success : function(obj) {
+						console.log(obj);
+						let good = obj.good;
+						//console.log(item);
+						item.value = good;
+					},
+					error : function(xhr, status) {
+						console.log("status...", status);
+					}
+				});
+				return false;
 			});
-			return false;
 		});
 	});
-});
 </script>
 <script>
 	// 	$(function() {
@@ -75,8 +75,8 @@ $(function() {
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
 	// API 키
-// 	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
- 	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
+	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
+	//  	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
 
 	// YouTube API 클라이언트 초기화
 	function init() {
@@ -86,35 +86,23 @@ $(function() {
 							'apiKey' : apiKey,
 							'discoveryDocs' : [ 'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest' ],
 						}).then(function() {
-							console.log("1");
+
 					// YouTube Data API 사용 준비 완료
 					searchForTrailer();
-					
+
 				});
 	}
 
 	function searchForTrailer() {
-		console.log("2");
+
 		var request = gapi.client.youtube.search.list({
-			
+
 			part : 'snippet',
 			q : "${vo2.title} 예고편", // 검색어 설정 (예: 파묘)
 			type : 'video',
 			maxResults : 1
 		// 검색 결과 수
 		});
-<<<<<<< HEAD
-		
-    request.execute(function(response) {
-    	console.log("3");
-        var videoId = response.result.items[0].id.videoId;
-        var trailerUrl = 'https://www.youtube.com/embed/' + videoId;
-        document.getElementById('trailerFrame').src = trailerUrl;
-        
-    });
-}
-
-=======
 
 		request.execute(function(response) {
 			var videoId = response.result.items[0].id.videoId;
@@ -122,7 +110,6 @@ $(function() {
 			document.getElementById('trailerFrame').src = trailerUrl;
 		});
 	}
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 
 	// API 로드
 	gapi.load('client', init);
@@ -226,9 +213,9 @@ tfoot td {
 		</table>
 
 	</form>
-	    <hr>
-	    <h3>리뷰 목록</h3>
-	    <table id="customers">
+	<hr>
+	<h3>리뷰 목록</h3>
+	<table id="customers">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -260,28 +247,30 @@ tfoot td {
 					<td>${ivo.nickname}<input type="hidden" name="nickname"
 						value="${nickname}" id="nickname${vs.index}"></td>
 
-					<td><input type="hidden" name="review_num" value="${ivo.review_num}" id="review_num${vs.index}">
-						<input type="hidden" name="info_num" value="${vo2.info_num}" id="info_num">
-						<input type="hidden" name="good" value="${ivo.good}" id="good${vs.index}">
-						<input type="button" value="${ivo.good}" class="rv_increaseGood"></td>
+					<td><input type="hidden" name="review_num"
+						value="${ivo.review_num}" id="review_num${vs.index}"> <input
+						type="hidden" name="info_num" value="${vo2.info_num}"
+						id="info_num"> <input type="hidden" name="good"
+						value="${ivo.good}" id="good${vs.index}"> <input
+						type="button" value="${ivo.good}" class="rv_increaseGood"></td>
 					<td>${ivo.wdate}</td>
 
 					<td><input type="button" id="reportBtn" class="report"
 						onClick="showDialogReport('${ivo.review_num}','${ivo.nickname}')"
 						value="신고" /></td>
 
-					<td>
-						<c:if test="${nickname == ivo.nickname}">
-							<a href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰 삭제</a>
-						</c:if>
-					</td>
+					<td><c:if test="${nickname == ivo.nickname}">
+							<a
+								href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰
+								삭제</a>
+						</c:if></td>
 
 				</tr>
 			</c:forEach>
 
 		</tbody>
 	</table>
-<div id="report">
+	<div id="report">
 
 		<form id="reportForm" action="rp_insertOK.do" method="post">
 			<table id="rp" border="2">
@@ -304,26 +293,26 @@ tfoot td {
 	</div>
 
 
-<script>
-	function submitReportForm() {
-		location.reload();
-	}
-	$("#reportForm").submit(function(event) {
-		event.preventDefault();
-		$.ajax({
-			type : "POST",
-			url : $(this).attr("action"),
-			data : $(this).serialize(),
-			success : function(response) {
-				console.log(response);
-				submitReportForm();
-			},
-			error : function(xhr, status, error) {
-				console.error(status, error);
-			}
+	<script>
+		function submitReportForm() {
+			location.reload();
+		}
+		$("#reportForm").submit(function(event) {
+			event.preventDefault();
+			$.ajax({
+				type : "POST",
+				url : $(this).attr("action"),
+				data : $(this).serialize(),
+				success : function(response) {
+					console.log(response);
+					submitReportForm();
+				},
+				error : function(xhr, status, error) {
+					console.error(status, error);
+				}
+			});
 		});
-	});
-</script>
+	</script>
 
 </body>
 </html>
