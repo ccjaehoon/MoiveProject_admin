@@ -97,5 +97,19 @@
 		views=views+1 where
 		info_num=#{info_num}
 	</select>
+	
+	<select id="I_FAVORITY_CHECK" resultType="int">
+        select count(*) as
+        like_count
+        from favoritecheck
+        where user_id = #{user_id} and
+        info_num = #{info_num} 
+
+    </select>
+    <select id="I_FAVORITY_SAVE" resultType="int">
+        insert into
+        favoritecheck(user_id, info_num)
+        values(#{user_id},#{info_num})
+    </select>
 
 </mapper>
