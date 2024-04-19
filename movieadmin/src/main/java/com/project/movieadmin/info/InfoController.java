@@ -213,39 +213,7 @@ public class InfoController {
 		return "info/selectAll";
 	}
 	
-<<<<<<< HEAD
-	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
-	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
-		
-		
-		
-		log.info("Welcome i_increaseRecommends...");
-		log.info(vo.toString());
-		
-		int ircmdcnt = service.i_increaseRecommends(vo);
-		
-		
-		return "{\"ircmdcnt\":\""+ircmdcnt+"\"}";
-	}
-=======
 
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
-	
-<<<<<<< HEAD
-	@RequestMapping(value = "/i_increaseRecommendsOK.do", method = RequestMethod.GET)
-	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
-		
-		log.info("Welcome i_increaseRecommends...");
-		log.info(vo.toString());
-		
-		
-		
-		return "info/i_increaseRecommends";
-	}
-=======
-
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
-	
 	
 	
 	
