@@ -89,7 +89,6 @@ public class SCommentsController {
 		
 		int goodCount = service.sc_increaseGood(vo);
 	
-		//{"message":"good"}
 		return "{\"goodCount\":\""+goodCount+"\"}";
 	}
 }

@@ -75,9 +75,8 @@
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
 	// API 키
-// 	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
+	// 	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
 	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
-
 
 	// YouTube API 클라이언트 초기화
 	function init() {
@@ -162,7 +161,7 @@ tfoot td {
 			<tr>
 				<th colspan="3"><img src="resources/uploadimg/${vo2.save_img}"
 					width="200"></th>
-				<th colspan="4"><iframe id="trailerFrame" width="420"
+				<th colspan="5"><iframe id="trailerFrame" width="420"
 						height="315" frameborder="0" allowfullscreen></iframe></th>
 			</tr>
 		</thead>
@@ -179,6 +178,7 @@ tfoot td {
 				<td>출시일</td>
 				<td>제작사</td>
 				<td>글 조회수</td>
+				<td>즐겨찾기</td>
 			</tr>
 			<tr>
 				<td>${vo2.genre}</td>
@@ -188,6 +188,10 @@ tfoot td {
 				<td>${vo2.releaseDate}</td>
 				<td>${vo2.companys}</td>
 				<td>${vo2.views}</td>
+				<td><input type="hidden" name="info_num"
+					value="${vo2.info_num}" id="info_num"> <input type="hidden"
+					name="user_id" value="${session.getAttribute('user_id')}" id="user_id"> <input
+					type="button" value="즐겨찾기" class="i_favorite"></td>
 			</tr>
 
 		</tbody>
