@@ -68,10 +68,10 @@
 	<update id="S_INCREASEGOOD">
 		UPDATE story
 		SET good=good+1
-		WHERE story=#{story_num} 				
+		WHERE story_num=#{story_num} 				
 	</update>
 	
-	<select id="S_SELECT_GOOD" resultType="com.project.movieadmin.story.StoryVO">
+	<select id="S_SELECT_GOOD" resultType="int">
 		SELECT good
 		FROM story
 		WHERE story_num=#{story_num}
@@ -93,8 +93,8 @@
 		VALUES(#{nickname},#{story_num},#{story_num})
 	</select>
 	
-	<select id="S_CHECK_USER_GOOD_COUNT" resultType="com.project.movieadmin.story.StoryVO">
-		SELECT COUNT(*)
+	<select id="S_CHECK_USER_GOOD_COUNT" resultType="int">
+		SELECT COUNT(*) count
 		FROM user_goods
 		WHERE nickname = #{nickname} AND story_num = #{story_num}
 	</select>

@@ -256,9 +256,9 @@ public class StoryController {
 	
 	@RequestMapping(value = "/s_increaseGood.do", method = RequestMethod.GET)
 	public String s_increaseGood(StoryVO vo, HttpSession session) {
-		log.info("s_increaseGood:{}" + vo);
+		log.info("s_increaseGood:{}" , vo);
 	
-		log.info("vo:{}",vo);
+		
 		
 		int goodCount = service.s_increaseGood(vo);
 	
