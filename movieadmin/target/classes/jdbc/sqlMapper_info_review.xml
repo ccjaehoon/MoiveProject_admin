@@ -41,14 +41,13 @@
 		select count(*) as like_count
 		from goodcheck
 		where nickname = #{nickname} and
-		info_num = #{info_num} and
 		review_num = #{review_num}
 		
 	</select>
 	<select id="RV_GOOD_SAVE"
 		resultType="int">
-		insert into goodcheck(nickname, info_num, review_num)
-		values(#{nickname},#{info_num},#{review_num})
+		insert into goodcheck(nickname,review_num)
+		values(#{nickname},#{review_num})
 	</select>
 	
 	
