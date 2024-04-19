@@ -23,26 +23,35 @@ public class ReviewDAOimpl implements ReviewDAO {
 
 	@Override
 	public int rv_insert(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("Review insert()....");
+		log.info(vo.toString());
+
+		return sqlSession.insert("RV_INSERT", vo);
 	}
 
 	@Override
 	public int rv_update(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("Review update()....");
+		log.info(vo.toString());
+
+		return sqlSession.update("RV_UPDATE", vo);
 	}
 
 	@Override
 	public int rv_delete(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		log.info("Review delete()....");
+		log.info(vo.toString());
+
+		return sqlSession.delete("RV_DELETE", vo);
 	}
 
 	@Override
 	public List<ReviewVO> rv_selectAll(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("Review selectAll()....");
+		log.info(vo.toString());
+
+		return sqlSession.selectList("RV_SELECT_ALL", vo);
 	}
 
 
@@ -62,26 +71,26 @@ public class ReviewDAOimpl implements ReviewDAO {
 
 	@Override
 	public ReviewVO rv_selectGood(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("rv_selectGood()....");
+		log.info(vo.toString());
+		return sqlSession.selectOne("RV_SELECT_GOOD", vo);
 	}
 
 	@Override
 	public int rv_goodCheck(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne("RV_GOOD_CHECK", vo);
 	}
 
 	@Override
 	public int rv_goodSave(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("RV_GOOD_SAVE", vo);
 	}
 
 	@Override
 	public int rv_increaseGood(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("rv_increaseGood()....");
+		log.info(vo.toString());
+		return sqlSession.update("RV_INCREASE_GOOD", vo);
 	}
 
 }
