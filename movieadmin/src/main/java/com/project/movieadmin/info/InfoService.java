@@ -2,6 +2,9 @@ package com.project.movieadmin.info;
 
 import java.util.List;
 
+import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.user.UserVO;
+
 public interface InfoService {
 
 	public int i_insert(InfoVO vo);
@@ -25,6 +28,8 @@ public interface InfoService {
 	public int i_increaseViews(InfoVO vo);
 
 	public int i_getFavorite(InfoVO vo);
+	
+	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 
 	public int i_update(InfoVO vo);
 

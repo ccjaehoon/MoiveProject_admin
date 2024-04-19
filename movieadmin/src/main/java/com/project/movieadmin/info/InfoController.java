@@ -21,7 +21,6 @@ import org.springframework.web.util.UriUtils;
 
 import com.project.movieadmin.info.review.ReviewService;
 import com.project.movieadmin.info.review.ReviewVO;
-import com.project.movieadmin.story.StoryVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -235,7 +234,7 @@ public class InfoController {
 		
 		return "info/delete";
 	}
-	
+
 	@RequestMapping(value = "/i_updateOK.do", method = RequestMethod.POST)
 	public String i_updateOK(InfoVO vo, Model model) throws IllegalStateException, IOException {
 		log.info("Welcome i_updateOK.do....");

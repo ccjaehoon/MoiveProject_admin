@@ -112,9 +112,10 @@ $(function() {
 		});
 	});
 
-	function showDialogReport(story_num, nickname) {
+	function showDialogReport(story_num, nickname, id) {
 		console.log(story_num);
 		console.log(nickname);
+		console.log(id); // 디버깅 목적으로 id를 로그로 출력
 		$('#story_num').val(story_num);
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
@@ -266,7 +267,7 @@ $(function() {
 
 
 
-					<td><input type="button" id="reportBtn" class="report"
+					<td><input type="button" id="reportBtn_comment" class="report"
 								onClick="showDialogReport('${cvo.story_comments_num}','${cvo.nickname}')"
 								value="신고" /></td>
 

@@ -72,6 +72,7 @@
 	</select>
 
 
+
 	<select id="I_TOTAL_ROWS" resultType="int">
 		select count(*) total_rows
 		from info
@@ -103,19 +104,29 @@
         select count(*) as
         like_count
         from favoritecheck
-        where user_id = #{user_id} and
+        where nickname = #{nickname} and
         info_num = #{info_num} 
 
     </select>
     <select id="I_FAVORITE_SAVE" resultType="int">
         insert into
-        favoritecheck(user_id, info_num)
-        values(#{user_id},#{info_num})
+        favoritecheck(nickname, info_num)
+        values(#{nickname},#{info_num})
     </select>
        <select id="I_GET_FAVORITE" resultType="int">
         insert into
-        favorite(user_id, info_num)
-        values(#{user_id},#{info_num})
+        favorite(nickname, info_num)
+        values(#{nickname},#{info_num})
     </select>
+    
+    <select id="I_SELECT_ALL_NICKNAME"
+		resultType="com.project.movieadmin.info.InfoVO">
+		SELECT * FROM favorite f,info i
+		where f.info_num = i.info_num
+		and f.nickname=#{nickname}
+		order by favorite_num desc
+				limit  ${startRow}, ${pageBlock}
+		
+	</select>
 
 </mapper>

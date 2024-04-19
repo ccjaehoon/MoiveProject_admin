@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -79,8 +81,12 @@ public class InfoServiceimpl implements InfoService {
 
 	@Override
 	public int i_update(InfoVO vo) {
-		// TODO Auto-generated method stub
+
 		return dao.i_update(vo);
+	}
+	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+	
+		return dao.i_selectAll_nickname(cpage, pageBlock,vo);
 	}
 
 }

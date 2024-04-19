@@ -42,7 +42,7 @@ tfoot td {
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>글목록</h1>
+	<h1>영화목록</h1>
 	<hr>
 	<form action="i_searchList.do">
 		<select name="searchKey">

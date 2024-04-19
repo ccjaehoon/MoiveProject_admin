@@ -68,7 +68,7 @@
         <h1>영화정보 수정페이지</h1>
         <form action="i_updateOK.do" method="post" enctype="multipart/form-data">
 			<table id="updateTable">
-			    <tr>
+                <tr>
                     <td><label for="">항목</label></td>
                     <td>입력</td>
                 </tr>

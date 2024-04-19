@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -167,6 +169,21 @@ public class InfoDAOimpl implements InfoDAO {
 	public int i_update(InfoVO vo) {
 		// TODO Auto-generated method stub
 		return sqlSession.update("I_UPDATE", vo);
+	}
+	
+	@Override
+	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		 int startRow = (cpage - 1) * pageBlock + 1;
+
+	        Map<String, Object> map = new HashMap<String, Object>();
+	        map.put("startRow", startRow - 1);
+	        map.put("pageBlock", pageBlock);
+	        map.put("nickname", vo.getNickname());
+	        log.info("vo:{}",vo);
+	        log.info("pageBlock{}",pageBlock);
+	        log.info("nickname{}",vo.getNickname().length());
+	        List<InfoVO> vos = sqlSession.selectList("I_SELECT_ALL_NICKNAME", map);
+	        return vos;
 	}
 
 	
