@@ -157,15 +157,17 @@ public class BoardController {
 		model.addAttribute("vo2", vo2);
 		log.info("vo2:{}", vo2);
 		
+		String nickname = (String) session.getAttribute("nickname");
+		log.info("nickname: {}",nickname);
+        // user_id를 모델에 추가하여 JSP로 전달
+        model.addAttribute("nickname", nickname);		
+		
 		CommentsVO cvo = new CommentsVO();
 		cvo.setBoard_num(vo.getBoard_num());
+		cvo.setNickname(nickname);
 		List<CommentsVO> cvos = comService.c_selectAll(cvo);
 		
-		
 		model.addAttribute("cvos", cvos);
-		
-		String nickname = (String) session.getAttribute("nickname");
-		model.addAttribute("nickname", nickname);
 		
 		return "board/selectOne";
 	}
