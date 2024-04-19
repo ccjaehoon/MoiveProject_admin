@@ -207,7 +207,6 @@ $(function() {
 								<input type="hidden" name="news_num" value="${cvo.news_num}">
 								<input type="submit" value="수정">
 							</c:if>
-
 						</form>
 					</td>
 
