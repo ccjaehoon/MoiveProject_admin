@@ -42,15 +42,6 @@ public class NCommentsController {
 
 		return "redirect:n_selectOne.do?news_num="+vo.getNews_num();
 	}
-	@RequestMapping(value = "/nc_selectAll.do", method = RequestMethod.GET)
-	public String nc_selectAll(NCommentsVO vo) {
-		logger.info("Welcome nc_selectAll!");
-		
-		
-
-		return "NComments/selectAll";
-	}
-
 	@RequestMapping(value = "/nc_updateOK.do", method = RequestMethod.GET)
 	public String nc_updateOK(NCommentsVO vo) {
 		log.info("Welcome nc_updateOK...");
@@ -71,6 +62,14 @@ public class NCommentsController {
 		log.info("result:{}",result);
 		
 		return "redirect:n_selectOne.do?news_num="+vo.getNews_num();
+	}
+	@RequestMapping(value = "/nc_selectAll.do", method = RequestMethod.GET)
+	public String nc_selectAll(NCommentsVO vo) {
+		logger.info("Welcome nc_selectAll!");
+		
+		
+	
+		return "NComments/selectAll";
 	}
 
 	
