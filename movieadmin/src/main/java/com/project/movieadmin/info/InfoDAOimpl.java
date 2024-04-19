@@ -155,6 +155,13 @@ public class InfoDAOimpl implements InfoDAO {
 		return sqlSession.update("I_INCREASE_VIEWS", vo);
 	}
 
+
+	@Override
+	public int i_getFavorite(InfoVO vo) {
+		
+		return sqlSession.insert("I_GET_FAVORITE", vo);
+	}
+
 	
 	
 	

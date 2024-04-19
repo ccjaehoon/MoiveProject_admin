@@ -111,5 +111,10 @@
         favoritecheck(user_id, info_num)
         values(#{user_id},#{info_num})
     </select>
+       <select id="I_GET_FAVORITE" resultType="int">
+        insert into
+        favorite(user_id, info_num)
+        values(#{user_id},#{info_num})
+    </select>
 
 </mapper>

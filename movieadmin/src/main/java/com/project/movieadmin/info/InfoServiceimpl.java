@@ -71,4 +71,10 @@ public class InfoServiceimpl implements InfoService {
 		return dao.i_increaseViews(vo);
 	}
 
+	@Override
+	public int i_getFavorite(InfoVO vo) {
+		
+		return dao.i_getFavorite(vo);
+	}
+
 }

@@ -7,6 +7,8 @@ import java.util.List;
 public interface InfoDAO {
 	
 
+	
+
 	public int i_insert(InfoVO vo);
 
 	public InfoVO i_selectOne(InfoVO vo);
@@ -26,5 +28,7 @@ public interface InfoDAO {
 	public int i_favoriteSave(InfoVO vo);
 	
 	public int i_increaseViews(InfoVO vo);
+
+	public int i_getFavorite(InfoVO vo);
 
 }

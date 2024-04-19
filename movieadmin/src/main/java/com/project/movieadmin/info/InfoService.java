@@ -24,4 +24,6 @@ public interface InfoService {
 
 	public int i_increaseViews(InfoVO vo);
 
+	public int i_getFavorite(InfoVO vo);
+
 }
