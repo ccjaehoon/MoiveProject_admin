@@ -210,7 +210,7 @@ $(function() {
 						onClick="showDialogReport('${cvo.comments_num}','${cvo.nickname}')" value="신고" />
 					</td>
 					<td>
-						<c:if test="${param.nickname == cvo.nickname}">
+						<c:if test="${nickname == cvo.nickname}">
 							<a href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">댓글삭제</a>
 						</c:if>
 					</td>
