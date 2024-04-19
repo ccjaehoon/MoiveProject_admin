@@ -219,7 +219,10 @@ public class InfoController {
 		log.info("Welcome i_increaseRecommends...");
 		log.info(vo.toString());
 		
-		return "info/i_increaseRecommends";
+		int ircmdcnt = service.i_increaseRecommends(vo);
+		
+		
+		return "{\"ircmdcnt\":\""+ircmdcnt+"\"}";
 	}
 	
 	@RequestMapping(value = "/i_increaseRecommendsOK.do", method = RequestMethod.GET)
@@ -228,7 +231,24 @@ public class InfoController {
 		log.info("Welcome i_increaseRecommends...");
 		log.info(vo.toString());
 		
+		
+		
 		return "info/i_increaseRecommends";
+	}
+	
+	
+	@RequestMapping(value = "/i_.do", method = RequestMethod.GET)
+	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
+		
+		
+		
+		log.info("Welcome i_increaseRecommends...");
+		log.info(vo.toString());
+		
+		int ircmdcnt = service.i_increaseRecommends(vo);
+		
+		
+		return "{\"ircmdcnt\":\""+ircmdcnt+"\"}";
 	}
 	
 
