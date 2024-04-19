@@ -47,62 +47,48 @@ tfoot td {
 $(function() {
 	console.log("jquery test");
 	console.log($(".s_increaseGood"));
-		$(".s_increaseGood").click(function() {
-			console.log("increaseGood Click");
-			console.log('${vo2.story_num}');
-			console.log('${nickname}');
-			console.log('${vo2.good}');
-			$.ajax({
-				url : "http://localhost:8070/movie/s_increaseGood.do",
-				type : "get",
-				data : {
-					story_num : '${vo2.story_num}',
-					nickname : '${nickname}',
-					good : '${vo2.good}'
-				},
-				dataType : "json",
-				success : function(obj) {
-					console.log(obj);
-					let good = obj.good;
-					//console.log(item);
-					//item.value = good;
-					$('#goodCount').text(updatedGood); 
-				},
-				error : function(xhr, status) {
-					console.log("status...", status);
-				}
-			});
-			return false;
+	$(".s_increaseGood").click(function() {
+		console.log("increaseGood Click");
+		console.log('${vo2.story_num}');
+		console.log('${nickname}');
+		$.ajax({
+			url : "http://localhost:8070/movie/s_increaseGood.do",
+			type : "get",
+			data : {
+				story_num : '${vo2.story_num}',
+				nickname : '${nickname}'
+			},
+			dataType : "json",
+			success : function(obj) {
+				console.log(obj);
+				let goodCount = obj.goodCount;
+				if( obj.goodCount > 0) $('.s_increaseGood').val(goodCount); 
+			},
+			error : function(xhr, status) {
+				console.log("status...", status);
+			}
 		});
+		return false;
+	});
 	
-});
-</script>
-
-<script type="text/javascript">
-$(function() {
-	console.log("jquery test");
-	console.log($(".sc_increaseGood"));
-	$(".sc_increaseGood").each(function(index, item) {//console.log(index);
+	$(".sc_increaseGood").each(function(index, item) {
+		console.log(index);
 		$(this).click(function() {
 			console.log("increaseGood Click");
 			console.log($("#story_comments_num" + index).val());
-			console.log($("#good" + index).val());
+			console.log('${nickname}');
 			
 			$.ajax({
-				url : "http://localhost:8070/movie/sc_increaseGood.do",
+				url : "http://localhost:8070/movie/api/sc_increaseGood.do",
 				type : "get",
 				data : {
 					story_comments_num : $("#story_comments_num" + index).val(),
-					story_num : $("#story_num").val(),
-					nickname : $("#nickname" + index).val(),
-					good : $("#good" + index).val()
+					nickname :'${nickname}'
 				},
 				dataType : "json",
 				success : function(obj) {
 					console.log(obj);
-					let good = obj.good;
-					//console.log(item);
-					item.value = good;
+					if(obj.goodCount>0)item.value = obj.goodCount;
 				},
 				error : function(xhr, status) {
 					console.log("status...", status);
@@ -111,8 +97,10 @@ $(function() {
 			return false;
 		});
 	});
+	
 });
 </script>
+
 
 
 <script>

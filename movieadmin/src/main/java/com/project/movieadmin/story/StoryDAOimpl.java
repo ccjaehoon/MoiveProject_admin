@@ -118,8 +118,9 @@ public class StoryDAOimpl implements StoryDAO {
 		log.info("count:{}",count);
 		if(count==0) {
 			sqlSession.insert("S_INSERT_GOOD", vo);
-			sqlSession.update("S_INCREASEGOOD", vo);
-			return sqlSession.selectOne("S_CHECK_USER_GOOD_COUNT", vo);
+			int result = sqlSession.selectOne("S_CHECK_USER_GOOD_COUNT", vo);
+			log.info("result:{}",result);
+			return result;
 		}else {
 			return 0;
 		}
