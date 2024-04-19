@@ -23,60 +23,41 @@ public class ReviewDAOimpl implements ReviewDAO {
 
 	@Override
 	public int rv_insert(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("Review insert()....");
+		log.info(vo.toString());
+
+		return sqlSession.insert("RV_INSERT", vo);
 	}
 
 	@Override
 	public int rv_update(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("Review update()....");
+		log.info(vo.toString());
+
+		return sqlSession.update("RV_UPDATE", vo);
 	}
 
 	@Override
 	public int rv_delete(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		log.info("Review delete()....");
+		log.info(vo.toString());
+
+		return sqlSession.delete("RV_DELETE", vo);
 	}
 
 	@Override
-	public ReviewVO rv_selectOne(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ReviewVO> rv_selectAll(ReviewVO vo) {
+		log.info("Review selectAll()....");
+		log.info(vo.toString());
+
+		return sqlSession.selectList("RV_SELECT_ALL", vo);
 	}
 
-	@Override
-	public List<ReviewVO> rv_selectAll(int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
-	public int rv_getTotalRows() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int rv_getSearchTotalRows(String searchKey, String searchWord) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ReviewVO rv_increaseGood(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public ReviewVO rv_increaseReport(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ReviewVO> r_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+	public List<ReviewVO> rv_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
 		int startRow = (cpage - 1) * pageBlock + 1;
 
         Map<String, Object> map = new HashMap<String, Object>();
@@ -86,6 +67,30 @@ public class ReviewDAOimpl implements ReviewDAO {
 
         List<ReviewVO> vos = sqlSession.selectList("R_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
         return vos;
+	}
+
+	@Override
+	public ReviewVO rv_selectGood(ReviewVO vo) {
+		log.info("rv_selectGood()....");
+		log.info(vo.toString());
+		return sqlSession.selectOne("RV_SELECT_GOOD", vo);
+	}
+
+	@Override
+	public int rv_goodCheck(ReviewVO vo) {
+		return sqlSession.selectOne("RV_GOOD_CHECK", vo);
+	}
+
+	@Override
+	public int rv_goodSave(ReviewVO vo) {
+		return sqlSession.insert("RV_GOOD_SAVE", vo);
+	}
+
+	@Override
+	public int rv_increaseGood(ReviewVO vo) {
+		log.info("rv_increaseGood()....");
+		log.info(vo.toString());
+		return sqlSession.update("RV_INCREASE_GOOD", vo);
 	}
 
 }

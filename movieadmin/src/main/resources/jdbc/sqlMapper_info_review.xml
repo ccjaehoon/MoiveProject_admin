@@ -4,76 +4,56 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.movieadmin.info.review">
-	<insert id="INSERT"
+	<insert id="RV_INSERT"
 		parameterType="com.project.movieadmin.info.review.ReviewVO">
-
+		insert into review(nickname, content,info_num)
+		values(#{nickname},#{content},#{info_num})
 	</insert>
 
-	<update id="UPDATE">
-
+	<update id="RV_UPDATE">
+		update review set content=#{content} where
+		review_num=#{review_num}
 	</update>
 
-	<delete id="DELETE">
-
+	<delete id="RV_DELETE">
+		delete from review where
+		review_num=#{review_num}
 	</delete>
 
-	<select id="SELECT_ONE"
+	<select id="RV_SELECT_ALL"
 		resultType="com.project.movieadmin.info.review.ReviewVO">
-
+		select * from review where info_num=#{info_num} order by
+		review_num desc
+	</select>
+	
+	<select id="RV_INCREASE_GOOD" resultType="com.project.movieadmin.info.review.ReviewVO">
+		update review set
+		good=good+1 where
+		review_num=#{review_num}
 	</select>
 
-	<select id="SELECT_ALL"
-		resultType="com.project.movieadmin.info.review.ReviewVO">
-
+	<select id="RV_SELECT_GOOD" resultType="com.project.movieadmin.info.review.ReviewVO">
+		select good from review where review_num=#{review_num}
 	</select>
 
-	<select id="SELECT_ALL_PAGE_BLOCK"
-		resultType="com.project.movieadmin.info.review.ReviewVO">
-
+	<select id="RV_GOOD_CHECK"
+		resultType="int">
+		select count(*) as like_count
+		from goodcheck
+		where nickname = #{nickname} and
+		review_num = #{review_num}
+		
 	</select>
-
-
-	<select id="SEARCHLIST_ID"
-		resultType="com.project.movieadmin.info.review.ReviewVO">
-
+	<select id="RV_GOOD_SAVE"
+		resultType="int">
+		insert into goodcheck(nickname,review_num)
+		values(#{nickname},#{review_num})
 	</select>
-
-
-	<select id="SEARCHLIST_NAME"
-		resultType="com.project.movieadmin.info.review.ReviewVO">
-
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
-		resultType="com.project.movieadmin.info.review.ReviewVO">
-
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
-		resultType="com.project.movieadmin.info.review.ReviewVO">
-
-	</select>
-
-
-	<select id="TOTAL_ROWS" resultType="int">
-
-	</select>
-
-
-	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
-
-	</select>
-
-
-	<select id="SEARCH_TOTAL_ROWS_NAME" resultType="int">
-
-	</select>
-
-
-	<select id="LOGIN"
-		resultType="com.project.movieadmin.info.review.ReviewVO">
-
-	</select>
+	
+	
+	
+	
+	
 
 	<select id="R_SELECT_ALL_PAGE_BLOCK_NICKNAME"
 		resultType="com.project.movieadmin.info.review.ReviewVO">

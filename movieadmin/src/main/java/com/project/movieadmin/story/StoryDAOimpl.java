@@ -113,12 +113,14 @@ public class StoryDAOimpl implements StoryDAO {
 	@Override
 	public int s_increaseGood(StoryVO vo) {
 		log.info("s_increaseGood()....");
+		log.info("vo:{}",vo);
 		int count = sqlSession.selectOne("S_SELECT_GOOD", vo);
 		log.info("count:{}",count);
 		if(count==0) {
 			sqlSession.insert("S_INSERT_GOOD", vo);
-			sqlSession.update("S_INCREASEGOOD", vo);
-			return sqlSession.selectOne("S_CHECK_USER_GOOD_COUNT", vo);
+			int result = sqlSession.selectOne("S_CHECK_USER_GOOD_COUNT", vo);
+			log.info("result:{}",result);
+			return result;
 		}else {
 			return 0;
 		}
@@ -126,7 +128,7 @@ public class StoryDAOimpl implements StoryDAO {
 	
 	@Override
 	public StoryVO s_selectGood(StoryVO vo) {
-		log.info("nc_selectGood()....");
+		log.info("s_selectGood()....");
 		log.info(vo.toString());
 		return sqlSession.selectOne("S_SELECT_GOOD", vo);
 	}

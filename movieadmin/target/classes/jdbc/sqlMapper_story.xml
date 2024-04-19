@@ -68,13 +68,13 @@
 	<update id="S_INCREASEGOOD">
 		UPDATE story
 		SET good=good+1
-		WHERE story=#{story_num} 				
+		WHERE story_num=#{story_num} 				
 	</update>
 	
-	<select id="S_SELECT_GOOD" resultType="com.project.movieadmin.story.StoryVO">
-		SELECT good
-		FROM story
-		WHERE story_num=#{story_num}
+	<select id="S_SELECT_GOOD" resultType="int">
+		SELECT count(*) count
+		FROM goodcheck
+		WHERE story_num=#{story_num} and nickname=#{nickname}
 	</select>
 	
 	<insert id="S_INSERT_GOOD">
@@ -84,7 +84,7 @@
 	<select id="S_GOOD_CHECK" resultType="int">
 		SELECT COUNT(*) AS like_count
 		FROM goodcheck
-		WHERE nickname = #{nickname} AND story_num = #{story_num} AND story_num = #{story_num}
+		WHERE nickname = #{nickname} AND story_num = #{story_num}
 		
 	</select>
 	
@@ -93,10 +93,10 @@
 		VALUES(#{nickname},#{story_num},#{story_num})
 	</select>
 	
-	<select id="S_CHECK_USER_GOOD_COUNT" resultType="com.project.movieadmin.story.StoryVO">
-		SELECT COUNT(*)
-		FROM user_goods
-		WHERE nickname = #{nickname} AND story_num = #{story_num}
+	<select id="S_CHECK_USER_GOOD_COUNT" resultType="int">
+		SELECT COUNT(*) count
+		FROM goodcheck
+		WHERE  story_num = #{story_num}
 	</select>
 	
 	<select id="S_UPDATE_REPORT_COUNT" resultType="com.project.movieadmin.story.StoryVO">

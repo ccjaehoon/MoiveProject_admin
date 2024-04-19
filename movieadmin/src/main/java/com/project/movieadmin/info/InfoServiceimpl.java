@@ -53,4 +53,34 @@ public class InfoServiceimpl implements InfoService {
 		return dao.i_increaseRecommends(vo);
 	}
 
+	@Override
+	public int i_favoriteCheck(InfoVO vo) {
+		
+		return dao.i_favoriteCheck(vo);
+	}
+
+	@Override
+	public int i_favoriteSave(InfoVO vo) {
+		
+		return dao.i_favoriteSave(vo);
+	}
+
+	@Override
+	public int i_increaseViews(InfoVO vo) {
+	
+		return dao.i_increaseViews(vo);
+	}
+
+	@Override
+	public int i_getFavorite(InfoVO vo) {
+		
+		return dao.i_getFavorite(vo);
+	}
+
+	@Override
+	public int i_update(InfoVO vo) {
+		// TODO Auto-generated method stub
+		return dao.i_update(vo);
+	}
+
 }

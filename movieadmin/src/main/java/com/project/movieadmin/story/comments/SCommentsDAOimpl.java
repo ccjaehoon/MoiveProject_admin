@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.story.StoryVO;
 import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -78,25 +79,40 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 //		
 //		return vos;
 //	}
-
+/**/
 	@Override
 	public int sc_increaseGood(SCommentsVO vo) {
 		log.info("sc_increaseGood()....{}",vo);
-		// 해당 댓글의 추천수를 가져와 1 증가시킴
-//	    int currentGoodCount = vo.getGood();
-//	    vo.setGood(currentGoodCount + 1);
 
-	    // 데이터베이스에 업데이트
-//	    return sqlSession.update("SC_UPDATE_GOOD_COUNT", vo);
 		int count = sqlSession.selectOne("SC_SELECT_GOOD", vo);
 		log.info("count:{}",count);
 		if(count==0) {
 			sqlSession.insert("SC_INSERT_GOOD", vo);
 			sqlSession.update("SC_UPDATE_GOOD_COUNT", vo);
-			return sqlSession.selectOne("SC_SELECT_GOOD_COUNT", vo);
+			int result =  sqlSession.selectOne("SC_SELECT_GOOD_COUNT", vo);
+			log.info("result:{}",result);
+			return result;
 		}else {
 			return 0;
 		}
+	}
+	
+	
+	@Override
+	public SCommentsVO sc_selectGood(SCommentsVO vo) {
+		log.info("sc_selectGood()....");
+		log.info(vo.toString());
+		return sqlSession.selectOne("SC_SELECT_GOOD", vo);
+	}
+
+	@Override
+	public int sc_goodCheck(SCommentsVO vo) {
+		return sqlSession.selectOne("SC_GOOD_CHECK", vo);
+	}
+
+	@Override
+	public int sc_goodSave(SCommentsVO vo) {
+		return sqlSession.insert("SC_GOOD_SAVE", vo);
 	}
 
 	@Override

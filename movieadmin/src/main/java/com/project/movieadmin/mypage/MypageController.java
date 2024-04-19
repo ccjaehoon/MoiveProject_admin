@@ -94,6 +94,8 @@ public class MypageController {
 	    vo.setUser_id(user_id);
 	    UserVO vo2 = user_service.u_selectOne_id(vo);
 	    model.addAttribute("vo2", vo2); 
+	    
+	    
 	    log.info("{}", vo2);
 		return "mypage/favorite";
 	}
@@ -140,7 +142,7 @@ public class MypageController {
 		 List<CommentsVO> comments = comments_service.c_selectAll_nickname(cpage, pageBlock,vo);
 		 List<SCommentsVO> sComments = SComments_service.sc_selectAll_nickname(cpage, pageBlock,vo);
 		 List<NCommentsVO> nComments = NComments_service.nc_selectAll_nickname(cpage, pageBlock,vo);
-		 List<ReviewVO> review = review_service.r_selectAll_nickname(cpage, pageBlock, vo);
+		 List<ReviewVO> review = review_service.rv_selectAll_nickname(cpage, pageBlock, vo);
 		 model.addAttribute("comments", comments);
 		 model.addAttribute("sComments", sComments);
 		 model.addAttribute("nComments", nComments);
