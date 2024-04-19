@@ -40,11 +40,6 @@ public class ReviewServiceimpl implements ReviewService {
 		return null;
 	}
 
-	@Override
-	public List<ReviewVO> rv_selectAll(int cpage, int pageBlock) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public int rv_getTotalRows() {
@@ -74,6 +69,12 @@ public class ReviewServiceimpl implements ReviewService {
 	public List<ReviewVO> r_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
 		// TODO Auto-generated method stub
 		return dao.r_selectAll_nickname(cpage, pageBlock, vo);
+	}
+
+	@Override
+	public List<ReviewVO> rv_selectAll(ReviewVO vo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
