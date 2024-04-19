@@ -237,19 +237,7 @@ public class InfoController {
 	}
 	
 	
-	@RequestMapping(value = "/i_.do", method = RequestMethod.GET)
-	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
-		
-		
-		
-		log.info("Welcome i_increaseRecommends...");
-		log.info(vo.toString());
-		
-		int ircmdcnt = service.i_increaseRecommends(vo);
-		
-		
-		return "{\"ircmdcnt\":\""+ircmdcnt+"\"}";
-	}
+	
 	
 
 	
