@@ -66,12 +66,12 @@
         	<c:forEach var="vo" items="${vos}">
             <tr>
                 <td><a href="n_selectOne.do?news_num=${vo.news_num}&nickname=${vo.nickname}">${vo.news_num}</a></td>
-                <td><img src="resources/uploadimg/thumb_${vo.save_img}"></td>
+               <td><img alt="" src="resources/uploadimg/thumb_${vo.save_img}"></td>
                 <td>${vo.title}</td>
                 <td>${vo.nickname}</td>
                 <td>${vo.content}</td>
                 <td>${vo.wdate}</td>
-                <td><a href="n_delete.do?news_num=${vo.news_num}">글삭제</a></td>
+                <td><a href="b_delete.do?board_num=${vo.news_num}">글삭제</a></td>
             </tr>
         	</c:forEach>
             

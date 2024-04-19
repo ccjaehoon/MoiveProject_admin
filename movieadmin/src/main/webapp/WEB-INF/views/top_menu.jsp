@@ -57,12 +57,20 @@
         <a href="n_selectAll.do">뉴스</a>
         <a href="f_selectAll.do?nickname">FAQ</a>
         <a href="u_insert.do">회원가입</a>
-        <a href="u_selectAll.do">회원목록</a>
-        <a href="m_myPage.do">마이페이지</a>
-        <a href="rp_selectAll.do">신고목록</a>
-        <c:choose>
-            <c:when test="${user_id != null}"><a href="u_logout.do">로그아웃</a></c:when>
-            <c:otherwise><a href="u_login.do">로그인</a></c:otherwise>
+        <a href="m_myPage.do">마이페이지</a>     
+       <c:choose>
+            <c:when test="${user_id != null}">
+            <c:if test="${nickname eq 'admin'}">
+                    <a href="u_selectAll.do">회원목록</a>
+                    <a href="rp_selectAll.do">신고목록</a>
+                </c:if>
+                <a href="u_logout.do">로그아웃</a>
+                <!-- 닉네임이 "admin"인 경우에만 회원목록 링크를 추가합니다. -->
+                
+            </c:when>
+            <c:otherwise>
+                <a href="u_login.do">로그인</a>
+            </c:otherwise>
         </c:choose>
 
     </header>

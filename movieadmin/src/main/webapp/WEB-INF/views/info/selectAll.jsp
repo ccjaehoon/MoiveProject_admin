@@ -47,8 +47,9 @@ tfoot td {
 	<form action="i_searchList.do">
 		<select name="searchKey">
 			<option value="title">title</option>
-			<option value="content">content</option>
-		</select> <input type="text" name="searchWord" value="ja"> <input
+			<option value="genre">genre</option>
+			<option value="actor">actor</option>
+		</select> <input type="text" name="searchWord" value=""> <input
 			type="submit" value="search">
 	</form>
 	<table id="customers">
@@ -66,7 +67,7 @@ tfoot td {
 			<c:forEach var="vo" items="${vos}">
 				<tr>
 					<td width=200px><a
-						href="i_selectOne.do?info_num=${vo.info_num}&title=${vo.title}">${vo.title}</a></td>
+						href="i_selectOne.do?info_num=${vo.info_num}">${vo.title}</a></td>
 					<td><img src="resources/uploadimg/${vo.save_img}" width="200"></td>
 					<td>${vo.content}</td>
 				</tr>

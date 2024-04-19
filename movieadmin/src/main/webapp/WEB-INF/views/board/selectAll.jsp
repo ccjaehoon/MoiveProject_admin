@@ -49,7 +49,6 @@ tfoot td {
 	text-align: center;
 }
 </style>
-
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -72,31 +71,22 @@ tfoot td {
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일자</th>
-					<th>댓글수</th>
-					<th>좋아요</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="vo" items="${vos}">
 					<tr>
-						<td><a href="b_selectOne.do?board_num=${vo.board_num}">${vo.board_num}</a></td>
-						<td>${vo.save_img}</td>
+						<td><a href="b_selectOne.do?board_num=${vo.board_num}&nickname=${vo.nickname}">${vo.board_num}</a></td>
+						<td><img alt="" src="resources/uploadimg/thumb_${vo.save_img}"></td>
 						<td>${vo.title}</td>
 						<td>${vo.nickname}</td>
 						<td>${vo.wdate}</td>
-						<td>${vo.commentscount}</td>
-						<td>
-							<form action="b_increaseGood.do" method="post">
-								<input type="hidden" name="board_num" value="${vo.board_num}">
-								<button type="submit">좋아요 ${vo.good}</button>
-							</form>
-						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="7"><c:forEach var="i" begin="1"
+					<td colspan="6"><c:forEach var="i" begin="1"
 							end="${totalPageCount}">
 							<c:if test="${param.searchKey == null}">
 								<a href="b_selectAll.do?cpage=${i}">${i} &nbsp;</a>
@@ -111,7 +101,7 @@ tfoot td {
 			</tfoot>
 		</table>
 	<a href="b_insert.do">글쓰기</a>
-
 	</div>
+	
 </body>
 </html>

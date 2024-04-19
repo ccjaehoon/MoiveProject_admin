@@ -22,19 +22,7 @@ public interface BoardDAO {
 	public int b_getTotalRows();
 	
 	public int b_getSearchTotalRows(String searchKey, String searchWord);
-	
-	public int b_increaseGood(BoardVO vo);
-	
-	public BoardVO b_selectGood(BoardVO vo);
-	
-	public int b_increaseReport(BoardVO vo);
-	
-	public int b_goodCheck(BoardVO vo);
-
-	public int b_goodSave(BoardVO vo);
 
 	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo);
-
-	public int b_increaseCommentsCount(BoardVO vo);
 
 }

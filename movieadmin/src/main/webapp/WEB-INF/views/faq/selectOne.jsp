@@ -71,7 +71,7 @@ tfoot td {
 		
 		</tbody>
 	</table>
-	<c:if test="${param.nickname == vo2.nickname}">
+	<c:if test="${authority == 'admin'}">
 	<a href="f_update.do?faq_num=${param.faq_num}&content=${param.content}">FAQ수정</a>
 	<a href="f_delete.do?faq_num=${param.faq_num}">FAQ삭제</a>
 	</c:if>

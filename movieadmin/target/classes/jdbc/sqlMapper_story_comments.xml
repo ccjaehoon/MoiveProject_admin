@@ -37,8 +37,20 @@
 		
 	</select>
 	
-	<select id="SC_UPDATE_GOOD_COUNT" resultType="com.project.movieadmin.story.comments.SCommentsVO">
-		
+	<select id="SC_SELECT_GOOD" resultType="int">
+		select count(*) count from sc_good where nickname=#{nickname} and story_comments_num=#{story_comments_num}
+	</select>
+	<insert id="SC_INSERT_GOOD">
+		insert into sc_good(story_comments_num,nickname) values(#{story_comments_num},#{nickname});
+	</insert>
+	
+	<update id="SC_UPDATE_GOOD_COUNT">
+		update scomments set good=
+			(select count(*) count from sc_good where story_comments_num=#{story_comments_num}) 
+		where story_comments_num=#{story_comments_num}	
+	</update>
+	<select id="SC_SELECT_GOOD_COUNT" resultType="int">
+		SELECT good FROM project.scomments where story_comments_num=#{story_comments_num}
 	</select>
 	
 	<select id="SC_UPDATE_REPORT_COUNT" resultType="com.project.movieadmin.story.comments.SCommentsVO">

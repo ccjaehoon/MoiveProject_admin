@@ -29,6 +29,7 @@ public class NCommentsRestController {
 	@Autowired
 	private NCommentsService service;
 	
+	
 	@ResponseBody
 	@RequestMapping(value = "/nc_increaseGood.do", method = RequestMethod.GET)
 	public Map<String , Object> nc_increaseGood(NCommentsVO vo) {

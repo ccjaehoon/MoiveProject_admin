@@ -50,7 +50,7 @@ public class BoardController {
 	@RequestMapping(value = "/b_insert.do", method = RequestMethod.GET)
 	public String b_insert(Model model) {
 		log.info("Welcome b_insert.do....");
-		String nickname = (String) session.getAttribute("user_id");
+		String nickname = (String) session.getAttribute("nickname");
 		model.addAttribute(nickname);
 
 		return "board/insert";
@@ -80,9 +80,9 @@ public class BoardController {
 
 			//// create thumbnail image/////////
 			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
-			BufferedImage thumb_buffer_img = new BufferedImage(200, 200, BufferedImage.TYPE_3BYTE_BGR);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
 			Graphics2D graphic = thumb_buffer_img.createGraphics();
-			graphic.drawImage(original_buffer_img, 0, 0, 200, 200, null);
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
 
 			File thumb_file = new File(realPath, "thumb_" + save_img);
 

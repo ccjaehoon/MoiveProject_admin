@@ -17,8 +17,6 @@ public interface CommentsDAO {
 	public int c_increaseGood(CommentsVO vo);
 	
 	public CommentsVO c_selectGood(CommentsVO vo);
-	
-	public int c_increaseReport(CommentsVO vo);
 
 	public int c_goodCheck(CommentsVO vo);
 

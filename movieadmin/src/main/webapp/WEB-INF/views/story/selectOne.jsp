@@ -1,125 +1,185 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        #customers {
-          font-family: Arial, Helvetica, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-        
-        #customers td, #customers th {
-          border: 1px solid #ddd;
-          padding: 8px;
-        }
-        
-        #customers tr:nth-child(even){background-color: #ff6565;}
-        
-        #customers tr:hover {background-color: #fca2a2;}
-        
-        #customers th {
-          padding-top: 12px;
-          padding-bottom: 12px;
-          text-align: left;
-          background-color: #04AA6D;
-          color: white;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#customers {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
 
-        tfoot td{
-            text-align: center; 
-        }
-        </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+#customers td, #customers th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+	background-color: #ff6565;
+}
+
+#customers tr:hover {
+	background-color: #fca2a2;
+}
+
+#customers th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #04AA6D;
+	color: white;
+}
+
+tfoot td {
+	text-align: center;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
+$(function() {
+	console.log("jquery test");
+	console.log($(".s_increaseGood"));
+		$(".s_increaseGood").click(function() {
+			console.log("increaseGood Click");
+			console.log('${vo2.story_num}');
+			console.log('${nickname}');
+			console.log('${vo2.good}');
+			$.ajax({
+				url : "http://localhost:8070/movie/s_increaseGood.do",
+				type : "get",
+				data : {
+					story_num : '${vo2.story_num}',
+					nickname : '${nickname}',
+					good : '${vo2.good}'
+				},
+				dataType : "json",
+				success : function(obj) {
+					console.log(obj);
+					let good = obj.good;
+					//console.log(item);
+					item.value = good;
+				},
+				error : function(xhr, status) {
+					console.log("status...", status);
+				}
+			});
+			return false;
+		});
+	
+});
 </script>
+<script>
+/*페이지가 로드될 때 #report 요소를 다이얼로그로 설정하지만, 자동으로 열리지 않도록 설정.(예: 버튼 클릭)를 통해 다이얼로그를 열기
+ $("#report").dialog("open"); 코드를 사용하여 다이얼로그를 수동으로 열 수 있습니다*/
+	$(function() {
+		$("#report").dialog({
+			autoOpen : false
+		});
+	});
+
+	function showDialogReport(story_num, nickname) {
+		console.log(story_num);
+		console.log(nickname);
+		$('#story_num').val(story_num);
+		$('#nickname').val(nickname);
+		$("#report").dialog("open");
+	}
+</script>
+
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-    <h1>글정보</h1>
-    <hr>
-    <table id="customers">
-        <thead>
-            <tr>
-                <th>번호: ${vo2.story_num}</th>
-                <th>작성자: ${vo2.nickname}</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-           <%--  <tr>
-                <td>${vo2.story_num}</td>
-                <td>${vo2.nickname}</td>
-            </tr> --%>
-            <tr>
-                <td>내용</td>
-                <td colspan="2">${vo2.content}</td>
-            </tr>
-            <tr>
-                <td>내용</td>
-                <td colspan="2"><img alt="" src="resources/uploadimg/thumb_${vo2.save_img}"></td>
-            </tr>
-            <tr>
-                <td>작성일자</td>
-                <td colspan="2">${vo2.wdate}</td>
-            </tr>
-        </tbody>
-        
-        <tbody>
-        
-       		 <tr>
-       		 	<td><a href="s_increaseGoodOK.do?story_num=${vo.good}">추천</a></td>
-       		 	<td><a href="s_increaseReportOK.do?story_num=${vo.report}">신고하기</a></td>
-       		 	<td><a href="s_delete.do?story_num=${vo.story_num}">글삭제</a></td>
-            </tr>
-        </tbody>
-    </table>
-    
- 
-    <hr>
-    <h3>댓글작성</h3>
-    <form action="SComments_insertOK.do">
-	    <table id="customers">
-	        <thead>
-	            <tr>
-	                <th>댓글 내용 ${param.msg}</th>
-	                <th>댓글 작성자</th>
-	                <th></th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	        	<tr>
-	        		<td><input type="text" name="content" value="hello" size="50"></td>
-	        		<td>
-	        			${nickname}<input type="hidden" name="nickname" value="${nickname}">
-	        			<input type="hidden" name="story_num" value="${vo2.story_num}">
-	        		</td>
-	        		<td><input type="submit"  value="댓글작성"></td>
-	        	</tr>
-	        </tbody>
-	    </table>
-	    
-    </form>
-         
-    <hr>
-    <h3>댓글목록</h3>
-    <table id="customers">
-        <thead>
-            <tr>
-                <th>번호</th>
+	<h1>글정보</h1>
+	<hr>
+	<table id="customers">
+		<thead>
+			<tr>
+				<th>번호: ${vo2.story_num}</th>
+				<th colspan="3">작성자: ${vo2.nickname}</th>
+
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr>
+				<td>내용</td>
+				<td colspan="3">${vo2.content}</td>
+			</tr>
+
+			<tr>
+				<td>작성일자</td>
+				<td colspan="3">${vo2.wdate}</td>
+			</tr>
+		</tbody>
+
+		<tbody>
+
+			<tr>
+				<td><input type="hidden" name="story_num"
+					value="${vo2.story_num}" id="story_num${vs.index}"> <input
+					type="hidden" name="story_num" value="${vo2.story_num}"
+					id="story_num"> <input type="hidden" name="good"
+					value="${vo2.good}" id="good${vs.index}"> <input
+					type="button" value="${vo2.good}" class="s_increaseGood"></td>
+
+				<td><input type="button" id="reportBtn" class="report" onClick="showDialogReport('${vo2.story_num}','${vo2.nickname}')"
+						value="신고" /></td>
+
+				<td><a href="s_update.do?story_num=${vo2.story_num}">글수정</a></td>
+				<td><a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a></td>
+			</tr>
+
+		</tbody>
+	</table>
+
+
+	<hr>
+	<h3>댓글작성</h3>
+	<form action="SComments_insertOK.do">
+		<table id="customers">
+			<thead>
+				<tr>
+					<th>댓글 내용 ${param.msg}</th>
+					<th>댓글 작성자</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" name="content" value="hello" size="50"></td>
+					<td>${nickname}<input type="hidden" name="nickname"
+						value="${nickname}"> <input type="hidden" name="story_num"
+						value="${vo2.story_num}">
+					</td>
+					<td><input type="submit" value="댓글작성"></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</form>
+
+	<hr>
+	<h3>댓글목록</h3>
+	<table id="customers">
+		<thead>
+			<tr>
+				<th>번호</th>
 				<th>내용</th>
 				<th>작성자</th>
 				<th>좋아요</th>
 				<th>작성일자</th>
 				<th>신고</th>
 				<th>삭제</th>
-            </tr>
-        </thead>
+			</tr>
+		</thead>
 		<tbody>
 			<c:forEach var="cvo" items="${cvos}" varStatus="vs">
 
@@ -143,38 +203,37 @@
 						value="${user_id}" id="nickname${vs.index}"></td>
 
 					<td><input type="hidden" name="story_comments_num"
-						value="${cvo.story_comments_num}" id="story_comments_num${vs.index}">
-						<input type="hidden" name="story_num" value="${vo2.story_num}"
-						id="story_num"> <input type="hidden" name="good"
-						value="${cvo.good}" id="good${vs.index}"> <input
-						type="button" value="${cvo.good}" class="sc_increaseGood"></td>
+						value="${cvo.story_comments_num}"
+						id="story_comments_num${vs.index}"> <input type="hidden"
+						name="story_num" value="${vo2.story_num}" id="story_num">
+						<input type="hidden" name="good" value="${cvo.good}"
+						id="good${vs.index}"> <input type="button"
+						value="${cvo.good}" id="btn_good" class="sc_increaseGood"
+						onclick="fn_good(${cvo.story_comments_num})"></td>
 
 
 					<td>${cvo.wdate}</td>
 
 
 
-					<td>
-						<input type="button" id="reportBtn" class="report" value="신고" />
-						
-					</td>
+					<td><input type="button" id="reportBtn" class="report"
+						value="신고" /></td>
 
 
- 				
-					<td>
-					
-						<c:if test="${nickname == cvo.nickname}">
-<%-- 						<input type="button" id="deleteBtn" class="delete" value="삭제" onclick="deleteComment(${cvo.story_comments_num})"> --%>
-<a href="SComments_deleteOK.do?story_comments_num=${cvo.story_comments_num}&story_num=${cvo.story_num}">댓글삭제</a>
-						</c:if>
-					</td>
+
+					<td><c:if test="${nickname == cvo.nickname}">
+							<%-- 자바스크립트를 쓸 경우						
+<input type="button" id="deleteBtn" class="delete" value="삭제" onclick="deleteComment(${cvo.story_comments_num})"> --%>
+							<a
+								href="SComments_deleteOK.do?story_comments_num=${cvo.story_comments_num}&story_num=${cvo.story_num}">댓글삭제</a>
+						</c:if></td>
 
 				</tr>
 			</c:forEach>
 
 		</tbody>
 	</table>
-    
-    
+
+
 </body>
 </html>

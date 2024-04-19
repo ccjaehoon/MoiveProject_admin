@@ -92,8 +92,16 @@ public class StoryServiceimpl implements StoryService {
 	}
 	
 	@Override
-	public void s_increaseGoodCount(StoryVO vo) {
-		
+	public StoryVO s_selectGood(StoryVO vo) {
+		return dao.s_selectGood(vo);
+	}
+	@Override
+	public int s_goodCheck(StoryVO vo) {
+		return dao.s_goodCheck(vo);
+	}
+	@Override
+	public int s_goodSave(StoryVO vo) {
+		return dao.s_goodSave(vo);
 	}
 
 	@Override

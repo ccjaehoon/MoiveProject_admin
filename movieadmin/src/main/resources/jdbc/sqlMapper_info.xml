@@ -49,14 +49,25 @@
 
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
+	<select id="I_SEARCHLIST_PAGE_BLOCK_TITLE"
 		resultType="com.project.movieadmin.info.InfoVO">
-
+		select * from info
+		where title like #{searchWord}
+		order by releaseDate desc limit #{startRow},#{pageBlock}
 	</select>
 
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
+	<select id="I_SEARCHLIST_PAGE_BLOCK_GENRE"
 		resultType="com.project.movieadmin.info.InfoVO">
-
+		select * from info
+		where genre like #{searchWord}
+		order by releaseDate desc limit #{startRow},#{pageBlock}
+	</select>
+	
+	<select id="I_SEARCHLIST_PAGE_BLOCK_ACTOR"
+		resultType="com.project.movieadmin.info.InfoVO">
+		select * from info
+		where actor like #{searchWord}
+		order by releaseDate desc limit #{startRow},#{pageBlock}
 	</select>
 
 

@@ -89,7 +89,11 @@
 	</select>
 	<select id="NC_GOOD_CHECK"
 		resultType="int">
-		select count(*) as like_count from goodcheck where nickname = #{nickname} and news_num = #{news_num} and news_comments_num = #{news_comments_num}
+		select count(*) as like_count
+		from goodcheck
+		where nickname = #{nickname} and
+		news_num = #{news_num} and
+		news_comments_num = #{news_comments_num}
 		
 	</select>
 	<select id="NC_GOOD_SAVE"
@@ -100,9 +104,9 @@
 	
 	<select id="NC_SELECT_ALL_PAGE_BLOCK_NICKNAME"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-	select * from ncomments where nickname=#{vo.nickname} order by news_comments_num desc
-		limit ${startRow},
-		${pageBlock}
+		select * from ncomments where nickname=#{vo.nickname}
+		order by news_comments_num desc
+		limit ${startRow}, ${pageBlock}
 	</select>
 
 </mapper>
