@@ -10,21 +10,19 @@
 <script type="text/javascript">
 	$(function() {
 		console.log("jquery test");
-		console.log($(".rv_increaseGood"));
-		$(".rv_increaseGood").each(function(index, item) {//console.log(index);
+		console.log($(".i_favorite"));
+		$(".i_favorite").each(function(index, item) {//console.log(index);
 			$(this).click(function() {
-				console.log("increaseGood Click");
-				console.log($("#review_num" + index).val());
-				console.log($("#good" + index).val());
+				console.log("favorite Click");
+				console.log($("#info_num").val());
+				console.log($("#nickname").val());
 
 				$.ajax({
-					url : "http://localhost:8070/movie/rv_increaseGood.do",
+					url : "http://localhost:8070/movie/i_favorite.do",
 					type : "get",
 					data : {
-						review_num : $("#review_num" + index).val(),
 						info_num : $("#info_num").val(),
-						nickname : $("#nickname" + index).val(),
-						good : $("#good" + index).val()
+						nickname : $("#nickname").val()
 					},
 					dataType : "json",
 					success : function(obj) {
@@ -190,7 +188,7 @@ tfoot td {
 				<td>${vo2.views}</td>
 				<td><input type="hidden" name="info_num"
 					value="${vo2.info_num}" id="info_num"> <input type="hidden"
-					name="user_id" value="${session.getAttribute('user_id')}" id="user_id"> <input
+					name="nickname" value="${nickname}" id="nickname"> <input
 					type="button" value="즐겨찾기" class="i_favorite"></td>
 			</tr>
 

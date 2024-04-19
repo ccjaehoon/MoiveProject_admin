@@ -2,6 +2,8 @@ package com.project.movieadmin.info;
 
 import java.util.List;
 
+import com.project.movieadmin.user.UserVO;
+
 
 
 public interface InfoDAO {
@@ -30,5 +32,7 @@ public interface InfoDAO {
 	public int i_increaseViews(InfoVO vo);
 
 	public int i_getFavorite(InfoVO vo);
+
+	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 
 }
