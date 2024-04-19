@@ -147,6 +147,14 @@ public class InfoDAOimpl implements InfoDAO {
 		return sqlSession.insert("I_FAVORITE_SAVE", vo);
 	}
 
+
+	@Override
+	public int i_increaseViews(InfoVO vo) {
+		log.info("i_increaseGood()....");
+		log.info(vo.toString());
+		return sqlSession.update("I_INCREASE_VIEWS", vo);
+	}
+
 	
 	
 	

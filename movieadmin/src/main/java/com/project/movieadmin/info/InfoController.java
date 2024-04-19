@@ -126,6 +126,7 @@ public class InfoController {
 		ivo.setInfo_num(vo.getInfo_num());
 		ivo.setNickname(nickname);
 		List<ReviewVO> ivos= inservice.rv_selectAll(ivo);
+		service.i_increaseViews(vo);
 		log.info(ivos.toString());
 		model.addAttribute("ivos", ivos);
 

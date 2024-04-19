@@ -178,6 +178,7 @@ tfoot td {
 				<td>상영시간(분)</td>
 				<td>출시일</td>
 				<td>제작사</td>
+				<td>글 조회수</td>
 			</tr>
 			<tr>
 				<td>${vo2.genre}</td>
@@ -186,6 +187,7 @@ tfoot td {
 				<td>${vo2.showtime}</td>
 				<td>${vo2.releaseDate}</td>
 				<td>${vo2.companys}</td>
+				<td>${vo2.views}</td>
 			</tr>
 
 		</tbody>

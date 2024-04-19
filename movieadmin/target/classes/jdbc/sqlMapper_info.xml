@@ -25,6 +25,10 @@
 		info_num=#{info_num}
 	</select>
 
+	<select id="SELECT_ALL"
+		resultType="com.project.movieadmin.info.InfoVO">
+
+	</select>
 
 	<select id="I_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.info.InfoVO">
@@ -49,24 +53,21 @@
 		resultType="com.project.movieadmin.info.InfoVO">
 		select * from info
 		where title like #{searchWord}
-		order by
-		releaseDate desc limit #{startRow},#{pageBlock}
+		order by releaseDate desc limit #{startRow},#{pageBlock}
 	</select>
 
 	<select id="I_SEARCHLIST_PAGE_BLOCK_GENRE"
 		resultType="com.project.movieadmin.info.InfoVO">
 		select * from info
 		where genre like #{searchWord}
-		order by
-		releaseDate desc limit #{startRow},#{pageBlock}
+		order by releaseDate desc limit #{startRow},#{pageBlock}
 	</select>
-
+	
 	<select id="I_SEARCHLIST_PAGE_BLOCK_ACTOR"
 		resultType="com.project.movieadmin.info.InfoVO">
 		select * from info
 		where actor like #{searchWord}
-		order by
-		releaseDate desc limit #{startRow},#{pageBlock}
+		order by releaseDate desc limit #{startRow},#{pageBlock}
 	</select>
 
 
@@ -76,19 +77,25 @@
 	</select>
 
 
-
-	<select id="I_FAVORITY_CHECK" resultType="int">
-		select count(*) as
-		like_count
-		from favoritecheck
-		where user_id = #{user_id} and
-		info_num = #{info_num} 
+	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
 
 	</select>
-	<select id="I_FAVORITY_SAVE" resultType="int">
-		insert into
-		favoritecheck(user_id, info_num)
-		values(#{user_id},#{info_num})
+
+
+	<select id="SEARCH_TOTAL_ROWS_NAME" resultType="int">
+
+	</select>
+
+
+	<select id="LOGIN"
+		resultType="com.project.movieadmin.info.InfoVO">
+
+	</select>
+
+	<select id="I_INCREASE_VIEWS" resultType="com.project.movieadmin.info.InfoVO">
+		update info set
+		views=views+1 where
+		info_num=#{info_num}
 	</select>
 
 </mapper>

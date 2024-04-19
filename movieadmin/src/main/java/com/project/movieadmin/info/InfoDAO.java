@@ -1,6 +1,5 @@
 package com.project.movieadmin.info;
 
-import java.util.Date;
 import java.util.List;
 
 
@@ -25,5 +24,7 @@ public interface InfoDAO {
 	public int i_favoriteCheck(InfoVO vo);
 
 	public int i_favoriteSave(InfoVO vo);
+	
+	public int i_increaseViews(InfoVO vo);
 
 }
