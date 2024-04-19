@@ -37,9 +37,11 @@
 		
 	</select>
 	
+	<!--
 	<select id="SC_SELECT_GOOD" resultType="int">
 		select count(*) count from sc_good where nickname=#{nickname} and story_comments_num=#{story_comments_num}
 	</select>
+	-->
 	<insert id="SC_INSERT_GOOD">
 		insert into sc_good(story_comments_num,nickname) values(#{story_comments_num},#{nickname});
 	</insert>
@@ -66,6 +68,8 @@
 	<select id="SC_SELECT_GOOD" resultType="com.project.movieadmin.story.comments.SCommentsVO">
 		select good from scomments where story_comments_num=#{story_comments_num}
 	</select>
+	
+	
 
 	<select id="SC_GOOD_CHECK"
 		resultType="int">
