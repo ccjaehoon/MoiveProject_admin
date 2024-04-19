@@ -130,7 +130,8 @@ $(function() {
 					value="${vo2.good}" id="good${vs.index}"> <input
 					type="button" value="${vo2.good}" class="s_increaseGood"></td>
 
-				<td><a href="s_increaseReportOK.do?story_num=${vo2.report}">신고하기</a></td>
+				<td><input type="button" id="reportBtn" class="report" onClick="showDialogReport('${vo2.story_num}','${vo2.nickname}')"
+						value="신고" /></td>
 
 				<td><a href="s_update.do?story_num=${vo2.story_num}">글수정</a></td>
 				<td><a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a></td>

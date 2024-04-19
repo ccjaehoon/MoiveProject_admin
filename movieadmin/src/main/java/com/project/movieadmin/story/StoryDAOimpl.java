@@ -113,9 +113,15 @@ public class StoryDAOimpl implements StoryDAO {
 	@Override
 	public int s_increaseGood(StoryVO vo) {
 		log.info("s_increaseGood()....");
-		// 해당 게시물의 추천수를 가져와 1 증가시킴
-	    // 데이터베이스에 업데이트
-	    return sqlSession.update("S_INCREASEGOOD", vo);
+		int count = sqlSession.selectOne("S_SELECT_GOOD", vo);
+		log.info("count:{}",count);
+		if(count==0) {
+			sqlSession.insert("S_INSERT_GOOD", vo);
+			sqlSession.update("S_INCREASEGOOD", vo);
+			return sqlSession.selectOne("S_CHECK_USER_GOOD_COUNT", vo);
+		}else {
+			return 0;
+		}
 	}
 	
 	@Override

@@ -74,8 +74,12 @@
 	<select id="S_SELECT_GOOD" resultType="com.project.movieadmin.story.StoryVO">
 		SELECT good
 		FROM story
-		WHERE story=#{story_num}
+		WHERE story_num=#{story_num}
 	</select>
+	
+	<insert id="S_INSERT_GOOD">
+		insert into goodcheck(story_num,nickname) values(#{story_num},#{nickname});
+	</insert>
 	
 	<select id="S_GOOD_CHECK" resultType="int">
 		SELECT COUNT(*) AS like_count

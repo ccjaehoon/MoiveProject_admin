@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 
+import com.project.movieadmin.info.review.ReviewService;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -37,6 +39,9 @@ public class InfoController {
 	
 	@Autowired
 	private InfoService service;
+	
+	@Autowired
+	private ReviewService inservice;
 
 	@Autowired
 	private HttpSession session;
@@ -59,7 +64,7 @@ public class InfoController {
 	@RequestMapping(value = "/i_insertOK.do", method = RequestMethod.POST)
 	public String i_insertOK(InfoVO vo) throws IllegalStateException, IOException {
 	    log.info("Welcome i_insertOK.do...");
-	    log.info(vo.toString());
+	    //log.info(vo.toString());
 
 	    String realPath = sContext.getRealPath("resources/uploadimg");
 		log.info(realPath);
@@ -69,14 +74,14 @@ public class InfoController {
 		log.info("getOriginalFilename:{}", originName);
 		
 		if (originName.length() == 0) {
-			vo.setSave_img("default.png");// 이미지선택없이 처리할때
+			vo.setSave_img("default.png");
 		} else {
 			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
 
 			vo.setSave_img(save_name);
 
 			File uploadFile = new File(realPath, save_name);
-			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
+			vo.getFile_img().transferTo(uploadFile);
 
 			//// create thumbnail image/////////
 			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
@@ -108,24 +113,24 @@ public class InfoController {
 		log.info("i_selectOne.do");
 		InfoVO vo2=service.i_selectOne(vo);
 		log.info("vo2:" + vo2);
+		
 		model.addAttribute("vo2", vo2);
 		
 		
 		String nickname = (String) session.getAttribute("nickname");
 		log.info("nickname: {}",nickname);
+		
+		model.addAttribute("nickname", nickname);
+		
+		InfoVO ivo=new InfoVO();
+		ivo.setInfo_num(vo.getInfo_num());
+		ivo.setNickname(nickname);
+//		List<InfoVO> ivos= inservice.i_selectAll(ivo);
+//		log.info(ivos.toString());
+		
+//		model.addAttribute("ivos", ivos);
 
     
-//		
-//        model.addAttribute("nickname", nickname);
-//		InfoVO cvo = new InfoVO();
-//		cvo.setInfo_num(vo.getInfo_num());
-//		List<InfoVO> cvos = comService.i_selectAll(cvo);
-//		log.info(cvos.toString());
-//
-//		model.addAttribute("cvos", cvos);
-
-		
-		
 		
 		return "info/selectOne";
 	}
@@ -208,25 +213,18 @@ public class InfoController {
 		return "info/selectAll";
 	}
 	
-//	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
-//	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
-//		
-//		
-//		
-//		log.info("Welcome i_increaseRecommends...");
-//		log.info(vo.toString());
-//		
-//		return "info/i_increaseRecommends";
-//	}
-//	
-//	@RequestMapping(value = "/i_increaseRecommendsOK.do", method = RequestMethod.GET)
-//	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
-//		
-//		log.info("Welcome i_increaseRecommends...");
-//		log.info(vo.toString());
-//		
-//		return "info/i_increaseRecommends";
-//	}
+	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
+	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
+		
+		
+		
+		log.info("Welcome i_increaseRecommends...");
+		log.info(vo.toString());
+		
+		return "info/i_increaseRecommends";
+	}
+	
+
 	
 
 	
