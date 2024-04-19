@@ -77,7 +77,7 @@
             <label for="content">내용</label>
             <textarea name="content" id="content" cols="30" rows="10">뉴스 내용</textarea>
             <label for="nickname">작성자</label>
-            <input type="hidden" id="nickname" name="nickname" value="${user_id}">
+            <input type="hidden" id="nickname" name="nickname" value="${nickname}">
             <label for="file_img">이미지파일</label>
             <input type="file" id="file_img" name="file_img">
             <input type="submit" value="글쓰기 완료">

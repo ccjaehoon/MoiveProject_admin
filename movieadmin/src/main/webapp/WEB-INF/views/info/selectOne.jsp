@@ -94,6 +94,7 @@ tfoot td {
 		</thead>
 		<tbody>
 			<tr>
+
 			<td>${vo2.title}</td>
 				<td colspan="6">${vo2.content}</td>
 			</tr>
