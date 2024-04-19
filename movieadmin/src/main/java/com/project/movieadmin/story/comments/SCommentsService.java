@@ -20,6 +20,12 @@ public interface SCommentsService {
 
 	public int sc_increaseGood(SCommentsVO vo);
 	// 스토리 좋아요 수 증가
+	
+	public SCommentsVO sc_selectGood(SCommentsVO vo);
+
+	public int sc_goodCheck(SCommentsVO vo);
+
+	public int sc_goodSave(SCommentsVO vo);
 
 	public int sc_increaseReport(SCommentsVO vo);
 	// 스토리 신고하기;

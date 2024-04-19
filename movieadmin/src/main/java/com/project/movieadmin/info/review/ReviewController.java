@@ -46,7 +46,7 @@ public class ReviewController {
 		int result = service.rv_insert(vo);
 		log.info("result:{}", result);
 
-		return "redirect:rv_selectOne.do?info_num="+vo.getInfo_num();
+		return "redirect:i_selectOne.do?info_num="+vo.getInfo_num();
 		
 	}	
 	
@@ -62,7 +62,7 @@ public class ReviewController {
 		log.info("result:{}", result);
 
 		
-		return "redirect:rv_selectOne.do?info_num="+vo.getInfo_num();
+		return "redirect:i_selectOne.do?info_num="+vo.getInfo_num();
 	}
 	
 
@@ -77,7 +77,7 @@ public class ReviewController {
 		log.info("result:{}", result);
 
 	
-		return "redirect:rv_selectOne.do?info_num="+vo.getInfo_num();
+		return "redirect:i_selectOne.do?info_num="+vo.getInfo_num();
 	}
 	
 	
