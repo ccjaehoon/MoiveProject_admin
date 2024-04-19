@@ -11,6 +11,7 @@ public interface InfoService {
 	public int i_getTotalRows();
 	public int i_getSearchTotalRows(String searchKey, String searchWord);
 	public int i_increaseRecommends(InfoVO vo);
-	
+	public int i_favoriteCheck(InfoVO vo);
+	public int i_favoriteSave(InfoVO vo);
 
 }

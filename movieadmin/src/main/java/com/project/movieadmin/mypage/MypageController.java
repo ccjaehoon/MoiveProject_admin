@@ -94,6 +94,8 @@ public class MypageController {
 	    vo.setUser_id(user_id);
 	    UserVO vo2 = user_service.u_selectOne_id(vo);
 	    model.addAttribute("vo2", vo2); 
+	    
+	    
 	    log.info("{}", vo2);
 		return "mypage/favorite";
 	}
