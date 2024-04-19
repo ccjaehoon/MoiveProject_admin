@@ -6,7 +6,8 @@
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
 	// API 키
-	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
+// 	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
+ 	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
 
 	// YouTube API 클라이언트 초기화
 	function init() {
@@ -16,25 +17,31 @@
 							'apiKey' : apiKey,
 							'discoveryDocs' : [ 'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest' ],
 						}).then(function() {
+							console.log("1");
 					// YouTube Data API 사용 준비 완료
 					searchForTrailer();
+					
 				});
 	}
 
 
 	function searchForTrailer() {
+		console.log("2");
 		var request = gapi.client.youtube.search.list({
+			
 			part : 'snippet',
 			q : "${vo2.title} 예고편", // 검색어 설정 (예: 파묘)
 			type : 'video',
 			maxResults : 1
 		// 검색 결과 수
 		});
-
+		
     request.execute(function(response) {
+    	console.log("3");
         var videoId = response.result.items[0].id.videoId;
         var trailerUrl = 'https://www.youtube.com/embed/' + videoId;
         document.getElementById('trailerFrame').src = trailerUrl;
+        
     });
 }
 
