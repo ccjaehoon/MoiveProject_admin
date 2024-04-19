@@ -148,46 +148,11 @@
 tfoot td {
 	text-align: center;
 }
-
-//좋아요 구현
-$(function() {
-	console.log("jquery test");
-	console.log($(".i_increaseGood"));
-		$(".i_increaseGood").click(function() {
-			console.log("increaseGood 실행");
-			$.ajax({
-				url : "http://localhost:8070/movieadmin/i_increaseGood.do",	type : "get",
-				data : {info_num : '${vo2.info_num}', nickname : '${nickname}',good : '${vo2.good}'},
-				dataType : "json", success : function(obj) {
-					let good = obj.good;
-					item.value = good;},
-				error : function(xhr, status) {
-					console.log("status error", status);
-				}
-			});
-			return false;
-		});
-	
-});
-
-
-
-$(function() {
-		$("#report").dialog({ autoOpen : false});
-	});
-	function info_report(info_num, nickname) {
-		$('#info_num').val(info_num);
-		$('#nickname').val(nickname);
-		$("#report").dialog("open");
-	}
-	
-
-
 </style>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>영화정보</h1>
+	<h1>글정보</h1>
 	<hr>
 	<table id="customers">
 		<thead>
@@ -230,6 +195,7 @@ $(function() {
 
 		</tbody>
 	</table>
+<<<<<<< HEAD
 	<a href="i_update.do?info_num=${vo2.info_num}">영화 수정</a>
 	<a href="i_delete.do">영화 삭제</a>
 	
@@ -264,6 +230,9 @@ $(function() {
 	<!-- 	        	</tr> -->
 	<!-- 	        </tbody> -->
 	<!-- 	    </table> -->
+=======
+
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 	<h3>리뷰작성</h3>
 	<form action="rv_insertOK.do">
 		<table id="customers">
