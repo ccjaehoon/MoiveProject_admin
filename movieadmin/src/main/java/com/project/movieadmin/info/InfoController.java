@@ -126,6 +126,7 @@ public class InfoController {
 		ivo.setInfo_num(vo.getInfo_num());
 		ivo.setNickname(nickname);
 		List<ReviewVO> ivos= inservice.rv_selectAll(ivo);
+		service.i_increaseViews(vo);
 		log.info(ivos.toString());
 		model.addAttribute("ivos", ivos);
 
@@ -212,16 +213,7 @@ public class InfoController {
 		return "info/selectAll";
 	}
 	
-	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
-	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
-		
-		
-		
-		log.info("Welcome i_increaseRecommends...");
-		log.info(vo.toString());
-		
-		return "info/i_increaseRecommends";
-	}
+
 	
 
 	

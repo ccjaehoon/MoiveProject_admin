@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -133,6 +134,29 @@ public class InfoDAOimpl implements InfoDAO {
 
 		return total_rows;
 	}
+
+
+	@Override
+	public int i_favoriteCheck(InfoVO vo) {
+		return sqlSession.selectOne("I_FAVORITE_CHECK", vo);
+	}
+
+
+	@Override
+	public int i_favoriteSave(InfoVO vo) {
+		return sqlSession.insert("I_FAVORITE_SAVE", vo);
+	}
+
+
+	@Override
+	public int i_increaseViews(InfoVO vo) {
+		log.info("i_increaseGood()....");
+		log.info(vo.toString());
+		return sqlSession.update("I_INCREASE_VIEWS", vo);
+	}
+
+	
+	
 	
 	
 	//conflict 
