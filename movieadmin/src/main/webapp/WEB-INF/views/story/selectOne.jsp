@@ -185,9 +185,14 @@ $(function() {
 
 				<td><input type="button" id="reportBtn" class="report" onClick="showDialogReport('${vo2.story_num}','${vo2.nickname}')"
 						value="신고" /></td>
-
-				<td><a href="s_update.do?story_num=${vo2.story_num}">글수정</a></td>
-				<td><a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a></td>
+						
+				<td><c:if test="${nickname == cvo.nickname}">
+				<a href="s_update.do?story_num=${param.story_num}&nickname=${param.nickname}">글수정</a>
+				</c:if></td>
+				
+				<td><c:if test="${nickname == cvo.nickname}">
+				<td><a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a>
+				</c:if></td>
 			</tr>
 
 		</tbody>
