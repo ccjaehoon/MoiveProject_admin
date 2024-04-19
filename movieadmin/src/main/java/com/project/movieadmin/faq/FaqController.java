@@ -77,7 +77,9 @@ public class FaqController {
 		}
 
 		model.addAttribute("totalPageCount", totalPageCount);
-
+		String authority = (String) session.getAttribute("authority");
+		log.info("authority: {}",authority);
+		model.addAttribute("authority", authority);
 		return "faq/selectAll";
 	}
 
@@ -126,7 +128,9 @@ public class FaqController {
 		log.info("================");
 		session.setAttribute("nickname", vo2.getNickname());
 		model.addAttribute("vo2", vo2);
-
+		String authority = (String) session.getAttribute("authority");
+		log.info("authority: {}",authority);
+		model.addAttribute("authority", authority);
 		return "faq/selectOne";
 	}
 
