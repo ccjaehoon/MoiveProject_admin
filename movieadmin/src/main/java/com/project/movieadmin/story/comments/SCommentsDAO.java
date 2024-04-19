@@ -3,6 +3,7 @@ package com.project.movieadmin.story.comments;
 import java.util.List;
 
 import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.story.StoryVO;
 import com.project.movieadmin.user.UserVO;
 
 
@@ -21,6 +22,12 @@ public interface SCommentsDAO {
 	
 	public int sc_increaseGood(SCommentsVO vo); 
 	//스토리 댓글 좋아요 수 증가
+	
+	public SCommentsVO sc_selectGood(SCommentsVO vo);
+
+	public int sc_goodCheck(SCommentsVO vo);
+
+	public int sc_goodSave(SCommentsVO vo);
 	
 	public int sc_increaseReport(SCommentsVO vo); 
 	// 스토리 댓글 신고하기;

@@ -37,9 +37,11 @@
 		
 	</select>
 	
+	<!--
 	<select id="SC_SELECT_GOOD" resultType="int">
 		select count(*) count from sc_good where nickname=#{nickname} and story_comments_num=#{story_comments_num}
 	</select>
+	-->
 	<insert id="SC_INSERT_GOOD">
 		insert into sc_good(story_comments_num,nickname) values(#{story_comments_num},#{nickname});
 	</insert>
@@ -55,6 +57,33 @@
 	
 	<select id="SC_UPDATE_REPORT_COUNT" resultType="com.project.movieadmin.story.comments.SCommentsVO">
 		
+	</select>
+	
+	<select id="SC_INCREASE_GOOD" resultType="com.project.movieadmin.story.comments.SCommentsVO">
+		update scomments set
+		good=good+1 where
+		story_comments_num=#{story_comments_num}
+	</select>
+
+	<select id="SC_SELECT_GOOD" resultType="com.project.movieadmin.story.comments.SCommentsVO">
+		select good from scomments where story_comments_num=#{story_comments_num}
+	</select>
+	
+	
+
+	<select id="SC_GOOD_CHECK"
+		resultType="int">
+		select count(*) as like_count
+		from goodcheck
+		where nickname = #{nickname} and
+		story_num = #{story_num} and
+		story_comments_num = #{story_comments_num}
+		
+	</select>
+	<select id="SC_GOOD_SAVE"
+		resultType="int">
+		insert into goodcheck(nickname, story_num, story_comments_num)
+		values(#{nickname},#{story_num},#{story_comments_num})
 	</select>
 
 	

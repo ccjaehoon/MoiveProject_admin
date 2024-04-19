@@ -258,8 +258,6 @@ public class StoryController {
 	public String s_increaseGood(StoryVO vo, HttpSession session) {
 		log.info("s_increaseGood:{}" , vo);
 	
-		
-		
 		int goodCount = service.s_increaseGood(vo);
 	
 		return "{\"goodCount\":\""+goodCount+"\"}";

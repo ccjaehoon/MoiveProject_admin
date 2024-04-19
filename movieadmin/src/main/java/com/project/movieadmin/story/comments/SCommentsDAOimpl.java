@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.story.StoryVO;
 import com.project.movieadmin.user.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -78,7 +79,7 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 //		
 //		return vos;
 //	}
-
+/*
 	@Override
 	public int sc_increaseGood(SCommentsVO vo) {
 		log.info("sc_increaseGood()....{}",vo);
@@ -97,6 +98,30 @@ public class SCommentsDAOimpl implements SCommentsDAO {
 		}else {
 			return 0;
 		}
+	}
+	*/
+	@Override
+	public int sc_increaseGood(SCommentsVO vo) {
+		log.info("sc_increaseGood()....{}",vo);
+		log.info(vo.toString());
+
+		return sqlSession.insert("SC_INSERT", vo);
+	}
+	@Override
+	public SCommentsVO sc_selectGood(SCommentsVO vo) {
+		log.info("sc_selectGood()....");
+		log.info(vo.toString());
+		return sqlSession.selectOne("SC_SELECT_GOOD", vo);
+	}
+
+	@Override
+	public int sc_goodCheck(SCommentsVO vo) {
+		return sqlSession.selectOne("SC_GOOD_CHECK", vo);
+	}
+
+	@Override
+	public int sc_goodSave(SCommentsVO vo) {
+		return sqlSession.insert("SC_GOOD_SAVE", vo);
 	}
 
 	@Override

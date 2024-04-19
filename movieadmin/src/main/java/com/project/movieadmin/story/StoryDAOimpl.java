@@ -127,7 +127,7 @@ public class StoryDAOimpl implements StoryDAO {
 	
 	@Override
 	public StoryVO s_selectGood(StoryVO vo) {
-		log.info("nc_selectGood()....");
+		log.info("s_selectGood()....");
 		log.info(vo.toString());
 		return sqlSession.selectOne("S_SELECT_GOOD", vo);
 	}
