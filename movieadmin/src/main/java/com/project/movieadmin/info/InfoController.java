@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 
 import com.project.movieadmin.info.review.ReviewService;
+import com.project.movieadmin.info.review.ReviewVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -121,13 +122,13 @@ public class InfoController {
 		
 		model.addAttribute("nickname", nickname);
 		
-		InfoVO ivo=new InfoVO();
+		ReviewVO ivo = new ReviewVO();
 		ivo.setInfo_num(vo.getInfo_num());
 		ivo.setNickname(nickname);
-//		List<InfoVO> ivos= inservice.i_selectAll(ivo);
-//		log.info(ivos.toString());
+		List<ReviewVO> ivos= inservice.rv_selectAll(ivo);
+		log.info(ivos.toString());
 		
-//		model.addAttribute("ivos", ivos);
+		model.addAttribute("ivos", ivos);
 
     
 		

@@ -2,6 +2,7 @@ package com.project.movieadmin.info.review;
 
 import java.util.List;
 
+import com.project.movieadmin.info.InfoVO;
 import com.project.movieadmin.user.UserVO;
 
 public interface ReviewService {
@@ -14,7 +15,7 @@ public interface ReviewService {
 	
 	public ReviewVO rv_selectOne(ReviewVO vo);
 
-	public List<ReviewVO> rv_selectAll(int cpage, int pageBlock);
+	public List<ReviewVO> rv_selectAll(ReviewVO vo);
 
 	public int rv_getTotalRows();
 
@@ -25,4 +26,6 @@ public interface ReviewService {
 	public ReviewVO rv_increaseReport(ReviewVO vo);
 	
 	public List<ReviewVO> r_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
+
+	
 }
