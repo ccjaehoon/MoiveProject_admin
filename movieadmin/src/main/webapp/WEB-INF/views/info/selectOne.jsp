@@ -75,8 +75,8 @@
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
 	// API 키
-	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
-	//  	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
+// 	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
+	 	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
 
 	// YouTube API 클라이언트 초기화
 	function init() {
