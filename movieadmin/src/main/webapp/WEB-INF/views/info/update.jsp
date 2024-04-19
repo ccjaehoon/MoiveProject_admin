@@ -65,7 +65,7 @@
 <body>
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div>
-        <h1>게시글 수정페이지</h1>
+        <h1>영화 정보 수정페이지</h1>
         <form action="b_updateOK.do" method="post">
             <table id="insertTable">
                 <tr>
