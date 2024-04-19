@@ -186,6 +186,7 @@ tfoot td {
 				<td>${vo2.showtime}</td>
 				<td>${vo2.releaseDate}</td>
 				<td>${vo2.companys}</td>
+				<td>${vo2.good}</td>
 				<td>${vo2.views}</td>
 				<td><input type="hidden" name="info_num"
 					value="${vo2.info_num}" id="info_num"> <input type="hidden"
@@ -230,9 +231,6 @@ tfoot td {
 	<!-- 	        	</tr> -->
 	<!-- 	        </tbody> -->
 	<!-- 	    </table> -->
-=======
-
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 	<h3>리뷰작성</h3>
 	<form action="rv_insertOK.do">
 		<table id="customers">
