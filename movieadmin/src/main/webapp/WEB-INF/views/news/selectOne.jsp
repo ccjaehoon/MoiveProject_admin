@@ -201,7 +201,7 @@ $(function() {
 					<td>${cvo.news_comments_num}</td>
 					<td>${cvo.content}
 						<form action="nc_updateOK.do">
-							<c:if test="${param.nickname == cvo.nickname}">
+							<c:if test="${nickname == cvo.nickname}">
 								<input type="text" name="content" value="${cvo.content}">
 								<input type="hidden" name="news_comments_num" value="${cvo.news_comments_num}">
 								<input type="hidden" name="news_num" value="${cvo.news_num}">
