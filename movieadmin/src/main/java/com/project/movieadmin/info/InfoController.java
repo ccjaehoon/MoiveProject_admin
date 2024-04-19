@@ -11,7 +11,6 @@ import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
+
+import com.project.movieadmin.info.review.ReviewService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,7 +40,7 @@ public class InfoController {
 	private InfoService service;
 	
 	@Autowired
-	private ReviewSerivce inservice;
+	private ReviewService inservice;
 
 	@Autowired
 	private HttpSession session;
@@ -60,7 +61,7 @@ public class InfoController {
 	
 	
 	@RequestMapping(value = "/i_insertOK.do", method = RequestMethod.POST)
-	public String i_insertOK(InfoVO vo) {
+	public String i_insertOK(InfoVO vo) throws IllegalStateException, IOException {
 	    log.info("Welcome i_insertOK.do...");
 	    //log.info(vo.toString());
 
@@ -123,10 +124,10 @@ public class InfoController {
 		InfoVO ivo=new InfoVO();
 		ivo.setInfo_num(vo.getInfo_num());
 		ivo.setNickname(nickname);
-		List<InfoVO> ivos= inService.i_selectALl(ivo);
-		log.info(ivos.toString());
+//		List<InfoVO> ivos= inservice.i_selectAll(ivo);
+//		log.info(ivos.toString());
 		
-		model.addAttribute("ivos", ivos);
+//		model.addAttribute("ivos", ivos);
 
     
 		
@@ -225,6 +226,7 @@ public class InfoController {
 		return "{\"ircmdcnt\":\""+ircmdcnt+"\"}";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "/i_increaseRecommendsOK.do", method = RequestMethod.GET)
 	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
 		
@@ -235,6 +237,9 @@ public class InfoController {
 		
 		return "info/i_increaseRecommends";
 	}
+=======
+
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 	
 	
 	
