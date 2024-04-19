@@ -18,63 +18,62 @@ public class ReviewServiceimpl implements ReviewService {
 
 	@Override
 	public int rv_insert(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.rv_insert(vo);
 	}
 
 	@Override
 	public int rv_update(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.rv_update(vo);
 	}
 
 	@Override
 	public int rv_delete(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.rv_delete(vo);
 	}
 
-	@Override
-	public ReviewVO rv_selectOne(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public int rv_getTotalRows() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int rv_getSearchTotalRows(String searchKey, String searchWord) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ReviewVO rv_increaseGood(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
-	public ReviewVO rv_increaseReport(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ReviewVO> r_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
-		// TODO Auto-generated method stub
-		return dao.r_selectAll_nickname(cpage, pageBlock, vo);
-	}
-
-	@Override
 	public List<ReviewVO> rv_selectAll(ReviewVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.rv_selectAll(vo);
 	}
+
+	@Override
+	public int rv_increaseGood(ReviewVO vo) {
+		
+		return dao.rv_increaseGood(vo);
+	}
+	
+	
+
+	@Override
+	public List<ReviewVO> rv_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		
+		return dao.rv_selectAll_nickname(cpage, pageBlock, vo);
+	}
+
+	
+	@Override
+	public ReviewVO rv_selectGood(ReviewVO vo) {
+		
+		return dao.rv_selectGood(vo);
+	}
+
+	@Override
+	public int rv_goodCheck(ReviewVO vo) {
+		
+		return dao.rv_goodCheck(vo);
+	}
+
+	@Override
+	public int rv_goodSave(ReviewVO vo) {
+		
+		return dao.rv_goodSave(vo);
+	}
+
+	
 
 }

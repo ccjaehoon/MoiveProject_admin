@@ -49,6 +49,21 @@ public class SCommentsServiceimpl implements SCommentsService {
 		// TODO Auto-generated method stub
 		return dao.sc_increaseGood(vo);
 	}
+	
+	@Override
+	public SCommentsVO sc_selectGood(SCommentsVO vo) {
+		return dao.sc_selectGood(vo);
+	}
+
+	@Override
+	public int sc_goodCheck(SCommentsVO vo) {
+		return dao.sc_goodCheck(vo);
+	}
+
+	@Override
+	public int sc_goodSave(SCommentsVO vo) {
+		return dao.sc_goodSave(vo);
+	}
 
 	@Override
 	public int sc_increaseReport(SCommentsVO vo) {

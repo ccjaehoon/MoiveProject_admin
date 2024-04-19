@@ -1,9 +1,14 @@
 package com.project.movieadmin.info;
 
-import java.util.Date;
 import java.util.List;
 
+import com.project.movieadmin.user.UserVO;
+
+
+
 public interface InfoDAO {
+	
+
 	
 
 	public int i_insert(InfoVO vo);
@@ -20,7 +25,14 @@ public interface InfoDAO {
 	
 	public int i_increaseRecommends(InfoVO vo);
 	
-	//public List<InfoVO> sortRecommends(int recommends, int cpage, int pageBlock);
-	//public List<InfoVO> sortDate(Date relaseDate, int cpage, int pageBlock);
+	public int i_favoriteCheck(InfoVO vo);
+
+	public int i_favoriteSave(InfoVO vo);
+	
+	public int i_increaseViews(InfoVO vo);
+
+	public int i_getFavorite(InfoVO vo);
+
+	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 
 }

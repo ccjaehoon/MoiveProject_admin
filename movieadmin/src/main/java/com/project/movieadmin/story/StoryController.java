@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.movieadmin.info.review.ReviewVO;
 import com.project.movieadmin.news.NewsVO;
@@ -254,12 +255,11 @@ public class StoryController {
 		return "story/selectAll";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "/s_increaseGood.do", method = RequestMethod.GET)
 	public String s_increaseGood(StoryVO vo, HttpSession session) {
-		log.info("s_increaseGood:{}" + vo);
+		log.info("s_increaseGood:{}" , vo);
 	
-		log.info("vo:{}",vo);
-		
 		int goodCount = service.s_increaseGood(vo);
 	
 		return "{\"goodCount\":\""+goodCount+"\"}";

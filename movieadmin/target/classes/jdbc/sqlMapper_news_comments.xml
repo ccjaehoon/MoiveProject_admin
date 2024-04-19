@@ -20,56 +20,10 @@
 		news_comments_num=#{news_comments_num}
 	</delete>
 
-	<select id="NC_SELECT_ONE"
-		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-	</select>
-
 	<select id="NC_SELECT_ALL"
 		resultType="com.project.movieadmin.news.comments.NCommentsVO">
 		select * from ncomments where news_num=#{news_num} order by
 		news_comments_num desc
-
-	</select>
-
-	<select id="SELECT_ALL_PAGE_BLOCK"
-		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-
-	</select>
-
-
-	<select id="SEARCHLIST_ID"
-		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-
-	</select>
-
-
-	<select id="SEARCHLIST_NAME"
-		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_ID"
-		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-
-	</select>
-
-	<select id="SEARCHLIST_PAGE_BLOCK_NAME"
-		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-
-	</select>
-
-
-	<select id="TOTAL_ROWS" resultType="int">
-
-	</select>
-
-
-	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
-
-	</select>
-
-
-	<select id="SEARCH_TOTAL_ROWS_NAME" resultType="int">
 
 	</select>
 
@@ -83,10 +37,6 @@
 		select good from ncomments where news_comments_num=#{news_comments_num}
 	</select>
 
-	<select id="LOGIN"
-		resultType="com.project.movieadmin.news.comments.NCommentsVO">
-
-	</select>
 	<select id="NC_GOOD_CHECK"
 		resultType="int">
 		select count(*) as like_count

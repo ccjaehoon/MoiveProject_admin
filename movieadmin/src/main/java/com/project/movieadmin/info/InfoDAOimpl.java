@@ -8,6 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.news.comments.NCommentsVO;
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -133,6 +136,52 @@ public class InfoDAOimpl implements InfoDAO {
 
 		return total_rows;
 	}
+
+
+	@Override
+	public int i_favoriteCheck(InfoVO vo) {
+		return sqlSession.selectOne("I_FAVORITE_CHECK", vo);
+	}
+
+
+	@Override
+	public int i_favoriteSave(InfoVO vo) {
+		return sqlSession.insert("I_FAVORITE_SAVE", vo);
+	}
+
+
+	@Override
+	public int i_increaseViews(InfoVO vo) {
+		log.info("i_increaseGood()....");
+		log.info(vo.toString());
+		return sqlSession.update("I_INCREASE_VIEWS", vo);
+	}
+
+
+	@Override
+	public int i_getFavorite(InfoVO vo) {
+		
+		return sqlSession.insert("I_GET_FAVORITE", vo);
+	}
+
+
+	@Override
+	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+		 int startRow = (cpage - 1) * pageBlock + 1;
+
+	        Map<String, Object> map = new HashMap<String, Object>();
+	        map.put("startRow", startRow - 1);
+	        map.put("pageBlock", pageBlock);
+	        map.put("nickname", vo.getNickname());
+	        log.info("vo:{}",vo);
+	        log.info("pageBlock{}",pageBlock);
+	        log.info("nickname{}",vo.getNickname().length());
+	        List<InfoVO> vos = sqlSession.selectList("I_SELECT_ALL_NICKNAME", map);
+	        return vos;
+	}
+
+	
+	
 	
 	
 	//conflict 

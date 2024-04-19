@@ -68,11 +68,12 @@
         <h1>게시글 수정페이지</h1>
         <form action="s_updateOK.do" method="post">
             <table id="insertTable">
-               
+              
                 <tr>
                     <td><label for="story_num">글번호</label></td>
-                    <td>${param.story_num}<input type="hidden" id="story_num" name="story_num" value="${param.story_num}"></td>
+                    <td colspan="2">${param.story_num}<input type="hidden" id="story_num" name="story_num" value="${param.story_num}"></td>
                 </tr>
+                
                 <%-- 
                 <tr>
                     <td><label for="title">제목</label></td>
@@ -82,15 +83,17 @@
                  
                 <tr>
                     <td><label for="nicname">작성자</label></td>
-                    <td>${vo2.nicname}<input type="hidden" id="nicname" name="nicname" value="${vo2.nicname}" placeholder="작성자를 입력하세요"></td>
-                </tr>
+					<td>${param.nickname}<input type="hidden" id="nickname" name="nickname" value="${vo2.nickname}" placeholder="작성자"></td>
+				</tr>
+    
                  
                 <tr>
-                    <td><label for="content">내용</label></td>
+                    <td colspan="1"><label for="content">내용</label></td>
                     <td><textarea name="content" id="content" cols="30" rows="10">${vo2.content}</textarea></td>
                 </tr>
 
                 <tr>
+	                <td><label for="content">파일</label></td>
 				    <td><input type="file" name="file_img"></td>
 				    <td><input type="file" name="file_video"></td>
 				</tr>

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.user.UserVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -51,6 +53,36 @@ public class InfoServiceimpl implements InfoService {
 	@Override
 	public int i_increaseRecommends(InfoVO vo) {
 		return dao.i_increaseRecommends(vo);
+	}
+
+	@Override
+	public int i_favoriteCheck(InfoVO vo) {
+		
+		return dao.i_favoriteCheck(vo);
+	}
+
+	@Override
+	public int i_favoriteSave(InfoVO vo) {
+		
+		return dao.i_favoriteSave(vo);
+	}
+
+	@Override
+	public int i_increaseViews(InfoVO vo) {
+	
+		return dao.i_increaseViews(vo);
+	}
+
+	@Override
+	public int i_getFavorite(InfoVO vo) {
+		
+		return dao.i_getFavorite(vo);
+	}
+
+	@Override
+	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
+	
+		return dao.i_selectAll_nickname(cpage, pageBlock,vo);
 	}
 
 }

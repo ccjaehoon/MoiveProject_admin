@@ -126,8 +126,8 @@ public class InfoController {
 		ivo.setInfo_num(vo.getInfo_num());
 		ivo.setNickname(nickname);
 		List<ReviewVO> ivos= inservice.rv_selectAll(ivo);
+		service.i_increaseViews(vo);
 		log.info(ivos.toString());
-		
 		model.addAttribute("ivos", ivos);
 
     
@@ -213,6 +213,7 @@ public class InfoController {
 		return "info/selectAll";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "/i_increaseRecommends.do", method = RequestMethod.GET)
 	public String i_increaseRecommends(InfoVO vo, int cpage, int pageBlock, Model model) {
 		
@@ -226,6 +227,9 @@ public class InfoController {
 		
 		return "{\"ircmdcnt\":\""+ircmdcnt+"\"}";
 	}
+=======
+
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 	
 <<<<<<< HEAD
 	@RequestMapping(value = "/i_increaseRecommendsOK.do", method = RequestMethod.GET)
