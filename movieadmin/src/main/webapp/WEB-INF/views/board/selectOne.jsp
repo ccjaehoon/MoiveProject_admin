@@ -72,13 +72,8 @@ $(function() {
 			url : "http://localhost:8070/movie/b_increaseGood.do",
 			type : "get",
 			data : {
-<<<<<<< HEAD
-				board_num : '${vo2.board_num}',
-				nickname : '${nickname}',
-=======
 				board_num : $("#board_num").val(),
 				nickname : $("#nickname").val(),
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin
 				good : $("#good").val()
 			},
 			dataType : "json",
