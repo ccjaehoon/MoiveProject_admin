@@ -148,7 +148,7 @@ public class BoardController {
 
 		model.addAttribute("totalPageCount", totalPageCount);
 
-		return "board/searchList";
+		return "board/selectAll";
 	}
 
 	@RequestMapping(value = "/b_selectOne.do", method = RequestMethod.GET)
