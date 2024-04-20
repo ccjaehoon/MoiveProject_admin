@@ -67,7 +67,7 @@ tfoot td {
 			<c:forEach var="vo" items="${vos}">
 				<tr>
 					<td width=200px><a
-						href="i_selectOne.do?info_num=${vo.info_num}&title=${vo.title}">${vo.title}</a></td>
+						href="i_selectOne.do?info_num=${vo.info_num}">${vo.title}</a></td>
 					<td><img src="resources/uploadimg/${vo.save_img}" width="200"></td>
 					<td>${vo.content}</td>
 				</tr>

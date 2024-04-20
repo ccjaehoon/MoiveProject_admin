@@ -126,7 +126,7 @@ public class StoryController {
 	@RequestMapping(value = "/s_update.do", method = RequestMethod.GET)
 	public String s_update(StoryVO vo, Model model) {
 		log.info("Welcome story_update...");
-		log.info("vo:{}", vo);
+		log.info("vo:{}", vo); //StoryVO 객체의 상태를 로그로 남기는 데 사용
 		
 //		 List<StoryVO> randomStories = service.s_selectRandomList(vo);
 //		    if (!randomStories.isEmpty()) {
