@@ -214,72 +214,7 @@ public class InfoController {
 	}
 	
 
-	@RequestMapping(value = "/i_update.do", method = RequestMethod.GET)
-	public String i_update(InfoVO vo, Model model) {
-		log.info("Welcome i_update...");
-		log.info("vo:{}", vo);
-		
-		InfoVO vo2=service.i_selectOne(vo);
-		log.info("vo2:" + vo2);
-		
-		model.addAttribute("vo2", vo2);
-		
-		return "info/update";
-	}
 	
-	@RequestMapping(value = "/i_delete.do", method = RequestMethod.GET)
-	public String i_delete(InfoVO vo, Model model) {
-		log.info("Welcome i_delete...");
-		log.info("vo:{}", vo);
-		
-		return "info/delete";
-	}
-
-	@RequestMapping(value = "/i_updateOK.do", method = RequestMethod.POST)
-	public String i_updateOK(InfoVO vo, Model model) throws IllegalStateException, IOException {
-		log.info("Welcome i_updateOK.do....");
-
-		log.info("" + vo);
-
-		String realPath = sContext.getRealPath("resources/uploadimg");
-		log.info(realPath);
-
-		String originName = vo.getFile_img().getOriginalFilename();
-
-		log.info("getOriginalFilename:{}", originName);
-
-		if (originName.length() == 0) {
-			vo.setSave_img("default.png");// 이미지선택없이 처리할때
-		} else {
-			String save_img = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
-
-			vo.setSave_img(save_img);
-
-			File uploadFile = new File(realPath, save_img);
-			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
-
-			//// create thumbnail image/////////
-			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
-			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
-			Graphics2D graphic = thumb_buffer_img.createGraphics();
-			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
-
-			File thumb_file = new File(realPath, "thumb_" + save_img);
-
-			ImageIO.write(thumb_buffer_img, save_img.substring(save_img.lastIndexOf(".") + 1), thumb_file);
-
-		}
-
-		int result = service.i_update(vo);
-		log.info("result:" + result);
-		System.out.println("================");
-
-		if (result == 1) {
-			return "redirect:i_selectOne.do?info_num=" + vo.getInfo_num();
-		} else {
-			return "redirect:i_update.do?info_num=" + vo.getInfo_num();
-		}
-	}
 	
 	
 }
