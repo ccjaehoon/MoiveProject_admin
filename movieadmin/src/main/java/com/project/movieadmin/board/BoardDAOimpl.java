@@ -25,7 +25,7 @@ public class BoardDAOimpl implements BoardDAO {
 
 	@Override
 	public int b_insert(BoardVO vo) {
-		log.info("b_insert()....");
+		log.info("B_insert()....");
 
 		log.info("{}",vo);
 		int flag = sqlSession.insert("B_INSERT", vo);
@@ -34,7 +34,7 @@ public class BoardDAOimpl implements BoardDAO {
 
 	@Override
 	public int b_update(BoardVO vo) {
-		log.info("b_update()....");
+		log.info("B_update()....");
 
 		int flag = sqlSession.update("B_UPDATE", vo);
 		log.info("flag : {}", flag);
@@ -43,7 +43,7 @@ public class BoardDAOimpl implements BoardDAO {
 
 	@Override
 	public int b_delete(BoardVO vo) {
-		log.info("b_delete()....");
+		log.info("B_delete()....");
 
 		int flag = sqlSession.insert("B_DELETE", vo);
 		
@@ -52,7 +52,7 @@ public class BoardDAOimpl implements BoardDAO {
 
 	@Override
 	public BoardVO b_selectOne(BoardVO vo) {
-		log.info("b_selectOne()....");
+		log.info("B_selectOne()....");
 
 		BoardVO vo2 = sqlSession.selectOne("B_SELECT_ONE", vo);
 
@@ -61,7 +61,7 @@ public class BoardDAOimpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> b_selectAll(int cpage, int pageBlock) {
-		log.info("b_selectAll()....");
+		log.info("B_selectAll()....");
 
 		int startRow = (cpage - 1) * pageBlock + 1;
 
@@ -76,7 +76,7 @@ public class BoardDAOimpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> b_searchList(String searchKey, String searchWord, int cpage, int pageBlock) {
-		log.info("b_searchList()...");
+		log.info("B_searchList()...");
 
 		int startRow = (cpage - 1) * pageBlock + 1;
 		
@@ -98,7 +98,7 @@ public class BoardDAOimpl implements BoardDAO {
 
 	@Override
 	public int b_getTotalRows() {
-		log.info("b_getTotalRows()....");
+		log.info("B_getTotalRows()....");
 
 		int total_rows = sqlSession.selectOne("B_TOTAL_ROWS");
 
@@ -107,14 +107,14 @@ public class BoardDAOimpl implements BoardDAO {
 
 	@Override
 	public int b_getSearchTotalRows(String searchKey, String searchWord) {
-		log.info("b_getSearchTotalRows()....");
+		log.info("B_getSearchTotalRows()....");
 
 		int total_rows = 0;
 
 		if (searchKey.equals("title")) {
-			total_rows = sqlSession.selectOne("B_EARCH_TOTAL_ROWS_TITLE", "%" + searchWord + "%");
+			total_rows = sqlSession.selectOne("B_EARCH_TOTAL_ROWb_TITLE", "%" + searchWord + "%");
 		} else if (searchKey.equals("nickname")) {
-			total_rows = sqlSession.selectOne("B_SEARCH_TOTAL_ROWS_NICKNAME", "%" + searchWord + "%");
+			total_rows = sqlSession.selectOne("B_SEARCH_TOTAL_ROWb_NICKNAME", "%" + searchWord + "%");
 		}
 
 		return total_rows;
@@ -122,7 +122,7 @@ public class BoardDAOimpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo) {
-		log.info("b_selectAll()....");
+		log.info("B_selectAll()....");
 
 		int startRow = (cpage - 1) * pageBlock + 1;
 
@@ -134,6 +134,50 @@ public class BoardDAOimpl implements BoardDAO {
 		List<BoardVO> vos = sqlSession.selectList("B_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
 
 		return vos;
+	}
+
+	@Override
+	public int b_increaseGood(BoardVO vo) {
+		log.info("b_increaseGood()....");
+		log.info("vo:{}",vo);
+		int count = sqlSession.selectOne("B_SELECT_GOOD", vo);
+		log.info("count:{}",count);
+		if(count==0) {
+			sqlSession.insert("B_INSERT_GOOD", vo);
+			int result = sqlSession.selectOne("B_CHECK_USER_GOOD_COUNT", vo);
+			log.info("result:{}",result);
+			return result;
+		}else {
+			return 0;
+		}
+	}
+
+	@Override
+	public BoardVO b_selectGood(BoardVO vo) {
+		log.info("b_selectGood()....");
+		log.info(vo.toString());
+		return sqlSession.selectOne("B_SELECT_GOOD", vo);
+	}
+
+	@Override
+	public int b_goodCheck(BoardVO vo) {
+		return sqlSession.selectOne("B_GOOD_CHECK", vo);
+	}
+
+	@Override
+	public int b_goodSave(BoardVO vo) {
+		return sqlSession.insert("B_GOOD_SAVE", vo);
+	}
+
+	@Override
+	public int b_increaseReport(BoardVO vo) {
+		log.info("b_increaseReport()....");
+		// 해당 게시물의 신고수를 가져와 1 증가시킴
+	    int currentReportCount = vo.getReport();
+	    vo.setReport(currentReportCount + 1);
+
+	    // 데이터베이스에 업데이트
+	    return sqlSession.update("B_UPDATE_REPORT_COUNT", vo);
 	}
 
 }

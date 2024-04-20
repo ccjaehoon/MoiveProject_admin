@@ -17,7 +17,7 @@ public class BoardVO {
 	private String authority;
 	private int views;
 	private int commentscount;
-	private String report;
+	private int report;
 	private String save_img;
 	private MultipartFile file_img;
 //	private String save_video;

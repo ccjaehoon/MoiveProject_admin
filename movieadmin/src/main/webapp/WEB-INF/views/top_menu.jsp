@@ -60,7 +60,7 @@
         <a href="m_myPage.do">마이페이지</a>     
        <c:choose>
             <c:when test="${user_id != null}">
-            <c:if test="${nickname eq 'admin'}">
+            <c:if test="${authority eq 'admin'}">
                     <a href="u_selectAll.do">회원목록</a>
                     <a href="rp_selectAll.do">신고목록</a>
                 </c:if>

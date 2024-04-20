@@ -60,7 +60,32 @@ tfoot td {
 <script type="text/javascript">
 $(function() {
 	console.log("jquery test");
-	console.log($(".c_increaseGood"));
+	console.log($(".b_increaseGood"));
+	$(".b_increaseGood").click(function() {
+		console.log("increaseGood Click");
+		console.log('${vo2.board_num}');
+		console.log('${nickname}');
+		$.ajax({
+			url : "http://localhost:8070/movie/b_increaseGood.do",
+			type : "get",
+			data : {
+				board_num : '${vo2.board_num}',
+				nickname : '${nickname}'
+				good : $("#good"+index).val()
+			},
+			dataType : "json",
+			success : function(obj) {
+				console.log(obj);
+				let good = obj.good;
+				if( obj.good > 0) $('.b_increaseGood').val(good); 
+			},
+			error : function(xhr, status) {
+				console.log("status...", status);
+			}
+		});
+		return false;
+	});
+	
 	$(".c_increaseGood").each(function(index,item){//console.log(index);
 		$(this).click(function() {
 			
@@ -92,6 +117,25 @@ $(function() {
 	});
 });
 </script>
+
+<script>
+/*페이지가 로드될 때 #report 요소를 다이얼로그로 설정하지만, 자동으로 열리지 않도록 설정.(예: 버튼 클릭)를 통해 다이얼로그를 열기
+ $("#report").dialog("open"); 코드를 사용하여 다이얼로그를 수동으로 열 수 있습니다*/
+	$(function() {
+		$("#report").dialog({
+			autoOpen : false
+		});
+	});
+
+	function showDialogReport(board_num, nickname) {
+		console.log(board_num);
+		console.log(nickname);
+		$('#board_num').val(board_num);
+		$('#nickname').val(nickname);
+		$("#report").dialog("open");
+	}
+</script>
+
 <script>
 	$(function() {
 		$("#report").dialog({
@@ -138,9 +182,24 @@ $(function() {
 				<td colspan="3">${vo2.wdate}</td>
 			</tr>
 		</tbody>
+		
+		<tbody>
+			<c:forEach var="cvo" items="${cvos}" varStatus="vs">
+				<tr>
+					<td>
+						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num${vs.index}">
+						<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
+						<input type="button" value="${cvo.good}" class="b_increaseGood">
+					</td>
+					<td>
+					<input type="button" id="reportBtn" class="report"
+						onClick="showDialogReport('${vo2.board_num}','${vo2.nickname}')" value="신고" /></td>
+					<td><a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a></td>
+					<td><a href="b_delete.do?board_num=${param.board_num}&nickname=${param.nickname}">글삭제</a></td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
-		<a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a>
-		<a href="b_delete.do?board_num=${param.board_num}">글삭제</a>
 	<hr>
 	<h3>댓글작성</h3>
 	<form action="c_insertOK.do">
@@ -174,7 +233,7 @@ $(function() {
 			<tr>
 				<th>번호</th>
 				<th>내용</th>
-				<th>수정</th>
+				<th>닉네임</th>
 				<th>좋아요</th>
 				<th>작성일자</th>
 				<th>신고</th>
