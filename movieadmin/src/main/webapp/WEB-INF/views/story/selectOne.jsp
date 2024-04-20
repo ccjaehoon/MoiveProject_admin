@@ -113,12 +113,21 @@ $(function() {
 			autoOpen : false
 		});
 	});
-
+//story의 신고
 	function showDialogReport(story_num, nickname, id) {
 		console.log(story_num);
 		console.log(nickname);
 		console.log(id); // 디버깅 목적으로 id를 로그로 출력
-		$('#story_comments_num').val(story_num); // story_comments_num 요소의 값을 story_num 변수의 값으로 설정
+		$('#story_num').val(story_num); 
+		$('#nickname').val(nickname);
+		$("#report").dialog("open");
+	}
+//story_comments의 신고
+	function showDialogReport(story_comments_num, nickname, id) {
+		console.log(story_comments_num);
+		console.log(nickname);
+		console.log(id); // 디버깅 목적으로 id를 로그로 출력
+		$('#story_comments_num').val(story_comments_num);
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
 	}
