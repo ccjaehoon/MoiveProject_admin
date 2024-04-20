@@ -50,11 +50,13 @@
 
 	// 	});
 
-	function showDialogReport(review_num, nickname) {
+	function showDialogReport(review_num, nickname, info_num) {
 		console.log(review_num);
 		console.log(nickname);
+		console.log(info_num);
 		$('#review_num').val(review_num);
 		$('#nickname').val(nickname);
+		$('#info_numR').val(info_num);
 		$("#report").dialog("open");
 	}
 </script>
@@ -279,7 +281,7 @@ tfoot td {
 					
 
 					<td><input type="button" id="reportBtn" class="report"
-						onClick="showDialogReport('${ivo.review_num}','${ivo.nickname}')"
+						onClick="showDialogReport('${ivo.review_num}','${nickname}','${vo2.info_num}')"
 						value="신고" /></td>
 
 					<td><c:if test="${nickname == ivo.nickname}">
@@ -299,9 +301,10 @@ tfoot td {
 			<table id="rp" border="2">
 				<tr>
 					<td id="font" width="100">신고 내용<input type="text"
-						id="nickname" name="nickname" readonly>
+						id="nickname" name="nickname" value="${nickname}" readonly>
 						<input type="text" id="review_num" name="review_num"
-						 readonly></td>
+						 readonly>
+						 <input type="hidden" id="info_numR" name="info_num"></td>
 				</tr>
 				<tr>
 					<td><textarea id="text_report" name="content"

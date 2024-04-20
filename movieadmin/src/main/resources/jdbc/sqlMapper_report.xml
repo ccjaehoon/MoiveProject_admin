@@ -6,8 +6,8 @@
 <mapper namespace="com.project.movieadmin.report">
 	<insert id="RP_INSERT" parameterType="com.project.movieadmin.report.ReportVO">
 		insert into
-		report(nickname,content,board_num,story_num,comments_num,story_comments_num,news_comments_num,review_num)
-		values(#{nickname},#{content},#{board_num},#{story_num},#{comments_num},#{story_comments_num},#{news_comments_num},#{review_num})
+		report(nickname,content,board_num,story_num,comments_num,story_comments_num,news_comments_num,review_num, info_num, news_num)
+		values(#{nickname},#{content},#{board_num},#{story_num},#{comments_num},#{story_comments_num},#{news_comments_num},#{review_num},#{info_num},#{news_num})
 	</insert>
 
 	<update id="RP_UPDATE">
