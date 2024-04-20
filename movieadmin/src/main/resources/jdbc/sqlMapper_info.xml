@@ -10,8 +10,9 @@
 		info(title,nickname,genre,directors,actor,showtime,releaseDate,content,save_img,views,recommends,watchGrade,companys)
 		values(#{title},'admin',#{genre},#{directors},#{actor},#{showtime},#{releaseDate},#{content},#{save_img},#{views},#{recommends},#{watchGrade},#{companys})
 	</insert>
+	
 
-
+	
 	<select id="I_SELECT_ONE"
 		resultType="com.project.movieadmin.info.InfoVO">
 		select * from info where
@@ -138,5 +139,21 @@
 		${startRow}, ${pageBlock}
 
 	</select>
-
+	
+		<update id="I_UPDATE" parameterType="com.project.movieadmin.info.InfoVO">
+    update info
+    set title = #{title},
+        genre = #{genre},
+        directors = #{directors},
+        actor = #{actor},
+        showtime = #{showtime},
+        releaseDate = #{releaseDate},
+        content = #{content},
+        save_img = #{save_img},
+        views = #{views},
+        recommends = #{recommends},
+        watchGrade = #{watchGrade},
+        companys = #{companys}
+    where info_num = #{info_num}
+	</update>
 </mapper>
