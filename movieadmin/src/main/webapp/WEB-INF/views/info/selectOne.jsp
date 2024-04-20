@@ -196,7 +196,7 @@ tfoot td {
 
 		</tbody>
 	</table>
-<<<<<<< HEAD
+
 	<a href="i_update.do?info_num=${vo2.info_num}">영화 수정</a>
 	<a href="i_delete.do">영화 삭제</a>
 	
