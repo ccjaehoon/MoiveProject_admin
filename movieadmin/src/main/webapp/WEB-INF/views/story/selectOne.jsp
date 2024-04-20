@@ -104,6 +104,8 @@ $(function() {
 
 
 <script>
+
+
 /*페이지가 로드될 때 #report 요소를 다이얼로그로 설정하지만, 자동으로 열리지 않도록 설정.(예: 버튼 클릭)를 통해 다이얼로그를 열기
  $("#report").dialog("open"); 코드를 사용하여 다이얼로그를 수동으로 열 수 있습니다*/
 	$(function() {
@@ -112,8 +114,8 @@ $(function() {
 		});
 	});
 
-	function showDialogReport(story_comments_num, nickname, id) {
-		console.log(story_comments_num);
+	function showDialogReport(story_num, nickname, id) {
+		console.log(story_num);
 		console.log(nickname);
 		console.log(id); // 디버깅 목적으로 id를 로그로 출력
 		$('#story_comments_num').val(story_num); // story_comments_num 요소의 값을 story_num 변수의 값으로 설정
