@@ -139,17 +139,10 @@ public class BoardDAOimpl implements BoardDAO {
 	@Override
 	public int b_increaseGood(BoardVO vo) {
 		log.info("b_increaseGood()....");
-		log.info("vo:{}",vo);
-		int count = sqlSession.selectOne("B_SELECT_GOOD", vo);
-		log.info("count:{}",count);
-		if(count==0) {
-			sqlSession.insert("B_INSERT_GOOD", vo);
-			int result = sqlSession.selectOne("B_CHECK_USER_GOOD_COUNT", vo);
-			log.info("result:{}",result);
-			return result;
-		}else {
-			return 0;
-		}
+
+		int total_rows = sqlSession.update("B_INCREASE_GOOD", vo);
+
+		return total_rows;
 	}
 
 	@Override
