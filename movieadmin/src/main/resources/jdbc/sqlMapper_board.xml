@@ -85,5 +85,39 @@
 		select
 		content from board where content=#{content} and nickname=#{nickname}
 	</select>
+	
+	<update id="B_INCREASEGOOD">
+		UPDATE board
+		SET good=good+1
+		WHERE board_num=#{board_num} 				
+	</update>
+	
+	<select id="B_SELECT_GOOD" resultType="int">
+		SELECT count(*) count
+		FROM goodcheck
+		WHERE board_num=#{board_num} and nickname=#{nickname}
+	</select>
+	
+	<insert id="B_INSERT_GOOD">
+		insert into goodcheck(board_num,nickname) values(#{board_num},#{nickname});
+	</insert>
+	
+	<select id="B_GOOD_CHECK" resultType="int">
+		SELECT COUNT(*) AS like_count
+		FROM goodcheck
+		WHERE nickname = #{nickname} AND board_num = #{board_num}
+		
+	</select>
+	
+	<select id="B_GOOD_SAVE" resultType="int">
+		INSERT INTO goodcheck(nickname, board_num, board_num)
+		VALUES(#{nickname},#{board_num},#{board_num})
+	</select>
+	
+	<select id="B_CHECK_USER_GOOD_COUNT" resultType="int">
+		SELECT COUNT(*) count
+		FROM goodcheck
+		WHERE  board_num = #{board_num}
+	</select>
 
 </mapper>

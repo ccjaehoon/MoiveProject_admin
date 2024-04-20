@@ -17,9 +17,11 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.movieadmin.board.comments.CommentsService;
 import com.project.movieadmin.board.comments.CommentsVO;
+import com.project.movieadmin.info.review.ReviewVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -157,15 +159,17 @@ public class BoardController {
 		model.addAttribute("vo2", vo2);
 		log.info("vo2:{}", vo2);
 		
+		String nickname = (String) session.getAttribute("nickname");
+		log.info("nickname: {}",nickname);
+        // user_id를 모델에 추가하여 JSP로 전달
+        model.addAttribute("nickname", nickname);		
+		
 		CommentsVO cvo = new CommentsVO();
 		cvo.setBoard_num(vo.getBoard_num());
+		cvo.setNickname(nickname);
 		List<CommentsVO> cvos = comService.c_selectAll(cvo);
 		
-		
 		model.addAttribute("cvos", cvos);
-		
-		String nickname = (String) session.getAttribute("nickname");
-		model.addAttribute("nickname", nickname);
 		
 		return "board/selectOne";
 	}
@@ -213,6 +217,37 @@ public class BoardController {
 		} else {
 			return "redirect:b_delete.do?board_num=" + vo.getBoard_num();
 		}
+	}
+	
+
+	@ResponseBody
+	@RequestMapping(value = "/b_increaseGood.do", method = RequestMethod.GET)
+	public String b_increaseGood(BoardVO vo, HttpSession session) {
+		log.info("b_increaseGood:{}" , vo);
+	
+		int goodCount = service.b_increaseGood(vo);
+	
+		return "{\"goodCount\":\""+goodCount+"\"}";
+	}
+	
+	@RequestMapping(value = "/b_increaseGoodOK.do", method = RequestMethod.GET)
+	public String rv_increaseGoodOK(BoardVO vo) {
+		
+		return "story_increaseGoodOK";
+	}
+	
+	@RequestMapping(value = "/b_increaseReport.do", method = RequestMethod.GET)
+	public String rv_increaseReport(BoardVO vo) {
+		
+	
+		return "b_increaseReport";
+	}
+	
+	@RequestMapping(value = "/b_increaseReportOK.do", method = RequestMethod.GET)
+	public String rv_increaseReportOK(ReviewVO vo) {
+		
+	
+		return "b_increaseReportOK";
 	}
 
 }
