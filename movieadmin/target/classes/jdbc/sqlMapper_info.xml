@@ -12,12 +12,17 @@
 	</insert>
 
 	<update id="I_UPDATE">
+<<<<<<< HEAD
 		update info set title=#{title}, nickname=#{nickname},
 		actor=#{actor}, showtime=#{showtime}, releaseDate=#{releaseDate},
 		content=#{content}, save_img=#{save_img}, views=#{views},
 		genre=#{genre}, watchGrade=#{watchGrade}, companys=#{companys}
 		where
 		info_num=#{info_num}
+=======
+		update info set title=#{title}, nickname=#{nickname}, genre=#{genre}, directors=#{directors}, actor=#{actor}, showtime=#{showtime}, releaseDate=#{releaseDate}, content=#{content}, save_img=#{save_img}, views=#{views}, watchGrade=#{watchGrade}, companys=#{companys}  
+	    where info_num=#{info_num}
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 	</update>
 
 	<delete id="I_DELETE">
