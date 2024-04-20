@@ -184,21 +184,18 @@ $(function() {
 		</tbody>
 		
 		<tbody>
-			<c:forEach var="cvo" items="${cvos}" varStatus="vs">
 				<tr>
 					<td>
 						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num${vs.index}">
-						<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
-						<input type="button" value="${cvo.good}" class="b_increaseGood">
+						<input type="hidden" name="good" value="${vo2.good}" id="good${vs.index}">
+						<input type="button" value="${vo2.good}" class="b_increaseGood">
 					</td>
 					<td>
 					<input type="button" id="reportBtn" class="report"
 						onClick="showDialogReport('${vo2.board_num}','${vo2.nickname}')" value="신고" /></td>
-					
-				</tr>
-			</c:forEach>
-			<td><a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a></td>
+					<td><a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a></td>
 					<td><a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
+				</tr>
 		</tbody>
 	</table>
 	<hr>
