@@ -40,7 +40,6 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
     <h1>신고목록</h1>
     <hr>
-    <a href="rp_insert.do">신고내용작성</a>
     <table id="customers">
         <thead>
             <tr>
