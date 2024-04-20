@@ -15,7 +15,7 @@
 			$(this).click(function() {
 				console.log("favorite Click");
 				console.log($("#info_num").val());
-				console.log($("#nickname").val());
+				console.log($("#nicknameF").val());
 
 				$.ajax({
 					url : "http://localhost:8070/movie/i_favorite.do",
@@ -41,18 +41,6 @@
 	});
 </script>
 <script>
-	// 	$(function() {
-	// 		console.log("jquery test");
-	// 		console.log($(".report"));
-	// 		$(".report").each(function(index, item) {
-	// 			//			console.log(index);
-
-	// 			$(this).click(function() {
-	// 				console.log("report Click");
-	// 				$("#report").dialog("open");
-
-	// 			});
-	// 		});
 
 	$(function() {
 		$("#report").dialog({
@@ -148,6 +136,10 @@
 tfoot td {
 	text-align: center;
 }
+#text_report{
+	width: 500px;
+	height: 500px;
+}
 </style>
 </head>
 <body>
@@ -175,7 +167,6 @@ tfoot td {
 				<td>상영시간(분)</td>
 				<td>출시일</td>
 				<td>제작사</td>
-				<td>좋아요</td>
 				<td>글 조회수</td>
 				<td>즐겨찾기</td>
 			</tr>
@@ -186,20 +177,16 @@ tfoot td {
 				<td>${vo2.showtime}</td>
 				<td>${vo2.releaseDate}</td>
 				<td>${vo2.companys}</td>
-				<td>${vo2.good}</td>
 				<td>${vo2.views}</td>
 				<td><input type="hidden" name="info_num"
 					value="${vo2.info_num}" id="info_num"> <input type="hidden"
-					name="nickname" value="${nickname}" id="nickname"> <input
+					name="nickname" value="${nickname}" id="nicknameF"> <input
 					type="button" value="즐겨찾기" class="i_favorite"></td>
 			</tr>
 
 		</tbody>
 	</table>
 
-	<a href="i_update.do?info_num=${vo2.info_num}">영화 수정</a>
-	<a href="i_delete.do">영화 삭제</a>
-	
 	
 	
 	
@@ -262,8 +249,7 @@ tfoot td {
 				<th>번호</th>
 				<th>내용</th>
 				<th>작성자</th>
-				<th>좋아요</th>
-				<th>작성일자</th>
+
 				<th>신고</th>
 				<th>삭제</th>
 			</tr>
@@ -288,13 +274,7 @@ tfoot td {
 					<td>${ivo.nickname}<input type="hidden" name="nickname"
 						value="${nickname}" id="nickname${vs.index}"></td>
 
-					<td><input type="hidden" name="review_num"
-						value="${ivo.review_num}" id="review_num${vs.index}"> <input
-						type="hidden" name="info_num" value="${vo2.info_num}"
-						id="info_num"> <input type="hidden" name="good"
-						value="${ivo.good}" id="good${vs.index}"> <input
-						type="button" value="${ivo.good}" class="rv_increaseGood"></td>
-					<td>${ivo.wdate}</td>
+					
 
 					<td><input type="button" id="reportBtn" class="report"
 						onClick="showDialogReport('${ivo.review_num}','${ivo.nickname}')"
@@ -317,12 +297,12 @@ tfoot td {
 			<table id="rp" border="2">
 				<tr>
 					<td id="font" width="100">신고 내용<input type="text"
-						id="nickname" name="nickname" value="${cvo.nickname}" readonly>
+						id="nickname" name="nickname" readonly>
 						<input type="text" id="review_num" name="review_num"
-						value="${ivo.review_num}" readonly></td>
+						 readonly></td>
 				</tr>
 				<tr>
-					<td width="500"><textarea id="text_report" name="content"
+					<td><textarea id="text_report" name="content"
 							placeholder="신고내용을 적으세요">test report</textarea></td>
 				</tr>
 				<tr>
