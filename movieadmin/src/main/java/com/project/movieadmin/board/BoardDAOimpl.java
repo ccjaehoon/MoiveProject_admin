@@ -112,9 +112,9 @@ public class BoardDAOimpl implements BoardDAO {
 		int total_rows = 0;
 
 		if (searchKey.equals("title")) {
-			total_rows = sqlSession.selectOne("B_EARCH_TOTAL_ROWb_TITLE", "%" + searchWord + "%");
+			total_rows = sqlSession.selectOne("B_SEARCH_TOTAL_ROWS_TITLE", "%" + searchWord + "%");
 		} else if (searchKey.equals("nickname")) {
-			total_rows = sqlSession.selectOne("B_SEARCH_TOTAL_ROWb_NICKNAME", "%" + searchWord + "%");
+			total_rows = sqlSession.selectOne("B_SEARCH_TOTAL_ROWS_CONTENT", "%" + searchWord + "%");
 		}
 
 		return total_rows;
