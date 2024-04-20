@@ -24,5 +24,5 @@ public class InfoVO {
 	private String companys;
 	private String save_img;
 	private MultipartFile file_img;
-	
+	private int good;
 }

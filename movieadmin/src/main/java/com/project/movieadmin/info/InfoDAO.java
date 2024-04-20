@@ -33,6 +33,10 @@ public interface InfoDAO {
 
 	public int i_getFavorite(InfoVO vo);
 
+
+	public int i_update(InfoVO vo);
+
 	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
+
 
 }

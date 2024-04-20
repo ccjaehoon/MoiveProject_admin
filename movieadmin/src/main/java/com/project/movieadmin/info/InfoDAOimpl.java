@@ -166,6 +166,12 @@ public class InfoDAOimpl implements InfoDAO {
 
 
 	@Override
+	public int i_update(InfoVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("I_UPDATE", vo);
+	}
+	
+	@Override
 	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
 		 int startRow = (cpage - 1) * pageBlock + 1;
 
