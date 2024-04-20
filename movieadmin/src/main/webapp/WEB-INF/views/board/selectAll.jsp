@@ -49,6 +49,40 @@ tfoot td {
 	text-align: center;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function selectCommentList(board_num){
+		console.log("selectCommentList()...",board_num);
+		
+		$.ajax({
+			url:"http://localhost:8070/movie/api/selectCommentList.do",
+			type:"get",
+			data:{board_num:board_num},
+			dataType:"json",
+			success:function(arr){
+				console.log(arr);
+				let data = '';
+				arr.forEach(function(item){
+					console.log(item);
+					
+					data += `<tr>
+						<td>\${item.comments_num}</td>
+						<td>\${item.nickname}</td>
+						<td>\${item.content}</td>
+						<td>\${item.good}</td>
+						<td>\${item.report}</td>
+						<td>\${item.wdate}</td>
+					</tr>`;
+					
+				});
+				
+				$('#comm_list'+board_num).html(data);
+			},error:function(){ // 서버로부터 데이터를 받아오는 과정에서 오류가 발생했을 때 실행되는 콜백 함수
+				
+			}
+		});
+	}	
+</script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -71,6 +105,7 @@ tfoot td {
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일자</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -81,6 +116,12 @@ tfoot td {
 						<td>${vo.title}</td>
 						<td>${vo.nickname}</td>
 						<td>${vo.wdate}</td>
+						<td>
+							<table>
+								<tbody id="comm_list${vo.board_num}">
+								</tbody>
+							</table>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -96,7 +137,8 @@ tfoot td {
 									href="b_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i}
 									&nbsp;</a>
 							</c:if>
-						</c:forEach></td>
+						</c:forEach>
+					</td>
 				</tr>
 			</tfoot>
 		</table>

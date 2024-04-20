@@ -75,4 +75,30 @@ public class BoardServiceimpl implements BoardService {
 		return dao.b_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
+	@Override
+	public int b_increaseGood(BoardVO vo) {
+
+		return dao.b_increaseGood(vo);
+	}
+
+	@Override
+	public BoardVO b_selectGood(BoardVO vo) {
+		return dao.b_selectGood(vo);
+	}
+
+	@Override
+	public int b_goodCheck(BoardVO vo) {
+		return dao.b_goodCheck(vo);
+	}
+
+	@Override
+	public int b_goodSave(BoardVO vo) {
+		return dao.b_goodSave(vo);
+	}
+
+	@Override
+	public int b_increaseReport(BoardVO vo) {
+		return dao.b_increaseReport(vo);
+	}
+
 }
