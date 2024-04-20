@@ -70,8 +70,8 @@ $(function() {
 			type : "get",
 			data : {
 				board_num : '${vo2.board_num}',
-				nickname : '${nickname}'
-				good : $("#good"+index).val()
+				nickname : '${nickname}',
+				good : $("#good").val()
 			},
 			dataType : "json",
 			success : function(obj) {
@@ -88,7 +88,6 @@ $(function() {
 	
 	$(".c_increaseGood").each(function(index,item){//console.log(index);
 		$(this).click(function() {
-			
 			console.log("increaseGood Click");
 			console.log($("#comments_num"+index).val());
 			console.log($("#good"+index).val());
@@ -187,6 +186,7 @@ $(function() {
 				<tr>
 					<td>
 						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num${vs.index}">
+						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
 						<input type="hidden" name="good" value="${vo2.good}" id="good${vs.index}">
 						<input type="button" value="${vo2.good}" class="b_increaseGood">
 					</td>
