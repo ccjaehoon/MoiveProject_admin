@@ -112,34 +112,14 @@ $(function() {
 		});
 	});
 
-	function showDialogReport(story_num, nickname) {
+	function showDialogReport(story_num, nickname, id) {
 		console.log(story_num);
 		console.log(nickname);
-		$('#story_num').val(story_num);
+		console.log(id); // 디버깅 목적으로 id를 로그로 출력
+		$('#story_comments_num').val(story_num);
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
 	}
-</script>
-
-<script>
-	function submitReportForm() {
-		location.reload();
-	}
-	$("#reportForm").submit(function(event) {
-		event.preventDefault();
-		$.ajax({
-			type : "POST",
-			url : $(this).attr("action"),
-			data : $(this).serialize(),
-			success : function(response) {
-				console.log(response);
-				submitReportForm();
-			},
-			error : function(xhr, status, error) {
-				console.error(status, error);
-			}
-		});
-	});
 </script>
 
 </head>
@@ -184,9 +164,14 @@ $(function() {
 
 				<td><input type="button" id="reportBtn" class="report" onClick="showDialogReport('${vo2.story_num}','${vo2.nickname}')"
 						value="신고" /></td>
-
-				<td><a href="s_update.do?story_num=${vo2.story_num}">글수정</a></td>
-				<td><a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a></td>
+						
+				<td><c:if test="${nickname == cvo.nickname}">
+				<a href="s_update.do?story_num=${param.story_num}&nickname=${param.nickname}">글수정</a>
+				</c:if></td>
+				
+				<td><c:if test="${nickname == cvo.nickname}">
+				<td><a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a>
+				</c:if></td>
 			</tr>
 
 		</tbody>
@@ -266,7 +251,7 @@ $(function() {
 
 
 
-					<td><input type="button" id="reportBtn" class="report"
+					<td><input type="button" id="reportBtn_comment" class="report"
 								onClick="showDialogReport('${cvo.story_comments_num}','${cvo.nickname}')"
 								value="신고" /></td>
 
@@ -305,7 +290,26 @@ $(function() {
 			</table>
 		</form>
 	</div>
-
+<script>
+	function submitReportForm() {
+		location.reload();
+	}
+	$("#reportForm").submit(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type : "POST",
+			url : $(this).attr("action"),
+			data : $(this).serialize(),
+			success : function(response) {
+				console.log(response);
+				submitReportForm();
+			},
+			error : function(xhr, status, error) {
+				console.error(status, error);
+			}
+		});
+	});
+</script>
 
 </body>
 </html>

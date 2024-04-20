@@ -40,7 +40,7 @@
 	</select>
 	<select id="B_SELECT_ALL_PAGE_BLOCK_NICKNAME"
 		resultType="com.project.movieadmin.board.BoardVO">
-		select * from board where nickname=#{nickname} order by
+		select * from board where nickname=#{vo.nickname} order by
 		board_num desc
 		limit #{startRow},#{pageBlock}
 	</select>

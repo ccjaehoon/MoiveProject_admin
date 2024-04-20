@@ -165,7 +165,7 @@ div {
         <tbody>
         	<c:forEach var="vo" items="${storys}">
             <tr>
-                <td><a href="s_selectOne.do?board_num=${vo.story_num}">${vo.story_num}</a></td>                 
+                <td><a href="s_selectOne.do?story_num=${vo.story_num}">${vo.story_num}</a></td>                 
                 <td>${vo.nickname}</td>
                 <td>${vo.content}</td>
                 <td>${vo.wdate}</td>
@@ -206,7 +206,7 @@ div {
         <tbody>
         	<c:forEach var="vo" items="${annoucnements}">
             <tr>
-                <td><a href="a_selectOne.do?board_num=${vo.announcement_num}">${vo.announcement_num}</a></td>       
+                <td><a href="a_selectOne.do?announcement_num=${vo.announcement_num}">${vo.announcement_num}</a></td>       
                 <td>${vo.title}</td>
                 <td>${vo.nickname}</td>
                 <td>${vo.content}</td>

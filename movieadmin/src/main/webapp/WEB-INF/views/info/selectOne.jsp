@@ -10,21 +10,19 @@
 <script type="text/javascript">
 	$(function() {
 		console.log("jquery test");
-		console.log($(".rv_increaseGood"));
-		$(".rv_increaseGood").each(function(index, item) {//console.log(index);
+		console.log($(".i_favorite"));
+		$(".i_favorite").each(function(index, item) {//console.log(index);
 			$(this).click(function() {
-				console.log("increaseGood Click");
-				console.log($("#review_num" + index).val());
-				console.log($("#good" + index).val());
+				console.log("favorite Click");
+				console.log($("#info_num").val());
+				console.log($("#nickname").val());
 
 				$.ajax({
-					url : "http://localhost:8070/movie/rv_increaseGood.do",
+					url : "http://localhost:8070/movie/i_favorite.do",
 					type : "get",
 					data : {
-						review_num : $("#review_num" + index).val(),
 						info_num : $("#info_num").val(),
-						nickname : $("#nickname" + index).val(),
-						good : $("#good" + index).val()
+						nickname : $("#nickname").val()
 					},
 					dataType : "json",
 					success : function(obj) {
@@ -177,6 +175,7 @@ tfoot td {
 				<td>상영시간(분)</td>
 				<td>출시일</td>
 				<td>제작사</td>
+				<td>좋아요</td>
 				<td>글 조회수</td>
 				<td>즐겨찾기</td>
 			</tr>
@@ -187,16 +186,51 @@ tfoot td {
 				<td>${vo2.showtime}</td>
 				<td>${vo2.releaseDate}</td>
 				<td>${vo2.companys}</td>
+				<td>${vo2.good}</td>
 				<td>${vo2.views}</td>
 				<td><input type="hidden" name="info_num"
 					value="${vo2.info_num}" id="info_num"> <input type="hidden"
-					name="user_id" value="${session.getAttribute('user_id')}" id="user_id"> <input
+					name="nickname" value="${nickname}" id="nickname"> <input
 					type="button" value="즐겨찾기" class="i_favorite"></td>
 			</tr>
 
 		</tbody>
 	</table>
 
+	<a href="i_update.do?info_num=${vo2.info_num}">영화 수정</a>
+	<a href="i_delete.do">영화 삭제</a>
+	
+	
+	
+	
+	
+	
+	<%--     <c:if test="${nickname == vo2.nickname }"> --%>
+	<%-- 	    <a href="i_update.do?num=${vo2.num}">글수정</a> --%>
+	<%-- 	    <a href="i_delete.do?num=${vo2.num}">글삭제</a> --%>
+	<%--     </c:if> --%>
+	<!--     <hr> -->
+	<!--     <h3>댓글작성</h3> -->
+	<!--     <form action="c_insertOK.do"> -->
+	<!-- 	    <table id="customers"> -->
+	<!-- 	        <thead> -->
+	<!-- 	            <tr> -->
+	<%-- 	                <th>댓글 내용 ${param.msg}</th> --%>
+	<!-- 	                <th>댓글 작성자</th> -->
+	<!-- 	                <th></th> -->
+	<!-- 	            </tr> -->
+	<!-- 	        </thead> -->
+	<!-- 	        <tbody> -->
+	<!-- 	        	<tr> -->
+	<!-- 	        		<td><input type="text" name="content" value="hello" size="50"></td> -->
+	<!-- 	        		<td> -->
+	<%-- 	        			${user_id}<input type="hidden" name="writer" value="${user_id}"> --%>
+	<%-- 	        			<input type="hidden" name="bnum" value="${vo2.num}"> --%>
+	<!-- 	        		</td> -->
+	<!-- 	        		<td><input type="submit"  value="댓글작성"></td> -->
+	<!-- 	        	</tr> -->
+	<!-- 	        </tbody> -->
+	<!-- 	    </table> -->
 	<h3>리뷰작성</h3>
 	<form action="rv_insertOK.do">
 		<table id="customers">
