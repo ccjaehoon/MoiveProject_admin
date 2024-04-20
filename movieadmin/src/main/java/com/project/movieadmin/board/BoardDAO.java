@@ -2,8 +2,11 @@ package com.project.movieadmin.board;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import com.project.movieadmin.user.UserVO;
 
+=======
+>>>>>>> branch 'handmade' of https://github.com/ccjaehoon/MoiveProject_admin
 public interface BoardDAO {
 	
 	public int b_insert(BoardVO vo);
@@ -21,6 +24,7 @@ public interface BoardDAO {
 	public int b_getTotalRows();
 	
 	public int b_getSearchTotalRows(String searchKey, String searchWord);
+<<<<<<< HEAD
 	
 	public int b_increaseGood(BoardVO vo); 
 	
@@ -33,5 +37,9 @@ public interface BoardDAO {
 	public int b_increaseReport(BoardVO vo); 
 
 	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo);
+=======
+
+	public int b_increaseGood(BoardVO vo);
+>>>>>>> branch 'handmade' of https://github.com/ccjaehoon/MoiveProject_admin
 
 }
