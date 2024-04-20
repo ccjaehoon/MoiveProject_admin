@@ -114,10 +114,12 @@ $(function() {
 
 	// 	});
 
-	function showDialogReport(news_comments_num, nickname) {
+	function showDialogReport(news_comments_num, nickname, news_num) {
 		console.log(news_comments_num);
 		console.log(nickname);
+		console.log(news_num);
 		$('#news_comments_num').val(news_comments_num);
+		$('#news_numR').val(news_num);
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
 	}
@@ -154,9 +156,11 @@ $(function() {
 			</tr>
 		</tbody>
 	</table>
+	<c:if test="${authority == 'admin' }">
 	<a
 		href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
 	<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
+	</c:if>
 	<hr>
 	<h3>댓글작성</h3>
 	<form action="nc_insertOK.do">
@@ -220,7 +224,7 @@ $(function() {
 					<td>${cvo.wdate}</td>
 
 					<td><input type="button" id="reportBtn" class="report"
-						onClick="showDialogReport('${cvo.news_comments_num}','${cvo.nickname}')"
+						onClick="showDialogReport('${cvo.news_comments_num}','${nickname}', '${vo2.news_num}')"
 						value="신고" /></td>
 
 					<td>
@@ -243,7 +247,9 @@ $(function() {
 					<td id="font" width="100">신고 내용<input type="text"
 						id="nickname" name="nickname" value="${cvo.nickname}" readonly>
 						<input type="text" id="news_comments_num" name="news_comments_num"
-						value="${cvo.news_comments_num}" readonly></td>
+						value="${cvo.news_comments_num}" readonly>
+						<input type="hidden" id="news_numR" name="news_num" value="${vo2.news_num}"></td>
+						
 				</tr>
 				<tr>
 					<td width="500"><textarea id="text_report" name="content"

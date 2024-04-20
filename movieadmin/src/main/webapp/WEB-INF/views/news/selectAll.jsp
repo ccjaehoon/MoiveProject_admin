@@ -92,6 +92,8 @@
             </tr>
         </tfoot>
     </table>
+    <c:if test="${authority == 'admin' }">
     <a href="n_insert.do">뉴스 작성</a>
+    </c:if>
 </body>
 </html>
