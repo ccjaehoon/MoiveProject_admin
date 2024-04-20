@@ -92,7 +92,6 @@ $(function() {
 	
 	$(".c_increaseGood").each(function(index,item){//console.log(index);
 		$(this).click(function() {
-			
 			console.log("increaseGood Click");
 			console.log($("#comments_num"+index).val());
 			console.log($("#good"+index).val());

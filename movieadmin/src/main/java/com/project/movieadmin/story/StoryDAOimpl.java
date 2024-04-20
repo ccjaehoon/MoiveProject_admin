@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 
 import com.project.movieadmin.user.UserVO;
@@ -22,6 +23,7 @@ public class StoryDAOimpl implements StoryDAO {
 	public StoryDAOimpl() { //생성자
 		log.info("StoryDAOimpl()....");
 	}
+	
 	
 	@Override
 	public int s_insert(StoryVO vo) {

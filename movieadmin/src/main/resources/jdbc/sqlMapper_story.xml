@@ -33,7 +33,7 @@
 		<!-- 
 		SELECT * story_num, nickname, content
 		FROM story
-		ORDER BY RAND(); LIMIT 1
+		ORDER BY RAND(); LIMIT 1 (웨어절을 넣어서 )
 		 -->
 	</select>
 
