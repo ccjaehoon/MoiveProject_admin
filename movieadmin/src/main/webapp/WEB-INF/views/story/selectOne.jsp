@@ -116,31 +116,10 @@ $(function() {
 		console.log(story_num);
 		console.log(nickname);
 		console.log(id); // 디버깅 목적으로 id를 로그로 출력
-		$('#story_num').val(story_num);
+		$('#story_comments_num').val(story_num);
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
 	}
-</script>
-
-<script>
-	function submitReportForm() {
-		location.reload();
-	}
-	$("#reportForm").submit(function(event) {
-		event.preventDefault();
-		$.ajax({
-			type : "POST",
-			url : $(this).attr("action"),
-			data : $(this).serialize(),
-			success : function(response) {
-				console.log(response);
-				submitReportForm();
-			},
-			error : function(xhr, status, error) {
-				console.error(status, error);
-			}
-		});
-	});
 </script>
 
 </head>
@@ -311,7 +290,26 @@ $(function() {
 			</table>
 		</form>
 	</div>
-
+<script>
+	function submitReportForm() {
+		location.reload();
+	}
+	$("#reportForm").submit(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type : "POST",
+			url : $(this).attr("action"),
+			data : $(this).serialize(),
+			success : function(response) {
+				console.log(response);
+				submitReportForm();
+			},
+			error : function(xhr, status, error) {
+				console.error(status, error);
+			}
+		});
+	});
+</script>
 
 </body>
 </html>
