@@ -188,15 +188,9 @@ $(function() {
 		<tbody>
 				<tr>
 					<td>
-<<<<<<< HEAD
-						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num${vs.index}">
-						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
-						<input type="hidden" name="good" value="${vo2.good}" id="good${vs.index}">
-=======
 						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
 						<input type="hidden" name="good" value="${vo2.good}" id="good">
 						<input type="hidden" name="nickname" value="${vo2.nickname}" id="nickname">
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin
 						<input type="button" value="${vo2.good}" class="b_increaseGood">
 					</td>
 					<td>
