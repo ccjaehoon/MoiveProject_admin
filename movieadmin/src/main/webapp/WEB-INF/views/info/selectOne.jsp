@@ -167,7 +167,6 @@ tfoot td {
 				<td>상영시간(분)</td>
 				<td>출시일</td>
 				<td>제작사</td>
-				<td>좋아요</td>
 				<td>글 조회수</td>
 				<td>즐겨찾기</td>
 			</tr>
@@ -178,7 +177,6 @@ tfoot td {
 				<td>${vo2.showtime}</td>
 				<td>${vo2.releaseDate}</td>
 				<td>${vo2.companys}</td>
-				<td>${vo2.good}</td>
 				<td>${vo2.views}</td>
 				<td><input type="hidden" name="info_num"
 					value="${vo2.info_num}" id="info_num"> <input type="hidden"
