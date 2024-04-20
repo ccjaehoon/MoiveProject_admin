@@ -128,6 +128,9 @@ public class StoryController {
 		log.info("Welcome story_update...");
 		log.info("vo:{}", vo); //StoryVO 객체의 상태를 로그로 남기는 데 사용
 		
+		StoryVO vo2 = service.s_selectOne(vo);
+		model.addAttribute("vo2", vo2);
+		
 //		 List<StoryVO> randomStories = service.s_selectRandomList(vo);
 //		    if (!randomStories.isEmpty()) {
 //		        StoryVO vo2 = randomStories.get(0); // 리스트의 첫 번째 요소를 선택

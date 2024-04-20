@@ -16,6 +16,8 @@ public class ReportVO {
 	private int story_comments_num;
 	private int news_comments_num;
 	private int review_num;
+	private int info_num;
+	private int news_num;
 	private Date handledate;
 	
 }
