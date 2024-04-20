@@ -10,16 +10,9 @@
 		info(title,nickname,genre,directors,actor,showtime,releaseDate,content,save_img,views,recommends,watchGrade,companys)
 		values(#{title},'admin',#{genre},#{directors},#{actor},#{showtime},#{releaseDate},#{content},#{save_img},#{views},#{recommends},#{watchGrade},#{companys})
 	</insert>
+	
 
-	<update id="I_UPDATE">
-		update info set title=#{title}, nickname=#{nickname}, actor=#{actor}, showtime=#{showtime}, releaseDate=#{releaseDate}, content=#{content}, save_img=#{save_img}, views=#{views}, genre=#{genre},  watchGrade=#{watchGrade}, companys=#{companys}  
-	    where info_num=#{info_num}
-	</update>
-
-	<delete id="I_DELETE">
-
-	</delete>
-
+	
 	<select id="I_SELECT_ONE"
 		resultType="com.project.movieadmin.info.InfoVO">
 		select * from info where
@@ -45,30 +38,30 @@
 	</select>
 
 
-	<select id="SEARCHLIST_NAME"
-		resultType="com.project.movieadmin.info.InfoVO">
 
-	</select>
 
 	<select id="I_SEARCHLIST_PAGE_BLOCK_TITLE"
 		resultType="com.project.movieadmin.info.InfoVO">
 		select * from info
 		where title like #{searchWord}
-		order by releaseDate desc limit #{startRow},#{pageBlock}
+		order by
+		releaseDate desc limit #{startRow},#{pageBlock}
 	</select>
 
 	<select id="I_SEARCHLIST_PAGE_BLOCK_GENRE"
 		resultType="com.project.movieadmin.info.InfoVO">
 		select * from info
 		where genre like #{searchWord}
-		order by releaseDate desc limit #{startRow},#{pageBlock}
+		order by
+		releaseDate desc limit #{startRow},#{pageBlock}
 	</select>
-	
+
 	<select id="I_SEARCHLIST_PAGE_BLOCK_ACTOR"
 		resultType="com.project.movieadmin.info.InfoVO">
 		select * from info
 		where actor like #{searchWord}
-		order by releaseDate desc limit #{startRow},#{pageBlock}
+		order by
+		releaseDate desc limit #{startRow},#{pageBlock}
 	</select>
 
 
@@ -79,8 +72,22 @@
 	</select>
 
 
-	<select id="SEARCH_TOTAL_ROWS_ID" resultType="int">
+	<select id="I_SEARCH_TOTAL_ROWS_TITLE" resultType="int">
+		select
+		count(*)
+		total_rows from info where title like #{searchWord}
+	</select>
 
+	<select id="I_SEARCH_TOTAL_ROWS_GENRE" resultType="int">
+		select
+		count(*)
+		total_rows from info where genre like #{searchWord}
+	</select>
+
+	<select id="I_SEARCH_TOTAL_ROWS_ACTOR" resultType="int">
+		select
+		count(*)
+		total_rows from info where actor like #{searchWord}
 	</select>
 
 
@@ -94,39 +101,59 @@
 
 	</select>
 
-	<select id="I_INCREASE_VIEWS" resultType="com.project.movieadmin.info.InfoVO">
+	<select id="I_INCREASE_VIEWS"
+		resultType="com.project.movieadmin.info.InfoVO">
 		update info set
 		views=views+1 where
 		info_num=#{info_num}
 	</select>
-	
-	<select id="I_FAVORITE_CHECK" resultType="int">
-        select count(*) as
-        like_count
-        from favoritecheck
-        where nickname = #{nickname} and
-        info_num = #{info_num} 
 
-    </select>
-    <select id="I_FAVORITE_SAVE" resultType="int">
-        insert into
-        favoritecheck(nickname, info_num)
-        values(#{nickname},#{info_num})
-    </select>
-       <select id="I_GET_FAVORITE" resultType="int">
-        insert into
-        favorite(nickname, info_num)
-        values(#{nickname},#{info_num})
-    </select>
-    
-    <select id="I_SELECT_ALL_NICKNAME"
-		resultType="com.project.movieadmin.info.InfoVO">
-		SELECT * FROM favorite f,info i
-		where f.info_num = i.info_num
-		and f.nickname=#{nickname}
-		order by favorite_num desc
-				limit  ${startRow}, ${pageBlock}
-		
+	<select id="I_FAVORITE_CHECK" resultType="int">
+		select count(*) as
+		like_count
+		from favoritecheck
+		where nickname = #{nickname} and
+		info_num =
+		#{info_num}
+
+	</select>
+	<select id="I_FAVORITE_SAVE" resultType="int">
+		insert into
+		favoritecheck(nickname, info_num)
+		values(#{nickname},#{info_num})
+	</select>
+	<select id="I_GET_FAVORITE" resultType="int">
+		insert into
+		favorite(nickname, info_num)
+		values(#{nickname},#{info_num})
 	</select>
 
+	<select id="I_SELECT_ALL_NICKNAME"
+		resultType="com.project.movieadmin.info.InfoVO">
+		SELECT * FROM favorite f,info i
+		where f.info_num =
+		i.info_num
+		and f.nickname=#{nickname}
+		order by favorite_num desc
+		limit
+		${startRow}, ${pageBlock}
+
+	</select>
+	
+		<update id="I_UPDATE" parameterType="com.project.movieadmin.info.InfoVO">
+    update info
+    set title = #{title},
+        genre = #{genre},
+        directors = #{directors},
+        actor = #{actor},
+        showtime = #{showtime},
+        releaseDate = #{releaseDate},
+        content = #{content},
+        save_img = #{save_img},
+        views = #{views},
+        recommends = #{recommends},
+        watchGrade = #{watchGrade},
+        companys = #{companys}
+    where info_num = #{info_num}
+	</update>
 </mapper>

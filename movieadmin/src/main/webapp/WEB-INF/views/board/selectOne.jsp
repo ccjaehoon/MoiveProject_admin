@@ -58,26 +58,34 @@ tfoot td {
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
+
 $(function() {
+
 	console.log("jquery test");
 	console.log($(".b_increaseGood"));
-	$(".b_increaseGood").click(function() {
+	$(".b_increaseGood").click(function(item) {
 		console.log("increaseGood Click");
 		console.log('${vo2.board_num}');
 		console.log('${nickname}');
+		console.log('${vo2.good}');
 		$.ajax({
 			url : "http://localhost:8070/movie/b_increaseGood.do",
 			type : "get",
 			data : {
+<<<<<<< HEAD
 				board_num : '${vo2.board_num}',
 				nickname : '${nickname}',
+=======
+				board_num : $("#board_num").val(),
+				nickname : $("#nickname").val(),
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin
 				good : $("#good").val()
 			},
 			dataType : "json",
 			success : function(obj) {
 				console.log(obj);
 				let good = obj.good;
-				if( obj.good > 0) $('.b_increaseGood').val(good); 
+				item.value = good;
 			},
 			error : function(xhr, status) {
 				console.log("status...", status);
@@ -185,9 +193,15 @@ $(function() {
 		<tbody>
 				<tr>
 					<td>
+<<<<<<< HEAD
 						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num${vs.index}">
 						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
 						<input type="hidden" name="good" value="${vo2.good}" id="good${vs.index}">
+=======
+						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
+						<input type="hidden" name="good" value="${vo2.good}" id="good">
+						<input type="hidden" name="nickname" value="${vo2.nickname}" id="nickname">
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin
 						<input type="button" value="${vo2.good}" class="b_increaseGood">
 					</td>
 					<td>

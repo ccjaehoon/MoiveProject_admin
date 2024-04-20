@@ -79,14 +79,15 @@ public class InfoServiceimpl implements InfoService {
 		return dao.i_getFavorite(vo);
 	}
 
-	@Override
-	public int i_update(InfoVO vo) {
-
-		return dao.i_update(vo);
-	}
+	
 	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
 	
 		return dao.i_selectAll_nickname(cpage, pageBlock,vo);
+	}
+
+	@Override
+	public int i_update(InfoVO vo) {
+		return dao.i_update(vo);
 	}
 
 }

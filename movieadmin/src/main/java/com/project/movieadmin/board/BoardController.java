@@ -148,7 +148,7 @@ public class BoardController {
 
 		model.addAttribute("totalPageCount", totalPageCount);
 
-		return "board/searchList";
+		return "board/selectAll";
 	}
 
 	@RequestMapping(value = "/b_selectOne.do", method = RequestMethod.GET)
@@ -219,35 +219,5 @@ public class BoardController {
 		}
 	}
 	
-
-	@ResponseBody
-	@RequestMapping(value = "/b_increaseGood.do", method = RequestMethod.GET)
-	public String b_increaseGood(BoardVO vo, HttpSession session) {
-		log.info("b_increaseGood:{}" , vo);
-	
-		int goodCount = service.b_increaseGood(vo);
-	
-		return "{\"goodCount\":\""+goodCount+"\"}";
-	}
-	
-	@RequestMapping(value = "/b_increaseGoodOK.do", method = RequestMethod.GET)
-	public String rv_increaseGoodOK(BoardVO vo) {
-		
-		return "story_increaseGoodOK";
-	}
-	
-	@RequestMapping(value = "/b_increaseReport.do", method = RequestMethod.GET)
-	public String rv_increaseReport(BoardVO vo) {
-		
-	
-		return "b_increaseReport";
-	}
-	
-	@RequestMapping(value = "/b_increaseReportOK.do", method = RequestMethod.GET)
-	public String rv_increaseReportOK(ReviewVO vo) {
-		
-	
-		return "b_increaseReportOK";
-	}
 
 }

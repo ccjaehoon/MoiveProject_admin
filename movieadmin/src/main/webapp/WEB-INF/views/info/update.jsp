@@ -116,6 +116,10 @@
 					<td><input type="file" id="file_img" name="file_img"></td>
 				</tr>
 				<tr>
+					<td><label for="views"></label></td>
+					<td><input type="hidden" id="views" name="views" value="${vo2.views}"></td>
+				</tr>
+				<tr>
 					<td><label for="watchGrade">시청등급</label></td>
 					<td><input type="text" id="watchGrade" name="watchGrade" value="${vo2.watchGrade}"></td>
 				</tr>

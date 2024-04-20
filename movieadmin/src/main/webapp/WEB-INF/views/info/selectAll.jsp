@@ -89,7 +89,9 @@ tfoot td {
 					</c:forEach></td>
 			</tr>
 		</tfoot>
-		<a href="i_insert.do">글쓰기</a>
+		<c:if test="${nickname == 'admin'}">
+			<a href="i_insert.do">글쓰기</a>
+		</c:if>
 	</table>
 </body>
 

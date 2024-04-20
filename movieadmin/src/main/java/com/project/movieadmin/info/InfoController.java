@@ -168,6 +168,10 @@ public class InfoController {
 
 		model.addAttribute("totalPageCount", totalPageCount);
 		
+		String nickname = (String) session.getAttribute("nickname");
+		log.info("nickname: {}",nickname);
+		
+		model.addAttribute("nickname", nickname);
 		
 		
 		return "info/selectAll";

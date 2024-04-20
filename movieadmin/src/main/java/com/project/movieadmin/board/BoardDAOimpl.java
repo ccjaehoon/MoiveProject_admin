@@ -112,9 +112,9 @@ public class BoardDAOimpl implements BoardDAO {
 		int total_rows = 0;
 
 		if (searchKey.equals("title")) {
-			total_rows = sqlSession.selectOne("B_EARCH_TOTAL_ROWb_TITLE", "%" + searchWord + "%");
+			total_rows = sqlSession.selectOne("B_SEARCH_TOTAL_ROWS_TITLE", "%" + searchWord + "%");
 		} else if (searchKey.equals("nickname")) {
-			total_rows = sqlSession.selectOne("B_SEARCH_TOTAL_ROWb_NICKNAME", "%" + searchWord + "%");
+			total_rows = sqlSession.selectOne("B_SEARCH_TOTAL_ROWS_CONTENT", "%" + searchWord + "%");
 		}
 
 		return total_rows;
@@ -139,17 +139,10 @@ public class BoardDAOimpl implements BoardDAO {
 	@Override
 	public int b_increaseGood(BoardVO vo) {
 		log.info("b_increaseGood()....");
-		log.info("vo:{}",vo);
-		int count = sqlSession.selectOne("B_SELECT_GOOD", vo);
-		log.info("count:{}",count);
-		if(count==0) {
-			sqlSession.insert("B_INSERT_GOOD", vo);
-			int result = sqlSession.selectOne("B_CHECK_USER_GOOD_COUNT", vo);
-			log.info("result:{}",result);
-			return result;
-		}else {
-			return 0;
-		}
+
+		int total_rows = sqlSession.update("B_INCREASE_GOOD", vo);
+
+		return total_rows;
 	}
 
 	@Override

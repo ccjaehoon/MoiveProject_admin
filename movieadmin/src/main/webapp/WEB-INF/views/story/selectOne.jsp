@@ -104,6 +104,8 @@ $(function() {
 
 
 <script>
+
+
 /*페이지가 로드될 때 #report 요소를 다이얼로그로 설정하지만, 자동으로 열리지 않도록 설정.(예: 버튼 클릭)를 통해 다이얼로그를 열기
  $("#report").dialog("open"); 코드를 사용하여 다이얼로그를 수동으로 열 수 있습니다*/
 	$(function() {
@@ -111,12 +113,21 @@ $(function() {
 			autoOpen : false
 		});
 	});
-
+//story의 신고
+	function showDialogReport(story_num, nickname, id) {
+		console.log(story_num);
+		console.log(nickname);
+		console.log(id); // 디버깅 목적으로 id를 로그로 출력
+		$('#story_num').val(story_num); 
+		$('#nickname').val(nickname);
+		$("#report").dialog("open");
+	}
+//story_comments의 신고
 	function showDialogReport(story_comments_num, nickname, id) {
 		console.log(story_comments_num);
 		console.log(nickname);
 		console.log(id); // 디버깅 목적으로 id를 로그로 출력
-		$('#story_comments_num').val(story_num); // story_comments_num 요소의 값을 story_num 변수의 값으로 설정
+		$('#story_comments_num').val(story_comments_num);
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
 	}
@@ -165,11 +176,11 @@ $(function() {
 				<td><input type="button" id="reportBtn" class="report" onClick="showDialogReport('${vo2.story_num}','${vo2.nickname}')"
 						value="신고" /></td>
 						
-				<td><c:if test="${nickname == vo2.nickname}">
+				<td><c:if test="${nickname == vo2.nickname || nickname == 'admin'}">
 				<a href="s_update.do?story_num=${param.story_num}&nickname=${param.nickname}">글수정</a>
 				</c:if></td>
 				
-				<td><c:if test="${nickname == vo2.nickname}">
+				<td><c:if test="${nickname == vo2.nickname || nickname == 'admin' }">
 				<td><a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a>
 				</c:if></td>
 			</tr>
@@ -257,7 +268,7 @@ $(function() {
 
 
 
-					<td><c:if test="${nickname == cvo.nickname}">
+					<td><c:if test="${nickname == cvo.nickname || nickname == 'admin'}">
 							<%-- 자바스크립트를 쓸 경우						
 <input type="button" id="deleteBtn" class="delete" value="삭제" onclick="deleteComment(${cvo.story_comments_num})"> --%>
 						<a href="SComments_deleteOK.do?story_comments_num=${cvo.story_comments_num}&story_num=${cvo.story_num}">댓글삭제</a>
