@@ -165,11 +165,11 @@ $(function() {
 				<td><input type="button" id="reportBtn" class="report" onClick="showDialogReport('${vo2.story_num}','${vo2.nickname}')"
 						value="신고" /></td>
 						
-				<td><c:if test="${nickname == vo2.nickname}">
+				<td><c:if test="${nickname == vo2.nickname || nickname == 'admin'}">
 				<a href="s_update.do?story_num=${param.story_num}&nickname=${param.nickname}">글수정</a>
 				</c:if></td>
 				
-				<td><c:if test="${nickname == vo2.nickname}">
+				<td><c:if test="${nickname == vo2.nickname || nickname == 'admin' }">
 				<td><a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a>
 				</c:if></td>
 			</tr>
@@ -257,7 +257,7 @@ $(function() {
 
 
 
-					<td><c:if test="${nickname == cvo.nickname}">
+					<td><c:if test="${nickname == cvo.nickname || nickname == 'admin'}">
 							<%-- 자바스크립트를 쓸 경우						
 <input type="button" id="deleteBtn" class="delete" value="삭제" onclick="deleteComment(${cvo.story_comments_num})"> --%>
 						<a href="SComments_deleteOK.do?story_comments_num=${cvo.story_comments_num}&story_num=${cvo.story_num}">댓글삭제</a>
