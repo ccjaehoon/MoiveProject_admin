@@ -1,5 +1,6 @@
 package com.project.movieadmin.story;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,8 +61,11 @@ public class StoryServiceimpl implements StoryService {
 
 	@Override
 	public List<StoryVO> s_selectAll(int cpage, int pageBlock) {
+		List<StoryVO> list=dao.s_selectAll(cpage,pageBlock);
 		
-		return dao.s_selectAll(cpage, pageBlock);
+		Collections.shuffle(list);
+		return list;
+		/* return dao.s_selectAll(cpage, pageBlock); */
 	}
 	
 	@Override
