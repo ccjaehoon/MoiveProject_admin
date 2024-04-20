@@ -83,10 +83,19 @@
                     <td><textarea name="content" id="content" cols="30" rows="10" placeholder="한줄평을 입력하세요"></textarea></td>
                 </tr>
                 
-				<tr>
+                <tr>
+               <!--  <td>
+					<input type="file" name="media_files" accept="image/*,video/*" multiple>
+					</td>
+					<td>
+					<input type="file" name="media_files2" accept="image/*,video/*" multiple>
+					</td>
+					</tr> -->
+				 <tr>
 				    <td><input type="file" name="file_img"></td>
 				    <td><input type="file" name="file_video"></td>
 				</tr> 
+				
                
 
                 <tr>
