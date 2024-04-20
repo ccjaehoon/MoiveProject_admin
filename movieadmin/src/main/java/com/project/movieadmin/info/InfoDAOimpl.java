@@ -90,11 +90,11 @@ public class InfoDAOimpl implements InfoDAO {
 
 		List<InfoVO> vos = null;
 
-		if (searchKey.equals("TITLE")) {
+		if (searchKey.equals("title")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_TITLE", map);
-		} else if (searchKey.equals("GENRE")) {
+		} else if (searchKey.equals("genre")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_GENRE", map);
-		} else if (searchKey.equals("ACTOR")) {
+		} else if (searchKey.equals("actor")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_ACTOR", map);
 		}
 	
@@ -165,6 +165,11 @@ public class InfoDAOimpl implements InfoDAO {
 	}
 
 
+	@Override
+	public int i_update(InfoVO vo) {
+		return sqlSession.update("I_UPDATE", vo);
+	}
+	
 	@Override
 	public List<InfoVO> i_selectAll_nickname(int cpage, int pageBlock, UserVO vo) {
 		 int startRow = (cpage - 1) * pageBlock + 1;
