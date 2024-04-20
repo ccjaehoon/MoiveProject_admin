@@ -90,11 +90,11 @@ public class InfoDAOimpl implements InfoDAO {
 
 		List<InfoVO> vos = null;
 
-		if (searchKey.equals("TITLE")) {
+		if (searchKey.equals("title")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_TITLE", map);
-		} else if (searchKey.equals("GENRE")) {
+		} else if (searchKey.equals("genre")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_GENRE", map);
-		} else if (searchKey.equals("ACTOR")) {
+		} else if (searchKey.equals("actor")) {
 			vos = sqlSession.selectList("I_SEARCHLIST_PAGE_BLOCK_ACTOR", map);
 		}
 	
