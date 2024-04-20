@@ -112,11 +112,11 @@ $(function() {
 		});
 	});
 
-	function showDialogReport(story_num, nickname, id) {
-		console.log(story_num);
+	function showDialogReport(story_comments_num, nickname, id) {
+		console.log(story_comments_num);
 		console.log(nickname);
 		console.log(id); // 디버깅 목적으로 id를 로그로 출력
-		$('#story_comments_num').val(story_num);
+		$('#story_comments_num').val(story_num); // story_comments_num 요소의 값을 story_num 변수의 값으로 설정
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
 	}
@@ -165,11 +165,11 @@ $(function() {
 				<td><input type="button" id="reportBtn" class="report" onClick="showDialogReport('${vo2.story_num}','${vo2.nickname}')"
 						value="신고" /></td>
 						
-				<td><c:if test="${nickname == cvo.nickname}">
+				<td><c:if test="${nickname == vo2.nickname}">
 				<a href="s_update.do?story_num=${param.story_num}&nickname=${param.nickname}">글수정</a>
 				</c:if></td>
 				
-				<td><c:if test="${nickname == cvo.nickname}">
+				<td><c:if test="${nickname == vo2.nickname}">
 				<td><a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a>
 				</c:if></td>
 			</tr>

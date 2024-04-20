@@ -194,7 +194,7 @@ $(function() {
 					<input type="button" id="reportBtn" class="report"
 						onClick="showDialogReport('${vo2.board_num}','${vo2.nickname}')" value="신고" /></td>
 					<td><a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a></td>
-					<td><a href="b_delete.do?board_num=${param.board_num}&nickname=${param.nickname}">글삭제</a></td>
+					<td><a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
 				</tr>
 		</tbody>
 	</table>
