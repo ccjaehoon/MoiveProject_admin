@@ -171,12 +171,21 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.bytedeco/javacv -->
-		<!-- 이미지 및 비디오 처리: 이미지와 비디오 파일을 읽고, 쓰고, 변환하는 기능을 제공 -->
+		<!-- 오디오 및 비디오 스트림을 처리하는 데 사용되는 강력한 라이브러리 -->
+		<dependency>
+		    <groupId>org.bytedeco</groupId>
+		    <artifactId>ffmpeg-platform</artifactId>
+		    <version>6.0-1.5.9</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.bytedeco/javacv -->
+		<!-- ava에서 컴퓨터 비전과 이미지 처리 기능을 사용할 수 있도록 돕는 라이브러리 -->
 		<dependency>
 		    <groupId>org.bytedeco</groupId>
 		    <artifactId>javacv</artifactId>
 		    <version>1.5.9</version>
 		</dependency>
+		
 
 		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
 		<dependency>
