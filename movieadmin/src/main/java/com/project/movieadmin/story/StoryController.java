@@ -111,8 +111,8 @@ public class StoryController {
 		    
 		    // 파일 크기 검증
 		    if (vo.getFile_video().getSize() > MAX_FILE_SIZE) {
-		        log.error("동영상 파일 크기가 허용된 용량을 초과합니다.");
-		        throw new IOException("동영상 파일 크기가 허용된 용량을 초과합니다.");
+		        log.error("동영상 파일 크기가 허용된 용량을 초과합니다");
+		        throw new IOException("동영상 파일 크기가 허용된 용량을 초과합니다");
 		    }
 		    
 		    // 동영상 파일의 원본 파일명을 가져옵니다.
