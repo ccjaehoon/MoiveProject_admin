@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.movieadmin.info.review.ReviewVO;
 import com.project.movieadmin.news.NewsVO;
@@ -64,9 +65,11 @@ public class StoryController {
 	public String s_insertOK(StoryVO vo) throws IOException {
 		log.info("Welcome story_insertOK...");
 		log.info("vo:{}", vo);
-		
-		String realPath = sContext.getRealPath("resources/uploadimg");
-		log.info(realPath);
+		//String realPath = sContext.getRealPath("resources/uploadimg"); 파일저장경로
+		// 이미지 파일 저장 경로
+		String imgRealPath = sContext.getRealPath("resources/uploadimg/images");
+		// 동영상 파일 저장 경로
+		String videoRealPath = sContext.getRealPath("resources/uploadimg/videos");
 		
 		String originName = vo.getFile_img().getOriginalFilename();
 
@@ -78,7 +81,7 @@ public class StoryController {
 
 			vo.setSave_img(save_name);
 
-			File uploadFile = new File(realPath, save_name);
+			File uploadFile = new File(imgRealPath, save_name);
 			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
 
 			//// create thumbnail image/////////
@@ -87,7 +90,7 @@ public class StoryController {
 			Graphics2D graphic = thumb_buffer_img.createGraphics();
 			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
 
-			File thumb_file = new File(realPath, "thumb_" + save_name);
+			File thumb_file = new File(imgRealPath, "thumb_" + save_name);
 
 			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
 
@@ -110,8 +113,23 @@ public class StoryController {
 		    vo.setSave_video(saveVideoName); // VO의 save_video 필드에 저장할 동영상 파일 이름을 설정
 		    
 		    // 동영상 파일 저장 경로 설정
-		    File uploadVideoFile = new File(realPath, saveVideoName);
-		    vo.getFile_video().transferTo(uploadVideoFile); // 동영상 파일 저장
+		    File uploadVideoFile = new File(videoRealPath, saveVideoName);
+		    vo.getFile_video().transferTo(uploadVideoFile); // 원본동영상 파일 저장
+		    
+		 // 썸네일 생성 코드 추가
+		    FFmpegFrameGrabber frameGrabber = new FFmpegFrameGrabber(uploadVideoFile.getAbsolutePath());
+		    frameGrabber.start();
+		    Java2DFrameConverter converter = new Java2DFrameConverter();
+		    try {
+		        Frame frame = frameGrabber.grabKeyFrame();
+		        BufferedImage thumbnail = converter.convert(frame);
+		        ImageIO.write(thumbnail, "png", new File(videoRealPath, "thumb_" + saveVideoName + ".png"));
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    } finally {
+		        frameGrabber.stop();
+		    }
+		    
 		}
 		
 		int result = service.s_insert(vo);
@@ -131,26 +149,30 @@ public class StoryController {
 		StoryVO vo2 = service.s_selectOne(vo);
 		model.addAttribute("vo2", vo2);
 		
-//		 List<StoryVO> randomStories = service.s_selectRandomList(vo);
-//		    if (!randomStories.isEmpty()) {
-//		        StoryVO vo2 = randomStories.get(0); // 리스트의 첫 번째 요소를 선택
-//		        log.info("vo2:{}", vo2);
-//		        model.addAttribute("vo2", vo2);
-//		 }
 		return "story/update";
 	}
 	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.POST)
 	public String s_updateOK(StoryVO vo) {
 		log.info("Welcome story_updateOK...");
 		log.info("vo:{}", vo);
+		String realPath = sContext.getRealPath("resources/uploadimg"); // 파일 업로드 경로 지정
+		 // 파일 업로드 필드가 null인지 확인
+	    MultipartFile fileImg = vo.getFile_img();
+	    MultipartFile fileVideo = vo.getFile_video();
+	    if (fileImg != null && !fileImg.isEmpty()) {
+	        // 이미지 파일 처리
+	    }
+	    if (fileVideo != null && !fileVideo.isEmpty()) {
+	        // 동영상 파일 처리
+	    }
 
 		int result = service.s_update(vo);
 		log.info("result:{}", result);
 
 		if (result == 1) {
-			return "redirect:s_selectRandomList.do?num=" + vo.getStory_num();
+			return "redirect:s_selectOne.do?num=" + vo.getStory_num();
 		} else {
-		return "redirect:s_selectRandomList.do?num=" + vo.getStory_num();
+			return "redirect:s_update.do?num=" + vo.getStory_num();
 		}
 		
 	}

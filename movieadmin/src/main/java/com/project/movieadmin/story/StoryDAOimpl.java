@@ -20,7 +20,7 @@ public class StoryDAOimpl implements StoryDAO {
 	@Autowired
 	private SqlSession sqlSession; //전역변수
 	
-	public StoryDAOimpl() { //생성자
+	public StoryDAOimpl() { //생성자 (이 안에서 정의한 변수는 로컬변수)
 		log.info("StoryDAOimpl()....");
 	}
 	
