@@ -16,9 +16,10 @@
 </head>
 
 <body class="is-preload">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div id="main">
 
+
+	<div id="main">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
 		<h2>FAQ</h2>
 		<br> <br>
 		<form action="f_searchList.do">
@@ -71,8 +72,9 @@
 				<input type="submit" value="FAQ 작성">
 			</form>
 		</c:if>
-
+		 <jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
+
 </body>
 
 </html>
