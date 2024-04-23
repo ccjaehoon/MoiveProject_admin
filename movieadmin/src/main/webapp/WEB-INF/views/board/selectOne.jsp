@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<!-- <style>
 #movies {
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
@@ -51,7 +53,7 @@ tfoot td {
 	width: 500px;
 	height: 500px;
 }
-</style>
+</style> -->
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -157,10 +159,12 @@ $(function() {
 
 </head>
 <body>
+	<div id="main">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>글정보</h1>
 	<hr>
-	<table id="movies">
+	<div class="table-wrapper">
+	<table id="alt">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -204,10 +208,12 @@ $(function() {
 				</tr>
 		</tbody>
 	</table>
+	</div>
 	<hr>
 	<h3>댓글작성</h3>
 	<form action="c_insertOK.do">
-		<table id="movies">
+	<div class="table-wrapper">
+			<table id="alt">
 			<thead>
 				<tr>
 					<th>댓글 내용${param.msg}</th>
@@ -228,11 +234,12 @@ $(function() {
 				</tr>
 			</tbody>
 		</table>
-
+	</div>
 	</form>
 	<hr>
 	<h3>댓글목록</h3>
-	<table id="movies">
+	<div class="table-wrapper">
+		<table id="alt">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -282,7 +289,9 @@ $(function() {
 
 		</tbody>
 	</table>
-	
+	</div>
+	<jsp:include page="../footer_menu.jsp"></jsp:include>
+</div>
 	<div id="report">
 
 		<form id="reportForm" action="rp_insertOK.do" method="post">

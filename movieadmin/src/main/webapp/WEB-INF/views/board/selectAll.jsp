@@ -97,8 +97,8 @@ tfoot td {
 				<option value="content">content</option>
 			</select> <input type="text" name="searchWord" value="ja"> <input
 				type="submit" value="search">
-
 		</form>
+		<div class="table-wrapper">
 		<table class="alt">
 			<thead>
 				<tr>
@@ -144,7 +144,9 @@ tfoot td {
 				</tr>
 			</tfoot>
 		</table>
-	<a href="b_insert.do">글쓰기</a>
+		<a href="b_insert.do">글쓰기</a>
+	</div>
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
 	
 </body>
