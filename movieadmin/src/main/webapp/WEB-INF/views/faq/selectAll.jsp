@@ -23,7 +23,6 @@
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
-
 		<h2>FAQ</h2>
 
 		<form action="f_searchList.do">
