@@ -18,11 +18,12 @@
 
 </head>
 
-<body class="is-preload">
+<body >
 
 
-	<div id="main">
-		<jsp:include page="../top_menu.jsp"></jsp:include>
+
+<div id="main">
+	<jsp:include page="../top_menu.jsp"></jsp:include>
 
 		<h2>공지사항</h2>
 
@@ -82,10 +83,14 @@
 				<input type="submit" value="announcement 작성">
 			</form>
 		</c:if>
-
+</div>
+<br>
+<div id = "footer">
 <jsp:include page="../footer_menu.jsp"></jsp:include>
-	</div>
+</div>
+
 	
+
 </body>
 
 </html>

@@ -15,8 +15,11 @@
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 </head>
 <body>
-	<div id="main">
+	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
+		</div>
+		<div id="main" style="position: relative; z-index: 1;">
+		<br>
 		<h1>FAQ</h1>
 		<hr>
 		<div class="table-wrapper">

@@ -15,9 +15,11 @@
 </head>
 
 <body>
-<div id="main">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	
+<div style="position: relative; z-index: 2;">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
+		</div>
+		<div id="main" style="position: relative; z-index: 1;">
+		<br>
 		<h1>게시글 수정페이지</h1>
 		<form action="f_updateOK.do" method="post">
 		<div class="table=wrapper">
@@ -47,6 +49,9 @@
 		</form>
 		 <jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
+	<br>
+	<br>
+	<br>
 </body>
 
 </html>
