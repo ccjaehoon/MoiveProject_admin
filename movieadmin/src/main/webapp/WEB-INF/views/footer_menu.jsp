@@ -12,8 +12,9 @@ body {
 	margin: 0;
 	padding: 0;
 	display: flex;
+
 	min-height: 100vh;
-	flex-direction: column;
+
 }
 
 main {
@@ -31,6 +32,7 @@ footer {
 	left: 50%;
 	transform: translateX(-50%);
 	width: 100%;
+
 }
 
 footer a {
