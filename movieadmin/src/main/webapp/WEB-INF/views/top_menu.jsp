@@ -54,13 +54,7 @@
         <a href="b_selectAll.do">커뮤니티</a>
         <a href="s_selectAll.do">스토리</a>
         <a href="a_selectAll.do">공지사항</a>
-<<<<<<< HEAD
-        <a href="n_selectAll.do">뉴스</a>
-        <a href="f_selectAll.do?nickname">FAQ</a>
-=======
         <a href="n_selectAll.do">뉴스</a>    
-        <a href="u_insert.do">회원가입</a>
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
         <a href="m_myPage.do">마이페이지</a>     
        <c:choose>
             <c:when test="${user_id != null}">

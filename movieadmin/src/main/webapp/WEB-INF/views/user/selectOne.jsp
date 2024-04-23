@@ -53,9 +53,12 @@
               
             </tr>
         </tbody>
+        <tr>
+        <td colspan = "9"><a href="u_update.do?user_num=${param.user_num}&user_id=${param.user_id}">회원수정</a>
+    <a href="u_delete.do?user_num=${param.user_num}">회원삭제</a></td>
+    </tr>
     </table>
-    <a href="u_update.do?user_num=${param.user_num}&user_id=${param.user_id}">회원수정</a>
-    <a href="u_delete.do?user_num=${param.user_num}">회원삭제</a>
+    
     </div>
 </body>
 </html>

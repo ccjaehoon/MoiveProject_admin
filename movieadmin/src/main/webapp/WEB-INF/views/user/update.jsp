@@ -22,12 +22,7 @@
 
 		<form action="u_updateOK.do" method="post"
 			enctype="multipart/form-data">
-			<table class="alt">
-				<tr>
-					<td><label for="user_num">번호:</label></td>
-					<td>${param.user_num}<input type="hidden" id="user_num"
-						name="user_num" value="${param.user_num}" placeholder="번호"></td>
-				</tr>
+			<table class="alt">		
 				<tr>
 					<td><label for="user_id">아이디:</label></td>
 					<td>${param.user_id}<input type="hidden" id="user_id"
