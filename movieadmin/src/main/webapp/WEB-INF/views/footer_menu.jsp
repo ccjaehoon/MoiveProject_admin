@@ -24,9 +24,9 @@ footer {
 	background-color: #333;
 	color: #fff;
 	text-align: center;
-	padding: 20px;
+	padding: 30px;
 	position: fixed;
-	bottom: 0;
+	bottom: 30px;
 	left: 50%;
 	transform: translateX(-50%);
 	width: 100%;
@@ -41,9 +41,7 @@ footer a {
 </style>
 </head>
 <body>
-	<main>
-		<!-- Your main content here -->
-	</main>
+
 	<footer>
 		<a href="about_us.do">이용약관</a> <a href="contact.do">개인정보처리방침</a><a href="f_selectAll.do?nickname">고객센터</a> <a href="advertisement.do">광고임대문의</a>
 		<p>대표 전화번호: 02 - 0000 - 0000</p>
