@@ -14,8 +14,12 @@
 </head>
 
 <body>
-<div id="main">
+
+<div style="position: relative; z-index: 2;">
     <jsp:include page="../top_menu.jsp"></jsp:include>
+</div>
+<div id="main" style="position: relative; z-index: 1;">
+<br>
 
         <h3>회원삭제폼</h3>
 
@@ -35,8 +39,11 @@
             </div>
         </form>
     
-    <jsp:include page="../footer_menu.jsp"></jsp:include>
+    
     </div>
+    <div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+		</div>
 </body>
 
 </html>
