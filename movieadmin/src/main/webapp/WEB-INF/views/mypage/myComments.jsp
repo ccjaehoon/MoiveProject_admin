@@ -169,7 +169,7 @@
             </tr>
         </tfoot>
 		</table>
-		
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
 		
 		
 		

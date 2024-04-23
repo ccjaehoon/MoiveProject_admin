@@ -44,15 +44,7 @@
 					${vo2.content}
 					
 				</tr>
-				
-
-
-
-
-
 				<c:if test="${authority == 'admin' }">
-
-
 					<td colspan="4" align="right"><a
 						href="a_update.do?announcement_num=${vo2.announcement_num}&nickname=${vo2.nickname}&title=${vo2.title}&content=${vo2.content}">공지사항
 							수정</a> <a

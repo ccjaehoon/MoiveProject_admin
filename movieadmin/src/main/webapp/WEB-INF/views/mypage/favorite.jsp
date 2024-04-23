@@ -43,7 +43,7 @@
 			</tbody>
 
 		</table>
-
+<jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
 </body>
 

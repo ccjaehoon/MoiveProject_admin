@@ -72,10 +72,10 @@
 		</tr>
 
 
-
-
 		</table>
+		
 	</div>
+	<jsp:include page="../footer_menu.jsp"></jsp:include>
 </body>
 
 </html>
