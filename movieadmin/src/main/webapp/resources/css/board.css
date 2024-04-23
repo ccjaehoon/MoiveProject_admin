@@ -3013,7 +3013,7 @@ input, select, textarea {
 	}
 
 		table tbody tr {
-			border: solid 1px;
+			border: solid 2px;
 			border-left: 0;
 			border-right: 0;
 		}
@@ -3054,17 +3054,17 @@ input, select, textarea {
 		}
 
 			table.alt tbody tr td {
-				border: solid 1px;
+				border: solid 2px;
 				border-left-width: 0;
 				border-top-width: 0;
 			}
 
 				table.alt tbody tr td:first-child {
-					border-left-width: 1px;
+					border-left-width: 2px;
 				}
 
 			table.alt tbody tr:first-child td {
-				border-top-width: 1px;
+				border-top-width: 2px;
 			}
 
 			table.alt thead {
