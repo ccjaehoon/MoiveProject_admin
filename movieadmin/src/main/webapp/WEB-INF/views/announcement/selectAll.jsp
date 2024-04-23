@@ -16,14 +16,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 
+ <style>
+        #main {
+            margin-top: 100px; /* 탑 메뉴의 높이만큼 상단 마진 추가 */
+        }
+
+        #top-menu {
+            position: fixed; /* 화면에 고정 */
+            top: 0; /* 화면 상단에 위치 */
+            left: 0; /* 화면 왼쪽에 위치 */
+            width: 100%; /* 전체 너비로 확장 */
+            background-color: #fff; /* 배경색 지정 */
+            z-index: 1000; /* 다른 요소 위에 표시 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
+        }
+    </style>
 </head>
 
 <body >
 
-
+<jsp:include page="../top_menu.jsp"></jsp:include>
 
 <div id="main">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
+	
 
 		<h2>공지사항</h2>
 
@@ -37,8 +52,7 @@
 
 		</form>
 
-		<div class="table-wrapper">
-			<table class="alt">
+			<table id="main">
 				<thead>
 					<tr>
 						<th>번호</th>
@@ -77,17 +91,19 @@
 					</tr>
 				</tfoot>
 			</table>
-		</div>
 		<c:if test="${authority == 'admin' }">
 			<form action="a_insert.do">
 				<input type="submit" value="announcement 작성">
 			</form>
 		</c:if>
+		
+
 </div>
-<br>
-<div id = "footer">
-<jsp:include page="../footer_menu.jsp"></jsp:include>
-</div>
+<div id = "copyright">
+<jsp:include page="../footer_menu.jsp"></jsp:include></div>
+
+
+
 
 	
 

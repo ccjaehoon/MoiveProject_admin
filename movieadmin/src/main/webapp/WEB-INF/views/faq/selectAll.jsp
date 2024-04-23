@@ -20,10 +20,10 @@
 
 	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
-		</div>
-		<div id="main" style="position: relative; z-index: 1;">
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
 		<br>
-		
+
 		<h2>FAQ</h2>
 
 		<form action="f_searchList.do">
@@ -31,9 +31,11 @@
 				style="width: 150px;">
 					<option value="title">title</option>
 					<option value="content">content</option>
-			</select> </span><span style="float: left"> <input type="text" name="searchWord" value="검색어"
-				style="width: 150px;"> </span><input type="submit" value="search">
-			
+			</select>
+			</span><span style="float: left"> <input type="text"
+				name="searchWord" value="검색어" style="width: 150px;">
+			</span><input type="submit" value="search">
+
 		</form>
 
 		<div class="table-wrapper">
@@ -79,13 +81,12 @@
 				<input type="submit" value="FAQ 작성">
 			</form>
 		</c:if>
+
+	</div>
+	<div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 </body>
 
 </html>

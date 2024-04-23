@@ -56,7 +56,10 @@
 
 			</table>
 		</div>
-		<jsp:include page="../footer_menu.jsp"></jsp:include>
+		
 	</div>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+		</div>
 </body>
 </html>
