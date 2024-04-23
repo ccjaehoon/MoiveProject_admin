@@ -1,5 +1,7 @@
 package com.project.movieadmin.board;
 
+import java.sql.Date;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
@@ -12,7 +14,7 @@ public class BoardVO {
 	private String nickname;
 	private String user_id;
 	private String content;
-	private java.util.Date wdate;
+	private Date wdate;
 	private int good;
 	private String authority;
 	private int views;

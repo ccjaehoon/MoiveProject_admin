@@ -68,10 +68,10 @@
         <h1>스토리 만들기</h1>
         <form action="s_insertOK.do" method="post" enctype="multipart/form-data">
             <table id="insertTable">
-                <tr>
+                <!-- <tr>
                     <td><label for="title">제목</label></td>
                     <td><input type = "text" id = "title" name ="title" ></td>
-                </tr>
+                </tr> -->
                 
                 <tr>
                     <td><label for="nickname">작성자</label></td>

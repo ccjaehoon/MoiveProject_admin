@@ -7,7 +7,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<style>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/story.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<!-- <style>
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -87,8 +91,7 @@ tfoot td {
     cursor: pointer;
     border-radius: 4px;
 }
-
-</style>
+</style> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function selectCommentList(story_num){
@@ -126,6 +129,7 @@ tfoot td {
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+	<div id="main">
 	    <h1>글목록</h1>
     <hr>
     <a href="s_insert.do" class="comment-btn">스토리 만들기</a>
@@ -154,5 +158,6 @@ tfoot td {
             </c:forEach>
         </tbody>
     </table>
+   </div>
 </body>
 </html>

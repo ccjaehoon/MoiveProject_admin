@@ -17,18 +17,21 @@
 
 <body class="is-preload">
 
-	
+
 	<div id="main">
-<jsp:include page="../top_menu.jsp"></jsp:include>
+		<jsp:include page="../top_menu.jsp"></jsp:include>
 		<h2>FAQ</h2>
-		<br> <br>
+
 		<form action="f_searchList.do">
-			<select name="searchKey">
-				<option value="title">title</option>
-				<option value="content">content</option>
-			</select> <input type="text" name="searchWord" value="검색어"> <input
-				type="submit" value="search">
+			<span style="float: left"> <select name="searchKey"
+				style="width: 150px;">
+					<option value="title">title</option>
+					<option value="content">content</option>
+			</select> </span><span style="float: left"> <input type="text" name="searchWord" value="검색어"
+				style="width: 150px;"> </span><input type="submit" value="search">
+			
 		</form>
+
 		<div class="table-wrapper">
 			<table class="alt">
 				<thead>
@@ -72,8 +75,9 @@
 				<input type="submit" value="FAQ 작성">
 			</form>
 		</c:if>
-
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
+
 </body>
 
 </html>

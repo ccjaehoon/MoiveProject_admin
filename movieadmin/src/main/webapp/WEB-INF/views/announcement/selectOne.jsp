@@ -6,77 +6,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/board.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<style>
-#announcement {
-	font-family: Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
 
-#announcement td, #announcement th {
-	border: 1px solid #ddd;
-	padding: 8px;
-}
-
-#announcementR {
-	background-color: #ff6565;
-}
-
-#announcement tr:hover {
-	background-color: #fca2a2;
-}
-
-#announcement th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #04AA6D;
-	color: white;
-}
-
-tfoot td {
-	text-align: center;
-}
-</style>
 </head>
-<body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>announcement</h1>
-	<hr>
-	<table id="announcement">
-		<tbody>
+<body class="is-preload">
+
+	<div id="main">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
+
+		<table class="alt">
+			<tbody>
 
 
-			<tr>
-				<td id="announcementR">번호</td>
-				<td>${vo2.announcement_num}</td>
-				<td id="announcementR">작성자</td>
-				<td>${vo2.nickname}</td>
-			</tr>
+				<tr>
+					<td id="announcementR">번호</td>
+					<td>${vo2.announcement_num}</td>
+					<td id="announcementR">작성자</td>
+					<td>${vo2.nickname}</td>
+				</tr>
 
-			<tr>
-				<td id="announcementR">제목</td>
-				<td colspan="3">${vo2.title}</td>
+				<tr>
+					<td id="announcementR">제목</td>
+					<td colspan="3">${vo2.title}</td>
 
-			</tr>
-			<tr>
-				<td id="announcementR">내용</td>
-				<td colspan="3"><img src="resources/uploadimg/${vo2.save_img}" width="200">>
-					${vo2.content}</td>
-			</tr>
+				</tr>
+				<tr>
+
+					<td align="left" colspan="4"><img
+						src="resources/uploadimg/${vo2.save_img}" width="300">
+						<br>
+					${vo2.content}
+					
+				</tr>
+				
 
 
-		</tbody>
-	</table>
-	<c:if test="${authority == 'admin' }">
-	<a
-		href="a_update.do?announcement_num=${param.announcement_num}&nickname=${param.nickname}&title=${param.title}&content=${param.content}">공지사항
-		수정</a>
-	<a href="a_delete.do?announcement_num=${param.announcement_num}">공지사항
-		삭제</a>
-		</c:if>
+
+
+
+				<c:if test="${authority == 'admin' }">
+
+
+					<td colspan="4" align="right"><a
+						href="a_update.do?announcement_num=${vo2.announcement_num}&nickname=${vo2.nickname}&title=${vo2.title}&content=${vo2.content}">공지사항
+							수정</a> <a
+						href="a_delete.do?announcement_num=${param.announcement_num}">공지사항
+							삭제</a></td>
+				</c:if>
+			</tbody>
+		</table>
+
+	</div>
+	<jsp:include page="../footer_menu.jsp"></jsp:include>
 </body>
 </html>

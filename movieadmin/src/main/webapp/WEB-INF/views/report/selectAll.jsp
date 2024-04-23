@@ -4,43 +4,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        #customers {
-          font-family: Arial, Helvetica, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-        
-        #customers td, #customers th {
-          border: 1px solid #ddd;
-          padding: 8px;
-        }
-        
-        #customers tr:nth-child(even){background-color: #ff6565;}
-        
-        #customers tr:hover {background-color: #fca2a2;}
-        
-        #customers th {
-          padding-top: 12px;
-          padding-bottom: 12px;
-          text-align: left;
-          background-color: #04AA6D;
-          color: white;
-        }
 
-        tfoot td{
-            text-align: center; 
-        }
-        </style>
+
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/board.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
 </head>
 <body>
+<div id = "main">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-    <h1>신고목록</h1>
+    <h1>신고 목록</h1>
     <hr>
-    <table id="customers">
+    <table class="alt">
         <thead>
             <tr>
                 <th>번호</th>
@@ -60,5 +40,6 @@
         	</c:forEach>
         </tbody>
     </table>
+    </div>
 </body>
 </html>
