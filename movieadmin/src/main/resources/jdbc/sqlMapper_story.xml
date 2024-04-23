@@ -9,9 +9,9 @@
 		VALUES (#{nickname}, #{content}, #{save_img}, #{save_video}, 0, 0, #{duration});
 	</insert>
 
-	<update id="S_UPDATE">
-		UPDATE story
-    	SET content = #{content}
+	<update id="S_UPDATE" parameterType="com.project.movieadmin.story.StoryVO">
+    	UPDATE story
+    	SET nickname = #{nickname}, content = #{content}, save_img = #{save_img}, save_video = #{save_video}, duration = #{duration}
     	WHERE story_num = #{story_num};
 	</update>
 

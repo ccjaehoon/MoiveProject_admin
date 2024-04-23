@@ -154,7 +154,10 @@ $(function() {
 			</tr>
 			
 			<tr>
-			<td colspan="4"><img src="resources/uploadimg/${vo2.save_img}" width="200"></td>
+			<td colspan="4"><img src="resources/uploadimg/images/${vo2.save_img}" width="200"></td>
+			</tr>
+			<tr>
+			<td colspan="4"><img src="resources/uploadimg/videos/${vo2.save_video}" width="200"></td>
 			</tr>
 			
 			<tr>

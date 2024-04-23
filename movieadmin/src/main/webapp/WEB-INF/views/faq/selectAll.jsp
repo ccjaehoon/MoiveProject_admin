@@ -9,14 +9,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css"/>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/board.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 </head>
 
 <body class="is-preload">
-
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div class="wrapper">
+	<div id="main">
+
 		<h2>FAQ</h2>
+		<br> <br>
 		<form action="f_searchList.do">
 			<select name="searchKey">
 				<option value="title">title</option>
@@ -25,7 +29,7 @@
 				type="submit" value="search">
 		</form>
 		<div class="table-wrapper">
-			<table>
+			<table class="alt">
 				<thead>
 					<tr>
 						<th>번호</th>
