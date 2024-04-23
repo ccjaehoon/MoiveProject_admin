@@ -4,12 +4,17 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+
+import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.Frame;
+import org.bytedeco.javacv.Java2DFrameConverter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +23,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import com.project.movieadmin.info.review.ReviewVO;
-import com.project.movieadmin.news.NewsVO;
-import com.project.movieadmin.news.comments.NCommentsService;
-import com.project.movieadmin.news.comments.NCommentsVO;
 import com.project.movieadmin.story.comments.SCommentsService;
 import com.project.movieadmin.story.comments.SCommentsVO;
 
@@ -64,54 +68,89 @@ public class StoryController {
 	public String s_insertOK(StoryVO vo) throws IOException {
 		log.info("Welcome story_insertOK...");
 		log.info("vo:{}", vo);
-		
-		String realPath = sContext.getRealPath("resources/uploadimg");
-		log.info(realPath);
-		
-		String originName = vo.getFile_img().getOriginalFilename();
+		//String realPath = sContext.getRealPath("resources/uploadimg"); 파일저장경로
+		String imgRealPath = sContext.getRealPath("resources/uploadimg/images"); // 이미지 파일 저장 경로
 
-		log.info("getOriginalFilename:{}", originName);
-		if (originName.length() == 0) {
-			vo.setSave_img("default.png");// 이미지선택없이 처리할때
+		String videoRealPath = sContext.getRealPath("resources/uploadimg/videos");// 동영상 파일 저장 경로
+		
+		String originImgName = vo.getFile_img().getOriginalFilename();
+		log.info("getOriginalFilename이미지:{}", originImgName);
+		
+	    // 이미지 파일의 확장자 목록
+	    List<String> imageExtensions = Arrays.asList("jpg", "jpeg", "png", "gif", "bmp");
+
+	    // 파일 확장자 추출
+	    String fileExtension = originImgName.substring(originImgName.lastIndexOf(".") + 1).toLowerCase();
+	    
+		if (originImgName.length() == 0) {
+			//vo.setSave_img("default.png");// 이미지선택없이 처리할때
 		}else {
-			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
+		    String save_name = "img_" + System.currentTimeMillis() + originImgName.substring(originImgName.lastIndexOf("."));
+		    vo.setSave_img(save_name);
 
-			vo.setSave_img(save_name);
+		    File uploadFile = new File(imgRealPath, save_name);
+		    try {
+		        vo.getFile_img().transferTo(uploadFile); // 원본 이미지 저장
 
-			File uploadFile = new File(realPath, save_name);
-			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
+		        // create thumbnail image
+		        BufferedImage original_buffer_img = ImageIO.read(uploadFile);
+		        BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+		        Graphics2D graphic = thumb_buffer_img.createGraphics();
+		        graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+		        graphic.dispose(); // 리소스 해제
 
-			//// create thumbnail image/////////
-			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
-			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
-			Graphics2D graphic = thumb_buffer_img.createGraphics();
-			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
-
-			File thumb_file = new File(realPath, "thumb_" + save_name);
-
-			ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
-
+		        File thumb_file = new File(imgRealPath, "thumb_" + save_name);
+		        ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
 		}
-		    // 동영상 파일 저장 코드 수정
-		 if (vo.getFile_video() != null && !vo.getFile_video().isEmpty()) {
-	        // 동영상 파일의 크기 제한 설정 (20MB)
-	        final long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
-	        
-	        // 파일 크기 검증
-	        if (vo.getFile_video().getSize() > MAX_FILE_SIZE) {
-	            log.error("동영상 파일 크기가 허용된 용량을 초과합니다.");
-	            // 크기 제한 초과 시 적절한 처리 (예: 사용자에게 메시지 반환 또는 예외 발생)
-	            throw new IOException("동영상 파일 크기가 허용된 용량을 초과합니다.");
-	        }
-		
-		
-		    String videoName = vo.getFile_video().getOriginalFilename();
-		    String saveVideoName = "video_" + System.currentTimeMillis() + videoName.substring(videoName.lastIndexOf("."));
+		if (vo.getFile_video() != null && !vo.getFile_video().isEmpty()) {
+		    // 동영상 파일의 크기 제한 설정 (20MB)
+		    final long MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
+		    
+		    // 파일 크기 검증
+		    if (vo.getFile_video().getSize() > MAX_FILE_SIZE) {
+		        log.error("동영상 파일 크기가 허용된 용량을 초과합니다.");
+		        throw new IOException("동영상 파일 크기가 허용된 용량을 초과합니다.");
+		    }
+		    
+		    // 동영상 파일의 원본 파일명을 가져옵니다.
+		    String originVideoName = vo.getFile_video().getOriginalFilename();
+		    log.info("getOriginalFilename동영상:{}", originVideoName);
+		    String saveVideoName = "video_" + System.currentTimeMillis() + originVideoName.substring(originVideoName.lastIndexOf("."));
 		    vo.setSave_video(saveVideoName); // VO의 save_video 필드에 저장할 동영상 파일 이름을 설정
 		    
 		    // 동영상 파일 저장 경로 설정
-		    File uploadVideoFile = new File(realPath, saveVideoName);
-		    vo.getFile_video().transferTo(uploadVideoFile); // 동영상 파일 저장
+		    File uploadVideoFile = new File(videoRealPath, saveVideoName);
+		    vo.getFile_video().transferTo(uploadVideoFile); // 원본 동영상 파일 저장
+		    
+		    // 썸네일 생성 코드 추가
+		    FFmpegFrameGrabber frameGrabber = new FFmpegFrameGrabber(uploadVideoFile.getAbsolutePath());
+		    frameGrabber.start();
+		    Java2DFrameConverter converter = new Java2DFrameConverter();
+		    
+		    try {
+		        Frame frame = frameGrabber.grabKeyFrame();
+		        BufferedImage originalThumbnail = converter.convert(frame);
+		        
+		        // 썸네일의 크기를 지정합니다.
+		        int thumbnailWidth = 50;
+		        int thumbnailHeight = 50;
+		        BufferedImage resizedThumbnail = new BufferedImage(thumbnailWidth, thumbnailHeight, BufferedImage.TYPE_3BYTE_BGR);
+		        
+		        // Graphics2D 객체를 사용하여 원본 이미지를 새로운 크기로 그립니다.
+		        Graphics2D g = resizedThumbnail.createGraphics();
+		        g.drawImage(originalThumbnail, 0, 0, thumbnailWidth, thumbnailHeight, null);
+		        g.dispose();
+		        
+		        // 조정된 썸네일을 파일에 저장합니다.
+		        ImageIO.write(resizedThumbnail, "png", new File(videoRealPath, "thumb_" + saveVideoName + ".png"));
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    } finally {
+		        frameGrabber.stop();
+		    }
 		}
 		
 		int result = service.s_insert(vo);
@@ -131,26 +170,50 @@ public class StoryController {
 		StoryVO vo2 = service.s_selectOne(vo);
 		model.addAttribute("vo2", vo2);
 		
-//		 List<StoryVO> randomStories = service.s_selectRandomList(vo);
-//		    if (!randomStories.isEmpty()) {
-//		        StoryVO vo2 = randomStories.get(0); // 리스트의 첫 번째 요소를 선택
-//		        log.info("vo2:{}", vo2);
-//		        model.addAttribute("vo2", vo2);
-//		 }
 		return "story/update";
 	}
 	@RequestMapping(value = "/s_updateOK.do", method = RequestMethod.POST)
 	public String s_updateOK(StoryVO vo) {
 		log.info("Welcome story_updateOK...");
 		log.info("vo:{}", vo);
+		String imgRealPath = sContext.getRealPath("resources/uploadimg/images"); // 이미지 파일 저장 경로
+
+		String videoRealPath = sContext.getRealPath("resources/uploadimg/videos");// 동영상 파일 저장 경로
+	    // 새 파일 업로드 로직
+	    MultipartFile fileImg = vo.getFile_img();
+	    MultipartFile fileVideo = vo.getFile_video();
+
+	    if (fileImg != null && !fileImg.isEmpty()) {
+	        // 이미지 파일 처리
+	        String save_name = "img_" + System.currentTimeMillis() + fileImg.getOriginalFilename();
+	        File uploadFile = new File(imgRealPath, save_name);
+	        try {
+	            fileImg.transferTo(uploadFile); // 원본 이미지 저장
+	            vo.setSave_img(save_name); // VO에 저장할 이미지 파일 이름 설정
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    if (fileVideo != null && !fileVideo.isEmpty()) {
+	        // 동영상 파일 처리
+	        String saveVideoName = "video_" + System.currentTimeMillis() + fileVideo.getOriginalFilename();
+	        File uploadVideoFile = new File(videoRealPath, saveVideoName);
+	        try {
+	            fileVideo.transferTo(uploadVideoFile); // 원본 동영상 파일 저장
+	            vo.setSave_video(saveVideoName); // VO에 저장할 동영상 파일 이름 설정
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
 
 		int result = service.s_update(vo);
 		log.info("result:{}", result);
 
 		if (result == 1) {
-			return "redirect:s_selectRandomList.do?num=" + vo.getStory_num();
+			return "redirect:s_selectOne.do?num=" + vo.getStory_num();
 		} else {
-		return "redirect:s_selectRandomList.do?num=" + vo.getStory_num();
+			return "redirect:s_update.do?num=" + vo.getStory_num();
 		}
 		
 	}
