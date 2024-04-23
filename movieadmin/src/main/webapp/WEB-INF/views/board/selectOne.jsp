@@ -159,7 +159,7 @@ $(function() {
 
 </head>
 <body>
-	<div id="main">
+	<div id="main" style="position: relative; z-index: 1;">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>글정보</h1>
 	<hr>
@@ -292,7 +292,7 @@ $(function() {
 	</div>
 	<jsp:include page="../footer_menu.jsp"></jsp:include>
 </div>
-	<div id="report">
+	<div id="report" style="position: relative; z-index: 2;">
 
 		<form id="reportForm" action="rp_insertOK.do" method="post">
 			<table id="rp" border="2">
@@ -316,7 +316,7 @@ $(function() {
 			</table>
 		</form>
 	</div>
-	<div id="reportC">
+	<div id="reportC" style="position: relative; z-index: 2;">
 
 		<form id="reportFormC" action="rp_insertOK.do" method="post">
 			<table id="rp" border="2">
