@@ -21,10 +21,10 @@
 		<h1>회원목록</h1>
 		<hr>
 		<form action="u_searchList.do">
-			<select name="searchKey">
+			<span style="float: left"><select name="searchKey" style="width: 150px;">
 				<option value="user_id">아이디</option>
 				<option value="nickname">닉네임</option>
-			</select> <input type="text" name="searchWord" value="검색어"> <input
+			</select></span><span style="float: left"> <input type="text" name="searchWord" value="검색어" style="width: 150px;"></span> <input
 				type="submit" value="search">
 
 		</form>
