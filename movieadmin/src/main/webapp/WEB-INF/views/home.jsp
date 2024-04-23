@@ -12,7 +12,7 @@
 	href="${pageContext.request.contextPath}/resources/css/main.css" />
 </head>
 <body>
-<div id="main">
+<div id = "main">
     <jsp:include page="top_menu.jsp"></jsp:include>
    <section id="features">
 					<div class="container">

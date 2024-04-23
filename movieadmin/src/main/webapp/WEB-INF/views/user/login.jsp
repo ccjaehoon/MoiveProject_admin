@@ -5,72 +5,25 @@
 <html lang="en">
 
 <head>
+
+
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/board.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<style>
-input[type=text], input[type=password], input[type=tel], select {
-	width: 100%;
-	padding: 8px 8px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ff8f8f;
-	border-radius: 14px;
-	box-sizing: border-box;
-}
-
-input[type=submit] {
-	width: 30%;
-	background-color: #4CAF50;
-	color: white;
-	padding: 8px 8px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 14px;
-	cursor: pointer;
-}
-
-input[type=submit]:hover {
-	background-color: #45a049;
-}
-
-div {
-	border-radius: 15px;
-	background-color: #f0f0f0;
-	padding: 20px;
-}
-
-#loginTable {
-	font-family: Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-#loginTable td {
-	border: 1px solid #ddd;
-	padding: 8px;
-}
-
-#loginTable tr:nth-child(even) {
-	background-color: #ebebeb;
-}
-
-#loginTable tr:hover {
-	background-color: #ffc6c6;
-}
-</style>
-
-
 
 </head>
 
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div>
-		<h3>로그인폼</h3>
+	<div id = "main">
+		<h3>로그인</h3>
 		<form id="loginForm" action="u_loginOK.do" method="post"
 			enctype="multipart/form-data">
-			<table id="loginTable">
+			<table class="alt">
 				<tr>
 					<td><label for="user_id">id:</label></td>
 					<td><input type="text" id="user_id" name="user_id"
@@ -83,11 +36,18 @@ div {
 				</tr>	
 				
 				<tr>
-					<td colspan="2"><input type="submit" value="login">
+				
+					<td colspan="2" align = "right"><input type="submit" value="login">			
 					<c:if test="${param.message == 0 }">
 		              		아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.
                 		</c:if>
+                		
 					</td>
+				</tr>
+				<tr>
+				<td colspan = "2" align = "center"><a  href="u_insert.do">회원가입</a>
+				
+				</td>
 				</tr>
 				
 			</table>

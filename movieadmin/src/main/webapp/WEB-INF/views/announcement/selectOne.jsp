@@ -37,22 +37,17 @@
 
 				</tr>
 				<tr>
-					<td id="announcementR">내용</td>
-					<td colspan="3"><img src="resources/uploadimg/${vo2.save_img}"
-						width="200">> ${vo2.content}</td>
-				</tr>
 
-
-
-
-
-				<c:if test="${authority == 'admin' }">
+					<td align="left" colspan="4"><img
+						src="resources/uploadimg/${vo2.save_img}" width="300">
+						<br>
+					${vo2.content}
 					
-
-					<td colspan = "4" align = "right"><a
-						href="a_update.do?announcement_num=${param.announcement_num}&nickname=${param.nickname}&title=${param.title}&content=${param.content}">공지사항
-							수정</a>
-					<a
+				</tr>
+				<c:if test="${authority == 'admin' }">
+					<td colspan="4" align="right"><a
+						href="a_update.do?announcement_num=${vo2.announcement_num}&nickname=${vo2.nickname}&title=${vo2.title}&content=${vo2.content}">공지사항
+							수정</a> <a
 						href="a_delete.do?announcement_num=${param.announcement_num}">공지사항
 							삭제</a></td>
 				</c:if>
