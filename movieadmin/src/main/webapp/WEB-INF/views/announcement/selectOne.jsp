@@ -71,10 +71,12 @@ tfoot td {
 
 		</tbody>
 	</table>
+	<c:if test="${authority == 'admin' }">
 	<a
 		href="a_update.do?announcement_num=${param.announcement_num}&nickname=${param.nickname}&title=${param.title}&content=${param.content}">공지사항
 		수정</a>
 	<a href="a_delete.do?announcement_num=${param.announcement_num}">공지사항
 		삭제</a>
+		</c:if>
 </body>
 </html>

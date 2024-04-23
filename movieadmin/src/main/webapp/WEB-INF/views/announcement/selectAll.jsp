@@ -111,10 +111,11 @@ div {
             </tr>
         </tfoot>
 		</table>
+		<c:if test="${authority == 'admin' }">
 		<form action="a_insert.do">
 			<input type="submit" value="announcement 작성">
 		</form>
-
+		</c:if>
 
     </div>
 </body>

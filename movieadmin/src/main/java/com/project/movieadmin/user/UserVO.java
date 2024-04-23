@@ -21,5 +21,7 @@ public class UserVO {
 	private String email;
 	private Date reg_date;
 	
+	//test
+	
 
 }

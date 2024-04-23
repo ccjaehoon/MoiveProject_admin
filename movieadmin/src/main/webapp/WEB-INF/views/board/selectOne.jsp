@@ -81,6 +81,7 @@ $(function() {
 				console.log(obj);
 				let good = obj.good;
 				item.value = good;
+				location.reload();
 			},
 			error : function(xhr, status) {
 				console.log("status...", status);
@@ -140,17 +141,17 @@ $(function() {
 
 <script>
 	$(function() {
-		$("#report").dialog({
+		$("#reportC").dialog({
 			autoOpen : false
 		});
 	});
 
-	function showDialogReport(comments_num, nickname) {
+	function showDialogReportC(comments_num, nickname) {
 		console.log(comments_num);
 		console.log(nickname);
 		$('#comments_num').val(comments_num);
-		$('#nickname').val(nickname);
-		$("#report").dialog("open");
+		$('#nicknameC').val(nickname);
+		$("#reportC").dialog("open");
 	}
 </script>
 
@@ -195,9 +196,11 @@ $(function() {
 					</td>
 					<td>
 					<input type="button" id="reportBtn" class="report"
-						onClick="showDialogReport('${vo2.board_num}','${vo2.nickname}')" value="신고" /></td>
+						onClick="showDialogReport('${vo2.board_num}','${nickname}')" value="신고" /></td>
+					<c:if test="${nickname == vo2.nickname}">
 					<td><a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a></td>
 					<td><a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
+					</c:if>
 				</tr>
 		</tbody>
 	</table>
@@ -267,7 +270,7 @@ $(function() {
 					<td>${cvo.wdate}</td>
 					<td>
 						<input type="button" id="reportBtn" class="report"
-						onClick="showDialogReport('${cvo.comments_num}','${cvo.nickname}')" value="신고" />
+						onClick="showDialogReportC('${cvo.comments_num}','${nickname}')" value="신고" />
 					</td>
 					<td>
 						<c:if test="${nickname == cvo.nickname}">
@@ -286,9 +289,9 @@ $(function() {
 			<table id="rp" border="2">
 				<tr>
 					<td id="font" width="100">신고 내용
-						<input type="text" id="nickname" name="nickname" value="${cvo.nickname}" readonly>
-						<input type="text" id="comments_num" name="comments_num"
-						value="${cvo.comments_num}" readonly>
+						<input type="text" id="nickname" name="nickname" value="${vo2.nickname}" readonly>
+						<input type="text" id="board_num" name="board_num"
+						value="${vo2.board_num}" readonly>
 					</td>
 				</tr>
 				<tr>
@@ -304,12 +307,53 @@ $(function() {
 			</table>
 		</form>
 	</div>
+	<div id="reportC">
+
+		<form id="reportFormC" action="rp_insertOK.do" method="post">
+			<table id="rp" border="2">
+				<tr>
+					<td id="font" width="100">신고 내용
+						<input type="text" id="nicknameC" name="nickname" value="${cvo.nickname}" readonly>
+						<input type="text" id="comments_num" name="comments_num"
+						value="${cvo.comments_num}" readonly>
+						<input type="hidden" id="board_num" name="board_num" value="${vo2.board_num}">
+					</td>
+				</tr>
+				<tr>
+					<td width="500"><textarea id="text_report" name="content"
+							placeholder="신고내용을 적으세요"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="신고접수"
+						class="reportC">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
 	
 <script>
 	function submitReportForm() {
 		location.reload();
 	}
 	$("#reportForm").submit(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type : "POST",
+			url : $(this).attr("action"),
+			data : $(this).serialize(),
+			success : function(response) {
+				console.log(response);
+				submitReportForm();
+			},
+			error : function(xhr, status, error) {
+				console.error(status, error);
+			}
+		});
+	});
+	$("#reportFormC").submit(function(event) {
 		event.preventDefault();
 		$.ajax({
 			type : "POST",

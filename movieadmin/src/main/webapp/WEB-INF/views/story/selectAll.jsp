@@ -140,7 +140,8 @@ tfoot td {
                                 <p>${vo.content}</p>
                                 <p>${vo.nickname}</p>
                             </div>
-                            <img src="resources/uploadimg/thumb_${vo.save_img}" alt="">
+                            <img src="resources/uploadimg/images/thumb_${vo.save_img}" alt="">
+                            <img src="resources/uploadimg/videos/thumb_${vo.save_video}" alt="">
                             <button class="comment-btn" onclick="selectCommentList(${vo.story_num})">댓글목록</button>
                             <table>
                                 <tbody id="sc_comm_list${vo.story_num}">
