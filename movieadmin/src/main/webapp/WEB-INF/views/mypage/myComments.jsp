@@ -21,11 +21,11 @@
 <body>
 
 	
-	<div>
+	<div id = "main">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 		<h2>쓴 댓글 목록</h2>
 		<h3>게시판</h3>
-		  <table id="Table">
+		  <table class="alt">
         <thead>
             <tr>
                 <th>게시판</th>
