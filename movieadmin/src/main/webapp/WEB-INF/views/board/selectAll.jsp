@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<!-- <style>
 input[type=submit]:hover {
 	background-color: #45a049;
 }
@@ -48,7 +50,7 @@ div {
 tfoot td {
 	text-align: center;
 }
-</style>
+</style> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function selectCommentList(board_num){
@@ -84,9 +86,9 @@ tfoot td {
 	}	
 </script>
 </head>
-<body>
+<body class="is-preload">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div>
+	<div id="main">
 		<h1>글목록</h1>
 		<hr>
 		<form action="b_searchList.do">
@@ -97,7 +99,7 @@ tfoot td {
 				type="submit" value="search">
 
 		</form>
-		<table id="Table">
+		<table class="alt">
 			<thead>
 				<tr>
 					<th>번호</th>
