@@ -11,87 +11,7 @@
 	href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
-<!-- <style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
 
-h1 {
-    text-align: center;
-}
-#customers {
-	font-family: Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: 80%;
-    margin: 0 auto;
-    border-collapse: collapse;
-}
-
-#customers td, #customers th {
-	border: 1px solid #ddd;
-	padding: 8px;
-	text-align: left;
-}
-
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-#customers tr:hover {background-color: #ddd;}
-
- #customers th {
-       padding-top: 12px;
-       padding-bottom: 12px;
-       text-align: center;
-       background-color: #4CAF50;
-       color: white;
- }
-
-tfoot td {
-	text-align: center;
-}
-
-.story-container {
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-    padding: 10px;
-}
-
-.story-container img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-.story-content {
-    margin-bottom: 10px;
-}
-
-.story-content p {
-    margin: 0;
-}
-
-.story-link {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-.comment-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-</style> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function selectCommentList(story_num){
@@ -127,10 +47,12 @@ tfoot td {
 	}	
 </script>
 </head>
-<body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
+<body class="is-preload">
 	<div id="main">
-	    <h1>글목록</h1>
+	<jsp:include page="../top_menu.jsp"></jsp:include>
+	<h2>스토리</h2>
+	
+	<div id="main">
     <hr>
     <a href="s_insert.do" class="comment-btn">스토리 만들기</a>
     <table id="customers">
@@ -146,6 +68,7 @@ tfoot td {
                             </div>
                             <img src="resources/uploadimg/images/thumb_${vo.save_img}" alt="">
                             <img src="resources/uploadimg/videos/thumb_${vo.save_video}" alt="">
+                            <br>
                             <button class="comment-btn" onclick="selectCommentList(${vo.story_num})">댓글목록</button>
                             <table>
                                 <tbody id="sc_comm_list${vo.story_num}">
