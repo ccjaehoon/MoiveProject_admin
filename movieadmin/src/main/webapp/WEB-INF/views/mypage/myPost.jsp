@@ -24,7 +24,7 @@
 	<div id = "main">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
 		<h2>쓴 글 목록</h2>
-		<h3>내가 쓴 뉴스</h3>
+		<h3>뉴스</h3>
     <table class="alt">
         <thead>
             <tr>
@@ -65,7 +65,7 @@
         </tfoot>
 		</table>
 		
-				<h3>내가 쓴 커뮤니티</h3>
+				<h3>커뮤니티</h3>
     
     <table id="customers">
         <thead>
@@ -107,7 +107,7 @@
         </tfoot>
 		</table>
 				
-				<h3>내가 쓴 스토리</h3>
+				<h3>스토리</h3>
     
    <table class="alt">
         <thead>
@@ -147,7 +147,7 @@
         </tfoot>
 		</table>
 				
-				<h3>내가 쓴 공지사항</h3>
+				<h3>공지사항</h3>
     
    <table class="alt">
         <thead>
