@@ -6,8 +6,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
+    <title>Document</title>   
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+   <!--  <style>
         input[type=text],
         textarea,
         select {
@@ -59,15 +61,16 @@
         #insertTable tr:hover {
             background-color: #ffc6c6;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
+	<div id="main">
     <jsp:include page="../top_menu.jsp"></jsp:include>
-    <div>
-        <h1>게시글 수정페이지</h1>
-        <form action="b_updateOK.do" method="post">
-            <table id="insertTable">
+    <h1>게시글 수정페이지</h1>
+    <form action="b_updateOK.do" method="post">
+   		<div class="table=wrapper">
+            <table id=alt>
                 <tr>
                     <td><label for="">항목</label></td>
                     <td></td>
@@ -93,8 +96,10 @@
                     <td colspan="2"><input type="submit" value="글수정 완료"></td>
                 </tr>
             </table>
-        </form>
-    </div>
+        </div>
+	</form>
+	 <jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 </body>
 
 </html>

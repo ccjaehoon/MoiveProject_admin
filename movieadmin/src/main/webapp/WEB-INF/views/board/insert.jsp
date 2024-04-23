@@ -11,8 +11,8 @@
     <title>게시글 작성페이지</title>
 </head>
 <body>
+<div id="main">
     <jsp:include page="../top_menu.jsp"></jsp:include>
-   <div class="table-wrapper">
         <h1>게시글 작성페이지</h1>
         <form id="boardForm" action="b_insertOK.do" method="post" enctype="multipart/form-data">
             <label for="title">제목</label>
@@ -25,7 +25,8 @@
             <input type="file" id="file_img" name="file_img">
             <input type="submit" value="글쓰기 완료">
         </form>
-    </div>
+	<jsp:include page="../footer_menu.jsp"></jsp:include>
+</div>
 </body>
 
 </html>

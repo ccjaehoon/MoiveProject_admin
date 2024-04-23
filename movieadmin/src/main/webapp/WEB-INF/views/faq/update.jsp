@@ -15,15 +15,15 @@
 </head>
 
 <body>
-<div style="position: relative; z-index: 2;">
+	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
-		</div>
-		<div id="main" style="position: relative; z-index: 1;">
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
 		<br>
 		<h1>게시글 수정페이지</h1>
 		<form action="f_updateOK.do" method="post">
-		<div class="table=wrapper">
-			<table id=alt>
+			<div class="table=wrapper">
+				<table id=alt>
 
 					<tr>
 						<td><label for="faq_num">글번호</label></td>
@@ -44,14 +44,14 @@
 						<td colspan="2"><input type="submit" value="글수정 완료"></td>
 					</tr>
 
-			</table>
+				</table>
 			</div>
 		</form>
-		 <jsp:include page="../footer_menu.jsp"></jsp:include>
+
 	</div>
-	<br>
-	<br>
-	<br>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 </body>
 
 </html>
