@@ -9,48 +9,7 @@
 <title>Document</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
-<!-- <style>
-input[type=submit]:hover {
-	background-color: #45a049;
-}
 
-div {
-	border-radius: 15px;
-	background-color: #bfbfbf;
-	padding: 20px;
-}
-
-#Table {
-	font-family: Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-#Table td, #Table th {
-	border: 1px solid #ddd;
-	padding: 8px;
-}
-
-#Table tr:nth-child(even) {
-	background-color: #ff6565;
-}
-
-#Table tr:hover {
-	background-color: #fca2a2;
-}
-
-#Table th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #04AA6D;
-	color: white;
-}
-
-tfoot td {
-	text-align: center;
-}
-</style> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function selectCommentList(board_num){
@@ -87,8 +46,8 @@ tfoot td {
 </script>
 </head>
 <body class="is-preload">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div id="main">
+	<jsp:include page="../top_menu.jsp"></jsp:include>
 		<h1>글목록</h1>
 		<hr>
 		<form action="b_searchList.do">
@@ -97,8 +56,8 @@ tfoot td {
 				<option value="content">content</option>
 			</select> <input type="text" name="searchWord" value="ja"> <input
 				type="submit" value="search">
-
 		</form>
+		<div class="table-wrapper">
 		<table class="alt">
 			<thead>
 				<tr>
@@ -144,8 +103,10 @@ tfoot td {
 				</tr>
 			</tfoot>
 		</table>
-	<a href="b_insert.do">글쓰기</a>
+		<a href="b_insert.do">글쓰기</a>
 	</div>
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+</div>
 	
 </body>
 </html>
