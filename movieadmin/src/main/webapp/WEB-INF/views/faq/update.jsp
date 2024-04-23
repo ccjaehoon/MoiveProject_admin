@@ -45,6 +45,7 @@
 			</table>
 			</div>
 		</form>
+		 <jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
 </body>
 

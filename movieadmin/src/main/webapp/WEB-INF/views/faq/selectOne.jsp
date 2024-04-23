@@ -47,10 +47,11 @@
 			</table>
 		</div>
 		<c:if test="${authority == 'admin'}">
-			<a
-				href="f_update.do?faq_num=${param.faq_num}&content=${param.content}">FAQ수정</a>
+		
+			<a href="f_update.do?faq_num=${param.faq_num}&content=${param.content}">FAQ수정</a>
 			<a href="f_delete.do?faq_num=${param.faq_num}">FAQ삭제</a>
 		</c:if>
+		 <jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
 </body>
 </html>
