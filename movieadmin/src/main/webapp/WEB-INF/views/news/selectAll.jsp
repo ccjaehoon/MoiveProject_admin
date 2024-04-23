@@ -14,8 +14,9 @@
 	</head>
 </head>
 <body class="is-preload">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
+	
 	<div id="main">
+	<jsp:include page="../top_menu.jsp"></jsp:include>
     <h2>news</h2>
     <br> <br>
     <form action="n_searchList.do">

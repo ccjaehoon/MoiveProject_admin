@@ -5,7 +5,8 @@
 
 <head>
 
-
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/main.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet"

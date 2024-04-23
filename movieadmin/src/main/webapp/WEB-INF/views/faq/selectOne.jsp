@@ -30,17 +30,17 @@
 						<td id="faqR">작성자</td>
 						<td>${vo2.nickname}</td>
 					</tr>
-
-					<tr>
-						<td id="faqR">제목</td>
-						<td colspan="3">${vo2.title}</td>
-
-					</tr>
 					<tr>
 						<td id="faqR">내용</td>
 						<td colspan="3">${vo2.content}</td>
 
 					</tr>
+					<tr>
+						<td id="faqR">제목</td>
+						<td colspan="3">${vo2.title}</td>
+
+					</tr>
+
 
 
 
