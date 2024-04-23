@@ -23,6 +23,7 @@
 
 	<div id="main">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
+
 		<h2>공지사항</h2>
 
 		<form action="a_searchList.do">
@@ -32,6 +33,7 @@
 			</select></span><span style="float: left"> <input type="text"
 				name="searchWord" value="검색어" style="width: 150px;">
 			</span> <input type="submit" value="search">
+
 		</form>
 
 		<div class="table-wrapper">
@@ -81,9 +83,9 @@
 			</form>
 		</c:if>
 
-
+<jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
-	<jsp:include page="../footer_menu.jsp"></jsp:include>
+	
 </body>
 
 </html>

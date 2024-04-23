@@ -17,8 +17,9 @@
 </head>
 
 <body>
-    <jsp:include page="../top_menu.jsp"></jsp:include>
+   
     <div id = "main">
+     <jsp:include page="../top_menu.jsp"></jsp:include>
         <h3>게시글 삭제하기</h3>
   
         <form action="a_deleteOK.do" method="post">
