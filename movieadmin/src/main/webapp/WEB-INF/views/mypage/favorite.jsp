@@ -35,8 +35,8 @@
 			<tbody>
 				<c:forEach var="vo" items="${favorites}">
 					<tr>
-						<td><a href="i_selectOne.do?info_num=${vo.info_num}">${vo.title}</a></td>
-						<td> <img src="resources/uploadimg/${vo.save_img}" width="200"></td>
+						<td align = "center"><a href="i_selectOne.do?info_num=${vo.info_num}">${vo.title}</a></td>
+						<td> <img src="resources/uploadimg/${vo.save_img}" width="150"></td>
 					</tr>
 				</c:forEach>
 
