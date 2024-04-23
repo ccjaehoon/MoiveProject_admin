@@ -21,8 +21,12 @@
 <body>
 
 	
-	<div id = "main">
+	
+	<div style="position: relative; z-index: 2;">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+	</div>
+	<div id = "main" style="position: relative; z-index: 1;">
+	<br>
 		<h2>쓴 댓글 목록</h2>
 		<h3>커뮤니티</h3>
 		  <table class="alt">
@@ -169,16 +173,11 @@
             </tr>
         </tfoot>
 		</table>
-		<jsp:include page="../footer_menu.jsp"></jsp:include>
-		
-		
-		
-		
-		
-		
-		
-		
+
     </div>
+    <div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 </body>
 
 </html>

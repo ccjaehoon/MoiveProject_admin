@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +50,7 @@
 	                <td>${vo.title}</td>
 	                <td>${vo.nickname}</td>
 	                <td>${vo.content}</td>
-	                <td>${vo.wdate}</td>
+	                <td><fmt:formatDate value="${vo.wdate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 	                <td><a href="b_delete.do?board_num=${vo.news_num}">글삭제</a></td>
 	            </tr>
 	        	</c:forEach>
