@@ -20,9 +20,13 @@
 
 <body>
 
-	
-	<div id = "main">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
+
+
+	<div style="position: relative; z-index: 2;">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
 		<h2>MYPAGE</h2>
 		<table class="alt">
 			<tbody>
@@ -63,7 +67,9 @@
 		</table>
 
 	</div>
-	<jsp:include page="../footer_menu.jsp"></jsp:include>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 </body>
 
 </html>
