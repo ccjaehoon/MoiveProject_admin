@@ -23,15 +23,19 @@
 
 	<div id="main">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
-		<h3>공지사항</h3>
-		<form action="a_searchList.do" ">
-			<select name="searchKey">
-				<option value="title">title</option>
-				<option value="content">content</option>
-			</select> <input type="text" name="searchWord" value="검색어"> <input
-				type="submit" value="search">
+
+		<h2>공지사항</h2>
+
+		<form action="a_searchList.do">
+			<span style="float: left"><select name="searchKey" style="width: 150px;">
+					<option value="title">title</option>
+					<option value="content">content</option>
+			</select></span><span style="float: left"> <input type="text"
+				name="searchWord" value="검색어" style="width: 150px;">
+			</span> <input type="submit" value="search">
+
 		</form>
-		
+
 		<div class="table-wrapper">
 			<table class="alt">
 				<thead>
@@ -51,7 +55,7 @@
 								href="a_selectOne.do?announcement_num=${vo.announcement_num}&nickname=${vo.nickname}">${vo.announcement_num}</a></td>
 							<td>${vo.title}</td>
 							<td>${vo.nickname}</td>
-							<td>${vo.wdate}</td>					
+							<td>${vo.wdate}</td>
 						</tr>
 					</c:forEach>
 
