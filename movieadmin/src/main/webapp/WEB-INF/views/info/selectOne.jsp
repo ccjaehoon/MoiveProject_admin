@@ -187,7 +187,8 @@ tfoot td {
 		</tbody>
 	</table>
 
-	
+	<a href="i_update.do?info_num=${vo2.info_num}">수정</a>
+	<a href="i_delete.do?info_num=${vo2.info_num}">삭제</a>
 
 	
 	
