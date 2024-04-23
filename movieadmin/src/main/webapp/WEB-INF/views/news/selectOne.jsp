@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +104,7 @@ $(function() {
 				</tr>
 				<tr>
 					<td>작성일자</td>
-					<td colspan="3">${vo2.wdate}</td>
+					<td colspan="3"><fmt:formatDate value="${vo2.wdate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				</tr>
 				<tr>
 					<td>내용</td>
@@ -116,6 +117,9 @@ $(function() {
 
 			</tbody>
 		</table>
+		<a
+			href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
+		<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
 		<c:if test="${authority == 'admin' }">
 		<a
 			href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
@@ -181,7 +185,7 @@ $(function() {
 							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
 							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
 							<input type="button" value="${cvo.good}" class="nc_increaseGood"></td>
-						<td>${cvo.wdate}</td>
+						<td><fmt:formatDate value="${vo2.wdate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 	
 						<td><input type="button" id="reportBtn" class="report"
 							onClick="showDialogReport('${cvo.news_comments_num}','${nickname}', '${vo2.news_num}')"
