@@ -4,14 +4,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/board.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
+<style>
+input[type=submit]:hover {
+	background-color: #45a049;
+}
 
+div {
+	border-radius: 15px;
+	background-color: #bfbfbf;
+	padding: 20px;
+}
+
+#Table {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#Table td, #Table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#Table tr:nth-child(even) {
+	background-color: #ff6565;
+}
+
+#Table tr:hover {
+	background-color: #fca2a2;
+}
+
+#Table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #04AA6D;
+	color: white;
+}
+
+tfoot td {
+	text-align: center;
+}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function selectCommentList(board_num){
@@ -49,7 +86,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div id="main">
+	<div>
 		<h1>글목록</h1>
 		<hr>
 		<form action="b_searchList.do">
@@ -60,8 +97,7 @@
 				type="submit" value="search">
 
 		</form>
-		<div class="table-wrapper">
-		<table class="alt">
+		<table id="Table">
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -106,7 +142,6 @@
 				</tr>
 			</tfoot>
 		</table>
-		</div>
 	<a href="b_insert.do">글쓰기</a>
 	</div>
 	
