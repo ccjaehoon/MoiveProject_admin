@@ -63,8 +63,8 @@ public class StoryServiceimpl implements StoryService {
 	public List<StoryVO> s_selectAll(int cpage, int pageBlock) {
 		List<StoryVO> list=dao.s_selectAll(cpage,pageBlock);
 		
-		Collections.shuffle(list);
-		return list;
+		Collections.shuffle(list); // 오늘 하루 올라온 글들을 섞습니다.
+		return list.subList(0, 5); // 섞은 후 처음 5개를 선택합니다.
 		/* return dao.s_selectAll(cpage, pageBlock); */
 	}
 	

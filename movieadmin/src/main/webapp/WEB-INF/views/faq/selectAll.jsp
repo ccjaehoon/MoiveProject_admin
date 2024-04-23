@@ -18,8 +18,12 @@
 <body class="is-preload">
 
 
-	<div id="main">
+	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
+		</div>
+		<div id="main" style="position: relative; z-index: 1;">
+		<br>
+		
 		<h2>FAQ</h2>
 
 		<form action="f_searchList.do">
@@ -77,7 +81,11 @@
 		</c:if>
 		<jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
-
+<br>
+<br>
+<br>
+<br>
+<br>
 </body>
 
 </html>

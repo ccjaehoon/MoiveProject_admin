@@ -30,7 +30,7 @@ footer {
 	left: 50%;
 	transform: translateX(-50%);
 	width: 100%;
-	height: 50px;
+	height: 30px;
 }
 
 footer a {
@@ -41,12 +41,9 @@ footer a {
 </style>
 </head>
 <body>
-	<main>
-		<!-- Your main content here -->
-	</main>
+
 	<footer>
 		<a href="about_us.do">이용약관</a> <a href="contact.do">개인정보처리방침</a><a href="f_selectAll.do?nickname">고객센터</a> <a href="advertisement.do">광고임대문의</a>
-		<p>대표 전화번호: 02 - 0000 - 0000</p>
 	</footer>
 </body>
 </html>
