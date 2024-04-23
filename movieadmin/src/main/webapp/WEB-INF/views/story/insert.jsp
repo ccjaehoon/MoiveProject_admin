@@ -13,13 +13,15 @@
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 </head>
 
-
+<body>
+  <div style="position: relative; z-index: 2;">
     <jsp:include page="../top_menu.jsp"></jsp:include>
- <body class="is-preload">
-	<div id="main">
+  </div>
+	<div id="main" style="position: relative; z-index: 1;">
         <h1>스토리 만들기</h1>
         <form action="s_insertOK.do" method="post" enctype="multipart/form-data">
-            <table id="insertTable">
+        	<div class="table-wrapper">
+            <table id="alt">
                 <!-- <tr>
                     <td><label for="title">제목</label></td>
                     <td><input type = "text" id = "title" name ="title" ></td>
@@ -54,8 +56,12 @@
                     <td colspan="2"><input type="submit" value="글쓰기 완료"></td>
                 </tr>
             </table>
+            </div>
         </form>
     </div>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 </body>
 
 </html>

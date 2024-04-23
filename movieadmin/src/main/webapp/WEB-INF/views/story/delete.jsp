@@ -11,68 +11,16 @@
 	href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
-<!--     <style>
-        input[type=text],
-        input[type=password],
-        input[type=tel],
-        select {
-            width: 100%;
-            padding: 8px 8px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ff8f8f;
-            border-radius: 14px;
-            box-sizing: border-box;
-        }
-
-        input[type=submit] {
-            width: 30%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 8px 8px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-        }
-
-        input[type=submit]:hover {
-            background-color: #45a049;
-        }
-
-        div {
-            border-radius: 15px;
-            background-color: #bfbfbf;
-            padding: 20px;
-        }
-
-        #boardTable {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        #boardTable td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        #boardTable tr:nth-child(even) {
-            background-color: #ebebeb;
-        }
-
-        #boardTable tr:hover {
-            background-color: #ffc6c6;
-        }
-
-    </style> -->
 </head>
 
-    <jsp:include page="../top_menu.jsp"></jsp:include>
-<body class="is-preload">
-	<div id="main">
-        <h3>회원삭제폼</h3>
+<body>
 
+<div style="position: relative; z-index: 2;">
+    <jsp:include page="../top_menu.jsp"></jsp:include>
+</div>
+<div id="main" style="position: relative; z-index: 1;">
+<br>
+        <h3>스토리 삭제</h3>
         <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
         <form action="s_deleteOK.do" method="post">
             <table id="storyTable">
