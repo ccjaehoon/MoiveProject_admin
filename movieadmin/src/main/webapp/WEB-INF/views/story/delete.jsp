@@ -7,7 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/board.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<!--     <style>
         input[type=text],
         input[type=password],
         input[type=tel],
@@ -61,12 +65,12 @@
             background-color: #ffc6c6;
         }
 
-    </style>
+    </style> -->
 </head>
 
-<body>
     <jsp:include page="../top_menu.jsp"></jsp:include>
-    <div>
+<body class="is-preload">
+	<div id="main">
         <h3>회원삭제폼</h3>
 
         <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
