@@ -19,8 +19,11 @@
 </head>
 
 <body>
-<div id = "main">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
+<div style="position: relative; z-index: 2;">
+    <jsp:include page="../top_menu.jsp"></jsp:include>
+</div>
+<div id="main" style="position: relative; z-index: 1;">
+<br>
     <h1>회원정보</h1>
     <hr>
     <table class="alt">
@@ -54,11 +57,13 @@
             </tr>
         </tbody>
         <tr>
-        <td colspan = "9"><a href="u_update.do?user_num=${param.user_num}&user_id=${param.user_id}">회원수정</a>
+        <td colspan = "9" align = "right"><a href="u_update.do?user_num=${param.user_num}&user_id=${param.user_id}">회원수정</a>
     <a href="u_delete.do?user_num=${param.user_num}">회원삭제</a></td>
     </tr>
     </table>
     
     </div>
+    <div id = "copyright">
+<jsp:include page="../footer_menu.jsp"></jsp:include></div>
 </body>
 </html>
