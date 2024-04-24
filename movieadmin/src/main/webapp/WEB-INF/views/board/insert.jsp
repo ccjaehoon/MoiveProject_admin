@@ -8,11 +8,14 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 작성페이지</title>
+  
 </head>
 <body>
-	<div id="main">
-	    <jsp:include page="../top_menu.jsp"></jsp:include>
+	<div style="position: relative; z-index: 2;">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
 	     	<h2>게시글 작성페이지</h2>
 	    	<form id="boardForm" action="b_insertOK.do" method="post" enctype="multipart/form-data">
 		    	<div class="table-wrapper">
@@ -41,11 +44,11 @@
 		        	</table>
 				</div>
 	        </form>
+		 <div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>
+		</div>
 	</div>
-	<br>
-	<br>
-	<br>
+	
 </body>
 
 </html>
