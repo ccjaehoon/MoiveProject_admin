@@ -38,17 +38,16 @@
                 </tr>
                 
                 <tr>
-               <!--  <td>
-					<input type="file" name="media_files" accept="image/*,video/*" multiple>
+                	<!-- <td>
+					<input type="file" name="file_img" accept="image/*" multiple>
 					</td>
 					<td>
-					<input type="file" name="media_files2" accept="image/*,video/*" multiple>
-					</td>
-					</tr> -->
-				 <tr>
-				    <td><input type="file" name="file_img"></td>
-				    <td><input type="file" name="file_video"></td>
-				</tr> 
+					 <input type="file" name="file_video" accept="video/*" multiple>
+					</td> -->
+					</tr>
+				<tr>
+					<td><input type="file" name="file" accept="image/*,video/*" multiple></td>
+				</tr>
 				
                
 

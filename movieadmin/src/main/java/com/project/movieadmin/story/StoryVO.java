@@ -13,10 +13,7 @@ public class StoryVO {
     private String content;
     private String save_img;
     private String save_video;
-    private MultipartFile file_img; // List of uploaded image files
-    private MultipartFile file_video; // List of uploaded video files
-//    private List<MultipartFile> file_img; // 여러 이미지 파일 리스트
-//    private List<MultipartFile> file_video; // 여러 동영상 파일 리스트
+    private MultipartFile file; // 여러 동영상과 이미지파일
     private Date wdate;
     private int good; //추천수
     private int views; //게시글 조회된 수
