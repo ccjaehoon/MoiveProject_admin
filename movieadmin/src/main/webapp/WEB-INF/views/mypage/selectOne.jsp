@@ -21,8 +21,12 @@
 <body>
 
 
-	<div id = "main">
+
+	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
 		<h2>내 정보</h2>
 		<table class="alt">
 
@@ -67,15 +71,18 @@
 				<td>${vo2.reg_date}</td>
 			</tr>
 
-		<tr>
-		 <td colspan = "2" align = "center"><a href="u_update.do?user_num=${vo2.user_num}&user_id=${vo2.user_id}">회원수정</a></td>
-		</tr>
+			<tr>
+				<td colspan="2" align="center"><a
+					href="u_update.do?user_num=${vo2.user_num}&user_id=${vo2.user_id}">회원수정</a></td>
+			</tr>
 
 
 		</table>
-		
+
 	</div>
-	<jsp:include page="../footer_menu.jsp"></jsp:include>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 </body>
 
 </html>
