@@ -16,30 +16,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 
- <style>
-        #main {
-            margin-top: 100px; /* 탑 메뉴의 높이만큼 상단 마진 추가 */
-        }
 
-        #top-menu {
-            position: fixed; /* 화면에 고정 */
-            top: 0; /* 화면 상단에 위치 */
-            left: 0; /* 화면 왼쪽에 위치 */
-            width: 100%; /* 전체 너비로 확장 */
-            background-color: #fff; /* 배경색 지정 */
-            z-index: 1000; /* 다른 요소 위에 표시 */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
-        }
-    </style>
 </head>
 
 <body >
 
-<jsp:include page="../top_menu.jsp"></jsp:include>
-
-<div id="main">
-	
-
+<div style="position: relative; z-index: 2;">
+    <jsp:include page="../top_menu.jsp"></jsp:include>
+</div>
+<div id="main" style="position: relative; z-index: 1;">
+<br>
 		<h2>공지사항</h2>
 
 		<form action="a_searchList.do">
