@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>뉴스 수정 페이지</title>
+<title>뉴스 정보 페이지</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet"
@@ -117,9 +117,6 @@ $(function() {
 
 			</tbody>
 		</table>
-		<a
-			href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
-		<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
 		<c:if test="${authority == 'admin' }">
 		<a
 			href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>

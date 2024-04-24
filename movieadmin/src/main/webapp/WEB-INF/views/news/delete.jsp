@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>뉴스글 삭제페이지</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 </head>
@@ -14,7 +14,7 @@
 <body class="is-preload">
     <div id=main>
     <jsp:include page="../top_menu.jsp"></jsp:include>
-        <h3>회원삭제폼</h3>
+        <h3>뉴스삭제폼</h3>
 
         <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
         <form action="n_deleteOK.do" method="post">
