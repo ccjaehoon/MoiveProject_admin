@@ -71,16 +71,20 @@ public class StoryController {
 		//String realPath = sContext.getRealPath("resources/uploadimg"); 파일저장경로
 		String imgRealPath = sContext.getRealPath("resources/uploadimg/images"); // 이미지 파일 저장 경로
 		String videoRealPath = sContext.getRealPath("resources/uploadimg/videos");// 동영상 파일 저장 경로
-		
+// 이미지 파일과 동영상 파일이 모두 없는 경우에 대한 처리
+	    if (vo.getFile() == null || vo.getFile().isEmpty()) {
+	        log.error("이미지 파일과 동영상 파일이 모두 없습니다.");
+	        return "redirect:s_insert.do"; // 글 작성 페이지로 리다이렉트
+	    }
 //  이미지 파일
 	    if (vo.getFile() == null || vo.getFile().isEmpty()) {
 	        log.info("이미지 파일이 없거나 비어 있습니다.");  
 	    } else { // 이미지 파일의 원본 파일명을 가져옵니다.
 	    	String originFileName = vo.getFile().getOriginalFilename();
-	        log.info("getOriginalFilename이미지:{}", originFileName);
+	        log.info("업로드된 파일이 image", originFileName);
 	     // 이미지 파일의 확장자 목록
 		    List<String> imageExtensions = Arrays.asList("jpg", "jpeg", "png", "gif", "bmp");
-		    List<String> videoExtensions = Arrays.asList("mp4", "avi", "mov", "flv", "mkv");
+		    List<String> videoExtensions = Arrays.asList("mp3", "mp4", "avi", "mov", "flv", "mkv");
 
 		 // 파일 확장자 추출
 		    String fileExtension = originFileName.substring(originFileName.lastIndexOf(".") + 1).toLowerCase();
@@ -102,9 +106,10 @@ public class StoryController {
 
 		        File thumb_file = new File(imgRealPath, "thumb_" + save_name);
 		        ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
-		    }else if(videoExtensions.contains(fileExtension)) {
+//  동영상 파일		        
+		    }else if (videoExtensions.contains(fileExtension)) {
 		        // 이미지 파일이 아닌 경우 처리
-		        log.info("업로드된 파일이 video 파일....니다: {}", originFileName);
+		        log.info("업로드된 파일이 video 파일입니다: {}", originFileName);
 		        
 		        String save_name = "video_" + System.currentTimeMillis() + originFileName.substring(originFileName.lastIndexOf("."));
 		        vo.setSave_video(save_name);
@@ -127,24 +132,13 @@ public class StoryController {
 		        // Graphics2D 객체를 사용하여 원본 이미지를 새로운 크기로 그립니다.
 		        Graphics2D g = resizedThumbnail.createGraphics();
 		        g.drawImage(originalThumbnail, 0, 0, thumbnailWidth, thumbnailHeight, null);
-		        g.dispose();
+		        g.dispose(); //리소스 해제
 		        
 		        // 조정된 썸네일을 파일에 저장합니다.
-		        ImageIO.write(resizedThumbnail, "png", new File(videoRealPath, "thumb_" + save_name + ".png"));
-		        
-		    }else {
-		        // 이미지 파일이 아닌 경우 처리
-		        log.error("업로드된 파일이 이미지 파일이 아닙니다: {}", originFileName);
-		    }
-		   
+		        ImageIO.write(resizedThumbnail, "png", new File(videoRealPath, "thumb_" + save_name + ".png"));	        
+		  }   
 	    }
 
-//	    
-//	 // 둘 다 없는 경우에만 특정 처리를 수행
-//	    if (fileImg == null || fileImg.isEmpty() && fileVideo == null || fileVideo.isEmpty()) {
-//	        log.info("이미지나 동영상 둘다 없으면 안됩니다");
-//	        // 둘 다 없을 때의 처리 로직
-//	    }
 		 // 이미지 파일 처리 로직 및 동영상 파일 처리 로직 추가
 		int result = service.s_insert(vo);
 		log.info("result:{}", result);
