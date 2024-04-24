@@ -7,44 +7,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<style>
-#customers {
-	font-family: Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-#customers td, #customers th {
-	border: 1px solid #ddd;
-	padding: 8px;
-}
-
-#customers tr:nth-child(even) {
-	background-color: #ff6565;
-}
-
-#customers tr:hover {
-	background-color: #fca2a2;
-}
-
-#customers th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #04AA6D;
-	color: white;
-}
-
-tfoot td {
-	text-align: center;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 </head>
 <body>
+<div style="position: relative; z-index: 2;">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+	</div>
+	<div id = "main" style="position: relative; z-index: 1;">
+	<br>
 	<h1>영화목록</h1>
-	<hr>
 	<form action="i_searchList.do">
+
 		<select name="searchKey">
 			<option value="title">title</option>
 			<option value="genre">genre</option>
@@ -52,6 +26,7 @@ tfoot td {
 		</select> <input type="text" name="searchWord" value=""> <input
 			type="submit" value="search">
 	</form>
+
 	<table id="customers">
 		<thead>
 			<tr>
@@ -89,10 +64,16 @@ tfoot td {
 					</c:forEach></td>
 			</tr>
 		</tfoot>
+		
 		<c:if test="${nickname == 'admin'}">
 			<a href="i_insert.do">글쓰기</a>
 		</c:if>
+			
 	</table>
+	</div>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 </body>
 
 </html>

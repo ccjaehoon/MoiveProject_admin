@@ -17,8 +17,11 @@
 </head>
 
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div id = "main">
+  <div style="position: relative; z-index: 2;">
+    <jsp:include page="../top_menu.jsp"></jsp:include>
+</div>
+<div id="main" style="position: relative; z-index: 1;">
+<br>
 		<h3>회원 삭제하기</h3>
 
 		<!-- <form action="#" method="post" enctype="multipart/form-data"> -->
@@ -36,6 +39,8 @@
 			</table>
 		</form>
 	</div>
+			<div id = "copyright">
+<jsp:include page="../footer_menu.jsp"></jsp:include></div>
 </body>
 
 </html>

@@ -46,9 +46,12 @@
 </script>
 </head>
 <body class="is-preload">
-	<div id="main">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-		<h1>글목록</h1>
+<div style="position: relative; z-index: 2;">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
+		<h2>글목록</h2>
 		<hr>
 		<form action="b_searchList.do">
 			<select name="searchKey">
@@ -66,7 +69,6 @@
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일자</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -77,18 +79,12 @@
 						<td>${vo.title}</td>
 						<td>${vo.nickname}</td>
 						<td>${vo.wdate}</td>
-						<td>
-							<table>
-								<tbody id="comm_list${vo.board_num}">
-								</tbody>
-							</table>
-						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="6"><c:forEach var="i" begin="1"
+					<td colspan="5" align = "center"><c:forEach var="i" begin="1"
 							end="${totalPageCount}">
 							<c:if test="${param.searchKey == null}">
 								<a href="b_selectAll.do?cpage=${i}">${i} &nbsp;</a>
@@ -105,7 +101,9 @@
 		</table>
 		<a href="b_insert.do">글쓰기</a>
 	</div>
+		 <div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>
+		</div>
 </div>
 	
 </body>

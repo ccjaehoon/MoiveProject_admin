@@ -26,6 +26,9 @@
 
 			  var minLength = 6;
 			    var maxLength = 12;
+			    // 결과 초기화
+			      $("#result").html(""); // 새로 추가된 부분
+			        $("#result4").html(""); // 새로 추가된 부분
 
 			  
 			    var userIdInput = document.getElementById("user_id");
@@ -73,72 +76,116 @@
 		});
 
 		$("#u_nicknameCheck").click(function() {
-			console.log("click...");
-			console.log("nickname:", $("#nickname").val());
+		    console.log("click...");
+		    console.log("nickname:", $("#nickname").val());
 
-			$.ajax({
-				url : "http://localhost:8070/movie/u_nicknameCheck.do",
-				type : "get",
-				data : {
-					nickname : $("#nickname").val()
-				},
-				dataType : "json",
-				success : function(obj) {
-					console.log(obj);
-					let result = '';
-					if (obj.result == "OK") {
-						result = "사용 가능합니다"
-					} else {
-						result = "중복된 닉네임입니다"
-					}
+		    var minLength = 2;
+		    var maxLength = 8;
 
-					$("#result2").html(result); // 변경된 부분
-				},
-				error : function(xhr, status) {
-					console.log("status...", status);
-				}
-			});
+		    var nicknameInput = document.getElementById("nickname");
 
-			return false;
+		    var nicknameInputLength = nicknameInput.value.length; // 변수 이름 수정
+		    
+		    // 결과 초기화
+		      $("#result2").html(""); // 새로 추가된 부분
+		        $("#result5").html(""); // 새로 추가된 부분
+
+		    if (nicknameInputLength < minLength || nicknameInputLength > maxLength) {
+		        document.getElementById("result5").innerHTML = "닉네임은 2글자 이상 8글자 이하로 입력해주세요.";
+		        nicknameInput.style.borderColor = "red";
+		        nicknameInput.focus();
+		    } else {
+		        document.getElementById("result5").innerHTML = "";
+		        nicknameInput.style.borderColor = "";
+
+		        $.ajax({
+		            url: "http://localhost:8070/movie/u_nicknameCheck.do",
+		            type: "get",
+		            data: {
+		                nickname: $("#nickname").val()
+		            },
+		            dataType: "json",
+		            success: function(obj) {
+		                console.log(obj);
+		                let result = '';
+		                if (obj.result == "OK") {
+		                    result = "사용 가능합니다"
+		                } else {
+		                    result = "중복된 닉네임입니다"
+		                }
+
+		                $("#result2").html(result);
+		            },
+		            error: function(xhr, status) {
+		                console.log("status...", status);
+		            }
+		        });
+		    }
+
+		        return false;	    
 		});
+		
 
-		$("#u_emailCheck").click(function() {
-			console.log("click...");
-			console.log("email:", $("#email").val());
+		function isValidEmail(email) {
+		    // 이메일 형식을 정의하는 정규 표현식
+		    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		    return emailRegex.test(email); // 이메일 형식이 맞으면 true 반환, 아니면 false 반환
+		}
 
-			$.ajax({
-				url : "http://localhost:8070/movie/u_emailCheck.do",
-				type : "get",
-				data : {
-					email : $("#email").val()
-				},
-				dataType : "json",
-				success : function(obj) {
-					console.log(obj);
-					let result = '';
-					if (obj.result == "OK") {
-						result = "사용 가능합니다"
-					} else {
-						result = "중복된 이메일입니다"
-					}
+		$(function() {
+		    $("#u_emailCheck").click(function() {
+		        console.log("click...");
+		        console.log("email:", $("#email").val());
 
-					$("#result3").html(result); // 변경된 부분
-				},
-				error : function(xhr, status) {
-					console.log("status...", status);
-				}
-			});
+		        var email = $("#email").val();
+		        
+		     // 결과 초기화
+		      $("#result3").html(""); // 새로 추가된 부분
+		        $("#result6").html(""); // 새로 추가된 부분
 
-			return false;
-		});
-	});
+		        // 이메일 형식이 올바른지 확인
+		        if (!isValidEmail(email)) {
+		            $("#result6").html("올바른 이메일 형식이 아닙니다."); // 수정된 부분
+		            return false; // 올바르지 않은 형식이므로 AJAX 요청을 보내지 않음
+		        }
+
+		        // 이메일 중복 확인 AJAX 요청
+		        $.ajax({
+		            url: "http://localhost:8070/movie/u_emailCheck.do",
+		            type: "get",
+		            data: {
+		                email: email
+		            },
+		            dataType: "json",
+		            success: function(obj) {
+		                console.log(obj);
+		                let result = '';
+		                if (obj.result == "OK") {
+		                    result = "사용 가능합니다"
+		                } else {
+		                    result = "중복된 이메일입니다"
+		                }
+		                $("#result3").html(result);
+		            },
+		            error: function(xhr, status) {
+		                console.log("status...", status);
+		            }
+		        });
+
+		        return false;
+		    });
+		  });
+	  });
 </script>
 
 </head>
 
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-<div id = "main">
+ <div style="position: relative; z-index: 2;">
+    <jsp:include page="../top_menu.jsp"></jsp:include>
+</div>
+<div id="main" style="position: relative; z-index: 1;">
+<br>
 		<h3>회원가입</h3>
 
 		<form action="u_insertOK.do" method="post"
@@ -159,13 +206,15 @@
 				<tr>
 					<td><label for="nickname">별명:</label></td>
 					<td><input type="text" id="nickname" name="nickname" value=""
-						placeholder="별명"> <span id="result2"></span></td>
+						placeholder="별명" maxlength="8"> <span id="result2"></span>
+						<span id="result5"></span></td>
 					<td width=150><a href="#" id="u_nicknameCheck">닉네임중복체크</a></td>
 				</tr>
 				<tr>
 					<td><label for="email">이메일:</label></td>
 					<td><input type="text" id="email" name="email" value=""
-						placeholder="이메일"> <span id="result3"></span></td>
+						placeholder="이메일"> <span id="result3"></span>
+							<span id="result6"></span></td>
 					<td width=150><a href="#" id="u_emailCheck">이메일중복체크</a></td>
 				</tr>
 				<tr>
@@ -196,6 +245,8 @@
 			</table>
 		</form>
 	</div>
+			<div id = "copyright">
+<jsp:include page="../footer_menu.jsp"></jsp:include></div>
 </body>
 <script>
   

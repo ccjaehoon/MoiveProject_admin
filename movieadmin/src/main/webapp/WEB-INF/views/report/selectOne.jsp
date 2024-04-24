@@ -18,7 +18,7 @@
 <body>
 <div id = main>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>신고정보</h1>
+	<h2>신고정보</h2>
 	<table class="alt">
 		<thead>
 			<tr>

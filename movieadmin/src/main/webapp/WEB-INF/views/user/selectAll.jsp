@@ -16,10 +16,12 @@
 
 </head>
 <body>
-	<div id="main">
-		<jsp:include page="../top_menu.jsp"></jsp:include>
-		<h1>회원목록</h1>
-		<hr>
+<div style="position: relative; z-index: 2;">
+    <jsp:include page="../top_menu.jsp"></jsp:include>
+</div>
+<div id="main" style="position: relative; z-index: 1;">
+<br>
+		<h3>회원목록</h3>
 		<form action="u_searchList.do">
 			<span style="float: left"><select name="searchKey" style="width: 150px;">
 				<option value="user_id">아이디</option>
@@ -58,7 +60,7 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="7"><c:forEach var="i" begin="1"
+					<td colspan="7" align = "center"><c:forEach var="i" begin="1"
 							end="${totalPageCount}">
 							<c:if test="${param.searchKey == null }">
 								<a href="u_selectAll.do?cpage=${i}">${i} &nbsp;</a>
@@ -73,5 +75,7 @@
 			</tfoot>
 		</table>
 		</div>
+		<div id = "copyright">
+<jsp:include page="../footer_menu.jsp"></jsp:include></div>
 </body>
 </html>
