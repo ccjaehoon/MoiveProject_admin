@@ -64,8 +64,11 @@ public class StoryServiceimpl implements StoryService {
 		List<StoryVO> list=dao.s_selectAll(cpage,pageBlock);
 		
 		Collections.shuffle(list); // 오늘 하루 올라온 글들을 섞습니다.
-		return list.subList(0, 5); // 섞은 후 처음 5개를 선택합니다.
-		/* return dao.s_selectAll(cpage, pageBlock); */
+	//	return list.subList(0, 5); // 섞은 후 처음 5개를 선택합니다.
+	    int toIndex = Math.min(5, list.size()); // 리스트의 크기가 5보다 작은 경우, 리스트의 크기를 toIndex로 설정합니다.
+	    
+	    return list.subList(0, toIndex); // 섞은 후 처음부터 toIndex까지의 요소를 선택합니다.
+		
 	}
 	
 	@Override
