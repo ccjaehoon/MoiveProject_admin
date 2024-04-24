@@ -48,14 +48,20 @@
 </script>
 </head>
 <body class="is-preload">
-	<div id="main">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
+
+
+	<div style="position: relative; z-index: 2;">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
+		
 	<h2>스토리</h2>
 	
-	<div id="main">
     <hr>
     <a href="s_insert.do" class="comment-btn">스토리 만들기</a>
-    <table id="customers">
+    <div class="table-wrapper">
+	<table class="alt">
         <tbody>
             <c:forEach var="vo" items="${vos}">
                 <tr>
@@ -82,5 +88,15 @@
         </tbody>
     </table>
    </div>
+		<c:if test="${authority == 'admin' }">
+			<form action="f_insert.do">
+				<input type="submit" value="FAQ 작성">
+			</form>
+		</c:if>
+
+	</div>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 </body>
 </html>

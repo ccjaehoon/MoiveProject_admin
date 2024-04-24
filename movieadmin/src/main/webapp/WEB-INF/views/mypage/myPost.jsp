@@ -21,8 +21,11 @@
 <body>
 
 
-	<div id="main">
+
+	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
+		</div>
+			<div id="main" style="position: relative; z-index: 1;"><br>
 		<h2>쓴 글 목록</h2>
 
 
@@ -110,95 +113,97 @@
 			</tfoot>
 		</table>
 
-	 <c:if test="${authority eq 'admin'}">
-		<h3>공지사항</h3>
+		<c:if test="${authority eq 'admin'}">
+			<h3>공지사항</h3>
 
-		<table class="alt">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성내용</th>
-					<th>작성일자</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="vo" items="${annoucnements}">
+			<table class="alt">
+				<thead>
 					<tr>
-						<td><a
-							href="a_selectOne.do?announcement_num=${vo.announcement_num}">${vo.announcement_num}</a></td>
-						<td>${vo.title}</td>
-						<td>${vo.nickname}</td>
-						<td>${vo.content}</td>
-						<td>${vo.wdate}</td>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성내용</th>
+						<th>작성일자</th>
+						<th></th>
 					</tr>
-				</c:forEach>
+				</thead>
+				<tbody>
+					<c:forEach var="vo" items="${annoucnements}">
+						<tr>
+							<td><a
+								href="a_selectOne.do?announcement_num=${vo.announcement_num}">${vo.announcement_num}</a></td>
+							<td>${vo.title}</td>
+							<td>${vo.nickname}</td>
+							<td>${vo.content}</td>
+							<td>${vo.wdate}</td>
+						</tr>
+					</c:forEach>
 
-			</tbody>
+				</tbody>
 
-			<tfoot>
-				<tr>
-					<td colspan="7"><c:forEach var="i" begin="1"
-							end="${totalPageCount}">
-							<c:if test="${param.searchKey == null }">
-								<a href="n_selectAll.do?cpage=${i}">${i} &nbsp;</a>
-							</c:if>
-							<c:if test="${param.searchKey != null }">
-								<a
-									href="n_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i}
-									&nbsp;</a>
-							</c:if>
-						</c:forEach></td>
-				</tr>
-			</tfoot>
-		</table>
-		<h3>뉴스</h3>
-		<table class="alt">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성내용</th>
-					<th>작성일자</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="vo" items="${news}">
+				<tfoot>
 					<tr>
-						<td><a href="n_selectOne.do?news_num=${vo.news_num}">${vo.news_num}</a></td>
-						<td>${vo.title}</td>
-						<td>${vo.nickname}</td>
-						<td>${vo.content}</td>
-						<td>${vo.wdate}</td>
+						<td colspan="7"><c:forEach var="i" begin="1"
+								end="${totalPageCount}">
+								<c:if test="${param.searchKey == null }">
+									<a href="n_selectAll.do?cpage=${i}">${i} &nbsp;</a>
+								</c:if>
+								<c:if test="${param.searchKey != null }">
+									<a
+										href="n_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i}
+										&nbsp;</a>
+								</c:if>
+							</c:forEach></td>
 					</tr>
-				</c:forEach>
+				</tfoot>
+			</table>
+			<h3>뉴스</h3>
+			<table class="alt">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성내용</th>
+						<th>작성일자</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="vo" items="${news}">
+						<tr>
+							<td><a href="n_selectOne.do?news_num=${vo.news_num}">${vo.news_num}</a></td>
+							<td>${vo.title}</td>
+							<td>${vo.nickname}</td>
+							<td>${vo.content}</td>
+							<td>${vo.wdate}</td>
+						</tr>
+					</c:forEach>
 
-			</tbody>
+				</tbody>
 
-			<tfoot>
-				<tr>
-					<td colspan="7"><c:forEach var="i" begin="1"
-							end="${totalPageCount}">
-							<c:if test="${param.searchKey == null }">
-								<a href="n_selectAll.do?cpage=${i}">${i} &nbsp;</a>
-							</c:if>
-							<c:if test="${param.searchKey != null }">
-								<a
-									href="n_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i}
-									&nbsp;</a>
-							</c:if>
-						</c:forEach></td>
-				</tr>
-			</tfoot>
-		</table>
+				<tfoot>
+					<tr>
+						<td colspan="7"><c:forEach var="i" begin="1"
+								end="${totalPageCount}">
+								<c:if test="${param.searchKey == null }">
+									<a href="n_selectAll.do?cpage=${i}">${i} &nbsp;</a>
+								</c:if>
+								<c:if test="${param.searchKey != null }">
+									<a
+										href="n_searchList.do?searchKey=${param.searchKey}&searchWord=${param.searchWord}&cpage=${i}">${i}
+										&nbsp;</a>
+								</c:if>
+							</c:forEach></td>
+					</tr>
+				</tfoot>
+			</table>
 		</c:if>
-		
+
 	</div>
-	<jsp:include page="../footer_menu.jsp"></jsp:include>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 </body>
 
 
