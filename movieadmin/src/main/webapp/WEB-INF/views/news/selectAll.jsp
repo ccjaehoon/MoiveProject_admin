@@ -76,6 +76,7 @@
     <c:if test="${authority == 'admin' }">
     <a href="n_insert.do">뉴스 작성</a>
     </c:if>
+    <jsp:include page="../footer_menu.jsp"></jsp:include>
     </div>
 </body>
 </html>
