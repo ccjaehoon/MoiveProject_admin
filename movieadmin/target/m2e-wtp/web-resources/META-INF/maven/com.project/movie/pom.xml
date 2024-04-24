@@ -161,6 +161,14 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.2</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.sejda.imageio/webp-imageio -->
+		<!--  Java에서 WebP 형식의 이미지를 처리할 수 있게 해주는 라이브러리 -->
+		<dependency>
+		    <groupId>org.sejda.imageio</groupId>
+		    <artifactId>webp-imageio</artifactId>
+		    <version>0.1.6</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.bytedeco/ffmpeg -->
 		<!-- 동영상 썸네일 -->
@@ -179,7 +187,7 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.bytedeco/javacv -->
-		<!-- ava에서 컴퓨터 비전과 이미지 처리 기능을 사용할 수 있도록 돕는 라이브러리 -->
+		<!-- java에서 컴퓨터 비전과 이미지 처리 기능을 사용할 수 있도록 돕는 라이브러리 -->
 		<dependency>
 		    <groupId>org.bytedeco</groupId>
 		    <artifactId>javacv</artifactId>

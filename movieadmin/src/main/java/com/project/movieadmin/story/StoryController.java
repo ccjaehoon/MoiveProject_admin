@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 
 import com.project.movieadmin.info.review.ReviewVO;
@@ -83,10 +82,13 @@ public class StoryController {
 	    	String originFileName = vo.getFile().getOriginalFilename();
 	        log.info("업로드된 파일이 image", originFileName);
 	     // 이미지 파일의 확장자 목록
-		    List<String> imageExtensions = Arrays.asList("jpg", "jpeg", "png", "gif", "bmp");
+		    List<String> imageExtensions = Arrays.asList("jpg", "jpeg", "png", "gif", "bmp", "webp");
 		    List<String> videoExtensions = Arrays.asList("mp3", "mp4", "avi", "mov", "flv", "mkv");
+		   /*  오디오 파일 확장자 목록 (나중에 추가해보자 원래는 비디오에 mp3 파일을 안 넣는다 함)
+		    List<String> audioExtensions = new ArrayList<>(Arrays.asList("mp3", "wav", "flac", "ogg", "aac"));
+		    audioExtensions.add("dsd"); */
 
-		 // 파일 확장자 추출
+		 // 파일 확장자 추출  +1을 사용한 이유는 파일 확장자의 점(.)을 제외하고 확장자 부분만 추출하기 위함
 		    String fileExtension = originFileName.substring(originFileName.lastIndexOf(".") + 1).toLowerCase();
 		    
 		 // 파일 유형 판별
@@ -97,15 +99,22 @@ public class StoryController {
 		        File uploadFile = new File(imgRealPath, save_name);
 		        vo.getFile().transferTo(uploadFile); // 이미지 파일 저장
 		        
-		        //이미지썸네일 생성로직
-		        BufferedImage original_buffer_img = ImageIO.read(uploadFile);
-		        BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
-		        Graphics2D graphic = thumb_buffer_img.createGraphics();
-		        graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+		        //이미지썸네일 생성로직 original_buffer_img = 이미지 파일을 읽어 메모리에 로드한 상태의 이미지
+		        BufferedImage original_buffered_img = ImageIO.read(uploadFile);	        
+		        int type = original_buffered_img.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : original_buffered_img.getType();
+		        //썸네일의 크기를 지정합니다
+		        int thumbnailWidth = 50;
+		        int thumbnailHeight = 50;
+		        
+		        BufferedImage thumb_buffered_img = new BufferedImage(thumbnailWidth, thumbnailHeight, type);
+		        Graphics2D graphic = thumb_buffered_img.createGraphics();
+		        graphic.drawImage(original_buffered_img, 0, 0, thumbnailWidth, thumbnailHeight, null);
 		        graphic.dispose(); // 리소스 해제
 
 		        File thumb_file = new File(imgRealPath, "thumb_" + save_name);
-		        ImageIO.write(thumb_buffer_img, save_name.substring(save_name.lastIndexOf(".") + 1), thumb_file);
+		        ImageIO.write(thumb_buffered_img, "webp", thumb_file);
+		       
+		        
 //  동영상 파일		        
 		    }else if (videoExtensions.contains(fileExtension)) {
 		        // 이미지 파일이 아닌 경우 처리
@@ -122,17 +131,17 @@ public class StoryController {
 				Java2DFrameConverter converter = new Java2DFrameConverter();
 		        
 				Frame frame = frameGrabber.grabKeyFrame();
-		        BufferedImage originalThumbnail = converter.convert(frame);
+		        BufferedImage thumb_buffered_video = converter.convert(frame);
 		        
-		        // 썸네일의 크기를 지정합니다.
+		        // 썸네일의 크기를 지정합니다. resizedThumbnail =  동영상에서 추출된 썸네일 이미지
 		        int thumbnailWidth = 50;
 		        int thumbnailHeight = 50;
 		        BufferedImage resizedThumbnail = new BufferedImage(thumbnailWidth, thumbnailHeight, BufferedImage.TYPE_3BYTE_BGR);
 		        
 		        // Graphics2D 객체를 사용하여 원본 이미지를 새로운 크기로 그립니다.
-		        Graphics2D g = resizedThumbnail.createGraphics();
-		        g.drawImage(originalThumbnail, 0, 0, thumbnailWidth, thumbnailHeight, null);
-		        g.dispose(); //리소스 해제
+		        Graphics2D graphic = resizedThumbnail.createGraphics();
+		        graphic.drawImage(thumb_buffered_video, 0, 0, thumbnailWidth, thumbnailHeight, null);
+		        graphic.dispose(); //리소스 해제
 		        
 		        // 조정된 썸네일을 파일에 저장합니다.
 		        ImageIO.write(resizedThumbnail, "png", new File(videoRealPath, "thumb_" + save_name + ".png"));	        
@@ -167,33 +176,7 @@ public class StoryController {
 
 		String videoRealPath = sContext.getRealPath("resources/uploadimg/videos");// 동영상 파일 저장 경로
 	    // 새 파일 업로드 로직
-//	    MultipartFile fileImg = vo.getFile_img();
-//	    
-//	    MultipartFile fileVideo = vo.getFile_video();
-//
-//	    if (fileImg != null && !fileImg.isEmpty()) {
-//	        // 이미지 파일 처리
-//	        String save_name = "img_" + System.currentTimeMillis() + fileImg.getOriginalFilename();
-//	        File uploadFile = new File(imgRealPath, save_name);
-//	        try {
-//	            fileImg.transferTo(uploadFile); // 원본 이미지 저장
-//	            vo.setSave_img(save_name); // VO에 저장할 이미지 파일 이름 설정
-//	        } catch (IOException e) {
-//	            e.printStackTrace();
-//	        }
-//	    }
-//
-//	    if (fileVideo != null && !fileVideo.isEmpty()) {
-//	        // 동영상 파일 처리
-//	        String saveVideoName = "video_" + System.currentTimeMillis() + fileVideo.getOriginalFilename();
-//	        File uploadVideoFile = new File(videoRealPath, saveVideoName);
-//	        try {
-//	            fileVideo.transferTo(uploadVideoFile); // 원본 동영상 파일 저장
-//	            vo.setSave_video(saveVideoName); // VO에 저장할 동영상 파일 이름 설정
-//	        } catch (IOException e) {
-//	            e.printStackTrace();
-//	        }
-//	    }
+
 
 		int result = service.s_update(vo);
 		log.info("result:{}", result);
