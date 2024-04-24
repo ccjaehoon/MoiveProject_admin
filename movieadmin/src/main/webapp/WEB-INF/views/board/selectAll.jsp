@@ -46,8 +46,11 @@
 </script>
 </head>
 <body class="is-preload">
-	<div id="main">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
+<div style="position: relative; z-index: 2;">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
 		<h2>글목록</h2>
 		<hr>
 		<form action="b_searchList.do">
@@ -98,7 +101,9 @@
 		</table>
 		<a href="b_insert.do">글쓰기</a>
 	</div>
+		 <div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>
+		</div>
 </div>
 	
 </body>

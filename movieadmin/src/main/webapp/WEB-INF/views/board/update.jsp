@@ -43,7 +43,9 @@
 	            </table>
 	        </div>
 		</form>
+		<div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>
+		</div>
  	</div>
 	<br>
 	<br>

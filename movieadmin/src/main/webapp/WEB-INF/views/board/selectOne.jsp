@@ -292,7 +292,9 @@ $(function() {
 			</table>
 		</form>
 	</div>
-	<jsp:include page="../footer_menu.jsp"></jsp:include>
+	 <div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+		</div>
 <script>
 	function submitReportForm() {
 		location.reload();
