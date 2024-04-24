@@ -12,11 +12,14 @@
 </head>
 
 <body>
+	<div style="position: relative; z-index: 2;">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div class="table=wrapper">
+	</div>
+	<div id = "main" style="position: relative; z-index: 1;">
+	<br>
 		<h1>영화 작성페이지</h1>
 		<form action="i_insertOK.do" method="post" enctype="multipart/form-data">
-			<table id="insertTable">
+			<table class="alt">
 				<tr>
 					<td><label for="title">제목</label></td>
 					<td><input type="text" id="title" name="title"></td>
@@ -63,6 +66,9 @@
 				</tr>
 			</table>
 		</form>
+	</div>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
 </body>
 

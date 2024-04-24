@@ -16,10 +16,12 @@
 
 </head>
 <body>
-<div id = "main">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-    <h1>신고 목록</h1>
-    <hr>
+<div style="position: relative; z-index: 2;">
+    <jsp:include page="../top_menu.jsp"></jsp:include>
+</div>
+<div id="main" style="position: relative; z-index: 1;">
+<br>
+    <h2>신고 목록</h2>
     <table class="alt">
         <thead>
             <tr>
@@ -41,5 +43,7 @@
         </tbody>
     </table>
     </div>
+    		<div id = "copyright">
+<jsp:include page="../footer_menu.jsp"></jsp:include></div>
 </body>
 </html>

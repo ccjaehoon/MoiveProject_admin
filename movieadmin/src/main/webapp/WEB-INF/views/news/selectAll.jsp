@@ -62,7 +62,7 @@
 	        
 	        <tfoot>
 	            <tr>
-	                <td colspan="7">
+	                <td colspan="7" align = "center">
 	                	<c:forEach var="i" begin="1" end="${totalPageCount}">
 		                	<c:if test="${param.searchKey == null }">
 			                	<a href="n_selectAll.do?cpage=${i}">${i} &nbsp;</a>

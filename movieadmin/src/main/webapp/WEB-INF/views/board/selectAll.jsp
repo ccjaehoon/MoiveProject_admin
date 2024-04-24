@@ -84,7 +84,7 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="5"><c:forEach var="i" begin="1"
+					<td colspan="5" align = "center"><c:forEach var="i" begin="1"
 							end="${totalPageCount}">
 							<c:if test="${param.searchKey == null}">
 								<a href="b_selectAll.do?cpage=${i}">${i} &nbsp;</a>
