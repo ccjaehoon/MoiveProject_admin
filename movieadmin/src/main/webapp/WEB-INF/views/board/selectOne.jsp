@@ -9,58 +9,10 @@
 <title>Document</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
-<!-- <style>
-#movies {
-	font-family: Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-#movies td, #movies th {
-	border: 1px solid #ddd;
-	padding: 8px;
-}
-
-#movies tr:nth-child(even) {
-	background-color: #ff6565;
-}
-
-#movies tr:hover {
-	background-color: #fca2a2;
-}
-
-#movies th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #04AA6D;
-	color: white;
-}
-
-tfoot td {
-	text-align: center;
-}
-
-#rp {
-	background-color: white;
-}
-
-#font {
-	font-size: 30px;
-}
-
-#text_report {
-	width: 500px;
-	height: 500px;
-}
-</style> -->
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
-
 $(function() {
 
 	console.log("jquery test");
@@ -159,141 +111,141 @@ $(function() {
 
 </head>
 <body>
-	<div id="main" style="position: relative; z-index: 1;">
+	<div style="position: relative; z-index: 2;">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>글정보</h1>
-	<hr>
-	<div class="table-wrapper">
-	<table id="alt">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>썸네일</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>${vo2.board_num}</td>
-				<td>${vo2.title}</td>
-				<td>${vo2.nickname}</td>
-				<td><img src="resources/uploadimg/${vo2.save_img}" width="200"></td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td colspan="3">${vo2.content}</td>
-			</tr>
-			<tr>
-				<td>작성일자</td>
-				<td colspan="3">${vo2.wdate}</td>
-			</tr>
-		</tbody>
-		
-		<tbody>
-				<tr>
-					<td>
-						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
-						<input type="hidden" name="good" value="${vo2.good}" id="good">
-						<input type="hidden" name="nickname" value="${vo2.nickname}" id="nickname">
-						<input type="button" value="${vo2.good}" class="b_increaseGood">
-					</td>
-					<td>
-					<input type="button" id="reportBtn" class="report"
-						onClick="showDialogReport('${vo2.board_num}','${nickname}')" value="신고" /></td>
-					<c:if test="${nickname == vo2.nickname}">
-					<td><a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a></td>
-					<td><a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
-					</c:if>
-				</tr>
-		</tbody>
-	</table>
 	</div>
-	<hr>
-	<h3>댓글작성</h3>
-	<form action="c_insertOK.do">
-	<div class="table-wrapper">
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
+		<h2>글정보</h2>
+		<hr>
+		<div class="table-wrapper">
 			<table id="alt">
-			<thead>
-				<tr>
-					<th>댓글 내용${param.msg}</th>
-					<th>댓글 작성자</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><input type="text" name="content" value="hello" size="50"></td>
-					<td>${nickname}
-						<input type="hidden" name="nickname" value="${nickname}">
-						<input type="hidden" name="board_num" value="${vo2.board_num}">
-					</td>
-					<td>
-						<input type="submit" value="댓글작성">
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	</form>
-	<hr>
-	<h3>댓글목록</h3>
-	<div class="table-wrapper">
-		<table id="alt">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>내용</th>
-				<th>닉네임</th>
-				<th>좋아요</th>
-				<th>작성일자</th>
-				<th>신고</th>
-				<th>삭제</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="cvo" items="${cvos}" varStatus="vs">
-				<tr>
-					<td>${cvo.comments_num}</td>
-					<td>${cvo.content}
-						<form action="c_updateOK.do">
-							<c:if test="${param.nickname == cvo.nickname}">
-								<input type="text" name="content" value="${cvo.content}">
-								<input type="hidden" name="comments_num" value="${cvo.comments_num}">
-								<input type="hidden" name="board_num" value="${cvo.board_num}">
-								<input type="submit" value="수정">
+				<tbody>
+					<tr>
+						<td id="boardR">번호</td>
+						<td>${vo2.board_num}</td>
+						<td id="boardR">작성자</td>
+						<td>${vo2.nickname}</td>
+					</tr>
+					<tr>
+						<td id="boardR">제목</td>
+						<td colspan="3">${vo2.title}</td>
+
+					</tr>
+					<tr>
+						<td id="boardR">내용</td>
+						<td colspan="3">${vo2.content}</td>
+					</tr>
+					<c:if test="${authority == 'admin'}">
+						<td colspan="4" align="right"><a
+							href="b_update.do?board_num=${param.board_num}&content=${param.content}">글수정</a>
+							<a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
+					</c:if>
+				</tbody>
+				
+				<tbody>
+						<tr>
+							<td>
+								<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
+								<input type="hidden" name="good" value="${vo2.good}" id="good">
+								<input type="hidden" name="nickname" value="${vo2.nickname}" id="nickname">
+								<input type="button" value="${vo2.good}" class="b_increaseGood">
+							</td>
+							<td>
+								<input type="button" id="reportBtn" class="report"
+									onClick="showDialogReport('${vo2.board_num}','${nickname}')" value="신고"/>
+							</td>
+							<c:if test="${nickname == vo2.nickname}">
+								<td><a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a></td>
+								<td><a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
 							</c:if>
-						</form>
-					</td>
-					<td>${cvo.nickname}<input type="hidden" name="nickname"
-						value="${nickname}" id="nickname${vs.index}">
-					</td>
-					<td>
-						<input type="hidden" name="comments_num" value="${cvo.comments_num}"  id="comments_num${vs.index}">
-						<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
-						<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
-						<input type="button" value="${cvo.good}" class="c_increaseGood">
-					</td>
-					<td>${cvo.wdate}</td>
-					<td>
-						<input type="button" id="reportBtn" class="report"
-						onClick="showDialogReportC('${cvo.comments_num}','${nickname}')" value="신고" />
-					</td>
-					<td>
-						<c:if test="${nickname == cvo.nickname}">
-							<a href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">댓글삭제</a>
-						</c:if>
-					</td>
-				</tr>
-			</c:forEach>
-
-		</tbody>
-	</table>
-	</div>
+						</tr>
+				</tbody>
+			</table>
+		</div>
+		<hr>
+		<h3>댓글작성</h3>
+		<form action="c_insertOK.do">
+			<div class="table-wrapper">
+				<table id="alt">
+					<thead>
+						<tr>
+							<th>댓글 내용${param.msg}</th>
+							<th>댓글 작성자</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" name="content" value="hello" size="50"></td>
+							<td>${nickname}
+								<input type="hidden" name="nickname" value="${nickname}">
+								<input type="hidden" name="board_num" value="${vo2.board_num}">
+							</td>
+							<td>
+								<input type="submit" value="댓글작성">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
+		<hr>
+		<h3>댓글목록</h3>
+		<div class="table-wrapper">
+			<table id="alt">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>내용</th>
+						<th>닉네임</th>
+						<th>좋아요</th>
+						<th>작성일자</th>
+						<th>신고</th>
+						<th>삭제</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="cvo" items="${cvos}" varStatus="vs">
+						<tr>
+							<td>${cvo.comments_num}</td>
+							<td>${cvo.content}
+								<form action="c_updateOK.do">
+									<c:if test="${param.nickname == cvo.nickname}">
+										<input type="text" name="content" value="${cvo.content}">
+										<input type="hidden" name="comments_num" value="${cvo.comments_num}">
+										<input type="hidden" name="board_num" value="${cvo.board_num}">
+										<input type="submit" value="수정">
+									</c:if>
+								</form>
+							</td>
+							<td>${cvo.nickname}<input type="hidden" name="nickname"
+								value="${nickname}" id="nickname${vs.index}">
+							</td>
+							<td>
+								<input type="hidden" name="comments_num" value="${cvo.comments_num}"  id="comments_num${vs.index}">
+								<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
+								<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
+								<input type="button" value="${cvo.good}" class="c_increaseGood">
+							</td>
+							<td>${cvo.wdate}</td>
+							<td>
+								<input type="button" id="reportBtn" class="report"
+								onClick="showDialogReportC('${cvo.comments_num}','${nickname}')" value="신고" />
+							</td>
+							<td>
+								<c:if test="${nickname == cvo.nickname}">
+									<a href="c_deleteOK.do?comments_num=${cvo.comments_num}&board_num=${cvo.board_num}">댓글삭제</a>
+								</c:if>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	<jsp:include page="../footer_menu.jsp"></jsp:include>
-</div>
+	</div>
 	<div id="report" style="position: relative; z-index: 2;">
-
 		<form id="reportForm" action="rp_insertOK.do" method="post">
 			<table id="rp" border="2">
 				<tr>
@@ -317,7 +269,6 @@ $(function() {
 		</form>
 	</div>
 	<div id="reportC" style="position: relative; z-index: 2;">
-
 		<form id="reportFormC" action="rp_insertOK.do" method="post">
 			<table id="rp" border="2">
 				<tr>
@@ -341,8 +292,7 @@ $(function() {
 			</table>
 		</form>
 	</div>
-	
-	
+	<jsp:include page="../footer_menu.jsp"></jsp:include>
 <script>
 	function submitReportForm() {
 		location.reload();

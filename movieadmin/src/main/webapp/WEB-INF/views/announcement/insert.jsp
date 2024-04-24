@@ -16,8 +16,11 @@
 
 <body class="is-preload">
    
-    <div id = "main">
-     <jsp:include page="../top_menu.jsp"></jsp:include>
+<div style="position: relative; z-index: 2;">
+    <jsp:include page="../top_menu.jsp"></jsp:include>
+</div>
+<div id="main" style="position: relative; z-index: 1;">
+<br>
         <h3>공지사항 작성</h3>
         <form action="a_insertOK.do" method="post" enctype="multipart/form-data">
             <table class="alt">
@@ -46,7 +49,9 @@
             </table>
         </form>
     </div>
-    <jsp:include page="../footer_menu.jsp"></jsp:include>
+  <div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+		</div>
 </body>
 
 </html>

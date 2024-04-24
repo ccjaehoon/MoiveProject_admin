@@ -18,8 +18,11 @@
 
 <body>
    
-    <div id ="main">
-     <jsp:include page="../top_menu.jsp"></jsp:include>
+<div style="position: relative; z-index: 2;">
+    <jsp:include page="../top_menu.jsp"></jsp:include>
+</div>
+<div id="main" style="position: relative; z-index: 1;">
+<br>
         <h3>게시글 수정하기</h3>
         <form action="a_updateOK.do" method="post" enctype="multipart/form-data">
             <table id="insertTable">
@@ -47,7 +50,9 @@
             </table>
         </form>
     </div>
-    <jsp:include page="../footer_menu.jsp"></jsp:include>
+   <div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+		</div>
 </body>
 
 </html>
