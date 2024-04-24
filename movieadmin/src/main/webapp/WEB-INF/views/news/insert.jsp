@@ -7,69 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>뉴스글 작성페이지</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        #container {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input[type=text],
-        textarea,
-        input[type=file] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            display: block;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        textarea {
-            resize: vertical;
-        }
-
-        input[type=submit] {
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        input[type=submit]:hover {
-            background-color: #45a049;
-        }
-    </style>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 </head>
 
 <body>
+    <div id="main">
     <jsp:include page="../top_menu.jsp"></jsp:include>
-    <div id="container">
         <h1>뉴스글 작성페이지</h1>
         <form id="newsForm" action="n_insertOK.do" method="post" enctype="multipart/form-data">
             <label for="title">제목</label>
@@ -82,6 +26,7 @@
             <input type="file" id="file_img" name="file_img">
             <input type="submit" value="글쓰기 완료">
         </form>
+        <jsp:include page="../footer_menu.jsp"></jsp:include>
     </div>
 </body>
 
