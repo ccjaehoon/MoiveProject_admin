@@ -46,6 +46,9 @@
 			autoOpen : false
 		});
 	});
+	function closeReportDialog() {
+		$("#report").dialog("close");
+	}
 
 	// 	});
 
@@ -110,6 +113,51 @@
 	href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<style>
+#report, #reportC {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+#rp {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#rp td {
+	padding: 10px;
+}
+
+#font {
+	font-weight: bold;
+}
+
+#text_report {
+	width: 100%;
+	height: 100px;
+}
+
+.report {
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.report:hover {
+	background-color: #0056b3;
+}
+</style>
+
 </head>
 <body>
 	<div style="position: relative; z-index: 2;">
@@ -172,137 +220,138 @@
 				<tr>
 					<c:if test="${authority == 'admin'}">
 						<td colspan="5">
-							<form action="i_update.do?info_num=${vo2.info_num}" style="text-align: center;" >
+							<form action="i_update.do?info_num=${vo2.info_num}"
+								style="text-align: center;">
 								<input type="submit" value="영화 수정">
 							</form>
 						</td>
 					</c:if>
 				</tr>
+		</table>
 
 
 
+		<h3>리뷰작성</h3>
+		<form action="rv_insertOK.do">
+			<table id="customers">
+				<thead>
+					<tr>
+						<th>댓글 내용 ${param.msg}</th>
+						<th>댓글 작성자</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" name="content" value="hello" size="50"></td>
+						<td>${nickname}<input type="hidden" name="nickname"
+							value="${nickname}"> <input type="hidden" name="info_num"
+							value="${vo2.info_num}">
+						</td>
+						<td><input type="submit" value="댓글작성"></td>
+					</tr>
+				</tbody>
+			</table>
 
-				<h3>리뷰작성</h3>
-				<form action="rv_insertOK.do">
-					<table id="customers">
-						<thead>
-							<tr>
-								<th>댓글 내용 ${param.msg}</th>
-								<th>댓글 작성자</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><input type="text" name="content" value="hello"
-									size="50"></td>
-								<td>${nickname}<input type="hidden" name="nickname"
-									value="${nickname}"> <input type="hidden"
-									name="info_num" value="${vo2.info_num}">
-								</td>
-								<td><input type="submit" value="댓글작성"></td>
-							</tr>
-						</tbody>
-					</table>
+		</form>
+		<h3>리뷰 목록</h3>
+		<table id="customers">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>내용</th>
+					<th>작성자</th>
 
-				</form>
-				<h3>리뷰 목록</h3>
-				<table id="customers">
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>내용</th>
-							<th>작성자</th>
+					<th>신고</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="ivo" items="${ivos}" varStatus="vs">
 
-							<th>신고</th>
-							<th>삭제</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="ivo" items="${ivos}" varStatus="vs">
+					<tr>
+						<td>${ivo.review_num}</td>
+						<td>${ivo.content}
+							<form action="rv_updateOK.do">
+								<c:if test="${nickname == ivo.nickname}">
+									<input type="text" name="content" value="${ivo.content}">
+									<input type="hidden" name="review_num"
+										value="${ivo.review_num}">
+									<input type="hidden" name="info_num" value="${ivo.info_num}">
+									<input type="submit" value="수정">
+								</c:if>
 
-							<tr>
-								<td>${ivo.review_num}</td>
-								<td>${ivo.content}
-									<form action="rv_updateOK.do">
-										<c:if test="${nickname == ivo.nickname}">
-											<input type="text" name="content" value="${ivo.content}">
-											<input type="hidden" name="review_num"
-												value="${ivo.review_num}">
-											<input type="hidden" name="info_num" value="${ivo.info_num}">
-											<input type="submit" value="수정">
-										</c:if>
+							</form>
+						</td>
 
-									</form>
-								</td>
-
-								<td>${ivo.nickname}<input type="hidden" name="nickname"
-									value="${nickname}" id="nickname${vs.index}"></td>
+						<td>${ivo.nickname}<input type="hidden" name="nickname"
+							value="${nickname}" id="nickname${vs.index}"></td>
 
 
 
-								<td><input type="button" id="reportBtn" class="report"
-									onClick="showDialogReport('${ivo.review_num}','${nickname}','${vo2.info_num}')"
-									value="신고" /></td>
+						<td><input type="button" id="reportBtn" class="report"
+							onClick="showDialogReport('${ivo.review_num}','${nickname}','${vo2.info_num}')"
+							value="신고" /></td>
 
-								<td><c:if test="${nickname == ivo.nickname}">
-										<a
-											href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰
-											삭제</a>
-									</c:if></td>
+						<td><c:if test="${nickname == ivo.nickname}">
+								<a
+									href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰
+									삭제</a>
+							</c:if></td>
 
-							</tr>
-						</c:forEach>
+					</tr>
+				</c:forEach>
 
-					</tbody>
-				</table>
-				</div>
+			</tbody>
+		</table>
+	</div>
 
-				<div id="report" class="table=wrapper"
-					style="position: relative; z-index: 2;">
+	<div id="report" class="table=wrapper"
+		style="position: relative; z-index: 2;">
 
-					<form id="reportForm" action="rp_insertOK.do" method="post">
-						<table id="rp" border="2">
-							<tr>
-								<td id="font" width="100">신고 내용<input type="text"
-									id="nickname" name="nickname" value="${nickname}" readonly>
-									<input type="text" id="review_num" name="review_num" readonly>
-									<input type="hidden" id="info_numR" name="info_num"></td>
-							</tr>
-							<tr>
-								<td><textarea id="text_report" name="content"
-										placeholder="신고내용을 적으세요">test report</textarea></td>
-							</tr>
-							<tr>
-								<td colspan="2"><input type="submit" value="신고접수"
-									class="report"></td>
-							</tr>
-						</table>
-					</form>
-				</div>
-				<div id="copyright">
-					<jsp:include page="../footer_menu.jsp"></jsp:include>
-				</div>
+		<form id="reportForm" action="rp_insertOK.do" method="post">
+			<table id="rp" border="2">
+				<tr>
+					<td id="font" width="100">신고 내용<input type="text"
+						id="nickname" name="nickname" value="${nickname}" readonly>
+						<input type="text" id="review_num" name="review_num" readonly>
+						<input type="hidden" id="info_numR" name="info_num"></td>
+				</tr>
+				<tr>
+					<td><textarea id="text_report" name="content"
+							placeholder="신고내용을 적으세요">test report</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="신고접수"
+						class="report">
+						<button type="button" onclick="closeReportDialog()">닫기</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 
-				<script>
-					function submitReportForm() {
-						location.reload();
-					}
-					$("#reportForm").submit(function(event) {
-						event.preventDefault();
-						$.ajax({
-							type : "POST",
-							url : $(this).attr("action"),
-							data : $(this).serialize(),
-							success : function(response) {
-								console.log(response);
-								submitReportForm();
-							},
-							error : function(xhr, status, error) {
-								console.error(status, error);
-							}
-						});
-					});
-				</script>
+	<script>
+		function submitReportForm() {
+			location.reload();
+		}
+		$("#reportForm").submit(function(event) {
+			event.preventDefault();
+			$.ajax({
+				type : "POST",
+				url : $(this).attr("action"),
+				data : $(this).serialize(),
+				success : function(response) {
+					console.log(response);
+					submitReportForm();
+				},
+				error : function(xhr, status, error) {
+					console.error(status, error);
+				}
+			});
+		});
+	</script>
 </body>
 </html>
