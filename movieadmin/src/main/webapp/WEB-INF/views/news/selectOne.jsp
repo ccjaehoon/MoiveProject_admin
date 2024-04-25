@@ -96,6 +96,9 @@
 			autoOpen : false
 		});
 	});
+	function closeReportDialog() {
+	    $("#report").dialog("close");
+	}
 
 	// 	});
 
@@ -109,7 +112,51 @@
 		$("#report").dialog("open");
 	}
 </script>
+<style>
+#report, #reportC  {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
 
+#rp {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#rp td {
+  padding: 10px;
+}
+
+#font {
+  font-weight: bold;
+}
+
+#text_report {
+  width: 100%;
+  height: 100px;
+}
+
+.report {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.report:hover {
+  background-color: #0056b3;
+}
+
+</style>
 </head>
 <body>
 	<div style="position: relative; z-index: 2;">
@@ -255,7 +302,8 @@
 					</tr>
 					<tr>
 						<td colspan="2"><input type="submit" value="신고접수"
-							class="report"></td>
+							class="report">
+								 <button type="button" onclick="closeReportDialog()">닫기</button></td>
 					</tr>
 				</table>
 			</form>
