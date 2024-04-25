@@ -112,7 +112,9 @@
 				</tr>
 			</tfoot>
 		</table>
-		<a href="b_insert.do">글쓰기</a>
+			<c:if test="${authority == 'admin'}">
+				<a href="b_insert.do">글쓰기</a>
+			</c:if>
 	</div>
 		 <div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>

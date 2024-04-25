@@ -62,8 +62,8 @@
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
 	// API 키
-	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
-	//	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
+	//	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
+	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
 
 	// YouTube API 클라이언트 초기화
 	function init() {
@@ -117,45 +117,58 @@
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
-		<h2>글정보</h2>
-		<hr>
+		<h2>${vo2.title}</h2>
 		<table id="customers">
 			<thead>
 				<tr>
 					<th colspan="3"><img src="resources/uploadimg/${vo2.save_img}"
-						width="200"></th>
-					<th colspan="5"><iframe id="trailerFrame" width="420"
-							height="315" frameborder="0" allowfullscreen></iframe></th>
+						style="width: 60%; height: auto;"></th>
+					<th colspan="5" align="right"><iframe id="trailerFrame"
+							style="width: 100%; height: 0; padding-bottom: 56.25%;"
+							frameborder="0" allowfullscreen></iframe></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>${vo2.title}</td>
-					<td colspan="6">${vo2.content}</td>
+
+					<td colspan="7">${vo2.content}</td>
+
 				</tr>
 				<tr>
 					<td>장르</td>
-					<td>감독</td>
-					<td>배우</td>
-					<td>상영시간(분)</td>
-					<td>출시일</td>
-					<td>제작사</td>
-					<td>글 조회수</td>
-					<td>즐겨찾기</td>
+					<td>${vo2.genre}</td>
 				</tr>
 				<tr>
-					<td>${vo2.genre}</td>
+					<td>감독</td>
 					<td>${vo2.directors}</td>
+				</tr>
+				<tr>
+					<td>배우</td>
 					<td>${vo2.actor}</td>
+				</tr>
+				<tr>
+					<td>상영시간(분)</td>
 					<td>${vo2.showtime}</td>
+				</tr>
+				<tr>
+					<td>출시일</td>
 					<td>${vo2.releaseDate}</td>
+				</tr>
+				<tr>
+					<td>제작사</td>
 					<td>${vo2.companys}</td>
+				</tr>
+				<tr>
+					<td>글 조회수</td>
 					<td>${vo2.views}</td>
 					<td><input type="hidden" name="info_num"
 						value="${vo2.info_num}" id="info_num"> <input
 						type="hidden" name="nickname" value="${nickname}" id="nicknameF">
-						<input type="button" value="즐겨찾기" class="i_favorite"></td>
-				</tr>
+					<td>
+					<input type="button" value="즐겨찾기" class="i_favorite">
+					</td>
+				
+			
 
 			</tbody>
 		</table>
@@ -240,7 +253,8 @@
 		</table>
 	</div>
 
-	<div id="report" class="table=wrapper" style="position: relative; z-index: 2;">
+	<div id="report" class="table=wrapper"
+		style="position: relative; z-index: 2;">
 
 		<form id="reportForm" action="rp_insertOK.do" method="post">
 			<table id="rp" border="2">
