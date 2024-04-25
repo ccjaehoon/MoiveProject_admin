@@ -22,10 +22,10 @@
 		<form action="i_searchList.do">
 
 			<select name="searchKey">
-				<option value="title">title</option>
-				<option value="genre">genre</option>
-				<option value="actor">actor</option>
-			</select> <input type="text" name="searchWord" value=""> <input
+				<option value="title">제목</option>
+				<option value="genre">장르</option>
+				<option value="actor">배우</option>
+			</select> <input type="text" name="searchWord" value="검색어"> <input
 				type="submit" value="search">
 		</form>
 
