@@ -79,6 +79,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="vo" items="${vos}">
+
 						<tr>
 							<td style="text-align: center; vertical-align: middle;"><a
 								href="b_selectOne.do?board_num=${vo.board_num}&nickname=${vo.nickname}">${vo.board_num}</a>
@@ -92,6 +93,7 @@
 									value="${vo.wdate}" pattern="yyyy-MM-dd" /></td>
 						</tr>
 					</c:forEach>
+
 			</tbody>
 			<tfoot>
 				<tr>
