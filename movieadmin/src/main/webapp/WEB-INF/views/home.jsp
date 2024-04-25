@@ -53,23 +53,22 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-3 col-6-medium col-12-small">
-						<!-- Feature #1 -->
-						<section>
-						    <table class="alt">
-					            <c:forEach var="ivo" items="${ivos}">
-						        	<tr>
-						                <td>
-						                    <span style="float: left;">
-						                    	<a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
-						                    </span>
-						                    <br/>
-						                    <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
-						                </td>
-						        	</tr>
-					            </c:forEach>
-						    </table>
-						</section>
-						
+					    <!-- Feature #1 -->
+					    <section>
+					        <table class="alt">
+					            <tr>
+					                <c:forEach var="ivo" items="${ivos}">
+					                    <td align="center">
+					                        <span style="float: left;">
+					                            <a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
+					                        </span>
+					                        <br/>
+					                        <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
+					                    </td>
+					                </c:forEach>
+					            </tr>
+					        </table>
+					    </section>
 					</div>
 					<%-- <div class="col-3 col-6-medium col-12-small">
 
