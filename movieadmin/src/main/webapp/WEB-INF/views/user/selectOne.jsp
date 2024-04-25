@@ -24,7 +24,7 @@
 </div>
 <div id="main" style="position: relative; z-index: 1;">
 <br>
-    <h1>회원정보</h1>
+    <h2>회원정보</h2>
     <hr>
     <table class="alt">
         <thead>

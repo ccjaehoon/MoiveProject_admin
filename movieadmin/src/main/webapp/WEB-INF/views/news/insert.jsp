@@ -19,7 +19,7 @@
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
-		<h1>뉴스글 작성페이지</h1>
+		<h2>뉴스글 작성페이지</h2>
 		<form id="newsForm" action="n_insertOK.do" method="post"
 			enctype="multipart/form-data">
 			<label for="title">제목</label> <input type="text" id="title"

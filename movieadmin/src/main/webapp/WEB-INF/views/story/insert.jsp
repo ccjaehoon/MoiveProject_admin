@@ -18,7 +18,7 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
   </div>
 	<div id="main" style="position: relative; z-index: 1;">
-        <h1>스토리 만들기</h1>
+        <h2>스토리 만들기</h2>
         <form action="s_insertOK.do" method="post" enctype="multipart/form-data">
         	<div class="table-wrapper">
             <table id="alt">
@@ -37,18 +37,17 @@
                     <td><textarea name="content" id="content" cols="30" rows="10" placeholder="한줄평을 입력하세요"></textarea></td>
                 </tr>
                 
-                <tr>
-               <!--  <td>
-					<input type="file" name="media_files" accept="image/*,video/*" multiple>
+                	<!--<tr>
+                	 <td>
+					<input type="file" name="file_img" accept="image/*" multiple>
 					</td>
 					<td>
-					<input type="file" name="media_files2" accept="image/*,video/*" multiple>
-					</td>
-					</tr> -->
-				 <tr>
-				    <td><input type="file" name="file_img"></td>
-				    <td><input type="file" name="file_video"></td>
-				</tr> 
+					 <input type="file" name="file_video" accept="video/*" multiple>
+					</td> 
+					</tr>-->
+				<tr>
+					<td><input type="file" name="file" accept="image/*,video/*,audio/*" multiple></td>
+				</tr>
 				
                
 

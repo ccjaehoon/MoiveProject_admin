@@ -20,7 +20,7 @@
 </div>
 <div id="main" style="position: relative; z-index: 1;">
 <br>
-        <h3>스토리 삭제</h3>
+        <h2>스토리 삭제</h2>
         <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
         <form action="s_deleteOK.do" method="post">
             <table id="storyTable">

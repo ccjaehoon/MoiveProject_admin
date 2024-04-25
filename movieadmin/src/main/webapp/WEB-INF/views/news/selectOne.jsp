@@ -117,7 +117,7 @@
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
 		<br><br>
-		<h1>뉴스정보</h1>
+		<h2>뉴스정보</h2>
 		<hr>
 		<table class="alt">
 			<tbody>
