@@ -120,6 +120,7 @@
 
 						<!-- Box #1 -->
 						<section>
+						<span style="float: left">최신 글</span><a href="b_selectAll.do">+더보기</a>
 							<table class="alt">
 								<c:forEach var="bvo" items="${bvos}">
 									<tr>
