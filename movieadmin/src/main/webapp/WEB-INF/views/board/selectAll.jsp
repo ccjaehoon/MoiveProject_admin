@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,8 +58,8 @@
 	<form action="b_searchList.do">
 			<span style="float: left"> <select name="searchKey"
 				style="width: 150px;">
-					<option value="title">title</option>
-					<option value="content">content</option>
+					<option value="title">제목</option>
+					<option value="content">내용</option>
 			</select>
 			</span><span style="float: left"> <input type="text"
 				name="searchWord" value="검색어" style="width: 150px;">
@@ -89,8 +90,7 @@
 								style="width: 70%; display: block; margin: 0 auto;"></td>
 							<td style="text-align: left; vertical-align: middle;">${vo.title}</td>
 							<td style="text-align: center; vertical-align: middle;">${vo.nickname}</td>
-							<td style="text-align: center; vertical-align: middle;"><fmt:formatDate
-									value="${vo.wdate}" pattern="yyyy-MM-dd" /></td>
+							<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 						</tr>
 					</c:forEach>
 

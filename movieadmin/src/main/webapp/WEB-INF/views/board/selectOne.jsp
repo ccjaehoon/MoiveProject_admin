@@ -182,8 +182,7 @@
 						<td id="boardR" width = "10%">작성자</td>
 						<td width = "10%">${vo2.nickname}</td>	
 						<td width = "10%">작성일자</td>
-					<td ><fmt:formatDate value="${vo2.wdate}"
-							pattern="yyyy-MM-dd HH:mm:ss" /></td>					
+						<td>${vo2.wdate}</td>				
 					</tr>
 					<tr>
 						<td id="boardR">제목</td>

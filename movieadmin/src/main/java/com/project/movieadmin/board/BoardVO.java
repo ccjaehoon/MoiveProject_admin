@@ -1,6 +1,6 @@
 package com.project.movieadmin.board;
 
-import java.sql.Date;
+
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,7 +14,7 @@ public class BoardVO {
 	private String nickname;
 	private String user_id;
 	private String content;
-	private Date wdate;
+	private String wdate;
 	private int good;
 	private String authority;
 	private int views;
