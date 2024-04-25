@@ -68,7 +68,7 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 					    <!-- Feature #1 -->
 					    <section>
 					        <table class="alt">
-						                <ul class="bxslider">
+						    	<ul class="bxslider">
 					            <tr>
 					                <c:forEach var="ivo" items="${ivos}">
 						                	<li>
@@ -82,7 +82,7 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 						               		</li>
 					                </c:forEach>
 					            </tr>
-						                </ul>
+			                	</ul>
 					        </table>
 					    </section>
 					</div>
