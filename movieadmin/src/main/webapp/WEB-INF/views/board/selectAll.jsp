@@ -78,7 +78,7 @@
 						<td><img alt="" src="resources/uploadimg/thumb_${vo.save_img}"></td>
 						<td>${vo.title}</td>
 						<td>${vo.nickname}</td>
-						<td>${vo.wdate}</td>
+						<td>${vo2.wdate}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

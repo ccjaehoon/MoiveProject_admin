@@ -130,11 +130,15 @@ $(function() {
 					<tr>
 						<td id="boardR">제목</td>
 						<td colspan="3">${vo2.title}</td>
-
 					</tr>
 					<tr>
 						<td id="boardR">내용</td>
 						<td colspan="3">${vo2.content}</td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle;">이미지</td>
+						<td colspan="3" style="text-align: center"><img
+							src="resources/uploadimg/${vo2.save_img}" width="300"></td>
 					</tr>
 					<c:if test="${authority == 'admin'}">
 						<td colspan="4" align="right"><a
