@@ -130,7 +130,9 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td colspan="8">${vo2.content}</td>
+
+					<td colspan="7">${vo2.content}</td>
+
 				</tr>
 				<tr>
 					<td>장르</td>
