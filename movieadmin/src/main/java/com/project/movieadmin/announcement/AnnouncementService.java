@@ -13,6 +13,8 @@ public interface AnnouncementService {
 	public int a_delete(AnnouncementVO vo);
 	
 	public AnnouncementVO a_selectOne(AnnouncementVO vo);
+	
+	public List<AnnouncementVO> a_selectAll();
 
 	public List<AnnouncementVO> a_selectAll(int cpage, int pageBlock);
 
