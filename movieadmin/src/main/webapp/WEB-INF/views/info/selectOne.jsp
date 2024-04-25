@@ -117,7 +117,7 @@
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
-		<h1>글정보</h1>
+		<h2>글정보</h2>
 		<hr>
 		<table id="customers">
 			<thead>
@@ -240,7 +240,7 @@
 		</table>
 	</div>
 
-	<div id="report" class="table=wrapper">
+	<div id="report" class="table=wrapper" style="position: relative; z-index: 2;">
 
 		<form id="reportForm" action="rp_insertOK.do" method="post">
 			<table id="rp" border="2">

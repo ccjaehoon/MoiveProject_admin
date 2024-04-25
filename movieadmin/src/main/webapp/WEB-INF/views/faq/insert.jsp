@@ -20,7 +20,7 @@
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
-		<h1>FAQ 작성페이지</h1>
+		<h2>FAQ 작성페이지</h2>
 		<form action="f_insertOK.do" method="post">
 			<div class="table-wrapper">
 				<table id="alt">

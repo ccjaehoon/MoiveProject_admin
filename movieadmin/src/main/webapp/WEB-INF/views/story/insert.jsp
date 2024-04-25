@@ -18,7 +18,7 @@
     <jsp:include page="../top_menu.jsp"></jsp:include>
   </div>
 	<div id="main" style="position: relative; z-index: 1;">
-        <h1>스토리 만들기</h1>
+        <h2>스토리 만들기</h2>
         <form action="s_insertOK.do" method="post" enctype="multipart/form-data">
         	<div class="table-wrapper">
             <table id="alt">

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 
@@ -15,17 +15,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-	<script type="text/javascript">
+<script type="text/javascript">
 	console.log(${vo2.wdate});
 	</script>
 </head>
 <body class="is-preload">
 
-<div style="position: relative; z-index: 2;">
-    <jsp:include page="../top_menu.jsp"></jsp:include>
-</div>
-<div id="main" style="position: relative; z-index: 1;">
-<br>
+	<div style="position: relative; z-index: 2;">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
 
 		<table class="alt">
 			<tbody>
@@ -37,7 +37,7 @@
 					<td id="announcementR">작성자</td>
 					<td>${vo2.nickname}</td>
 					<td id="announcementR">작성날짜</td>
-					<td ><fmt:formatDate value="${vo2.wdate}" pattern="Y-M-d-HH"/></td>
+					<td><fmt:formatDate value="${vo2.wdate}" pattern="Y-M-d-HH" /></td>
 				</tr>
 
 				<tr>
@@ -48,10 +48,8 @@
 				<tr>
 
 					<td align="left" colspan="6"><img
-						src="resources/uploadimg/${vo2.save_img}" width="300">
-						<br>
-					${vo2.content}
-					
+						src="resources/uploadimg/${vo2.save_img}" width="300"> <br>
+						${vo2.content}</td>
 				</tr>
 				<c:if test="${authority == 'admin' }">
 					<td colspan="6" align="right"><a
@@ -64,8 +62,8 @@
 		</table>
 
 	</div>
- <div id="copyright">
+	<div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>
-		</div>
+	</div>
 </body>
 </html>

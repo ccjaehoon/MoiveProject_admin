@@ -24,7 +24,7 @@
 </div>
 <div id="main" style="position: relative; z-index: 1;">
 <br>
-        <h3>게시글 삭제하기</h3>
+        <h2>게시글 삭제하기</h2>
   
         <form action="a_deleteOK.do" method="post">
             <table class="alt">

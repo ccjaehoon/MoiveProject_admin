@@ -23,7 +23,7 @@
 </div>
 <div id="main" style="position: relative; z-index: 1;">
 <br>
-		<h3>로그인</h3>
+		<h2>로그인</h2>
 		<form id="loginForm" action="u_loginOK.do" method="post"
 			enctype="multipart/form-data">
 			<table class="alt">

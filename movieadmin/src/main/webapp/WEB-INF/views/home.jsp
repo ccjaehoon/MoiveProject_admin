@@ -42,8 +42,10 @@
 </head>
 <body>
 
-	<jsp:include page="top_menu.jsp"></jsp:include>
-	<div id="main">
+	<div style="position: relative; z-index: 2;">
+		<jsp:include page="top_menu.jsp"></jsp:include>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
 
 		<section id="features">
 			<div class="container">
@@ -118,10 +120,16 @@
 
 						<!-- Box #1 -->
 						<section>
-
-							<a href="#" class="feature-image"><img src="images/pic05.jpg"
-								alt="" /></a>
-							<p>저희 사이트는 영화 정보사이트로 여러 사람들과 영화에 대한 생각을 자유롭게 공유할 수 있습니다</p>
+							<span style="float: left;">최신 글</span> <span
+								style="float: right;"><a href="b_selectAll.do">+더보기</a></span>
+							<table class="alt" style="width: 100%; table-layout: fixed;">
+								<c:forEach var="bvo" items="${bvos}">
+									<tr>
+										<td style="padding: 5px;"><a
+											href="b_selectOne.do?board_num=${bvo.board_num}&nickname=${bvo.nickname}">${bvo.title}</a></td>
+									</tr>
+								</c:forEach>
+							</table>
 						</section>
 
 					</div>
@@ -129,14 +137,17 @@
 
 						<!-- Box #2 -->
 						<section>
-
-							<ul class="check-list">
-								<li>영화1</li>
-								<li>영화2</li>
-								<li>영화3</li>
-								<li>영화4</li>
-								<li>영화5</li>
-							</ul>
+							<span style="float: left">최신 개봉 영화</span><span
+								style="float: right"><a href="i_selectAll.do">+더보기</a></span>
+							<table class="alt">
+								<c:forEach var="ivo" items="${ivos}">
+									<tr>
+										<td align="center"><a
+											href="i_selectOne.do?info_num=${ivo.info_num}"><img
+												src="resources/uploadimg/${ivo.save_img}" width="100"></a></td>
+									</tr>
+								</c:forEach>
+							</table>
 						</section>
 
 					</div>
@@ -144,15 +155,16 @@
 
 						<!-- Box #3 -->
 						<section>
-
-							<ul class="quote-list">
-								<li><img src="images/pic06.jpg" alt="사진1" />
-									<p>1등</p></li>
-								<li><img src="images/pic07.jpg" alt="사진2" />
-									<p>2등</p></li>
-								<li><img src="images/pic08.jpg" alt="사진3" />
-									<p>3등</p></li>
-							</ul>
+							<span style="float: left;">공지사항</span> <span
+								style="float: right;"><a href="a_selectAll.do">+더보기</a></span>
+							<table class="alt" style="width: 100%; table-layout: fixed;">
+								<c:forEach var="avo" items="${avos}">
+									<tr>
+										<td align="center" style="padding: 5px;"><a
+											href="a_selectOne.do?announcement_num=${avo.announcement_num}&nickname=${avo.nickname}">${avo.title}</a></td>
+									</tr>
+								</c:forEach>
+							</table>
 						</section>
 
 					</div>
@@ -162,7 +174,7 @@
 		</section>
 
 	</div>
-	<div id="footer1">
+	<div id="footer">
 		<jsp:include page="footer_menu.jsp"></jsp:include>
 	</div>
 </body>

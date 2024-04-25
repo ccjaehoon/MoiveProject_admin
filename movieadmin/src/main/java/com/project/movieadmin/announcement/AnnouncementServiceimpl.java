@@ -70,4 +70,10 @@ public class AnnouncementServiceimpl implements AnnouncementService {
 		return dao.a_selectAll_nickname(cpage, pageBlock, vo);
 	}
 
+	@Override
+	public List<AnnouncementVO> a_selectAll() {
+		
+		return dao.a_selectAll();
+	}
+
 }

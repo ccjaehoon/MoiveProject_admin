@@ -14,6 +14,8 @@ public interface BoardService {
 
 	public BoardVO b_selectOne(BoardVO vo);
 
+	public List<BoardVO> b_selectAll();
+	
 	public List<BoardVO> b_selectAll(int cpage, int pageBlock);
 
 	public List<BoardVO> b_searchList(String searchKey, String searchWord, int cpage, int pageBlock);

@@ -20,7 +20,7 @@
 		</div>
 		<div id="main" style="position: relative; z-index: 1;">
 		<br>
-		<h1>FAQ</h1>
+		<h2>FAQ</h2>
 		<hr>
 		<div class="table-wrapper">
 			<table id="alt">

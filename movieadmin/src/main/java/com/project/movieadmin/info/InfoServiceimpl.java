@@ -90,4 +90,10 @@ public class InfoServiceimpl implements InfoService {
 		return dao.i_update(vo);
 	}
 
+	@Override
+	public List<InfoVO> i_selectAll() {
+
+		return dao.i_selectAll();
+	}
+
 }

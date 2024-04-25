@@ -100,4 +100,10 @@ public class BoardServiceimpl implements BoardService {
 		return dao.b_increaseReport(vo);
 	}
 
+	@Override
+	public List<BoardVO> b_selectAll() {
+
+		return dao.b_selectAll();
+	}
+
 }

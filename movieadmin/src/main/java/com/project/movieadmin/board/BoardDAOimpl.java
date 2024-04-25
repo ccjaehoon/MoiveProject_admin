@@ -173,4 +173,11 @@ public class BoardDAOimpl implements BoardDAO {
 	    return sqlSession.update("B_UPDATE_REPORT_COUNT", vo);
 	}
 
+	@Override
+	public List<BoardVO> b_selectAll() {
+		List<BoardVO> bvos = sqlSession.selectList("B_SELECT_ALL");
+
+		return bvos;
+	}
+
 }

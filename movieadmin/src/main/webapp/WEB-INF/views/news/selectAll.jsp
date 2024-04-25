@@ -5,17 +5,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>뉴스목록</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/board.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뉴스 목록 페이지</title>
+	<link rel="stylesheet" type="text/css"
+		href="${pageContext.request.contextPath}/resources/css/board.css" />
+	<link rel="stylesheet"
+		href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 </head>
 <body class="is-preload">
-
+	
 	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
 	</div>
@@ -24,39 +23,37 @@
 		<h2>news</h2>
 
 		<form action="n_searchList.do">
-			<select name="searchKey">
-				<option value="title">title</option>
-				<option value="content">content</option>
-			</select> <input type="text" name="searchWord" value="title"> <input
-				type="submit" value="search">
-
+			<span style="float: left"> <select name="searchKey"
+				style="width: 150px;">
+					<option value="title">title</option>
+					<option value="content">content</option>
+			</select>
+			</span><span style="float: left"> <input type="text"
+				name="searchWord" value="검색어" style="width: 150px;">
+			</span><input type="submit" value="search">
 		</form>
 		<div class="table-wrapper">
 			<table class="alt">
 				<thead>
-					<tr>
-						<th>번호</th>
-						<th>썸네일</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성내용</th>
-						<th>작성일자</th>
-						<th></th>
-					</tr>
+					<th style="width: 7%; text-align: center;">번호</th>
+					<th style="width: 8%; text-align: center;">썸네일</th>
+					<th style="width: 40%; text-align: center;">제목</th>		
+					<th style="width: 15%; text-align: center;">작성자</th>
+					<th style="width: 15%; text-align: center;">작성일자</th>
 				</thead>
 				<tbody>
 					<c:forEach var="vo" items="${vos}">
 						<tr>
-							<td><a
-								href="n_selectOne.do?news_num=${vo.news_num}&nickname=${vo.nickname}">${vo.news_num}</a></td>
-							<td><img alt=""
-								src="resources/uploadimg/thumb_${vo.save_img}"></td>
-							<td>${vo.title}</td>
-							<td>${vo.nickname}</td>
-							<td>${vo.content}</td>
-							<td><fmt:formatDate value="${vo.wdate}"
-									pattern="yyyy-MM-dd HH:mm:ss" /></td>
-							<td><a href="b_delete.do?board_num=${vo.news_num}">글삭제</a></td>
+							<td style="text-align: center; vertical-align: middle;"><a
+								href="n_selectOne.do?news_num=${vo.news_num}&nickname=${vo.nickname}">${vo.news_num}</a>
+							</td>
+							<td style="text-align: center; vertical-align: middle;"><img
+								alt="" src="resources/uploadimg/${vo.save_img}"
+								style="width: 70%; display: block; margin: 0 auto;"></td>
+							<td style="text-align: left; vertical-align: middle;">${vo.title}</td>
+							<td style="text-align: center; vertical-align: middle;">${vo.nickname}</td>
+							<td style="text-align: center; vertical-align: middle;"><fmt:formatDate
+									value="${vo.wdate}" pattern="yyyy-MM-dd" /></td>
 						</tr>
 					</c:forEach>
 
@@ -64,7 +61,7 @@
 
 				<tfoot>
 					<tr>
-						<td colspan="7" align="center"><c:forEach var="i" begin="1"
+						<td colspan="6" align="center"><c:forEach var="i" begin="1"
 								end="${totalPageCount}">
 								<c:if test="${param.searchKey == null }">
 									<a href="n_selectAll.do?cpage=${i}">${i} &nbsp;</a>
