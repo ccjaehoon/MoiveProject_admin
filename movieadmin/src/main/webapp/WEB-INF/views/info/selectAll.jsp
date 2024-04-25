@@ -21,11 +21,11 @@
 		<h2>영화목록</h2>
 		<form action="i_searchList.do">
 
-			<select name="searchKey">
+			<span style="float: left"> <select name="searchKey" style="width: 150px;">
 				<option value="title">제목</option>
 				<option value="genre">장르</option>
 				<option value="actor">배우</option>
-			</select> <input type="text" name="searchWord" value="검색어"> <input
+			</select></span><span style="float: left">  <input type="text" name="searchWord" value="검색어" style="width: 150px;"></span> <input
 				type="submit" value="search">
 		</form>
 
