@@ -196,13 +196,6 @@ public class InfoController {
 		return "info/update";
 	}
 	
-	@RequestMapping(value = "/i_delete.do", method = RequestMethod.GET)
-	public String i_delete(InfoVO vo, Model model) {
-		log.info("Welcome i_delete...");
-		log.info("vo:{}", vo);
-		
-		return "info/delete";
-	}
 	@RequestMapping(value = "/i_updateOK.do", method = RequestMethod.POST)
 	public String i_updateOK(InfoVO vo, Model model) throws IllegalStateException, IOException {
 		log.info("Welcome i_updateOK.do....");

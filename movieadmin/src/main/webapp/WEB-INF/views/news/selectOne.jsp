@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,39 +17,65 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
-$(function() {
-	console.log("jquery test");
-	console.log($(".nc_increaseGood"));
-	$(".nc_increaseGood").each(function(index, item) {//console.log(index);
-		$(this).click(function() {
-			console.log("increaseGood Click");
-			console.log($("#news_comments_num" + index).val());
-			console.log($("#good" + index).val());
-			
-			$.ajax({
-				url : "http://localhost:8070/movie/nc_increaseGood.do",
-				type : "get",
-				data : {
-					news_comments_num : $("#news_comments_num" + index).val(),
-					news_num : $("#news_num").val(),
-					nickname : $("#nickname" + index).val(),
-					good : $("#good" + index).val()
-				},
-				dataType : "json",
-				success : function(obj) {
-					console.log(obj);
-					let good = obj.good;
-					//console.log(item);
-					item.value = good;
-				},
-				error : function(xhr, status) {
-					console.log("status...", status);
-				}
-			});
-			return false;
-		});
+	$(function() {
+		console.log("jquery test");
+		console.log($(".nc_increaseGood"));
+		$(".nc_increaseGood")
+				.each(
+						function(index, item) {//console.log(index);
+							$(this)
+									.click(
+											function() {
+												console
+														.log("increaseGood Click");
+												console.log($(
+														"#news_comments_num"
+																+ index).val());
+												console.log($("#good" + index)
+														.val());
+
+												$
+														.ajax({
+															url : "http://localhost:8070/movie/nc_increaseGood.do",
+															type : "get",
+															data : {
+																news_comments_num : $(
+																		"#news_comments_num"
+																				+ index)
+																		.val(),
+																news_num : $(
+																		"#news_num")
+																		.val(),
+																nickname : $(
+																		"#nickname"
+																				+ index)
+																		.val(),
+																good : $(
+																		"#good"
+																				+ index)
+																		.val()
+															},
+															dataType : "json",
+															success : function(
+																	obj) {
+																console
+																		.log(obj);
+																let good = obj.good;
+																//console.log(item);
+																item.value = good;
+															},
+															error : function(
+																	xhr, status) {
+																console
+																		.log(
+																				"status...",
+																				status);
+															}
+														});
+												return false;
+											});
+						});
 	});
-});
 </script>
 <script>
 	// 	$(function() {
@@ -86,9 +112,12 @@ $(function() {
 
 </head>
 <body>
-	<div id="main">
+	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
-		<h1>뉴스정보</h1>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br><br>
+		<h2>뉴스정보</h2>
 		<hr>
 		<table class="alt">
 			<tbody>
@@ -104,7 +133,8 @@ $(function() {
 				</tr>
 				<tr>
 					<td>작성일자</td>
-					<td colspan="3"><fmt:formatDate value="${vo2.wdate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+					<td colspan="3"><fmt:formatDate value="${vo2.wdate}"
+							pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				</tr>
 				<tr>
 					<td>내용</td>
@@ -112,15 +142,16 @@ $(function() {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">첨부이미지</td>
-					<td colspan="5" style="text-align: center"><img src="resources/uploadimg/${vo2.save_img}" width="300"></td>
+					<td colspan="5" style="text-align: center"><img
+						src="resources/uploadimg/${vo2.save_img}" width="300"></td>
 				</tr>
 
 			</tbody>
 		</table>
 		<c:if test="${authority == 'admin' }">
-		<a
-			href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
-		<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
+			<a
+				href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
+			<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
 		</c:if>
 		<hr>
 		<h3>댓글작성</h3>
@@ -136,14 +167,15 @@ $(function() {
 				<tbody>
 					<tr>
 						<td><input type="text" name="content" value="hello" size="50"></td>
-						<td>${nickname}<input type="hidden" name="nickname" value="${nickname}">
-						<input type="hidden" name="news_num" value="${vo2.news_num}">
+						<td>${nickname}<input type="hidden" name="nickname"
+							value="${nickname}"> <input type="hidden" name="news_num"
+							value="${vo2.news_num}">
 						</td>
 						<td><input type="submit" value="댓글작성"></td>
 					</tr>
 				</tbody>
 			</table>
-	
+
 		</form>
 		<hr>
 		<h3>댓글목록</h3>
@@ -161,56 +193,61 @@ $(function() {
 			</thead>
 			<tbody>
 				<c:forEach var="cvo" items="${cvos}" varStatus="vs">
-	
+
 					<tr>
 						<td>${cvo.news_comments_num}</td>
 						<td>${cvo.content}
 							<form action="nc_updateOK.do">
 								<c:if test="${nickname == cvo.nickname}">
 									<input type="text" name="content" value="${cvo.content}">
-									<input type="hidden" name="news_comments_num" value="${cvo.news_comments_num}">
+									<input type="hidden" name="news_comments_num"
+										value="${cvo.news_comments_num}">
 									<input type="hidden" name="news_num" value="${cvo.news_num}">
 									<input type="submit" value="수정">
 								</c:if>
 							</form>
 						</td>
-	
+
 						<td>${cvo.nickname}<input type="hidden" name="nickname"
 							value="${nickname}" id="nickname${vs.index}"></td>
-	
-						<td><input type="hidden" name="news_comments_num" value="${cvo.news_comments_num}" id="news_comments_num${vs.index}">
-							<input type="hidden" name="news_num" value="${vo2.news_num}" id="news_num">
-							<input type="hidden" name="good" value="${cvo.good}" id="good${vs.index}">
-							<input type="button" value="${cvo.good}" class="nc_increaseGood"></td>
-						<td><fmt:formatDate value="${vo2.wdate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-	
+
+						<td><input type="hidden" name="news_comments_num"
+							value="${cvo.news_comments_num}"
+							id="news_comments_num${vs.index}"> <input type="hidden"
+							name="news_num" value="${vo2.news_num}" id="news_num"> <input
+							type="hidden" name="good" value="${cvo.good}"
+							id="good${vs.index}"> <input type="button"
+							value="${cvo.good}" class="nc_increaseGood"></td>
+						<td><fmt:formatDate value="${vo2.wdate}"
+								pattern="yyyy-MM-dd HH:mm:ss" /></td>
+
 						<td><input type="button" id="reportBtn" class="report"
 							onClick="showDialogReport('${cvo.news_comments_num}','${nickname}', '${vo2.news_num}')"
 							value="신고" /></td>
-	
-						<td>
-							<c:if test="${nickname == cvo.nickname}">
-								<a href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
-							</c:if>
-						</td>
-	
+
+						<td><c:if test="${nickname == cvo.nickname}">
+								<a
+									href="nc_deleteOK.do?news_comments_num=${cvo.news_comments_num}&news_num=${cvo.news_num}">댓글삭제</a>
+							</c:if></td>
+
 					</tr>
 				</c:forEach>
-	
+
 			</tbody>
 		</table>
-	
-		<div id="report">
-	
+
+		<div id="report" style="position: relative; z-index: 2;">
+
 			<form id="reportForm" action="rp_insertOK.do" method="post">
 				<table id="rp" border="2">
 					<tr>
 						<td id="font" width="100">신고 내용<input type="text"
 							id="nickname" name="nickname" value="${cvo.nickname}" readonly>
-							<input type="text" id="news_comments_num" name="news_comments_num"
-							value="${cvo.news_comments_num}" readonly>
-							<input type="hidden" id="news_numR" name="news_num" value="${vo2.news_num}"></td>
-							
+							<input type="text" id="news_comments_num"
+							name="news_comments_num" value="${cvo.news_comments_num}"
+							readonly> <input type="hidden" id="news_numR"
+							name="news_num" value="${vo2.news_num}"></td>
+
 					</tr>
 					<tr>
 						<td width="500"><textarea id="text_report" name="content"
@@ -223,29 +260,30 @@ $(function() {
 				</table>
 			</form>
 		</div>
+	</div>
+	<div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
-
-<script>
-	function submitReportForm() {
-		location.reload();
-	}
-	$("#reportForm").submit(function(event) {
-		event.preventDefault();
-		$.ajax({
-			type : "POST",
-			url : $(this).attr("action"),
-			data : $(this).serialize(),
-			success : function(response) {
-				console.log(response);
-				submitReportForm();
-			},
-			error : function(xhr, status, error) {
-				console.error(status, error);
-			}
+	<script>
+		function submitReportForm() {
+			location.reload();
+		}
+		$("#reportForm").submit(function(event) {
+			event.preventDefault();
+			$.ajax({
+				type : "POST",
+				url : $(this).attr("action"),
+				data : $(this).serialize(),
+				success : function(response) {
+					console.log(response);
+					submitReportForm();
+				},
+				error : function(xhr, status, error) {
+					console.error(status, error);
+				}
+			});
 		});
-	});
-</script>
+	</script>
 
 </body>
 

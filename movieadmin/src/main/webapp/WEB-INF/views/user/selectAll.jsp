@@ -21,7 +21,7 @@
 </div>
 <div id="main" style="position: relative; z-index: 1;">
 <br>
-		<h3>회원목록</h3>
+		<h2>회원목록</h2>
 		<form action="u_searchList.do">
 			<span style="float: left"><select name="searchKey" style="width: 150px;">
 				<option value="user_id">아이디</option>

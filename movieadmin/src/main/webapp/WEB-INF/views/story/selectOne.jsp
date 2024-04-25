@@ -7,11 +7,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-<%-- <link rel="stylesheet" type="text/css"
+<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/noscript.css" /> --%>
-<style>
+	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<!-- <style>
 #customers {
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
@@ -42,7 +42,7 @@
 tfoot td {
 	text-align: center;
 }
-</style>
+</style> -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -139,10 +139,15 @@ $(function() {
 
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>글정보</h1>
+	<div style="position: relative; z-index: 2;">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
+		</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
+	<h2>글정보</h2>
 	<hr>
-	<table id="customers">
+<div class="table-wrapper">
+	<table class="alt">
 		<thead>
 			<tr>
 				<th>번호: ${vo2.story_num}</th>
@@ -161,9 +166,20 @@ $(function() {
 			<td colspan="4"><img src="resources/uploadimg/images/${vo2.save_img}" width="200"></td>
 			</tr>
 			<tr>
-			<td colspan="4"><img src="resources/uploadimg/videos/${vo2.save_video}" width="200"></td>
-			</tr>
-			
+			 <td colspan="4">
+        <video width="400" controls>
+            <source src="resources/uploadimg/videos/${vo2.save_video}" type="video/mpeg3">
+		    <source src="resources/uploadimg/videos/${vo2.save_video}" type="video/mp4">
+		    <source src="resources/uploadimg/videos/${vo2.save_video}" type="video/avi">
+		    <source src="resources/uploadimg/videos/${vo2.save_video}" type="video/quicktime">
+		    <source src="resources/uploadimg/videos/${vo2.save_video}" type="video/x-flv">
+		    <source src="resources/uploadimg/videos/${vo2.save_video}" type="video/x-matroska">
+        </video>
+	         </td>
+	        </tr> 
+	        
+	        <tr>
+	        
 			<tr>
 				<td>작성일자</td>
 				<td colspan="3">${vo2.wdate}</td>
@@ -194,8 +210,7 @@ $(function() {
 
 		</tbody>
 	</table>
-
-
+</div>
 	<hr>
 	<h3>댓글작성</h3>
 	<form action="SComments_insertOK.do">
@@ -287,7 +302,7 @@ $(function() {
 		</tbody>
 	</table>
 	
-	<div id="report">
+	<div id="report" style="position: relative; z-index: 2;">
 
 		<form id="reportForm" action="rp_insertOK.do" method="post">
 			<table id="rp" border="2">
@@ -307,6 +322,10 @@ $(function() {
 				</tr>
 			</table>
 		</form>
+	 </div>
+	</div>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
 	</div>
 <script>
 	function submitReportForm() {

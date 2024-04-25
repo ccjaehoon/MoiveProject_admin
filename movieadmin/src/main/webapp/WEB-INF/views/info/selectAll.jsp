@@ -11,11 +11,14 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 </head>
 <body>
+<div style="position: relative; z-index: 2;">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>영화목록</h1>
-	<hr>
+	</div>
+	<div id = "main" style="position: relative; z-index: 1;">
+	<br>
+	<h2>영화목록</h2>
 	<form action="i_searchList.do">
-	<div class="table=wrapper">
+
 		<select name="searchKey">
 			<option value="title">title</option>
 			<option value="genre">genre</option>
@@ -23,7 +26,7 @@
 		</select> <input type="text" name="searchWord" value=""> <input
 			type="submit" value="search">
 	</form>
-	</div>
+
 	<table id="customers">
 		<thead>
 			<tr>
@@ -61,10 +64,16 @@
 					</c:forEach></td>
 			</tr>
 		</tfoot>
+		
 		<c:if test="${nickname == 'admin'}">
 			<a href="i_insert.do">글쓰기</a>
 		</c:if>
+			
 	</table>
+	</div>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
 </body>
 
 </html>
