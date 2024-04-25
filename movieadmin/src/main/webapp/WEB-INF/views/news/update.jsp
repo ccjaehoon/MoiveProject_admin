@@ -19,7 +19,7 @@
 	</div>
 	<div id=main style="position: relative; z-index: 1;">
 	<br>
-		<h1>뉴스 수정페이지</h1>
+		<h2>뉴스 수정페이지</h2>
 		<form action="n_updateOK.do" method="post"
 			enctype="multipart/form-data">
 			<div class="table-wrapper">

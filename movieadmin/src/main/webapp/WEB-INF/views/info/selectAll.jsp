@@ -16,7 +16,7 @@
 	</div>
 	<div id = "main" style="position: relative; z-index: 1;">
 	<br>
-	<h1>영화목록</h1>
+	<h2>영화목록</h2>
 	<form action="i_searchList.do">
 
 		<select name="searchKey">

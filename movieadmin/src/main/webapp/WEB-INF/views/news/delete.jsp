@@ -19,7 +19,7 @@
 	</div>
 	<div id=main style="position: relative; z-index: 1;">
 		<br>
-		<h3>회원삭제폼</h3>
+		<h2>회원삭제폼</h2>
 
 		<!-- <form action="#" method="post" enctype="multipart/form-data"> -->
 		<form action="n_deleteOK.do" method="post">

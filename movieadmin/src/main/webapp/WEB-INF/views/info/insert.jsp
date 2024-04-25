@@ -17,7 +17,7 @@
 	</div>
 	<div id = "main" style="position: relative; z-index: 1;">
 	<br>
-		<h1>영화 작성페이지</h1>
+		<h2>영화 작성페이지</h2>
 		<form action="i_insertOK.do" method="post" enctype="multipart/form-data">
 			<table class="alt">
 				<tr>
