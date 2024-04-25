@@ -113,7 +113,7 @@ public class InfoController {
 	
 	@RequestMapping(value = "/i_selectAll.do", method = RequestMethod.GET)
 	public String i_selectAll(@RequestParam(defaultValue = "1") int cpage,
-			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
+			@RequestParam(defaultValue = "10") int pageBlock, Model model) {
 		log.info("Welcome i_selectAll.do....");
 		
 		
