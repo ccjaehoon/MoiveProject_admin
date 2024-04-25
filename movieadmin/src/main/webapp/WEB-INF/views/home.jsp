@@ -53,7 +53,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-3 col-6-medium col-12-small">
-
 						<!-- Feature #1 -->
 						<section>
 							<a href="i_selectOne.do?info_num=${vo2.info_num}">
