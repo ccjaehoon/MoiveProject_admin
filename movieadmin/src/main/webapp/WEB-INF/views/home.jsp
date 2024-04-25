@@ -120,10 +120,13 @@
 
 						<!-- Box #1 -->
 						<section>
-
-							<a href="#" class="feature-image"><img src="images/pic05.jpg"
-								alt="" /></a>
-							<p>저희 사이트는 영화 정보사이트로 여러 사람들과 영화에 대한 생각을 자유롭게 공유할 수 있습니다</p>
+							<table class="alt">
+								<c:forEach var="bvo" items="${bvos}">
+									<tr>
+										<td>${bvo.title}</td>
+									</tr>
+								</c:forEach>
+							</table>
 						</section>
 
 					</div>
