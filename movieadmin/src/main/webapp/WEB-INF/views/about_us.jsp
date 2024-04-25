@@ -7,12 +7,36 @@
 <title>이용약관</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+	<style>
+	#navigation {
+	  background-color: #f2f2f2;
+	  overflow: hidden;
+	}
+	#navigation a {
+	  float: left;
+	  display: block;
+	  color: black;
+	  text-align: center;
+	  padding: 14px 20px;
+	  text-decoration: none;
+	  font-size: 17px;
+	}
+	#navigation a:hover {
+	  background-color: #ddd;
+	  color: black;
+	}
+	</style>
 </head>
 <body>
 	<div style="position: relative; z-index: 2;">
 		<jsp:include page="top_menu.jsp"></jsp:include>
 	</div>
 	<div id="main" style="position: relative; z-index: 1; margin-top= 10px;">
+	<div id="navigation">
+		<a href="${pageContext.request.contextPath}/about_us.do">이용약관</a>
+		<a href="${pageContext.request.contextPath}/contact.do">개인정보처리방침</a>
+		<a href="${pageContext.request.contextPath}/advertise.do">광고문의</a>
+	</div>
 	<br>
 	<h2>회원가입에 관한 약관</h2>
 	<h3>제1조 (목적)</h3>
@@ -36,8 +60,10 @@
 		<li>서비스 이용 시 발생하는 문제에 대해 회사는 최대한 빠르게 처리하도록 노력합니다.</li>
 	</ol>
 	<h3>제2조 (서비스 이용 제한)</h3>
-	<p>회사는 서비스 이용에 일부 제한을 둘 수 있습니다.
-	<br>회원은 서비스를 이용함에 있어 다음과 같은 행위를 금지합니다:</p>
+	<ol>
+	<li>회사는 서비스 이용에 일부 제한을 둘 수 있습니다.</li>
+	<li>회원은 서비스를 이용함에 있어 다음과 같은 행위를 금지합니다:</li>
+	</ol>
 	<ul>
 	   <li>불법적인 목적으로 서비스를 이용하는 행위</li>
 	   <li>다른 사용자의 정보를 부정하게 사용하는 행위</li>
@@ -45,10 +71,10 @@
 	</ul>
 	
 	<h3>제3조 (서비스의 변경 및 중단)</h3>
-	<ul>
+	<ol>
 		<li>회사는 서비스의 운영상 필요에 따라 변경 및 중단할 수 있습니다.</li>
 		<li>서비스의 변경 및 중단에 대한 공지는 사전에 이루어질 수 있습니다.</li>
-	</ul>
+	</ol>
 	
 	<h2>3. 기타 필요한 사항</h2>
 	<h3>제1조 (정보 보안)</h3>
@@ -68,9 +94,6 @@
 		<li>회사가 회원에게 손해를 입힌 경우, 회사는 회원에게 손해배상을 할 수 있습니다.</li>
 	</ol>
 </div>
-
-		<jsp:include page="footer_menu.jsp"></jsp:include>
-
 
 </body>
 </html>

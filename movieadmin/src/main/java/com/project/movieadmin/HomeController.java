@@ -51,8 +51,13 @@ public class HomeController {
 		return "home";
 	}
 	@RequestMapping(value = "/about_us.do", method = RequestMethod.GET)
-	public String about(BoardVO vo, Model model) {
+	public String about() {
 		log.info("/about_us.do...");
 		return "about_us";
+	}
+	@RequestMapping(value = "/contact.do", method = RequestMethod.GET)
+	public String contact() {
+		log.info("/contact.do...");
+		return "contact";
 	}
 }
