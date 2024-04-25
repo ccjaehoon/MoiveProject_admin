@@ -62,53 +62,47 @@
     <hr>
  
     <div class="table-wrapper">
-	<table class="alt">
-        <tbody>
-            <c:forEach var="vo" items="${vos}">
-                <tr>
-                    <td>
-                        <div class="story-container">
-                            <a href="s_selectOne.do?story_num=${vo.story_num}&nickname=${vo.nickname}" class="story-link">${vo.story_num}</a>
-                            <div class="story-content">
-                                <p>${vo.content}</p>
-                                <p>${vo.nickname}</p>
-                            </div>
-                            <!-- 이미지가 존재하는 경우 표시 -->
-							    <c:if test="${vo.save_img != null }">
-							        <img src="resources/uploadimg/images/thumb_${vo.save_img}" alt="">
-							    </c:if>
-							    <!-- 비디오가 존재하는 경우 표시 -->
-							    <c:if test="${vo.save_video != null }">
-							        <tr>
-							<td colspan="4"><video width="400" controls>
-									<source src="resources/uploadimg/videos/${vo2.save_video}"
-										type="video/mpeg3">
-									<source src="resources/uploadimg/videos/${vo2.save_video}"
-										type="video/mp4">
-									<source src="resources/uploadimg/videos/${vo2.save_video}"
-										type="video/avi">
-									<source src="resources/uploadimg/videos/${vo2.save_video}"
-										type="video/quicktime">
-									<source src="resources/uploadimg/videos/${vo2.save_video}"
-										type="video/x-flv">
-									<source src="resources/uploadimg/videos/${vo2.save_video}"
-										type="video/x-matroska">
-								</video></td>
-						</tr>
-							    </c:if>
-							    <br>
-                            <button class="comment-btn" onclick="selectCommentList(${vo.story_num})">댓글목록</button>
-                            <table>
-                                <tbody id="sc_comm_list${vo.story_num}">
-                                    <!-- Comment list will be inserted here dynamically -->
-                                </tbody>
-                            </table>
+<table class="alt">
+    <tbody>
+        <c:forEach var="vo" items="${vos}">
+            <tr>
+                <td>
+                    <div class="story-container">
+                        <a href="s_selectOne.do?story_num=${vo.story_num}&nickname=${vo.nickname}" class="story-link">${vo.story_num}</a>
+                        <div class="story-content">
+                            <p>${vo.content}</p>
+                            <p>${vo.nickname}</p>
                         </div>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+                        <!-- 이미지가 존재하는 경우 표시 -->
+                        <c:if test="${vo.save_img != null }">
+                            <img src="resources/uploadimg/images/thumb_${vo.save_img}" alt="">
+                        </c:if>
+                        <!-- 비디오가 존재하는 경우 표시 -->
+                        <c:if test="${vo.save_video != null }">
+                            <div>
+                                <video width="400" controls>
+                                    <source src="resources/uploadimg/videos/${vo.save_video}" type="video/mpeg">
+                                    <source src="resources/uploadimg/videos/${vo.save_video}" type="video/mp4">
+                                    <source src="resources/uploadimg/videos/${vo.save_video}" type="video/avi">
+                                    <source src="resources/uploadimg/videos/${vo.save_video}" type="video/quicktime">
+                                    <source src="resources/uploadimg/videos/${vo.save_video}" type="video/x-flv">
+                                    <source src="resources/uploadimg/videos/${vo.save_video}" type="video/x-matroska">
+                                </video>
+                            </div>
+                        </c:if>
+                        <br>
+                        <button class="comment-btn" onclick="selectCommentList(${vo.story_num})">댓글목록</button>
+                        <table>
+                            <tbody id="sc_comm_list${vo.story_num}">
+                                <!-- Comment list will be inserted here dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
    </div>
 	<form action="s_insert.do">
 				<input type="submit" value="스토리 작성" >
