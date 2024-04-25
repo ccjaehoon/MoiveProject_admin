@@ -46,7 +46,7 @@ footer a {
 
 	<footer>
 		<a href="about_us.do">이용약관</a> <a href="contact.do">개인정보처리방침</a><a
-			href="f_selectAll.do?nickname">고객센터</a> <a href="advertisement.do">광고임대문의</a>
+			href="f_selectAll.do?nickname">고객센터</a> 광고임대문의(010-xxxx-xxxx)
 	</footer>
 </body>
 </html>
