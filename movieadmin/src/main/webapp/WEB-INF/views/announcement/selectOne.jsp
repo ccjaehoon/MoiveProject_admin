@@ -49,7 +49,7 @@
 
 					<td align="left" colspan="6"><img
 						src="resources/uploadimg/${vo2.save_img}" width="300"> <br>
-						${vo2.content}
+						${vo2.content}</td>
 				</tr>
 				<c:if test="${authority == 'admin' }">
 					<td colspan="6" align="right"><a
