@@ -21,7 +21,7 @@
 </div>
 <div id="main" style="position: relative; z-index: 1;">
 <br>
-		<h3>회원정보 수정하기</h3>
+		<h2>회원정보 수정하기</h2>
 
 		<form action="u_updateOK.do" method="post"
 			enctype="multipart/form-data">

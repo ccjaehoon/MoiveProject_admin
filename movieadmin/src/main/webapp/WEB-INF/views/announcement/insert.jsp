@@ -21,7 +21,7 @@
 </div>
 <div id="main" style="position: relative; z-index: 1;">
 <br>
-        <h3>공지사항 작성하기</h3>
+        <h2>공지사항 작성하기</h2>
         <form action="a_insertOK.do" method="post" enctype="multipart/form-data">
             <table class="alt">
                
