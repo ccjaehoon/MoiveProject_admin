@@ -71,7 +71,7 @@
 						</section>
 						
 					</div>
-					<div class="col-3 col-6-medium col-12-small">
+					<%-- <div class="col-3 col-6-medium col-12-small">
 
 						<!-- Feature #2 -->
 						<section>
@@ -116,7 +116,7 @@
 							</p>
 						</section>
 						
-					</div>
+					</div> --%>
 				</div>
 			</div>
 		</form>
