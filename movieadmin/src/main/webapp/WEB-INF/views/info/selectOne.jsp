@@ -219,13 +219,14 @@
 				</tr>
 				<tr>
 					<c:if test="${authority == 'admin'}">
-						<td colspan="5">
-							<form action="i_update.do?info_num=${vo2.info_num}"
-								style="text-align: center;">
-								<input type="submit" value="영화 수정">
-							</form>
-						</td>
-					</c:if>
+                        <td colspan="5">
+                            <form action="i_update.do" method="GET"
+                                style="text-align: center;">
+                                <input type="hidden" name="info_num" value="${vo2.info_num}">
+                                <input type="submit" value="영화 수정">
+                            </form>
+                        </td>
+                    </c:if>
 				</tr>
 		</table>
 
