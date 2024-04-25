@@ -120,11 +120,11 @@
 
 						<!-- Box #1 -->
 						<section>
-						<span style="float: left">최신 글</span><a href="b_selectAll.do">+더보기</a>
+						<span style="float: left">최신 글</span><span style="float: right"><a href="b_selectAll.do">+더보기</a></span>
 							<table class="alt">
 								<c:forEach var="bvo" items="${bvos}">
 									<tr>
-										<td>${bvo.title}</td>
+										<td><a href="b_selectOne.do?board_num=${bvo.board_num}&nickname=${bvo.nickname}">${bvo.title}</a></td>
 									</tr>
 								</c:forEach>
 							</table>
