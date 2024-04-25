@@ -164,93 +164,97 @@
 					<td><input type="hidden" name="info_num"
 						value="${vo2.info_num}" id="info_num"> <input
 						type="hidden" name="nickname" value="${nickname}" id="nicknameF">
-					<td>
-					<input type="button" value="즐겨찾기" class="i_favorite">
 					</td>
-				
-			
-
-			</tbody>
-		</table>
-		<c:if test="${authority == 'admin' }">
-			<a href="i_update.do?info_num=${vo2.info_num}">수정</a>
-		</c:if>
-
-
-		<h3>리뷰작성</h3>
-		<form action="rv_insertOK.do">
-			<table id="customers">
-				<thead>
-					<tr>
-						<th>댓글 내용 ${param.msg}</th>
-						<th>댓글 작성자</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><input type="text" name="content" value="hello" size="50"></td>
-						<td>${nickname}<input type="hidden" name="nickname"
-							value="${nickname}"> <input type="hidden" name="info_num"
-							value="${vo2.info_num}">
-						</td>
-						<td><input type="submit" value="댓글작성"></td>
-					</tr>
-				</tbody>
-			</table>
-
-		</form>
-		<hr>
-		<h3>리뷰 목록</h3>
-		<table id="customers">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>내용</th>
-					<th>작성자</th>
-
-					<th>신고</th>
-					<th>삭제</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="ivo" items="${ivos}" varStatus="vs">
-
-					<tr>
-						<td>${ivo.review_num}</td>
-						<td>${ivo.content}
-							<form action="rv_updateOK.do">
-								<c:if test="${nickname == ivo.nickname}">
-									<input type="text" name="content" value="${ivo.content}">
-									<input type="hidden" name="review_num"
-										value="${ivo.review_num}">
-									<input type="hidden" name="info_num" value="${ivo.info_num}">
-									<input type="submit" value="수정">
-								</c:if>
-
+					<td style="text-align: right; vertical-align: middle;"><input
+						type="button" value="즐겨찾기" class="i_favorite"></td>
+					<c:if test="${authority == 'admin'}">
+						<td style="text-align: right; vertical-align: middle;">
+							<form action="i_update.do?info_num=${vo2.info_num}">
+								<input type="submit" value="영화 수정">
 							</form>
 						</td>
-
-						<td>${ivo.nickname}<input type="hidden" name="nickname"
-							value="${nickname}" id="nickname${vs.index}"></td>
-
+					</c:if>
+				</tr>
 
 
-						<td><input type="button" id="reportBtn" class="report"
-							onClick="showDialogReport('${ivo.review_num}','${nickname}','${vo2.info_num}')"
-							value="신고" /></td>
 
-						<td><c:if test="${nickname == ivo.nickname}">
-								<a
-									href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰
-									삭제</a>
-							</c:if></td>
 
-					</tr>
-				</c:forEach>
 
-			</tbody>
-		</table>
+				<h3>리뷰작성</h3>
+				<form action="rv_insertOK.do">
+					<table id="customers">
+						<thead>
+							<tr>
+								<th>댓글 내용 ${param.msg}</th>
+								<th>댓글 작성자</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="text" name="content" value="hello"
+									size="50"></td>
+								<td>${nickname}<input type="hidden" name="nickname"
+									value="${nickname}"> <input type="hidden"
+									name="info_num" value="${vo2.info_num}">
+								</td>
+								<td><input type="submit" value="댓글작성"></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</form>
+				<hr>
+				<h3>리뷰 목록</h3>
+				<table id="customers">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>내용</th>
+							<th>작성자</th>
+
+							<th>신고</th>
+							<th>삭제</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="ivo" items="${ivos}" varStatus="vs">
+
+							<tr>
+								<td>${ivo.review_num}</td>
+								<td>${ivo.content}
+									<form action="rv_updateOK.do">
+										<c:if test="${nickname == ivo.nickname}">
+											<input type="text" name="content" value="${ivo.content}">
+											<input type="hidden" name="review_num"
+												value="${ivo.review_num}">
+											<input type="hidden" name="info_num" value="${ivo.info_num}">
+											<input type="submit" value="수정">
+										</c:if>
+
+									</form>
+								</td>
+
+								<td>${ivo.nickname}<input type="hidden" name="nickname"
+									value="${nickname}" id="nickname${vs.index}"></td>
+
+
+
+								<td><input type="button" id="reportBtn" class="report"
+									onClick="showDialogReport('${ivo.review_num}','${nickname}','${vo2.info_num}')"
+									value="신고" /></td>
+
+								<td><c:if test="${nickname == ivo.nickname}">
+										<a
+											href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰
+											삭제</a>
+									</c:if></td>
+
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
 	</div>
 
 	<div id="report" class="table=wrapper"
