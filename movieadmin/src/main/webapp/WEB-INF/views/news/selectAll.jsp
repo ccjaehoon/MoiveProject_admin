@@ -76,8 +76,11 @@
 				</tfoot>
 			</table>
 		</div>
+	
 		<c:if test="${authority == 'admin' }">
-			<a href="n_insert.do">뉴스 작성</a>
+			<form action="n_insert.do">
+				<input type="submit" value="뉴스 작성">
+			</form>
 		</c:if>
 	</div>
 	<div id="copyright">

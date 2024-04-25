@@ -69,11 +69,14 @@
 				</tr>
 			</tfoot>
 
-			<c:if test="${nickname == 'admin'}">
-				<a href="i_insert.do">글쓰기</a>
-			</c:if>
+
 
 		</table>
+		<c:if test="${authority == 'admin' }">
+			<form action="i_insert.do">
+				<input type="submit" value="영화 작성">
+			</form>
+		</c:if>
 	</div>
 	<div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>

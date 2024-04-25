@@ -121,9 +121,9 @@
 		<table id="customers">
 			<thead>
 				<tr>
-					<th colspan="3"><img src="resources/uploadimg/${vo2.save_img}"
+					<th><img src="resources/uploadimg/${vo2.save_img}"
 						style="width: 60%; height: auto;"></th>
-					<th colspan="5" align="right"><iframe id="trailerFrame"
+					<th align="right"><iframe id="trailerFrame"
 							style="width: 100%; height: 0; padding-bottom: 56.25%;"
 							frameborder="0" allowfullscreen></iframe></th>
 				</tr>
@@ -136,27 +136,27 @@
 				</tr>
 				<tr>
 					<td>장르</td>
-					<td>${vo2.genre}</td>
+					<td colspan="5">${vo2.genre}</td>
 				</tr>
 				<tr>
 					<td>감독</td>
-					<td>${vo2.directors}</td>
+					<td colspan="5">${vo2.directors}</td>
 				</tr>
 				<tr>
 					<td>배우</td>
-					<td>${vo2.actor}</td>
+					<td colspan="5">${vo2.actor}</td>
 				</tr>
 				<tr>
 					<td>상영시간(분)</td>
-					<td>${vo2.showtime}</td>
+					<td colspan="5">${vo2.showtime}</td>
 				</tr>
 				<tr>
 					<td>출시일</td>
-					<td>${vo2.releaseDate}</td>
+					<td colspan="5">${vo2.releaseDate}</td>
 				</tr>
 				<tr>
 					<td>제작사</td>
-					<td>${vo2.companys}</td>
+					<td colspan="5">${vo2.companys}</td>
 				</tr>
 				<tr>
 					<td>글 조회수</td>
@@ -164,141 +164,145 @@
 					<td><input type="hidden" name="info_num"
 						value="${vo2.info_num}" id="info_num"> <input
 						type="hidden" name="nickname" value="${nickname}" id="nicknameF">
-					<td>
-					<input type="button" value="즐겨찾기" class="i_favorite">
 					</td>
-				
-			
+					<td style="text-align: right; vertical-align: middle;"><input
+						type="submit" value="즐겨찾기" class="i_favorite"></td>
 
-			</tbody>
-		</table>
-		<c:if test="${authority == 'admin' }">
-			<a href="i_update.do?info_num=${vo2.info_num}">수정</a>
-		</c:if>
-
-
-		<h3>리뷰작성</h3>
-		<form action="rv_insertOK.do">
-			<table id="customers">
-				<thead>
-					<tr>
-						<th>댓글 내용 ${param.msg}</th>
-						<th>댓글 작성자</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><input type="text" name="content" value="hello" size="50"></td>
-						<td>${nickname}<input type="hidden" name="nickname"
-							value="${nickname}"> <input type="hidden" name="info_num"
-							value="${vo2.info_num}">
-						</td>
-						<td><input type="submit" value="댓글작성"></td>
-					</tr>
-				</tbody>
-			</table>
-
-		</form>
-		<hr>
-		<h3>리뷰 목록</h3>
-		<table id="customers">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>내용</th>
-					<th>작성자</th>
-
-					<th>신고</th>
-					<th>삭제</th>
 				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="ivo" items="${ivos}" varStatus="vs">
-
-					<tr>
-						<td>${ivo.review_num}</td>
-						<td>${ivo.content}
-							<form action="rv_updateOK.do">
-								<c:if test="${nickname == ivo.nickname}">
-									<input type="text" name="content" value="${ivo.content}">
-									<input type="hidden" name="review_num"
-										value="${ivo.review_num}">
-									<input type="hidden" name="info_num" value="${ivo.info_num}">
-									<input type="submit" value="수정">
-								</c:if>
-
+				<tr>
+					<c:if test="${authority == 'admin'}">
+						<td colspan="5">
+							<form action="i_update.do?info_num=${vo2.info_num}" style="text-align: center;" >
+								<input type="submit" value="영화 수정">
 							</form>
 						</td>
-
-						<td>${ivo.nickname}<input type="hidden" name="nickname"
-							value="${nickname}" id="nickname${vs.index}"></td>
-
-
-
-						<td><input type="button" id="reportBtn" class="report"
-							onClick="showDialogReport('${ivo.review_num}','${nickname}','${vo2.info_num}')"
-							value="신고" /></td>
-
-						<td><c:if test="${nickname == ivo.nickname}">
-								<a
-									href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰
-									삭제</a>
-							</c:if></td>
-
-					</tr>
-				</c:forEach>
-
-			</tbody>
-		</table>
-	</div>
-
-	<div id="report" class="table=wrapper"
-		style="position: relative; z-index: 2;">
-
-		<form id="reportForm" action="rp_insertOK.do" method="post">
-			<table id="rp" border="2">
-				<tr>
-					<td id="font" width="100">신고 내용<input type="text"
-						id="nickname" name="nickname" value="${nickname}" readonly>
-						<input type="text" id="review_num" name="review_num" readonly>
-						<input type="hidden" id="info_numR" name="info_num"></td>
+					</c:if>
 				</tr>
-				<tr>
-					<td><textarea id="text_report" name="content"
-							placeholder="신고내용을 적으세요">test report</textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="submit" value="신고접수"
-						class="report"></td>
-				</tr>
-			</table>
-		</form>
-	</div>
-	<div id="copyright">
-		<jsp:include page="../footer_menu.jsp"></jsp:include>
-	</div>
 
-	<script>
-		function submitReportForm() {
-			location.reload();
-		}
-		$("#reportForm").submit(function(event) {
-			event.preventDefault();
-			$.ajax({
-				type : "POST",
-				url : $(this).attr("action"),
-				data : $(this).serialize(),
-				success : function(response) {
-					console.log(response);
-					submitReportForm();
-				},
-				error : function(xhr, status, error) {
-					console.error(status, error);
-				}
-			});
-		});
-	</script>
 
+
+
+				<h3>리뷰작성</h3>
+				<form action="rv_insertOK.do">
+					<table id="customers">
+						<thead>
+							<tr>
+								<th>댓글 내용 ${param.msg}</th>
+								<th>댓글 작성자</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="text" name="content" value="hello"
+									size="50"></td>
+								<td>${nickname}<input type="hidden" name="nickname"
+									value="${nickname}"> <input type="hidden"
+									name="info_num" value="${vo2.info_num}">
+								</td>
+								<td><input type="submit" value="댓글작성"></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</form>
+				<h3>리뷰 목록</h3>
+				<table id="customers">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>내용</th>
+							<th>작성자</th>
+
+							<th>신고</th>
+							<th>삭제</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="ivo" items="${ivos}" varStatus="vs">
+
+							<tr>
+								<td>${ivo.review_num}</td>
+								<td>${ivo.content}
+									<form action="rv_updateOK.do">
+										<c:if test="${nickname == ivo.nickname}">
+											<input type="text" name="content" value="${ivo.content}">
+											<input type="hidden" name="review_num"
+												value="${ivo.review_num}">
+											<input type="hidden" name="info_num" value="${ivo.info_num}">
+											<input type="submit" value="수정">
+										</c:if>
+
+									</form>
+								</td>
+
+								<td>${ivo.nickname}<input type="hidden" name="nickname"
+									value="${nickname}" id="nickname${vs.index}"></td>
+
+
+
+								<td><input type="button" id="reportBtn" class="report"
+									onClick="showDialogReport('${ivo.review_num}','${nickname}','${vo2.info_num}')"
+									value="신고" /></td>
+
+								<td><c:if test="${nickname == ivo.nickname}">
+										<a
+											href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰
+											삭제</a>
+									</c:if></td>
+
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
+				</div>
+
+				<div id="report" class="table=wrapper"
+					style="position: relative; z-index: 2;">
+
+					<form id="reportForm" action="rp_insertOK.do" method="post">
+						<table id="rp" border="2">
+							<tr>
+								<td id="font" width="100">신고 내용<input type="text"
+									id="nickname" name="nickname" value="${nickname}" readonly>
+									<input type="text" id="review_num" name="review_num" readonly>
+									<input type="hidden" id="info_numR" name="info_num"></td>
+							</tr>
+							<tr>
+								<td><textarea id="text_report" name="content"
+										placeholder="신고내용을 적으세요">test report</textarea></td>
+							</tr>
+							<tr>
+								<td colspan="2"><input type="submit" value="신고접수"
+									class="report"></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+				<div id="copyright">
+					<jsp:include page="../footer_menu.jsp"></jsp:include>
+				</div>
+
+				<script>
+					function submitReportForm() {
+						location.reload();
+					}
+					$("#reportForm").submit(function(event) {
+						event.preventDefault();
+						$.ajax({
+							type : "POST",
+							url : $(this).attr("action"),
+							data : $(this).serialize(),
+							success : function(response) {
+								console.log(response);
+								submitReportForm();
+							},
+							error : function(xhr, status, error) {
+								console.error(status, error);
+							}
+						});
+					});
+				</script>
 </body>
 </html>
