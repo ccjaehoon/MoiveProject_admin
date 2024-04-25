@@ -17,9 +17,12 @@ import com.project.movieadmin.board.BoardVO;
 import com.project.movieadmin.info.InfoService;
 import com.project.movieadmin.info.InfoVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Handles requests for the application home page.
  */
+@Slf4j
 @Controller
 public class HomeController {
 	
@@ -47,5 +50,9 @@ public class HomeController {
 		model.addAttribute("avos", avos);
 		return "home";
 	}
-	
+	@RequestMapping(value = "/about_us.do", method = RequestMethod.GET)
+	public String about(BoardVO vo, Model model) {
+		log.info("/about_us.do...");
+		return "about_us";
+	}
 }
