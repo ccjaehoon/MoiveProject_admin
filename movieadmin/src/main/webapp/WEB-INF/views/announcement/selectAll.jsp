@@ -42,7 +42,7 @@
 
 		</form>
 	
-		<table id="main">
+		<table class="alt">
 		<br>
 			<thead>
 				<tr>

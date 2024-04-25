@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,34 +54,44 @@
 		<br>
 		<h2>글목록</h2>
 		<hr>
-		<form action="b_searchList.do">
-			<select name="searchKey">
-				<option value="title">title</option>
-				<option value="content">content</option>
-			</select> <input type="text" name="searchWord" value="ja"> <input
-				type="submit" value="search">
+	<form action="b_searchList.do">
+			<span style="float: left"> <select name="searchKey"
+				style="width: 150px;">
+					<option value="title">title</option>
+					<option value="content">content</option>
+			</select>
+			</span><span style="float: left"> <input type="text"
+				name="searchWord" value="검색어" style="width: 150px;">
+			</span><input type="submit" value="search">
 		</form>
 		<div class="table-wrapper">
 		<table class="alt">
 			<thead>
 				<tr>
-					<th>번호</th>
-					<th>썸네일</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일자</th>
+					
+					<th style="width: 7%; text-align: center;">번호</th>
+					<th style="width: 10%; text-align: center;">썸네일</th>
+					<th style="width: 40%; text-align: center;">제목</th>
+					<th style="width: 15%; text-align: center;">작성자</th>
+					<th style="width: 15%; text-align: center;">작성일자</th>
+
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="vo" items="${vos}">
-					<tr>
-						<td><a href="b_selectOne.do?board_num=${vo.board_num}&nickname=${vo.nickname}">${vo.board_num}</a></td>
-						<td><img alt="" src="resources/uploadimg/thumb_${vo.save_img}"></td>
-						<td>${vo.title}</td>
-						<td>${vo.nickname}</td>
-						<td>${vo.wdate}</td>
-					</tr>
-				</c:forEach>
+						<tr>
+							<td style="text-align: center; vertical-align: middle;"><a
+								href="b_selectOne.do?board_num=${vo.board_num}&nickname=${vo.nickname}">${vo.board_num}</a>
+							</td>
+							<td style="text-align: center; vertical-align: middle;"><img
+								alt="" src="resources/uploadimg/${vo.save_img}"
+								style="width: 70%; display: block; margin: 0 auto;"></td>
+							<td style="text-align: left; vertical-align: middle;">${vo.title}</td>
+							<td style="text-align: center; vertical-align: middle;">${vo.nickname}</td>
+							<td style="text-align: center; vertical-align: middle;"><fmt:formatDate
+									value="${vo.wdate}" pattern="yyyy-MM-dd" /></td>
+						</tr>
+					</c:forEach>
 			</tbody>
 			<tfoot>
 				<tr>
