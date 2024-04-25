@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,6 +95,14 @@
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
 	}
+	
+	function closeReportDialog() {
+	    $("#report").dialog("close");
+	}
+
+	function closeReportDialogC() {
+	    $("#reportC").dialog("close");
+	}
 </script>
 
 <script>
@@ -111,7 +120,51 @@
 		$("#reportC").dialog("open");
 	}
 </script>
+<style>
+#report, #reportC  {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
 
+#rp {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#rp td {
+  padding: 10px;
+}
+
+#font {
+  font-weight: bold;
+}
+
+#text_report {
+  width: 100%;
+  height: 100px;
+}
+
+.report {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.report:hover {
+  background-color: #0056b3;
+}
+
+</style>
 </head>
 <body>
 	<div style="position: relative; z-index: 2;">
@@ -120,56 +173,51 @@
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
 		<h2>글정보</h2>
-		<hr>
-		<div class="table-wrapper">
-			<table id="alt">
+		
+			<table class="alt">
 				<tbody>
 					<tr>
-						<td id="boardR">번호</td>
+						<td id="boardR" width = "7%">번호</td>
 						<td>${vo2.board_num}</td>
-						<td id="boardR">작성자</td>
-						<td>${vo2.nickname}</td>
+						<td id="boardR" width = "10%">작성자</td>
+						<td width = "10%">${vo2.nickname}</td>	
+						<td width = "10%">작성일자</td>
+					<td ><fmt:formatDate value="${vo2.wdate}"
+							pattern="yyyy-MM-dd HH:mm:ss" /></td>					
 					</tr>
 					<tr>
 						<td id="boardR">제목</td>
-						<td colspan="3">${vo2.title}</td>
+						<td colspan="5">${vo2.title}</td>
 					</tr>
-					<tr>
-						<td id="boardR">내용</td>
-						<td colspan="3">${vo2.content}</td>
+				
+					<td align="left" colspan="6"><img
+						src="resources/uploadimg/${vo2.save_img}" width="300"> <br>
+						${vo2.content}</td>
 					</tr>
-					<tr>
-						<td style="vertical-align: middle;">이미지</td>
-						<td colspan="3" style="text-align: center"><img
-							src="resources/uploadimg/${vo2.save_img}" width="300"></td>
-					</tr>
-					<c:if test="${authority == 'admin'}">
-						<td colspan="4" align="right"><a
-							href="b_update.do?board_num=${param.board_num}&content=${param.content}">글수정</a>
-							<a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
-					</c:if>
+				
 				</tbody>
 
 				<tbody>
-					<tr>
-						<td><input type="hidden" name="board_num"
-							value="${vo2.board_num}" id="board_num"> <input
-							type="hidden" name="good" value="${vo2.good}" id="good">
-							<input type="hidden" name="nickname" value="${vo2.nickname}"
-							id="nickname"> <input type="button" value="${vo2.good}"
-							class="b_increaseGood"></td>
-						<td><input type="button" id="reportBtn" class="report"
-							onClick="showDialogReport('${vo2.board_num}','${nickname}')"
-							value="신고" /></td>
-						<c:if test="${nickname == vo2.nickname}">
-							<td><a
-								href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a></td>
-							<td><a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
-						</c:if>
-					</tr>
+
+						<tr >
+							<td colspan = "5">
+								<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
+								<input type="hidden" name="good" value="${vo2.good}" id="good">
+								<input type="hidden" name="nickname" value="${vo2.nickname}" id="nickname">
+								<input type="button" value="추천 ${vo2.good}" class="b_increaseGood">
+							
+								<input type="button" id="reportBtn" class="report"
+									onClick="showDialogReport('${vo2.board_num}','${nickname}')" value="신고"/>
+							</td>
+							<c:if test="${nickname == vo2.nickname}">
+								<td  align = "right"><a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a>
+								<a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
+							</c:if>
+						</tr>
+
 				</tbody>
 			</table>
-		</div>
+		
 		<hr>
 		<h3>댓글작성</h3>
 		<form action="c_insertOK.do">
@@ -270,7 +318,12 @@
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
-						class="report"></td>
+
+						class="report">
+						 <button type="button" onclick="closeReportDialog()">닫기</button>
+					</td>
+					
+
 				</tr>
 			</table>
 		</form>
@@ -292,7 +345,11 @@
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
-						class="reportC"></td>
+
+						class="reportC">
+						 <button type="button" onclick="closeReportDialogC()">닫기</button>
+					</td>
+
 				</tr>
 			</table>
 		</form>

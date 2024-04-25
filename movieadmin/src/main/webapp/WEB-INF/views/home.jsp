@@ -137,13 +137,14 @@
 
 						<!-- Box #2 -->
 						<section>
-							<span style="float: left">최신 개봉 영화</span><span style="float: right"><a
-								href="i_selectAll.do">+더보기</a></span>
+							<span style="float: left">최신 개봉 영화</span><span
+								style="float: right"><a href="i_selectAll.do">+더보기</a></span>
 							<table class="alt">
 								<c:forEach var="ivo" items="${ivos}">
 									<tr>
 										<td align="center"><a
-											href="i_selectOne.do?info_num=${ivo.info_num}"><img src="resources/uploadimg/${ivo.save_img}" width="100"></a></td>
+											href="i_selectOne.do?info_num=${ivo.info_num}"><img
+												src="resources/uploadimg/${ivo.save_img}" width="100"></a></td>
 									</tr>
 								</c:forEach>
 							</table>
@@ -154,15 +155,16 @@
 
 						<!-- Box #3 -->
 						<section>
-
-							<ul class="quote-list">
-								<li><img src="images/pic06.jpg" alt="사진1" />
-									<p>1등</p></li>
-								<li><img src="images/pic07.jpg" alt="사진2" />
-									<p>2등</p></li>
-								<li><img src="images/pic08.jpg" alt="사진3" />
-									<p>3등</p></li>
-							</ul>
+							<span style="float: left">공지사항</span><span style="float: right"><a
+								href="a_selectAll.do">+더보기</a></span>
+							<table class="alt">
+								<c:forEach var="avo" items="${avos}">
+									<tr>
+										<td align="center"><a
+											href="a_selectOne.do?announcement_num=${avo.announcement_num}&nickname=${avo.nickname}">${avo.title}</a></td>
+									</tr>
+								</c:forEach>
+							</table>
 						</section>
 
 					</div>

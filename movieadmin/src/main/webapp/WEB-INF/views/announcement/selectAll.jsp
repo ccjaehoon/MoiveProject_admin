@@ -43,7 +43,7 @@
 		</form>
 	
 		<table class="alt">
-		<br>
+
 			<thead>
 				<tr>
 					<th style="width: 7%; text-align: center;">번호</th>

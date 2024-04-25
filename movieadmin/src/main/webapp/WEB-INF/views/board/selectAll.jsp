@@ -53,7 +53,7 @@
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
 		<h2>글목록</h2>
-		<hr>
+		
 	<form action="b_searchList.do">
 			<span style="float: left"> <select name="searchKey"
 				style="width: 150px;">
