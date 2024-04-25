@@ -122,4 +122,10 @@ public class AnnouncementDAOimpl implements AnnouncementDAO {
 		return vos;
 	}
 
+	@Override
+	public List<AnnouncementVO> a_selectAll() {
+		List<AnnouncementVO> vos = sqlSession.selectList("A_SELECT_ALL");
+		return vos;
+	}
+
 }

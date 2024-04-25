@@ -8,7 +8,7 @@
 		parameterType="com.project.movieadmin.announcement.AnnouncementVO">
 		insert into
 		announcement(title,nickname,content,save_img)
-		values(#{title},'admin',#{content},#{save_img})
+		values(#{title},#{nickname},#{content},#{save_img})
 	</insert>
 
 	<update id="A_UPDATE"
@@ -74,6 +74,10 @@
 		SELECT COUNT(*) AS total_rows FROM announcement WHERE content LIKE #{searchWord}
 	</select>
 
+	<select id="A_SELECT_ALL"
+		resultType="com.project.movieadmin.announcement.AnnouncementVO">
+		select * from announcement order by wDate desc limit 10
+	</select>
 
 
 
