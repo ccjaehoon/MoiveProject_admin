@@ -63,7 +63,7 @@
 						                    	<a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
 						                    </span>
 						                    <br/>
-						                    <img src="resources/uploadimg/${ivo.save_img}" width="200" />
+						                    <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
 						                </td>
 						        	</tr>
 					            </c:forEach>
