@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home</title>
 
 <link rel="stylesheet" type="text/css"
@@ -15,6 +15,7 @@
 	href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+
 <style>
 #main {
 	margin-top: 100px; /* 탑 메뉴의 높이만큼 상단 마진 추가 */
@@ -39,6 +40,17 @@
 	box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 }
 </style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<script>
+ $(document).ready(function(){
+$('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
+ });   
+</script>
+
 </head>
 <body>
 
@@ -56,17 +68,21 @@
 					    <!-- Feature #1 -->
 					    <section>
 					        <table class="alt">
+						    	<ul class="bxslider">
 					            <tr>
 					                <c:forEach var="ivo" items="${ivos}">
-					                    <td align="center">
-					                        <span style="float: left;">
-					                            <a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
-					                        </span>
-					                        <br/>
-					                        <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
-					                    </td>
+						                	<li>
+						                    <td align="center">
+						                        <span style="float: left;">
+						                            <a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
+						                        </span>
+						                        <br/>
+						                        <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
+						                    </td>
+						               		</li>
 					                </c:forEach>
 					            </tr>
+			                	</ul>
 					        </table>
 					    </section>
 					</div>
