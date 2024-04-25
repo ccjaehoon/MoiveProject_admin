@@ -13,6 +13,7 @@ public interface StoryService {
 	public int s_delete(StoryVO vo);
 	
 	public StoryVO s_selectOne(StoryVO vo);
+	
 	public StoryVO s_selectRandomList(StoryVO vo);
   //public List<StoryVO> s_selectRandomList(StoryVO vo);
 	

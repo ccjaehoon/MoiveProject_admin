@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.movieadmin.board.BoardVO;
 import com.project.movieadmin.news.comments.NCommentsVO;
 import com.project.movieadmin.user.UserVO;
 
@@ -183,6 +184,14 @@ public class InfoDAOimpl implements InfoDAO {
 	        log.info("nickname{}",vo.getNickname().length());
 	        List<InfoVO> vos = sqlSession.selectList("I_SELECT_ALL_NICKNAME", map);
 	        return vos;
+	}
+
+
+	@Override
+	public List<InfoVO> i_selectAll() {
+		List<InfoVO> ivos = sqlSession.selectList("I_SELECT_ALL");
+
+		return ivos;
 	}
 
 	
