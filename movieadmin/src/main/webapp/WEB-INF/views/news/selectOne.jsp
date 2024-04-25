@@ -116,43 +116,43 @@
 		<jsp:include page="../top_menu.jsp"></jsp:include>
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
-		<br><br>
+		<br> <br>
 		<h2>뉴스정보</h2>
 		<hr>
 		<table class="alt">
 			<tbody>
 				<tr>
-					<td>번호</td>
+					<td width="7%">번호</td>
 					<td>${vo2.news_num}</td>
-					<td>작성자</td>
+					<td width="10%">작성자</td>
 					<td>${vo2.nickname}</td>
-				</tr>
-				<tr>
-					<td>제목</td>
-					<td colspan="3">${vo2.title}</td>
-				</tr>
-				<tr>
-					<td>작성일자</td>
+					<td width="10%">작성일자</td>
 					<td colspan="3"><fmt:formatDate value="${vo2.wdate}"
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				</tr>
 				<tr>
-					<td>내용</td>
-					<td colspan="3">${vo2.content}</td>
+					<td>제목</td>
+					<td colspan="5">${vo2.title}</td>
+				</tr>
+
+
+				<tr>
+					<td align="left" colspan="6"><img
+						src="resources/uploadimg/${vo2.save_img}" width="300"> <br>
+						${vo2.content}</td>
 				</tr>
 				<tr>
-					<td style="vertical-align: middle;">첨부이미지</td>
-					<td colspan="5" style="text-align: center"><img
-						src="resources/uploadimg/${vo2.save_img}" width="300"></td>
+					<td colspan="6" align="right"><c:if
+							test="${authority == 'admin' }">
+							<a
+								href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
+							<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
+						</c:if></td>
 				</tr>
 
 			</tbody>
 		</table>
-		<c:if test="${authority == 'admin' }">
-			<a
-				href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
-			<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
-		</c:if>
+
 		<hr>
 		<h3>댓글작성</h3>
 		<form action="nc_insertOK.do">
