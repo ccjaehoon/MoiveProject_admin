@@ -55,8 +55,19 @@
 					<div class="col-3 col-6-medium col-12-small">
 						<!-- Feature #1 -->
 						<section>
-							<a href="i_selectOne.do?info_num=${vo2.info_num}">
-							<img src="resources/uploadimg/${vo2.save_img}" width="300"/></a>
+						    <table class="alt">
+					            <c:forEach var="ivo" items="${ivos}">
+						        	<tr>
+						                <td>
+						                    <span style="float: left;">
+						                    	<a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
+						                    </span>
+						                    <br/>
+						                    <img src="resources/uploadimg/${ivo.save_img}" width="200" />
+						                </td>
+						        	</tr>
+					            </c:forEach>
+						    </table>
 						</section>
 						
 					</div>
