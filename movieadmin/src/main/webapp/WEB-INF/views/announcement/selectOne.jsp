@@ -35,9 +35,9 @@
 					<td id="announcementR">번호</td>
 					<td>${vo2.announcement_num}</td>
 					<td id="announcementR">작성자</td>
-					<td>${vo2.nickname}</td>
+					<td>${vo2.nickname}</td>		
 					<td id="announcementR">작성날짜</td>
-					<td><fmt:formatDate value="${vo2.wdate}" pattern="Y-M-d-HH" /></td>
+					<td>${vo2.wdate}</td>
 				</tr>
 
 				<tr>
