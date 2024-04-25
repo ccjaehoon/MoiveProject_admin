@@ -53,14 +53,24 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-3 col-6-medium col-12-small">
-						<!-- Feature #1 -->
-						<section>
-							<a href="i_selectOne.do?info_num=${vo2.info_num}">
-							<img src="resources/uploadimg/${vo2.save_img}" width="300"/></a>
-						</section>
-						
+					    <!-- Feature #1 -->
+					    <section>
+					        <table class="alt">
+					            <tr>
+					                <c:forEach var="ivo" items="${ivos}">
+					                    <td align="center">
+					                        <span style="float: left;">
+					                            <a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
+					                        </span>
+					                        <br/>
+					                        <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
+					                    </td>
+					                </c:forEach>
+					            </tr>
+					        </table>
+					    </section>
 					</div>
-					<div class="col-3 col-6-medium col-12-small">
+					<%-- <div class="col-3 col-6-medium col-12-small">
 
 						<!-- Feature #2 -->
 						<section>
@@ -105,7 +115,7 @@
 							</p>
 						</section>
 						
-					</div>
+					</div> --%>
 				</div>
 			</div>
 		</form>
