@@ -8,7 +8,7 @@
 		parameterType="com.project.movieadmin.announcement.AnnouncementVO">
 		insert into
 		announcement(title,nickname,content,save_img)
-		values(#{title},'admin',#{content},#{save_img})
+		values(#{title},#{nickname},#{content},#{save_img})
 	</insert>
 
 	<update id="A_UPDATE"

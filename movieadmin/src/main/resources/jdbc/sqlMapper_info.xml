@@ -8,7 +8,7 @@
 		parameterType="com.project.movieadmin.info.InfoVO">
 		insert into
 		info(title,nickname,genre,directors,actor,showtime,releaseDate,content,save_img,views,recommends,watchGrade,companys)
-		values(#{title},'admin',#{genre},#{directors},#{actor},#{showtime},#{releaseDate},#{content},#{save_img},#{views},#{recommends},#{watchGrade},#{companys})
+		values(#{title},#{nickname},#{genre},#{directors},#{actor},#{showtime},#{releaseDate},#{content},#{save_img},#{views},#{recommends},#{watchGrade},#{companys})
 	</insert>
 	
 
