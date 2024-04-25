@@ -42,8 +42,10 @@
 </head>
 <body>
 
-	<jsp:include page="top_menu.jsp"></jsp:include>
-	<div id="main">
+	<div style="position: relative; z-index: 2;">
+		<jsp:include page="top_menu.jsp"></jsp:include>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
 
 		<section id="features">
 			<div class="container">
@@ -162,7 +164,7 @@
 		</section>
 
 	</div>
-	<div id="footer1">
+	<div id="footer">
 		<jsp:include page="footer_menu.jsp"></jsp:include>
 	</div>
 </body>

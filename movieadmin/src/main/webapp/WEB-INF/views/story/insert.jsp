@@ -37,16 +37,16 @@
                     <td><textarea name="content" id="content" cols="30" rows="10" placeholder="한줄평을 입력하세요"></textarea></td>
                 </tr>
                 
-                <tr>
-                	<!-- <td>
+                	<!--<tr>
+                	 <td>
 					<input type="file" name="file_img" accept="image/*" multiple>
 					</td>
 					<td>
 					 <input type="file" name="file_video" accept="video/*" multiple>
-					</td> -->
-					</tr>
+					</td> 
+					</tr>-->
 				<tr>
-					<td><input type="file" name="file" accept="image/*,video/*" multiple></td>
+					<td><input type="file" name="file" accept="image/*,video/*,audio/*" multiple></td>
 				</tr>
 				
                
