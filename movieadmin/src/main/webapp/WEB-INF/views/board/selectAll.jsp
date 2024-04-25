@@ -57,8 +57,8 @@
 	<form action="b_searchList.do">
 			<span style="float: left"> <select name="searchKey"
 				style="width: 150px;">
-					<option value="title">title</option>
-					<option value="content">content</option>
+					<option value="title">제목</option>
+					<option value="content">내용</option>
 			</select>
 			</span><span style="float: left"> <input type="text"
 				name="searchWord" value="검색어" style="width: 150px;">

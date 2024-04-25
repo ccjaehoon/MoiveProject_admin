@@ -25,10 +25,6 @@
 			<div class="table-wrapper">
 				<table class="alt">
 					<tr>
-						<td><label for="">항목</label></td>
-						<td>입력</td>
-					</tr>
-					<tr>
 						<td><label for="news_num">뉴스번호</label></td>
 						<td>${param.news_num}<input type="hidden" id="news_num"
 							name="news_num" value="${param.news_num}"></td>
