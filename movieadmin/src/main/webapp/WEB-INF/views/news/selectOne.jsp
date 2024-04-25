@@ -96,6 +96,9 @@
 			autoOpen : false
 		});
 	});
+	function closeReportDialog() {
+	    $("#report").dialog("close");
+	}
 
 	// 	});
 
@@ -109,50 +112,94 @@
 		$("#report").dialog("open");
 	}
 </script>
+<style>
+#report, #reportC  {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
 
+#rp {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#rp td {
+  padding: 10px;
+}
+
+#font {
+  font-weight: bold;
+}
+
+#text_report {
+  width: 100%;
+  height: 100px;
+}
+
+.report {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.report:hover {
+  background-color: #0056b3;
+}
+
+</style>
 </head>
 <body>
 	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
-		<br><br>
+		<br> <br>
 		<h2>뉴스정보</h2>
 		<hr>
 		<table class="alt">
 			<tbody>
 				<tr>
-					<td>번호</td>
+					<td width="7%">번호</td>
 					<td>${vo2.news_num}</td>
-					<td>작성자</td>
+					<td width="10%">작성자</td>
 					<td>${vo2.nickname}</td>
-				</tr>
-				<tr>
-					<td>제목</td>
-					<td colspan="3">${vo2.title}</td>
-				</tr>
-				<tr>
-					<td>작성일자</td>
+					<td width="10%">작성일자</td>
 					<td colspan="3"><fmt:formatDate value="${vo2.wdate}"
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				</tr>
 				<tr>
-					<td>내용</td>
-					<td colspan="3">${vo2.content}</td>
+					<td>제목</td>
+					<td colspan="5">${vo2.title}</td>
+				</tr>
+
+
+				<tr>
+					<td align="left" colspan="6"><img
+						src="resources/uploadimg/${vo2.save_img}" width="300"> <br>
+						${vo2.content}</td>
 				</tr>
 				<tr>
-					<td style="vertical-align: middle;">첨부이미지</td>
-					<td colspan="5" style="text-align: center"><img
-						src="resources/uploadimg/${vo2.save_img}" width="300"></td>
+					<td colspan="6" align="right"><c:if
+							test="${authority == 'admin' }">
+							<a
+								href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
+							<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
+						</c:if></td>
 				</tr>
 
 			</tbody>
 		</table>
-		<c:if test="${authority == 'admin' }">
-			<a
-				href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>
-			<a href="n_delete.do?news_num=${param.news_num}">글삭제</a>
-		</c:if>
+
 		<hr>
 		<h3>댓글작성</h3>
 		<form action="nc_insertOK.do">
@@ -255,7 +302,8 @@
 					</tr>
 					<tr>
 						<td colspan="2"><input type="submit" value="신고접수"
-							class="report"></td>
+							class="report">
+								 <button type="button" onclick="closeReportDialog()">닫기</button></td>
 					</tr>
 				</table>
 			</form>

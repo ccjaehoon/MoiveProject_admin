@@ -19,8 +19,13 @@
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
+<<<<<<< HEAD
+        <h1>게시글 수정페이지</h1>
+        <form action="s_updateOK.do" method="post" enctype="multipart/form-data">
+=======
         <h2>게시글 수정페이지</h2>
         <form action="s_updateOK.do" method="post">
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
             <div class="table=wrapper">
 			<table id=alt>
               
@@ -48,9 +53,10 @@
                 </tr>
 
                 <tr>
-	                <td><label for="content">파일</label></td>
-				    <td><input type="file" name="file_img"></td>
-				    <td><input type="file" name="file_video"></td>
+	                <td><label for="file">파일</label></td>
+				    
+					<td><input type="file" name="file"  id="file" accept="image/*,video/*,audio/*" multiple></td>
+		
 				</tr>
                 
                 <tr>
