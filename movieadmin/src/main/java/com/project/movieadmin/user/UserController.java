@@ -193,6 +193,9 @@ public class UserController {
 	public String u_logout() {
 
 		session.removeAttribute("user_id");
+		session.removeAttribute("nickname");
+		session.removeAttribute("authority");
+		session.removeAttribute("user_num");
 
 		return "redirect: home.do";
 	}

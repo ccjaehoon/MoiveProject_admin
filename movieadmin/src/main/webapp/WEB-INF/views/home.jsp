@@ -48,34 +48,32 @@
 	<div id="main" style="position: relative; z-index: 1;">
 
 		<section id="features">
+		<form action="i_selectAll.do">
+		
 			<div class="container">
 				<div class="row">
 					<div class="col-3 col-6-medium col-12-small">
-
 						<!-- Feature #1 -->
 						<section>
-							<a href="#" class="bordered-feature-image"><img
-								src="images/pic01.jpg" alt="" /></a>
-							<h2>Welcome to Halcyonic</h2>
-							<p>
-								This is <strong>Halcyonic</strong>, a free site template by <a
-									href="http://twitter.com/ajlkn">AJ</a> for <a
-									href="http://html5up.net">HTML5 UP</a>. It's responsive, built
-								on HTML5 + CSS3, and includes 5 unique page layouts.
-							</p>
+							<a href="i_selectOne.do?info_num=${vo2.info_num}">
+							<img src="resources/uploadimg/${vo2.save_img}" width="300"/></a>
 						</section>
-
+						
 					</div>
 					<div class="col-3 col-6-medium col-12-small">
 
 						<!-- Feature #2 -->
 						<section>
-							<a href="#" class="bordered-feature-image"><img
-								src="images/pic02.jpg" alt="" /></a>
-							<h2>Responsive You Say?</h2>
-							<p>Yes! Halcyonic is built to be fully responsive so it looks
-								great at every screen size, from desktops to tablets to mobile
-								phones.</p>
+							<table class="alt">
+								<c:forEach var="ivo" items="${ivos}">
+									<tr>
+										<td><span style="float: left;"><a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a></span></td>
+									</tr>
+									<tr>
+										<td><img src="resources/uploadimg/${ivo.save_img}" width="300" /></td>
+									</tr>
+								</c:forEach>
+							</table>
 						</section>
 
 					</div>
@@ -106,10 +104,11 @@
 								sed. Suspendisse eu varius nibh. Suspendisse vitae magna mollis.
 							</p>
 						</section>
-
+						
 					</div>
 				</div>
 			</div>
+		</form>
 		</section>
 
 		<!-- Content -->
