@@ -199,19 +199,18 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
                     <span style="float: left;">스토리</span>
                     <span style="float: right;"><a href="s_selectAll.do">+더보기</a></span>
                     <table class="alt" style="width: 100%; table-layout: fixed;">
-                    <tbody>
-                <c:forEach var="vo2" items="${vo2}">
-                    <tr>
-                        <td align="center">
-                            <a href="s_selectOne.do?story_num=${vo2.story_num}&nickname=${vo2.nickname}">
-                                <img src="resources/uploadimg/images/thumb_${vo2.save_img}" alt="스토리 사진">    
-                                <img src="resources/uploadimg/videos/thumb_${vo2.save_video}" alt="스토리 동영상 썸네일">
-                            </a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+                    
+                        <c:forEach var="vo2" items="${vo2}">
+                            <tr>
+                                <td align="center">
+                                    <a href="s_selectOne.do?story_num=${vo2.story_num}&nickname=${vo2.nickname}">
+                                        <img src="resources/uploadimg/images/thumb_${vo2.save_img}" alt="스토리 사진">    
+                                        <img src="resources/uploadimg/videos/thumb_${vo2.save_video}" alt="스토리 동영상 썸네일">
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
                 </section>
             </div>
             <!-- 추가적인 열(column) 요소 추가 가능 -->
