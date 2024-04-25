@@ -67,23 +67,23 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 					<div class="col-3 col-6-medium col-12-small">
 					    <!-- Feature #1 -->
 					    <section>
-					        <table class="alt">
-						    	<ul class="bxslider">
-					            <tr>
+					        <!-- <table class="alt"> -->
+						    	<ul class="bxslider" style="width: 60%;">
+					           <!--  <tr> -->
 					                <c:forEach var="ivo" items="${ivos}">
 						                	<li>
-						                    <td align="center">
+						                    <!-- <td align="center"> -->
 						                        <span style="float: left;">
 						                            <a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
 						                        </span>
 						                        <br/>
 						                        <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
-						                    </td>
+						                    <!-- </td> -->
 						               		</li>
 					                </c:forEach>
-					            </tr>
+					            <!-- </tr> -->
 			                	</ul>
-					        </table>
+					        <!-- </table> -->
 					    </section>
 					</div>
 				</div>
