@@ -73,9 +73,30 @@
                                 <p>${vo.content}</p>
                                 <p>${vo.nickname}</p>
                             </div>
-                            <img src="resources/uploadimg/images/thumb_${vo.save_img}" alt="">
-                            <img src="resources/uploadimg/videos/thumb_${vo.save_video}" alt="">
-                            <br>
+                            <!-- 이미지가 존재하는 경우 표시 -->
+							    <c:if test="${vo.save_img != null }">
+							        <img src="resources/uploadimg/images/thumb_${vo.save_img}" alt="">
+							    </c:if>
+							    <!-- 비디오가 존재하는 경우 표시 -->
+							    <c:if test="${vo.save_video != null }">
+							        <tr>
+							<td colspan="4"><video width="400" controls>
+									<source src="resources/uploadimg/videos/${vo2.save_video}"
+										type="video/mpeg3">
+									<source src="resources/uploadimg/videos/${vo2.save_video}"
+										type="video/mp4">
+									<source src="resources/uploadimg/videos/${vo2.save_video}"
+										type="video/avi">
+									<source src="resources/uploadimg/videos/${vo2.save_video}"
+										type="video/quicktime">
+									<source src="resources/uploadimg/videos/${vo2.save_video}"
+										type="video/x-flv">
+									<source src="resources/uploadimg/videos/${vo2.save_video}"
+										type="video/x-matroska">
+								</video></td>
+						</tr>
+							    </c:if>
+							    <br>
                             <button class="comment-btn" onclick="selectCommentList(${vo.story_num})">댓글목록</button>
                             <table>
                                 <tbody id="sc_comm_list${vo.story_num}">
@@ -90,7 +111,7 @@
     </table>
    </div>
 	<form action="s_insert.do">
-				<input type="submit" value="스토리 작성">
+				<input type="submit" value="스토리 작성" >
 			</form>
 
 	</div>
