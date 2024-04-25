@@ -136,14 +136,12 @@
 
 						<!-- Box #2 -->
 						<section>
-							<span style="float: left">최신 개봉 영화</span><span
-								style="float: right"><a href="i_selectAll.do">+더보기</a></span>
+							<span style="float: left">가운데</span>
+							<span style="float: right"><a href="">+더보기</a></span>
 							<table class="alt">
-								<c:forEach var="ivo" items="${ivos}">
+								<c:forEach var="vo" items="">
 									<tr>
-										<td align="center"><a
-											href="i_selectOne.do?info_num=${ivo.info_num}"><img
-												src="resources/uploadimg/${ivo.save_img}" width="100"></a></td>
+							<td align="center"><a href=""> </a></td>
 									</tr>
 								</c:forEach>
 							</table>
@@ -171,6 +169,33 @@
 			</div>
 
 		</section>
+		<!-- Content2 -->
+<section id="content2">
+    <div class="container2">
+        <div class="row aln-center2">
+            <div class="col-4 col-12-medium2">
+                <!-- 스토리 Box #1 -->
+                <section>
+                    <span style="float: left;">스토리</span>
+                    <span style="float: right;"><a href="s_selectAll.do">+더보기</a></span>
+                    <table class="alt">
+                        <c:forEach var="story" items="${stories}">
+                            <tr>
+                                <td align="center">
+                                    <a href="s_selectOne.do?story_num=${svo.story_num}">  
+                                        <img src="resources/uploadimg/images/thumb_${story.save_img}" alt="">    
+                                        <img src="resources/uploadimg/videos/thumb_${story.save_video}" alt="">
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </section>
+            </div>
+            <!-- 추가적인 열(column) 요소 추가 가능 -->
+        </div>
+    </div>
+</section>
 
 	</div>
 	<div id="footer">
