@@ -7,35 +7,20 @@
 <title>이용약관</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/about.css" />
 	<style>
-	#navigation {
-	  background-color: #f2f2f2;
-	  overflow: hidden;
-	}
-	#navigation a {
-	  float: left;
-	  display: block;
-	  color: black;
-	  text-align: center;
-	  padding: 14px 20px;
-	  text-decoration: none;
-	  font-size: 17px;
-	}
-	#navigation a:hover {
-	  background-color: #ddd;
-	  color: black;
-	}
+	
 	</style>
 </head>
 <body>
 	<div style="position: relative; z-index: 2;">
 		<jsp:include page="top_menu.jsp"></jsp:include>
 	</div>
-	<div id="main" style="position: relative; z-index: 1; margin-top= 10px;">
+	<div id="main" style="position: relative; z-index: 1;">
 	<div id="navigation">
 		<a href="${pageContext.request.contextPath}/about_us.do">이용약관</a>
 		<a href="${pageContext.request.contextPath}/contact.do">개인정보처리방침</a>
-		<a href="${pageContext.request.contextPath}/advertise.do">광고문의</a>
+		<a href="${pageContext.request.contextPath}/f_selectAll.do">고객센터</a>
 	</div>
 	<br>
 	<h2>회원가입에 관한 약관</h2>
