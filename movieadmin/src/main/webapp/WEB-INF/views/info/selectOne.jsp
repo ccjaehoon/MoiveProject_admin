@@ -240,7 +240,7 @@
 		</table>
 	</div>
 
-	<div id="report" class="table=wrapper">
+	<div id="report" class="table=wrapper" style="position: relative; z-index: 2;">
 
 		<form id="reportForm" action="rp_insertOK.do" method="post">
 			<table id="rp" border="2">
