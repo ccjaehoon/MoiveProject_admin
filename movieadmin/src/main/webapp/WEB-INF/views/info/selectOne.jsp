@@ -131,7 +131,7 @@
 			<tbody>
 				<tr>
 					<td>${vo2.title}</td>
-					<td colspan="6">${vo2.content}</td>
+					<td colspan="7">${vo2.content}</td>
 				</tr>
 				<tr>
 					<td>장르</td>
