@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,8 +53,7 @@
 								style="width: 70%; display: block; margin: 0 auto;"></td>
 							<td style="text-align: left; vertical-align: middle;">${vo.title}</td>
 							<td style="text-align: center; vertical-align: middle;">${vo.nickname}</td>
-							<td style="text-align: center; vertical-align: middle;"><fmt:formatDate
-									value="${vo.wdate}" pattern="yyyy-MM-dd" /></td>
+					<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 						</tr>
 					</c:forEach>
 

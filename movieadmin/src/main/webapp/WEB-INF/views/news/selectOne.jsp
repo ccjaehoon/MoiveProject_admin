@@ -174,8 +174,7 @@
 					<td width="10%">작성자</td>
 					<td>${vo2.nickname}</td>
 					<td width="10%">작성일자</td>
-					<td colspan="3"><fmt:formatDate value="${vo2.wdate}"
-							pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						<td>${vo2.wdate}</td>
 				</tr>
 				<tr>
 					<td>제목</td>
