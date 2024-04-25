@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.project.movieadmin.board.BoardService;
 import com.project.movieadmin.board.BoardVO;
+import com.project.movieadmin.info.InfoService;
+import com.project.movieadmin.info.InfoVO;
 
 /**
  * Handles requests for the application home page.
@@ -22,6 +24,9 @@ public class HomeController {
 	@Autowired
 	private BoardService bService;
 	
+	@Autowired
+	private InfoService iService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -30,9 +35,9 @@ public class HomeController {
 	@RequestMapping(value = { "/", "home.do" }, method = RequestMethod.GET)
 	public String home(BoardVO vo, Model model) {
 		List<BoardVO> bvos = bService.b_selectAll();
-		
+		List<InfoVO> ivos = iService.i_selectAll();
 		model.addAttribute("bvos", bvos);
-		
+		model.addAttribute("ivos", ivos);
 		return "home";
 	}
 	
