@@ -84,12 +84,6 @@
 							<a href="#" class="bordered-feature-image"><img
 								src="images/pic03.jpg" alt="" /></a>
 							<h2>License Info</h2>
-							<p>
-								Halcyonic is licensed under the <a
-									href="http://html5up.net/license">CCA</a> license, so use it
-								for personal/commercial use as much as you like (just keep our
-								credits intact).
-							</p>
 						</section>
 
 					</div>
