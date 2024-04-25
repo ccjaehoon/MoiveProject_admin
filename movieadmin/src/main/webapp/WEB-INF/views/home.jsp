@@ -120,12 +120,12 @@
 
 						<!-- Box #1 -->
 						<section>
-							<span style="float: left">최신 글</span><span style="float: right"><a
-								href="b_selectAll.do">+더보기</a></span>
-							<table class="alt">
+							<span style="float: left;">최신 글</span> <span
+								style="float: right;"><a href="b_selectAll.do">+더보기</a></span>
+							<table class="alt" style="width: 100%; table-layout: fixed;">
 								<c:forEach var="bvo" items="${bvos}">
 									<tr>
-										<td><a
+										<td style="padding: 5px;"><a
 											href="b_selectOne.do?board_num=${bvo.board_num}&nickname=${bvo.nickname}">${bvo.title}</a></td>
 									</tr>
 								</c:forEach>
@@ -155,12 +155,12 @@
 
 						<!-- Box #3 -->
 						<section>
-							<span style="float: left">공지사항</span><span style="float: right"><a
-								href="a_selectAll.do">+더보기</a></span>
-							<table class="alt">
+							<span style="float: left;">공지사항</span> <span
+								style="float: right;"><a href="a_selectAll.do">+더보기</a></span>
+							<table class="alt" style="width: 100%; table-layout: fixed;">
 								<c:forEach var="avo" items="${avos}">
 									<tr>
-										<td align="center"><a
+										<td align="center" style="padding: 5px;"><a
 											href="a_selectOne.do?announcement_num=${avo.announcement_num}&nickname=${avo.nickname}">${avo.title}</a></td>
 									</tr>
 								</c:forEach>
