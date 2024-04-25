@@ -47,7 +47,7 @@
 		});
 	});
 	function closeReportDialog() {
-		$("#report").dialog("close");
+	    $("#report").dialog("close");
 	}
 
 	// 	});
