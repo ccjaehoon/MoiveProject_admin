@@ -56,7 +56,7 @@
 						<!-- Feature #1 -->
 						<section>
 							<a href="i_selectOne.do?info_num=${vo2.info_num}">
-							<img src="resources/uploadimg/${vo2.save_img}" width="300" /></a>
+							<img src="resources/uploadimg/${vo2.save_img}" width="300"/></a>
 						</section>
 						
 					</div>

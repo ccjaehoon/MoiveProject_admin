@@ -59,7 +59,7 @@
 	<h2>스토리</h2>
 	
     <hr>
-    <a href="s_insert.do" class="comment-btn">스토리 만들기</a>
+ 
     <div class="table-wrapper">
 	<table class="alt">
         <tbody>
@@ -88,7 +88,9 @@
         </tbody>
     </table>
    </div>
-	
+	<form action="s_insert.do">
+				<input type="submit" value="스토리 작성">
+			</form>
 
 	</div>
 	<div id="copyright">
