@@ -200,12 +200,12 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
                     <span style="float: right;"><a href="s_selectAll.do">+더보기</a></span>
                     <table class="alt" style="width: 100%; table-layout: fixed;">
                     
-                        <c:forEach var="vo2" items="${vo2}">
+                        <c:forEach var="svo" items="${svos}">
                             <tr>
                                 <td align="center">
-                                    <a href="s_selectOne.do?story_num=${vo2.story_num}&nickname=${vo2.nickname}">
-                                        <img src="resources/uploadimg/images/thumb_${vo2.save_img}" alt="스토리 사진">    
-                                        <img src="resources/uploadimg/videos/thumb_${vo2.save_video}" alt="스토리 동영상 썸네일">
+                                    <a href="s_selectOne.do?story_num=${vo2.story_num}&nickname=${svo.nickname}">
+                                        <img src="resources/uploadimg/images/thumb_${svo.save_img}" alt="스토리 사진">    
+                                        <img src="resources/uploadimg/videos/thumb_${svo.save_video}" alt="스토리 동영상 썸네일">
                                     </a>
                                 </td>
                             </tr>
