@@ -41,14 +41,22 @@
 }
 </style>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 <script>
- $(document).ready(function(){
-$('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
- });   
+	$(document).ready(function() {
+		$('.bxslider').bxSlider({
+			slideWidth : 500, // 슬라이드 너비        
+			minSlides : 4, // 최소 노출 개수        
+			maxSlides : 4
+
+		}); // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
+	});
 </script>
 
 </head>
@@ -60,35 +68,25 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 	<div id="main" style="position: relative; z-index: 1;">
 
 		<section id="features">
-		<form action="i_selectAll.do">
-		
-			<div class="container">
-				<div class="row">
-					<div class="col-3 col-6-medium col-12-small">
-					    <!-- Feature #1 -->
-					    <section>
-					        <!-- <table class="alt"> -->
-						    	<ul class="bxslider" style="width: 60%;">
-					           <!--  <tr> -->
-					                <c:forEach var="ivo" items="${ivos}">
-						                	<li>
-						                    <!-- <td align="center"> -->
-						                        <span style="float: left;">
-						                            <a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
-						                        </span>
-						                        <br/>
-						                        <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
-						                    <!-- </td> -->
-						               		</li>
-					                </c:forEach>
-					            <!-- </tr> -->
-			                	</ul>
-					        <!-- </table> -->
-					    </section>
-					</div>
-				</div>
+
+
+			<div style="align: center">
+
+				<section>
+
+
+					<ul class="bxslider" style="align: center">
+
+
+						<c:forEach var="ivo" items="${ivos}">
+							<li><a href="i_selectOne.do?info_num=${ivo.info_num}"><img
+									src="resources/uploadimg/${ivo.save_img}" width="200" /></a></li>
+						</c:forEach>
+					</ul>
+				</section>
 			</div>
-		</form>
+
+
 		</section>
 
 		<!-- Content -->
@@ -116,12 +114,12 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 
 						<!-- Box #2 -->
 						<section>
-							<span style="float: left">가운데</span>
-							<span style="float: right"><a href="">+더보기</a></span>
+							<span style="float: left">가운데</span> <span style="float: right"><a
+								href="">+더보기</a></span>
 							<table class="alt">
 								<c:forEach var="vo" items="">
 									<tr>
-							<td align="center"><a href=""> </a></td>
+										<td align="center"><a href=""> </a></td>
 									</tr>
 								</c:forEach>
 							</table>
@@ -150,17 +148,17 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 
 		</section>
 		<!-- Content2 -->
-<section id="content2">
-    <div class="container">
-        <div class="row aln-center">
-            <div class="col-100">
-                <!-- 스토리 Box #1 -->
-                <section>
-                    <span style="float: left;">스토리</span>
-                    <span style="float: right;"><a href="s_selectAll.do">+더보기</a></span>
-                    <table class="alt" style="width: 100%; table-layout: fixed;">
-                    
-                            <tr>
+		<section id="content2">
+			<div class="container">
+				<div class="row aln-center">
+					<div class="col-100 col-12-medium">
+						<!-- 스토리 Box #1 -->
+						<section>
+							<span style="float: left;">스토리</span> <span style="float: right;"><a
+								href="s_selectAll.do">+더보기</a></span>
+							<table class="alt" style="width: 100%; table-layout: fixed;">
+
+								<tr>
 									<c:forEach var="svo" items="${svos}">
 										<td align="center"><a
 											href="s_selectOne.do?story_num=${svo.story_num}&nickname=${svo.nickname}">
@@ -175,13 +173,13 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 										</a></td>
 									</c:forEach>
 								</tr>
-                    </table>
-                </section>
-            </div>
-            <!-- 추가적인 열(column) 요소 추가 가능 -->
-        </div>
-    </div>
-</section>
+							</table>
+						</section>
+					</div>
+					<!-- 추가적인 열(column) 요소 추가 가능 -->
+				</div>
+			</div>
+		</section>
 	</div>
 	<div id="footer">
 		<jsp:include page="footer_menu.jsp"></jsp:include>
