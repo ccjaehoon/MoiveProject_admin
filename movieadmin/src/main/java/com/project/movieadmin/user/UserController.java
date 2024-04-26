@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -192,14 +193,33 @@ public class UserController {
 	@RequestMapping(value = "u_logout.do", method = RequestMethod.GET)
 	public String u_logout() {
 
-		session.removeAttribute("user_id");
-		session.removeAttribute("nickname");
-		session.removeAttribute("authority");
-		session.removeAttribute("user_num");
 
 		return "redirect: home.do";
+	}
+	@RequestMapping(value = "u_findPwView.do", method = RequestMethod.GET)
+	public String u_findPw() {
+
+		return "user/findPwView";
+	}
+	@RequestMapping(value = "u_findPw.do", method = RequestMethod.POST)
+	public String u_findPwOK(UserVO vo, Model model) {
+
+		logger.info("userPw"+vo.getUser_id());
+		
+		if(service.findPwCheck(vo)==0) {
+			logger.info("memberPWCheck");
+			model.addAttribute("msg", "아이디와 이메일을 확인해주세요");
+			
+			return "/user/findPwView";
+		}else {
+	
+		service.findPw(vo.getEmail(),vo.getUser_id());
+		model.addAttribute("email", vo.getEmail());
+		
+		return"/user/findPw";
 	}
 	
 	
 
+	}
 }

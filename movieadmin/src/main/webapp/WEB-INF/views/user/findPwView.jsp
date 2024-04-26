@@ -18,14 +18,25 @@
 </head>
 
 <body>
+	 <script type="text/javascript">
+
+
+
+	var msg = "${msg}";
+		 
+		if (msg != "") {
+			alert(msg);
+		}
+
+
+</script>
 	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
-		<h2>로그인</h2>
-		<form id="loginForm" action="u_loginOK.do" method="post"
-			enctype="multipart/form-data">
+		<h2>비밀번호 찾기</h2>
+		<form id="pwForm" action="u_findPw.do" method="post">
 			<table class="alt">
 				<tr>
 					<td><label for="user_id">id:</label></td>
@@ -33,25 +44,21 @@
 						value="admin" placeholder="아이디"></td>
 				</tr>
 				<tr>
-					<td><label for="password">password:</label></td>
-					<td><input type="password" id="password" name="password"
-						value="hi1234" placeholder="비밀번호"></td>
+					<td><label for="email">email:</label></td>
+					<td><input type="email" id="email" name="email"
+						value="" placeholder="이메일"></td>
 				</tr>
+
 				<tr>
+
 					<td colspan="2" align="right"><input type="submit"
-						value="login">
-                	</td>
+						value="이메일 전송"></td>
 				</tr>
 
 
 			</table>
 		</form>
 		<table>
-		<tr>
-				<td colspan="2" align="center">
-				<form action="u_findPwView.do">
-				<input type="submit" value="비밀번호 찾기">
-			</form>
 			<tr>
 				<td colspan="2" align="center">
 				<form action="u_insert.do">
