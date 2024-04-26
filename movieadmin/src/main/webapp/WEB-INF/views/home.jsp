@@ -78,46 +78,6 @@
 							</section>
 						</div>
 					</div>
-					<%-- <div class="col-3 col-6-medium col-12-small">
-
-						<!-- Feature #2 -->
-						<section>
-							<table class="alt">
-								<c:forEach var="ivo" items="${ivos}">
-									<tr>
-										<td><span style="float: left;"><a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a></span></td>
-									</tr>
-									<tr>
-										<td><img src="resources/uploadimg/${ivo.save_img}" width="300" /></td>
-									</tr>
-								</c:forEach>
-							</table>
-						</section>
-
-					</div>
-					<div class="col-3 col-6-medium col-12-small">
-
-						<!-- Feature #3 -->
-						<section>
-							<a href="#" class="bordered-feature-image"><img
-								src="images/pic03.jpg" alt="" /></a>
-							<h2>License Info</h2>
-						</section>
-
-					</div>
-					<div class="col-3 col-6-medium col-12-small">
-
-						<!-- Feature #4 -->
-						<section>
-							<a href="#" class="bordered-feature-image"><img
-								src="images/pic04.jpg" alt="" /></a>
-							<h2>Volutpat etiam aliquam</h2>
-							<p>Duis neque nisi, dapibus sed mattis quis, rutrum accumsan
-								sed. Suspendisse eu varius nibh. Suspendisse vitae magna mollis.
-							</p>
-						</section>
-						
-					</div> --%>
 				</div>
 			</form>
 		</section>
