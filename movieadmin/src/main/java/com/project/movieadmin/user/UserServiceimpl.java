@@ -103,14 +103,12 @@ public class UserServiceimpl implements UserService {
 
 	@Override
 	public int findPwCheck(UserVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.findPwCheck(vo);
 	}
 
 	@Override
-	public void findPw(String email, String user_id) {
-		// TODO Auto-generated method stub
-		
+	public UserVO findPw(UserVO vo) {
+		return dao.findPw(vo);
 	}
 
 
