@@ -40,10 +40,10 @@
 
 				<tr>
 
-					<td colspan="2" align="right"><input type="submit"
-						value="login"> <c:if test="${param.message == 0 }">
+					<td colspan="2" align="right"> <c:if test="${param.message == 0 }">
 		              		아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.
-                		</c:if></td>
+                		</c:if><input type="submit"
+						value="login"></td>
 				</tr>
 
 
