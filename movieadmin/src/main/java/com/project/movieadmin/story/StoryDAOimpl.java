@@ -103,14 +103,6 @@ public class StoryDAOimpl implements StoryDAO {
 	    
 	    return sqlSession.selectList("S_GETLIVESTORIES");
 	}
-	
-
-	@Override
-	public int s_removeExpired() {
-		log.info("s_removeExpired()..."); //만료된 스토리 삭제
-
-		return sqlSession.delete("S_REMOVEEXPIRED");
-	}
 
 	@Override
 	public int s_increaseGood(StoryVO vo) {

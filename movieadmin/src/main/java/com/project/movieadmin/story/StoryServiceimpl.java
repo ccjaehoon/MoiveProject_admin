@@ -85,14 +85,6 @@ public class StoryServiceimpl implements StoryService {
 	}
 
 	@Override
-	public int s_removeExpired() {
-		System.out.println("s_removeExpired....");
-		
-		
-		return 0;
-	}
-
-	@Override
 	public int s_increaseGood(StoryVO vo) {
 		
 		return dao.s_increaseGood(vo);
