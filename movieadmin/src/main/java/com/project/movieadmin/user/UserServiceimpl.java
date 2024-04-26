@@ -101,6 +101,18 @@ public class UserServiceimpl implements UserService {
 		return dao.u_selectOne_id(vo);
 	}
 
+	@Override
+	public int findPwCheck(UserVO vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void findPw(String email, String user_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	
 }

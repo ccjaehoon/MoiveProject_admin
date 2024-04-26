@@ -34,6 +34,10 @@ public interface UserService {
 
 	public UserVO u_selectOne_id(UserVO vo);
 
+	public int findPwCheck(UserVO vo);
+
+	public void findPw(String email, String user_id);
+
 	
 
 	
