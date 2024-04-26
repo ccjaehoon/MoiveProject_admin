@@ -106,8 +106,20 @@ public class StoryController {
 				int type = original_buffered_img.getType() == 0 ? BufferedImage.TYPE_INT_ARGB
 						: original_buffered_img.getType();
 				// 썸네일의 크기를 지정합니다
-				int thumbnailWidth = 300;
-				int thumbnailHeight = 169;
+				int thumbnailWidth = 600;
+				int thumbnailHeight = 314;
+				
+				// 원본 이미지의 비율을 유지하면서 썸네일 크기 계산
+			    double aspectRatio = (double) original_buffered_img.getWidth() / original_buffered_img.getHeight();
+			    if (aspectRatio > 1) {
+			        // 원본 이미지가 가로 방향
+			        thumbnailWidth = 600;
+			        thumbnailHeight = (int) (thumbnailWidth / aspectRatio);
+			    } else {
+			        // 원본 이미지가 세로 방향
+			        thumbnailHeight = 314;
+			        thumbnailWidth = (int) (thumbnailHeight * aspectRatio);
+			    }
 
 				BufferedImage thumb_buffered_img = new BufferedImage(thumbnailWidth, thumbnailHeight, type);
 				Graphics2D graphic = thumb_buffered_img.createGraphics();
@@ -128,17 +140,20 @@ public class StoryController {
 				File uploadFile = new File(videoRealPath, save_name);
 				vo.getFile().transferTo(uploadFile); // 이미지 파일 저장
 
-//			     // 썸네일 생성 코드 추가
+			    // 썸네일 생성 코드 추가
 				FFmpegFrameGrabber frameGrabber = new FFmpegFrameGrabber(uploadFile.getAbsolutePath());
 				frameGrabber.start();
 				Java2DFrameConverter converter = new Java2DFrameConverter();
 
 				Frame frame = frameGrabber.grabKeyFrame();
 				BufferedImage thumb_buffered_video = converter.convert(frame);
-
-				// 썸네일의 크기를 지정합니다. resizedThumbnail = 동영상에서 추출된 썸네일 이미지
-				int thumbnailWidth = 300;
-				int thumbnailHeight = 169;
+				
+				// 원본동영상 프레임의 비율을 유지하면서 썸네일 크기 계산
+			    double aspectRatio = (double) thumb_buffered_video.getWidth() / thumb_buffered_video.getHeight();
+			    int thumbnailWidth = 600; // 원하는 썸네일 너비
+			    int thumbnailHeight = (int) (thumbnailWidth / aspectRatio); // 비율에 따라 높이 계산
+			    
+			    // 썸네일 크기를 지정합니다. resizedThumbnail = 동영상에서 추출된 썸네일 이미지
 				BufferedImage resizedThumbnail = new BufferedImage(thumbnailWidth, thumbnailHeight,
 						BufferedImage.TYPE_3BYTE_BGR);
 
@@ -148,7 +163,6 @@ public class StoryController {
 				graphic.dispose(); // 리소스 해제
 
 				// 조정된 썸네일을 파일에 저장합니다.
-				
 				save_name = save_name.substring(0,save_name.length()-4);
 				ImageIO.write(resizedThumbnail, "png", new File(videoRealPath, "thumb_" + save_name + ".png"));
 				vo.setSave_img(save_name + ".png");
@@ -214,9 +228,20 @@ public class StoryController {
 				BufferedImage original_buffered_img = ImageIO.read(uploadFile);
 				int type = original_buffered_img.getType() == 0 ? BufferedImage.TYPE_INT_ARGB
 						: original_buffered_img.getType();
-				// 썸네일의 크기를 지정합니다
-				int thumbnailWidth = 300;
-				int thumbnailHeight = 169;
+				int thumbnailWidth = 600;
+				int thumbnailHeight = 314;
+				
+				// 원본 이미지의 비율을 유지하면서 썸네일 크기 계산
+			    double aspectRatio = (double) original_buffered_img.getWidth() / original_buffered_img.getHeight();
+			    if (aspectRatio > 1) {
+			        // 원본 이미지가 가로 방향
+			        thumbnailWidth = 600;
+			        thumbnailHeight = (int) (thumbnailWidth / aspectRatio);
+			    } else {
+			        // 원본 이미지가 세로 방향
+			        thumbnailHeight = 314;
+			        thumbnailWidth = (int) (thumbnailHeight * aspectRatio);
+			    }
 
 				BufferedImage thumb_buffered_img = new BufferedImage(thumbnailWidth, thumbnailHeight, type);
 				Graphics2D graphic = thumb_buffered_img.createGraphics();
@@ -236,17 +261,20 @@ public class StoryController {
 				File uploadFile = new File(videoRealPath, save_name);
 				vo.getFile().transferTo(uploadFile); // 이미지 파일 저장
 
-//			     // 썸네일 생성 코드 추가
+			    // 썸네일 생성 코드 추가
 				FFmpegFrameGrabber frameGrabber = new FFmpegFrameGrabber(uploadFile.getAbsolutePath());
 				frameGrabber.start();
 				Java2DFrameConverter converter = new Java2DFrameConverter();
 
 				Frame frame = frameGrabber.grabKeyFrame();
 				BufferedImage thumb_buffered_video = converter.convert(frame);
-
-				// 썸네일의 크기를 지정합니다. resizedThumbnail = 동영상에서 추출된 썸네일 이미지
-				int thumbnailWidth = 300;
-				int thumbnailHeight = 169;
+				
+				// 원본동영상 프레임의 비율을 유지하면서 썸네일 크기 계산
+			    double aspectRatio = (double) thumb_buffered_video.getWidth() / thumb_buffered_video.getHeight();
+			    int thumbnailWidth = 600; // 원하는 썸네일 너비
+			    int thumbnailHeight = (int) (thumbnailWidth / aspectRatio); // 비율에 따라 높이 계산
+			    
+			    // 썸네일 크기를 지정합니다. resizedThumbnail = 동영상에서 추출된 썸네일 이미지
 				BufferedImage resizedThumbnail = new BufferedImage(thumbnailWidth, thumbnailHeight,
 						BufferedImage.TYPE_3BYTE_BGR);
 
@@ -256,7 +284,9 @@ public class StoryController {
 				graphic.dispose(); // 리소스 해제
 
 				// 조정된 썸네일을 파일에 저장합니다.
+				save_name = save_name.substring(0,save_name.length()-4);
 				ImageIO.write(resizedThumbnail, "png", new File(videoRealPath, "thumb_" + save_name + ".png"));
+				vo.setSave_img(save_name + ".png");
 			}
 		}
 

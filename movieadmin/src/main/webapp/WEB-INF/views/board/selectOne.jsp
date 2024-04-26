@@ -306,7 +306,7 @@
 			<table id="rp" border="2">
 				<tr>
 					<td id="font" width="100">신고 내용 <input type="text"
-						id="nickname" name="nickname" value="${vo2.nickname}" readonly>
+						id="nickname" name="nickname" value="${nickname}" readonly>
 						<input type="text" id="board_num" name="board_num"
 						value="${vo2.board_num}" readonly>
 					</td>
@@ -332,7 +332,7 @@
 			<table id="rp" border="2">
 				<tr>
 					<td id="font" width="100">신고 내용 <input type="text"
-						id="nicknameC" name="nickname" value="${cvo.nickname}" readonly>
+						id="nicknameC" name="nickname" value="${nickname}" readonly>
 						<input type="text" id="comments_num" name="comments_num"
 						value="${cvo.comments_num}" readonly> <input type="hidden"
 						id="board_num" name="board_num" value="${vo2.board_num}">
