@@ -106,8 +106,8 @@ public class StoryController {
 				int type = original_buffered_img.getType() == 0 ? BufferedImage.TYPE_INT_ARGB
 						: original_buffered_img.getType();
 				// 썸네일의 크기를 지정합니다
-				int thumbnailWidth = 50;
-				int thumbnailHeight = 50;
+				int thumbnailWidth = 300;
+				int thumbnailHeight = 169;
 
 				BufferedImage thumb_buffered_img = new BufferedImage(thumbnailWidth, thumbnailHeight, type);
 				Graphics2D graphic = thumb_buffered_img.createGraphics();
@@ -137,8 +137,8 @@ public class StoryController {
 				BufferedImage thumb_buffered_video = converter.convert(frame);
 
 				// 썸네일의 크기를 지정합니다. resizedThumbnail = 동영상에서 추출된 썸네일 이미지
-				int thumbnailWidth = 50;
-				int thumbnailHeight = 50;
+				int thumbnailWidth = 300;
+				int thumbnailHeight = 169;
 				BufferedImage resizedThumbnail = new BufferedImage(thumbnailWidth, thumbnailHeight,
 						BufferedImage.TYPE_3BYTE_BGR);
 
@@ -215,8 +215,8 @@ public class StoryController {
 				int type = original_buffered_img.getType() == 0 ? BufferedImage.TYPE_INT_ARGB
 						: original_buffered_img.getType();
 				// 썸네일의 크기를 지정합니다
-				int thumbnailWidth = 50;
-				int thumbnailHeight = 50;
+				int thumbnailWidth = 300;
+				int thumbnailHeight = 169;
 
 				BufferedImage thumb_buffered_img = new BufferedImage(thumbnailWidth, thumbnailHeight, type);
 				Graphics2D graphic = thumb_buffered_img.createGraphics();
@@ -245,8 +245,8 @@ public class StoryController {
 				BufferedImage thumb_buffered_video = converter.convert(frame);
 
 				// 썸네일의 크기를 지정합니다. resizedThumbnail = 동영상에서 추출된 썸네일 이미지
-				int thumbnailWidth = 50;
-				int thumbnailHeight = 50;
+				int thumbnailWidth = 300;
+				int thumbnailHeight = 169;
 				BufferedImage resizedThumbnail = new BufferedImage(thumbnailWidth, thumbnailHeight,
 						BufferedImage.TYPE_3BYTE_BGR);
 
