@@ -16,6 +16,8 @@ import com.project.movieadmin.board.BoardService;
 import com.project.movieadmin.board.BoardVO;
 import com.project.movieadmin.info.InfoService;
 import com.project.movieadmin.info.InfoVO;
+import com.project.movieadmin.news.NewsService;
+import com.project.movieadmin.news.NewsVO;
 import com.project.movieadmin.story.StoryService;
 import com.project.movieadmin.story.StoryVO;
 
@@ -40,6 +42,9 @@ public class HomeController {
 	@Autowired
 	private StoryService sService;
 	
+	@Autowired
+	private NewsService nService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -50,10 +55,12 @@ public class HomeController {
 		List<BoardVO> bvos = bService.b_selectAll();
 		List<InfoVO> ivos = iService.i_selectAll();
 		List<AnnouncementVO> avos = aService.a_selectAll();
+		List<NewsVO> nvos = nService.n_selectAll();
 		List<StoryVO> svos =  sService.s_selectAll(0, 5);
 		model.addAttribute("bvos", bvos);
 		model.addAttribute("ivos", ivos);
 		model.addAttribute("avos", avos);
+		model.addAttribute("nvos", nvos);
 		model.addAttribute("svos", svos);
 		return "home";
 	}

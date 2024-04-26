@@ -25,7 +25,7 @@
 	</select>
 
 	<select id="N_SELECT_ALL" resultType="com.project.movieadmin.news.NewsVO">
-		select * from news order by news_num desc
+		select * from news order by news_num desc limit 10
 	</select>
 
 	<select id="N_SELECT_ALL_PAGE_BLOCK"
