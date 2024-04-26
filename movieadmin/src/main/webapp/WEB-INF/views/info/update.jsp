@@ -24,7 +24,7 @@
 			enctype="multipart/form-data">
 			<table id="updateTable">
 				<tr>
-					<td><label for="info_num">뉴스번호</label></td>
+					<td><label for="info_num">영화번호</label></td>
 					<td>${param.info_num}<input type="hidden" id="info_num"
 						name="info_num" value="${param.info_num}"></td>
 				</tr>

@@ -37,19 +37,21 @@
 					<td><input type="password" id="password" name="password"
 						value="hi1234" placeholder="비밀번호"></td>
 				</tr>
-
 				<tr>
-
 					<td colspan="2" align="right"><input type="submit"
-						value="login"> <c:if test="${param.message == 0 }">
-		              		아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.
-                		</c:if></td>
+						value="login">
+                	</td>
 				</tr>
 
 
 			</table>
 		</form>
 		<table>
+		<tr>
+				<td colspan="2" align="center">
+				<form action="u_findPwView.do">
+				<input type="submit" value="비밀번호 찾기">
+			</form>
 			<tr>
 				<td colspan="2" align="center">
 				<form action="u_insert.do">
