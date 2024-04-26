@@ -167,7 +167,7 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 												<c:if
 													test="${svo.save_img != null && svo.save_video == null }">
 													<img src="resources/uploadimg/images/thumb_${svo.save_img}"
-														alt="스토리 쌈네일" class="thumbnail">
+														alt="스토리 썸네일" class="thumbnail">
 												</c:if> <c:if test="${svo.save_video != null }">
 													<img src="resources/uploadimg/videos/thumb_${svo.save_img}"
 														alt="동영상 썸네일" class="thumbnail">
