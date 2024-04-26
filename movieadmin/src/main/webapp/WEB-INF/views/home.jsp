@@ -9,12 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home</title>
 
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/main.css" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/board.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/board.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 
 <style>
 #main {
@@ -41,7 +39,6 @@
 }
 </style>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
@@ -58,49 +55,35 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 		<jsp:include page="top_menu.jsp"></jsp:include>
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
-
 		<section id="features">
-		<form action="i_selectAll.do">
-		
-			<div class="container">
-				<div class="row">
-					<div class="col-3 col-6-medium col-12-small">
-					    <!-- Feature #1 -->
-					    <section>
-					        <!-- <table class="alt"> -->
-						    	<ul class="bxslider" style="width: 60%;">
-					           <!--  <tr> -->
-					                <c:forEach var="ivo" items="${ivos}">
+			<form action="i_selectAll.do">
+				<div class="container">
+					<div class="row">
+						<div class="col-3 col-6-medium col-12-small">
+						    <section>
+							    	<ul class="bxslider" style="width: 200%;">
+					                	<c:forEach var="ivo" items="${ivos}">
 						                	<li>
-						                    <!-- <td align="center"> -->
 						                        <span style="float: left;">
 						                            <a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
 						                        </span>
 						                        <br/>
 						                        <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
-						                    <!-- </td> -->
 						               		</li>
-					                </c:forEach>
-					            <!-- </tr> -->
-			                	</ul>
-					        <!-- </table> -->
-					    </section>
+					                	</c:forEach>
+				                	</ul>
+						    </section>
+						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
 		</section>
-
-		<!-- Content -->
 		<section id="content">
 			<div class="container">
 				<div class="row aln-center">
 					<div class="col-4 col-12-medium">
-
-						<!-- Box #1 -->
 						<section>
-							<span style="float: left;">최신 글</span> <span
-								style="float: right;"><a href="b_selectAll.do">+더보기</a></span>
+							<span style="float: left;">최신글</span> <span style="float: right;"><a href="b_selectAll.do">+더보기</a></span>
 							<table class="alt" style="width: 100%; table-layout: fixed;">
 								<c:forEach var="bvo" items="${bvos}">
 									<tr>
@@ -113,22 +96,24 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 
 					</div>
 					<div class="col-4 col-6-medium col-12-small">
-
 						<!-- Box #2 -->
 						<section>
-							<span style="float: left">최신 개봉 영화</span><span
-								style="float: right"><a href="i_selectAll.do">+더보기</a></span>
+							<span style="float: left">최신 개봉 영화</span>
+							<span style="float: right">
+								<a href="i_selectAll.do">+더보기</a>
+							</span>
 							<table class="alt">
 								<c:forEach var="ivo" items="${ivos}">
 									<tr>
-										<td align="center"><a
-											href="i_selectOne.do?info_num=${ivo.info_num}"><img
-												src="resources/uploadimg/${ivo.save_img}" width="100"></a></td>
+										<td align="center">
+											<a href="i_selectOne.do?info_num=${ivo.info_num}">
+												<img src="resources/uploadimg/${ivo.save_img}" width="100">
+											</a>
+										</td>
 									</tr>
 								</c:forEach>
 							</table>
 						</section>
-
 					</div>
 					<div class="col-4 col-6-medium col-12-small">
 
