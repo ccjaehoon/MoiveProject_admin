@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.slf4j.Slf4j;
 
-
 /**
  * Handles requests for the application home page.
  */
@@ -184,7 +183,7 @@ public class UserController {
 			session.setAttribute("user_num", vo2.getUser_num());
 			session.setAttribute("nickname", vo2.getNickname());
 			session.setAttribute("authority", vo2.getAuthority());
-			log.info("vo2:"+vo2.getNickname());
+			log.info("vo2:" + vo2.getNickname());
 
 			return "redirect:home.do";
 		}
@@ -192,17 +191,30 @@ public class UserController {
 
 	@RequestMapping(value = "u_logout.do", method = RequestMethod.GET)
 	public String u_logout() {
-		
-		
+
+
+		session.removeAttribute("user_id");
+		session.removeAttribute("nickname");
+		session.removeAttribute("authority");
+
+
 		return "redirect: home.do";
 	}
+
 	@RequestMapping(value = "u_findPwView.do", method = RequestMethod.GET)
 	public String u_findPwView() {
 
 		return "user/findPwView";
 	}
+
 	@RequestMapping(value = "u_findPw.do", method = RequestMethod.POST)
 	public String u_findPw(UserVO vo, Model model) {
+
+
+		logger.info("userPw" + vo.getUser_id());
+
+		if (service.findPwCheck(vo) == 0) {
+			logger.info("memberPWCheck");
 
 		log.info("userId"+vo.getUser_id());
 		log.info("userEmail"+vo.getEmail());
@@ -210,8 +222,16 @@ public class UserController {
 		if(service.findPwCheck(vo)==0) {
 			log.info("userPWCheck");
 			model.addAttribute("msg", "아이디와 이메일을 확인해주세요");
-			
+
 			return "/user/findPwView";
+		} else {
+
+			service.findPw(vo.getEmail(), vo.getUser_id());
+			model.addAttribute("email", vo.getEmail());
+
+			return "/user/findPw";
+		}
+
 		}else {
 	
 			UserVO vo2 = service.findPw(vo);
