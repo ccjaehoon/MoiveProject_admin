@@ -181,11 +181,11 @@
 </head>
 
 <body>
- <div style="position: relative; z-index: 2;">
-    <jsp:include page="../top_menu.jsp"></jsp:include>
-</div>
-<div id="main" style="position: relative; z-index: 1;">
-<br>
+	<div style="position: relative; z-index: 2;">
+		<jsp:include page="../top_menu.jsp"></jsp:include>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
 		<h2>회원가입</h2>
 
 		<form action="u_insertOK.do" method="post"
@@ -213,8 +213,8 @@
 				<tr>
 					<td><label for="email">이메일:</label></td>
 					<td><input type="text" id="email" name="email" value=""
-						placeholder="이메일"> <span id="result3"></span>
-							<span id="result6"></span></td>
+						placeholder="이메일"> <span id="result3"></span> <span
+						id="result6"></span></td>
 					<td width=150><a href="#" id="u_emailCheck">이메일중복체크</a></td>
 				</tr>
 				<tr>
@@ -229,13 +229,14 @@
 				</tr>
 				<tr>
 					<td><label for="gender">성별:</label></td>
-					<td colspan="2"><input type="radio" id="gender_male" name="gender"
-						value="남자" ${vo2.gender == '남자' ? 'checked' : ''}> <label
-						for="남자">남자</label> <input type="radio" id="gender_female" name="gender"
-						value="여자" ${vo2.gender == '여자' ? 'checked' : ''}> <label
-						for="여자">여자</label> <input type="radio" id="gender_no" name="gender"
-						value="비공개" ${vo2.gender == '비공개' ? 'checked' : ''}> <label
-						for="비공개">비공개</label></td>
+					<td colspan="2"><input type="radio" id="gender_male"
+						name="gender" value="남자" ${vo2.gender == '남자' ? 'checked' : ''}>
+						<label for="gender_male">남자</label> <input type="radio"
+						id="gender_female" name="gender" value="여자"
+						${vo2.gender == '여자' ? 'checked' : ''}> <label
+						for="gender_female">여자</label> <input type="radio" id="gender_no"
+						name="gender" value="비공개" ${vo2.gender == '비공개' ? 'checked' : ''}>
+						<label for="gender_no">비공개</label></td>
 				</tr>
 
 
@@ -245,8 +246,8 @@
 			</table>
 		</form>
 	</div>
-			<div id = "copyright">
-<jsp:include page="../footer_menu.jsp"></jsp:include></div>
+	<div id="copyright">
+		<jsp:include page="../footer_menu.jsp"></jsp:include></div>
 </body>
 <script>
   

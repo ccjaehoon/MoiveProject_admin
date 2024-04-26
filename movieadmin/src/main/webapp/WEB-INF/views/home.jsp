@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home</title>
 
 <link rel="stylesheet" type="text/css"
@@ -15,6 +15,7 @@
 	href="${pageContext.request.contextPath}/resources/css/board.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+
 <style>
 #main {
 	margin-top: 100px; /* 탑 메뉴의 높이만큼 상단 마진 추가 */
@@ -39,6 +40,17 @@
 	box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 }
 </style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<script>
+ $(document).ready(function(){
+$('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
+ });   
+</script>
+
 </head>
 <body>
 
@@ -53,58 +65,26 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-3 col-6-medium col-12-small">
-						<!-- Feature #1 -->
-						<section>
-							<a href="i_selectOne.do?info_num=${vo2.info_num}">
-							<img src="resources/uploadimg/${vo2.save_img}" width="300"/></a>
-						</section>
-						
-					</div>
-					<div class="col-3 col-6-medium col-12-small">
-
-						<!-- Feature #2 -->
-						<section>
-							<table class="alt">
-								<c:forEach var="ivo" items="${ivos}">
-									<tr>
-										<td><span style="float: left;"><a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a></span></td>
-									</tr>
-									<tr>
-										<td><img src="resources/uploadimg/${ivo.save_img}" width="300" /></td>
-									</tr>
-								</c:forEach>
-							</table>
-						</section>
-
-					</div>
-					<div class="col-3 col-6-medium col-12-small">
-
-						<!-- Feature #3 -->
-						<section>
-							<a href="#" class="bordered-feature-image"><img
-								src="images/pic03.jpg" alt="" /></a>
-							<h2>License Info</h2>
-							<p>
-								Halcyonic is licensed under the <a
-									href="http://html5up.net/license">CCA</a> license, so use it
-								for personal/commercial use as much as you like (just keep our
-								credits intact).
-							</p>
-						</section>
-
-					</div>
-					<div class="col-3 col-6-medium col-12-small">
-
-						<!-- Feature #4 -->
-						<section>
-							<a href="#" class="bordered-feature-image"><img
-								src="images/pic04.jpg" alt="" /></a>
-							<h2>Volutpat etiam aliquam</h2>
-							<p>Duis neque nisi, dapibus sed mattis quis, rutrum accumsan
-								sed. Suspendisse eu varius nibh. Suspendisse vitae magna mollis.
-							</p>
-						</section>
-						
+					    <!-- Feature #1 -->
+					    <section>
+					        <!-- <table class="alt"> -->
+						    	<ul class="bxslider" style="width: 60%;">
+					           <!--  <tr> -->
+					                <c:forEach var="ivo" items="${ivos}">
+						                	<li>
+						                    <!-- <td align="center"> -->
+						                        <span style="float: left;">
+						                            <a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
+						                        </span>
+						                        <br/>
+						                        <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
+						                    <!-- </td> -->
+						               		</li>
+					                </c:forEach>
+					            <!-- </tr> -->
+			                	</ul>
+					        <!-- </table> -->
+					    </section>
 					</div>
 				</div>
 			</div>
@@ -136,14 +116,12 @@
 
 						<!-- Box #2 -->
 						<section>
-							<span style="float: left">최신 개봉 영화</span><span
-								style="float: right"><a href="i_selectAll.do">+더보기</a></span>
+							<span style="float: left">가운데</span>
+							<span style="float: right"><a href="">+더보기</a></span>
 							<table class="alt">
-								<c:forEach var="ivo" items="${ivos}">
+								<c:forEach var="vo" items="">
 									<tr>
-										<td align="center"><a
-											href="i_selectOne.do?info_num=${ivo.info_num}"><img
-												src="resources/uploadimg/${ivo.save_img}" width="100"></a></td>
+							<td align="center"><a href=""> </a></td>
 									</tr>
 								</c:forEach>
 							</table>
@@ -171,7 +149,39 @@
 			</div>
 
 		</section>
-
+		<!-- Content2 -->
+<section id="content2">
+    <div class="container2">
+        <div class="row aln-center">
+            <div class="col-4 col-12-medium">
+                <!-- 스토리 Box #1 -->
+                <section>
+                    <span style="float: left;">스토리</span>
+                    <span style="float: right;"><a href="s_selectAll.do">+더보기</a></span>
+                    <table class="alt" style="width: 100%; table-layout: fixed;">
+                    
+                            <tr>
+									<c:forEach var="svo" items="${svos}">
+										<td align="center"><a
+											href="s_selectOne.do?story_num=${svo.story_num}&nickname=${svo.nickname}">
+												<c:if
+													test="${svo.save_img != null && svo.save_video == null }">
+													<img src="resources/uploadimg/images/thumb_${svo.save_img}"
+														alt="스토리 사진">
+												</c:if> <c:if test="${svo.save_video != null }">
+													<img src="resources/uploadimg/videos/thumb_${svo.save_img}"
+														alt="동영상 썸네일">
+												</c:if>
+										</a></td>
+									</c:forEach>
+								</tr>
+                    </table>
+                </section>
+            </div>
+            <!-- 추가적인 열(column) 요소 추가 가능 -->
+        </div>
+    </div>
+</section>
 	</div>
 	<div id="footer">
 		<jsp:include page="footer_menu.jsp"></jsp:include>
