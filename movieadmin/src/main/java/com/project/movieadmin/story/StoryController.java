@@ -124,6 +124,7 @@ public class StoryController {
 				String save_name = "video_" + System.currentTimeMillis()
 						+ originFileName.substring(originFileName.lastIndexOf("."));
 				vo.setSave_video(save_name);
+				
 				File uploadFile = new File(videoRealPath, save_name);
 				vo.getFile().transferTo(uploadFile); // 이미지 파일 저장
 
@@ -147,7 +148,10 @@ public class StoryController {
 				graphic.dispose(); // 리소스 해제
 
 				// 조정된 썸네일을 파일에 저장합니다.
+				
+				save_name = save_name.substring(0,save_name.length()-4);
 				ImageIO.write(resizedThumbnail, "png", new File(videoRealPath, "thumb_" + save_name + ".png"));
+				vo.setSave_img(save_name + ".png");
 			}
 		}
 

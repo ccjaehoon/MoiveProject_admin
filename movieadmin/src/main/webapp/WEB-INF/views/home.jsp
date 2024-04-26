@@ -192,24 +192,29 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 		<!-- Content2 -->
 <section id="content2">
     <div class="container2">
-        <div class="row aln-center2">
-            <div class="col-4 col-12-medium2">
+        <div class="row aln-center">
+            <div class="col-4 col-12-medium">
                 <!-- 스토리 Box #1 -->
                 <section>
                     <span style="float: left;">스토리</span>
                     <span style="float: right;"><a href="s_selectAll.do">+더보기</a></span>
                     <table class="alt" style="width: 100%; table-layout: fixed;">
                     
-                        <c:forEach var="svo" items="${svos}">
                             <tr>
-                                <td align="center">
-                                    <a href="s_selectOne.do?story_num=${vo2.story_num}&nickname=${svo.nickname}">
-                                        <img src="resources/uploadimg/images/thumb_${svo.save_img}" alt="스토리 사진">    
-                                        <img src="resources/uploadimg/videos/thumb_${svo.save_video}" alt="스토리 동영상 썸네일">
-                                    </a>
-                                </td>
-                            </tr>
-                        </c:forEach>
+									<c:forEach var="svo" items="${svos}">
+										<td align="center"><a
+											href="s_selectOne.do?story_num=${svo.story_num}&nickname=${svo.nickname}">
+												<c:if
+													test="${svo.save_img != null && svo.save_video == null }">
+													<img src="resources/uploadimg/images/thumb_${svo.save_img}"
+														alt="스토리 사진">
+												</c:if> <c:if test="${svo.save_video != null }">
+													<img src="resources/uploadimg/videos/thumb_${svo.save_img}"
+														alt="동영상 썸네일">
+												</c:if>
+										</a></td>
+									</c:forEach>
+								</tr>
                     </table>
                 </section>
             </div>
