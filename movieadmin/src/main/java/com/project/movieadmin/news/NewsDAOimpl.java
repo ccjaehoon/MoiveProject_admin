@@ -94,6 +94,14 @@ public class NewsDAOimpl implements NewsDAO {
 	}
 
 	@Override
+	public List<NewsVO> n_selectAll() {
+		List<NewsVO> nvos = sqlSession.selectList("N_SELECT_ALL");
+
+		return nvos;
+	
+	}
+
+	@Override
 	public int n_delete(NewsVO vo) {
 		log.info("delete()....");
 		log.info(vo.toString());

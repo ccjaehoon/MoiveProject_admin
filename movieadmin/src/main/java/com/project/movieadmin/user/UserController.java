@@ -195,22 +195,30 @@ public class UserController {
 		session.removeAttribute("user_id");
 		session.removeAttribute("nickname");
 		session.removeAttribute("authority");
+
 		return "redirect: home.do";
 	}
 
 	@RequestMapping(value = "u_findPwView.do", method = RequestMethod.GET)
-	public String u_findPw() {
+	public String u_findPwView() {
 
 		return "user/findPwView";
 	}
 
 	@RequestMapping(value = "u_findPw.do", method = RequestMethod.POST)
-	public String u_findPwOK(UserVO vo, Model model) {
+	public String u_findPw(UserVO vo, Model model) {
+
 
 		logger.info("userPw" + vo.getUser_id());
 
 		if (service.findPwCheck(vo) == 0) {
 			logger.info("memberPWCheck");
+
+		log.info("userId"+vo.getUser_id());
+		log.info("userEmail"+vo.getEmail());
+		log.info("userCheck :{}", service.findPwCheck(vo));
+		if(service.findPwCheck(vo)==0) {
+			log.info("userPWCheck");
 			model.addAttribute("msg", "아이디와 이메일을 확인해주세요");
 
 			return "/user/findPwView";
@@ -221,6 +229,19 @@ public class UserController {
 
 			return "/user/findPw";
 		}
+
+		}else {
+	
+			UserVO vo2 = service.findPw(vo);
+			log.info("vo2 :{}", vo2.toString());
+			String msg = "비밀번호는" + vo2.getPassword().toString() +"입니다";
+			log.info(msg);
+			model.addAttribute("msg", msg);
+			
+			return"/user/login";
+	}
+	
+	
 
 	}
 }

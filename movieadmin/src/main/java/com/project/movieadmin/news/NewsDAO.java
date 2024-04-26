@@ -6,6 +6,8 @@ import com.project.movieadmin.user.UserVO;
 
 public interface NewsDAO {
 	
+	public List<NewsVO> n_selectAll();
+	
 	public List<NewsVO> n_selectAll(int cpage, int pageBlock);
 
 	public NewsVO n_selectOne(NewsVO vo);
