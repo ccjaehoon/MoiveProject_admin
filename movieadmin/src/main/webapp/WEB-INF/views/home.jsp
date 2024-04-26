@@ -47,7 +47,12 @@
 
 <script>
  $(document).ready(function(){
-$('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
+$('.bxslider').bxSlider({
+	slideWidth: 500,   // 슬라이드 너비        
+	minSlides: 4,      // 최소 노출 개수        
+	maxSlides: 4
+
+});  // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
  });   
 </script>
 
@@ -60,25 +65,17 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 	<div id="main" style="position: relative; z-index: 1;">
 
 		<section id="features">
-		<form action="i_selectAll.do">
 		
-			<div class="container">
-				<div class="row">
-					<div class="col-3 col-6-medium col-12-small">
+
+					<div style="align:center">
 					    <!-- Feature #1 -->
 					    <section>
 					        <!-- <table class="alt"> -->
-						    	<ul class="bxslider" style="width: 60%;">
+						    	<ul class="bxslider" style="align:center">
 					           <!--  <tr> -->
 					                <c:forEach var="ivo" items="${ivos}">
 						                	<li>
-						                    <!-- <td align="center"> -->
-						                        <span style="float: left;">
-						                            <a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
-						                        </span>
-						                        <br/>
-						                        <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
-						                    <!-- </td> -->
+						                        <a href="i_selectOne.do?info_num=${ivo.info_num}"><img src="resources/uploadimg/${ivo.save_img}" width="200"/></a>
 						               		</li>
 					                </c:forEach>
 					            <!-- </tr> -->
@@ -86,9 +83,8 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 					        <!-- </table> -->
 					    </section>
 					</div>
-				</div>
-			</div>
-		</form>
+
+
 		</section>
 
 		<!-- Content -->
