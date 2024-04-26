@@ -151,9 +151,9 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 		</section>
 		<!-- Content2 -->
 <section id="content2">
-    <div class="container2">
-        <div class="row aln-center2">
-            <div class="col-4 col-12-medium2">
+    <div class="container">
+        <div class="row aln-center">
+            <div class="col-100 col-12-medium">
                 <!-- 스토리 Box #1 -->
                 <section>
                     <span style="float: left;">스토리</span>
