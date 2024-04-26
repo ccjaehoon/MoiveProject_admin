@@ -50,25 +50,29 @@
 						value="hi1234" placeholder="비밀번호"></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="right"><input type="submit"
-						value="login">
-                	</td>
+
+
+					<td colspan="2" align="right"><c:if
+							test="${param.message == 0 }">
+		              		아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.
+                		</c:if><input type="submit" value="login"></td>
+
 				</tr>
 
 
 			</table>
 		</form>
 		<table>
-		<tr>
-				<td colspan="2" align="center">
-				<form action="u_findPwView.do">
-				<input type="submit" value="비밀번호 찾기">
-			</form>
 			<tr>
 				<td colspan="2" align="center">
-				<form action="u_insert.do">
-				<input type="submit" value="회원 가입">
-			</form>
+					<form action="u_findPwView.do">
+						<input type="submit" value="비밀번호 찾기">
+					</form>
+			<tr>
+				<td colspan="2" align="center">
+					<form action="u_insert.do">
+						<input type="submit" value="회원 가입">
+					</form>
 				</td>
 			</tr>
 		</table>

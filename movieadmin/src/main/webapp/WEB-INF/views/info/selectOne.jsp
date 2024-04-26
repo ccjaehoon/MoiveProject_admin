@@ -47,7 +47,7 @@
 		});
 	});
 	function closeReportDialog() {
-	    $("#report").dialog("close");
+		$("#report").dialog("close");
 	}
 
 	// 	});
@@ -65,8 +65,9 @@
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
 	// API 키
-		var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
-//	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
+// 	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
+//  var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
+// 	var apiKey = "AIzaSyCNd-d0mDUXRRJ63-H5Fui172gz2t8Bma8";
 
 	// YouTube API 클라이언트 초기화
 	function init() {
@@ -170,9 +171,11 @@
 			<thead>
 				<tr>
 					<th><img src="resources/uploadimg/${vo2.save_img}"
-						style="width: 60%; height: auto;"></th>
-					<th align="right"><iframe id="trailerFrame" style="width: 100%; height: 300px; frameborder="0" allowfullscreen
-								></iframe></th>
+
+						style="width: 200px; height: 300px;"></th>
+					<th><iframe id="trailerFrame"
+							style="width: 600px; height: 300px;" frameborder="0" allowfullscreen></iframe></th>
+
 				</tr>
 			</thead>
 			<tbody>
@@ -218,14 +221,14 @@
 				</tr>
 				<tr>
 					<c:if test="${authority == 'admin'}">
-                        <td colspan="5">
-                            <form action="i_update.do" method="GET"
-                                style="text-align: center;">
-                                <input type="hidden" name="info_num" value="${vo2.info_num}">
-                                <input type="submit" value="영화 수정">
-                            </form>
-                        </td>
-                    </c:if>
+						<td colspan="5">
+							<form action="i_update.do" method="GET"
+								style="text-align: center;">
+								<input type="hidden" name="info_num" value="${vo2.info_num}">
+								<input type="submit" value="영화 수정">
+							</form>
+						</td>
+					</c:if>
 				</tr>
 		</table>
 
