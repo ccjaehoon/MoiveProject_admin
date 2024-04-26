@@ -18,6 +18,18 @@
 </head>
 
 <body>
+	 <script type="text/javascript">
+
+
+
+	var msg = "${msg}";
+		 
+		if (msg != "") {
+			alert(msg);
+		}
+
+
+</script>
 	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
 	</div>

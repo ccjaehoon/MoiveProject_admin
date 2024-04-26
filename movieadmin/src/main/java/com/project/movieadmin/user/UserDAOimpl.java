@@ -152,6 +152,16 @@ public class UserDAOimpl implements UserDAO {
 
 		return vo2;
 	}
+
+	@Override
+	public int findPwCheck(UserVO vo) {
+		return sqlSession.selectOne("FIND_PW_CHECK", vo);
+	}
+
+	@Override
+	public UserVO findPw(UserVO vo) {
+		return sqlSession.selectOne("U_SELECT_ONE_PW",vo);
+	}
 	
 
 
