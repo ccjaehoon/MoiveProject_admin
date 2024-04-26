@@ -192,8 +192,8 @@ public class UserController {
 
 	@RequestMapping(value = "u_logout.do", method = RequestMethod.GET)
 	public String u_logout() {
-
-
+		
+		
 		return "redirect: home.do";
 	}
 	@RequestMapping(value = "u_findPwView.do", method = RequestMethod.GET)
