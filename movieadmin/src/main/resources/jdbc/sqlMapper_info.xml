@@ -26,7 +26,7 @@
 
 	<select id="I_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.info.InfoVO">
-		select * from info order by info_num desc limit
+		select * from info order by releaseDate desc limit
 		${startRow},
 		${pageBlock}
 	</select>

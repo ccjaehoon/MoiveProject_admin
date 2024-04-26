@@ -65,8 +65,8 @@
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
 	// API 키
-	//	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
-	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
+		var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
+//	var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
 
 	// YouTube API 클라이언트 초기화
 	function init() {
@@ -171,9 +171,8 @@
 				<tr>
 					<th><img src="resources/uploadimg/${vo2.save_img}"
 						style="width: 60%; height: auto;"></th>
-					<th align="right"><iframe id="trailerFrame"
-							style="width: 100%; height: 0; padding-bottom: 56.25%;"
-							frameborder="0" allowfullscreen></iframe></th>
+					<th align="right"><iframe id="trailerFrame" style="width: 100%; height: 300px; frameborder="0" allowfullscreen
+								></iframe></th>
 				</tr>
 			</thead>
 			<tbody>
