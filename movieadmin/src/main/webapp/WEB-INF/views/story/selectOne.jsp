@@ -92,7 +92,50 @@
 
 	});
 </script>
+<style>
+#report, #reportC {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
 
+#rp {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#rp td {
+	padding: 10px;
+}
+
+#font {
+	font-weight: bold;
+}
+
+#text_report {
+	width: 100%;
+	height: 100px;
+}
+
+.report {
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.report:hover {
+	background-color: #0056b3;
+}
+</style>
 
 
 <script>
@@ -103,23 +146,34 @@
 			autoOpen : false
 		});
 	});
+	 $(function() {
+			$("#reportSC").dialog({
+				autoOpen : false
+			});
+		});
 	//story의 신고
-	function showDialogReport(story_num, nickname, id) {
+	function showDialogReport(story_num, nickname) {
 		console.log(story_num);
 		console.log(nickname);
-		console.log(id); // 디버깅 목적으로 id를 로그로 출력
 		$('#story_num').val(story_num);
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
 	}
 	//story_comments의 신고
-	function showDialogReport(story_comments_num, nickname, id) {
+	function showDialogReportSC(story_comments_num, nickname) {
 		console.log(story_comments_num);
 		console.log(nickname);
-		console.log(id); // 디버깅 목적으로 id를 로그로 출력
 		$('#story_comments_num').val(story_comments_num);
-		$('#nickname').val(nickname);
-		$("#report").dialog("open");
+		$('#nicknameSC').val(nickname);
+		$("#reportSC").dialog("open");
+	}
+
+	function closeReportDialog() {
+		$("#report").dialog("close");
+	}
+
+	function closeReportDialogC() {
+		$("#reportSC").dialog("close");
 	}
 </script>
 
@@ -148,7 +202,7 @@
 						<td colspan="3">${vo2.content}</td>
 					</tr>
 
-					
+
 					<c:if test="${vo2.save_img != null }">
 						<tr>
 							<td colspan="4"><img
@@ -193,9 +247,13 @@
 							type="button" value="${vo2.good}" class="s_increaseGood"></td>
 
 						<td><input type="button" id="reportBtn" class="report"
-							onClick="showDialogReport('${vo2.story_num}','${vo2.nickname}')"
+							onClick="showDialogReport('${vo2.story_num}','${nickname}')"
 							value="신고" /></td>
 
+
+
+					</tr>
+					<tr>
 						<td><c:if
 								test="${nickname == vo2.nickname || nickname == 'admin'}">
 								<a
@@ -204,36 +262,36 @@
 
 						<td><c:if
 								test="${nickname == vo2.nickname || nickname == 'admin' }">
-								<td><a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a>
+								<a href="s_delete.do?story_num=${vo2.story_num}">글삭제</a>
 							</c:if></td>
 					</tr>
-
 				</tbody>
 			</table>
 		</div>
 		<hr>
 		<h3>댓글작성</h3>
 		<form action="SComments_insertOK.do">
-			<table id="customers">
-				<thead>
-					<tr>
-						<th>댓글 내용 ${param.msg}</th>
-						<th>댓글 작성자</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><input type="text" name="content" value="hello" size="50"></td>
-						<td>${nickname}<input type="hidden" name="nickname"
-							value="${nickname}"> <input type="hidden"
-							name="story_num" value="${vo2.story_num}">
-						</td>
-						<td><input type="submit" value="댓글작성"></td>
-					</tr>
-				</tbody>
-			</table>
-
+			<div class="table-wrapper">
+				<table id="customers">
+					<thead>
+						<tr>
+							<th>댓글 내용 ${param.msg}</th>
+							<th>댓글 작성자</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" name="content" value="hello"
+								size="50"></td>
+							<td>${nickname}<input type="hidden" name="nickname"
+								value="${nickname}"> <input type="hidden"
+								name="story_num" value="${vo2.story_num}"></td>
+							<td><input type="submit" value="댓글작성"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</form>
 
 		<hr>
@@ -286,7 +344,7 @@
 
 						<td><input type="button" id="reportBtn_comment"
 							class="report"
-							onClick="showDialogReport('${cvo.story_comments_num}','${cvo.nickname}')"
+							onClick="showDialogReportSC('${cvo.story_comments_num}','${nickname}')"
 							value="신고" /></td>
 
 
@@ -305,37 +363,80 @@
 			</tbody>
 		</table>
 
-		<div id="report" style="position: relative; z-index: 2;">
 
-			<form id="reportForm" action="rp_insertOK.do" method="post">
-				<table id="rp" border="2">
-					<tr>
-						<td id="font" width="100">신고 내용<input type="text"
-							id="nickname" name="nickname" value="${cvo.nickname}" readonly>
-							<input type="text" id="story_comments_num"
-							name="story_comments_num" value="${cvo.story_comments_num}"
-							readonly></td>
-					</tr>
-					<tr>
-						<td width="500"><textarea id="text_report" name="content"
-								placeholder="신고내용을 적으세요">test report</textarea></td>
-					</tr>
-					<tr>
-						<td colspan="2"><input type="submit" value="신고접수"
-							class="report"></td>
-					</tr>
-				</table>
-			</form>
-		</div>
 	</div>
 	<div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>
+	</div>
+
+	<div id="report" style="position: relative; z-index: 2;">
+
+		<form id="reportForm" action="rp_insertOK.do" method="post">
+			<table id="rp" border="2">
+				<tr>
+					<td id="font" width="100">신고 내용<input type="text"
+						id="nickname" name="nickname" value="${nickname}" readonly>
+						<input type="text" id="story_num" name="story_num"
+						value="${vo2.story_num}" readonly></td>
+				</tr>
+				<tr>
+					<td width="500"><textarea id="text_report" name="content"
+							placeholder="신고내용을 적으세요">test report</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="신고접수"
+						class="report">
+						<button type="button" onclick="closeReportDialog()">닫기</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div id="reportSC" style="position: relative; z-index: 2;">
+
+		<form id="reportFormSC" action="rp_insertOK.do" method="post">
+			<table id="rp" border="2">
+				<tr>
+					<td id="font" width="100">신고 내용<input type="text"
+						id="nicknameSC" name="nickname" value="${nickname}" readonly>
+						<input type="text" id="story_comments_num"
+						name="story_comments_num" value="${cvo.story_comments_num}"
+						readonly> <input type="hidden"
+						id="story_num" name="story_num" value="${vo2.story_num}"></td>
+				</tr>
+				<tr>
+					<td width="500"><textarea id="text_report" name="content"
+							placeholder="신고내용을 적으세요">test report</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="신고접수"
+						class="report">
+						<button type="button" onclick="closeReportDialog()">닫기</button></td>
+				</tr>
+			</table>
+		</form>
 	</div>
 	<script>
 		function submitReportForm() {
 			location.reload();
 		}
 		$("#reportForm").submit(function(event) {
+			event.preventDefault();
+			$.ajax({
+				type : "POST",
+				url : $(this).attr("action"),
+				data : $(this).serialize(),
+				success : function(response) {
+					console.log(response);
+					submitReportForm();
+				},
+				error : function(xhr, status, error) {
+					console.error(status, error);
+				}
+			});
+		});
+
+		$("#reportFormSC").submit(function(event) {
 			event.preventDefault();
 			$.ajax({
 				type : "POST",
