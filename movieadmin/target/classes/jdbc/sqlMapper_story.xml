@@ -116,12 +116,6 @@
 		
 	</select>
 
-
-	<select id="TOTAL_ROWS"	resultType="int">
-		
-	</select>
-
-	
 	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
 	
 	</select>
