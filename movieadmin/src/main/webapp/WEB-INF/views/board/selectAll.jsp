@@ -113,11 +113,11 @@
 			</tfoot>
 		</table>
 			
-			<c:if test="${authority == 'admin' }">
+
 			<form action="b_insert.do">
 				<input type="submit" value="커뮤니티 작성">
 			</form>
-		</c:if>
+
 	</div>
 		 <div id="copyright">
 		<jsp:include page="../footer_menu.jsp"></jsp:include>
