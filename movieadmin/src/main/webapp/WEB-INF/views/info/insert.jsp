@@ -21,6 +21,11 @@
 		<form action="i_insertOK.do" method="post" enctype="multipart/form-data">
 			<table class="alt">
 				<tr>
+					<td><label for="nickname">작성자:</label></td>
+					<td>${nickname}<input type="hidden" id="nickname"
+						name="nickname" value="${nickname}" placeholder="작성자"></td>
+				</tr>
+				<tr>
 					<td><label for="title">제목</label></td>
 					<td><input type="text" id="title" name="title"></td>
 				</tr>
