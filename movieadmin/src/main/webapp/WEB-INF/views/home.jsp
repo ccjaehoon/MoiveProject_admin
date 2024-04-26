@@ -67,23 +67,17 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 					<div class="col-3 col-6-medium col-12-small">
 					    <!-- Feature #1 -->
 					    <section>
-					        <!-- <table class="alt"> -->
-						    	<ul class="bxslider" style="width: 60%;">
-					           <!--  <tr> -->
+						    	<ul class="bxslider" style="width: 600%;">
 					                <c:forEach var="ivo" items="${ivos}">
 						                	<li>
-						                    <!-- <td align="center"> -->
 						                        <span style="float: left;">
 						                            <a href="i_selectOne.do?info_num=${ivo.info_num}">${ivo.title}</a>
 						                        </span>
 						                        <br/>
 						                        <img src="resources/uploadimg/${ivo.save_img}" width="200"/>
-						                    <!-- </td> -->
 						               		</li>
 					                </c:forEach>
-					            <!-- </tr> -->
 			                	</ul>
-					        <!-- </table> -->
 					    </section>
 					</div>
 				</div>
@@ -116,13 +110,12 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 
 						<!-- Box #2 -->
 						<section>
-							<span style="float: left;">뉴스</span> <span
-								style="float: right;"><a href="n_selectAll.do">+더보기</a></span>
-							<table class="alt" style="width: 100%; table-layout: fixed;">
-								<c:forEach var="nvo" items="${nvos}">
+							<span style="float: left">가운데</span>
+							<span style="float: right"><a href="">+더보기</a></span>
+							<table class="alt">
+								<c:forEach var="vo" items="">
 									<tr>
-										<td align="center" style="padding: 5px;"><a
-											href="n_selectOne.do?news_num=${nvo.news_num}&nickname=${nvo.nickname}">${nvo.title}</a></td>
+							<td align="center"><a href=""> </a></td>
 									</tr>
 								</c:forEach>
 							</table>
@@ -154,7 +147,7 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 <section id="content2">
     <div class="container">
         <div class="row aln-center">
-            <div class="col-100">
+            <div class="col-100 col-12-medium">
                 <!-- 스토리 Box #1 -->
                 <section>
                     <span style="float: left;">스토리</span>
