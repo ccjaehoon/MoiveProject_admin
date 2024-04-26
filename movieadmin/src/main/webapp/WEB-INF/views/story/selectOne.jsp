@@ -24,7 +24,7 @@
 			console.log("increaseGood Click");
 			console.log('${vo2.story_num}');
 			console.log('${nickname}');
-			$.ajax({
+			$.ajax({ /* "http://223.130.161.242:8070/movie/s_increaseGood.do" */
 				url : "http://localhost:8070/movie/s_increaseGood.do",
 				type : "get",
 				data : {
@@ -186,7 +186,7 @@
 					</tr>
 
 
-					<c:if test="${vo2.save_img != null }">
+					<c:if test="${vo2.save_img != null && vo2.save_video == null }">
 						<tr>
 							<td colspan="4"><img
 								src="resources/uploadimg/images/${vo2.save_img}" width="200"></td>
