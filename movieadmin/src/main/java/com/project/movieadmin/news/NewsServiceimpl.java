@@ -59,4 +59,10 @@ public class NewsServiceimpl implements NewsService {
 		return dao.n_selectAll_nickname(cpage, pageBlock,vo);
 	}
 
+	@Override
+	public List<NewsVO> n_selectAll() {
+		
+		return dao.n_selectAll();
+	}
+
 }

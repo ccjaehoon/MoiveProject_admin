@@ -171,9 +171,11 @@
 			<thead>
 				<tr>
 					<th><img src="resources/uploadimg/${vo2.save_img}"
+
 						style="width: 200px; height: 300px;"></th>
 					<th><iframe id="trailerFrame"
 							style="width: 600px; height: 300px;" frameborder="0" allowfullscreen></iframe></th>
+
 				</tr>
 			</thead>
 			<tbody>

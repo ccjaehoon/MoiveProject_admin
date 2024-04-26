@@ -36,7 +36,7 @@ public interface UserService {
 
 	public int findPwCheck(UserVO vo);
 
-	public void findPw(String email, String user_id);
+	public UserVO findPw(UserVO vo);
 
 	
 

@@ -31,6 +31,10 @@
 		select * from user where user_id=#{user_id}
 	</select>
 
+	<select id="U_SELECT_ONE_PW" resultType="com.project.movieadmin.user.UserVO">
+	    SELECT * FROM user WHERE email=#{email} AND user_id=#{user_id}
+	</select>
+
 
 	<select id="U_SELECT_ALL_PAGE_BLOCK"
 		resultType="com.project.movieadmin.user.UserVO">
@@ -99,5 +103,8 @@
 		select user_id from user where user_id=#{user_id} and
 		password=#{password}
 	</select>
+		<select id="FIND_PW_CHECK" resultType="int">
+		    select count(*) from user where email=#{email} and user_id=#{user_id}
+		</select>
 
 </mapper>

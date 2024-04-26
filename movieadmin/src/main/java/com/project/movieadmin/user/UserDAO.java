@@ -33,4 +33,8 @@ public interface UserDAO {
 
 	public UserVO u_selectOne_id(UserVO vo);
 
+	public int findPwCheck(UserVO vo);
+
+	public UserVO findPw(UserVO vo);
+
 }
