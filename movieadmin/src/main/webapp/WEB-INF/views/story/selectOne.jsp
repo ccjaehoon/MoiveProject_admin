@@ -45,50 +45,33 @@
 			return false;
 		});
 
-		$(".sc_increaseGood")
-				.each(
-						function(index, item) {
-							console.log(index);
-							$(this)
-									.click(
-											function() {
-												console
-														.log("increaseGood Click");
-												console.log($(
-														"#story_comments_num"
-																+ index).val());
-												console.log('${nickname}');
+		$(".sc_increaseGood").each(function(index, item) {
+			console.log(index);
+			$(this).click(function() {
+			console.log("increaseGood Click");
+			console.log($("#story_comments_num" + index).val());
+			console.log('${nickname}');
 
-												$
-														.ajax({
-															url : "http://localhost:8070/movie/api/sc_increaseGood.do",
-															type : "get",
-															data : {
-																story_comments_num : $(
-																		"#story_comments_num"
-																				+ index)
-																		.val(),
-																nickname : '${nickname}'
-															},
-															dataType : "json",
-															success : function(
-																	obj) {
-																console
-																		.log(obj);
-																if (obj.goodCount > 0)
-																	item.value = obj.goodCount;
-															},
-															error : function(
-																	xhr, status) {
-																console
-																		.log(
-																				"status...",
-																				status);
-															}
-														});
-												return false;
-											});
-						});
+			$.ajax({
+				url : "http://localhost:8070/movie/api/sc_increaseGood.do",
+				type : "get",
+				data : {
+					story_comments_num : $("#story_comments_num" + index).val(),
+					nickname : '${nickname}'
+				},
+				dataType : "json",
+				success : function(obj) {
+					console.log(obj);
+					if (obj.goodCount > 0)
+					item.value = obj.goodCount;
+				},
+				error : function(xhr, status) {
+					console.log("status...", status);
+				}
+			});
+			return false;
+		  });
+		});
 
 	});
 </script>
