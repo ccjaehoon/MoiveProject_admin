@@ -1653,6 +1653,7 @@ input, select, textarea {
 	    background: #f7f7f7 url("images/bg04.png");
 	    border-top: solid 1px #fff;
 	    padding: 45px 0 45px 0;
+	    
 	}
 	#content2 section {
 			background: #fff;
@@ -1691,6 +1692,11 @@ input, select, textarea {
 		#content2 .check-list li {
 			border-bottom: solid 1px #e2e6e8;
 		}
+		.thumbnail {
+	    width: 200px; /* 원하는 너비 */
+	    height: 200px; /* 원하는 높이 */
+	    object-fit: cover; /* 이미지가 컨테이너를 넘치지 않도록 조정 */
+}
 
 /* Footer */
 

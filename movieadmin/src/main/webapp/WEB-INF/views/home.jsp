@@ -192,8 +192,8 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 		<!-- Content2 -->
 <section id="content2">
     <div class="container2">
-        <div class="row aln-center">
-            <div class="col-4 col-12-medium">
+        <div class="row aln-center2">
+            <div class="col-4 col-12-medium2">
                 <!-- 스토리 Box #1 -->
                 <section>
                     <span style="float: left;">스토리</span>
@@ -207,10 +207,10 @@ $('.bxslider').bxSlider();  // ul에 있는 class명을 기준으로 선언을 �
 												<c:if
 													test="${svo.save_img != null && svo.save_video == null }">
 													<img src="resources/uploadimg/images/thumb_${svo.save_img}"
-														alt="스토리 사진">
+														alt="스토리 쌈네일" class="thumbnail">
 												</c:if> <c:if test="${svo.save_video != null }">
 													<img src="resources/uploadimg/videos/thumb_${svo.save_img}"
-														alt="동영상 썸네일">
+														alt="동영상 썸네일" class="thumbnail">
 												</c:if>
 										</a></td>
 									</c:forEach>
