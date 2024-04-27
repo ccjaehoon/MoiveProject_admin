@@ -87,15 +87,12 @@
 	</select>
 	
 	<select id="B_INCREASE_GOOD" resultType="com.project.movieadmin.board.BoardVO">
-		UPDATE board
-		SET good=good+1
-		WHERE board_num=#{board_num} 				
+		update board set good=good+1
+		where board_num=#{board_num}			
 	</select>
 	
 	<select id="B_SELECT_GOOD" resultType="com.project.movieadmin.board.BoardVO">
-		SELECT good
-		FROM board
-		WHERE board_num=#{board_num}
+		select good from board where board_num=#{board_num}
 	</select>
 	
 	<select id="B_INSERT_GOOD">
