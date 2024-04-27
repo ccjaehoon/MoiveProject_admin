@@ -48,7 +48,7 @@ public class NewsController {
 	 */
 	@RequestMapping(value = "/n_selectAll.do", method = RequestMethod.GET)
 	public String n_selectAll(@RequestParam(defaultValue = "1") int cpage,
-			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
+			@RequestParam(defaultValue = "10") int pageBlock, Model model) {
 		log.info("Welcome n_selectAll.do....");
 
 		log.info("cpage : {}, pageBlock : {}", cpage, pageBlock);
@@ -108,7 +108,7 @@ public class NewsController {
 
 	@RequestMapping(value = "/n_searchList.do", method = RequestMethod.GET)
 	public String n_searchList(@RequestParam(defaultValue = "1") int cpage,
-			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
+			@RequestParam(defaultValue = "10") int pageBlock, Model model, String searchKey, String searchWord) {
 		log.info("n_searchList.do");
 		try {
 			searchWord = UriUtils.decode(searchWord, "UTF-8");
