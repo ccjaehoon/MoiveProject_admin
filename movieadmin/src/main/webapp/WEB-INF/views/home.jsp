@@ -52,13 +52,11 @@
 	$(document).ready(function() {
 		$('.bxslider').bxSlider({
 			slideWidth : 500, // 슬라이드 너비        
-			minSlides : 5, // 최소 노출 개수        
-			maxSlides : 5
+			minSlides : 4, // 최소 노출 개수        
+			maxSlides : 4
 
 		}); // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
 	});
-	
-	
 </script>
 
 </head>
@@ -71,15 +69,9 @@
 
 		<section id="features">
 
-
 			<div style="align: center">
-
 				<section>
-
-
 					<ul class="bxslider" style="align: center">
-
-
 						<c:forEach var="ivo" items="${ivos}">
 							<li><a href="i_selectOne.do?info_num=${ivo.info_num}"><img
 									src="resources/uploadimg/${ivo.save_img}" width="200" /></a></li>
@@ -99,7 +91,7 @@
 
 						<!-- Box #1 -->
 						<section>
-							<span style="float: left;">커뮤니티</span> <span
+							<span style="float: left;">최신 글</span> <span
 								style="float: right;"><a href="b_selectAll.do">+더보기</a></span>
 							<table class="alt" style="width: 100%; table-layout: fixed;">
 								<c:forEach var="bvo" items="${bvos}">
@@ -116,13 +108,12 @@
 
 						<!-- Box #2 -->
 						<section>
-							<span style="float: left">뉴스</span> <span style="float: right"><a
+							<span style="float: left">가운데</span> <span style="float: right"><a
 								href="">+더보기</a></span>
-							<table class="alt" style="width: 100%; table-layout: fixed;">
-								<c:forEach var="nvo" items="${nvos}">
+							<table class="alt">
+								<c:forEach var="vo" items="">
 									<tr>
-										<td style="padding: 5px;"><a
-											href="n_selectOne.do?news_num=${nvo.news_num}&nickname=${nvo.nickname}">${nvo.title}</a></td>
+										<td align="center"><a href=""> </a></td>
 									</tr>
 								</c:forEach>
 							</table>
