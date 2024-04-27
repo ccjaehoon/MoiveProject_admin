@@ -264,8 +264,7 @@
 							type="hidden" name="good" value="${cvo.good}"
 							id="good${vs.index}"> <input type="button"
 							value="${cvo.good}" class="nc_increaseGood"></td>
-						<td><fmt:formatDate value="${vo2.wdate}"
-								pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						<td>${vo2.wdate}</td>
 
 						<td><input type="button" id="reportBtn" class="report"
 							onClick="showDialogReport('${cvo.news_comments_num}','${nickname}', '${vo2.news_num}')"

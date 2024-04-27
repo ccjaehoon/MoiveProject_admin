@@ -30,7 +30,7 @@
 				data : {
 					story_num : '${vo2.story_num}',
 					nickname : '${nickname}'
-					goodcheck : '${vo2.good}'
+					
 				},
 				dataType : "json",
 				success : function(obj) {

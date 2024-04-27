@@ -192,7 +192,7 @@ public class UserController {
 	@RequestMapping(value = "u_logout.do", method = RequestMethod.GET)
 	public String u_logout() {
 
-
+		session.removeAttribute("user_num");
 		session.removeAttribute("user_id");
 		session.removeAttribute("nickname");
 		session.removeAttribute("authority");
