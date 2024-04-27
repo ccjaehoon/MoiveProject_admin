@@ -69,9 +69,15 @@
 
 		<section id="features">
 
+
 			<div style="align: center">
+
 				<section>
+
+
 					<ul class="bxslider" style="align: center">
+
+
 						<c:forEach var="ivo" items="${ivos}">
 							<li><a href="i_selectOne.do?info_num=${ivo.info_num}"><img
 									src="resources/uploadimg/${ivo.save_img}" width="200" /></a></li>
