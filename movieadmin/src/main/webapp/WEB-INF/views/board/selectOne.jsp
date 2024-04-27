@@ -26,7 +26,7 @@
 			console.log("increaseGood Click");
 			console.log('${vo2.board_num}');
 			console.log('${nickname}');
-			console.log('${vo2.good}');
+			console.log('${vo2.good}'); 
 			$.ajax({
 				url : "http://localhost:8070/movie/b_increaseGood.do",
 				type : "get",
@@ -218,7 +218,7 @@
 				</tbody>
 			</table>
 		
-		<hr>
+		hr>
 		<h3>댓글작성</h3>
 		<form action="c_insertOK.do">
 			<div class="table-wrapper">

@@ -72,7 +72,7 @@
 					
 					<th style="width: 7%; text-align: center;">번호</th>
 					<th style="width: 10%; text-align: center;">썸네일</th>
-					<th style="width: 40%; text-align: center;">제목</th>
+					<th style="width: %; text-align: center;">제목</th>
 					<th style="width: 15%; text-align: center;">작성자</th>
 					<th style="width: 15%; text-align: center;">작성일자</th>
 
