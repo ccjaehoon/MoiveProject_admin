@@ -30,7 +30,7 @@
 				data : {
 					story_num : '${vo2.story_num}',
 					nickname : '${nickname}'
-					
+
 				},
 				dataType : "json",
 				success : function(obj) {
@@ -46,33 +46,50 @@
 			return false;
 		});
 
-		$(".sc_increaseGood").each(function(index, item) {
-			console.log(index);
-			$(this).click(function() {
-			console.log("increaseGood Click");
-			console.log($("#story_comments_num" + index).val());
-			console.log('${nickname}');
+		$(".sc_increaseGood")
+				.each(
+						function(index, item) {
+							console.log(index);
+							$(this)
+									.click(
+											function() {
+												console
+														.log("increaseGood Click");
+												console.log($(
+														"#story_comments_num"
+																+ index).val());
+												console.log('${nickname}');
 
-			$.ajax({
-				url : "http://localhost:8070/movie/api/sc_increaseGood.do",
-				type : "get",
-				data : {
-					story_comments_num : $("#story_comments_num" + index).val(),
-					nickname : '${nickname}'
-				},
-				dataType : "json",
-				success : function(obj) {
-					console.log(obj);
-					if (obj.goodCount > 0)
-					item.value = obj.goodCount;
-				},
-				error : function(xhr, status) {
-					console.log("status...", status);
-				}
-			});
-			return false;
-		  });
-		});
+												$
+														.ajax({
+															url : "http://localhost:8070/movie/api/sc_increaseGood.do",
+															type : "get",
+															data : {
+																story_comments_num : $(
+																		"#story_comments_num"
+																				+ index)
+																		.val(),
+																nickname : '${nickname}'
+															},
+															dataType : "json",
+															success : function(
+																	obj) {
+																console
+																		.log(obj);
+																if (obj.goodCount > 0)
+																	item.value = obj.goodCount;
+															},
+															error : function(
+																	xhr, status) {
+																console
+																		.log(
+																				"status...",
+																				status);
+															}
+														});
+												return false;
+											});
+						});
 
 	});
 </script>
@@ -130,11 +147,11 @@
 			autoOpen : false
 		});
 	});
-	 $(function() {
-			$("#reportSC").dialog({
-				autoOpen : false
-			});
+	$(function() {
+		$("#reportSC").dialog({
+			autoOpen : false
 		});
+	});
 	//story의 신고
 	function showDialogReport(story_num, nickname) {
 		console.log(story_num);
@@ -223,12 +240,14 @@
 				<tbody>
 
 					<tr>
-						<td><input type="hidden" name="story_num"
-							value="${vo2.story_num}" id="story_num${vs.index}"> <input
+						<td>
+						<input type="hidden" name="story_num"
+							value="${vo2.story_num}" id="story_num${vs.index}"> 
+						<input
 							type="hidden" name="story_num" value="${vo2.story_num}"
 							id="story_num"> <input type="hidden" name="good"
-							value="${vo2.good}" id="good${vs.index}"> <input
-							type="button" value="${vo2.good}" class="s_increaseGood"></td>
+							value="${vo2.good}" id="good${vs.index}"> 
+							<input type="button" value="${vo2.good}" class="s_increaseGood"></td>
 
 						<td><input type="button" id="reportBtn" class="report"
 							onClick="showDialogReport('${vo2.story_num}','${nickname}')"
@@ -385,8 +404,8 @@
 						id="nicknameSC" name="nickname" value="${nickname}" readonly>
 						<input type="text" id="story_comments_num"
 						name="story_comments_num" value="${cvo.story_comments_num}"
-						readonly> <input type="hidden"
-						id="story_num" name="story_num" value="${vo2.story_num}"></td>
+						readonly> <input type="hidden" id="story_num"
+						name="story_num" value="${vo2.story_num}"></td>
 				</tr>
 				<tr>
 					<td width="500"><textarea id="text_report" name="content"
