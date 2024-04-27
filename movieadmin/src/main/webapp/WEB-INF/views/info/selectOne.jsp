@@ -268,7 +268,7 @@
 
 
 
-		<h3>리뷰작성</h3>
+		<h4>리뷰 작성</h4>
 		<form action="rv_insertOK.do">
 			<table id="customers">
 				<thead>
@@ -291,7 +291,7 @@
 			</table>
 
 		</form>
-		<h3>리뷰 목록</h3>
+		<h4>리뷰 목록</h4>
 		<table id="customers">
 			<thead>
 				<tr>
