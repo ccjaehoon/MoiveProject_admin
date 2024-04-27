@@ -52,8 +52,8 @@
 	$(document).ready(function() {
 		$('.bxslider').bxSlider({
 			slideWidth : 500, // 슬라이드 너비        
-			minSlides : 4, // 최소 노출 개수        
-			maxSlides : 4
+			minSlides : 5, // 최소 노출 개수        
+			maxSlides : 5
 
 		}); // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
 	});
