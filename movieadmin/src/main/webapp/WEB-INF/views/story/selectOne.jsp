@@ -29,8 +29,8 @@
 				type : "get",
 				data : {
 					story_num : '${vo2.story_num}',
-					nickname : '${nickname}'
-					
+					nickname : '${nickname}',
+					good : $("#good").val()
 				},
 				dataType : "json",
 				success : function(obj) {
@@ -220,14 +220,14 @@
 					</tr>
 				</tbody>
 
-				<tbody>
+				<tbody> 
 
 					<tr>
 						<td><input type="hidden" name="story_num"
-							value="${vo2.story_num}" id="story_num${vs.index}"> <input
-							type="hidden" name="story_num" value="${vo2.story_num}"
-							id="story_num"> <input type="hidden" name="good"
-							value="${vo2.good}" id="good${vs.index}"> <input
+							value="${vo2.story_num}" id="story_num}"> 
+							<input type="hidden" name="nickname" value="${nickname}">
+							<input type="hidden" name="good"
+							value="${vo2.good}" id="good"> <input
 							type="button" value="${vo2.good}" class="s_increaseGood"></td>
 
 						<td><input type="button" id="reportBtn" class="report"
