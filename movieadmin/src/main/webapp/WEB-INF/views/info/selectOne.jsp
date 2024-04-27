@@ -39,6 +39,40 @@
 			});
 		});
 	});
+
+	$(function() {
+		console.log("jquery test");
+		console.log($(".rv_increaseGood"));
+		$(".rv_increaseGood").each(function(index, item) {
+			$(this).click(function() {
+				console.log("increaseGood Click");
+				console.log($("#review_num" + index).val());
+				console.log($("#good" + index).val());
+
+				$.ajax({
+					url : "http://localhost:8070/movie/rv_increaseGood.do",
+					type : "get",
+					data : {
+						review_num : $("#review_num" + index).val(),
+						info_num : $("#info_num").val(),
+						nickname : $("#nickname" + index).val(),
+						good : $("#good" + index).val()
+					},
+					dataType : "json",
+					success : function(obj) {
+						console.log(obj);
+						let good = obj.good;
+						//console.log(item);
+						item.value = good;
+					},
+					error : function(xhr, status) {
+						console.log("status...", status);
+					}
+				});
+				return false;
+			});
+		});
+	});
 </script>
 <script>
 	$(function() {
@@ -65,9 +99,9 @@
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
 	// API 키
-// 	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
-//  var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
-// 	var apiKey = "AIzaSyCNd-d0mDUXRRJ63-H5Fui172gz2t8Bma8";
+	// 	var apiKey = 'AIzaSyAQKl4LzmCkMYJEgzTZsPkzgOGlLWZ8Q1w';
+	//  var apiKey = 'AIzaSyA2_FqIb29PSrabB5sVlRYChqGo2iMRUzU';
+	// 	var apiKey = "AIzaSyCNd-d0mDUXRRJ63-H5Fui172gz2t8Bma8";
 
 	// YouTube API 클라이언트 초기화
 	function init() {
@@ -171,10 +205,10 @@
 			<thead>
 				<tr>
 					<th><img src="resources/uploadimg/${vo2.save_img}"
-
 						style="width: 200px; height: 300px;"></th>
 					<th><iframe id="trailerFrame"
-							style="width: 600px; height: 300px;" frameborder="0" allowfullscreen></iframe></th>
+							style="width: 600px; height: 300px;" frameborder="0"
+							allowfullscreen></iframe></th>
 
 				</tr>
 			</thead>
@@ -261,20 +295,21 @@
 		<table id="customers">
 			<thead>
 				<tr>
-					<th>번호</th>
-					<th>내용</th>
-					<th>작성자</th>
-
-					<th>신고</th>
-					<th>삭제</th>
+					<th style="width: 10%; text-align: center;">번호</th>
+					<th style="width: 30%; text-align: center;">내용</th>
+					<th style="width: 15%; text-align: center;">작성자</th>
+					<th style="width: 10%; text-align: center;">추천</th>
+					<th style="width: 10%; text-align: center;">신고</th>
+					<th style="width: 25%;"></th>
 				</tr>
+
 			</thead>
 			<tbody>
 				<c:forEach var="ivo" items="${ivos}" varStatus="vs">
 
 					<tr>
-						<td>${ivo.review_num}</td>
-						<td>${ivo.content}
+						<td style="text-align: center;">${ivo.review_num}</td>
+						<td style="text-align: center;">${ivo.content}
 							<form action="rv_updateOK.do">
 								<c:if test="${nickname == ivo.nickname}">
 									<input type="text" name="content" value="${ivo.content}">
@@ -287,18 +322,22 @@
 							</form>
 						</td>
 
-						<td>${ivo.nickname}<input type="hidden" name="nickname"
+						<td style="text-align: center;">${ivo.nickname}<input type="hidden" name="nickname"
 							value="${nickname}" id="nickname${vs.index}"></td>
 
-
+						<td><input type="hidden" name="review_num"
+							value="${ivo.review_num}" id="review_num${vs.index}"> <input
+							type="hidden" name="info_num" value="${vo2.info_num}"
+							id="info_num"> <input type="hidden" name="good"
+							value="${ivo.good}" id="good${vs.index}"> <input
+							type="button" value="${ivo.good}" class="rv_increaseGood"></td>
 
 						<td><input type="button" id="reportBtn" class="report"
 							onClick="showDialogReport('${ivo.review_num}','${nickname}','${vo2.info_num}')"
-							value="신고" /></td>
+							value="신고"/></td>
 
 						<td><c:if test="${nickname == ivo.nickname}">
-								<a
-									href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰
+								<a href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰
 									삭제</a>
 							</c:if></td>
 
