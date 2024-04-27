@@ -39,7 +39,7 @@
 					console.log(obj);
 					let good = obj.good;
 					item.value = good;
-// 					location.reload();
+					// 					location.reload();
 				},
 				error : function(xhr, status) {
 					console.log("status...", status);
@@ -95,13 +95,13 @@
 		$('#nickname').val(nickname);
 		$("#report").dialog("open");
 	}
-	
+
 	function closeReportDialog() {
-	    $("#report").dialog("close");
+		$("#report").dialog("close");
 	}
 
 	function closeReportDialogC() {
-	    $("#reportC").dialog("close");
+		$("#reportC").dialog("close");
 	}
 </script>
 
@@ -121,49 +121,48 @@
 	}
 </script>
 <style>
-#report, #reportC  {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+#report, #reportC {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 #rp {
-  width: 100%;
-  border-collapse: collapse;
+	width: 100%;
+	border-collapse: collapse;
 }
 
 #rp td {
-  padding: 10px;
+	padding: 10px;
 }
 
 #font {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 #text_report {
-  width: 100%;
-  height: 100px;
+	width: 100%;
+	height: 100px;
 }
 
 .report {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 .report:hover {
-  background-color: #0056b3;
+	background-color: #0056b3;
 }
-
 </style>
 </head>
 <body>
@@ -173,50 +172,51 @@
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
 		<h2>글정보</h2>
-		
-			<table class="alt">
-				<tbody>
-					<tr>
-						<td id="boardR" width = "7%">번호</td>
-						<td>${vo2.board_num}</td>
-						<td id="boardR" width = "10%">작성자</td>
-						<td width = "10%">${vo2.nickname}</td>	
-						<td width = "10%">작성일자</td>
-						<td>${vo2.wdate}</td>				
-					</tr>
-					<tr>
-						<td id="boardR">제목</td>
-						<td colspan="5">${vo2.title}</td>
-					</tr>
-				
+
+		<table class="alt">
+			<tbody>
+				<tr>
+					<td id="boardR" width="7%">번호</td>
+					<td>${vo2.board_num}</td>
+					<td id="boardR" width="10%">작성자</td>
+					<td width="10%">${vo2.nickname}</td>
+					<td width="10%">작성일자</td>
+					<td>${vo2.wdate}</td>
+				</tr>
+				<tr>
+					<td id="boardR">제목</td>
+					<td colspan="5">${vo2.title}</td>
+				</tr>
+				<tr>
 					<td align="left" colspan="6"><img
 						src="resources/uploadimg/${vo2.save_img}" width="300"> <br>
 						${vo2.content}</td>
-					</tr>
-				
-				</tbody>
+				</tr>
 
-				<tbody>
+			</tbody>
 
-						<tr >
-							<td colspan = "5">
-								<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
-								<input type="hidden" name="good" value="${vo2.good}" id="good">
-								<input type="hidden" name="nickname" value="${vo2.nickname}" id="nickname">
-								<input type="button" value="추천 ${vo2.good}" class="b_increaseGood">
-							
-								<input type="button" id="reportBtn" class="report"
-									onClick="showDialogReport('${vo2.board_num}','${nickname}')" value="신고"/>
-							</td>
-							<c:if test="${nickname == vo2.nickname}">
-								<td  align = "right"><a href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a>
-								<a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
-							</c:if>
-						</tr>
+			<tbody>
 
-				</tbody>
-			</table>
-		
+				<tr>
+					<td colspan="5"><input type="hidden" name="board_num"
+						value="${vo2.board_num}" id="board_num"> <input
+						type="hidden" name="good" value="${vo2.good}" id="good"> <input
+						type="hidden" name="nickname" value="${vo2.nickname}"
+						id="nickname"> <input type="button" value="추천 ${vo2.good}"
+						class="b_increaseGood"> <input type="button"
+						id="reportBtn" class="report"
+						onClick="showDialogReport('${vo2.board_num}','${nickname}')"
+						value="신고" /></td>
+					<c:if test="${nickname == vo2.nickname}">
+						<td align="right"><a
+							href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a>
+							<a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
+					</c:if>
+				</tr>
+
+			</tbody>
+		</table>
+
 		<hr>
 		<h3>댓글작성</h3>
 		<form action="c_insertOK.do">
@@ -317,11 +317,9 @@
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
-
 						class="report">
-						 <button type="button" onclick="closeReportDialog()">닫기</button>
-					</td>
-					
+						<button type="button" onclick="closeReportDialog()">닫기</button></td>
+
 
 				</tr>
 			</table>
@@ -344,10 +342,8 @@
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
-
 						class="reportC">
-						 <button type="button" onclick="closeReportDialogC()">닫기</button>
-					</td>
+						<button type="button" onclick="closeReportDialogC()">닫기</button></td>
 
 				</tr>
 			</table>
