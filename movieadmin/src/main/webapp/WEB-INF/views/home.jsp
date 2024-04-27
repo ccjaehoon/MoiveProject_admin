@@ -114,12 +114,13 @@
 
 						<!-- Box #2 -->
 						<section>
-							<span style="float: left">가운데</span> <span style="float: right"><a
-								href="">+더보기</a></span>
-							<table class="alt">
-								<c:forEach var="vo" items="">
+							<span style="float: left;">뉴스</span> <span
+								style="float: right;"><a href="n_selectAll.do">+더보기</a></span>
+							<table class="alt" style="width: 100%; table-layout: fixed;">
+								<c:forEach var="nvo" items="${nvos}">
 									<tr>
-										<td align="center"><a href=""> </a></td>
+										<td style="padding: 5px;"><a
+											href="n_selectOne.do?news_num=${nvo.news_num}&nickname=${nvo.nickname}">${nvo.title}</a></td>
 									</tr>
 								</c:forEach>
 							</table>

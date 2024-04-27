@@ -39,7 +39,7 @@
 					console.log(obj);
 					let good = obj.good;
 					item.value = good;
-					location.reload();
+// 					location.reload();
 				},
 				error : function(xhr, status) {
 					console.log("status...", status);
