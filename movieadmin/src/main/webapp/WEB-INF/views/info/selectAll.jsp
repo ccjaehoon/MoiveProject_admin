@@ -44,7 +44,7 @@
 
 				<c:forEach var="vo" items="${vos}">
 					<tr>
-						<td style="width: 200px; vertical-align: middle;"><a
+						<td style="width: 200px; text-align: center; vertical-align: middle;"><a
 							href="i_selectOne.do?info_num=${vo.info_num}">${vo.title}</a></td>
 						<td><img src="resources/uploadimg/${vo.save_img}" width="200"></td>
 						<td style="vertical-align: middle;">${vo.content}</td>
