@@ -55,6 +55,7 @@ public class StoryDAOimpl implements StoryDAO {
 		log.info(vo.toString());
 
 		return sqlSession.selectOne("S_SELECT_ONE", vo);
+						//쿼리 결과가 단 하나의 값만을 가질 것으로 예상될 때 사용
 	}
 	
 	@Override
@@ -87,6 +88,7 @@ public class StoryDAOimpl implements StoryDAO {
 		map.put("endRow", endRow);
 
 		return sqlSession.selectList("S_SELECT_ALL_PAGE_BLOCK", map);
+						// 페이징 처리를 위해 여러 개의 레코드를 한 번에 가져올때 사용
 	}
 	
 	@Override

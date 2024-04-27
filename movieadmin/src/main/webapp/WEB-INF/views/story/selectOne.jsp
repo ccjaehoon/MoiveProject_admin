@@ -24,7 +24,7 @@
 			console.log("increaseGood Click");
 			console.log('${vo2.story_num}');
 			console.log('${nickname}');
-			$.ajax({
+			$.ajax({ /* "http://223.130.161.242:8070/movie/s_increaseGood.do" */
 				url : "http://localhost:8070/movie/s_increaseGood.do",
 				type : "get",
 				data : {
@@ -45,50 +45,33 @@
 			return false;
 		});
 
-		$(".sc_increaseGood")
-				.each(
-						function(index, item) {
-							console.log(index);
-							$(this)
-									.click(
-											function() {
-												console
-														.log("increaseGood Click");
-												console.log($(
-														"#story_comments_num"
-																+ index).val());
-												console.log('${nickname}');
+		$(".sc_increaseGood").each(function(index, item) {
+			console.log(index);
+			$(this).click(function() {
+			console.log("increaseGood Click");
+			console.log($("#story_comments_num" + index).val());
+			console.log('${nickname}');
 
-												$
-														.ajax({
-															url : "http://localhost:8070/movie/api/sc_increaseGood.do",
-															type : "get",
-															data : {
-																story_comments_num : $(
-																		"#story_comments_num"
-																				+ index)
-																		.val(),
-																nickname : '${nickname}'
-															},
-															dataType : "json",
-															success : function(
-																	obj) {
-																console
-																		.log(obj);
-																if (obj.goodCount > 0)
-																	item.value = obj.goodCount;
-															},
-															error : function(
-																	xhr, status) {
-																console
-																		.log(
-																				"status...",
-																				status);
-															}
-														});
-												return false;
-											});
-						});
+			$.ajax({
+				url : "http://localhost:8070/movie/api/sc_increaseGood.do",
+				type : "get",
+				data : {
+					story_comments_num : $("#story_comments_num" + index).val(),
+					nickname : '${nickname}'
+				},
+				dataType : "json",
+				success : function(obj) {
+					console.log(obj);
+					if (obj.goodCount > 0)
+					item.value = obj.goodCount;
+				},
+				error : function(xhr, status) {
+					console.log("status...", status);
+				}
+			});
+			return false;
+		  });
+		});
 
 	});
 </script>
@@ -203,7 +186,7 @@
 					</tr>
 
 
-					<c:if test="${vo2.save_img != null }">
+					<c:if test="${vo2.save_img != null && vo2.save_video == null }">
 						<tr>
 							<td colspan="4"><img
 								src="resources/uploadimg/images/${vo2.save_img}" width="200"></td>

@@ -226,7 +226,7 @@ public class UserController {
 			return "/user/findPwView";
 		} else {
 
-			service.findPw(vo.getEmail(), vo.getUser_id());
+//			service.findPw(vo.getEmail(), vo.getUser_id());
 			model.addAttribute("email", vo.getEmail());
 
 			return "/user/findPw";

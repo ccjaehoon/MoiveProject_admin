@@ -66,6 +66,7 @@
 		SELECT count(*) count
 		FROM goodcheck
 		WHERE story_num=#{story_num} and nickname=#{nickname}
+		<!-- 같은 스토리 번호와 닉네임이 있으면 하나의 같은 사람이 좋아요를 못 누르게 하려고(카운트가 0일때만 1번 누를수 있다)   -->
 	</select>
 	
 	<insert id="S_INSERT_GOOD">
@@ -76,7 +77,6 @@
 		SELECT COUNT(*) AS like_count
 		FROM goodcheck
 		WHERE nickname = #{nickname} AND story_num = #{story_num}
-		
 	</select>
 	
 	<select id="S_GOOD_SAVE" resultType="int">
@@ -87,8 +87,8 @@
 	<select id="S_CHECK_USER_GOOD_COUNT" resultType="int">
 		SELECT COUNT(*) count
 		FROM goodcheck
-		WHERE  story_num = #{story_num}
-	</select>
+		WHERE story_num = #{story_num}
+	</select> <!-- story_num만 있으면 굿체크에 있는 story_num이 굿을 몇개 눌렀냐 이것만 알면 됨 -->
 	
 	<select id="S_UPDATE_REPORT_COUNT" resultType="com.project.movieadmin.story.StoryVO">
 		
@@ -116,12 +116,6 @@
 		
 	</select>
 
-
-	<select id="TOTAL_ROWS"	resultType="int">
-		
-	</select>
-
-	
 	<select id="SEARCH_TOTAL_ROWS_ID"	resultType="int">
 	
 	</select>
