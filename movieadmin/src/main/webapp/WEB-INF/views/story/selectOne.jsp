@@ -30,6 +30,7 @@
 				data : {
 					story_num : '${vo2.story_num}',
 					nickname : '${nickname}'
+					
 				},
 				dataType : "json",
 				success : function(obj) {
