@@ -22,10 +22,11 @@
 		console.log("jquery test");
 		console.log($(".b_increaseGood"));
 		$(".b_increaseGood").click(function(item) {
+			
 			console.log("increaseGood Click");
 			console.log('${vo2.board_num}');
 			console.log('${nickname}');
-			console.log('${vo2.good}');
+			console.log('${vo2.good}'); 
 			$.ajax({
 				url : "http://localhost:8070/movie/b_increaseGood.do",
 				type : "get",
@@ -39,7 +40,7 @@
 					console.log(obj);
 					let good = obj.good;
 					item.value = good;
-					location.reload();
+ 					location.reload();
 				},
 				error : function(xhr, status) {
 					console.log("status...", status);
@@ -202,7 +203,7 @@
 							<td colspan = "5">
 								<input type="hidden" name="board_num" value="${vo2.board_num}" id="board_num">
 								<input type="hidden" name="good" value="${vo2.good}" id="good">
-								<input type="hidden" name="nickname" value="${vo2.nickname}" id="nickname">
+								<input type="hidden" name="nickname" value="${vo2.nickname}" id="nickname1">
 								<input type="button" value="추천 ${vo2.good}" class="b_increaseGood">
 							
 								<input type="button" id="reportBtn" class="report"
@@ -217,7 +218,7 @@
 				</tbody>
 			</table>
 		
-		<hr>
+		hr>
 		<h3>댓글작성</h3>
 		<form action="c_insertOK.do">
 			<div class="table-wrapper">

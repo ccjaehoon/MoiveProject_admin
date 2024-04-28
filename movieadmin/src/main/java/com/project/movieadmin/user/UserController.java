@@ -192,7 +192,7 @@ public class UserController {
 	@RequestMapping(value = "u_logout.do", method = RequestMethod.GET)
 	public String u_logout() {
 
-
+		session.removeAttribute("user_num");
 		session.removeAttribute("user_id");
 		session.removeAttribute("nickname");
 		session.removeAttribute("authority");
@@ -226,7 +226,7 @@ public class UserController {
 			return "/user/findPwView";
 		} else {
 
-			service.findPw(vo.getEmail(), vo.getUser_id());
+//			service.findPw(vo.getEmail(), vo.getUser_id());
 			model.addAttribute("email", vo.getEmail());
 
 			return "/user/findPw";

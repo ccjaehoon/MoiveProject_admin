@@ -100,7 +100,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/b_selectAll.do", method = RequestMethod.GET)
 	public String b_selectAll(@RequestParam(defaultValue = "1") int cpage,
-			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
+			@RequestParam(defaultValue = "10") int pageBlock, Model model) {
 		log.info("Welcome b_selectAll.do...");
 
 		List<BoardVO> vos = service.b_selectAll(cpage, pageBlock);
@@ -125,7 +125,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/b_searchList.do", method = RequestMethod.GET)
 	public String b_searchList(@RequestParam(defaultValue = "1") int cpage,
-			@RequestParam(defaultValue = "5") int pageBlock, Model model, String searchKey, String searchWord) {
+			@RequestParam(defaultValue = "10") int pageBlock, Model model, String searchKey, String searchWord) {
 		log.info("Welcome b_searchList.do...");
 
 		List<BoardVO> vos = service.b_searchList(searchKey, searchWord, cpage, pageBlock);

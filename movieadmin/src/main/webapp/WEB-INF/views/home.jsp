@@ -41,20 +41,20 @@
 }
 </style>
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
 
 <script>
 	$(document).ready(function() {
-		$('.bxslider').bxSlider({
+		$('.bxslider').bxSlider({		
+		
 			slideWidth : 500, // 슬라이드 너비        
-			minSlides : 4, // 최소 노출 개수        
-			maxSlides : 4
-
+			minSlides : 5, // 최소 노출 개수        
+			maxSlides : 5
+		
 		}); // ul에 있는 class명을 기준으로 선언을 합니다. 즉, 이미지구성요소들을 감싸고있는 객체에 선언해 줍니다. 
 	});
 </script>
@@ -76,7 +76,6 @@
 
 
 					<ul class="bxslider" style="align: center">
-
 
 						<c:forEach var="ivo" items="${ivos}">
 							<li><a href="i_selectOne.do?info_num=${ivo.info_num}"><img
@@ -114,12 +113,13 @@
 
 						<!-- Box #2 -->
 						<section>
-							<span style="float: left">가운데</span> <span style="float: right"><a
-								href="">+더보기</a></span>
-							<table class="alt">
-								<c:forEach var="vo" items="">
+							<span style="float: left;">뉴스</span> <span
+								style="float: right;"><a href="n_selectAll.do">+더보기</a></span>
+							<table class="alt" style="width: 100%; table-layout: fixed;">
+								<c:forEach var="nvo" items="${nvos}">
 									<tr>
-										<td align="center"><a href=""> </a></td>
+										<td style="padding: 5px;"><a
+											href="n_selectOne.do?news_num=${nvo.news_num}&nickname=${nvo.nickname}">${nvo.title}</a></td>
 									</tr>
 								</c:forEach>
 							</table>

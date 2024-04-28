@@ -8,10 +8,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/board.css" />
-<link rel="stylesheet"
+ <link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/board.css" /> 
+ <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -47,6 +53,52 @@
 		});
 	}	
 </script>
+<style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 1000px;
+      height: 500px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .swiper-slide video {
+      display: block;
+      width: 500px;
+      height: 400px;
+      object-fit: cover;
+    }
+    
+  </style>
+
 </head>
 <body class="is-preload">
 
@@ -62,25 +114,26 @@
     <hr>
  
     <div class="table-wrapper">
-<table class="alt">
-    <tbody>
-        <c:forEach var="vo" items="${vos}">
-            <tr>
-                <td>
-                    <div class="story-container">
+<!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <c:forEach var="vo" items="${vos}">
+                    <div class="swiper-slide <!-- story-container -->">
                         <a href="s_selectOne.do?story_num=${vo.story_num}&nickname=${vo.nickname}" class="story-link">${vo.story_num}</a>
-                        <div class="story-content">
+                        <div class="story-content" style = "width :700px; height: 200px" >
                             <p>${vo.content}</p>
+                            <br>
                             <p>${vo.nickname}</p>
+                            <br>
                         </div>
                         <!-- 이미지가 존재하는 경우 표시 -->
-                        <c:if test="${vo.save_img != null }">
+                        <c:if test="${vo.save_img != null && vo.save_video == null }">
                             <img src="resources/uploadimg/images/thumb_${vo.save_img}" alt="">
                         </c:if>
                         <!-- 비디오가 존재하는 경우 표시 -->
                         <c:if test="${vo.save_video != null }">
                             <div>
-                                <video width="400" controls>
+                                <video controls>
                                     <source src="resources/uploadimg/videos/${vo.save_video}" type="video/mpeg">
                                     <source src="resources/uploadimg/videos/${vo.save_video}" type="video/mp4">
                                     <source src="resources/uploadimg/videos/${vo.save_video}" type="video/avi">
@@ -98,11 +151,25 @@
                             </tbody>
                         </table>
                     </div>
-                </td>
-            </tr>
         </c:forEach>
-    </tbody>
-</table>
+      
+     
+    </div>
+   <script>
+    var swiper = new Swiper(".mySwiper", {
+      direction: "vertical",
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+    
+    <div class="swiper-pagination"></div>
+  </div>
+   
+        
+    
    </div>
 	<form action="s_insert.do">
 				<input type="submit" value="스토리 작성" >
