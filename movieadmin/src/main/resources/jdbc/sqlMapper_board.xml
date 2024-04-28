@@ -38,9 +38,9 @@
 		select * from board order by board_num desc limit
 		#{startRow},#{pageBlock}
 	</select>
-	<select id="B_SELECT_ALL_PAGE_BLOCK_NICKNAME"
+	<select id="B_SELECT_ALL_PAGE_BLOCK_CONTENT"
 		resultType="com.project.movieadmin.board.BoardVO">
-		select * from board where nickname=#{vo.nickname} order by
+		select * from board where nickname=#{vo.content} order by
 		board_num desc
 		limit #{startRow},#{pageBlock}
 	</select>

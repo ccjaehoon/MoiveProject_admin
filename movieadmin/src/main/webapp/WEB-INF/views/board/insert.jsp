@@ -33,13 +33,11 @@
 					</tr>
 					<tr>
 						<td><label for="nickname">작성자</label></td>
-						<td>${nickname}<input type="hidden" id="nickname"
-							name="nickname" value="${nickname}"></td>
+						<td>${nickname}<input type="hidden" id="nickname" name="nickname" value="${nickname}"></td>
 					</tr>
 					<tr>
 						<td>작성일자</td>
-						<td colspan="3"><fmt:formatDate value="${vo2.wdate}"
-								pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						<td colspan="3"><fmt:formatDate value="${vo2.wdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 					</tr>
 					<tr>
 						<td><label for="file_img">이미지파일</label></td>

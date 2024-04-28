@@ -89,8 +89,8 @@ public class BoardDAOimpl implements BoardDAO {
 
 		if (searchKey.equals("title")) {
 			vos = sqlSession.selectList("B_SEARCHLIST_PAGE_BLOCK_TITLE", map);
-		} else if (searchKey.equals("nickname")) {
-			vos = sqlSession.selectList("B_SEARCHLIST_PAGE_BLOCK_NICKNAME", map);
+		} else if (searchKey.equals("content")) {
+			vos = sqlSession.selectList("B_SEARCHLIST_PAGE_BLOCK_CONTENT", map);
 		}
 
 		return vos;
@@ -131,7 +131,7 @@ public class BoardDAOimpl implements BoardDAO {
 		map.put("pageBlock", pageBlock);
 		map.put("vo", vo);
 
-		List<BoardVO> vos = sqlSession.selectList("B_SELECT_ALL_PAGE_BLOCK_NICKNAME", map);
+		List<BoardVO> vos = sqlSession.selectList("B_SELECT_ALL_PAGE_BLOCK_CONTENT", map);
 
 		return vos;
 	}
