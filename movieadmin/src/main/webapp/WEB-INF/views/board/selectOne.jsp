@@ -190,8 +190,9 @@
 						<td colspan="5">${vo2.title}</td>
 					</tr>
 				
-					<td align="left" colspan="6"><img
-						src="resources/uploadimg/${vo2.save_img}" width="300"> <br>
+					<td align="left" colspan="6">
+						<img src="resources/uploadimg/${vo2.save_img}" width="300">
+						<br>
 						${vo2.content}</td>
 					</tr>
 				
@@ -217,8 +218,6 @@
 
 				</tbody>
 			</table>
-		
-		hr>
 		<h3>댓글작성</h3>
 		<form action="c_insertOK.do">
 			<div class="table-wrapper">
@@ -232,7 +231,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" name="content" value="hello"
+							<td><input type="text" name="content" placeholder="댓글을 작성하세요"
 								size="50"></td>
 							<td>${nickname}<input type="hidden" name="nickname"
 								value="${nickname}"> <input type="hidden"

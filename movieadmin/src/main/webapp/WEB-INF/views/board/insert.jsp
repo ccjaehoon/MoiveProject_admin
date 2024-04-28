@@ -25,13 +25,11 @@
 				<table id="alt">
 					<tr>
 						<td><label for="title">제목</label></td>
-						<td><input type="text" id="title" name="title" value="title"
-							placeholder="제목을 입력하세요"></td>
+						<td><input type="text" id="title" name="title" placeholder="제목을 입력하세요"></td>
 					</tr>
 					<tr>
 						<td><label for="content">내용</label></td>
-						<td><textarea name="content" id="content" cols="30" rows="10"
-								value="content" placeholder="">내용을 적으세요</textarea></td>
+						<td><textarea name="content" id="content" cols="30" rows="10"  placeholder="내용을 적으세요"></textarea></td>
 					</tr>
 					<tr>
 						<td><label for="nickname">작성자</label></td>
