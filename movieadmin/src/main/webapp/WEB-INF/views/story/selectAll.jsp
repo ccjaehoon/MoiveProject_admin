@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
- <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/board.css" /> 
+<%-- <link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/board.css" />  --%>
  <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 <link
@@ -70,31 +70,41 @@
     }
 
     .swiper {
-      width: 1000px;
-      height: 500px;
+      width: 1500px;
+      height: 800px;
     }
 
     .swiper-slide {
       text-align: center;
       font-size: 18px;
       background: #fff;
-      display: flex;
       justify-content: center;
       align-items: center;
+      width :1400px;
+      height: 700px;
+      display: flex;
+      flex-wrap: wrap; /* 요소들이 한 줄에 너무 많이 배치되지 않도록 줄바꿈을 허용 */
+	  place-items: center;
+      
     }
 
     .swiper-slide img {
       display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 600px;
+      height: 600px;
+      
     }
     
     .swiper-slide video {
       display: block;
-      width: 500px;
-      height: 400px;
+      width: 600px;
+      height: 600px;
       object-fit: cover;
+    }
+    
+    .story-content{
+	  width: 100%; /* .story-content를 전체 너비로 설정 */
+	 /*  margin-bottom: 20px; /* 이미지, 동영상, 댓글 목록 아래로 두기 위해 마진 추가 */ 
     }
     
   </style>
@@ -111,21 +121,18 @@
 		
 	<h2>스토리</h2>
 	
-    <hr>
  
     <div class="table-wrapper">
 <!-- Swiper -->
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       <c:forEach var="vo" items="${vos}">
-                    <div class="swiper-slide <!-- story-container -->">
-                        <a href="s_selectOne.do?story_num=${vo.story_num}&nickname=${vo.nickname}" class="story-link">${vo.story_num}</a>
-                        <div class="story-content" style = "width :700px; height: 200px" >
+                    <div class="swiper-slide story-container">
+                    <div class="story-content" >
                             <p>${vo.content}</p>
-                            <br>
                             <p>${vo.nickname}</p>
-                            <br>
                         </div>
+                        <a href="s_selectOne.do?story_num=${vo.story_num}&nickname=${vo.nickname}" class="story-link">${vo.story_num}</a>
                         <!-- 이미지가 존재하는 경우 표시 -->
                         <c:if test="${vo.save_img != null && vo.save_video == null }">
                             <img src="resources/uploadimg/images/thumb_${vo.save_img}" alt="">

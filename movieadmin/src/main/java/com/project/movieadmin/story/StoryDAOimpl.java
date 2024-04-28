@@ -89,6 +89,7 @@ public class StoryDAOimpl implements StoryDAO {
 
 		return sqlSession.selectList("S_SELECT_ALL_PAGE_BLOCK", map);
 						// 페이징 처리를 위해 여러 개의 레코드를 한 번에 가져올때 사용
+		//증가하는 호출가능하게 여기다적으나더ㅚ요?
 	}
 	
 	@Override
