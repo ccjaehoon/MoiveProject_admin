@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <%-- <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/board.css" />  --%>
+	href="${pageContext.request.contextPath}/resources/css/board.css" />  --%> 
  <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 <link
@@ -40,6 +40,8 @@
 						<td>\${item.nickname}</td>
 						<td>\${item.content}</td>
 						<td>\${item.good}</td>
+						<input type="hidden" class="story-comments-num" value="${item.story_comments_num}">
+				        <td><input type="button" value="${item.good}" class="sc_increaseGood"></td>
 						<td>\${item.report}</td>
 						<td>\${item.wdate}</td>
 					</tr>`;
@@ -51,10 +53,38 @@
 				
 			}
 		});
-	}	
+	}
+	
+	$(".sc_increaseGood").each(function(index, item) {
+		console.log(index);
+		$(this).click(function() {
+		console.log("increaseGood Click");
+		console.log($("#story_comments_num" + index).val());
+		console.log('${nickname}');
+
+		$.ajax({
+			url : "http://localhost:8070/movie/api/sc_increaseGood.do",
+			type : "get",
+			data : {
+				story_comments_num : $("#story_comments_num" + index).val(),
+				nickname : '${nickname}'
+			},
+			dataType : "json",
+			success : function(obj) {
+				console.log(obj);
+				if (obj.goodCount > 0)
+				item.value = obj.goodCount;
+			},
+			error : function(xhr, status) {
+				console.log("status...", status);
+			}
+		});
+		return false;
+	  });
+	});
 </script>
 <style>
-    html,
+/*     html,
     body {
       position: relative;
       height: 100%;
@@ -67,7 +97,7 @@
       color: #000;
       margin: 0;
       padding: 0;
-    }
+    } */
 
     .swiper {
       width: 1500px;
@@ -90,15 +120,15 @@
 
     .swiper-slide img {
       display: block;
-      width: 600px;
-      height: 600px;
+      width: 500px;
+      height: 400px;
       
     }
     
     .swiper-slide video {
       display: block;
-      width: 600px;
-      height: 600px;
+      width: 500px;
+      height: 400px;
       object-fit: cover;
     }
     
