@@ -228,26 +228,13 @@ public class UserController {
 
 		logger.info("userPw" + vo.getUser_id());
 
-		if (service.findPwCheck(vo) == 0) {
-			logger.info("memberPWCheck");
-
-		log.info("userId"+vo.getUser_id());
-		log.info("userEmail"+vo.getEmail());
-		log.info("userCheck :{}", service.findPwCheck(vo));
 		if(service.findPwCheck(vo)==0) {
 			log.info("userPWCheck");
 			model.addAttribute("msg", "아이디와 이메일을 확인해주세요");
 
 			return "/user/findPwView";
-		} else {
-
-//			service.findPw(vo.getEmail(), vo.getUser_id());
-			model.addAttribute("email", vo.getEmail());
-
-			return "/user/findPw";
-		}
-
-		}else {
+		} 
+		else {
 	
 			UserVO vo2 = service.findPw(vo);
 			log.info("vo2 :{}", vo2.toString());
@@ -256,7 +243,7 @@ public class UserController {
 			model.addAttribute("msg", msg);
 			
 			return"/user/login";
-	}
+		}
 	
 	
 

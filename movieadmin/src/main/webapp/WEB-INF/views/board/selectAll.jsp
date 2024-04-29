@@ -89,7 +89,8 @@
 							<td style="text-align: center; vertical-align: middle;"><img
 								alt="" src="resources/uploadimg/${vo.save_img}"
 								style="width: 70%; display: block; margin: 0 auto;"></td>
-							<td style="text-align: left; vertical-align: middle;">${vo.title} [${vo.views}]</td>
+							<td style="text-align: left; vertical-align: middle;"><a
+								href="b_selectOne.do?board_num=${vo.board_num}&nickname=${vo.nickname}">${vo.title} [${vo.views}]</a></td>
 							<td style="text-align: center; vertical-align: middle;">${vo.nickname}</td>
 							<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 						</tr>

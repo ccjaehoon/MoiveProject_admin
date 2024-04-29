@@ -38,6 +38,10 @@ public interface UserService {
 
 	public UserVO findPw(UserVO vo);
 
+	public int u_pwCheck(UserVO vo);
+
+	public int u_changePw(UserVO vo, String newPassword);
+
 	
 
 	

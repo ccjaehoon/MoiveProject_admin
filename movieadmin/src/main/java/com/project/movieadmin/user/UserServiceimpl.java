@@ -111,6 +111,16 @@ public class UserServiceimpl implements UserService {
 		return dao.findPw(vo);
 	}
 
+	@Override
+	public int u_pwCheck(UserVO vo) {
+		return dao.u_pwCheck(vo);
+	}
+
+	@Override
+	public int u_changePw(UserVO vo, String newPassword) {
+		return dao.u_changePw(vo, newPassword);
+	}
+
 
 	
 }
