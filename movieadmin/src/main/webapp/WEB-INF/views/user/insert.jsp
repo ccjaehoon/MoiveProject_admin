@@ -298,6 +298,7 @@ $(function() {
         var gender_male_checked = gender_male.checked;
         var gender_female_checked = gender_female.checked;
         var gender_no_checked = gender_no.checked;
+        
 
        
         var allFieldsFilled = true;
@@ -309,12 +310,14 @@ $(function() {
             allFieldsFilled = false;
             passwordIdInput.style.borderColor = "red";
         } else {
+        	var passwordValid = true; // 비밀번호 유효성 여부를 저장할 변수
             // 비밀번호의 정규식: 최소 8자, 최소 하나의 대문자, 하나의 소문자, 하나의 숫자, 특수문자 허용
             var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/;
             if (!passwordRegex.test(passwordInput)) {
+            	passwordValid = false; // 비밀번호 유효성을 false로 설정
                 allFieldsFilled = false;
                 passwordIdInput.style.borderColor = "red";
-                alert("비밀번호는 최소 8자 이상, 하나의 대문자, 하나의 소문자, 하나의 숫자, 하나의 특수문자를 포함해야 합니다.");
+             
             }
         }
         if (nickname === "") {
@@ -338,7 +341,10 @@ $(function() {
         }
 
        
-        if (!allFieldsFilled) {
+        if (!passwordValid) {
+            alert("비밀번호는 최소 8자 이상, 하나의 대문자, 하나의 소문자, 하나의 숫자, 하나의 특수문자를 포함해야 합니다."); // 사용자에게 알림
+            event.preventDefault(); 
+        } else if (!allFieldsFilled) {
             alert("모든 필수 항목을 작성해주세요."); // 사용자에게 알림
             event.preventDefault(); 
         }
