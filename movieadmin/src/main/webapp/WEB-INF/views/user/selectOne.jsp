@@ -65,7 +65,7 @@
 			</tr>
 		</table>
 		
-		<h3>회원이 쓴 커뮤니티</h3>
+		<h3>회원이 작성한 커뮤니티</h3>
 
 		<table class="alt">
 			<thead>
@@ -107,7 +107,7 @@
 			</tfoot>
 		</table>
 		
-		<h3>스토리</h3>
+		<h3>회원이 작성한 스토리</h3>
 
 		<table class="alt">
 			<thead>
