@@ -223,12 +223,12 @@
 
 		</div>
 
-
-
-	</div>
-	<form action="s_insert.do">
+<form action="s_insert.do">
 		<input type="submit" value="스토리 작성">
 	</form>
+
+	</div>
+	
 
 
 	<div id="copyright">
