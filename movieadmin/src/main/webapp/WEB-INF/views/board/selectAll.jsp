@@ -18,7 +18,7 @@
 		console.log("selectCommentList()...",board_num);
 		
 		$.ajax({
-			url:"http://localhost:8070/movie/api/selectCommentList.do",
+			url:"api/selectCommentList.do",
 			type:"get",
 			data:{board_num:board_num},
 			dataType:"json",
@@ -89,7 +89,7 @@
 							<td style="text-align: center; vertical-align: middle;"><img
 								alt="" src="resources/uploadimg/${vo.save_img}"
 								style="width: 70%; display: block; margin: 0 auto;"></td>
-							<td style="text-align: left; vertical-align: middle;">${vo.title}</td>
+							<td style="text-align: left; vertical-align: middle;">${vo.title} [${vo.views}]</td>
 							<td style="text-align: center; vertical-align: middle;">${vo.nickname}</td>
 							<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 						</tr>

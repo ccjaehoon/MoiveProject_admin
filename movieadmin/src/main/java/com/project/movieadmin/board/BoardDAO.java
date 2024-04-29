@@ -6,6 +6,8 @@ import com.project.movieadmin.user.UserVO;
 
 public interface BoardDAO {
 	
+	
+
 	public int b_insert(BoardVO vo);
 
 	public int b_update(BoardVO vo);
@@ -36,4 +38,5 @@ public interface BoardDAO {
 
 	public List<BoardVO> b_selectAll_nickname(int cpage, int pageBlock,UserVO vo);
 
+	public int b_increaseViews(BoardVO vo);
 }

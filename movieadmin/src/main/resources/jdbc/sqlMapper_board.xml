@@ -116,5 +116,11 @@
 		FROM goodcheck
 		WHERE  board_num = #{board_num}
 	</select>
+	<select id="B_INCREASE_VIEWS"
+		resultType="com.project.movieadmin.board.BoardVO">
+		update board set
+		views=views+1 where
+		board_num=#{board_num}
+	</select>
 
 </mapper>

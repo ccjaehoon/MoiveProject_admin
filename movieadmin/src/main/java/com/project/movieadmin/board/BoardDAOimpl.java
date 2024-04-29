@@ -180,4 +180,11 @@ public class BoardDAOimpl implements BoardDAO {
 		return bvos;
 	}
 
+	@Override
+	public int b_increaseViews(BoardVO vo) {	
+		log.info("b_increaseGood()....");
+		log.info(vo.toString());
+		return sqlSession.update("B_INCREASE_VIEWS", vo);
+	}
+
 }

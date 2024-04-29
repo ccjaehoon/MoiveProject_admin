@@ -77,6 +77,11 @@
 	});
 </script>
 <style>
+
+.story-number,.comment-number {
+ display: none;
+ 
+}
 #report, #reportSC {
 	position: fixed;
 	top: 50%;
@@ -87,6 +92,10 @@
 	padding: 20px;
 	border-radius: 5px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+#report input[name="story_num"],
+#reportSC input[name="story_comments_num"] {
+    display: none;
 }
 
 #rp {
@@ -174,7 +183,7 @@
 			<table class="alt">
 				<thead>
 					<tr>
-						<th>번호: ${vo2.story_num}</th>
+						<th class="story-number">번호: ${vo2.story_num}</th>
 						<th colspan="3">작성자: ${vo2.nickname}</th>
 
 					</tr>
@@ -280,7 +289,7 @@
 		<table id="customers">
 			<thead>
 				<tr>
-					<th>번호</th>
+					<th class="comment-number">번호</th>
 					<th>내용</th>
 					<th>작성자</th>
 					<th>좋아요</th>
@@ -293,7 +302,7 @@
 				<c:forEach var="cvo" items="${cvos}" varStatus="vs">
 
 					<tr>
-						<td>${cvo.story_comments_num}</td>
+						<td class="comment-number">${cvo.story_comments_num}</td>
 						<td>${cvo.content}
 							<form action="SComments_updateOK.do">
 								<c:if test="${nickname == cvo.nickname}">

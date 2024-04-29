@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<%-- <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/board.css" />  --%> 
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/board.css" />  
  <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
 <link
@@ -25,7 +25,7 @@
 		console.log("selectCommentList()...",story_num);
 		
 		$.ajax({
-			url:"http://localhost:8070/movie/api/selectCommentList.do",
+			url:"api/selectCommentList.do",
 			type:"get",
 			data:{story_num:story_num},
 			dataType:"json",
@@ -63,7 +63,7 @@
 		console.log('${nickname}');
 
 		$.ajax({
-			url : "http://localhost:8070/movie/api/sc_increaseGood.do",
+			url : "api/sc_increaseGood.do",
 			type : "get",
 			data : {
 				story_comments_num : $("#story_comments_num" + index).val(),

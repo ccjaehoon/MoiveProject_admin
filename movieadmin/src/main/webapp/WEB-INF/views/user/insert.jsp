@@ -19,62 +19,81 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#u_idCheck").click(function() {
-			console.log("click...");
-			console.log("user_id:", $("#user_id").val());
+$(function() {
+    $("#u_idCheck").click(function() {
+        console.log("click...");
+        console.log("user_id:", $("#user_id").val());
+		
+        document.getElementById("result").innerHTML = "";
+        
+        var userIdInput = document.getElementById("user_id");
+        var userId = userIdInput.value.trim();
+        var result = '';
 
-			  var minLength = 6;
-			    var maxLength = 12;
-			    // 결과 초기화
-			      $("#result").html(""); // 새로 추가된 부분
-			        $("#result4").html(""); // 새로 추가된 부분
+        // 아이디의 정규식: 최소 6글자, 최대 12글자, 알파벳과 숫자만 허용
+        var userIdRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,12}$/;
 
-			  
-			    var userIdInput = document.getElementById("user_id");
-				let result = '';
+        if (!userIdRegex.test(userId)) {
+            // 아이디가 유효하지 않은 경우
+            document.getElementById("result4").innerHTML = "아이디는 6글자 이상 12글자 이하의 알파벳과 숫자로 입력해주세요.";
+            userIdInput.style.borderColor = "red";
+            userIdInput.focus();
+            return false; // 유효하지 않은 아이디이므로 함수를 종료하고 다음 단계로 진행하지 않음
+        } else {
+            // 아이디가 유효한 경우
+            document.getElementById("result4").innerHTML = ""; // 결과 메시지 초기화
+            userIdInput.style.borderColor = ""; // 테두리 색상 초기화
 
-			    var userInputLength = userIdInput.value.length;
-		        if (userInputLength < minLength || userInputLength > maxLength) {
-		         
-		            document.getElementById("result4").innerHTML = "아이디는 6글자 이상 12글자 이하로 입력해주세요.";
-		          
-		            userIdInput.style.borderColor = "red";
-		            userIdInput.focus();
-		                       
-		            
-		        } else {        
-		            document.getElementById("result4").innerHTML = "";      
-		            userIdInput.style.borderColor = "";
-		            $.ajax({
-						url : "http://localhost:8070/movie/u_idCheck.do",
-						type : "get",
-						data : {
-							user_id : $("#user_id").val()
-						},
-						dataType : "json",
-						
-						success : function(obj) {
-							console.log(obj);
-					
-							if (obj.result == "OK") {
-								result = "사용 가능합니다"
-							} else {
-								result = "중복된 아이디입니다"
-							}
+            // 여기서부터는 중복 체크를 위한 AJAX 요청 등을 수행할 수 있습니다.
 
-							$("#result").html(result);
-						},
-						error : function(xhr, status) {
-							console.log("status...", status);
-						}
-					});  
+            $.ajax({
+                url : "http://localhost:8070/movie/u_idCheck.do",
+                type : "get",
+                data : {
+                    user_id : $("#user_id").val()
+                },
+                dataType : "json",
+
+                success : function(obj) {
+                    console.log(obj);
+
+                    if (obj.result == "OK") {
+                        result = "사용 가능한 아이디입니다.";
+                        $("#result").html(result); // 사용 가능한 아이디 메시지 표시
+                    } else {
+                        result = "중복된 아이디입니다.";
+                        $("#result").html(result); // 중복된 아이디 메시지 표시
+                    }
+                    
+                    // AJAX 요청 후에 input 테두리 색상 초기화
+                    userIdInput.style.borderColor = "";
+                },
+                error : function(xhr, status) {
+                    console.log("status...", status);
+                }
+            });
+        }
+        return false;
+ 
+});
+
+
+		  $("#password").blur(function() {
+		        var passwordInput = $(this);
+		        var password = passwordInput.val().trim();
+
+		        // 비밀번호의 정규식: 최소 8자, 최소 하나의 대문자, 하나의 소문자, 하나의 숫자
+		      var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/;
+
+		        if (!passwordRegex.test(password)) {
+		            // 비밀번호에 대한 오류 메시지 표시
+		            passwordInput.css("borderColor", "red");
+		            // 비밀번호에 대한 오류 메시지 표시 처리
+		        } else {
+		            // 비밀번호가 유효한 경우
+		            passwordInput.css("borderColor", ""); // 테두리 색상 초기화
 		        }
-			
-			
-			return false;
-		});
-
+		    });
 		$("#u_nicknameCheck").click(function() {
 		    console.log("click...");
 		    console.log("nickname:", $("#nickname").val());
@@ -193,43 +212,43 @@
 			enctype="multipart/form-data">
 			<table class="alt">
 				<tr>
-					<td><label for="user_id">아이디:</label></td>
+					<td style="text-align: center;"><label for="user_id" >아이디</label></td>
 					<td><input type="text" id="user_id" name="user_id" value=""
 						placeholder="아이디" maxlength="12"> <span id="result"></span>
 						<span id="result4"></span></td>
-					<td width=150><a href="#" id="u_idCheck">아이디중복체크</a></td>
+					<td width=150><a href="#" id="u_idCheck">아이디체크</a></td>
 				</tr>
 				<tr>
-					<td><label for="password">비밀번호:</label></td>
+					<td style="text-align: center;"><label for="password">비밀번호</label></td>
 					<td colspan="2"><input type="password" id="password"
 						name="password" value="" placeholder="비밀번호"></td>
 				</tr>
 				<tr>
-					<td><label for="nickname">별명:</label></td>
+					<td style="text-align: center;"><label for="nickname">별명</label></td>
 					<td><input type="text" id="nickname" name="nickname" value=""
 						placeholder="별명" maxlength="8"> <span id="result2"></span>
 						<span id="result5"></span></td>
-					<td width=150><a href="#" id="u_nicknameCheck">닉네임중복체크</a></td>
+					<td width=150><a href="#" id="u_nicknameCheck">닉네임체크</a></td>
 				</tr>
 				<tr>
-					<td><label for="email">이메일:</label></td>
+					<td style="text-align: center;"><label for="email">이메일</label></td>
 					<td><input type="text" id="email" name="email" value=""
 						placeholder="이메일"> <span id="result3"></span> <span
 						id="result6"></span></td>
-					<td width=150><a href="#" id="u_emailCheck">이메일중복체크</a></td>
+					<td width=150><a href="#" id="u_emailCheck">이메일체크</a></td>
 				</tr>
 				<tr>
-					<td><label for="tel">전화번호:</label></td>
+					<td style="text-align: center;"><label for="tel">전화번호</label></td>
 					<td colspan="2"><input type="tel" id="tel" name="tel"
 						value="010" placeholder="전화번호"></td>
 				</tr>
 				<tr>
-					<td><label for="birth">생년월일</label></td>
+					<td style="text-align: center;"><label for="birth">생년월일</label></td>
 					<td colspan="2"><input type="date" id="birth" name="birth"
 						value=""></td>
 				</tr>
 				<tr>
-					<td><label for="gender">성별:</label></td>
+					<td style="text-align: center;"><label for="gender">성별</label></td>
 					<td colspan="2"><input type="radio" id="gender_male"
 						name="gender" value="남자" ${vo2.gender == '남자' ? 'checked' : ''}>
 						<label for="gender_male">남자</label> <input type="radio"
@@ -279,6 +298,7 @@
         var gender_male_checked = gender_male.checked;
         var gender_female_checked = gender_female.checked;
         var gender_no_checked = gender_no.checked;
+        
 
        
         var allFieldsFilled = true;
@@ -289,6 +309,16 @@
         if (passwordInput === "") {
             allFieldsFilled = false;
             passwordIdInput.style.borderColor = "red";
+        } else {
+        	var passwordValid = true; // 비밀번호 유효성 여부를 저장할 변수
+            // 비밀번호의 정규식: 최소 8자, 최소 하나의 대문자, 하나의 소문자, 하나의 숫자, 특수문자 허용
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/;
+            if (!passwordRegex.test(passwordInput)) {
+            	passwordValid = false; // 비밀번호 유효성을 false로 설정
+                allFieldsFilled = false;
+                passwordIdInput.style.borderColor = "red";
+             
+            }
         }
         if (nickname === "") {
             allFieldsFilled = false;
@@ -311,7 +341,10 @@
         }
 
        
-        if (!allFieldsFilled) {
+        if (!passwordValid) {
+            alert("비밀번호는 최소 8자 이상, 하나의 대문자, 하나의 소문자, 하나의 숫자, 하나의 특수문자를 포함해야 합니다."); // 사용자에게 알림
+            event.preventDefault(); 
+        } else if (!allFieldsFilled) {
             alert("모든 필수 항목을 작성해주세요."); // 사용자에게 알림
             event.preventDefault(); 
         }
