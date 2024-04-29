@@ -77,6 +77,11 @@
 	});
 </script>
 <style>
+
+.comment-number {
+ display: none;
+ 
+}
 #report, #reportSC {
 	position: fixed;
 	top: 50%;
@@ -280,7 +285,7 @@
 		<table id="customers">
 			<thead>
 				<tr>
-					<th>번호</th>
+					<th class="comment-number">번호</th>
 					<th>내용</th>
 					<th>작성자</th>
 					<th>좋아요</th>
@@ -293,7 +298,7 @@
 				<c:forEach var="cvo" items="${cvos}" varStatus="vs">
 
 					<tr>
-						<td>${cvo.story_comments_num}</td>
+						<td class="comment-number">${cvo.story_comments_num}</td>
 						<td>${cvo.content}
 							<form action="SComments_updateOK.do">
 								<c:if test="${nickname == cvo.nickname}">
