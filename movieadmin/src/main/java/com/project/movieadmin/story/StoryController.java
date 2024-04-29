@@ -6,8 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -349,25 +347,6 @@ public class StoryController {
 		model.addAttribute("cvos", cvos);
 
 		return "story/selectOne";
-	}
-
-	@RequestMapping(value = "/s_selectRandomList.do", method = RequestMethod.GET)
-	public String story_selectRandomList(StoryVO vo, Model model) {
-		log.info("Welcome s_selectRandomList...");
-
-		// Random 객체 생성
-		Random rand = new Random();
-		// 예를 들어, 무작위로 선택할 스토리의 ID를 생성 (여기서는 1부터 10까지 가정)
-		int storyId = rand.nextInt(10) + 1;
-
-		// 무작위로 선택된 스토리 목록을 가져오는 서비스 메소드 호출
-		// List<StoryVO> randomStories = service.s_selectRandomList(vo);
-		StoryVO vo2 = service.s_selectRandomList(vo);
-		log.info("vo2:{}", vo2);
-		// 모델에 무작위 스토리 목록 추가
-		model.addAttribute("vo2", vo2);
-
-		return "story/selectRandomList";
 	}
 
 	@RequestMapping(value = "/s_selectAll.do", method = RequestMethod.GET)

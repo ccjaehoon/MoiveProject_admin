@@ -32,22 +32,17 @@
 		<table id="customers">
 			<thead>
 				<tr>
-
-
-					<th style="width: 13%; text-align: center;">영화제목</th>
-					<th style="width: 15%; text-align: center;">포스터</th>
-					<th style="width: 40%; text-align: center;">줄거리</th>
+					<th style="width: 10%; text-align: center;">포스터</th>
+					<th style="width: 90%; text-align: center;">제목 및 줄거리</th>
 
 				</tr>
 			</thead>
 			<tbody>
 
 				<c:forEach var="vo" items="${vos}">
-					<tr>
-						<td style="width: 200px; text-align: center; vertical-align: middle;"><a
-							href="i_selectOne.do?info_num=${vo.info_num}">${vo.title}</a></td>
-						<td><img src="resources/uploadimg/${vo.save_img}" width="200"></td>
-						<td style="vertical-align: middle;">${vo.content}</td>
+					<tr>						
+						<td style="align:center"><a href="i_selectOne.do?info_num=${vo.info_num}"><img src="resources/uploadimg/${vo.save_img}" width="200"></a></td>
+						<td style="vertical-align: middle;"><a href="i_selectOne.do?info_num=${vo.info_num}">${vo.title}</a><br><br>${vo.content}</td>
 					</tr>
 				</c:forEach>
 
