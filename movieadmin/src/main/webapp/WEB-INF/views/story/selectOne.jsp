@@ -77,7 +77,7 @@
 	});
 </script>
 <style>
-#report, #reportC {
+#report, #reportSC {
 	position: fixed;
 	top: 50%;
 	left: 50%;
