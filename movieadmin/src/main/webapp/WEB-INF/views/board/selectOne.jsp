@@ -266,7 +266,7 @@
 							<td>${cvo.comments_num}</td>
 							<td>${cvo.content}
 								<form action="c_updateOK.do">
-									<c:if test="${param.nickname == cvo.nickname}">
+									<c:if test="${nickname == cvo.nickname}">
 										<input type="text" name="content" value="${cvo.content}">
 										<input type="hidden" name="comments_num"
 											value="${cvo.comments_num}">
