@@ -73,7 +73,7 @@ public class UserController {
 		int result = service.u_update(vo);
 
 		if (result == 1) {
-			return "redirect: u_selectAll.do"; // 마이 페이지
+			return "redirect: m_myPage.do"; // 마이 페이지
 		} else {
 			return "redirect: u_update.do";
 		}
