@@ -45,6 +45,8 @@
 		<p>회사는 이용자의 개인정보를 이용목적을 달성한 후에는 지체 없이 파기합니다.</p>
 		
 	</div>
+	  <div id = "copyright">
+<jsp:include page="footer_menu.jsp"></jsp:include></div>
 </body>
 </html>
 
