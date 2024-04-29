@@ -165,8 +165,12 @@ $(function() {
 
 		        // 이메일 형식이 올바른지 확인
 		        if (!isValidEmail(email)) {
+		        	$("#email").css("borderColor", "red");
 		            $("#result6").html("올바른 이메일 형식이 아닙니다."); // 수정된 부분
 		            return false; // 올바르지 않은 형식이므로 AJAX 요청을 보내지 않음
+		        }else {
+		            // 이메일 형식이 올바를 때
+		            $("#email").css("borderColor", ""); // 테두리 색상을 초기화하여 기본값으로 설정
 		        }
 
 		        // 이메일 중복 확인 AJAX 요청
