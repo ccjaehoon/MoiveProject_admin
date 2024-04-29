@@ -8,10 +8,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/board.css" />
-<link rel="stylesheet"
+<%-- <link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/board.css" />  --%> 
+ <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/noscript.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -34,6 +40,8 @@
 						<td>\${item.nickname}</td>
 						<td>\${item.content}</td>
 						<td>\${item.good}</td>
+						<input type="hidden" class="story-comments-num" value="${item.story_comments_num}">
+				        <td><input type="button" value="${item.good}" class="sc_increaseGood"></td>
 						<td>\${item.report}</td>
 						<td>\${item.wdate}</td>
 					</tr>`;
@@ -45,8 +53,92 @@
 				
 			}
 		});
-	}	
+	}
+	
+	$(".sc_increaseGood").each(function(index, item) {
+		console.log(index);
+		$(this).click(function() {
+		console.log("increaseGood Click");
+		console.log($("#story_comments_num" + index).val());
+		console.log('${nickname}');
+
+		$.ajax({
+			url : "http://localhost:8070/movie/api/sc_increaseGood.do",
+			type : "get",
+			data : {
+				story_comments_num : $("#story_comments_num" + index).val(),
+				nickname : '${nickname}'
+			},
+			dataType : "json",
+			success : function(obj) {
+				console.log(obj);
+				if (obj.goodCount > 0)
+				item.value = obj.goodCount;
+			},
+			error : function(xhr, status) {
+				console.log("status...", status);
+			}
+		});
+		return false;
+	  });
+	});
 </script>
+<style>
+/*     html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    } */
+
+    .swiper {
+      width: 1500px;
+      height: 800px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      justify-content: center;
+      align-items: center;
+      width :1400px;
+      height: 700px;
+      display: flex;
+      flex-wrap: wrap; /* 요소들이 한 줄에 너무 많이 배치되지 않도록 줄바꿈을 허용 */
+	  place-items: center;
+      
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 500px;
+      height: 400px;
+      
+    }
+    
+    .swiper-slide video {
+      display: block;
+      width: 500px;
+      height: 400px;
+      object-fit: cover;
+    }
+    
+    .story-content{
+	  width: 100%; /* .story-content를 전체 너비로 설정 */
+	 /*  margin-bottom: 20px; /* 이미지, 동영상, 댓글 목록 아래로 두기 위해 마진 추가 */ 
+    }
+    
+  </style>
+
 </head>
 <body class="is-preload">
 
@@ -59,28 +151,26 @@
 		
 	<h2>스토리</h2>
 	
-    <hr>
  
     <div class="table-wrapper">
-<table class="alt">
-    <tbody>
-        <c:forEach var="vo" items="${vos}">
-            <tr>
-                <td>
-                    <div class="story-container">
-                        <a href="s_selectOne.do?story_num=${vo.story_num}&nickname=${vo.nickname}" class="story-link">${vo.story_num}</a>
-                        <div class="story-content">
+<!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <c:forEach var="vo" items="${vos}">
+                    <div class="swiper-slide story-container">
+                    <div class="story-content" >
                             <p>${vo.content}</p>
                             <p>${vo.nickname}</p>
                         </div>
+                        <a href="s_selectOne.do?story_num=${vo.story_num}&nickname=${vo.nickname}" class="story-link">${vo.story_num}</a>
                         <!-- 이미지가 존재하는 경우 표시 -->
-                        <c:if test="${vo.save_img != null }">
+                        <c:if test="${vo.save_img != null && vo.save_video == null }">
                             <img src="resources/uploadimg/images/thumb_${vo.save_img}" alt="">
                         </c:if>
                         <!-- 비디오가 존재하는 경우 표시 -->
                         <c:if test="${vo.save_video != null }">
                             <div>
-                                <video width="400" controls>
+                                <video controls>
                                     <source src="resources/uploadimg/videos/${vo.save_video}" type="video/mpeg">
                                     <source src="resources/uploadimg/videos/${vo.save_video}" type="video/mp4">
                                     <source src="resources/uploadimg/videos/${vo.save_video}" type="video/avi">
@@ -98,11 +188,25 @@
                             </tbody>
                         </table>
                     </div>
-                </td>
-            </tr>
         </c:forEach>
-    </tbody>
-</table>
+      
+     
+    </div>
+   <script>
+    var swiper = new Swiper(".mySwiper", {
+      direction: "vertical",
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+    
+    <div class="swiper-pagination"></div>
+  </div>
+   
+        
+    
    </div>
 	<form action="s_insert.do">
 				<input type="submit" value="스토리 작성" >

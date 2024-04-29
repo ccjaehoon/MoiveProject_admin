@@ -24,14 +24,16 @@
 		<h2>news</h2>
 
 		<form action="n_searchList.do">
-			<span style="float: left"> <select name="searchKey"
-				style="width: 150px;">
-					<option value="title">제목</option>
-					<option value="content">내용</option>
-			</select>
-			</span><span style="float: left"> <input type="text"
-				name="searchWord" value="검색어" style="width: 150px;">
-			</span><input type="submit" value="search">
+			<span style="float: left">
+				<select name="searchKey" style="width: 150px;">
+						<option value="title">제목</option>
+						<option value="content">내용</option>
+				</select>
+			</span>
+			<span style="float: left">
+				<input type="text" name="searchWord" value="검색어" style="width: 150px;">
+			</span>
+			<input type="submit" value="search">
 		</form>
 		<div class="table-wrapper">
 			<table class="alt">

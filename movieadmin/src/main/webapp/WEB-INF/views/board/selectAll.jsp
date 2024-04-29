@@ -56,20 +56,21 @@
 		<h2>글목록</h2>
 		
 	<form action="b_searchList.do">
-			<span style="float: left"> <select name="searchKey"
-				style="width: 150px;">
+		<span style="float: left">
+			<select name="searchKey" style="width: 150px;">
 					<option value="title">제목</option>
 					<option value="content">내용</option>
 			</select>
-			</span><span style="float: left"> <input type="text"
-				name="searchWord" value="검색어" style="width: 150px;">
-			</span><input type="submit" value="search">
-		</form>
-		<div class="table-wrapper">
+		</span>
+		<span style="float: left">
+			<input type="text" name="searchWord" placeholder="검색어" style="width: 150px;">
+		</span>
+		<input type="submit" value="search">
+	</form>
+	<div class="table-wrapper">
 		<table class="alt">
 			<thead>
 				<tr>
-					
 					<th style="width: 7%; text-align: center;">번호</th>
 					<th style="width: 10%; text-align: center;">썸네일</th>
 					<th style="width: %; text-align: center;">제목</th>
