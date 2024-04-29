@@ -78,7 +78,7 @@
 </script>
 <style>
 
-.comment-number {
+.story-number,.comment-number {
  display: none;
  
 }
@@ -92,6 +92,10 @@
 	padding: 20px;
 	border-radius: 5px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+#report input[name="story_num"],
+#reportSC input[name="story_comments_num"] {
+    display: none;
 }
 
 #rp {
@@ -179,7 +183,7 @@
 			<table class="alt">
 				<thead>
 					<tr>
-						<th>번호: ${vo2.story_num}</th>
+						<th class="story-number">번호: ${vo2.story_num}</th>
 						<th colspan="3">작성자: ${vo2.nickname}</th>
 
 					</tr>
