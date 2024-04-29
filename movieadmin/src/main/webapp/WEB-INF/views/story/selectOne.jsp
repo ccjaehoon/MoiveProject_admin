@@ -193,6 +193,11 @@
 					<tr>
 						<td>내용</td>
 						<td colspan="3">${vo2.content}</td>
+						
+					</tr>
+					<tr>
+					<td>조회수</td>
+					<td>${vo2.views}</td>
 					</tr>
 
 
