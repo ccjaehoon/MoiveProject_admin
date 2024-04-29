@@ -10,10 +10,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.project.movieadmin.board.BoardService;
+import com.project.movieadmin.board.BoardVO;
+import com.project.movieadmin.story.StoryService;
+import com.project.movieadmin.story.StoryVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,6 +33,12 @@ public class UserController {
 
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private BoardService board_service;
+	
+	@Autowired
+	private StoryService story_service;
 
 	@Autowired
 	private HttpSession session;
@@ -98,11 +108,16 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/u_selectOne.do", method = RequestMethod.GET)
-	public String u_selectOne(UserVO vo, Model model) {
+	public String u_selectOne(@RequestParam(defaultValue = "1") int cpage,
+			@RequestParam(defaultValue = "20") int pageBlock, UserVO vo, Model model) {
 		UserVO vo2 = service.u_selectOne(vo);
 
 		model.addAttribute("vo2", vo2);
-
+		 List<BoardVO> boards = board_service.b_selectAll_nickname(cpage, pageBlock,vo2);
+		 List<StoryVO> storys = story_service.s_selectAll_nickname(cpage, pageBlock,vo2);
+		 model.addAttribute("boards", boards);
+		 model.addAttribute("storys", storys);
+		 
 		return "user/selectOne";
 	}
 
