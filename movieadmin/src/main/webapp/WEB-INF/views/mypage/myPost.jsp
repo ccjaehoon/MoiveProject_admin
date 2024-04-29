@@ -39,9 +39,9 @@
 				<tr>
 					<th style="width: 10%; text-align: center;">번호</th>
 					<th style="width: 30%; text-align: center;">제목</th>
-					<th style="width: 20%; text-align: center;">작성자</th>
+					<th style="width: 15%; text-align: center;">작성자</th>
 					<th style="width: 30%; text-align: center;">작성내용</th>
-					<th style="width: 10%; text-align: center;">작성일자</th>
+					<th style="width: 15%; text-align: center;">작성일자</th>
 
 				</tr>
 			</thead>
@@ -49,13 +49,12 @@
 				<c:forEach var="vo" items="${boards}">
 					<tr>
 						<td><a href="b_selectOne.do?board_num=${vo.board_num}">${vo.board_num}</a></td>
-						<td>${vo.title}</td>
-						<td>${vo.nickname}</td>
-						<td>${vo.content}</td>
+						<td style="text-align: center;">${vo.title}</td>
+						<td style="text-align: center;">${vo.nickname}</td>
+						<td style="text-align: center;">${vo.content}</td>
 						<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 					</tr>
 				</c:forEach>
-
 			</tbody>
 
 			<tfoot>
@@ -81,18 +80,18 @@
 			<thead>
 				<tr>
 					<th style="width: 10%; text-align: center;">번호</th>
-					<th style="width: 20%; text-align: center;">작성자</th>
+					<th style="width: 15%; text-align: center;">작성자</th>
 					<th style="width: 30%; text-align: center;">작성내용</th>
-					<th style="width: 10%; text-align: center;">작성일자</th>
+					<th style="width: 15%; text-align: center;">작성일자</th>
 
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="vo" items="${storys}">
 					<tr>
-						<td><a href="s_selectOne.do?story_num=${vo.story_num}">${vo.story_num}</a></td>
-						<td>${vo.nickname}</td>
-						<td>${vo.content}</td>
+						<td style="text-align: center;"><a href="s_selectOne.do?story_num=${vo.story_num}">${vo.story_num}</a></td>
+						<td style="text-align: center;">${vo.nickname}</td>
+						<td style="text-align: center;">${vo.content}</td>
 						<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 					</tr>
 				</c:forEach>
@@ -124,10 +123,9 @@
 					<tr>
 						<th style="width: 10%; text-align: center;">번호</th>
 						<th style="width: 30%; text-align: center;">제목</th>
-						<th style="width: 20%; text-align: center;">작성자</th>
+						<th style="width: 15%; text-align: center;">작성자</th>
 						<th style="width: 30%; text-align: center;">작성내용</th>
-						<th style="width: 10%; text-align: center;">작성일자</th>
-
+						<th style="width: 15%; text-align: center;">작성일자</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -135,9 +133,9 @@
 						<tr>
 							<td><a
 								href="a_selectOne.do?announcement_num=${vo.announcement_num}">${vo.announcement_num}</a></td>
-							<td>${vo.title}</td>
-							<td>${vo.nickname}</td>
-							<td>${vo.content}</td>
+							<td style="text-align: center;">${vo.title}</td>
+							<td style="text-align: center;">${vo.nickname}</td>
+							<td style="text-align: center;">${vo.content}</td>
 							<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 						</tr>
 					</c:forEach>
@@ -166,9 +164,9 @@
 					<tr>
 						<th style="width: 10%; text-align: center;">번호</th>
 						<th style="width: 30%; text-align: center;">제목</th>
-						<th style="width: 20%; text-align: center;">작성자</th>
+						<th style="width: 15%; text-align: center;">작성자</th>
 						<th style="width: 30%; text-align: center;">작성내용</th>
-						<th style="width: 10%; text-align: center;">작성일자</th>
+						<th style="width: 15%; text-align: center;">작성일자</th>
 
 					</tr>
 				</thead>
@@ -176,9 +174,9 @@
 					<c:forEach var="vo" items="${news}">
 						<tr>
 							<td><a href="n_selectOne.do?news_num=${vo.news_num}">${vo.news_num}</a></td>
-							<td>${vo.title}</td>
-							<td>${vo.nickname}</td>
-							<td>${vo.content}</td>
+							<td style="text-align: center;">${vo.title}</td>
+							<td style="text-align: center;">${vo.nickname}</td>
+							<td style="text-align: center;">${vo.content}</td>
 							<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 						</tr>
 					</c:forEach>
