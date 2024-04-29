@@ -46,15 +46,15 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>${vo2.user_num}</td>
-					<td>${vo2.user_id}</td>
-					<td>${vo2.password}</td>
-					<td>${vo2.nickname}</td>
-					<td>${vo2.email}</td>
-					<td>${vo2.tel}</td>
-					<td>${vo2.birth}</td>
-					<td>${vo2.authority}</td>
-					<td>${vo2.reg_date}</td>
+					<td style="text-align: center;">${vo2.user_num}</td>
+					<td style="text-align: center;">${vo2.user_id}</td>
+					<td style="text-align: center;">${vo2.password}</td>
+					<td style="text-align: center;">${vo2.nickname}</td>
+					<td style="text-align: center;">${vo2.email}</td>
+					<td style="text-align: center;">${vo2.tel}</td>
+					<td style="text-align: center;">${vo2.birth}</td>
+					<td style="text-align: center;">${vo2.authority}</td>
+					<td style="text-align: center;">${vo2.reg_date}</td>
 
 				</tr>
 			</tbody>
@@ -81,7 +81,7 @@
 			<tbody>
 				<c:forEach var="vo" items="${boards}">
 					<tr>
-						<td><a href="b_selectOne.do?board_num=${vo.board_num}">${vo.board_num}</a></td>
+						<td style="text-align: center;"><a href="b_selectOne.do?board_num=${vo.board_num}">${vo.board_num}</a></td>
 						<td style="text-align: center;">${vo.title}</td>
 						<td style="text-align: center;">${vo.nickname}</td>
 						<td style="text-align: center;">${vo.content}</td>
