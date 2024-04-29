@@ -65,4 +65,9 @@ public class NewsServiceimpl implements NewsService {
 		return dao.n_selectAll();
 	}
 
+	@Override
+	public int n_increaseViews(NewsVO vo) {
+		return dao.n_increaseViews(vo);
+	}
+
 }

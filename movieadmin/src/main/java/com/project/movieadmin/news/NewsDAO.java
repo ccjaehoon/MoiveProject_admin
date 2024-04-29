@@ -2,12 +2,13 @@ package com.project.movieadmin.news;
 
 import java.util.List;
 
+import com.project.movieadmin.info.InfoVO;
 import com.project.movieadmin.user.UserVO;
 
 public interface NewsDAO {
-	
+
 	public List<NewsVO> n_selectAll();
-	
+
 	public List<NewsVO> n_selectAll(int cpage, int pageBlock);
 
 	public NewsVO n_selectOne(NewsVO vo);
@@ -25,4 +26,6 @@ public interface NewsDAO {
 	public int n_getSearchTotalRows(String searchKey, String searchWord);
 
 	public List<NewsVO> n_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
+
+	public int n_increaseViews(NewsVO vo);
 }

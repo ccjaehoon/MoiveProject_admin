@@ -2,6 +2,7 @@ package com.project.movieadmin.news;
 
 import java.util.List;
 
+import com.project.movieadmin.info.InfoVO;
 import com.project.movieadmin.user.UserVO;
 
 
@@ -22,8 +23,10 @@ public interface NewsService {
 	public int n_update(NewsVO vo);
 	
 	public int n_getTotalRows();
+	
 	public int n_getSearchTotalRows(String searchKey, String searchWord);
 
 	public List<NewsVO> n_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 	
+	public int n_increaseViews(NewsVO vo);
 }

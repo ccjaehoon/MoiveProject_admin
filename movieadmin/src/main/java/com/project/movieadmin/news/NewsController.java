@@ -100,7 +100,7 @@ public class NewsController {
 		cvo.setNickname(nickname);
 		List<NCommentsVO> cvos = comService.nc_selectAll(cvo);
 		log.info(cvos.toString());
-
+		service.n_increaseViews(vo);
 		model.addAttribute("cvos", cvos);
 
 		return "news/selectOne";

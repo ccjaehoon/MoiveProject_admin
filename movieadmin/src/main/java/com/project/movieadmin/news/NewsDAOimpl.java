@@ -168,4 +168,11 @@ public class NewsDAOimpl implements NewsDAO {
 
 		return vos;
 	}
+
+	@Override
+	public int n_increaseViews(NewsVO vo) {
+		log.info("nc_increaseGood()....");
+		log.info(vo.toString());
+		return sqlSession.update("N_INCREASE_VIEWS", vo);
+	}
 }
