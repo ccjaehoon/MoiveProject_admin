@@ -162,6 +162,8 @@ public class BoardController {
         // user_id를 모델에 추가하여 JSP로 전달
         model.addAttribute("nickname", nickname);		
 		
+        service.b_increaseViews(vo);
+        
 		CommentsVO cvo = new CommentsVO();
 		cvo.setBoard_num(vo.getBoard_num());
 		cvo.setNickname(nickname);
