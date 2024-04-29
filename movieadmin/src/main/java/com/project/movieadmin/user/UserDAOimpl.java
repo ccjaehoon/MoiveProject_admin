@@ -162,6 +162,19 @@ public class UserDAOimpl implements UserDAO {
 	public UserVO findPw(UserVO vo) {
 		return sqlSession.selectOne("U_SELECT_ONE_PW",vo);
 	}
+
+	@Override
+	public int u_pwCheck(UserVO vo) {
+		return sqlSession.selectOne("U_PW_CHECK",vo);
+	}
+
+	@Override
+	public int u_changePw(UserVO vo, String newPassword) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("user_id", vo.getUser_id());
+		map.put("newPassword", newPassword);
+		return sqlSession.update("U_PW_CHANGE", map);
+	}
 	
 
 

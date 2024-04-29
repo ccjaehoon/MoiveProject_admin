@@ -20,7 +20,18 @@
 
 <body>
 
+	 <script type="text/javascript">
 
+
+
+	var msg = "${msg}";
+		 
+		if (msg != "") {
+			alert(msg);
+		}
+
+
+</script>
 
 	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -75,6 +86,11 @@
 				<td colspan="2" align="center"><a
 					href="u_update.do?user_num=${vo2.user_num}&user_id=${vo2.user_id}">회원수정</a></td>
 			</tr>
+			<tr>
+				<td colspan="2" align="center"><a
+					href="m_pwChange.do">비밀번호 변경</a></td>
+			</tr>
+			
 
 
 		</table>
