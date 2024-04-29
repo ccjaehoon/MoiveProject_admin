@@ -362,7 +362,7 @@
 				</tr>
 				<tr>
 					<td width="500"><textarea id="text_report" name="content"
-							placeholder="신고내용을 적으세요">test report</textarea></td>
+							placeholder="신고내용을 적으세요"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
@@ -387,7 +387,7 @@
 				</tr>
 				<tr>
 					<td width="500"><textarea id="text_report" name="content"
-							placeholder="신고내용을 적으세요">test report</textarea></td>
+							placeholder="신고내용을 적으세요"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
