@@ -25,11 +25,13 @@
 
 		<form action="u_updateOK.do" method="post"
 			enctype="multipart/form-data">
-			<table class="alt">		
+			<table class="alt">	
 				<tr>
 					<td><label for="user_id">아이디:</label></td>
 					<td>${param.user_id}<input type="hidden" id="user_id"
-						name="user_id" value="${param.user_id}" placeholder="아이디"></td>
+						name="user_id" value="${param.user_id}" placeholder="아이디">
+						<input type="hidden" id="user_num"
+						name="user_num" value="${param.user_num}"></td>
 				</tr>
 				<tr>
 					<td><label for="password">비밀번호:</label></td>
