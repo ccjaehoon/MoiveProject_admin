@@ -392,7 +392,7 @@
 				<tr>
 					<td colspan="2"><input type="submit" value="신고접수"
 						class="report">
-						<button type="button" onclick="closeReportDialog()">닫기</button></td>
+						<button type="button" onclick="closeReportDialogC()">닫기</button></td>
 				</tr>
 			</table>
 		</form>
