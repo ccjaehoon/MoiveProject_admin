@@ -190,13 +190,10 @@
 					<td id="boardR" style="text-align: center;">제목</td>
 					<td colspan="8">${vo2.title}</td>
 				</tr>
-
-
 				<td align="left" colspan="8"><img
 					src="resources/uploadimg/${vo2.save_img}" width="300"> <br>
 					${vo2.content}</td>
 				</tr>
-
 		
 				<tr>
 					<td colspan="8" style="text-align: left;">
