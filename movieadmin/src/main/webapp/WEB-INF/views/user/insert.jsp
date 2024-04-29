@@ -212,43 +212,43 @@ $(function() {
 			enctype="multipart/form-data">
 			<table class="alt">
 				<tr>
-					<td><label for="user_id">아이디:</label></td>
+					<td style="text-align: center;"><label for="user_id" >아이디</label></td>
 					<td><input type="text" id="user_id" name="user_id" value=""
 						placeholder="아이디" maxlength="12"> <span id="result"></span>
 						<span id="result4"></span></td>
 					<td width=150><a href="#" id="u_idCheck">아이디체크</a></td>
 				</tr>
 				<tr>
-					<td><label for="password">비밀번호:</label></td>
+					<td style="text-align: center;"><label for="password">비밀번호</label></td>
 					<td colspan="2"><input type="password" id="password"
 						name="password" value="" placeholder="비밀번호"></td>
 				</tr>
 				<tr>
-					<td><label for="nickname">별명:</label></td>
+					<td style="text-align: center;"><label for="nickname">별명</label></td>
 					<td><input type="text" id="nickname" name="nickname" value=""
 						placeholder="별명" maxlength="8"> <span id="result2"></span>
 						<span id="result5"></span></td>
 					<td width=150><a href="#" id="u_nicknameCheck">닉네임체크</a></td>
 				</tr>
 				<tr>
-					<td><label for="email">이메일:</label></td>
+					<td style="text-align: center;"><label for="email">이메일</label></td>
 					<td><input type="text" id="email" name="email" value=""
 						placeholder="이메일"> <span id="result3"></span> <span
 						id="result6"></span></td>
 					<td width=150><a href="#" id="u_emailCheck">이메일체크</a></td>
 				</tr>
 				<tr>
-					<td><label for="tel">전화번호:</label></td>
+					<td style="text-align: center;"><label for="tel">전화번호</label></td>
 					<td colspan="2"><input type="tel" id="tel" name="tel"
 						value="010" placeholder="전화번호"></td>
 				</tr>
 				<tr>
-					<td><label for="birth">생년월일</label></td>
+					<td style="text-align: center;"><label for="birth">생년월일</label></td>
 					<td colspan="2"><input type="date" id="birth" name="birth"
 						value=""></td>
 				</tr>
 				<tr>
-					<td><label for="gender">성별:</label></td>
+					<td style="text-align: center;"><label for="gender">성별</label></td>
 					<td colspan="2"><input type="radio" id="gender_male"
 						name="gender" value="남자" ${vo2.gender == '남자' ? 'checked' : ''}>
 						<label for="gender_male">남자</label> <input type="radio"
@@ -308,6 +308,14 @@ $(function() {
         if (passwordInput === "") {
             allFieldsFilled = false;
             passwordIdInput.style.borderColor = "red";
+        } else {
+            // 비밀번호의 정규식: 최소 8자, 최소 하나의 대문자, 하나의 소문자, 하나의 숫자, 특수문자 허용
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,}$/;
+            if (!passwordRegex.test(passwordInput)) {
+                allFieldsFilled = false;
+                passwordIdInput.style.borderColor = "red";
+                alert("비밀번호는 최소 8자 이상, 하나의 대문자, 하나의 소문자, 하나의 숫자, 하나의 특수문자를 포함해야 합니다.");
+            }
         }
         if (nickname === "") {
             allFieldsFilled = false;
