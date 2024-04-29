@@ -186,7 +186,7 @@
 					<td>조회수</td>
 					<td>${vo2.views}</td>
 				</tr>
-				<tr >
+				<tr>
 					<td id="boardR" style="text-align: center;">제목</td>
 					<td colspan="8">${vo2.title}</td>
 				</tr>
@@ -197,25 +197,30 @@
 					${vo2.content}</td>
 				</tr>
 
-			</tbody>
-
-			<tbody>
-
+		
 				<tr>
-					<td colspan="5"><input type="hidden" name="board_num"
-						value="${vo2.board_num}" id="board_num"> <input
-						type="hidden" name="good" value="${vo2.good}" id="good"> <input
-						type="hidden" name="nickname" value="${nickname}"
-						id="nickname1"> <input type="button"
-						value="추천 ${vo2.good}" class="b_increaseGood"> <input
-						type="button" id="reportBtn" class="report"
-						onClick="showDialogReport('${vo2.board_num}','${nickname}')"
-						value="신고" /></td>
-					<c:if test="${nickname == vo2.nickname}">
-						<td align="right"><a
-							href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a>
-							<a href="b_delete.do?board_num=${param.board_num}">글삭제</a></td>
-					</c:if>
+					<td colspan="8" style="text-align: left;">
+						<!-- 텍스트 정렬을 left로 변경 -->
+						<div style="margin-left: auto;">
+							<input type="hidden" name="board_num" value="${vo2.board_num}"
+								id="board_num"> <input type="hidden" name="good"
+								value="${vo2.good}" id="good"> <input type="hidden"
+								name="nickname" value="${nickname}" id="nickname1"> <input
+								type="button" value="추천 ${vo2.good}" class="b_increaseGood">
+							<input type="button" id="reportBtn" class="report"
+								onClick="showDialogReport('${vo2.board_num}','${nickname}')"
+								value="신고" />
+				
+						</div>
+					</td>
+				</tr>
+				<tr>
+				<td colspan="8" style="text-align: right;">	<c:if test="${nickname == vo2.nickname}">
+								<a
+									href="b_update.do?board_num=${param.board_num}&nickname=${param.nickname}">글수정</a>
+								<a href="b_delete.do?board_num=${param.board_num}">글삭제</a>
+							</c:if>
+							</td>
 				</tr>
 
 			</tbody>
