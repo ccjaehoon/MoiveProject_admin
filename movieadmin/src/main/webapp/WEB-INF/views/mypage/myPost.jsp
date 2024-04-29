@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +17,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 
+
 </head>
 
 <body>
@@ -24,22 +26,23 @@
 
 	<div style="position: relative; z-index: 2;">
 		<jsp:include page="../top_menu.jsp"></jsp:include>
-		</div>
-			<div id="main" style="position: relative; z-index: 1;"><br>
+	</div>
+	<div id="main" style="position: relative; z-index: 1;">
+		<br>
 		<h2>쓴 글 목록</h2>
 
 
 		<h3>커뮤니티</h3>
 
-		<table id="customers">
+		<table class="alt">
 			<thead>
 				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성내용</th>
-					<th>작성일자</th>
-					<th></th>
+					<th style="width: 10%; text-align: center;">번호</th>
+					<th style="width: 30%; text-align: center;">제목</th>
+					<th style="width: 20%; text-align: center;">작성자</th>
+					<th style="width: 30%; text-align: center;">작성내용</th>
+					<th style="width: 10%; text-align: center;">작성일자</th>
+
 				</tr>
 			</thead>
 			<tbody>
@@ -49,7 +52,7 @@
 						<td>${vo.title}</td>
 						<td>${vo.nickname}</td>
 						<td>${vo.content}</td>
-						<td>${vo.wdate}</td>
+						<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 					</tr>
 				</c:forEach>
 
@@ -57,7 +60,7 @@
 
 			<tfoot>
 				<tr>
-					<td colspan="7"><c:forEach var="i" begin="1"
+					<td colspan="5"><c:forEach var="i" begin="1"
 							end="${totalPageCount}">
 							<c:if test="${param.searchKey == null }">
 								<a href="n_selectAll.do?cpage=${i}">${i} &nbsp;</a>
@@ -77,11 +80,11 @@
 		<table class="alt">
 			<thead>
 				<tr>
-					<th>번호</th>
-					<th>작성자</th>
-					<th>작성내용</th>
-					<th>작성일자</th>
-					<th></th>
+					<th style="width: 10%; text-align: center;">번호</th>
+					<th style="width: 20%; text-align: center;">작성자</th>
+					<th style="width: 30%; text-align: center;">작성내용</th>
+					<th style="width: 10%; text-align: center;">작성일자</th>
+
 				</tr>
 			</thead>
 			<tbody>
@@ -90,7 +93,7 @@
 						<td><a href="s_selectOne.do?story_num=${vo.story_num}">${vo.story_num}</a></td>
 						<td>${vo.nickname}</td>
 						<td>${vo.content}</td>
-						<td>${vo.wdate}</td>
+						<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 					</tr>
 				</c:forEach>
 
@@ -119,12 +122,12 @@
 			<table class="alt">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성내용</th>
-						<th>작성일자</th>
-						<th></th>
+						<th style="width: 10%; text-align: center;">번호</th>
+						<th style="width: 30%; text-align: center;">제목</th>
+						<th style="width: 20%; text-align: center;">작성자</th>
+						<th style="width: 30%; text-align: center;">작성내용</th>
+						<th style="width: 10%; text-align: center;">작성일자</th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -135,7 +138,7 @@
 							<td>${vo.title}</td>
 							<td>${vo.nickname}</td>
 							<td>${vo.content}</td>
-							<td>${vo.wdate}</td>
+							<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 						</tr>
 					</c:forEach>
 
@@ -161,12 +164,12 @@
 			<table class="alt">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성내용</th>
-						<th>작성일자</th>
-						<th></th>
+						<th style="width: 10%; text-align: center;">번호</th>
+						<th style="width: 30%; text-align: center;">제목</th>
+						<th style="width: 20%; text-align: center;">작성자</th>
+						<th style="width: 30%; text-align: center;">작성내용</th>
+						<th style="width: 10%; text-align: center;">작성일자</th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -176,7 +179,7 @@
 							<td>${vo.title}</td>
 							<td>${vo.nickname}</td>
 							<td>${vo.content}</td>
-							<td>${vo.wdate}</td>
+							<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 						</tr>
 					</c:forEach>
 
