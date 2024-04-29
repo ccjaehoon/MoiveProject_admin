@@ -36,7 +36,7 @@
 
 												$
 														.ajax({
-															url : "http://localhost:8070/movie/nc_increaseGood.do",
+															url : "nc_increaseGood.do",
 															type : "get",
 															data : {
 																news_comments_num : $(
