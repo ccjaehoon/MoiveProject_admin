@@ -79,6 +79,7 @@
 		<li>회사가 회원에게 손해를 입힌 경우, 회사는 회원에게 손해배상을 할 수 있습니다.</li>
 	</ol>
 </div>
-
+  <div id = "copyright">
+<jsp:include page="footer_menu.jsp"></jsp:include></div>
 </body>
 </html>
