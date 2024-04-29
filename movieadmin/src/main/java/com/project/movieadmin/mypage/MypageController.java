@@ -176,4 +176,47 @@ public class MypageController {
 
 	    return "mypage/selectOne";
 	}
+	@RequestMapping(value = "/m_pwChange.do", method = RequestMethod.GET)
+	public String m_pwchange(Model model) {
+		log.info("Welcome m_myPage!");
+		
+		String user_id = (String) session.getAttribute("user_id");
+		model.addAttribute("user_id", user_id);
+
+		return "mypage/pwChange";
+	}
+	@RequestMapping(value = "/changePassword.do", method = RequestMethod.POST)
+    public String changePassword(
+            @RequestParam("new_password") String newPassword,
+            @RequestParam("confirm_password") String confirmPassword,
+            UserVO vo,
+            Model model) {
+		log.info("vo :{}", vo.toString());
+		int result = user_service.u_pwCheck(vo);
+		String message;
+		if(result != 0) {
+			
+	        if (passwordsMatch(newPassword, confirmPassword)) {
+	        	log.info("success!");
+	        	result = user_service.u_changePw(vo, newPassword);
+	            message = "비밀번호가 성공적으로 변경되었습니다.";
+	            model.addAttribute("msg", message);
+	            return "redirect:m_selectOne.do";
+	        } else {
+	            message = "새 비밀번호와 비밀번호 확인이 일치하지 않습니다.";
+	            model.addAttribute("msg", message);
+	        }
+		}else{
+			message = "현재 비밀번호가 일치하지 않습니다.";
+			model.addAttribute("msg", message);
+			
+		}
+		return "mypage/pwChange";
+    }
+    
+    private boolean passwordsMatch(String newPassword, String confirmPassword) {
+        // 새 비밀번호와 비밀번호 확인이 일치하는지 확인하는 로직입니다.
+        return newPassword.equals(confirmPassword);
+    }
+	
 }
