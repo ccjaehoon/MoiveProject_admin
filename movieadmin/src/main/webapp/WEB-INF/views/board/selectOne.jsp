@@ -20,15 +20,15 @@
 	$(function() {
 
 		console.log("jquery test");
-		console.log($("http://localhost:8070/movie/b_increaseGood");
-		$(".b_increaseGood").click(function(item) {
+		console.log($(".b_increaseGood"));
+		$(document).on("click", ".b_increaseGood", function(item) {
 
 			console.log("increaseGood Click");
 			console.log('${vo2.board_num}');
 			console.log('${nickname}');
 			console.log('${vo2.good}');
 			$.ajax({
-				url : "http://localhost:8070/movie/b_increaseGood.do",
+				url : "b_increaseGood.do",
 				type : "get",
 				data : {
 					board_num : $("#board_num").val(),
@@ -56,7 +56,7 @@
 				console.log($("#good" + index).val());
 
 				$.ajax({
-					url : "http://localhost:8070/movie/c_increaseGood.do",
+					url : "c_increaseGood.do",
 					type : "get",
 					data : {
 						comments_num : $("#comments_num" + index).val(),
