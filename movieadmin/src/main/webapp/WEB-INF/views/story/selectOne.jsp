@@ -25,7 +25,7 @@
 			console.log('${vo2.story_num}');
 			console.log('${nickname}');
 			$.ajax({ /* "http://223.130.161.242:8070/movie/s_increaseGood.do" */
-				url : "http://localhost:8070/movie/s_increaseGood.do",
+				url : "s_increaseGood.do",
 				type : "get",
 				data : {
 					story_num : '${vo2.story_num}',
@@ -54,7 +54,7 @@
 			console.log('${nickname}');
 
 			$.ajax({
-				url : "http://localhost:8070/movie/api/sc_increaseGood.do",
+				url : "api/sc_increaseGood.do",
 				type : "get",
 				data : {
 					story_comments_num : $("#story_comments_num" + index).val(),
@@ -193,6 +193,11 @@
 					<tr>
 						<td>내용</td>
 						<td colspan="3">${vo2.content}</td>
+						
+					</tr>
+					<tr>
+					<td>조회수</td>
+					<td>${vo2.views}</td>
 					</tr>
 
 

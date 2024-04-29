@@ -129,6 +129,12 @@
 	<select id="LOGIN"	resultType="com.project.movieadmin.story.StoryVO">
 		
 	</select>
+	<select id="S_INCREASE_VIEWS"
+        resultType="com.project.movieadmin.story.StoryVO">
+        update story set
+        views=views+1 where
+        story_num=#{story_num}
+    </select>
 
 
 </mapper>

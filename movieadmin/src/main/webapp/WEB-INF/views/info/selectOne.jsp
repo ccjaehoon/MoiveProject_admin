@@ -18,7 +18,7 @@
 				console.log($("#nicknameF").val());
 
 				$.ajax({
-					url : "http://localhost:8070/movie/i_favorite.do",
+					url : "i_favorite.do",
 					type : "get",
 					data : {
 						info_num : $("#info_num").val(),
@@ -50,7 +50,7 @@
 				console.log($("#good" + index).val());
 
 				$.ajax({
-					url : "http://localhost:8070/movie/rv_increaseGood.do",
+					url : "rv_increaseGood.do",
 					type : "get",
 					data : {
 						review_num : $("#review_num" + index).val(),

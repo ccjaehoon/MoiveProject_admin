@@ -2,11 +2,14 @@ package com.project.movieadmin.story;
 
 import java.util.List;
 
+import com.project.movieadmin.board.BoardVO;
 import com.project.movieadmin.user.UserVO;
 
 
 public interface StoryDAO {
 	
+	
+
 	public int s_insert(StoryVO vo);
 
 	public int s_update(StoryVO vo);
@@ -40,4 +43,5 @@ public interface StoryDAO {
 
 	public List<StoryVO> s_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 
+	public int s_increaseViews(StoryVO vo);
 }
