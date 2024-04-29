@@ -18,7 +18,7 @@
 		console.log("selectCommentList()...",board_num);
 		
 		$.ajax({
-			url:"http://localhost:8070/movie/api/selectCommentList.do",
+			url:"api/selectCommentList.do",
 			type:"get",
 			data:{board_num:board_num},
 			dataType:"json",

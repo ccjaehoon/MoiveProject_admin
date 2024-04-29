@@ -20,7 +20,7 @@
 	$(function() {
 
 		console.log("jquery test");
-		console.log($(".b_increaseGood"));
+		console.log($("http://localhost:8070/movie/b_increaseGood");
 		$(".b_increaseGood").click(function(item) {
 
 			console.log("increaseGood Click");
@@ -28,7 +28,7 @@
 			console.log('${nickname}');
 			console.log('${vo2.good}');
 			$.ajax({
-				url : "/b_increaseGood.do",
+				url : "http://localhost:8070/movie/b_increaseGood.do",
 				type : "get",
 				data : {
 					board_num : $("#board_num").val(),
@@ -56,7 +56,7 @@
 				console.log($("#good" + index).val());
 
 				$.ajax({
-					url : "/c_increaseGood.do",
+					url : "http://localhost:8070/movie/c_increaseGood.do",
 					type : "get",
 					data : {
 						comments_num : $("#comments_num" + index).val(),
@@ -205,7 +205,7 @@
 					<td colspan="5"><input type="hidden" name="board_num"
 						value="${vo2.board_num}" id="board_num"> <input
 						type="hidden" name="good" value="${vo2.good}" id="good"> <input
-						type="hidden" name="nickname" value="${vo2.nickname}"
+						type="hidden" name="nickname" value="${nickname}"
 						id="nickname1"> <input type="button"
 						value="추천 ${vo2.good}" class="b_increaseGood"> <input
 						type="button" id="reportBtn" class="report"
