@@ -20,8 +20,8 @@
 	$(function() {
 
 		console.log("jquery test");
-		console.log($("http://localhost:8070/movie/b_increaseGood");
-		$(".b_increaseGood").click(function(item) {
+		console.log($(".b_increaseGood");
+		$(document).on("click", ".b_increaseGood", function(item) {
 
 			console.log("increaseGood Click");
 			console.log('${vo2.board_num}');
