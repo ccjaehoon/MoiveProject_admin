@@ -148,13 +148,13 @@
 		<h2>스토리</h2>
 
 
-
-		<!-- Swiper -->
-		<div class="swiper mySwiper">
-			<div class="swiper-wrapper">
-				<c:forEach var="vo" items="${vos}">
-					<div class="swiper-slide story-container">
+		<div class="table-wrapper">
+			<!-- Swiper -->
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+					<c:forEach var="vo" items="${vos}">
 						<div class="swiper-slide story-container">
+
 							<div class="story-content">
 								<table>
 									<tr align="center">
@@ -198,20 +198,20 @@
 												onclick="selectCommentList(${vo.story_num})">댓글목록</button></td>
 									</tr>
 									<tr>
-										<td id="sc_comm_list${vo.story_num}">
+										<td colspan="2" id="sc_comm_list${vo.story_num}">
 											<!-- Comment list will be inserted here dynamically -->
 										</td>
 									</tr>
 								</table>
 							</div>
+
 						</div>
-					</div>
 
-				</c:forEach>
-			</div>
+					</c:forEach>
+				</div>
 
 
-			<script>
+				<script>
     var swiper = new Swiper(".mySwiper", {
       direction: "vertical",
       pagination: {
@@ -221,14 +221,18 @@
     });
   </script>
 
+			</div>
 		</div>
 
-<form action="s_insert.do">
+
+	</div>
+	<form action="s_insert.do">
+
 		<input type="submit" value="스토리 작성">
 	</form>
 
-	</div>
-	
+
+
 
 
 	<div id="copyright">
