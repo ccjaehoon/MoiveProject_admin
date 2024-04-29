@@ -131,6 +131,7 @@
 		    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		    return emailRegex.test(email); // 이메일 형식이 맞으면 true 반환, 아니면 false 반환
 		}
+		
 
 		$(function() {
 		    $("#u_emailCheck").click(function() {
