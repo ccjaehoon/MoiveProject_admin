@@ -296,11 +296,12 @@
 			<thead>
 				<tr>
 					<th style="width: 10%; text-align: center;">번호</th>
-					<th style="width: 30%; text-align: center;">내용</th>
-					<th style="width: 15%; text-align: center;">작성자</th>
+					<th style="width: 25%; text-align: center;">내용</th>
+					<th style="width: 10%; text-align: center;">작성자</th>
 					<th style="width: 10%; text-align: center;">추천</th>
+					<th style="width: 25%; text-align: center;">작성일자</th>
 					<th style="width: 10%; text-align: center;">신고</th>
-					<th style="width: 25%;"></th>
+					<th style="width: 15%;"></th>
 				</tr>
 
 			</thead>
@@ -331,13 +332,15 @@
 							id="info_num"> <input type="hidden" name="good"
 							value="${ivo.good}" id="good${vs.index}"> <input
 							type="button" value="${ivo.good}" class="rv_increaseGood"></td>
+						<td style="text-align: center;">${ivo.wdate}<input type="hidden" name="wdate"
+							value="${wdate}" id="wdate${vs.index}"></td>
 
 						<td><input type="button" id="reportBtn" class="report"
 							onClick="showDialogReport('${ivo.review_num}','${nickname}','${vo2.info_num}')"
 							value="신고"/></td>
 
 						<td><c:if test="${nickname == ivo.nickname}">
-								<a href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">리뷰
+								<a href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">
 									삭제</a>
 							</c:if></td>
 
