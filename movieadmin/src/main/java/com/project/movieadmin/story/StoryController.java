@@ -65,7 +65,7 @@ public class StoryController {
 		log.info("Welcome story_insertOK...");
 		log.info("vo:{}", vo);
 		// String realPath = sContext.getRealPath("resources/uploadimg"); 파일저장경로
-		String imgRealPath = sContext.getRealPath("resources/uploadimg/images"); // 이미지 파일 저장 경로
+		String imgRealPath = sContext.getRealPath("resources/uploadimg"); // 이미지 파일 저장 경로
 		String videoRealPath = sContext.getRealPath("resources/uploadimg/videos");// 동영상 파일 저장 경로
 // 이미지 파일과 동영상 파일이 모두 없는 경우에 대한 처리
 		if (vo.getFile() == null || vo.getFile().isEmpty()) {
@@ -353,7 +353,7 @@ public class StoryController {
 
 	@RequestMapping(value = "/s_selectAll.do", method = RequestMethod.GET)
 	public String story_selectAll(@RequestParam(defaultValue = "1") int cpage,
-			@RequestParam(defaultValue = "5") int pageBlock, Model model) {
+			@RequestParam(defaultValue = "20") int pageBlock, Model model) {
 		log.info("Welcome story_selectAll...");
 		log.info("cpage : {}, pageBlock : {}", cpage, pageBlock);
 

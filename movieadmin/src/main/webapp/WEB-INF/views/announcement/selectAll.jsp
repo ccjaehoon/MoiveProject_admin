@@ -64,7 +64,8 @@
 							<td style="text-align: center; vertical-align: middle;"><img
 								alt="" src="resources/uploadimg/${vo.save_img}"
 								style="width: 70%; display: block; margin: 0 auto;"></td>
-							<td style="text-align: left; vertical-align: middle;">${vo.title}</td>
+							<td style="text-align: left; vertical-align: middle;"><a
+								href="a_selectOne.do?announcement_num=${vo.announcement_num}&nickname=${vo.nickname}">${vo.title}</a></td>
 							<td style="text-align: center; vertical-align: middle;">${vo.nickname}</td>
 							<td style="text-align: center; vertical-align: middle;">${fn:substring(vo.wdate,0,10) }</td>
 						</tr>

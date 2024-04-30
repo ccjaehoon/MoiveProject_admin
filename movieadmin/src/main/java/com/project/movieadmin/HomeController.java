@@ -56,7 +56,7 @@ public class HomeController {
 		List<InfoVO> ivos = iService.i_selectAll();
 		List<AnnouncementVO> avos = aService.a_selectAll();
 		List<NewsVO> nvos = nService.n_selectAll();
-		List<StoryVO> svos =  sService.s_selectAll(0, 5);
+		List<StoryVO> svos =  sService.s_selectAll();
 		model.addAttribute("bvos", bvos);
 		model.addAttribute("ivos", ivos);
 		model.addAttribute("avos", avos);

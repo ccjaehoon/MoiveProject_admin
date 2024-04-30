@@ -30,7 +30,7 @@
 			<table id="boardTable">
 				<tr>
 					<td><label for="board_num">게시글 번호:</label></td>
-					<td>정말 삭제하시겠습니까? <input type="hidden" id="board_num" name="board_num" value="${param.board_num}" placeholder="번호"></td>
+					<td> [${param.board_num}]번을 삭제하시겠습니까? <input type="hidden" id="board_num" name="board_num" value="${param.board_num}" placeholder="번호"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="글삭제"></td>

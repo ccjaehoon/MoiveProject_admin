@@ -40,9 +40,6 @@
 						<td>\${item.nickname}</td>
 						<td>\${item.content}</td>
 						<td>\${item.good}</td>
-						<input type="hidden" class="story-comments-num" value="${item.story_comments_num}">
-				        <td><input type="button" value="${item.good}" class="sc_increaseGood"></td>
-						<td>\${item.report}</td>
 						<td>\${item.wdate}</td>
 					</tr>`;
 					
@@ -84,6 +81,10 @@
 	});
 </script>
 <style>
+.table-wrapper {
+    display: flex;
+    
+}
 /*     html,
     body {
       position: relative;
@@ -99,8 +100,9 @@
       padding: 0;
     } */
 .swiper {
-	width: 1500px;
+	width: 1000px;
 	height: 800px;
+	
 }
 
 .swiper-slide {
@@ -109,7 +111,7 @@
 	background: #fff;
 	justify-content: center;
 	align-items: center;
-	width: 1400px;
+	width: 1000px;
 	height: 700px;
 	display: flex;
 	flex-wrap: wrap; /* 요소들이 한 줄에 너무 많이 배치되지 않도록 줄바꿈을 허용 */
@@ -170,7 +172,7 @@
 										<td align="center">
 											<!-- 이미지가 존재하는 경우 표시 --> <c:if
 												test="${vo.save_img != null && vo.save_video == null }">
-												<img src="resources/uploadimg/images/thumb_${vo.save_img}"
+												<img src="resources/uploadimg/thumb_${vo.save_img}"
 													alt="">
 											</c:if> <!-- 비디오가 존재하는 경우 표시 --> <c:if
 												test="${vo.save_video != null }">

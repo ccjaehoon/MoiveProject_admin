@@ -13,7 +13,7 @@
 
 	<update id="U_UPDATE">
 		update user set
-		password=#{password},nickname=#{nickname},gender=#{gender},tel=#{tel},email=#{email}
+		nickname=#{nickname},gender=#{gender},tel=#{tel},email=#{email}
 		where user_num=#{user_num}
 	</update>
 	<update id="U_PW_CHANGE">
