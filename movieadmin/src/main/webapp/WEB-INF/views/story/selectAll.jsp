@@ -55,33 +55,32 @@
 		});
 	}
 	
-	$(".sc_increaseGood").each(function(index, item) {
-		console.log(index);
-		$(this).click(function() {
-		console.log("increaseGood Click");
-		console.log($("#story_comments_num" + index).val());
-		console.log('${nickname}');
+    $(document).on('click', '.sc_increaseGood', function() {
+        var storyCommentsNum = $(".story-comments-num").val(); //여기를 고쳐야 다음으로 넘어간다
+        console.log("increaseGood Click");
+        console.log(Integer.parseInt(storyCommentsNum));
 
-		$.ajax({
-			url : "http://localhost:8070/movie/api/sc_increaseGood.do",
-			type : "get",
-			data : {
-				story_comments_num : $("#story_comments_num" + index).val(),
-				nickname : '${nickname}'
-			},
-			dataType : "json",
-			success : function(obj) {
-				console.log(obj);
-				if (obj.goodCount > 0)
-				item.value = obj.goodCount;
-			},
-			error : function(xhr, status) {
-				console.log("status...", status);
-			}
-		});
-		return false;
-	  });
-	});
+        // 여기에 AJAX 요청을 추가하여 서버에 데이터를 전송하고, 응답을 처리합니다.
+        // 예시:
+        $.ajax({
+            url: "http://localhost:8070/movie/api/sc_increaseGood.do",
+            type: "get",
+            data: {
+                story_comments_num: storyCommentsNum //언디파인 정보가 안넘어간다
+            },
+            dataType: "json",
+            success: function(response) {
+                // 예시: 댓글의 좋아요 수를 업데이트하는 로직
+                // 실제 구현은 페이지의 구조와 요구 사항에 따라 달라질 수 있습니다.
+                console.log(response);
+                // 예: 좋아요 수를 업데이트하는 로직
+                // $(this).val(response.goodCount);
+            },
+            error: function(xhr, status) {
+                console.log("status...", status);
+            }
+        });
+    });
 </script>
 <style>
 /*     html,
