@@ -38,9 +38,9 @@
 		select * from board order by board_num desc limit
 		#{startRow},#{pageBlock}
 	</select>
-	<select id="B_SELECT_ALL_PAGE_BLOCK_CONTENT"
+	<select id="B_SELECT_ALL_PAGE_BLOCK_NICKNAME"
 		resultType="com.project.movieadmin.board.BoardVO">
-		select * from board where nickname=#{vo.content} order by
+		select * from board where nickname=#{vo.nickname} order by
 		board_num desc
 		limit #{startRow},#{pageBlock}
 	</select>
@@ -116,5 +116,11 @@
 		FROM goodcheck
 		WHERE  board_num = #{board_num}
 	</select>
+	<select id="B_INCREASE_VIEWS"
+        resultType="com.project.movieadmin.board.BoardVO">
+        update board set
+        views=views+1 where
+        board_num=#{board_num}
+    </select>
 
 </mapper>

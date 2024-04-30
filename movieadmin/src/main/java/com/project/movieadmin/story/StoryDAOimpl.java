@@ -172,4 +172,12 @@ public class StoryDAOimpl implements StoryDAO {
 	}
 
 
+	@Override
+	public int s_increaseViews(StoryVO vo) {
+		 log.info("b_increaseGood()....");
+	        log.info(vo.toString());
+	        return sqlSession.update("S_INCREASE_VIEWS", vo);
+	}
+
+
 }

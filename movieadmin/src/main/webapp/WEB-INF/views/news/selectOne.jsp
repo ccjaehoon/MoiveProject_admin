@@ -36,7 +36,7 @@
 
 												$
 														.ajax({
-															url : "http://localhost:8070/movie/nc_increaseGood.do",
+															url : "nc_increaseGood.do",
 															type : "get",
 															data : {
 																news_comments_num : $(
@@ -175,20 +175,22 @@
 					<td>${vo2.nickname}</td>
 					<td width="10%">작성일자</td>
 						<td>${vo2.wdate}</td>
+						<td width="10%">조회수</td>
+						<td>${vo2.views}</td>
 				</tr>
 				<tr>
 					<td>제목</td>
-					<td colspan="5">${vo2.title}</td>
+					<td colspan="7">${vo2.title}</td>
 				</tr>
 
 
 				<tr>
-					<td align="left" colspan="6"><img
+					<td align="left" colspan="8"><img
 						src="resources/uploadimg/${vo2.save_img}" width="300"> <br>
 						${vo2.content}</td>
 				</tr>
 				<tr>
-					<td colspan="6" align="right"><c:if
+					<td colspan="8" align="right"><c:if
 							test="${authority == 'admin' }">
 							<a
 								href="n_update.do?news_num=${param.news_num}&nickname=${param.nickname}">글수정</a>

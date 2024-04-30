@@ -77,4 +77,10 @@
 		select count(*) total_rows from news  where content like #{searchWord}
 	</select>
 
+	<select id="N_INCREASE_VIEWS"
+		resultType="com.project.movieadmin.news.NewsVO">
+		update news set
+		views=views+1 where
+		news_num=#{news_num}
+	</select>
 </mapper>

@@ -106,4 +106,10 @@ public class BoardServiceimpl implements BoardService {
 		return dao.b_selectAll();
 	}
 
+	@Override
+	public int b_increaseViews(BoardVO vo) {
+		
+		return dao.b_increaseViews(vo);
+	}
+
 }

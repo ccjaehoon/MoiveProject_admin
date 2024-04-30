@@ -40,4 +40,6 @@ public interface StoryService {
 
 	public List<StoryVO> s_selectAll_nickname(int cpage, int pageBlock, UserVO vo);
 
+	public int s_increaseViews(StoryVO vo);
+
 }

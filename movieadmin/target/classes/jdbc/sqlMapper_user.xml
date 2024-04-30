@@ -16,6 +16,11 @@
 		password=#{password},nickname=#{nickname},gender=#{gender},tel=#{tel},email=#{email}
 		where user_num=#{user_num}
 	</update>
+	<update id="U_PW_CHANGE">
+		update user set
+		password=#{newPassword}
+		where user_id=#{user_id}
+	</update>
 
 	<delete id="U_DELETE">
 		delete from user where user_num=#{user_num}
@@ -106,5 +111,9 @@
 		<select id="FIND_PW_CHECK" resultType="int">
 		    select count(*) from user where email=#{email} and user_id=#{user_id}
 		</select>
-
+			<select id="U_PW_CHECK" resultType="int">
+		    select count(*) from user where user_id=#{user_id} and password=#{password}
+		</select>
+		
+	
 </mapper>

@@ -338,6 +338,8 @@ public class StoryController {
 		// user_id를 모델에 추가하여 JSP로 전달
 		model.addAttribute("nickname", nickname);
 
+		service.s_increaseViews(vo);
+		
 		// 댓글목록 처리로직
 		SCommentsVO cvo = new SCommentsVO();
 		cvo.setStory_num(vo.getStory_num());

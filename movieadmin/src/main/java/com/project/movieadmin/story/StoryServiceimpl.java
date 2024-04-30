@@ -114,6 +114,11 @@ public class StoryServiceimpl implements StoryService {
 		
 		return dao.s_selectAll_nickname(cpage, pageBlock, vo);
 	}
+	@Override
+	public int s_increaseViews(StoryVO vo) {
+		
+		return dao.s_increaseViews(vo);
+	}
 
 
 }

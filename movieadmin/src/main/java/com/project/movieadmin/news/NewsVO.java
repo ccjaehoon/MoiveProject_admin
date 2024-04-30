@@ -13,7 +13,7 @@ public class NewsVO {
 	private String nickname;
 	private String content;
 	private String wdate;
-	private int view;
+	private int views;
 	private String save_img;
 	private MultipartFile file_img;
 	private String save_video;
