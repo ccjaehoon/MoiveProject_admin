@@ -301,7 +301,7 @@
 					<th style="width: 10%; text-align: center;">추천</th>
 					<th style="width: 25%; text-align: center;">작성일자</th>
 					<th style="width: 10%; text-align: center;">신고</th>
-					<th style="width: 15%;"></th>
+					<th style="width: 15%; text-align: center;">삭제</th>
 				</tr>
 
 			</thead>
@@ -339,7 +339,7 @@
 							onClick="showDialogReport('${ivo.review_num}','${nickname}','${vo2.info_num}')"
 							value="신고"/></td>
 
-						<td><c:if test="${nickname == ivo.nickname}">
+						<td style="text-align: center;"><c:if test="${nickname == ivo.nickname}">
 								<a href="rv_deleteOK.do?review_num=${ivo.review_num}&info_num=${ivo.info_num}">
 									삭제</a>
 							</c:if></td>
