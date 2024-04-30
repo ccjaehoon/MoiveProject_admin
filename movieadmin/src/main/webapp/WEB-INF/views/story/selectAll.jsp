@@ -52,12 +52,10 @@
 		});
 	}
 	
-	$(".sc_increaseGood").each(function(index, item) {
-		console.log(index);
-		$(this).click(function() {
-		console.log("increaseGood Click");
-		console.log($("#story_comments_num" + index).val());
-		console.log('${nickname}');
+    $(document).on('click', '.sc_increaseGood', function() {
+        var storyCommentsNum = $(".story-comments-num").val(); //여기를 고쳐야 다음으로 넘어간다
+        console.log("increaseGood Click");
+        console.log(Integer.parseInt(storyCommentsNum));
 
 		$.ajax({
 			url : "api/sc_increaseGood.do",
@@ -79,6 +77,7 @@
 		return false;
 	  });
 	});
+>>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
 </script>
 <style>
 .table-wrapper {
