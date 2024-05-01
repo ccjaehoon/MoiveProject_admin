@@ -17,7 +17,7 @@
     <div id="main" style="position: relative; z-index: 1;">
 	    <br>
 	    <h2>게시글 수정</h2>
-	    <form action="b_updateOK.do" method="post">
+	    <form action="b_updateOK.do" method="post" enctype="multipart/form-data">
 	   		<div class="table=wrapper">
 	            <table id=alt>
 	                <tr>
@@ -36,6 +36,10 @@
 						<td><label for="nickname">작성자</label></td>
 						<td>${vo2.nickname}<input type="hidden" id="nickname" name="nickname"
 							value="${vo2.nickname}" placeholder="작성자"></td>
+					</tr>
+					<tr>
+						<td><label for="file_img">이미지파일</label></td>
+						<td><input type="file" id="file_img" name="file_img"></td>
 					</tr>
 	                <tr>
 	                    <td colspan="2"><input type="submit" value="글수정 완료"></td>

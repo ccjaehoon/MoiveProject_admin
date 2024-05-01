@@ -35,7 +35,7 @@
 				</tr>
 				<tr>
 					<td><label for="password">비밀번호:</label></td>
-					<td><input type="password" id="password" name="password"
+					<td><input type="hidden" id="password" name="password"
 						value="${vo2.password}" placeholder="비밀번호"></td>
 				</tr>
 				<tr>
