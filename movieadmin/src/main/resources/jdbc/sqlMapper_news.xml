@@ -11,7 +11,7 @@
 	</insert>
 
 	<update id="N_UPDATE">
-	    update news set title=#{title}, nickname=#{nickname}, content=#{content}, save_img=#{save_img} 
+	    update news set title=#{title}, content=#{content}, save_img=#{save_img} 
 	    where news_num=#{news_num}
 	</update>
 

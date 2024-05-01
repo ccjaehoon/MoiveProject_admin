@@ -33,11 +33,11 @@
 						<input type="hidden" id="user_num"
 						name="user_num" value="${param.user_num}"></td>
 				</tr>
-				<tr>
+				<%-- <tr>
 					<td><label for="password">비밀번호:</label></td>
-					<td><input type="password" id="password" name="password"
+					<td><input type="hidden" id="password" name="password"
 						value="${vo2.password}" placeholder="비밀번호"></td>
-				</tr>
+				</tr> --%>
 				<tr>
 					<td><label for="nickname">별명:</label></td>
 					<td><input type="text" id="nickname" name="nickname"
