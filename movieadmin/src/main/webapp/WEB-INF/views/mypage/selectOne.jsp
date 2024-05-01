@@ -48,11 +48,6 @@
 			</tr>
 
 			<tr>
-				<td>비밀번호</td>
-				<td>${vo2.password}</td>
-			</tr>
-
-			<tr>
 				<td>별명</td>
 				<td>${vo2.nickname}</td>
 			</tr>

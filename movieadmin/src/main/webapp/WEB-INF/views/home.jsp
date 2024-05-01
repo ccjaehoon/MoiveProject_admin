@@ -164,7 +164,7 @@
 											href="s_selectOne.do?story_num=${svo.story_num}&nickname=${svo.nickname}">
 												<c:if
 													test="${svo.save_img != null && svo.save_video == null }">
-													<img src="resources/uploadimg/images/thumb_${svo.save_img}"
+													<img src="resources/uploadimg/thumb_${svo.save_img}"
 														alt="스토리 썸네일" class="thumbnail">
 												</c:if> <c:if test="${svo.save_video != null }">
 													<img src="resources/uploadimg/videos/thumb_${svo.save_img}"

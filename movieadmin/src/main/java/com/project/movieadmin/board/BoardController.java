@@ -38,7 +38,7 @@ public class BoardController {
 
 	@Autowired
 	private HttpSession session;
-	
+
 	@Autowired
 	private CommentsService comService;
 
@@ -156,21 +156,21 @@ public class BoardController {
 
 		model.addAttribute("vo2", vo2);
 		log.info("vo2:{}", vo2);
-		
+
 		String nickname = (String) session.getAttribute("nickname");
-		log.info("nickname: {}",nickname);
-        // user_id를 모델에 추가하여 JSP로 전달
-        model.addAttribute("nickname", nickname);		
-		
-        service.b_increaseViews(vo);
-        
+		log.info("nickname: {}", nickname);
+		// user_id를 모델에 추가하여 JSP로 전달
+		model.addAttribute("nickname", nickname);
+
+		service.b_increaseViews(vo);
+
 		CommentsVO cvo = new CommentsVO();
 		cvo.setBoard_num(vo.getBoard_num());
 		cvo.setNickname(nickname);
 		List<CommentsVO> cvos = comService.c_selectAll(cvo);
-		
+
 		model.addAttribute("cvos", cvos);
-		
+
 		return "board/selectOne";
 	}
 
@@ -185,8 +185,36 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/b_updateOK.do", method = RequestMethod.POST)
-	public String b_updateOK(BoardVO vo) throws BindException {
+	public String b_updateOK(BoardVO vo) throws IllegalStateException, IOException  {
 		log.info("Welcome b_updateOK.do...");
+		String realPath = sContext.getRealPath("resources/uploadimg");
+		log.info(realPath);
+
+		String originName = vo.getFile_img().getOriginalFilename();
+
+		log.info("getOriginalFilename:{}", originName);
+
+		if (originName.length() == 0) {
+			vo.setSave_img("default.png");// 이미지선택없이 처리할때
+		} else {
+			String save_img = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
+
+			vo.setSave_img(save_img);
+
+			File uploadFile = new File(realPath, save_img);
+			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
+
+			//// create thumbnail image/////////
+			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+
+			File thumb_file = new File(realPath, "thumb_" + save_img);
+
+			ImageIO.write(thumb_buffer_img, save_img.substring(save_img.lastIndexOf(".") + 1), thumb_file);
+
+		}
 
 		int result = service.b_update(vo);
 
@@ -218,6 +246,5 @@ public class BoardController {
 			return "redirect:b_delete.do?board_num=" + vo.getBoard_num();
 		}
 	}
-	
 
 }
