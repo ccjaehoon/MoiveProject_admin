@@ -57,6 +57,7 @@
         console.log("increaseGood Click");
         console.log(Integer.parseInt(storyCommentsNum));
 
+
 		$.ajax({
 			url : "api/sc_increaseGood.do",
 			type : "get",

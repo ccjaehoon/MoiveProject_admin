@@ -204,7 +204,7 @@
 					<c:if test="${vo2.save_img != null && vo2.save_video == null }">
 						<tr>
 							<td colspan="4"><img
-								src="resources/uploadimg/images/${vo2.save_img}" width="200"></td>
+								src="resources/uploadimg/${vo2.save_img}" width="500px"></td>
 						</tr>
 					</c:if>
 					<c:if test="${vo2.save_video != null }">
