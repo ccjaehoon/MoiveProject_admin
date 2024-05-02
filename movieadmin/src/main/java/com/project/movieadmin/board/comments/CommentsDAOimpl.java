@@ -70,13 +70,13 @@ public class CommentsDAOimpl implements CommentsDAO {
 
 	@Override
 	public int c_goodCheck(CommentsVO vo) {
-		// TODO Auto-generated method stub
+		
 		return sqlSession.selectOne("C_GOOD_CHECK", vo);
 	}
 
 	@Override
 	public int c_goodSave(CommentsVO vo) {
-		// TODO Auto-generated method stub
+		
 		return sqlSession.insert("C_GOOD_SAVE", vo);
 	}
 
