@@ -62,16 +62,16 @@ public class AnnouncementController {
 		log.info("getOriginalFilename:{}", originName);
 		
 		if (originName.length() == 0) {
-			vo.setSave_img("default.png");// 이미지선택없이 처리할때
+			vo.setSave_img("default.png");
 		} else {
 			String save_name = "img_" + System.currentTimeMillis() + originName.substring(originName.lastIndexOf("."));
 	
 			vo.setSave_img(save_name);
 	
 			File uploadFile = new File(realPath, save_name);
-			vo.getFile_img().transferTo(uploadFile);// 원본 이미지저장
+			vo.getFile_img().transferTo(uploadFile);
 	
-			//// create thumbnail image/////////
+			
 			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
 			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
 			Graphics2D graphic = thumb_buffer_img.createGraphics();

@@ -18,7 +18,7 @@
 	</div>
 	<div id=main style="position: relative; z-index: 1;">
 		<br>
-		<h2>뉴스삭제폼</h2>
+		<h2>뉴스 삭제하기</h2>
 
 		<!-- <form action="#" method="post" enctype="multipart/form-data"> -->
 		<form action="n_deleteOK.do" method="post">

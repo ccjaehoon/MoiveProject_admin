@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class FaqController {
-	// 깃오류 점검 주석
+	
 	@Autowired
 	private FaqService service;
 
@@ -99,7 +99,7 @@ public class FaqController {
 
 		model.addAttribute("vos", vos);
 
-		// 키워드검색 게시글수는 몇개?
+		
 		int total_rows = service.f_getSearchTotalRows(searchKey, searchWord);
 		log.info("total_rows:" + total_rows);
 
@@ -138,7 +138,7 @@ public class FaqController {
 	public String f_update(FaqVO vo, Model model) {
 		log.info("Welcome f_update!");
 
-		// 댓글목록 처리로직
+	
 		FaqVO vo2 = service.f_selectOne(vo);
         model.addAttribute("vo2", vo2);
 		return "faq/update";

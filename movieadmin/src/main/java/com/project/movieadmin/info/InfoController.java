@@ -26,10 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 public class InfoController {
 	
 	
-	/**
-	 *
-	 * Simply selects the home view to render by returning its name.
-	 */
+
 	
 	@Autowired
 	private InfoService service;
@@ -54,12 +51,12 @@ public class InfoController {
 	
 	@RequestMapping(value = "/i_insertOK.do", method = RequestMethod.POST)
 	public String i_insertOK(InfoVO vo) throws IllegalStateException, IOException {
-	    log.info("Welcome i_insertOK.do...");
-	    //log.info(vo.toString());
+	   
+	   
 	    String realPath = sContext.getRealPath("resources/uploadimg");
-		log.info(realPath);
+		
 		String originName = vo.getFile_img().getOriginalFilename();
-		log.info("getOriginalFilename:{}", originName);
+	
 		
 		if (originName.length() == 0) {
 			vo.setSave_img("default.png");
@@ -68,7 +65,7 @@ public class InfoController {
 			vo.setSave_img(save_name);
 			File uploadFile = new File(realPath, save_name);
 			vo.getFile_img().transferTo(uploadFile);
-			//// create thumbnail image/////////
+			
 			BufferedImage original_buffer_img = ImageIO.read(uploadFile);
 			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
 			Graphics2D graphic = thumb_buffer_img.createGraphics();
@@ -88,15 +85,15 @@ public class InfoController {
 	@RequestMapping(value = "/i_selectOne.do", method = RequestMethod.GET)
 	public String i_selectOne(InfoVO vo, Model model) {
 		
-		log.info("i_selectOne.do");
+		
 		InfoVO vo2=service.i_selectOne(vo);
-		log.info("vo2:" + vo2);
+		
 		
 		model.addAttribute("vo2", vo2);
 		
 		
 		String nickname = (String) session.getAttribute("nickname");
-		log.info("nickname: {}",nickname);
+		
 		
 		model.addAttribute("nickname", nickname);
 		
@@ -114,15 +111,12 @@ public class InfoController {
 	@RequestMapping(value = "/i_selectAll.do", method = RequestMethod.GET)
 	public String i_selectAll(@RequestParam(defaultValue = "1") int cpage,
 			@RequestParam(defaultValue = "10") int pageBlock, Model model) {
-		log.info("Welcome i_selectAll.do....");
+	
 		
 		
-		log.info("cpage : {}, pageBlock : {}", cpage, pageBlock);
+		
 		List<InfoVO> vos = service.i_selectAll(cpage, pageBlock);
-		for (InfoVO x : vos) {
-			log.info(x.toString());
-		}
-		log.info("================");
+		
 		model.addAttribute("vos", vos);
 		
 		int total_rows = service.i_getTotalRows();

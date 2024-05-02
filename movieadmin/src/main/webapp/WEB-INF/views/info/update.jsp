@@ -19,7 +19,7 @@
 	</div>
 	<div id="main" style="position: relative; z-index: 1;">
 		<br>
-		<h2>영화정보 수정페이지</h2>
+		<h2>영화정보 수정하기</h2>
 		<form action="i_updateOK.do" method="post"
 			enctype="multipart/form-data">
 			<table id="updateTable">

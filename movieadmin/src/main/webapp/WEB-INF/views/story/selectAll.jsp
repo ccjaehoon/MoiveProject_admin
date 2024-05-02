@@ -77,8 +77,8 @@
 		});
 		return false;
 	  });
-	});
->>>>>>> branch 'main' of https://github.com/ccjaehoon/MoiveProject_admin.git
+
+
 </script>
 <style>
 .table-wrapper {

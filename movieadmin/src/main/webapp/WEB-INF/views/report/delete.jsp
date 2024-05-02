@@ -22,7 +22,7 @@
 </div>
 <div id="main" style="position: relative; z-index: 1;">
 <br>
-        <h2>신고 삭제</h2>
+        <h2>신고 삭제하기</h2>
 
         <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
         <form action="rp_deleteOK.do" method="post">
